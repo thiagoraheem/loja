@@ -1,0 +1,605 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LojaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="LojaModelStoreContainer">
+          <EntitySet Name="tbl_Entrada" EntityType="LojaModel.Store.tbl_Entrada" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_Orcamento" EntityType="LojaModel.Store.tbl_Orcamento" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_Parametros" EntityType="LojaModel.Store.tbl_Parametros" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_Produtos" EntityType="LojaModel.Store.tbl_Produtos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_Saidas" EntityType="LojaModel.Store.tbl_Saidas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_SaidasEstorno" EntityType="LojaModel.Store.tbl_SaidasEstorno" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_TipoEntrada" EntityType="LojaModel.Store.tbl_TipoEntrada" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_TipoVenda" EntityType="LojaModel.Store.tbl_TipoVenda" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="viw_Orcamento" EntityType="LojaModel.Store.viw_Orcamento" store:Type="Views" store:Schema="dbo" store:Name="viw_Orcamento">
+            <DefiningQuery>SELECT 
+      [viw_Orcamento].[CodOrca] AS [CodOrca], 
+      [viw_Orcamento].[Itens] AS [Itens], 
+      [viw_Orcamento].[VlrTotal] AS [VlrTotal], 
+      [viw_Orcamento].[FlgStatus] AS [FlgStatus]
+      FROM [dbo].[viw_Orcamento] AS [viw_Orcamento]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <EntityType Name="tbl_Entrada">
+          <Key>
+            <PropertyRef Name="DocEntrada" />
+            <PropertyRef Name="DatEntrada" />
+            <PropertyRef Name="CodProduto" />
+          </Key>
+          <Property Name="DocEntrada" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="DatEntrada" Type="smalldatetime" Nullable="false" />
+          <Property Name="CodProduto" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="DesProduto" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="QtdProduto" Type="numeric" Nullable="false" />
+          <Property Name="VlrUnitario" Type="numeric" Nullable="false" Scale="2" />
+          <Property Name="VlrTotal" Type="numeric" Nullable="false" Scale="2" />
+          <Property Name="CodTipoEntrada" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Orcamento">
+          <Key>
+            <PropertyRef Name="CodOrca" />
+            <PropertyRef Name="CodProduto" />
+          </Key>
+          <Property Name="CodOrca" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="CodProduto" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="DescProduto" Type="varchar" MaxLength="30" />
+          <Property Name="Quantidade" Type="float" />
+          <Property Name="VlrUnitario" Type="float" />
+          <Property Name="VlrCusto" Type="float" />
+          <Property Name="DesLocal" Type="varchar" MaxLength="4" />
+          <Property Name="PF" Type="float" />
+          <Property Name="FlgStatus" Type="char" MaxLength="1" />
+          <Property Name="DatOrca" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="tbl_Parametros">
+          <Key>
+            <PropertyRef Name="EmpresaNome" />
+          </Key>
+          <Property Name="EmpresaNome" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="EmpresaEndereco" Type="varchar" MaxLength="50" />
+          <Property Name="EmpresaTelefone" Type="varchar" MaxLength="15" />
+          <Property Name="EmpresaEmail" Type="varchar" MaxLength="25" />
+          <Property Name="EmpresaWebSite" Type="varchar" MaxLength="30" />
+          <Property Name="EmpresaSlogan" Type="varchar" MaxLength="50" />
+          <Property Name="EmpresaLogotipo" Type="image" />
+          <Property Name="EmpresaCNPJ" Type="char" MaxLength="18" />
+          <Property Name="EmpresaInscEstadual" Type="varchar" MaxLength="15" />
+          <Property Name="SisCodVenda" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_Produtos">
+          <Key>
+            <PropertyRef Name="CodProduto" />
+            <PropertyRef Name="DesProduto" />
+            <PropertyRef Name="DesLocal" />
+          </Key>
+          <Property Name="CodProduto" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="DesProduto" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="DesLocal" Type="varchar" Nullable="false" MaxLength="4" />
+          <Property Name="VlrUnitario" Type="float" />
+          <Property Name="QtdProduto" Type="float" />
+          <Property Name="VlrCusto" Type="float" />
+          <Property Name="VlrPercent" Type="float" />
+          <Property Name="EstMinimo" Type="float" />
+          <Property Name="DatCadastro" Type="varchar" MaxLength="10" />
+          <Property Name="DesFornecedor" Type="varchar" MaxLength="10" />
+          <Property Name="CodRefAntiga" Type="varchar" MaxLength="10" />
+          <Property Name="DesFaz" Type="float" />
+          <Property Name="VlrUltPreco" Type="float" />
+          <Property Name="Imagem" Type="image" />
+        </EntityType>
+        <EntityType Name="tbl_Saidas">
+          <Key>
+            <PropertyRef Name="CodVenda" />
+            <PropertyRef Name="DatSaida" />
+            <PropertyRef Name="CodProduto" />
+          </Key>
+          <Property Name="CodVenda" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DatSaida" Type="smalldatetime" Nullable="false" />
+          <Property Name="CodOrcamento" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="CodProduto" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="DesProduto" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="VlrUnitario" Type="money" Nullable="false" />
+          <Property Name="Quantidade" Type="int" Nullable="false" />
+          <Property Name="VlrCusto" Type="money" Nullable="false" />
+          <Property Name="VlrFinal" Type="money" StoreGeneratedPattern="Computed" />
+          <Property Name="CodTipoVenda" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_SaidasEstorno">
+          <Key>
+            <PropertyRef Name="CodVenda" />
+            <PropertyRef Name="DatSaida" />
+            <PropertyRef Name="CodProduto" />
+          </Key>
+          <Property Name="CodVenda" Type="int" Nullable="false" />
+          <Property Name="DatSaida" Type="smalldatetime" Nullable="false" />
+          <Property Name="CodOrcamento" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="CodProduto" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="DesProduto" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="VlrUnitario" Type="money" Nullable="false" />
+          <Property Name="Quantidade" Type="int" Nullable="false" />
+          <Property Name="VlrCusto" Type="money" Nullable="false" />
+          <Property Name="VlrFinal" Type="money" StoreGeneratedPattern="Computed" />
+          <Property Name="CodTipoVenda" Type="int" Nullable="false" />
+          <Property Name="DatEstorno" Type="smalldatetime" Nullable="false" />
+          <Property Name="MotivoEstorno" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_TipoEntrada">
+          <Key>
+            <PropertyRef Name="CodTipoEntrada" />
+          </Key>
+          <Property Name="CodTipoEntrada" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DesTipoEntrada" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="flgMovimentaEstoque" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_TipoVenda">
+          <Key>
+            <PropertyRef Name="CodTipoVenda" />
+          </Key>
+          <Property Name="CodTipoVenda" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DesTipoVenda" Type="varchar" MaxLength="50" />
+          <Property Name="flgAtivo" Type="bit" />
+          <Property Name="flgAVista" Type="bit" />
+          <Property Name="QtdDias" Type="numeric" Precision="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Loja.dbo.viw_Orcamento' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="viw_Orcamento">
+          <Key>
+            <PropertyRef Name="CodOrca" />
+          </Key>
+          <Property Name="CodOrca" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="Itens" Type="int" />
+          <Property Name="VlrTotal" Type="float" />
+          <Property Name="FlgStatus" Type="char" MaxLength="1" />
+        </EntityType>
+        <Function Name="spc_AdicionarOrcamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodOrca" Type="varchar" Mode="In" />
+          <Parameter Name="CodProduto" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spc_AlterarOrcamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodOrca" Type="varchar" Mode="In" />
+          <Parameter Name="CodProduto" Type="varchar" Mode="In" />
+          <Parameter Name="Quantidade" Type="float" Mode="In" />
+          <Parameter Name="VlrUnitario" Type="float" Mode="In" />
+        </Function>
+        <Function Name="spc_ApagarOrcamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Original_CodOrca" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spc_AtualizaEstoque" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodProduto" Type="varchar" Mode="In" />
+          <Parameter Name="DesProduto" Type="varchar" Mode="In" />
+          <Parameter Name="DesLocal" Type="varchar" Mode="In" />
+          <Parameter Name="VlrUnitario" Type="money" Mode="In" />
+          <Parameter Name="QtdProduto" Type="float" Mode="In" />
+          <Parameter Name="VlrCusto" Type="money" Mode="In" />
+          <Parameter Name="VlrPercent" Type="numeric" Mode="In" />
+          <Parameter Name="EstMinimo" Type="numeric" Mode="In" />
+          <Parameter Name="DesFornecedor" Type="varchar" Mode="In" />
+          <Parameter Name="CodRefAntiga" Type="varchar" Mode="In" />
+          <Parameter Name="Imagem" Type="image" Mode="In" />
+          <Parameter Name="CodTipoEntrada" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spc_DescontoVenda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodOrca" Type="varchar" Mode="In" />
+          <Parameter Name="Desconto" Type="numeric" Mode="In" />
+          <Parameter Name="flgTipoDesconto" Type="char" Mode="In" />
+        </Function>
+        <Function Name="spc_EstornaVenda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodVenda" Type="int" Mode="In" />
+          <Parameter Name="CodProduto" Type="varchar" Mode="In" />
+          <Parameter Name="DesMotivo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spc_FinalizaVenda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodOrca" Type="varchar" Mode="In" />
+          <Parameter Name="CodTipoVenda" Type="int" Mode="In" />
+          <Parameter Name="flgApagarOrca" Type="char" Mode="In" />
+        </Function>
+        <Function Name="spc_ManutProduto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodProduto" Type="varchar" Mode="In" />
+          <Parameter Name="DesProduto" Type="varchar" Mode="In" />
+          <Parameter Name="DesLocal" Type="varchar" Mode="In" />
+          <Parameter Name="VlrUnitario" Type="float" Mode="In" />
+          <Parameter Name="QtdProduto" Type="float" Mode="In" />
+          <Parameter Name="VlrCusto" Type="float" Mode="In" />
+          <Parameter Name="VlrPercent" Type="float" Mode="In" />
+          <Parameter Name="EstMinimo" Type="float" Mode="In" />
+          <Parameter Name="DesFornecedor" Type="varchar" Mode="In" />
+          <Parameter Name="CodRefAntiga" Type="varchar" Mode="In" />
+          <Parameter Name="VlrUltPreco" Type="float" Mode="In" />
+          <Parameter Name="Imagem" Type="image" Mode="In" />
+          <Parameter Name="NovaDescricao" Type="varchar" Mode="In" />
+          <Parameter Name="NovoLocal" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spc_PesqProduto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodProduto" Type="varchar" Mode="In" />
+          <Parameter Name="DesProduto" Type="varchar" Mode="In" />
+          <Parameter Name="Local" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spc_PesqProduto2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodProduto" Type="varchar" Mode="In" />
+          <Parameter Name="DesProduto" Type="varchar" Mode="In" />
+          <Parameter Name="Local" Type="varchar" Mode="In" />
+          <Parameter Name="flgSaldo" Type="char" Mode="In" />
+        </Function>
+        <Function Name="spc_PesqSaida" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DatInicial" Type="smalldatetime" Mode="In" />
+          <Parameter Name="DatFinal" Type="smalldatetime" Mode="In" />
+          <Parameter Name="CodProduto" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spc_PesqVendas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DatIni" Type="smalldatetime" Mode="In" />
+          <Parameter Name="DatFim" Type="smalldatetime" Mode="In" />
+          <Parameter Name="CodVenda" Type="int" Mode="In" />
+          <Parameter Name="CodProduto" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spc_Reajuste" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Porcentagem" Type="numeric" Mode="In" />
+          <Parameter Name="DesFornecedor" Type="varchar" Mode="In" />
+        </Function>
+        <!--Errors Found During Generation:
+      warning 6013: The table/view 'Loja.dbo.tbl_Preco' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="tbl_Preco">
+        <Property Name="CodProduto" Type="varchar" MaxLength="20" />
+        <Property Name="VlrProduto" Type="float" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'Loja.dbo.tbl_Usuario' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="tbl_Usuario">
+        <Property Name="CODIGO" Type="varchar" MaxLength="3" />
+        <Property Name="NOME" Type="varchar" MaxLength="10" />
+        <Property Name="TSENHA" Type="varchar" MaxLength="6" />
+        <Property Name="STATUS" Type="varchar" MaxLength="10" />
+        <Property Name="NIVEL" Type="varchar" MaxLength="1" />
+      </EntityType>-->
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LojaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="LojaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Orcamento" EntityType="LojaModel.tbl_Orcamento" />
+          <EntitySet Name="tbl_Produtos" EntityType="LojaModel.tbl_Produtos" />
+          <EntitySet Name="tbl_TipoVenda" EntityType="LojaModel.tbl_TipoVenda" />
+          <EntitySet Name="viw_Orcamento" EntityType="LojaModel.viw_Orcamento" />
+          <FunctionImport Name="FU_AddItemOrcamento" ReturnType="Collection(String)">
+            <Parameter Name="CodOrca" Mode="In" Type="String" />
+            <Parameter Name="CodProduto" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="FU_AlterarOrcamento">
+            <Parameter Name="CodOrca" Mode="In" Type="String" />
+            <Parameter Name="CodProduto" Mode="In" Type="String" />
+            <Parameter Name="Quantidade" Mode="In" Type="Double" />
+            <Parameter Name="VlrUnitario" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="FU_FinalizaVenda" ReturnType="Collection(Int32)">
+            <Parameter Name="CodOrca" Mode="In" Type="String" />
+            <Parameter Name="CodTipoVenda" Mode="In" Type="Int32" />
+            <Parameter Name="flgApagarOrca" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="tbl_Entrada" EntityType="LojaModel.tbl_Entrada" />
+          <EntitySet Name="tbl_Parametros" EntityType="LojaModel.tbl_Parametros" />
+          <EntitySet Name="tbl_SaidasEstorno" EntityType="LojaModel.tbl_SaidasEstorno" />
+          <EntitySet Name="tbl_TipoEntrada" EntityType="LojaModel.tbl_TipoEntrada" />
+          <FunctionImport Name="FU_DescontoVenda">
+            <Parameter Name="CodOrca" Mode="In" Type="String" />
+            <Parameter Name="Desconto" Mode="In" Type="Decimal" />
+            <Parameter Name="flgTipoDesconto" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="tbl_Saidas" EntityType="LojaModel.tbl_Saidas" />
+          <FunctionImport Name="FU_ManutProduto">
+            <Parameter Name="CodProduto" Mode="In" Type="String" />
+            <Parameter Name="DesProduto" Mode="In" Type="String" />
+            <Parameter Name="DesLocal" Mode="In" Type="String" />
+            <Parameter Name="VlrUnitario" Mode="In" Type="Double" />
+            <Parameter Name="QtdProduto" Mode="In" Type="Double" />
+            <Parameter Name="VlrCusto" Mode="In" Type="Double" />
+            <Parameter Name="VlrPercent" Mode="In" Type="Double" />
+            <Parameter Name="EstMinimo" Mode="In" Type="Double" />
+            <Parameter Name="DesFornecedor" Mode="In" Type="String" />
+            <Parameter Name="CodRefAntiga" Mode="In" Type="String" />
+            <Parameter Name="VlrUltPreco" Mode="In" Type="Double" />
+            <Parameter Name="Imagem" Mode="In" Type="Binary" />
+            <Parameter Name="NovaDescricao" Mode="In" Type="String" />
+            <Parameter Name="NovoLocal" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="FU_Reajuste">
+            <Parameter Name="Porcentagem" Mode="In" Type="Decimal" />
+            <Parameter Name="DesFornecedor" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="tbl_Orcamento">
+          <Key>
+            <PropertyRef Name="CodOrca" />
+            <PropertyRef Name="CodProduto" />
+          </Key>
+          <Property Name="CodOrca" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="CodProduto" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="DescProduto" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Quantidade" Type="Double" />
+          <Property Name="VlrUnitario" Type="Double" />
+          <Property Name="VlrCusto" Type="Double" />
+          <Property Name="DesLocal" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="PF" Type="Double" />
+          <Property Name="FlgStatus" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="DatOrca" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="tbl_Produtos">
+          <Key>
+            <PropertyRef Name="CodProduto" />
+            <PropertyRef Name="DesProduto" />
+            <PropertyRef Name="DesLocal" />
+          </Key>
+          <Property Name="CodProduto" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="DesProduto" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="DesLocal" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="VlrUnitario" Type="Double" />
+          <Property Name="QtdProduto" Type="Double" />
+          <Property Name="VlrCusto" Type="Double" />
+          <Property Name="VlrPercent" Type="Double" />
+          <Property Name="EstMinimo" Type="Double" />
+          <Property Name="DatCadastro" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="DesFornecedor" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="CodRefAntiga" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="DesFaz" Type="Double" />
+          <Property Name="VlrUltPreco" Type="Double" />
+          <Property Name="Imagem" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tbl_TipoVenda">
+          <Key>
+            <PropertyRef Name="CodTipoVenda" />
+          </Key>
+          <Property Name="CodTipoVenda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DesTipoVenda" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="flgAtivo" Type="Boolean" />
+          <Property Name="flgAVista" Type="Boolean" />
+          <Property Name="QtdDias" Type="Decimal" Precision="10" Scale="0" />
+        </EntityType>
+        <EntityType Name="viw_Orcamento">
+          <Key>
+            <PropertyRef Name="CodOrca" />
+          </Key>
+          <Property Name="CodOrca" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="Itens" Type="Int32" />
+          <Property Name="VlrTotal" Type="Double" />
+          <Property Name="FlgStatus" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="tbl_Entrada">
+          <Key>
+            <PropertyRef Name="DocEntrada" />
+            <PropertyRef Name="DatEntrada" />
+            <PropertyRef Name="CodProduto" />
+          </Key>
+          <Property Type="String" Name="DocEntrada" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DatEntrada" Nullable="false" />
+          <Property Type="String" Name="CodProduto" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DesProduto" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="QtdProduto" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="VlrUnitario" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="VlrTotal" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="CodTipoEntrada" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Parametros">
+          <Key>
+            <PropertyRef Name="EmpresaNome" />
+          </Key>
+          <Property Type="String" Name="EmpresaNome" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmpresaEndereco" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmpresaTelefone" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmpresaEmail" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmpresaWebSite" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmpresaSlogan" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Binary" Name="EmpresaLogotipo" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="EmpresaCNPJ" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="EmpresaInscEstadual" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="SisCodVenda" />
+        </EntityType>
+        <EntityType Name="tbl_SaidasEstorno">
+          <Key>
+            <PropertyRef Name="CodVenda" />
+            <PropertyRef Name="DatSaida" />
+            <PropertyRef Name="CodProduto" />
+          </Key>
+          <Property Type="Int32" Name="CodVenda" Nullable="false" />
+          <Property Type="DateTime" Name="DatSaida" Nullable="false" />
+          <Property Type="String" Name="CodOrcamento" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodProduto" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DesProduto" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="VlrUnitario" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Int32" Name="Quantidade" Nullable="false" />
+          <Property Type="Decimal" Name="VlrCusto" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="VlrFinal" Precision="19" Scale="4" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Int32" Name="CodTipoVenda" Nullable="false" />
+          <Property Type="DateTime" Name="DatEstorno" Nullable="false" />
+          <Property Type="String" Name="MotivoEstorno" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_TipoEntrada">
+          <Key>
+            <PropertyRef Name="CodTipoEntrada" />
+          </Key>
+          <Property Type="Int32" Name="CodTipoEntrada" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="DesTipoEntrada" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="flgMovimentaEstoque" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Saidas">
+          <Key>
+            <PropertyRef Name="CodVenda" />
+            <PropertyRef Name="DatSaida" />
+            <PropertyRef Name="CodProduto" />
+          </Key>
+          <Property Type="Int32" Name="CodVenda" Nullable="false" />
+          <Property Type="DateTime" Name="DatSaida" Nullable="false" />
+          <Property Type="String" Name="CodOrcamento" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodProduto" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DesProduto" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="VlrUnitario" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Int32" Name="Quantidade" Nullable="false" />
+          <Property Type="Decimal" Name="VlrCusto" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="VlrFinal" Precision="19" Scale="4" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Int32" Name="CodTipoVenda" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LojaModelStoreContainer" CdmEntityContainer="LojaEntities">
+          <EntitySetMapping Name="tbl_Orcamento"><EntityTypeMapping TypeName="LojaModel.tbl_Orcamento"><MappingFragment StoreEntitySet="tbl_Orcamento">
+            <ScalarProperty Name="CodOrca" ColumnName="CodOrca" />
+            <ScalarProperty Name="CodProduto" ColumnName="CodProduto" />
+            <ScalarProperty Name="DescProduto" ColumnName="DescProduto" />
+            <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+            <ScalarProperty Name="VlrUnitario" ColumnName="VlrUnitario" />
+            <ScalarProperty Name="VlrCusto" ColumnName="VlrCusto" />
+            <ScalarProperty Name="DesLocal" ColumnName="DesLocal" />
+            <ScalarProperty Name="PF" ColumnName="PF" />
+            <ScalarProperty Name="FlgStatus" ColumnName="FlgStatus" />
+            <ScalarProperty Name="DatOrca" ColumnName="DatOrca" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tbl_Produtos"><EntityTypeMapping TypeName="LojaModel.tbl_Produtos"><MappingFragment StoreEntitySet="tbl_Produtos">
+            <ScalarProperty Name="CodProduto" ColumnName="CodProduto" />
+            <ScalarProperty Name="DesProduto" ColumnName="DesProduto" />
+            <ScalarProperty Name="DesLocal" ColumnName="DesLocal" />
+            <ScalarProperty Name="VlrUnitario" ColumnName="VlrUnitario" />
+            <ScalarProperty Name="QtdProduto" ColumnName="QtdProduto" />
+            <ScalarProperty Name="VlrCusto" ColumnName="VlrCusto" />
+            <ScalarProperty Name="VlrPercent" ColumnName="VlrPercent" />
+            <ScalarProperty Name="EstMinimo" ColumnName="EstMinimo" />
+            <ScalarProperty Name="DatCadastro" ColumnName="DatCadastro" />
+            <ScalarProperty Name="DesFornecedor" ColumnName="DesFornecedor" />
+            <ScalarProperty Name="CodRefAntiga" ColumnName="CodRefAntiga" />
+            <ScalarProperty Name="DesFaz" ColumnName="DesFaz" />
+            <ScalarProperty Name="VlrUltPreco" ColumnName="VlrUltPreco" />
+            <ScalarProperty Name="Imagem" ColumnName="Imagem" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tbl_TipoVenda"><EntityTypeMapping TypeName="LojaModel.tbl_TipoVenda"><MappingFragment StoreEntitySet="tbl_TipoVenda">
+            <ScalarProperty Name="CodTipoVenda" ColumnName="CodTipoVenda" />
+            <ScalarProperty Name="DesTipoVenda" ColumnName="DesTipoVenda" />
+            <ScalarProperty Name="flgAtivo" ColumnName="flgAtivo" />
+            <ScalarProperty Name="flgAVista" ColumnName="flgAVista" />
+            <ScalarProperty Name="QtdDias" ColumnName="QtdDias" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="viw_Orcamento"><EntityTypeMapping TypeName="LojaModel.viw_Orcamento"><MappingFragment StoreEntitySet="viw_Orcamento">
+            <ScalarProperty Name="CodOrca" ColumnName="CodOrca" />
+            <ScalarProperty Name="Itens" ColumnName="Itens" />
+            <ScalarProperty Name="VlrTotal" ColumnName="VlrTotal" />
+            <ScalarProperty Name="FlgStatus" ColumnName="FlgStatus" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="FU_AddItemOrcamento" FunctionName="LojaModel.Store.spc_AdicionarOrcamento" >
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="FU_AlterarOrcamento" FunctionName="LojaModel.Store.spc_AlterarOrcamento" />
+          <FunctionImportMapping FunctionImportName="FU_FinalizaVenda" FunctionName="LojaModel.Store.spc_FinalizaVenda" />
+          <EntitySetMapping Name="tbl_Entrada">
+            <EntityTypeMapping TypeName="LojaModel.tbl_Entrada">
+              <MappingFragment StoreEntitySet="tbl_Entrada">
+                <ScalarProperty Name="CodTipoEntrada" ColumnName="CodTipoEntrada" />
+                <ScalarProperty Name="VlrTotal" ColumnName="VlrTotal" />
+                <ScalarProperty Name="VlrUnitario" ColumnName="VlrUnitario" />
+                <ScalarProperty Name="QtdProduto" ColumnName="QtdProduto" />
+                <ScalarProperty Name="DesProduto" ColumnName="DesProduto" />
+                <ScalarProperty Name="CodProduto" ColumnName="CodProduto" />
+                <ScalarProperty Name="DatEntrada" ColumnName="DatEntrada" />
+                <ScalarProperty Name="DocEntrada" ColumnName="DocEntrada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Parametros">
+            <EntityTypeMapping TypeName="LojaModel.tbl_Parametros">
+              <MappingFragment StoreEntitySet="tbl_Parametros">
+                <ScalarProperty Name="SisCodVenda" ColumnName="SisCodVenda" />
+                <ScalarProperty Name="EmpresaInscEstadual" ColumnName="EmpresaInscEstadual" />
+                <ScalarProperty Name="EmpresaCNPJ" ColumnName="EmpresaCNPJ" />
+                <ScalarProperty Name="EmpresaLogotipo" ColumnName="EmpresaLogotipo" />
+                <ScalarProperty Name="EmpresaSlogan" ColumnName="EmpresaSlogan" />
+                <ScalarProperty Name="EmpresaWebSite" ColumnName="EmpresaWebSite" />
+                <ScalarProperty Name="EmpresaEmail" ColumnName="EmpresaEmail" />
+                <ScalarProperty Name="EmpresaTelefone" ColumnName="EmpresaTelefone" />
+                <ScalarProperty Name="EmpresaEndereco" ColumnName="EmpresaEndereco" />
+                <ScalarProperty Name="EmpresaNome" ColumnName="EmpresaNome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SaidasEstorno">
+            <EntityTypeMapping TypeName="LojaModel.tbl_SaidasEstorno">
+              <MappingFragment StoreEntitySet="tbl_SaidasEstorno">
+                <ScalarProperty Name="MotivoEstorno" ColumnName="MotivoEstorno" />
+                <ScalarProperty Name="DatEstorno" ColumnName="DatEstorno" />
+                <ScalarProperty Name="CodTipoVenda" ColumnName="CodTipoVenda" />
+                <ScalarProperty Name="VlrFinal" ColumnName="VlrFinal" />
+                <ScalarProperty Name="VlrCusto" ColumnName="VlrCusto" />
+                <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+                <ScalarProperty Name="VlrUnitario" ColumnName="VlrUnitario" />
+                <ScalarProperty Name="DesProduto" ColumnName="DesProduto" />
+                <ScalarProperty Name="CodProduto" ColumnName="CodProduto" />
+                <ScalarProperty Name="CodOrcamento" ColumnName="CodOrcamento" />
+                <ScalarProperty Name="DatSaida" ColumnName="DatSaida" />
+                <ScalarProperty Name="CodVenda" ColumnName="CodVenda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_TipoEntrada">
+            <EntityTypeMapping TypeName="LojaModel.tbl_TipoEntrada">
+              <MappingFragment StoreEntitySet="tbl_TipoEntrada">
+                <ScalarProperty Name="flgMovimentaEstoque" ColumnName="flgMovimentaEstoque" />
+                <ScalarProperty Name="DesTipoEntrada" ColumnName="DesTipoEntrada" />
+                <ScalarProperty Name="CodTipoEntrada" ColumnName="CodTipoEntrada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="FU_DescontoVenda" FunctionName="LojaModel.Store.spc_DescontoVenda" />
+          <EntitySetMapping Name="tbl_Saidas">
+            <EntityTypeMapping TypeName="LojaModel.tbl_Saidas">
+              <MappingFragment StoreEntitySet="tbl_Saidas">
+                <ScalarProperty Name="CodTipoVenda" ColumnName="CodTipoVenda" />
+                <ScalarProperty Name="VlrFinal" ColumnName="VlrFinal" />
+                <ScalarProperty Name="VlrCusto" ColumnName="VlrCusto" />
+                <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+                <ScalarProperty Name="VlrUnitario" ColumnName="VlrUnitario" />
+                <ScalarProperty Name="DesProduto" ColumnName="DesProduto" />
+                <ScalarProperty Name="CodProduto" ColumnName="CodProduto" />
+                <ScalarProperty Name="CodOrcamento" ColumnName="CodOrcamento" />
+                <ScalarProperty Name="DatSaida" ColumnName="DatSaida" />
+                <ScalarProperty Name="CodVenda" ColumnName="CodVenda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="FU_ManutProduto" FunctionName="LojaModel.Store.spc_ManutProduto" />
+          <FunctionImportMapping FunctionImportName="FU_Reajuste" FunctionName="LojaModel.Store.spc_Reajuste" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Loja" ZoomLevel="100">
+        <EntityTypeShape EntityType="LojaModel.tbl_Orcamento" Width="1.5" PointX="0.75" PointY="0.5" Height="2.9417936197916665" IsExpanded="true" />
+        <EntityTypeShape EntityType="LojaModel.tbl_Produtos" Width="1.5" PointX="2.75" PointY="0.5" Height="3.7109993489583326" IsExpanded="true" />
+        <EntityTypeShape EntityType="LojaModel.tbl_TipoVenda" Width="1.5" PointX="4.875" PointY="3.625" Height="2.0002864583333331" IsExpanded="true" />
+        <EntityTypeShape EntityType="LojaModel.viw_Orcamento" Width="1.5" PointX="0.75" PointY="3.875" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="LojaModel.tbl_Entrada" Width="1.5" PointX="6.625" PointY="5.75" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="LojaModel.tbl_Parametros" Width="1.5" PointX="2.75" PointY="4.375" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="LojaModel.tbl_SaidasEstorno" Width="1.5" PointX="6.625" PointY="2.25" Height="3.3263964843749996" />
+        <EntityTypeShape EntityType="LojaModel.tbl_TipoEntrada" Width="1.5" PointX="6.5" PointY="0.5" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="LojaModel.tbl_Saidas" Width="1.5" PointX="4.75" PointY="0.5" Height="2.9417936197916674" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
