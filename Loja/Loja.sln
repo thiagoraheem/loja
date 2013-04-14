@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loja", "Loja\Loja.csproj", "{FBFB274D-2DD2-453F-BED3-E7088342DB4B}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "Installer\Installer.vdproj", "{A190E317-4C50-464E-BDC4-916662A8EA26}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBFB274D-2DD2-453F-BED3-E7088342DB4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBFB274D-2DD2-453F-BED3-E7088342DB4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBFB274D-2DD2-453F-BED3-E7088342DB4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBFB274D-2DD2-453F-BED3-E7088342DB4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A190E317-4C50-464E-BDC4-916662A8EA26}.Debug|Any CPU.ActiveCfg = Debug
+		{A190E317-4C50-464E-BDC4-916662A8EA26}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

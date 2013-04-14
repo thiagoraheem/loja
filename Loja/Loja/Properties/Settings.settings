@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Loja.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Nome" Type="System.String" Scope="User">
+      <Value Profile="(Default)">AUTO PADRÃO PECAS</Value>
+    </Setting>
+    <Setting Name="Endereco" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Rua Parintins, 186 - Cachoeirinha - CEP: 69065-050</Value>
+    </Setting>
+    <Setting Name="Telefone" Type="System.String" Scope="User">
+      <Value Profile="(Default)">(92) 8125-7472</Value>
+    </Setting>
+    <Setting Name="Site" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Email" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CNPJ" Type="System.String" Scope="User">
+      <Value Profile="(Default)">05.499.801/0001-67</Value>
+    </Setting>
+    <Setting Name="InscEstadual" Type="System.String" Scope="User">
+      <Value Profile="(Default)">04.176.481-1</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
