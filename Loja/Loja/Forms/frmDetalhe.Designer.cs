@@ -41,9 +41,9 @@
             this.txtQtdEstoque = new DevExpress.XtraEditors.TextEdit();
             this.txtDesProduto = new DevExpress.XtraEditors.MemoEdit();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.txtDesconto = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.txtVlrUnitario = new DevExpress.XtraEditors.CalcEdit();
+            this.txtDesconto = new DevExpress.XtraEditors.CalcEdit();
+            this.txtVlrUnitario = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.imgFoto.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodProduto.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFornecedor.Properties)).BeginInit();
@@ -170,7 +170,6 @@
             // 
             // groupControl1
             // 
-            this.groupControl1.Controls.Add(this.txtDesconto);
             this.groupControl1.Controls.Add(this.labelControl7);
             this.groupControl1.Controls.Add(this.labelControl1);
             this.groupControl1.Controls.Add(this.txtDesProduto);
@@ -184,6 +183,7 @@
             this.groupControl1.Controls.Add(this.labelControl6);
             this.groupControl1.Controls.Add(this.txtCodProduto);
             this.groupControl1.Controls.Add(this.imgFoto);
+            this.groupControl1.Controls.Add(this.txtDesconto);
             this.groupControl1.Controls.Add(this.txtVlrUnitario);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
@@ -191,6 +191,15 @@
             this.groupControl1.Size = new System.Drawing.Size(682, 330);
             this.groupControl1.TabIndex = 14;
             this.groupControl1.Text = "DETALHES DO PRODUTO";
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl7.Location = new System.Drawing.Point(85, 298);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(199, 23);
+            this.labelControl7.TabIndex = 14;
+            this.labelControl7.Text = "Preço com desconto:";
             // 
             // txtDesconto
             // 
@@ -202,20 +211,10 @@
             this.txtDesconto.Properties.Appearance.Options.UseFont = true;
             this.txtDesconto.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtDesconto.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtDesconto.Properties.Mask.EditMask = "n2";
-            this.txtDesconto.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtDesconto.Properties.Mask.EditMask = "c2";
             this.txtDesconto.Properties.ReadOnly = true;
             this.txtDesconto.Size = new System.Drawing.Size(124, 36);
             this.txtDesconto.TabIndex = 15;
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl7.Location = new System.Drawing.Point(85, 298);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(199, 23);
-            this.labelControl7.TabIndex = 14;
-            this.labelControl7.Text = "Preço com desconto:";
             // 
             // txtVlrUnitario
             // 
@@ -227,7 +226,8 @@
             this.txtVlrUnitario.Properties.Appearance.Options.UseFont = true;
             this.txtVlrUnitario.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtVlrUnitario.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtVlrUnitario.Properties.Mask.EditMask = "c";
+            this.txtVlrUnitario.Properties.Mask.EditMask = "c2";
+            this.txtVlrUnitario.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtVlrUnitario.Properties.ReadOnly = true;
             this.txtVlrUnitario.Size = new System.Drawing.Size(124, 36);
             this.txtVlrUnitario.TabIndex = 12;
@@ -273,8 +273,8 @@
         private DevExpress.XtraEditors.TextEdit txtQtdEstoque;
         private DevExpress.XtraEditors.MemoEdit txtDesProduto;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.TextEdit txtDesconto;
         private DevExpress.XtraEditors.LabelControl labelControl7;
-        private DevExpress.XtraEditors.CalcEdit txtVlrUnitario;
+        private DevExpress.XtraEditors.CalcEdit txtDesconto;
+        private DevExpress.XtraEditors.TextEdit txtVlrUnitario;
     }
 }
