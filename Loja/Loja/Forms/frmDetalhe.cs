@@ -22,22 +22,20 @@ namespace Loja
 
         private void frmDetalhe_KeyDown(object sender, KeyEventArgs e)
         {
-            double VlrUnitario = 0;
-
             if (e.KeyCode.Equals(Keys.Escape)) {
                 Close();
             } else if(e.KeyCode.Equals(Keys.F1)) {
-                VlrUnitario = Convert.ToDouble(txtVlrUnitario.Value);
-                txtDesconto.EditValue = VlrUnitario * 0.92;
+                double n = double.Parse(txtVlrUnitario.Text);
+                txtDesconto.Value = (decimal) (n * 0.92);
             } else if (e.KeyCode.Equals(Keys.F2)) {
-                VlrUnitario = Convert.ToDouble(txtVlrUnitario.Value);
-                txtDesconto.EditValue = VlrUnitario * 0.90;
+                double n = double.Parse(txtVlrUnitario.Text);
+                txtDesconto.Value = (decimal) (n * 0.90);
             } else if (e.KeyCode.Equals(Keys.F3)) {
-                VlrUnitario = Convert.ToDouble(txtVlrUnitario.Value);
-                txtDesconto.EditValue = VlrUnitario * 0.88;
+                double n = double.Parse(txtVlrUnitario.Text);
+                txtDesconto.Value = (decimal) (n * 0.88);
             } else if (e.KeyCode.Equals(Keys.F4)) {
-                VlrUnitario = Convert.ToDouble(txtVlrUnitario.Value);
-                txtDesconto.EditValue = VlrUnitario * 0.85;
+                double n = double.Parse(txtVlrUnitario.Text);
+                txtDesconto.Value = (decimal) (n * 0.85);
             }
         }
 
