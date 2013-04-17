@@ -96,6 +96,7 @@
             this.btnRecibo = new DevExpress.XtraNavBar.NavBarItem();
             this.btnReajustar = new DevExpress.XtraNavBar.NavBarItem();
             this.grpRelatorios = new DevExpress.XtraNavBar.NavBarGroup();
+            this.btnEstMinimo = new DevExpress.XtraNavBar.NavBarItem();
             this.btnRelVendas = new DevExpress.XtraNavBar.NavBarItem();
             this.btnRelEntradas = new DevExpress.XtraNavBar.NavBarItem();
             this.btnOrcamentos = new DevExpress.XtraNavBar.NavBarItem();
@@ -376,6 +377,7 @@
             this.rgbiSkins.Gallery.ImageSize = new System.Drawing.Size(32, 17);
             this.rgbiSkins.Gallery.ItemImageLocation = DevExpress.Utils.Locations.Top;
             this.rgbiSkins.Gallery.RowCount = 4;
+            this.rgbiSkins.Gallery.ItemClick += new DevExpress.XtraBars.Ribbon.GalleryItemClickEventHandler(this.rgbiSkins_Gallery_ItemClick);
             this.rgbiSkins.Id = 60;
             this.rgbiSkins.Name = "rgbiSkins";
             // 
@@ -693,7 +695,8 @@
             this.btnRelVendas,
             this.btnRelEntradas,
             this.btnOrcamentos,
-            this.btnReajustar});
+            this.btnReajustar,
+            this.btnEstMinimo});
             this.navBarControl.LargeImages = this.navbarImageListLarge;
             this.navBarControl.Location = new System.Drawing.Point(0, 0);
             this.navBarControl.Name = "navBarControl";
@@ -756,11 +759,19 @@
             // 
             this.grpRelatorios.Caption = "Relatórios";
             this.grpRelatorios.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnEstMinimo),
             new DevExpress.XtraNavBar.NavBarItemLink(this.btnRelVendas),
             new DevExpress.XtraNavBar.NavBarItemLink(this.btnRelEntradas),
             new DevExpress.XtraNavBar.NavBarItemLink(this.btnOrcamentos)});
             this.grpRelatorios.LargeImageIndex = 2;
             this.grpRelatorios.Name = "grpRelatorios";
+            // 
+            // btnEstMinimo
+            // 
+            this.btnEstMinimo.Caption = "Est. Mínimo";
+            this.btnEstMinimo.Name = "btnEstMinimo";
+            this.btnEstMinimo.SmallImageIndex = 0;
+            this.btnEstMinimo.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnEstMinimo_LinkClicked);
             // 
             // btnRelVendas
             // 
@@ -998,6 +1009,7 @@
         private DevExpress.XtraBars.BarEditItem cmbCodOrca;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repCodOrca;
         private DevExpress.XtraNavBar.NavBarItem btnReajustar;
+        private DevExpress.XtraNavBar.NavBarItem btnEstMinimo;
 
     }
 }

@@ -25,7 +25,7 @@ namespace Loja.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("AUTO PADRÃO PECAS")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Jorge Giffone")]
         public string Nome {
             get {
                 return ((string)(this["Nome"]));
@@ -104,6 +104,40 @@ namespace Loja.Properties {
             }
             set {
                 this["InscEstadual"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(local);Initial Catalog=Loja;Integrated Security=True")]
+        public string LojaConnectionString {
+            get {
+                return ((string)(this["LojaConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("AUTO PADRÃO PECAS")]
+        public string NomeFantasia {
+            get {
+                return ((string)(this["NomeFantasia"]));
+            }
+            set {
+                this["NomeFantasia"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Money Twins")]
+        public string Estilo {
+            get {
+                return ((string)(this["Estilo"]));
+            }
+            set {
+                this["Estilo"] = value;
             }
         }
     }

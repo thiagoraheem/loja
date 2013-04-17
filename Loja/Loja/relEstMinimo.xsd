@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="relEstMinimo" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Data Source=(local);Initial Catalog=Loja;Integrated Security=True" IsAppSettingsProperty="false" Modifier="Assembly" Name="Connection" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tbl_ProdutosAdapter" GeneratorDataComponentClassName="tbl_ProdutosAdapter" Name="tbl_Produtos" UserDataComponentName="tbl_ProdutosAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Connection" DbObjectName="Loja.dbo.tbl_Produtos" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT CodProduto, DesProduto, DesLocal, VlrUnitario, QtdProduto, VlrCusto, VlrPercent, EstMinimo, DatCadastro, DesFornecedor, CodRefAntiga, DesFaz, VlrUltPreco, Imagem FROM dbo.tbl_Produtos
+WHERE QtdProduto &lt;= ISNULL(EstMinimo, 0)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CodProduto" DataSetColumn="CodProduto" />
+              <Mapping SourceColumn="DesProduto" DataSetColumn="DesProduto" />
+              <Mapping SourceColumn="DesLocal" DataSetColumn="DesLocal" />
+              <Mapping SourceColumn="VlrUnitario" DataSetColumn="VlrUnitario" />
+              <Mapping SourceColumn="QtdProduto" DataSetColumn="QtdProduto" />
+              <Mapping SourceColumn="VlrCusto" DataSetColumn="VlrCusto" />
+              <Mapping SourceColumn="VlrPercent" DataSetColumn="VlrPercent" />
+              <Mapping SourceColumn="EstMinimo" DataSetColumn="EstMinimo" />
+              <Mapping SourceColumn="DatCadastro" DataSetColumn="DatCadastro" />
+              <Mapping SourceColumn="DesFornecedor" DataSetColumn="DesFornecedor" />
+              <Mapping SourceColumn="CodRefAntiga" DataSetColumn="CodRefAntiga" />
+              <Mapping SourceColumn="DesFaz" DataSetColumn="DesFaz" />
+              <Mapping SourceColumn="VlrUltPreco" DataSetColumn="VlrUltPreco" />
+              <Mapping SourceColumn="Imagem" DataSetColumn="Imagem" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="relEstMinimo" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="relEstMinimo" msprop:Generator_UserDSName="relEstMinimo">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tbl_Produtos" msprop:Generator_TableClassName="tbl_ProdutosDataTable" msprop:Generator_TableVarName="tabletbl_Produtos" msprop:Generator_TablePropName="tbl_Produtos" msprop:Generator_RowDeletingName="tbl_ProdutosRowDeleting" msprop:Generator_UserTableName="tbl_Produtos" msprop:Generator_RowChangingName="tbl_ProdutosRowChanging" msprop:Generator_RowEvHandlerName="tbl_ProdutosRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_ProdutosRowDeleted" msprop:Generator_RowEvArgName="tbl_ProdutosRowChangeEvent" msprop:Generator_RowChangedName="tbl_ProdutosRowChanged" msprop:Generator_RowClassName="tbl_ProdutosRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodProduto" msprop:Generator_ColumnVarNameInTable="columnCodProduto" msprop:Generator_ColumnPropNameInRow="CodProduto" msprop:Generator_ColumnPropNameInTable="CodProdutoColumn" msprop:Generator_UserColumnName="CodProduto">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DesProduto" msprop:Generator_ColumnVarNameInTable="columnDesProduto" msprop:Generator_ColumnPropNameInRow="DesProduto" msprop:Generator_ColumnPropNameInTable="DesProdutoColumn" msprop:Generator_UserColumnName="DesProduto">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DesLocal" msprop:Generator_ColumnVarNameInTable="columnDesLocal" msprop:Generator_ColumnPropNameInRow="DesLocal" msprop:Generator_ColumnPropNameInTable="DesLocalColumn" msprop:Generator_UserColumnName="DesLocal">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VlrUnitario" msprop:Generator_ColumnVarNameInTable="columnVlrUnitario" msprop:Generator_ColumnPropNameInRow="VlrUnitario" msprop:Generator_ColumnPropNameInTable="VlrUnitarioColumn" msprop:Generator_UserColumnName="VlrUnitario" type="xs:double" minOccurs="0" />
+              <xs:element name="QtdProduto" msprop:Generator_ColumnVarNameInTable="columnQtdProduto" msprop:Generator_ColumnPropNameInRow="QtdProduto" msprop:Generator_ColumnPropNameInTable="QtdProdutoColumn" msprop:Generator_UserColumnName="QtdProduto" type="xs:double" minOccurs="0" />
+              <xs:element name="VlrCusto" msprop:Generator_ColumnVarNameInTable="columnVlrCusto" msprop:Generator_ColumnPropNameInRow="VlrCusto" msprop:Generator_ColumnPropNameInTable="VlrCustoColumn" msprop:Generator_UserColumnName="VlrCusto" type="xs:double" minOccurs="0" />
+              <xs:element name="VlrPercent" msprop:Generator_ColumnVarNameInTable="columnVlrPercent" msprop:Generator_ColumnPropNameInRow="VlrPercent" msprop:Generator_ColumnPropNameInTable="VlrPercentColumn" msprop:Generator_UserColumnName="VlrPercent" type="xs:double" minOccurs="0" />
+              <xs:element name="EstMinimo" msprop:Generator_ColumnVarNameInTable="columnEstMinimo" msprop:Generator_ColumnPropNameInRow="EstMinimo" msprop:Generator_ColumnPropNameInTable="EstMinimoColumn" msprop:Generator_UserColumnName="EstMinimo" type="xs:double" minOccurs="0" />
+              <xs:element name="DatCadastro" msprop:Generator_ColumnVarNameInTable="columnDatCadastro" msprop:Generator_ColumnPropNameInRow="DatCadastro" msprop:Generator_ColumnPropNameInTable="DatCadastroColumn" msprop:Generator_UserColumnName="DatCadastro" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DesFornecedor" msprop:Generator_ColumnVarNameInTable="columnDesFornecedor" msprop:Generator_ColumnPropNameInRow="DesFornecedor" msprop:Generator_ColumnPropNameInTable="DesFornecedorColumn" msprop:Generator_UserColumnName="DesFornecedor" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CodRefAntiga" msprop:Generator_ColumnVarNameInTable="columnCodRefAntiga" msprop:Generator_ColumnPropNameInRow="CodRefAntiga" msprop:Generator_ColumnPropNameInTable="CodRefAntigaColumn" msprop:Generator_UserColumnName="CodRefAntiga" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DesFaz" msprop:Generator_ColumnVarNameInTable="columnDesFaz" msprop:Generator_ColumnPropNameInRow="DesFaz" msprop:Generator_ColumnPropNameInTable="DesFazColumn" msprop:Generator_UserColumnName="DesFaz" type="xs:double" minOccurs="0" />
+              <xs:element name="VlrUltPreco" msprop:Generator_ColumnVarNameInTable="columnVlrUltPreco" msprop:Generator_ColumnPropNameInRow="VlrUltPreco" msprop:Generator_ColumnPropNameInTable="VlrUltPrecoColumn" msprop:Generator_UserColumnName="VlrUltPreco" type="xs:double" minOccurs="0" />
+              <xs:element name="Imagem" msprop:Generator_ColumnVarNameInTable="columnImagem" msprop:Generator_ColumnPropNameInRow="Imagem" msprop:Generator_ColumnPropNameInTable="ImagemColumn" msprop:Generator_UserColumnName="Imagem" type="xs:base64Binary" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//tbl_Produtos" />
+      <xs:field xpath="CodProduto" />
+      <xs:field xpath="DesProduto" />
+      <xs:field xpath="DesLocal" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

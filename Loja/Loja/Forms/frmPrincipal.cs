@@ -13,7 +13,6 @@ using DevExpress.UserSkins;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraBars.Helpers;
-using DevExpress.LookAndFeel;
 using DevExpress.XtraReports.UI;
 using Loja.DAO;
 
@@ -22,6 +21,9 @@ namespace Loja
 {
     public partial class frmPrincipal : RibbonForm
     {
+
+        #region Form
+
         public frmPrincipal()
         {
             InitializeComponent();
@@ -35,7 +37,10 @@ namespace Loja
         {
             SkinHelper.InitSkinGallery(rgbiSkins, true);
         }
-        
+        #endregion
+
+        #region Funções e Consultas
+
         void InitGrid()
         {
             try
@@ -121,6 +126,57 @@ namespace Loja
 
         }
 
+        String FU_PegaCodigoGrid(String origem)
+        {
+            String codigo = "";
+
+            if (origem == "P")
+            {
+                int linha = gridViewProduto.GetSelectedRows()[0];
+                codigo = gridViewProduto.GetRowCellValue(linha, colCodProduto).ToString();
+            }
+            else if (origem == "O")
+            {
+                int linha = gridViewOrcamento.GetSelectedRows()[0];
+                codigo = gridViewOrcamento.GetRowCellValue(linha, colOrCodProduto).ToString();
+            }
+
+            return codigo;
+        }
+
+        String FU_PegaLocalGrid()
+        {
+            String codigo = "";
+
+            int linha = gridViewProduto.GetSelectedRows()[0];
+            codigo = gridViewProduto.GetRowCellValue(linha, colLocal).ToString();
+
+
+            return codigo;
+        }
+
+        void SU_FinalizarVenda()
+        {
+            if (cmbCodOrca.EditValue.ToString() != "")
+            {
+                frmVenda f = new frmVenda();
+                f.CodOrcamento = cmbCodOrca.EditValue.ToString();
+                f.ShowDialog();
+
+                if (f.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                {
+                    InitGrid();
+                    InitComboOrca();
+                    cmbCodOrca.EditValue = "";
+                    InitGridOrca();
+                }
+            }
+
+        }
+
+        #endregion
+
+        #region Botões RibbonBar
         private void iExit_ItemClick(object sender, ItemClickEventArgs e)
         {
             Application.Exit();
@@ -131,6 +187,27 @@ namespace Loja
             InitGrid();
         }
 
+        private void cmbCodOrca_EditValueChanged(object sender, EventArgs e)
+        {
+            InitGridOrca();
+        }
+
+        private void repCodOrca_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                cmbCodOrca.EditValue = "";
+            }
+        }
+
+        private void btnFinalizarVenda_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SU_FinalizarVenda();
+        }
+
+        #endregion
+
+        #region Eventos Grids
         private void gridProdutos_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Space)
@@ -167,19 +244,6 @@ namespace Loja
             InitGridOrca();
         }
 
-        private void cmbCodOrca_EditValueChanged(object sender, EventArgs e)
-        {
-            InitGridOrca();
-        }
-
-        private void repCodOrca_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            if (e.Button.Index == 1)
-            {
-                cmbCodOrca.EditValue = "";
-            }
-        }
-
         private void gridProdutos_DoubleClick(object sender, EventArgs e)
         {
             string codproduto = FU_PegaCodigoGrid("P"); ;
@@ -192,11 +256,9 @@ namespace Loja
             InitGrid();
         }
 
-        private void btnFinalizarVenda_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            SU_FinalizarVenda();
-        }
+        #endregion
 
+        #region Botões NavBar
         private void btnVender_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             SU_FinalizarVenda();
@@ -209,53 +271,6 @@ namespace Loja
             f.ShowDialog();
 
             InitGrid();
-        }
-
-        String FU_PegaCodigoGrid(String origem)
-        {
-            String codigo = "";
-
-            if (origem == "P")
-            {
-                int linha = gridViewProduto.GetSelectedRows()[0];
-                codigo = gridViewProduto.GetRowCellValue(linha, colCodProduto).ToString();
-            }
-            else if (origem == "O")
-            {
-                int linha = gridViewOrcamento.GetSelectedRows()[0];
-                codigo = gridViewOrcamento.GetRowCellValue(linha, colOrCodProduto).ToString();
-            }
-
-            return codigo;
-        }
-
-        String FU_PegaLocalGrid()
-        {
-            String codigo = "";
-
-            int linha = gridViewProduto.GetSelectedRows()[0];
-            codigo = gridViewProduto.GetRowCellValue(linha, colLocal).ToString();
-
-
-            return codigo;
-        }
-
-        void SU_FinalizarVenda() {
-            if (cmbCodOrca.EditValue.ToString() != "")
-            {
-                frmVenda f = new frmVenda();
-                f.CodOrcamento = cmbCodOrca.EditValue.ToString();
-                f.ShowDialog();
-
-                if (f.DialogResult == System.Windows.Forms.DialogResult.Yes)
-                {
-                    InitGrid();
-                    InitComboOrca();
-                    cmbCodOrca.EditValue = "";
-                    InitGridOrca();
-                }
-            }
-        
         }
 
         private void btnImprimir_ItemClick(object sender, ItemClickEventArgs e)
@@ -298,6 +313,27 @@ namespace Loja
                 f.ShowDialog();
             }
         }
+
+        private void btnEstMinimo_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            using (Reports.relEstMinimo relatorio = new Reports.relEstMinimo())
+            {
+
+                ReportPrintTool printTool = new ReportPrintTool(relatorio);
+
+                printTool.ShowRibbonPreviewDialog();
+                printTool.ShowRibbonPreview(UserLookAndFeel.Default);
+            }
+        }
+
+        #endregion
+
+        private void rgbiSkins_Gallery_ItemClick(object sender, GalleryItemClickEventArgs e)
+        {
+            Properties.Settings.Default.Estilo = e.Item.Caption;
+            Properties.Settings.Default.Save();
+        }
+
 
     }
 }

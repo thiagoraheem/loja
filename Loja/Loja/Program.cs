@@ -19,7 +19,8 @@ namespace Loja
             DevExpress.Skins.SkinManager.EnableFormSkins();
             DevExpress.UserSkins.BonusSkins.Register();
             //UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
-            UserLookAndFeel.Default.SetSkinStyle("Money Twins");
+            //UserLookAndFeel.Default.SetSkinStyle("Money Twins");
+            UserLookAndFeel.Default.SetSkinStyle(Properties.Settings.Default.Estilo);
 
             Application.Run(new frmPrincipal());
         }

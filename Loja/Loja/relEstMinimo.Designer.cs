@@ -20,17 +20,17 @@ namespace Loja {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("dsOrcamento")]
+    [global::System.Xml.Serialization.XmlRootAttribute("relEstMinimo")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class dsOrcamento : global::System.Data.DataSet {
+    public partial class relEstMinimo : global::System.Data.DataSet {
         
-        private tbl_OrcamentoDataTable tabletbl_Orcamento;
+        private tbl_ProdutosDataTable tabletbl_Produtos;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public dsOrcamento() {
+        public relEstMinimo() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace Loja {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected dsOrcamento(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected relEstMinimo(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace Loja {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["tbl_Orcamento"] != null)) {
-                    base.Tables.Add(new tbl_OrcamentoDataTable(ds.Tables["tbl_Orcamento"]));
+                if ((ds.Tables["tbl_Produtos"] != null)) {
+                    base.Tables.Add(new tbl_ProdutosDataTable(ds.Tables["tbl_Produtos"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace Loja {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public tbl_OrcamentoDataTable tbl_Orcamento {
+        public tbl_ProdutosDataTable tbl_Produtos {
             get {
-                return this.tabletbl_Orcamento;
+                return this.tabletbl_Produtos;
             }
         }
         
@@ -127,7 +127,7 @@ namespace Loja {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            dsOrcamento cln = ((dsOrcamento)(base.Clone()));
+            relEstMinimo cln = ((relEstMinimo)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace Loja {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["tbl_Orcamento"] != null)) {
-                    base.Tables.Add(new tbl_OrcamentoDataTable(ds.Tables["tbl_Orcamento"]));
+                if ((ds.Tables["tbl_Produtos"] != null)) {
+                    base.Tables.Add(new tbl_ProdutosDataTable(ds.Tables["tbl_Produtos"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace Loja {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tabletbl_Orcamento = ((tbl_OrcamentoDataTable)(base.Tables["tbl_Orcamento"]));
+            this.tabletbl_Produtos = ((tbl_ProdutosDataTable)(base.Tables["tbl_Produtos"]));
             if ((initTable == true)) {
-                if ((this.tabletbl_Orcamento != null)) {
-                    this.tabletbl_Orcamento.InitVars();
+                if ((this.tabletbl_Produtos != null)) {
+                    this.tabletbl_Produtos.InitVars();
                 }
             }
         }
@@ -199,17 +199,17 @@ namespace Loja {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "dsOrcamento";
+            this.DataSetName = "relEstMinimo";
             this.Prefix = "";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tabletbl_Orcamento = new tbl_OrcamentoDataTable();
-            base.Tables.Add(this.tabletbl_Orcamento);
+            this.tabletbl_Produtos = new tbl_ProdutosDataTable();
+            base.Tables.Add(this.tabletbl_Produtos);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializetbl_Orcamento() {
+        private bool ShouldSerializetbl_Produtos() {
             return false;
         }
         
@@ -224,7 +224,7 @@ namespace Loja {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            dsOrcamento ds = new dsOrcamento();
+            relEstMinimo ds = new relEstMinimo();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -269,39 +269,47 @@ namespace Loja {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void tbl_OrcamentoRowChangeEventHandler(object sender, tbl_OrcamentoRowChangeEvent e);
+        public delegate void tbl_ProdutosRowChangeEventHandler(object sender, tbl_ProdutosRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class tbl_OrcamentoDataTable : global::System.Data.TypedTableBase<tbl_OrcamentoRow> {
-            
-            private global::System.Data.DataColumn columnCodOrca;
+        public partial class tbl_ProdutosDataTable : global::System.Data.TypedTableBase<tbl_ProdutosRow> {
             
             private global::System.Data.DataColumn columnCodProduto;
             
-            private global::System.Data.DataColumn columnDescProduto;
-            
-            private global::System.Data.DataColumn columnQuantidade;
-            
-            private global::System.Data.DataColumn columnVlrUnitario;
-            
-            private global::System.Data.DataColumn columnVlrCusto;
+            private global::System.Data.DataColumn columnDesProduto;
             
             private global::System.Data.DataColumn columnDesLocal;
             
-            private global::System.Data.DataColumn columnPF;
+            private global::System.Data.DataColumn columnVlrUnitario;
             
-            private global::System.Data.DataColumn columnFlgStatus;
+            private global::System.Data.DataColumn columnQtdProduto;
             
-            private global::System.Data.DataColumn columnDatOrca;
+            private global::System.Data.DataColumn columnVlrCusto;
+            
+            private global::System.Data.DataColumn columnVlrPercent;
+            
+            private global::System.Data.DataColumn columnEstMinimo;
+            
+            private global::System.Data.DataColumn columnDatCadastro;
+            
+            private global::System.Data.DataColumn columnDesFornecedor;
+            
+            private global::System.Data.DataColumn columnCodRefAntiga;
+            
+            private global::System.Data.DataColumn columnDesFaz;
+            
+            private global::System.Data.DataColumn columnVlrUltPreco;
+            
+            private global::System.Data.DataColumn columnImagem;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tbl_OrcamentoDataTable() {
-                this.TableName = "tbl_Orcamento";
+            public tbl_ProdutosDataTable() {
+                this.TableName = "tbl_Produtos";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -309,7 +317,7 @@ namespace Loja {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal tbl_OrcamentoDataTable(global::System.Data.DataTable table) {
+            internal tbl_ProdutosDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -326,17 +334,9 @@ namespace Loja {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected tbl_OrcamentoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected tbl_ProdutosDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CodOrcaColumn {
-                get {
-                    return this.columnCodOrca;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -349,33 +349,9 @@ namespace Loja {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DescProdutoColumn {
+            public global::System.Data.DataColumn DesProdutoColumn {
                 get {
-                    return this.columnDescProduto;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn QuantidadeColumn {
-                get {
-                    return this.columnQuantidade;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn VlrUnitarioColumn {
-                get {
-                    return this.columnVlrUnitario;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn VlrCustoColumn {
-                get {
-                    return this.columnVlrCusto;
+                    return this.columnDesProduto;
                 }
             }
             
@@ -389,25 +365,89 @@ namespace Loja {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PFColumn {
+            public global::System.Data.DataColumn VlrUnitarioColumn {
                 get {
-                    return this.columnPF;
+                    return this.columnVlrUnitario;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FlgStatusColumn {
+            public global::System.Data.DataColumn QtdProdutoColumn {
                 get {
-                    return this.columnFlgStatus;
+                    return this.columnQtdProduto;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DatOrcaColumn {
+            public global::System.Data.DataColumn VlrCustoColumn {
                 get {
-                    return this.columnDatOrca;
+                    return this.columnVlrCusto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn VlrPercentColumn {
+                get {
+                    return this.columnVlrPercent;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EstMinimoColumn {
+                get {
+                    return this.columnEstMinimo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DatCadastroColumn {
+                get {
+                    return this.columnDatCadastro;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DesFornecedorColumn {
+                get {
+                    return this.columnDesFornecedor;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CodRefAntigaColumn {
+                get {
+                    return this.columnCodRefAntiga;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DesFazColumn {
+                get {
+                    return this.columnDesFaz;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn VlrUltPrecoColumn {
+                get {
+                    return this.columnVlrUltPreco;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ImagemColumn {
+                get {
+                    return this.columnImagem;
                 }
             }
             
@@ -422,62 +462,67 @@ namespace Loja {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tbl_OrcamentoRow this[int index] {
+            public tbl_ProdutosRow this[int index] {
                 get {
-                    return ((tbl_OrcamentoRow)(this.Rows[index]));
+                    return ((tbl_ProdutosRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event tbl_OrcamentoRowChangeEventHandler tbl_OrcamentoRowChanging;
+            public event tbl_ProdutosRowChangeEventHandler tbl_ProdutosRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event tbl_OrcamentoRowChangeEventHandler tbl_OrcamentoRowChanged;
+            public event tbl_ProdutosRowChangeEventHandler tbl_ProdutosRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event tbl_OrcamentoRowChangeEventHandler tbl_OrcamentoRowDeleting;
+            public event tbl_ProdutosRowChangeEventHandler tbl_ProdutosRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event tbl_OrcamentoRowChangeEventHandler tbl_OrcamentoRowDeleted;
+            public event tbl_ProdutosRowChangeEventHandler tbl_ProdutosRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Addtbl_OrcamentoRow(tbl_OrcamentoRow row) {
+            public void Addtbl_ProdutosRow(tbl_ProdutosRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tbl_OrcamentoRow Addtbl_OrcamentoRow(string CodOrca, string CodProduto, string DescProduto, double Quantidade, double VlrUnitario, double VlrCusto, string DesLocal, double PF, string FlgStatus, System.DateTime DatOrca) {
-                tbl_OrcamentoRow rowtbl_OrcamentoRow = ((tbl_OrcamentoRow)(this.NewRow()));
+            public tbl_ProdutosRow Addtbl_ProdutosRow(string CodProduto, string DesProduto, string DesLocal, double VlrUnitario, double QtdProduto, double VlrCusto, double VlrPercent, double EstMinimo, string DatCadastro, string DesFornecedor, string CodRefAntiga, double DesFaz, double VlrUltPreco, byte[] Imagem) {
+                tbl_ProdutosRow rowtbl_ProdutosRow = ((tbl_ProdutosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        CodOrca,
                         CodProduto,
-                        DescProduto,
-                        Quantidade,
-                        VlrUnitario,
-                        VlrCusto,
+                        DesProduto,
                         DesLocal,
-                        PF,
-                        FlgStatus,
-                        DatOrca};
-                rowtbl_OrcamentoRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowtbl_OrcamentoRow);
-                return rowtbl_OrcamentoRow;
+                        VlrUnitario,
+                        QtdProduto,
+                        VlrCusto,
+                        VlrPercent,
+                        EstMinimo,
+                        DatCadastro,
+                        DesFornecedor,
+                        CodRefAntiga,
+                        DesFaz,
+                        VlrUltPreco,
+                        Imagem};
+                rowtbl_ProdutosRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowtbl_ProdutosRow);
+                return rowtbl_ProdutosRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tbl_OrcamentoRow FindByCodOrcaCodProduto(string CodOrca, string CodProduto) {
-                return ((tbl_OrcamentoRow)(this.Rows.Find(new object[] {
-                            CodOrca,
-                            CodProduto})));
+            public tbl_ProdutosRow FindByCodProdutoDesProdutoDesLocal(string CodProduto, string DesProduto, string DesLocal) {
+                return ((tbl_ProdutosRow)(this.Rows.Find(new object[] {
+                            CodProduto,
+                            DesProduto,
+                            DesLocal})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                tbl_OrcamentoDataTable cln = ((tbl_OrcamentoDataTable)(base.Clone()));
+                tbl_ProdutosDataTable cln = ((tbl_ProdutosDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -485,83 +530,98 @@ namespace Loja {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new tbl_OrcamentoDataTable();
+                return new tbl_ProdutosDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnCodOrca = base.Columns["CodOrca"];
                 this.columnCodProduto = base.Columns["CodProduto"];
-                this.columnDescProduto = base.Columns["DescProduto"];
-                this.columnQuantidade = base.Columns["Quantidade"];
-                this.columnVlrUnitario = base.Columns["VlrUnitario"];
-                this.columnVlrCusto = base.Columns["VlrCusto"];
+                this.columnDesProduto = base.Columns["DesProduto"];
                 this.columnDesLocal = base.Columns["DesLocal"];
-                this.columnPF = base.Columns["PF"];
-                this.columnFlgStatus = base.Columns["FlgStatus"];
-                this.columnDatOrca = base.Columns["DatOrca"];
+                this.columnVlrUnitario = base.Columns["VlrUnitario"];
+                this.columnQtdProduto = base.Columns["QtdProduto"];
+                this.columnVlrCusto = base.Columns["VlrCusto"];
+                this.columnVlrPercent = base.Columns["VlrPercent"];
+                this.columnEstMinimo = base.Columns["EstMinimo"];
+                this.columnDatCadastro = base.Columns["DatCadastro"];
+                this.columnDesFornecedor = base.Columns["DesFornecedor"];
+                this.columnCodRefAntiga = base.Columns["CodRefAntiga"];
+                this.columnDesFaz = base.Columns["DesFaz"];
+                this.columnVlrUltPreco = base.Columns["VlrUltPreco"];
+                this.columnImagem = base.Columns["Imagem"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnCodOrca = new global::System.Data.DataColumn("CodOrca", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCodOrca);
                 this.columnCodProduto = new global::System.Data.DataColumn("CodProduto", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCodProduto);
-                this.columnDescProduto = new global::System.Data.DataColumn("DescProduto", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDescProduto);
-                this.columnQuantidade = new global::System.Data.DataColumn("Quantidade", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnQuantidade);
-                this.columnVlrUnitario = new global::System.Data.DataColumn("VlrUnitario", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVlrUnitario);
-                this.columnVlrCusto = new global::System.Data.DataColumn("VlrCusto", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVlrCusto);
+                this.columnDesProduto = new global::System.Data.DataColumn("DesProduto", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDesProduto);
                 this.columnDesLocal = new global::System.Data.DataColumn("DesLocal", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDesLocal);
-                this.columnPF = new global::System.Data.DataColumn("PF", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPF);
-                this.columnFlgStatus = new global::System.Data.DataColumn("FlgStatus", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFlgStatus);
-                this.columnDatOrca = new global::System.Data.DataColumn("DatOrca", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDatOrca);
+                this.columnVlrUnitario = new global::System.Data.DataColumn("VlrUnitario", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVlrUnitario);
+                this.columnQtdProduto = new global::System.Data.DataColumn("QtdProduto", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQtdProduto);
+                this.columnVlrCusto = new global::System.Data.DataColumn("VlrCusto", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVlrCusto);
+                this.columnVlrPercent = new global::System.Data.DataColumn("VlrPercent", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVlrPercent);
+                this.columnEstMinimo = new global::System.Data.DataColumn("EstMinimo", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEstMinimo);
+                this.columnDatCadastro = new global::System.Data.DataColumn("DatCadastro", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDatCadastro);
+                this.columnDesFornecedor = new global::System.Data.DataColumn("DesFornecedor", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDesFornecedor);
+                this.columnCodRefAntiga = new global::System.Data.DataColumn("CodRefAntiga", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodRefAntiga);
+                this.columnDesFaz = new global::System.Data.DataColumn("DesFaz", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDesFaz);
+                this.columnVlrUltPreco = new global::System.Data.DataColumn("VlrUltPreco", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVlrUltPreco);
+                this.columnImagem = new global::System.Data.DataColumn("Imagem", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnImagem);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnCodOrca,
-                                this.columnCodProduto}, true));
-                this.columnCodOrca.AllowDBNull = false;
-                this.columnCodOrca.MaxLength = 5;
+                                this.columnCodProduto,
+                                this.columnDesProduto,
+                                this.columnDesLocal}, true));
                 this.columnCodProduto.AllowDBNull = false;
                 this.columnCodProduto.MaxLength = 20;
-                this.columnDescProduto.MaxLength = 30;
+                this.columnDesProduto.AllowDBNull = false;
+                this.columnDesProduto.MaxLength = 30;
+                this.columnDesLocal.AllowDBNull = false;
                 this.columnDesLocal.MaxLength = 4;
-                this.columnFlgStatus.MaxLength = 1;
+                this.columnDatCadastro.MaxLength = 10;
+                this.columnDesFornecedor.MaxLength = 10;
+                this.columnCodRefAntiga.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tbl_OrcamentoRow Newtbl_OrcamentoRow() {
-                return ((tbl_OrcamentoRow)(this.NewRow()));
+            public tbl_ProdutosRow Newtbl_ProdutosRow() {
+                return ((tbl_ProdutosRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new tbl_OrcamentoRow(builder);
+                return new tbl_ProdutosRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(tbl_OrcamentoRow);
+                return typeof(tbl_ProdutosRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.tbl_OrcamentoRowChanged != null)) {
-                    this.tbl_OrcamentoRowChanged(this, new tbl_OrcamentoRowChangeEvent(((tbl_OrcamentoRow)(e.Row)), e.Action));
+                if ((this.tbl_ProdutosRowChanged != null)) {
+                    this.tbl_ProdutosRowChanged(this, new tbl_ProdutosRowChangeEvent(((tbl_ProdutosRow)(e.Row)), e.Action));
                 }
             }
             
@@ -569,8 +629,8 @@ namespace Loja {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.tbl_OrcamentoRowChanging != null)) {
-                    this.tbl_OrcamentoRowChanging(this, new tbl_OrcamentoRowChangeEvent(((tbl_OrcamentoRow)(e.Row)), e.Action));
+                if ((this.tbl_ProdutosRowChanging != null)) {
+                    this.tbl_ProdutosRowChanging(this, new tbl_ProdutosRowChangeEvent(((tbl_ProdutosRow)(e.Row)), e.Action));
                 }
             }
             
@@ -578,8 +638,8 @@ namespace Loja {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.tbl_OrcamentoRowDeleted != null)) {
-                    this.tbl_OrcamentoRowDeleted(this, new tbl_OrcamentoRowChangeEvent(((tbl_OrcamentoRow)(e.Row)), e.Action));
+                if ((this.tbl_ProdutosRowDeleted != null)) {
+                    this.tbl_ProdutosRowDeleted(this, new tbl_ProdutosRowChangeEvent(((tbl_ProdutosRow)(e.Row)), e.Action));
                 }
             }
             
@@ -587,14 +647,14 @@ namespace Loja {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.tbl_OrcamentoRowDeleting != null)) {
-                    this.tbl_OrcamentoRowDeleting(this, new tbl_OrcamentoRowChangeEvent(((tbl_OrcamentoRow)(e.Row)), e.Action));
+                if ((this.tbl_ProdutosRowDeleting != null)) {
+                    this.tbl_ProdutosRowDeleting(this, new tbl_ProdutosRowChangeEvent(((tbl_ProdutosRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Removetbl_OrcamentoRow(tbl_OrcamentoRow row) {
+            public void Removetbl_ProdutosRow(tbl_ProdutosRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -603,7 +663,7 @@ namespace Loja {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                dsOrcamento ds = new dsOrcamento();
+                relEstMinimo ds = new relEstMinimo();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -621,7 +681,7 @@ namespace Loja {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "tbl_OrcamentoDataTable";
+                attribute2.FixedValue = "tbl_ProdutosDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -665,68 +725,47 @@ namespace Loja {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class tbl_OrcamentoRow : global::System.Data.DataRow {
+        public partial class tbl_ProdutosRow : global::System.Data.DataRow {
             
-            private tbl_OrcamentoDataTable tabletbl_Orcamento;
+            private tbl_ProdutosDataTable tabletbl_Produtos;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal tbl_OrcamentoRow(global::System.Data.DataRowBuilder rb) : 
+            internal tbl_ProdutosRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tabletbl_Orcamento = ((tbl_OrcamentoDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string CodOrca {
-                get {
-                    return ((string)(this[this.tabletbl_Orcamento.CodOrcaColumn]));
-                }
-                set {
-                    this[this.tabletbl_Orcamento.CodOrcaColumn] = value;
-                }
+                this.tabletbl_Produtos = ((tbl_ProdutosDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string CodProduto {
                 get {
-                    return ((string)(this[this.tabletbl_Orcamento.CodProdutoColumn]));
+                    return ((string)(this[this.tabletbl_Produtos.CodProdutoColumn]));
                 }
                 set {
-                    this[this.tabletbl_Orcamento.CodProdutoColumn] = value;
+                    this[this.tabletbl_Produtos.CodProdutoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string DescProduto {
+            public string DesProduto {
                 get {
-                    try {
-                        return ((string)(this[this.tabletbl_Orcamento.DescProdutoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DescProduto\' in table \'tbl_Orcamento\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tabletbl_Produtos.DesProdutoColumn]));
                 }
                 set {
-                    this[this.tabletbl_Orcamento.DescProdutoColumn] = value;
+                    this[this.tabletbl_Produtos.DesProdutoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double Quantidade {
+            public string DesLocal {
                 get {
-                    try {
-                        return ((double)(this[this.tabletbl_Orcamento.QuantidadeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Quantidade\' in table \'tbl_Orcamento\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tabletbl_Produtos.DesLocalColumn]));
                 }
                 set {
-                    this[this.tabletbl_Orcamento.QuantidadeColumn] = value;
+                    this[this.tabletbl_Produtos.DesLocalColumn] = value;
                 }
             }
             
@@ -735,14 +774,30 @@ namespace Loja {
             public double VlrUnitario {
                 get {
                     try {
-                        return ((double)(this[this.tabletbl_Orcamento.VlrUnitarioColumn]));
+                        return ((double)(this[this.tabletbl_Produtos.VlrUnitarioColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'VlrUnitario\' in table \'tbl_Orcamento\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'VlrUnitario\' in table \'tbl_Produtos\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabletbl_Orcamento.VlrUnitarioColumn] = value;
+                    this[this.tabletbl_Produtos.VlrUnitarioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double QtdProduto {
+                get {
+                    try {
+                        return ((double)(this[this.tabletbl_Produtos.QtdProdutoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'QtdProduto\' in table \'tbl_Produtos\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletbl_Produtos.QtdProdutoColumn] = value;
                 }
             }
             
@@ -751,175 +806,275 @@ namespace Loja {
             public double VlrCusto {
                 get {
                     try {
-                        return ((double)(this[this.tabletbl_Orcamento.VlrCustoColumn]));
+                        return ((double)(this[this.tabletbl_Produtos.VlrCustoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'VlrCusto\' in table \'tbl_Orcamento\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'VlrCusto\' in table \'tbl_Produtos\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabletbl_Orcamento.VlrCustoColumn] = value;
+                    this[this.tabletbl_Produtos.VlrCustoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string DesLocal {
+            public double VlrPercent {
                 get {
                     try {
-                        return ((string)(this[this.tabletbl_Orcamento.DesLocalColumn]));
+                        return ((double)(this[this.tabletbl_Produtos.VlrPercentColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DesLocal\' in table \'tbl_Orcamento\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'VlrPercent\' in table \'tbl_Produtos\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabletbl_Orcamento.DesLocalColumn] = value;
+                    this[this.tabletbl_Produtos.VlrPercentColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double PF {
+            public double EstMinimo {
                 get {
                     try {
-                        return ((double)(this[this.tabletbl_Orcamento.PFColumn]));
+                        return ((double)(this[this.tabletbl_Produtos.EstMinimoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PF\' in table \'tbl_Orcamento\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'EstMinimo\' in table \'tbl_Produtos\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabletbl_Orcamento.PFColumn] = value;
+                    this[this.tabletbl_Produtos.EstMinimoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string FlgStatus {
+            public string DatCadastro {
                 get {
                     try {
-                        return ((string)(this[this.tabletbl_Orcamento.FlgStatusColumn]));
+                        return ((string)(this[this.tabletbl_Produtos.DatCadastroColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'FlgStatus\' in table \'tbl_Orcamento\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'DatCadastro\' in table \'tbl_Produtos\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabletbl_Orcamento.FlgStatusColumn] = value;
+                    this[this.tabletbl_Produtos.DatCadastroColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime DatOrca {
+            public string DesFornecedor {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tabletbl_Orcamento.DatOrcaColumn]));
+                        return ((string)(this[this.tabletbl_Produtos.DesFornecedorColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DatOrca\' in table \'tbl_Orcamento\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'DesFornecedor\' in table \'tbl_Produtos\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabletbl_Orcamento.DatOrcaColumn] = value;
+                    this[this.tabletbl_Produtos.DesFornecedorColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDescProdutoNull() {
-                return this.IsNull(this.tabletbl_Orcamento.DescProdutoColumn);
+            public string CodRefAntiga {
+                get {
+                    try {
+                        return ((string)(this[this.tabletbl_Produtos.CodRefAntigaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CodRefAntiga\' in table \'tbl_Produtos\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletbl_Produtos.CodRefAntigaColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDescProdutoNull() {
-                this[this.tabletbl_Orcamento.DescProdutoColumn] = global::System.Convert.DBNull;
+            public double DesFaz {
+                get {
+                    try {
+                        return ((double)(this[this.tabletbl_Produtos.DesFazColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DesFaz\' in table \'tbl_Produtos\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletbl_Produtos.DesFazColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsQuantidadeNull() {
-                return this.IsNull(this.tabletbl_Orcamento.QuantidadeColumn);
+            public double VlrUltPreco {
+                get {
+                    try {
+                        return ((double)(this[this.tabletbl_Produtos.VlrUltPrecoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'VlrUltPreco\' in table \'tbl_Produtos\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletbl_Produtos.VlrUltPrecoColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetQuantidadeNull() {
-                this[this.tabletbl_Orcamento.QuantidadeColumn] = global::System.Convert.DBNull;
+            public byte[] Imagem {
+                get {
+                    try {
+                        return ((byte[])(this[this.tabletbl_Produtos.ImagemColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Imagem\' in table \'tbl_Produtos\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletbl_Produtos.ImagemColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsVlrUnitarioNull() {
-                return this.IsNull(this.tabletbl_Orcamento.VlrUnitarioColumn);
+                return this.IsNull(this.tabletbl_Produtos.VlrUnitarioColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetVlrUnitarioNull() {
-                this[this.tabletbl_Orcamento.VlrUnitarioColumn] = global::System.Convert.DBNull;
+                this[this.tabletbl_Produtos.VlrUnitarioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsQtdProdutoNull() {
+                return this.IsNull(this.tabletbl_Produtos.QtdProdutoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetQtdProdutoNull() {
+                this[this.tabletbl_Produtos.QtdProdutoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsVlrCustoNull() {
-                return this.IsNull(this.tabletbl_Orcamento.VlrCustoColumn);
+                return this.IsNull(this.tabletbl_Produtos.VlrCustoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetVlrCustoNull() {
-                this[this.tabletbl_Orcamento.VlrCustoColumn] = global::System.Convert.DBNull;
+                this[this.tabletbl_Produtos.VlrCustoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDesLocalNull() {
-                return this.IsNull(this.tabletbl_Orcamento.DesLocalColumn);
+            public bool IsVlrPercentNull() {
+                return this.IsNull(this.tabletbl_Produtos.VlrPercentColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDesLocalNull() {
-                this[this.tabletbl_Orcamento.DesLocalColumn] = global::System.Convert.DBNull;
+            public void SetVlrPercentNull() {
+                this[this.tabletbl_Produtos.VlrPercentColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPFNull() {
-                return this.IsNull(this.tabletbl_Orcamento.PFColumn);
+            public bool IsEstMinimoNull() {
+                return this.IsNull(this.tabletbl_Produtos.EstMinimoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPFNull() {
-                this[this.tabletbl_Orcamento.PFColumn] = global::System.Convert.DBNull;
+            public void SetEstMinimoNull() {
+                this[this.tabletbl_Produtos.EstMinimoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFlgStatusNull() {
-                return this.IsNull(this.tabletbl_Orcamento.FlgStatusColumn);
+            public bool IsDatCadastroNull() {
+                return this.IsNull(this.tabletbl_Produtos.DatCadastroColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFlgStatusNull() {
-                this[this.tabletbl_Orcamento.FlgStatusColumn] = global::System.Convert.DBNull;
+            public void SetDatCadastroNull() {
+                this[this.tabletbl_Produtos.DatCadastroColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDatOrcaNull() {
-                return this.IsNull(this.tabletbl_Orcamento.DatOrcaColumn);
+            public bool IsDesFornecedorNull() {
+                return this.IsNull(this.tabletbl_Produtos.DesFornecedorColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDatOrcaNull() {
-                this[this.tabletbl_Orcamento.DatOrcaColumn] = global::System.Convert.DBNull;
+            public void SetDesFornecedorNull() {
+                this[this.tabletbl_Produtos.DesFornecedorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodRefAntigaNull() {
+                return this.IsNull(this.tabletbl_Produtos.CodRefAntigaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodRefAntigaNull() {
+                this[this.tabletbl_Produtos.CodRefAntigaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDesFazNull() {
+                return this.IsNull(this.tabletbl_Produtos.DesFazColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDesFazNull() {
+                this[this.tabletbl_Produtos.DesFazColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsVlrUltPrecoNull() {
+                return this.IsNull(this.tabletbl_Produtos.VlrUltPrecoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetVlrUltPrecoNull() {
+                this[this.tabletbl_Produtos.VlrUltPrecoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsImagemNull() {
+                return this.IsNull(this.tabletbl_Produtos.ImagemColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetImagemNull() {
+                this[this.tabletbl_Produtos.ImagemColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -927,22 +1082,22 @@ namespace Loja {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class tbl_OrcamentoRowChangeEvent : global::System.EventArgs {
+        public class tbl_ProdutosRowChangeEvent : global::System.EventArgs {
             
-            private tbl_OrcamentoRow eventRow;
+            private tbl_ProdutosRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tbl_OrcamentoRowChangeEvent(tbl_OrcamentoRow row, global::System.Data.DataRowAction action) {
+            public tbl_ProdutosRowChangeEvent(tbl_ProdutosRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tbl_OrcamentoRow Row {
+            public tbl_ProdutosRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -958,7 +1113,7 @@ namespace Loja {
         }
     }
 }
-namespace Loja.dsOrcamentoTableAdapters {
+namespace Loja.relEstMinimoTableAdapters {
     
     
     /// <summary>
@@ -970,7 +1125,7 @@ namespace Loja.dsOrcamentoTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class tbl_OrcamentoAdapter : global::System.ComponentModel.Component {
+    public partial class tbl_ProdutosAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -982,7 +1137,7 @@ namespace Loja.dsOrcamentoTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public tbl_OrcamentoAdapter() {
+        public tbl_ProdutosAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -1053,17 +1208,21 @@ namespace Loja.dsOrcamentoTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "tbl_Orcamento";
-            tableMapping.ColumnMappings.Add("CodOrca", "CodOrca");
+            tableMapping.DataSetTable = "tbl_Produtos";
             tableMapping.ColumnMappings.Add("CodProduto", "CodProduto");
-            tableMapping.ColumnMappings.Add("DescProduto", "DescProduto");
-            tableMapping.ColumnMappings.Add("Quantidade", "Quantidade");
-            tableMapping.ColumnMappings.Add("VlrUnitario", "VlrUnitario");
-            tableMapping.ColumnMappings.Add("VlrCusto", "VlrCusto");
+            tableMapping.ColumnMappings.Add("DesProduto", "DesProduto");
             tableMapping.ColumnMappings.Add("DesLocal", "DesLocal");
-            tableMapping.ColumnMappings.Add("PF", "PF");
-            tableMapping.ColumnMappings.Add("FlgStatus", "FlgStatus");
-            tableMapping.ColumnMappings.Add("DatOrca", "DatOrca");
+            tableMapping.ColumnMappings.Add("VlrUnitario", "VlrUnitario");
+            tableMapping.ColumnMappings.Add("QtdProduto", "QtdProduto");
+            tableMapping.ColumnMappings.Add("VlrCusto", "VlrCusto");
+            tableMapping.ColumnMappings.Add("VlrPercent", "VlrPercent");
+            tableMapping.ColumnMappings.Add("EstMinimo", "EstMinimo");
+            tableMapping.ColumnMappings.Add("DatCadastro", "DatCadastro");
+            tableMapping.ColumnMappings.Add("DesFornecedor", "DesFornecedor");
+            tableMapping.ColumnMappings.Add("CodRefAntiga", "CodRefAntiga");
+            tableMapping.ColumnMappings.Add("DesFaz", "DesFaz");
+            tableMapping.ColumnMappings.Add("VlrUltPreco", "VlrUltPreco");
+            tableMapping.ColumnMappings.Add("Imagem", "Imagem");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1071,7 +1230,7 @@ namespace Loja.dsOrcamentoTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Loja.Properties.Settings.Default.LojaConnectionString;
+            this._connection.ConnectionString = "Data Source=(local);Initial Catalog=Loja;Integrated Security=True";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1080,8 +1239,9 @@ namespace Loja.dsOrcamentoTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT CodOrca, CodProduto, DescProduto, Quantidade, VlrUnitario, VlrCusto, DesLo" +
-                "cal, PF, FlgStatus, DatOrca FROM dbo.tbl_Orcamento";
+            this._commandCollection[0].CommandText = "SELECT CodProduto, DesProduto, DesLocal, VlrUnitario, QtdProduto, VlrCusto, VlrPe" +
+                "rcent, EstMinimo, DatCadastro, DesFornecedor, CodRefAntiga, DesFaz, VlrUltPreco," +
+                " Imagem FROM dbo.tbl_Produtos\r\nWHERE QtdProduto <= ISNULL(EstMinimo, 0)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1089,7 +1249,7 @@ namespace Loja.dsOrcamentoTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dsOrcamento.tbl_OrcamentoDataTable dataTable) {
+        public virtual int Fill(relEstMinimo.tbl_ProdutosDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1102,9 +1262,9 @@ namespace Loja.dsOrcamentoTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dsOrcamento.tbl_OrcamentoDataTable GetData() {
+        public virtual relEstMinimo.tbl_ProdutosDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            dsOrcamento.tbl_OrcamentoDataTable dataTable = new dsOrcamento.tbl_OrcamentoDataTable();
+            relEstMinimo.tbl_ProdutosDataTable dataTable = new relEstMinimo.tbl_ProdutosDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

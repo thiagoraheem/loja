@@ -154,9 +154,19 @@
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Modules\Extenso.cs" />
-    <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="relEstMinimo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>relEstMinimo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\relEstMinimo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\relEstMinimo.Designer.cs">
+      <DependentUpon>relEstMinimo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\relOrcamento.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -201,6 +211,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\relEstMinimo.resx">
+      <DependentUpon>relEstMinimo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\relOrcamento.pt-BR.resx">
       <DependentUpon>relOrcamento.cs</DependentUpon>
     </EmbeddedResource>
@@ -237,6 +250,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="relEstMinimo.xsc">
+      <DependentUpon>relEstMinimo.xsd</DependentUpon>
+    </None>
+    <None Include="relEstMinimo.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>relEstMinimo.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="relEstMinimo.xss">
+      <DependentUpon>relEstMinimo.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
