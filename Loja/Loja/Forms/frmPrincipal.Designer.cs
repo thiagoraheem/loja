@@ -108,6 +108,9 @@
             this.colQuantidade = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colValor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colVlrFinal = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.grpCadastros = new DevExpress.XtraNavBar.NavBarGroup();
+            this.btnCadTipoVenda = new DevExpress.XtraNavBar.NavBarItem();
+            this.btnCadTipoEntrada = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer2)).BeginInit();
@@ -140,6 +143,7 @@
             this.navbarImageListLarge.Images.SetKeyName(1, "Organizer_16x16.png");
             this.navbarImageListLarge.Images.SetKeyName(2, "pasta_papel_16x16.png");
             this.navbarImageListLarge.Images.SetKeyName(3, "pasta_mao_16x16.png");
+            this.navbarImageListLarge.Images.SetKeyName(4, "Cadastros_16x16.png");
             // 
             // navbarImageList
             // 
@@ -601,7 +605,7 @@
             this.gridProdutos.Location = new System.Drawing.Point(0, 0);
             this.gridProdutos.MainView = this.gridViewProduto;
             this.gridProdutos.Name = "gridProdutos";
-            this.gridProdutos.Size = new System.Drawing.Size(796, 251);
+            this.gridProdutos.Size = new System.Drawing.Size(847, 275);
             this.gridProdutos.TabIndex = 0;
             this.gridProdutos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewProduto});
@@ -682,11 +686,12 @@
             // 
             // navBarControl
             // 
-            this.navBarControl.ActiveGroup = this.grpOperacoes;
+            this.navBarControl.ActiveGroup = this.grpCadastros;
             this.navBarControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navBarControl.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.grpOperacoes,
-            this.grpRelatorios});
+            this.grpRelatorios,
+            this.grpCadastros});
             this.navBarControl.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.btnVender,
             this.btnCadastrar,
@@ -696,14 +701,16 @@
             this.btnRelEntradas,
             this.btnOrcamentos,
             this.btnReajustar,
-            this.btnEstMinimo});
+            this.btnEstMinimo,
+            this.btnCadTipoVenda,
+            this.btnCadTipoEntrada});
             this.navBarControl.LargeImages = this.navbarImageListLarge;
             this.navBarControl.Location = new System.Drawing.Point(0, 0);
             this.navBarControl.Name = "navBarControl";
             this.navBarControl.OptionsNavPane.AllowOptionsMenuItem = true;
-            this.navBarControl.OptionsNavPane.ExpandedWidth = 165;
+            this.navBarControl.OptionsNavPane.ExpandedWidth = 114;
             this.navBarControl.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
-            this.navBarControl.Size = new System.Drawing.Size(165, 430);
+            this.navBarControl.Size = new System.Drawing.Size(114, 430);
             this.navBarControl.SmallImages = this.navbarImageList;
             this.navBarControl.StoreDefaultPaintStyleName = true;
             this.navBarControl.TabIndex = 0;
@@ -711,7 +718,6 @@
             // grpOperacoes
             // 
             this.grpOperacoes.Caption = "Operações";
-            this.grpOperacoes.Expanded = true;
             this.grpOperacoes.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.btnVender),
             new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadastrar),
@@ -723,34 +729,34 @@
             // 
             // btnVender
             // 
-            this.btnVender.Caption = "Efetuar Venda";
+            this.btnVender.Caption = "Vender";
             this.btnVender.Name = "btnVender";
             this.btnVender.SmallImageIndex = 0;
             this.btnVender.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnVender_LinkClicked);
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Caption = "Cadastrar Produto";
+            this.btnCadastrar.Caption = "Produto";
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.SmallImageIndex = 6;
             this.btnCadastrar.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnCadastrar_LinkClicked);
             // 
             // btnEntrada
             // 
-            this.btnEntrada.Caption = "Entrada de Produto";
+            this.btnEntrada.Caption = "Entrada";
             this.btnEntrada.Name = "btnEntrada";
             this.btnEntrada.SmallImageIndex = 2;
             // 
             // btnRecibo
             // 
-            this.btnRecibo.Caption = "Gerar Recibo";
+            this.btnRecibo.Caption = "Recibo";
             this.btnRecibo.Name = "btnRecibo";
             this.btnRecibo.SmallImageIndex = 8;
             this.btnRecibo.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnRecibo_LinkClicked);
             // 
             // btnReajustar
             // 
-            this.btnReajustar.Caption = "Reajustar preços";
+            this.btnReajustar.Caption = "Reajustar $";
             this.btnReajustar.Name = "btnReajustar";
             this.btnReajustar.SmallImageIndex = 9;
             this.btnReajustar.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnReajustar_LinkClicked);
@@ -803,18 +809,18 @@
             this.splitContainerControl.Panel2.Controls.Add(this.gridProdutos);
             this.splitContainerControl.Panel2.Text = "Panel2";
             this.splitContainerControl.Size = new System.Drawing.Size(978, 442);
-            this.splitContainerControl.SplitterPosition = 165;
+            this.splitContainerControl.SplitterPosition = 114;
             this.splitContainerControl.TabIndex = 0;
             this.splitContainerControl.Text = "splitContainerControl1";
             // 
             // gridOrcamento
             // 
             this.gridOrcamento.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridOrcamento.Location = new System.Drawing.Point(0, 257);
+            this.gridOrcamento.Location = new System.Drawing.Point(0, 281);
             this.gridOrcamento.MainView = this.gridViewOrcamento;
             this.gridOrcamento.MenuManager = this.ribbonControl;
             this.gridOrcamento.Name = "gridOrcamento";
-            this.gridOrcamento.Size = new System.Drawing.Size(796, 173);
+            this.gridOrcamento.Size = new System.Drawing.Size(847, 149);
             this.gridOrcamento.TabIndex = 1;
             this.gridOrcamento.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewOrcamento});
@@ -886,6 +892,29 @@
             this.colVlrFinal.Visible = true;
             this.colVlrFinal.VisibleIndex = 4;
             this.colVlrFinal.Width = 196;
+            // 
+            // grpCadastros
+            // 
+            this.grpCadastros.Caption = "Cadastros";
+            this.grpCadastros.Expanded = true;
+            this.grpCadastros.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadastrar),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadTipoEntrada),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadTipoVenda)});
+            this.grpCadastros.LargeImageIndex = 4;
+            this.grpCadastros.Name = "grpCadastros";
+            // 
+            // btnCadTipoVenda
+            // 
+            this.btnCadTipoVenda.Caption = "Tipo de Venda";
+            this.btnCadTipoVenda.Name = "btnCadTipoVenda";
+            this.btnCadTipoVenda.SmallImageIndex = 6;
+            // 
+            // btnCadTipoEntrada
+            // 
+            this.btnCadTipoEntrada.Caption = "Tipo de Entrada";
+            this.btnCadTipoEntrada.Name = "btnCadTipoEntrada";
+            this.btnCadTipoEntrada.SmallImageIndex = 6;
             // 
             // frmPrincipal
             // 
@@ -1010,6 +1039,9 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repCodOrca;
         private DevExpress.XtraNavBar.NavBarItem btnReajustar;
         private DevExpress.XtraNavBar.NavBarItem btnEstMinimo;
+        private DevExpress.XtraNavBar.NavBarGroup grpCadastros;
+        private DevExpress.XtraNavBar.NavBarItem btnCadTipoEntrada;
+        private DevExpress.XtraNavBar.NavBarItem btnCadTipoVenda;
 
     }
 }

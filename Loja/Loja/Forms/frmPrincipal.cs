@@ -205,6 +205,11 @@ namespace Loja
             SU_FinalizarVenda();
         }
 
+        private void rgbiSkins_Gallery_ItemClick(object sender, GalleryItemClickEventArgs e)
+        {
+            Properties.Settings.Default.Estilo = e.Item.Caption;
+            Properties.Settings.Default.Save();
+        }
         #endregion
 
         #region Eventos Grids
@@ -327,12 +332,6 @@ namespace Loja
         }
 
         #endregion
-
-        private void rgbiSkins_Gallery_ItemClick(object sender, GalleryItemClickEventArgs e)
-        {
-            Properties.Settings.Default.Estilo = e.Item.Caption;
-            Properties.Settings.Default.Save();
-        }
 
 
     }
