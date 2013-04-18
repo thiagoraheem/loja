@@ -111,6 +111,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsOrcamento.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmCadTipoVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCadTipoVenda.Designer.cs">
+      <DependentUpon>frmCadTipoVenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmDetalhe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +185,9 @@
     <Compile Include="Reports\relRecibo.Designer.cs">
       <DependentUpon>relRecibo.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\frmCadTipoVenda.resx">
+      <DependentUpon>frmCadTipoVenda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmDetalhe.resx">
       <DependentUpon>frmDetalhe.cs</DependentUpon>
     </EmbeddedResource>

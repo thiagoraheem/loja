@@ -14,8 +14,6 @@ using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraBars.Helpers;
 using DevExpress.XtraReports.UI;
-using Loja.DAO;
-
 
 namespace Loja
 {
@@ -328,6 +326,15 @@ namespace Loja
 
                 printTool.ShowRibbonPreviewDialog();
                 printTool.ShowRibbonPreview(UserLookAndFeel.Default);
+            }
+        }
+
+        private void btnCadTipoVenda_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            using (frmCadTipoVenda f = new frmCadTipoVenda())
+            {
+                f.ShowDialog();
+
             }
         }
 

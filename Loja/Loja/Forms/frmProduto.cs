@@ -8,7 +8,6 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using Loja.DAO;
 using System.IO;
 
 namespace Loja
@@ -16,7 +15,7 @@ namespace Loja
     public partial class frmProduto : DevExpress.XtraEditors.XtraForm
     {
         private bool novo;
-        Loja.DAO.tbl_Produtos produto;
+        Loja.tbl_Produtos produto;
         LojaEntities Loja = new LojaEntities();
 
         public frmProduto()
