@@ -17,7 +17,7 @@ using System.Runtime.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 
-namespace Loja.DAO
+namespace Loja
 {
     #region Contexts
     

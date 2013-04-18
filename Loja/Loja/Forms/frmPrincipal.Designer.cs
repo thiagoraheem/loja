@@ -89,9 +89,12 @@
             this.colRefAntiga = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFornecedor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.navBarControl = new DevExpress.XtraNavBar.NavBarControl();
+            this.grpCadastros = new DevExpress.XtraNavBar.NavBarGroup();
+            this.btnCadastrar = new DevExpress.XtraNavBar.NavBarItem();
+            this.btnCadTipoEntrada = new DevExpress.XtraNavBar.NavBarItem();
+            this.btnCadTipoVenda = new DevExpress.XtraNavBar.NavBarItem();
             this.grpOperacoes = new DevExpress.XtraNavBar.NavBarGroup();
             this.btnVender = new DevExpress.XtraNavBar.NavBarItem();
-            this.btnCadastrar = new DevExpress.XtraNavBar.NavBarItem();
             this.btnEntrada = new DevExpress.XtraNavBar.NavBarItem();
             this.btnRecibo = new DevExpress.XtraNavBar.NavBarItem();
             this.btnReajustar = new DevExpress.XtraNavBar.NavBarItem();
@@ -108,9 +111,6 @@
             this.colQuantidade = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colValor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colVlrFinal = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.grpCadastros = new DevExpress.XtraNavBar.NavBarGroup();
-            this.btnCadTipoVenda = new DevExpress.XtraNavBar.NavBarItem();
-            this.btnCadTipoEntrada = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer2)).BeginInit();
@@ -686,7 +686,7 @@
             // 
             // navBarControl
             // 
-            this.navBarControl.ActiveGroup = this.grpCadastros;
+            this.navBarControl.ActiveGroup = this.grpOperacoes;
             this.navBarControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navBarControl.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.grpOperacoes,
@@ -715,9 +715,40 @@
             this.navBarControl.StoreDefaultPaintStyleName = true;
             this.navBarControl.TabIndex = 0;
             // 
+            // grpCadastros
+            // 
+            this.grpCadastros.Caption = "Cadastros";
+            this.grpCadastros.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadastrar),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadTipoEntrada),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadTipoVenda)});
+            this.grpCadastros.LargeImageIndex = 4;
+            this.grpCadastros.Name = "grpCadastros";
+            // 
+            // btnCadastrar
+            // 
+            this.btnCadastrar.Caption = "Produto";
+            this.btnCadastrar.Name = "btnCadastrar";
+            this.btnCadastrar.SmallImageIndex = 6;
+            this.btnCadastrar.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnCadastrar_LinkClicked);
+            // 
+            // btnCadTipoEntrada
+            // 
+            this.btnCadTipoEntrada.Caption = "Tipo de Entrada";
+            this.btnCadTipoEntrada.Name = "btnCadTipoEntrada";
+            this.btnCadTipoEntrada.SmallImageIndex = 6;
+            // 
+            // btnCadTipoVenda
+            // 
+            this.btnCadTipoVenda.Caption = "Tipo de Venda";
+            this.btnCadTipoVenda.Name = "btnCadTipoVenda";
+            this.btnCadTipoVenda.SmallImageIndex = 6;
+            this.btnCadTipoVenda.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnCadTipoVenda_LinkClicked);
+            // 
             // grpOperacoes
             // 
             this.grpOperacoes.Caption = "Operações";
+            this.grpOperacoes.Expanded = true;
             this.grpOperacoes.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.btnVender),
             new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadastrar),
@@ -733,13 +764,6 @@
             this.btnVender.Name = "btnVender";
             this.btnVender.SmallImageIndex = 0;
             this.btnVender.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnVender_LinkClicked);
-            // 
-            // btnCadastrar
-            // 
-            this.btnCadastrar.Caption = "Produto";
-            this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.SmallImageIndex = 6;
-            this.btnCadastrar.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnCadastrar_LinkClicked);
             // 
             // btnEntrada
             // 
@@ -892,29 +916,6 @@
             this.colVlrFinal.Visible = true;
             this.colVlrFinal.VisibleIndex = 4;
             this.colVlrFinal.Width = 196;
-            // 
-            // grpCadastros
-            // 
-            this.grpCadastros.Caption = "Cadastros";
-            this.grpCadastros.Expanded = true;
-            this.grpCadastros.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadastrar),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadTipoEntrada),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadTipoVenda)});
-            this.grpCadastros.LargeImageIndex = 4;
-            this.grpCadastros.Name = "grpCadastros";
-            // 
-            // btnCadTipoVenda
-            // 
-            this.btnCadTipoVenda.Caption = "Tipo de Venda";
-            this.btnCadTipoVenda.Name = "btnCadTipoVenda";
-            this.btnCadTipoVenda.SmallImageIndex = 6;
-            // 
-            // btnCadTipoEntrada
-            // 
-            this.btnCadTipoEntrada.Caption = "Tipo de Entrada";
-            this.btnCadTipoEntrada.Name = "btnCadTipoEntrada";
-            this.btnCadTipoEntrada.SmallImageIndex = 6;
             // 
             // frmPrincipal
             // 
