@@ -89,12 +89,9 @@
             this.colRefAntiga = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFornecedor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.navBarControl = new DevExpress.XtraNavBar.NavBarControl();
-            this.grpCadastros = new DevExpress.XtraNavBar.NavBarGroup();
-            this.btnCadastrar = new DevExpress.XtraNavBar.NavBarItem();
-            this.btnCadTipoEntrada = new DevExpress.XtraNavBar.NavBarItem();
-            this.btnCadTipoVenda = new DevExpress.XtraNavBar.NavBarItem();
             this.grpOperacoes = new DevExpress.XtraNavBar.NavBarGroup();
             this.btnVender = new DevExpress.XtraNavBar.NavBarItem();
+            this.btnCadastrar = new DevExpress.XtraNavBar.NavBarItem();
             this.btnEntrada = new DevExpress.XtraNavBar.NavBarItem();
             this.btnRecibo = new DevExpress.XtraNavBar.NavBarItem();
             this.btnReajustar = new DevExpress.XtraNavBar.NavBarItem();
@@ -103,6 +100,9 @@
             this.btnRelVendas = new DevExpress.XtraNavBar.NavBarItem();
             this.btnRelEntradas = new DevExpress.XtraNavBar.NavBarItem();
             this.btnOrcamentos = new DevExpress.XtraNavBar.NavBarItem();
+            this.grpCadastros = new DevExpress.XtraNavBar.NavBarGroup();
+            this.btnCadTipoEntrada = new DevExpress.XtraNavBar.NavBarItem();
+            this.btnCadTipoVenda = new DevExpress.XtraNavBar.NavBarItem();
             this.splitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
             this.gridOrcamento = new DevExpress.XtraGrid.GridControl();
             this.gridViewOrcamento = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -715,36 +715,6 @@
             this.navBarControl.StoreDefaultPaintStyleName = true;
             this.navBarControl.TabIndex = 0;
             // 
-            // grpCadastros
-            // 
-            this.grpCadastros.Caption = "Cadastros";
-            this.grpCadastros.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadastrar),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadTipoEntrada),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadTipoVenda)});
-            this.grpCadastros.LargeImageIndex = 4;
-            this.grpCadastros.Name = "grpCadastros";
-            // 
-            // btnCadastrar
-            // 
-            this.btnCadastrar.Caption = "Produto";
-            this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.SmallImageIndex = 6;
-            this.btnCadastrar.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnCadastrar_LinkClicked);
-            // 
-            // btnCadTipoEntrada
-            // 
-            this.btnCadTipoEntrada.Caption = "Tipo de Entrada";
-            this.btnCadTipoEntrada.Name = "btnCadTipoEntrada";
-            this.btnCadTipoEntrada.SmallImageIndex = 6;
-            // 
-            // btnCadTipoVenda
-            // 
-            this.btnCadTipoVenda.Caption = "Tipo de Venda";
-            this.btnCadTipoVenda.Name = "btnCadTipoVenda";
-            this.btnCadTipoVenda.SmallImageIndex = 6;
-            this.btnCadTipoVenda.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnCadTipoVenda_LinkClicked);
-            // 
             // grpOperacoes
             // 
             this.grpOperacoes.Caption = "Operações";
@@ -765,11 +735,19 @@
             this.btnVender.SmallImageIndex = 0;
             this.btnVender.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnVender_LinkClicked);
             // 
+            // btnCadastrar
+            // 
+            this.btnCadastrar.Caption = "Produto";
+            this.btnCadastrar.Name = "btnCadastrar";
+            this.btnCadastrar.SmallImageIndex = 6;
+            this.btnCadastrar.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnCadastrar_LinkClicked);
+            // 
             // btnEntrada
             // 
             this.btnEntrada.Caption = "Entrada";
             this.btnEntrada.Name = "btnEntrada";
             this.btnEntrada.SmallImageIndex = 2;
+            this.btnEntrada.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnEntrada_LinkClicked);
             // 
             // btnRecibo
             // 
@@ -820,6 +798,30 @@
             this.btnOrcamentos.Caption = "Orçamentos";
             this.btnOrcamentos.Name = "btnOrcamentos";
             this.btnOrcamentos.SmallImageIndex = 7;
+            // 
+            // grpCadastros
+            // 
+            this.grpCadastros.Caption = "Cadastros";
+            this.grpCadastros.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadastrar),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadTipoEntrada),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadTipoVenda)});
+            this.grpCadastros.LargeImageIndex = 4;
+            this.grpCadastros.Name = "grpCadastros";
+            // 
+            // btnCadTipoEntrada
+            // 
+            this.btnCadTipoEntrada.Caption = "Tipo de Entrada";
+            this.btnCadTipoEntrada.Name = "btnCadTipoEntrada";
+            this.btnCadTipoEntrada.SmallImageIndex = 6;
+            this.btnCadTipoEntrada.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnCadTipoEntrada_LinkClicked);
+            // 
+            // btnCadTipoVenda
+            // 
+            this.btnCadTipoVenda.Caption = "Tipo de Venda";
+            this.btnCadTipoVenda.Name = "btnCadTipoVenda";
+            this.btnCadTipoVenda.SmallImageIndex = 6;
+            this.btnCadTipoVenda.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnCadTipoVenda_LinkClicked);
             // 
             // splitContainerControl
             // 

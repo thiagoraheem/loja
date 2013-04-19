@@ -239,7 +239,12 @@ namespace Loja
             LojaEntities orcamento = new LojaEntities();
 
             if (e.Column == colQuantidade) {
-                orcamento.FU_AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), (double)e.Value, -1);
+                double quantidade = 0;
+                if (!e.Value.Equals(String.Empty))
+                {
+                    quantidade = (double)e.Value;
+                }
+                orcamento.FU_AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), quantidade, -1);
             }
             else if (e.Column == colValor) {
                 orcamento.FU_AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), -1, (double)e.Value);
@@ -338,8 +343,24 @@ namespace Loja
             }
         }
 
-        #endregion
+        private void btnCadTipoEntrada_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            using (frmCadTipoEntrada f = new frmCadTipoEntrada())
+            {
+                f.ShowDialog();
 
+            }
+        }
+
+        private void btnEntrada_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            using (frmEntrada f = new frmEntrada())
+            {
+                f.ShowDialog();
+
+            }
+        }
+        #endregion
 
     }
 }
