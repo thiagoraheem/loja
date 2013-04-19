@@ -11,21 +11,21 @@ using DevExpress.XtraEditors;
 
 namespace Loja
 {
-    public partial class frmCadTipoVenda : DevExpress.XtraEditors.XtraForm
+    public partial class frmCadTipoEntrada : DevExpress.XtraEditors.XtraForm
     {
         #region Variáveis
         LojaEntities Loja = new LojaEntities();
-        tbl_TipoVenda TipoVenda;
+        tbl_TipoEntrada TipoEntrada;
 
         #endregion
 
         #region Eventos Form
-        public frmCadTipoVenda()
+        public frmCadTipoEntrada()
         {
             InitializeComponent();
         }
 
-        private void frmCadTipoVenda_Load(object sender, EventArgs e)
+        private void frmCadTipoEntrada_Load(object sender, EventArgs e)
         {
             SU_CarregaGrid();
         }
@@ -35,10 +35,10 @@ namespace Loja
         #region Funções
         void SU_CarregaGrid() {
             LojaEntities Loja = new LojaEntities();
-            var tipovenda = from tipo in Loja.tbl_TipoVenda
+            var tipoentrada = from tipo in Loja.tbl_TipoEntrada
                             select tipo;
 
-            grdDados.DataSource = tipovenda.ToList();
+            grdDados.DataSource = tipoentrada.ToList();
         }
 
         int FU_PegaCodigoGrid()
@@ -53,13 +53,12 @@ namespace Loja
         }
 
         void SU_LimpaCampos() {
-            txtDescricao.Text = String.Empty;
-            txtQtdDias.Text = String.Empty;
-            chkAtivo.Checked = false;
-            chkAvista.Checked = false;
-            this.TipoVenda = null;
+            txtDescricao.Text = string.Empty;
+            chkMovimenta.Checked = false;
+            this.TipoEntrada = null;
             btnExcluir.Enabled = false;
         }
+
         #endregion
 
         #region Botões
@@ -78,27 +77,26 @@ namespace Loja
             if (MessageBox.Show("Confirma excluir esse registro?", "Confirmar exclusão", MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
 
-            Loja.DeleteObject(TipoVenda);
+            Loja.DeleteObject(TipoEntrada);
             Loja.SaveChanges();
 
             SU_CarregaGrid();
             SU_LimpaCampos();
+
             MessageBox.Show("Registro excluído com sucesso.");
         }
         
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            if (TipoVenda == null)
+            if (TipoEntrada == null)
             {
-                TipoVenda = new tbl_TipoVenda() { DesTipoVenda = txtDescricao.Text, QtdDias = txtQtdDias.Value, flgAVista = chkAvista.Checked, flgAtivo = chkAtivo.Checked };
-                Loja.tbl_TipoVenda.AddObject(TipoVenda);
+                TipoEntrada = new tbl_TipoEntrada() { DesTipoEntrada = txtDescricao.Text, flgMovimentaEstoque = chkMovimenta.Checked };
+                Loja.tbl_TipoEntrada.AddObject(TipoEntrada);
             }
             else
             {
-                TipoVenda.DesTipoVenda = txtDescricao.Text;
-                TipoVenda.QtdDias = txtQtdDias.Value;
-                TipoVenda.flgAVista = chkAvista.Checked;
-                TipoVenda.flgAtivo = chkAtivo.Checked;
+                TipoEntrada.DesTipoEntrada = txtDescricao.Text;
+                TipoEntrada.flgMovimentaEstoque = chkMovimenta.Checked;
             }
 
             Loja.SaveChanges();
@@ -111,19 +109,18 @@ namespace Loja
         private void gridDados_DoubleClick(object sender, EventArgs e)
         {
             int codigo = FU_PegaCodigoGrid();
-            this.TipoVenda = (from tipo in Loja.tbl_TipoVenda
-                             where tipo.CodTipoVenda == codigo
+            this.TipoEntrada = (from tipo in Loja.tbl_TipoEntrada
+                             where tipo.CodTipoEntrada == codigo
                              select tipo).First();
 
-            txtDescricao.Text = TipoVenda.DesTipoVenda;
-            txtQtdDias.Text = TipoVenda.QtdDias.ToString();
-            chkAtivo.Checked = TipoVenda.flgAtivo.Value;
-            chkAvista.Checked = TipoVenda.flgAVista.Value;
+            txtDescricao.Text = TipoEntrada.DesTipoEntrada;
+            chkMovimenta.Checked = TipoEntrada.flgMovimentaEstoque;
 
             btnExcluir.Enabled = true;
         }
 
         #endregion
+
 
     }
 }

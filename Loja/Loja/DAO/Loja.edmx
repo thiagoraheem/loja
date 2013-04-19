@@ -311,6 +311,20 @@
             <Parameter Name="Porcentagem" Mode="In" Type="Decimal" />
             <Parameter Name="DesFornecedor" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="FU_AtualizaEstoque">
+            <Parameter Name="CodProduto" Mode="In" Type="String" />
+            <Parameter Name="DesProduto" Mode="In" Type="String" />
+            <Parameter Name="DesLocal" Mode="In" Type="String" />
+            <Parameter Name="VlrUnitario" Mode="In" Type="Decimal" />
+            <Parameter Name="QtdProduto" Mode="In" Type="Double" />
+            <Parameter Name="VlrCusto" Mode="In" Type="Decimal" />
+            <Parameter Name="VlrPercent" Mode="In" Type="Decimal" />
+            <Parameter Name="EstMinimo" Mode="In" Type="Decimal" />
+            <Parameter Name="DesFornecedor" Mode="In" Type="String" />
+            <Parameter Name="CodRefAntiga" Mode="In" Type="String" />
+            <Parameter Name="Imagem" Mode="In" Type="Binary" />
+            <Parameter Name="CodTipoEntrada" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="tbl_Orcamento">
           <Key>
@@ -569,6 +583,7 @@
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="FU_ManutProduto" FunctionName="LojaModel.Store.spc_ManutProduto" />
           <FunctionImportMapping FunctionImportName="FU_Reajuste" FunctionName="LojaModel.Store.spc_Reajuste" />
+          <FunctionImportMapping FunctionImportName="FU_AtualizaEstoque" FunctionName="LojaModel.Store.spc_AtualizaEstoque" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

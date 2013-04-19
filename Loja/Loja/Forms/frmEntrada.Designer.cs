@@ -1,0 +1,291 @@
+﻿namespace Loja
+{
+    partial class frmEntrada
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.txtDocEntrada = new DevExpress.XtraEditors.TextEdit();
+            this.txtDatEntrada = new DevExpress.XtraEditors.DateEdit();
+            this.cmbProduto = new DevExpress.XtraEditors.LookUpEdit();
+            this.txtQuantidade = new DevExpress.XtraEditors.CalcEdit();
+            this.txtVlrUnitario = new DevExpress.XtraEditors.CalcEdit();
+            this.cmbTipoEntrada = new DevExpress.XtraEditors.LookUpEdit();
+            this.btnRetornar = new DevExpress.XtraEditors.SimpleButton();
+            this.btnGravar = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.txtVlrTotal = new DevExpress.XtraEditors.CalcEdit();
+            this.chkContinuar = new DevExpress.XtraEditors.CheckEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDocEntrada.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDatEntrada.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDatEntrada.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbProduto.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQuantidade.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVlrUnitario.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbTipoEntrada.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVlrTotal.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkContinuar.Properties)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // txtDocEntrada
+            // 
+            this.txtDocEntrada.EnterMoveNextControl = true;
+            this.txtDocEntrada.Location = new System.Drawing.Point(141, 12);
+            this.txtDocEntrada.Name = "txtDocEntrada";
+            this.txtDocEntrada.Size = new System.Drawing.Size(100, 20);
+            this.txtDocEntrada.TabIndex = 0;
+            // 
+            // txtDatEntrada
+            // 
+            this.txtDatEntrada.EditValue = null;
+            this.txtDatEntrada.EnterMoveNextControl = true;
+            this.txtDatEntrada.Location = new System.Drawing.Point(141, 39);
+            this.txtDatEntrada.Name = "txtDatEntrada";
+            this.txtDatEntrada.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtDatEntrada.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.txtDatEntrada.Size = new System.Drawing.Size(100, 20);
+            this.txtDatEntrada.TabIndex = 1;
+            // 
+            // cmbProduto
+            // 
+            this.cmbProduto.EnterMoveNextControl = true;
+            this.cmbProduto.Location = new System.Drawing.Point(141, 79);
+            this.cmbProduto.Name = "cmbProduto";
+            this.cmbProduto.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFit;
+            this.cmbProduto.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbProduto.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CodProduto", 30, "Código"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("DesProduto", 100, "Descrição"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("DesLocal", 10, "Local"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("QtdProduto", 10, "Est.")});
+            this.cmbProduto.Properties.DisplayMember = "DesProduto";
+            this.cmbProduto.Properties.NullText = "[Selecione um produto]";
+            this.cmbProduto.Properties.PopupFormMinSize = new System.Drawing.Size(400, 0);
+            this.cmbProduto.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.cmbProduto.Properties.ValueMember = "CodProduto";
+            this.cmbProduto.Size = new System.Drawing.Size(242, 20);
+            this.cmbProduto.TabIndex = 2;
+            // 
+            // txtQuantidade
+            // 
+            this.txtQuantidade.EnterMoveNextControl = true;
+            this.txtQuantidade.Location = new System.Drawing.Point(141, 106);
+            this.txtQuantidade.Name = "txtQuantidade";
+            this.txtQuantidade.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtQuantidade.Size = new System.Drawing.Size(100, 20);
+            this.txtQuantidade.TabIndex = 3;
+            // 
+            // txtVlrUnitario
+            // 
+            this.txtVlrUnitario.EnterMoveNextControl = true;
+            this.txtVlrUnitario.Location = new System.Drawing.Point(141, 133);
+            this.txtVlrUnitario.Name = "txtVlrUnitario";
+            this.txtVlrUnitario.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtVlrUnitario.Size = new System.Drawing.Size(100, 20);
+            this.txtVlrUnitario.TabIndex = 4;
+            // 
+            // cmbTipoEntrada
+            // 
+            this.cmbTipoEntrada.EnterMoveNextControl = true;
+            this.cmbTipoEntrada.Location = new System.Drawing.Point(141, 185);
+            this.cmbTipoEntrada.Name = "cmbTipoEntrada";
+            this.cmbTipoEntrada.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbTipoEntrada.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CodTipoEntrada", "Código"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("DesTipoEntrada", "Descrição")});
+            this.cmbTipoEntrada.Properties.DisplayMember = "DesTipoVenda";
+            this.cmbTipoEntrada.Properties.NullText = "[Selecione um tipo]";
+            this.cmbTipoEntrada.Properties.ValueMember = "CodTipoVenda";
+            this.cmbTipoEntrada.Size = new System.Drawing.Size(132, 20);
+            this.cmbTipoEntrada.TabIndex = 5;
+            // 
+            // btnRetornar
+            // 
+            this.btnRetornar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRetornar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnRetornar.Location = new System.Drawing.Point(308, 230);
+            this.btnRetornar.Name = "btnRetornar";
+            this.btnRetornar.Size = new System.Drawing.Size(75, 23);
+            this.btnRetornar.TabIndex = 6;
+            this.btnRetornar.Text = "&Retornar";
+            this.btnRetornar.Click += new System.EventHandler(this.btnRetornar_Click);
+            // 
+            // btnGravar
+            // 
+            this.btnGravar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGravar.Location = new System.Drawing.Point(227, 230);
+            this.btnGravar.Name = "btnGravar";
+            this.btnGravar.Size = new System.Drawing.Size(75, 23);
+            this.btnGravar.TabIndex = 7;
+            this.btnGravar.Text = "&Gravar";
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(29, 15);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(56, 13);
+            this.labelControl1.TabIndex = 8;
+            this.labelControl1.Text = "Nota Fiscal:";
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(29, 42);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(27, 13);
+            this.labelControl2.TabIndex = 9;
+            this.labelControl2.Text = "Data:";
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(29, 82);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(42, 13);
+            this.labelControl3.TabIndex = 10;
+            this.labelControl3.Text = "Produto:";
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(29, 109);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(60, 13);
+            this.labelControl4.TabIndex = 11;
+            this.labelControl4.Text = "Quantidade:";
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Location = new System.Drawing.Point(29, 136);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(60, 13);
+            this.labelControl5.TabIndex = 12;
+            this.labelControl5.Text = "Vlr. Unitário:";
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Location = new System.Drawing.Point(29, 162);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(47, 13);
+            this.labelControl6.TabIndex = 13;
+            this.labelControl6.Text = "Vlr. Total:";
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Location = new System.Drawing.Point(29, 188);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(80, 13);
+            this.labelControl7.TabIndex = 14;
+            this.labelControl7.Text = "Tipo de Entrada:";
+            // 
+            // txtVlrTotal
+            // 
+            this.txtVlrTotal.Location = new System.Drawing.Point(141, 159);
+            this.txtVlrTotal.Name = "txtVlrTotal";
+            this.txtVlrTotal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtVlrTotal.Size = new System.Drawing.Size(100, 20);
+            this.txtVlrTotal.TabIndex = 15;
+            // 
+            // chkContinuar
+            // 
+            this.chkContinuar.Location = new System.Drawing.Point(96, 234);
+            this.chkContinuar.Name = "chkContinuar";
+            this.chkContinuar.Properties.Caption = "Fechar ao gravar";
+            this.chkContinuar.Size = new System.Drawing.Size(125, 19);
+            this.chkContinuar.TabIndex = 16;
+            // 
+            // frmEntrada
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnRetornar;
+            this.ClientSize = new System.Drawing.Size(395, 265);
+            this.Controls.Add(this.chkContinuar);
+            this.Controls.Add(this.txtVlrTotal);
+            this.Controls.Add(this.labelControl7);
+            this.Controls.Add(this.labelControl6);
+            this.Controls.Add(this.labelControl5);
+            this.Controls.Add(this.labelControl4);
+            this.Controls.Add(this.labelControl3);
+            this.Controls.Add(this.labelControl2);
+            this.Controls.Add(this.labelControl1);
+            this.Controls.Add(this.btnGravar);
+            this.Controls.Add(this.btnRetornar);
+            this.Controls.Add(this.cmbTipoEntrada);
+            this.Controls.Add(this.txtVlrUnitario);
+            this.Controls.Add(this.txtQuantidade);
+            this.Controls.Add(this.cmbProduto);
+            this.Controls.Add(this.txtDatEntrada);
+            this.Controls.Add(this.txtDocEntrada);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "frmEntrada";
+            this.Text = "Entrada de Produtos";
+            ((System.ComponentModel.ISupportInitialize)(this.txtDocEntrada.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDatEntrada.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDatEntrada.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbProduto.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQuantidade.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVlrUnitario.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbTipoEntrada.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVlrTotal.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkContinuar.Properties)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private DevExpress.XtraEditors.TextEdit txtDocEntrada;
+        private DevExpress.XtraEditors.DateEdit txtDatEntrada;
+        private DevExpress.XtraEditors.LookUpEdit cmbProduto;
+        private DevExpress.XtraEditors.CalcEdit txtQuantidade;
+        private DevExpress.XtraEditors.CalcEdit txtVlrUnitario;
+        private DevExpress.XtraEditors.LookUpEdit cmbTipoEntrada;
+        private DevExpress.XtraEditors.SimpleButton btnRetornar;
+        private DevExpress.XtraEditors.SimpleButton btnGravar;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.CalcEdit txtVlrTotal;
+        private DevExpress.XtraEditors.CheckEdit chkContinuar;
+    }
+}

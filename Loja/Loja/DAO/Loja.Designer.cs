@@ -642,6 +642,146 @@ namespace Loja
     
             return base.ExecuteFunction("FU_Reajuste", porcentagemParameter, desFornecedorParameter);
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="codProduto">No Metadata Documentation available.</param>
+        /// <param name="desProduto">No Metadata Documentation available.</param>
+        /// <param name="desLocal">No Metadata Documentation available.</param>
+        /// <param name="vlrUnitario">No Metadata Documentation available.</param>
+        /// <param name="qtdProduto">No Metadata Documentation available.</param>
+        /// <param name="vlrCusto">No Metadata Documentation available.</param>
+        /// <param name="vlrPercent">No Metadata Documentation available.</param>
+        /// <param name="estMinimo">No Metadata Documentation available.</param>
+        /// <param name="desFornecedor">No Metadata Documentation available.</param>
+        /// <param name="codRefAntiga">No Metadata Documentation available.</param>
+        /// <param name="imagem">No Metadata Documentation available.</param>
+        /// <param name="codTipoEntrada">No Metadata Documentation available.</param>
+        public int FU_AtualizaEstoque(global::System.String codProduto, global::System.String desProduto, global::System.String desLocal, Nullable<global::System.Decimal> vlrUnitario, Nullable<global::System.Double> qtdProduto, Nullable<global::System.Decimal> vlrCusto, Nullable<global::System.Decimal> vlrPercent, Nullable<global::System.Decimal> estMinimo, global::System.String desFornecedor, global::System.String codRefAntiga, global::System.Byte[] imagem, Nullable<global::System.Int32> codTipoEntrada)
+        {
+            ObjectParameter codProdutoParameter;
+            if (codProduto != null)
+            {
+                codProdutoParameter = new ObjectParameter("CodProduto", codProduto);
+            }
+            else
+            {
+                codProdutoParameter = new ObjectParameter("CodProduto", typeof(global::System.String));
+            }
+    
+            ObjectParameter desProdutoParameter;
+            if (desProduto != null)
+            {
+                desProdutoParameter = new ObjectParameter("DesProduto", desProduto);
+            }
+            else
+            {
+                desProdutoParameter = new ObjectParameter("DesProduto", typeof(global::System.String));
+            }
+    
+            ObjectParameter desLocalParameter;
+            if (desLocal != null)
+            {
+                desLocalParameter = new ObjectParameter("DesLocal", desLocal);
+            }
+            else
+            {
+                desLocalParameter = new ObjectParameter("DesLocal", typeof(global::System.String));
+            }
+    
+            ObjectParameter vlrUnitarioParameter;
+            if (vlrUnitario.HasValue)
+            {
+                vlrUnitarioParameter = new ObjectParameter("VlrUnitario", vlrUnitario);
+            }
+            else
+            {
+                vlrUnitarioParameter = new ObjectParameter("VlrUnitario", typeof(global::System.Decimal));
+            }
+    
+            ObjectParameter qtdProdutoParameter;
+            if (qtdProduto.HasValue)
+            {
+                qtdProdutoParameter = new ObjectParameter("QtdProduto", qtdProduto);
+            }
+            else
+            {
+                qtdProdutoParameter = new ObjectParameter("QtdProduto", typeof(global::System.Double));
+            }
+    
+            ObjectParameter vlrCustoParameter;
+            if (vlrCusto.HasValue)
+            {
+                vlrCustoParameter = new ObjectParameter("VlrCusto", vlrCusto);
+            }
+            else
+            {
+                vlrCustoParameter = new ObjectParameter("VlrCusto", typeof(global::System.Decimal));
+            }
+    
+            ObjectParameter vlrPercentParameter;
+            if (vlrPercent.HasValue)
+            {
+                vlrPercentParameter = new ObjectParameter("VlrPercent", vlrPercent);
+            }
+            else
+            {
+                vlrPercentParameter = new ObjectParameter("VlrPercent", typeof(global::System.Decimal));
+            }
+    
+            ObjectParameter estMinimoParameter;
+            if (estMinimo.HasValue)
+            {
+                estMinimoParameter = new ObjectParameter("EstMinimo", estMinimo);
+            }
+            else
+            {
+                estMinimoParameter = new ObjectParameter("EstMinimo", typeof(global::System.Decimal));
+            }
+    
+            ObjectParameter desFornecedorParameter;
+            if (desFornecedor != null)
+            {
+                desFornecedorParameter = new ObjectParameter("DesFornecedor", desFornecedor);
+            }
+            else
+            {
+                desFornecedorParameter = new ObjectParameter("DesFornecedor", typeof(global::System.String));
+            }
+    
+            ObjectParameter codRefAntigaParameter;
+            if (codRefAntiga != null)
+            {
+                codRefAntigaParameter = new ObjectParameter("CodRefAntiga", codRefAntiga);
+            }
+            else
+            {
+                codRefAntigaParameter = new ObjectParameter("CodRefAntiga", typeof(global::System.String));
+            }
+    
+            ObjectParameter imagemParameter;
+            if (imagem != null)
+            {
+                imagemParameter = new ObjectParameter("Imagem", imagem);
+            }
+            else
+            {
+                imagemParameter = new ObjectParameter("Imagem", typeof(global::System.Byte[]));
+            }
+    
+            ObjectParameter codTipoEntradaParameter;
+            if (codTipoEntrada.HasValue)
+            {
+                codTipoEntradaParameter = new ObjectParameter("CodTipoEntrada", codTipoEntrada);
+            }
+            else
+            {
+                codTipoEntradaParameter = new ObjectParameter("CodTipoEntrada", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction("FU_AtualizaEstoque", codProdutoParameter, desProdutoParameter, desLocalParameter, vlrUnitarioParameter, qtdProdutoParameter, vlrCustoParameter, vlrPercentParameter, estMinimoParameter, desFornecedorParameter, codRefAntigaParameter, imagemParameter, codTipoEntradaParameter);
+        }
 
         #endregion
     }

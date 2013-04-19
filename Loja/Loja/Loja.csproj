@@ -111,6 +111,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsOrcamento.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmCadTipoEntrada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCadTipoEntrada.Designer.cs">
+      <DependentUpon>frmCadTipoEntrada.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmCadTipoVenda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,12 @@
     </Compile>
     <Compile Include="Forms\frmDetalhe.Designer.cs">
       <DependentUpon>frmDetalhe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEntrada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEntrada.Designer.cs">
+      <DependentUpon>frmEntrada.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmProduto.cs">
       <SubType>Form</SubType>
@@ -185,11 +197,17 @@
     <Compile Include="Reports\relRecibo.Designer.cs">
       <DependentUpon>relRecibo.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\frmCadTipoEntrada.resx">
+      <DependentUpon>frmCadTipoEntrada.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCadTipoVenda.resx">
       <DependentUpon>frmCadTipoVenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmDetalhe.resx">
       <DependentUpon>frmDetalhe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEntrada.resx">
+      <DependentUpon>frmEntrada.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmProduto.resx">
       <DependentUpon>frmProduto.cs</DependentUpon>
