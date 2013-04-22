@@ -94,7 +94,7 @@
             this.cmbProduto.Properties.NullText = "[Selecione um produto]";
             this.cmbProduto.Properties.PopupFormMinSize = new System.Drawing.Size(400, 0);
             this.cmbProduto.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.cmbProduto.Properties.ValueMember = "CodProduto";
+            this.cmbProduto.Properties.ValueMember = "codigounico";
             this.cmbProduto.Size = new System.Drawing.Size(242, 20);
             this.cmbProduto.TabIndex = 2;
             // 
@@ -107,6 +107,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtQuantidade.Size = new System.Drawing.Size(100, 20);
             this.txtQuantidade.TabIndex = 3;
+            this.txtQuantidade.EditValueChanged += new System.EventHandler(this.txtQuantidade_EditValueChanged);
             // 
             // txtVlrUnitario
             // 
@@ -117,6 +118,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtVlrUnitario.Size = new System.Drawing.Size(100, 20);
             this.txtVlrUnitario.TabIndex = 4;
+            this.txtVlrUnitario.EditValueChanged += new System.EventHandler(this.txtVlrUnitario_EditValueChanged);
             // 
             // cmbTipoEntrada
             // 
@@ -141,7 +143,7 @@
             this.btnRetornar.Location = new System.Drawing.Point(308, 230);
             this.btnRetornar.Name = "btnRetornar";
             this.btnRetornar.Size = new System.Drawing.Size(75, 23);
-            this.btnRetornar.TabIndex = 6;
+            this.btnRetornar.TabIndex = 8;
             this.btnRetornar.Text = "&Retornar";
             this.btnRetornar.Click += new System.EventHandler(this.btnRetornar_Click);
             // 
@@ -151,7 +153,7 @@
             this.btnGravar.Location = new System.Drawing.Point(227, 230);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(75, 23);
-            this.btnGravar.TabIndex = 7;
+            this.btnGravar.TabIndex = 6;
             this.btnGravar.Text = "&Gravar";
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
@@ -160,7 +162,7 @@
             this.labelControl1.Location = new System.Drawing.Point(29, 15);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(56, 13);
-            this.labelControl1.TabIndex = 8;
+            this.labelControl1.TabIndex = 9;
             this.labelControl1.Text = "Nota Fiscal:";
             // 
             // labelControl2
@@ -168,7 +170,7 @@
             this.labelControl2.Location = new System.Drawing.Point(29, 42);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(27, 13);
-            this.labelControl2.TabIndex = 9;
+            this.labelControl2.TabIndex = 10;
             this.labelControl2.Text = "Data:";
             // 
             // labelControl3
@@ -176,7 +178,7 @@
             this.labelControl3.Location = new System.Drawing.Point(29, 82);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(42, 13);
-            this.labelControl3.TabIndex = 10;
+            this.labelControl3.TabIndex = 11;
             this.labelControl3.Text = "Produto:";
             // 
             // labelControl4
@@ -184,7 +186,7 @@
             this.labelControl4.Location = new System.Drawing.Point(29, 109);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(60, 13);
-            this.labelControl4.TabIndex = 11;
+            this.labelControl4.TabIndex = 12;
             this.labelControl4.Text = "Quantidade:";
             // 
             // labelControl5
@@ -192,7 +194,7 @@
             this.labelControl5.Location = new System.Drawing.Point(29, 136);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(60, 13);
-            this.labelControl5.TabIndex = 12;
+            this.labelControl5.TabIndex = 13;
             this.labelControl5.Text = "Vlr. Unitário:";
             // 
             // labelControl6
@@ -200,7 +202,7 @@
             this.labelControl6.Location = new System.Drawing.Point(29, 162);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(47, 13);
-            this.labelControl6.TabIndex = 13;
+            this.labelControl6.TabIndex = 14;
             this.labelControl6.Text = "Vlr. Total:";
             // 
             // labelControl7
@@ -208,7 +210,7 @@
             this.labelControl7.Location = new System.Drawing.Point(29, 188);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(80, 13);
-            this.labelControl7.TabIndex = 14;
+            this.labelControl7.TabIndex = 15;
             this.labelControl7.Text = "Tipo de Entrada:";
             // 
             // txtVlrTotal
@@ -217,8 +219,10 @@
             this.txtVlrTotal.Name = "txtVlrTotal";
             this.txtVlrTotal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtVlrTotal.Properties.ReadOnly = true;
             this.txtVlrTotal.Size = new System.Drawing.Size(100, 20);
-            this.txtVlrTotal.TabIndex = 15;
+            this.txtVlrTotal.TabIndex = 16;
+            this.txtVlrTotal.TabStop = false;
             // 
             // chkContinuar
             // 
@@ -226,7 +230,7 @@
             this.chkContinuar.Name = "chkContinuar";
             this.chkContinuar.Properties.Caption = "Fechar ao gravar";
             this.chkContinuar.Size = new System.Drawing.Size(125, 19);
-            this.chkContinuar.TabIndex = 16;
+            this.chkContinuar.TabIndex = 7;
             // 
             // frmEntrada
             // 
@@ -253,6 +257,7 @@
             this.Controls.Add(this.txtDocEntrada);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmEntrada";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Entrada de Produtos";
             ((System.ComponentModel.ISupportInitialize)(this.txtDocEntrada.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatEntrada.Properties.VistaTimeProperties)).EndInit();

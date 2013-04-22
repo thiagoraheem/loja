@@ -28,10 +28,10 @@ namespace Loja
             Close();
         }
 
-        public void SU_CarregaProduto(String CodProduto, String DesLocal)
+        public void SU_CarregaProduto(int CodProduto)
         {
             this.produto = (from prod in Loja.tbl_Produtos
-                             where prod.CodProduto == CodProduto && prod.DesLocal == DesLocal
+                             where prod.codigounico == CodProduto
                              select prod).First();
             txtCodProduto.Text = this.produto.CodProduto;
             txtDesProduto.Text = this.produto.DesProduto;
@@ -84,19 +84,11 @@ namespace Loja
         void SU_Gravar() {
 
             try {
-                String CodProduto = this.produto.CodProduto;
-                if (CodProduto == String.Empty || CodProduto == null) CodProduto = txtCodProduto.Text;
 
-                String DesProduto = this.produto.DesProduto; 
-                if (DesProduto == String.Empty || DesProduto == null) DesProduto = txtDesProduto.Text;
-
-                String DesLocal = this.produto.DesLocal;
-                if (DesLocal == String.Empty || DesLocal == null) DesLocal = txtDesLocal.Text;
-
-                Loja.FU_ManutProduto(CodProduto, DesProduto, DesLocal, (double)txtVlrUnitario.Value,
+                Loja.FU_ManutProduto(produto.codigounico, txtCodProduto.Text, txtDesProduto.Text, txtDesLocal.Text, (double)txtVlrUnitario.Value,
                     (double?)txtQtdEstoque.Value, (double?)txtVlrCusto.Value, (double?)txtVlrPercent.Value,
                     (double?)txtQtdEstMinimo.Value, txtFornecedor.Text, txtCodRefAntiga.Text, (double?)txtUltPreco.Value,
-                    null, txtDesProduto.Text, txtDesLocal.Text);
+                    null);
 
 
 

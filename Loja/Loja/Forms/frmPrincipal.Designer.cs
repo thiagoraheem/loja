@@ -88,6 +88,7 @@
             this.colQtdProduto = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRefAntiga = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFornecedor = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
             this.navBarControl = new DevExpress.XtraNavBar.NavBarControl();
             this.grpOperacoes = new DevExpress.XtraNavBar.NavBarGroup();
             this.btnVender = new DevExpress.XtraNavBar.NavBarItem();
@@ -111,6 +112,7 @@
             this.colQuantidade = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colValor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colVlrFinal = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOrcodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer2)).BeginInit();
@@ -621,7 +623,8 @@
             this.colLocal,
             this.colQtdProduto,
             this.colRefAntiga,
-            this.colFornecedor});
+            this.colFornecedor,
+            this.colCodigounico});
             this.gridViewProduto.GridControl = this.gridProdutos;
             this.gridViewProduto.GroupPanelText = "Arraste uma coluna aqui para agrupar";
             this.gridViewProduto.Name = "gridViewProduto";
@@ -683,6 +686,12 @@
             this.colFornecedor.Visible = true;
             this.colFornecedor.VisibleIndex = 5;
             this.colFornecedor.Width = 50;
+            // 
+            // colCodigounico
+            // 
+            this.colCodigounico.Caption = "Código Único";
+            this.colCodigounico.FieldName = "codigounico";
+            this.colCodigounico.Name = "colCodigounico";
             // 
             // navBarControl
             // 
@@ -766,6 +775,7 @@
             // grpRelatorios
             // 
             this.grpRelatorios.Caption = "Relatórios";
+            this.grpRelatorios.Expanded = true;
             this.grpRelatorios.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.btnEstMinimo),
             new DevExpress.XtraNavBar.NavBarItemLink(this.btnRelVendas),
@@ -786,6 +796,7 @@
             this.btnRelVendas.Caption = "Vendas";
             this.btnRelVendas.Name = "btnRelVendas";
             this.btnRelVendas.SmallImageIndex = 4;
+            this.btnRelVendas.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnRelVendas_LinkClicked);
             // 
             // btnRelEntradas
             // 
@@ -858,7 +869,8 @@
             this.colOrDesProduto,
             this.colQuantidade,
             this.colValor,
-            this.colVlrFinal});
+            this.colVlrFinal,
+            this.colOrcodigounico});
             this.gridViewOrcamento.GridControl = this.gridOrcamento;
             this.gridViewOrcamento.GroupPanelText = "Orçamento";
             this.gridViewOrcamento.Name = "gridViewOrcamento";
@@ -918,6 +930,12 @@
             this.colVlrFinal.Visible = true;
             this.colVlrFinal.VisibleIndex = 4;
             this.colVlrFinal.Width = 196;
+            // 
+            // colOrcodigounico
+            // 
+            this.colOrcodigounico.Caption = "Código Único";
+            this.colOrcodigounico.FieldName = "codigounico";
+            this.colOrcodigounico.Name = "colOrcodigounico";
             // 
             // frmPrincipal
             // 
@@ -1045,6 +1063,8 @@
         private DevExpress.XtraNavBar.NavBarGroup grpCadastros;
         private DevExpress.XtraNavBar.NavBarItem btnCadTipoEntrada;
         private DevExpress.XtraNavBar.NavBarItem btnCadTipoVenda;
+        private DevExpress.XtraGrid.Columns.GridColumn colCodigounico;
+        private DevExpress.XtraGrid.Columns.GridColumn colOrcodigounico;
 
     }
 }

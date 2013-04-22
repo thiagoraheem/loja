@@ -101,7 +101,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAO\Loja.Designer.cs">
+    <Compile Include="Forms\frmVendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmVendas.Designer.cs">
+      <DependentUpon>frmVendas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Loja.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Loja.edmx</DependentUpon>
@@ -227,6 +233,9 @@
     <EmbeddedResource Include="Forms\frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmVendas.resx">
+      <DependentUpon>frmVendas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -251,7 +260,7 @@
       <DependentUpon>relRecibo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <EntityDeploy Include="DAO\Loja.edmx">
+    <EntityDeploy Include="Loja.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Loja.Designer.cs</LastGenOutput>
     </EntityDeploy>
@@ -316,7 +325,9 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DAO\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Images\Calendar_16x16.png" />
     <Content Include="Images\Drafts_16x16.png" />

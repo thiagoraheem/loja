@@ -51,6 +51,7 @@
             this.colQuantidade = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colValor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colVlrFinal = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTroco.Properties)).BeginInit();
@@ -286,7 +287,8 @@
             this.colOrDesProduto,
             this.colQuantidade,
             this.colValor,
-            this.colVlrFinal});
+            this.colVlrFinal,
+            this.colCodigounico});
             this.gridViewOrcamento.GridControl = this.gridOrcamento;
             this.gridViewOrcamento.GroupPanelText = "Orçamento";
             this.gridViewOrcamento.Name = "gridViewOrcamento";
@@ -347,6 +349,12 @@
             this.colVlrFinal.VisibleIndex = 4;
             this.colVlrFinal.Width = 107;
             // 
+            // colCodigounico
+            // 
+            this.colCodigounico.Caption = "Código único";
+            this.colCodigounico.FieldName = "codigounico";
+            this.colCodigounico.Name = "colCodigounico";
+            // 
             // frmVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -400,5 +408,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colVlrFinal;
         private DevExpress.XtraEditors.SimpleButton btnAplicarDesconto;
         private DevExpress.XtraEditors.SimpleButton btnCancelar;
+        private DevExpress.XtraGrid.Columns.GridColumn colCodigounico;
     }
 }

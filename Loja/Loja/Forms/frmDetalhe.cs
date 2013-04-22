@@ -38,11 +38,11 @@ namespace Loja
             }
         }
 
-        public void SU_CarregaProduto(String CodProduto, String DesLocal) {
+        public void SU_CarregaProduto(int CodProduto) {
             LojaEntities Loja = new LojaEntities();
 
             var produto = (from prod in Loja.tbl_Produtos
-                          where prod.CodProduto == CodProduto && prod.DesLocal == DesLocal
+                          where prod.codigounico == CodProduto
                           select prod).First();
             txtCodProduto.Text = produto.CodProduto;
             txtDesProduto.Text = produto.DesProduto;
