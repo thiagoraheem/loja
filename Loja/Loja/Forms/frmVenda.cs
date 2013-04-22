@@ -64,19 +64,19 @@ namespace Loja
             SU_CarregaOrcamento(CodOrcamento);
         }
 
-        String FU_PegaCodigoGrid()
+        int FU_PegaCodigoGrid()
         {
-            String codigo = "";
+            int codigo = -1;
 
             int linha = gridViewOrcamento.GetSelectedRows()[0];
-            codigo = gridViewOrcamento.GetRowCellValue(linha, colOrCodProduto).ToString();
+            codigo = (int)gridViewOrcamento.GetRowCellValue(linha, colCodigounico);
 
             return codigo;
         }
 
         private void btnAplicarDesconto_Click(object sender, EventArgs e)
         {
-            Loja.FU_DescontoVenda(CodOrcamento, txtDesconto.Value, "P");
+            Loja.FU_DescontoVenda(CodOrcamento, txtDesconto.Value);
             SU_CarregaOrcamento(CodOrcamento);
         }
 

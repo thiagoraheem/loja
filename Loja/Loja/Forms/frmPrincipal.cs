@@ -124,19 +124,19 @@ namespace Loja
 
         }
 
-        String FU_PegaCodigoGrid(String origem)
+        int FU_PegaCodigoGrid(String origem)
         {
-            String codigo = "";
+            int codigo = -1;
 
             if (origem == "P")
             {
                 int linha = gridViewProduto.GetSelectedRows()[0];
-                codigo = gridViewProduto.GetRowCellValue(linha, colCodProduto).ToString();
+                codigo = (int)gridViewProduto.GetRowCellValue(linha, colCodigounico);
             }
             else if (origem == "O")
             {
                 int linha = gridViewOrcamento.GetSelectedRows()[0];
-                codigo = gridViewOrcamento.GetRowCellValue(linha, colOrCodProduto).ToString();
+                codigo = (int)gridViewOrcamento.GetRowCellValue(linha, colOrcodigounico);
             }
 
             return codigo;
@@ -215,7 +215,7 @@ namespace Loja
         {
             if (e.KeyCode == Keys.Space)
             {
-                string codproduto = FU_PegaCodigoGrid("P");
+                int codproduto = FU_PegaCodigoGrid("P");
 
                 LojaEntities orcamento = new LojaEntities();
                 ObjectResult<string> codOrca = orcamento.FU_AddItemOrcamento(cmbCodOrca.EditValue.ToString(), codproduto);
@@ -225,40 +225,46 @@ namespace Loja
                 InitGridOrca();
             }
             else if (e.KeyCode == Keys.Return) {
-                string codproduto = FU_PegaCodigoGrid("P");;
-                string deslocal = FU_PegaLocalGrid();
+                int codproduto = FU_PegaCodigoGrid("P");;
 
                 frmDetalhe f = new frmDetalhe();
-                f.SU_CarregaProduto(codproduto, deslocal);
+                f.SU_CarregaProduto(codproduto);
                 f.ShowDialog();
             }
         }
 
         private void gridViewOrcamento_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            LojaEntities orcamento = new LojaEntities();
-
-            if (e.Column == colQuantidade) {
-                double quantidade = 0;
-                if (!e.Value.Equals(String.Empty))
+            using (LojaEntities orcamento = new LojaEntities())
+            {
+                if (e.Column == colQuantidade)
                 {
-                    quantidade = (double)e.Value;
+                    double quantidade;
+
+                    if (e.Value != null)
+                        quantidade = (double)e.Value;
+                    else
+                        quantidade = 0;
+
+
+                    orcamento.FU_AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), quantidade, -1);
                 }
-                orcamento.FU_AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), quantidade, -1);
-            }
-            else if (e.Column == colValor) {
-                orcamento.FU_AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), -1, (double)e.Value);
+                else
+                    if (e.Column == colValor)
+                    {
+                        orcamento.FU_AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), -1, (double)e.Value);
+                    }
             }
             InitGridOrca();
         }
 
         private void gridProdutos_DoubleClick(object sender, EventArgs e)
         {
-            string codproduto = FU_PegaCodigoGrid("P"); ;
+            int codproduto = FU_PegaCodigoGrid("P"); ;
             string deslocal = FU_PegaLocalGrid();
 
             frmProduto f = new frmProduto();
-            f.SU_CarregaProduto(codproduto, deslocal);
+            f.SU_CarregaProduto(codproduto);
             f.ShowDialog();
 
             InitGrid();
@@ -359,7 +365,19 @@ namespace Loja
                 f.ShowDialog();
 
             }
+            InitGrid();
         }
+
+        private void btnRelVendas_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            using (frmVendas f = new frmVendas())
+            {
+                f.ShowDialog();
+
+            }
+            InitGrid();
+        }
+
         #endregion
 
     }
