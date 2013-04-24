@@ -205,7 +205,7 @@
         </Function>
         <Function Name="spc_EstornaVenda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CodVenda" Type="int" Mode="In" />
-          <Parameter Name="CodProduto" Type="varchar" Mode="In" />
+          <Parameter Name="CodProduto" Type="int" Mode="In" />
           <Parameter Name="DesMotivo" Type="varchar" Mode="In" />
         </Function>
         <Function Name="spc_FinalizaVenda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -315,6 +315,11 @@
             <Parameter Name="QtdProduto" Mode="In" Type="Double" />
             <Parameter Name="VlrUnitario" Mode="In" Type="Decimal" />
             <Parameter Name="CodTipoEntrada" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FU_EstornaVenda">
+            <Parameter Name="CodVenda" Mode="In" Type="Int32" />
+            <Parameter Name="CodProduto" Mode="In" Type="Int32" />
+            <Parameter Name="DesMotivo" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="tbl_Orcamento">
@@ -633,6 +638,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="FU_AdicionarEntrada" FunctionName="LojaModel.Store.spc_AdicionarEntrada" />
+          <FunctionImportMapping FunctionImportName="FU_EstornaVenda" FunctionName="LojaModel.Store.spc_EstornaVenda" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

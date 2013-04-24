@@ -742,6 +742,47 @@ namespace Loja
     
             return base.ExecuteFunction("FU_AdicionarEntrada", docEntradaParameter, datEntradaParameter, codProdutoParameter, qtdProdutoParameter, vlrUnitarioParameter, codTipoEntradaParameter);
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="codVenda">No Metadata Documentation available.</param>
+        /// <param name="codProduto">No Metadata Documentation available.</param>
+        /// <param name="desMotivo">No Metadata Documentation available.</param>
+        public int FU_EstornaVenda(Nullable<global::System.Int32> codVenda, Nullable<global::System.Int32> codProduto, global::System.String desMotivo)
+        {
+            ObjectParameter codVendaParameter;
+            if (codVenda.HasValue)
+            {
+                codVendaParameter = new ObjectParameter("CodVenda", codVenda);
+            }
+            else
+            {
+                codVendaParameter = new ObjectParameter("CodVenda", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter codProdutoParameter;
+            if (codProduto.HasValue)
+            {
+                codProdutoParameter = new ObjectParameter("CodProduto", codProduto);
+            }
+            else
+            {
+                codProdutoParameter = new ObjectParameter("CodProduto", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter desMotivoParameter;
+            if (desMotivo != null)
+            {
+                desMotivoParameter = new ObjectParameter("DesMotivo", desMotivo);
+            }
+            else
+            {
+                desMotivoParameter = new ObjectParameter("DesMotivo", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction("FU_EstornaVenda", codVendaParameter, codProdutoParameter, desMotivoParameter);
+        }
 
         #endregion
     }
