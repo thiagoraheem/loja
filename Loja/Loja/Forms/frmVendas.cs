@@ -51,7 +51,17 @@ namespace Loja
 
         private void btnEstornar_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Confirma estornar essa venda?", "Confirmar exclusão", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+            int codigo = FU_PegaCodigoGrid();
+            int codvenda = FU_PegaCodigoVenda();
 
+            Loja.FU_EstornaVenda(codvenda, codigo, "");
+            Loja.SaveChanges();
+
+            MessageBox.Show("Item estornado com sucesso");
+
+            Close();
         }
 
         private void btnConsultar_Click(object sender, EventArgs e)
@@ -90,6 +100,26 @@ namespace Loja
                          select saida;
             grdDados.DataSource = saidas;
 
+        }
+
+        int FU_PegaCodigoGrid()
+        {
+            int codigo = -1;
+
+            int linha = gridDados.GetSelectedRows()[0];
+            codigo = (int)gridDados.GetRowCellValue(linha, colCodigounico);
+
+            return codigo;
+        }
+
+        int FU_PegaCodigoVenda()
+        {
+            int codigo = -1;
+
+            int linha = gridDados.GetSelectedRows()[0];
+            codigo = (int)gridDados.GetRowCellValue(linha, colCodVenda);
+
+            return codigo;
         }
 
 #endregion

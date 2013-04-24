@@ -185,6 +185,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>relEstMinimo.xsd</DependentUpon>
     </Compile>
+    <Compile Include="relVendas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>relVendas.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\relEstMinimo.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -202,6 +207,12 @@
     </Compile>
     <Compile Include="Reports\relRecibo.Designer.cs">
       <DependentUpon>relRecibo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\relVendas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\relVendas.Designer.cs">
+      <DependentUpon>relVendas.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\frmCadTipoEntrada.resx">
       <DependentUpon>frmCadTipoEntrada.cs</DependentUpon>
@@ -259,6 +270,9 @@
     <EmbeddedResource Include="Reports\relRecibo.resx">
       <DependentUpon>relRecibo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\relVendas.resx">
+      <DependentUpon>relVendas.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <EntityDeploy Include="Loja.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -296,6 +310,17 @@
     </None>
     <None Include="relEstMinimo.xss">
       <DependentUpon>relEstMinimo.xsd</DependentUpon>
+    </None>
+    <None Include="relVendas.xsc">
+      <DependentUpon>relVendas.xsd</DependentUpon>
+    </None>
+    <None Include="relVendas.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>relVendas.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="relVendas.xss">
+      <DependentUpon>relVendas.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

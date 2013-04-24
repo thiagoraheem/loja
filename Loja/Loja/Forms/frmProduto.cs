@@ -14,19 +14,24 @@ namespace Loja
 {
     public partial class frmProduto : DevExpress.XtraEditors.XtraForm
     {
+
+        #region Variáveis
         private bool novo;
         Loja.tbl_Produtos produto;
         LojaEntities Loja = new LojaEntities();
+
+#endregion
+
+        #region Form Events
 
         public frmProduto()
         {
             InitializeComponent();
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        #endregion
+
+        #region Funções
 
         public void SU_CarregaProduto(int CodProduto)
         {
@@ -98,6 +103,14 @@ namespace Loja
                 MessageBox.Show(ex.Message);
             }
         }
+#endregion
+
+        #region Botões
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
         private void cmdGravar_Click(object sender, EventArgs e)
         {
@@ -116,5 +129,7 @@ namespace Loja
 
             Close();
         }
+
+        #endregion
     }
 }

@@ -48,6 +48,8 @@
             this.colVlrUnitario = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colQuantidade = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colVlrFinal = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCodVenda = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTipoVenda.Properties)).BeginInit();
@@ -231,7 +233,9 @@
             this.colDesProduto,
             this.colVlrUnitario,
             this.colQuantidade,
-            this.colVlrFinal});
+            this.colVlrFinal,
+            this.colCodigounico,
+            this.colCodVenda});
             this.gridDados.GridControl = this.grdDados;
             this.gridDados.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "DatSaida", this.colData, "")});
@@ -305,6 +309,18 @@
             this.colVlrFinal.VisibleIndex = 5;
             this.colVlrFinal.Width = 70;
             // 
+            // colCodigounico
+            // 
+            this.colCodigounico.Caption = "Código Único";
+            this.colCodigounico.FieldName = "codigounico";
+            this.colCodigounico.Name = "colCodigounico";
+            // 
+            // colCodVenda
+            // 
+            this.colCodVenda.Caption = "Código Venda";
+            this.colCodVenda.FieldName = "CodVenda";
+            this.colCodVenda.Name = "colCodVenda";
+            // 
             // frmVendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -353,5 +369,7 @@
         private DevExpress.XtraEditors.LookUpEdit cmbProduto;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LookUpEdit cmbTipoVenda;
+        private DevExpress.XtraGrid.Columns.GridColumn colCodigounico;
+        private DevExpress.XtraGrid.Columns.GridColumn colCodVenda;
     }
 }
