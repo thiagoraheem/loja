@@ -113,6 +113,7 @@
             this.colValor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colVlrFinal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOrcodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnExcluirOrca = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer2)).BeginInit();
@@ -189,10 +190,11 @@
             this.btnImprimir,
             this.btnFinalizarVenda,
             this.btnFazerBackup,
-            this.cmbCodOrca});
+            this.cmbCodOrca,
+            this.btnExcluirOrca});
             this.ribbonControl.LargeImages = this.ribbonImageCollectionLarge;
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 75;
+            this.ribbonControl.MaxItemId = 76;
             this.ribbonControl.MiniToolbars.Add(this.ribbonMiniToolbar1);
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.PageHeaderItemLinks.Add(this.iAbout);
@@ -503,6 +505,7 @@
             this.ribbonImageCollectionLarge.Images.SetKeyName(9, "PrintHS.png");
             this.ribbonImageCollectionLarge.Images.SetKeyName(10, "SaveAllHS.png");
             this.ribbonImageCollectionLarge.Images.SetKeyName(11, "1365051122_shopcartapply_128x128.png");
+            this.ribbonImageCollectionLarge.Images.SetKeyName(12, "Trashcan_full.png");
             // 
             // homeRibbonPage
             // 
@@ -533,6 +536,7 @@
             // 
             this.ribbonPageGroup1.ItemLinks.Add(this.cmbCodOrca);
             this.ribbonPageGroup1.ItemLinks.Add(this.txtQtdItem);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnExcluirOrca);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnImprimir);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnFinalizarVenda, "F12");
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
@@ -775,7 +779,6 @@
             // grpRelatorios
             // 
             this.grpRelatorios.Caption = "Relatórios";
-            this.grpRelatorios.Expanded = true;
             this.grpRelatorios.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.btnEstMinimo),
             new DevExpress.XtraNavBar.NavBarItemLink(this.btnRelVendas),
@@ -937,6 +940,15 @@
             this.colOrcodigounico.FieldName = "codigounico";
             this.colOrcodigounico.Name = "colOrcodigounico";
             // 
+            // btnExcluirOrca
+            // 
+            this.btnExcluirOrca.Caption = "Excluir";
+            this.btnExcluirOrca.Enabled = false;
+            this.btnExcluirOrca.Id = 75;
+            this.btnExcluirOrca.LargeImageIndex = 12;
+            this.btnExcluirOrca.Name = "btnExcluirOrca";
+            this.btnExcluirOrca.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExcluirOrca_ItemClick);
+            // 
             // frmPrincipal
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
@@ -1065,6 +1077,7 @@
         private DevExpress.XtraNavBar.NavBarItem btnCadTipoVenda;
         private DevExpress.XtraGrid.Columns.GridColumn colCodigounico;
         private DevExpress.XtraGrid.Columns.GridColumn colOrcodigounico;
+        private DevExpress.XtraBars.BarButtonItem btnExcluirOrca;
 
     }
 }

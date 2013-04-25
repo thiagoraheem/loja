@@ -63,9 +63,10 @@ namespace Loja
         void InitGridOrca()
         {
 
-            if (cmbCodOrca.EditValue.ToString().Equals(String.Empty)) {
+            if (String.IsNullOrEmpty(cmbCodOrca.EditValue.ToString())) {
                 btnImprimir.Enabled = false;
                 btnFinalizarVenda.Enabled = false;
+                btnExcluirOrca.Enabled = false;
                 txtQtdItem.EditValue = "";
                 gridOrcamento.DataSource = null;
                 return;
@@ -89,6 +90,7 @@ namespace Loja
 
                 btnFinalizarVenda.Enabled = true;
                 btnImprimir.Enabled = true;
+                btnExcluirOrca.Enabled = true;
 
                 wait.Close();
             }
@@ -208,6 +210,19 @@ namespace Loja
             Properties.Settings.Default.Estilo = e.Item.Caption;
             Properties.Settings.Default.Save();
         }
+
+        private void btnExcluirOrca_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            LojaEntities loja = new LojaEntities();
+            loja.FU_ApagarOrcamento(cmbCodOrca.EditValue.ToString());
+            InitGrid();
+            InitGridOrca();
+            InitComboOrca();
+            btnImprimir.Enabled = false;
+            btnFinalizarVenda.Enabled = false;
+            btnExcluirOrca.Enabled = false;
+        }
+
         #endregion
 
         #region Eventos Grids
@@ -378,7 +393,7 @@ namespace Loja
             InitGrid();
         }
 
-        #endregion
+    }  
+    #endregion
 
-    }
 }

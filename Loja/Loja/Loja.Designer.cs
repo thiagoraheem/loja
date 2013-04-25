@@ -783,6 +783,25 @@ namespace Loja
     
             return base.ExecuteFunction("FU_EstornaVenda", codVendaParameter, codProdutoParameter, desMotivoParameter);
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="original_CodOrca">No Metadata Documentation available.</param>
+        public int FU_ApagarOrcamento(global::System.String original_CodOrca)
+        {
+            ObjectParameter original_CodOrcaParameter;
+            if (original_CodOrca != null)
+            {
+                original_CodOrcaParameter = new ObjectParameter("Original_CodOrca", original_CodOrca);
+            }
+            else
+            {
+                original_CodOrcaParameter = new ObjectParameter("Original_CodOrca", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction("FU_ApagarOrcamento", original_CodOrcaParameter);
+        }
 
         #endregion
     }

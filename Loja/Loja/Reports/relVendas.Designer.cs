@@ -52,7 +52,6 @@
             this.pageFooterBand1 = new DevExpress.XtraReports.UI.PageFooterBand();
             this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.xrPageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
-            this.reportHeaderBand1 = new DevExpress.XtraReports.UI.ReportHeaderBand();
             this.xrLabel13 = new DevExpress.XtraReports.UI.XRLabel();
             this.Title = new DevExpress.XtraReports.UI.XRControlStyle();
             this.FieldCaption = new DevExpress.XtraReports.UI.XRControlStyle();
@@ -63,6 +62,10 @@
             this.GroupFooter1 = new DevExpress.XtraReports.UI.GroupFooterBand();
             this.xrLabel15 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel14 = new DevExpress.XtraReports.UI.XRLabel();
+            this.PageHeader = new DevExpress.XtraReports.UI.PageHeaderBand();
+            this.lblTelefone = new DevExpress.XtraReports.UI.XRLabel();
+            this.lblEndereco = new DevExpress.XtraReports.UI.XRLabel();
+            this.lblEmpresa = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.relVendas1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
@@ -265,21 +268,16 @@
             this.xrPageInfo2.StyleName = "PageInfo";
             this.xrPageInfo2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             // 
-            // reportHeaderBand1
-            // 
-            this.reportHeaderBand1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrLabel13});
-            this.reportHeaderBand1.HeightF = 51F;
-            this.reportHeaderBand1.Name = "reportHeaderBand1";
-            // 
             // xrLabel13
             // 
-            this.xrLabel13.LocationFloat = new DevExpress.Utils.PointFloat(6F, 6F);
+            this.xrLabel13.LocationFloat = new DevExpress.Utils.PointFloat(0F, 87.24995F);
             this.xrLabel13.Name = "xrLabel13";
             this.xrLabel13.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel13.SizeF = new System.Drawing.SizeF(638F, 33F);
+            this.xrLabel13.SizeF = new System.Drawing.SizeF(728.9999F, 33F);
             this.xrLabel13.StyleName = "Title";
+            this.xrLabel13.StylePriority.UseTextAlignment = false;
             this.xrLabel13.Text = "Relatório de Vendas";
+            this.xrLabel13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // Title
             // 
@@ -324,12 +322,12 @@
             // 
             // topMarginBand1
             // 
-            this.topMarginBand1.HeightF = 38.54167F;
+            this.topMarginBand1.HeightF = 39F;
             this.topMarginBand1.Name = "topMarginBand1";
             // 
             // bottomMarginBand1
             // 
-            this.bottomMarginBand1.HeightF = 28.2917F;
+            this.bottomMarginBand1.HeightF = 28F;
             this.bottomMarginBand1.Name = "bottomMarginBand1";
             // 
             // GroupFooter1
@@ -364,6 +362,43 @@
             this.xrLabel14.Summary = xrSummary2;
             this.xrLabel14.Text = "xrLabel14";
             // 
+            // PageHeader
+            // 
+            this.PageHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.lblEmpresa,
+            this.lblEndereco,
+            this.lblTelefone,
+            this.xrLabel13});
+            this.PageHeader.HeightF = 120.2499F;
+            this.PageHeader.Name = "PageHeader";
+            // 
+            // lblTelefone
+            // 
+            this.lblTelefone.LocationFloat = new DevExpress.Utils.PointFloat(500.2316F, 44.45829F);
+            this.lblTelefone.Multiline = true;
+            this.lblTelefone.Name = "lblTelefone";
+            this.lblTelefone.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lblTelefone.SizeF = new System.Drawing.SizeF(175.2684F, 23F);
+            this.lblTelefone.Text = "\r\n";
+            // 
+            // lblEndereco
+            // 
+            this.lblEndereco.Font = new System.Drawing.Font("Times New Roman", 11F);
+            this.lblEndereco.LocationFloat = new DevExpress.Utils.PointFloat(0F, 44.45829F);
+            this.lblEndereco.Name = "lblEndereco";
+            this.lblEndereco.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lblEndereco.SizeF = new System.Drawing.SizeF(395.67F, 23F);
+            this.lblEndereco.Text = "Rua Parintins, 186 - Cachoeirinha - Cep: 69065-050";
+            // 
+            // lblEmpresa
+            // 
+            this.lblEmpresa.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
+            this.lblEmpresa.Name = "lblEmpresa";
+            this.lblEmpresa.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lblEmpresa.SizeF = new System.Drawing.SizeF(296.7117F, 33F);
+            this.lblEmpresa.StyleName = "Title";
+            this.lblEmpresa.Text = "AUTO PADRÃO PEÇAS";
+            // 
             // relVendas
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -371,14 +406,14 @@
             this.groupHeaderBand1,
             this.groupHeaderBand2,
             this.pageFooterBand1,
-            this.reportHeaderBand1,
             this.topMarginBand1,
             this.bottomMarginBand1,
-            this.GroupFooter1});
+            this.GroupFooter1,
+            this.PageHeader});
             this.DataAdapter = this.tbl_SaidasAdapter1;
             this.DataMember = "tbl_Saidas";
             this.DataSource = this.relVendas1;
-            this.Margins = new System.Drawing.Printing.Margins(100, 100, 39, 28);
+            this.Margins = new System.Drawing.Printing.Margins(60, 61, 39, 28);
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.Title,
             this.FieldCaption,
@@ -415,7 +450,6 @@
         private DevExpress.XtraReports.UI.PageFooterBand pageFooterBand1;
         private DevExpress.XtraReports.UI.XRPageInfo xrPageInfo1;
         private DevExpress.XtraReports.UI.XRPageInfo xrPageInfo2;
-        private DevExpress.XtraReports.UI.ReportHeaderBand reportHeaderBand1;
         private DevExpress.XtraReports.UI.XRLabel xrLabel13;
         private DevExpress.XtraReports.UI.XRControlStyle Title;
         private DevExpress.XtraReports.UI.XRControlStyle FieldCaption;
@@ -426,5 +460,9 @@
         private DevExpress.XtraReports.UI.GroupFooterBand GroupFooter1;
         private DevExpress.XtraReports.UI.XRLabel xrLabel15;
         private DevExpress.XtraReports.UI.XRLabel xrLabel14;
+        private DevExpress.XtraReports.UI.PageHeaderBand PageHeader;
+        private DevExpress.XtraReports.UI.XRLabel lblEmpresa;
+        private DevExpress.XtraReports.UI.XRLabel lblEndereco;
+        private DevExpress.XtraReports.UI.XRLabel lblTelefone;
     }
 }
