@@ -13,20 +13,11 @@ namespace Loja.Reports
         private int _CodProduto;
         private int _CodTipoVenda;
 
-        public relVendas(DateTime DatIni, DateTime DatFim, int CodProduto, int CodTipoVenda)
-        {
-            InitializeComponent();
-
-            this._DatIni = DatIni;
-            this._DatFim = DatFim;
-            this._CodProduto = CodProduto;
-            this._CodTipoVenda = CodTipoVenda;
-
-        }
-
         private void relVendas_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-
+            lblTelefone.Text = "Telefone: " + Properties.Settings.Default.Telefone;
+            lblEndereco.Text = Properties.Settings.Default.Endereco;
+            lblEmpresa.Text = Properties.Settings.Default.NomeFantasia;
         }
 
     }

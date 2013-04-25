@@ -17,7 +17,7 @@ namespace Loja.Reports
         {
             lblTelefone.Text = "Telefone: " + Properties.Settings.Default.Telefone;
             lblEndereco.Text = Properties.Settings.Default.Endereco;
-            lblEmpresa.Text = Properties.Settings.Default.Nome;
+            lblEmpresa.Text = Properties.Settings.Default.NomeFantasia;
         }
 
     }

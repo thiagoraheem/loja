@@ -321,6 +321,9 @@
             <Parameter Name="CodProduto" Mode="In" Type="Int32" />
             <Parameter Name="DesMotivo" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="FU_ApagarOrcamento">
+            <Parameter Name="Original_CodOrca" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="tbl_Orcamento">
           <Key>
@@ -639,6 +642,7 @@
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="FU_AdicionarEntrada" FunctionName="LojaModel.Store.spc_AdicionarEntrada" />
           <FunctionImportMapping FunctionImportName="FU_EstornaVenda" FunctionName="LojaModel.Store.spc_EstornaVenda" />
+          <FunctionImportMapping FunctionImportName="FU_ApagarOrcamento" FunctionName="LojaModel.Store.spc_ApagarOrcamento" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
