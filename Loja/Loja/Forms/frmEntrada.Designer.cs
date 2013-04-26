@@ -45,6 +45,11 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.txtVlrTotal = new DevExpress.XtraEditors.CalcEdit();
             this.chkContinuar = new DevExpress.XtraEditors.CheckEdit();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.txtPercentual = new DevExpress.XtraEditors.CalcEdit();
+            this.txtVlrFinal = new DevExpress.XtraEditors.CalcEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDocEntrada.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatEntrada.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatEntrada.Properties)).BeginInit();
@@ -54,6 +59,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbTipoEntrada.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVlrTotal.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkContinuar.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPercentual.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVlrFinal.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // txtDocEntrada
@@ -80,7 +88,7 @@
             // cmbProduto
             // 
             this.cmbProduto.EnterMoveNextControl = true;
-            this.cmbProduto.Location = new System.Drawing.Point(141, 79);
+            this.cmbProduto.Location = new System.Drawing.Point(247, 75);
             this.cmbProduto.Name = "cmbProduto";
             this.cmbProduto.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFit;
             this.cmbProduto.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -135,12 +143,13 @@
             this.cmbTipoEntrada.Properties.ValueMember = "CodTipoVenda";
             this.cmbTipoEntrada.Size = new System.Drawing.Size(132, 20);
             this.cmbTipoEntrada.TabIndex = 5;
+            this.cmbTipoEntrada.Visible = false;
             // 
             // btnRetornar
             // 
             this.btnRetornar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRetornar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnRetornar.Location = new System.Drawing.Point(308, 230);
+            this.btnRetornar.Location = new System.Drawing.Point(420, 213);
             this.btnRetornar.Name = "btnRetornar";
             this.btnRetornar.Size = new System.Drawing.Size(75, 23);
             this.btnRetornar.TabIndex = 8;
@@ -150,7 +159,7 @@
             // btnGravar
             // 
             this.btnGravar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGravar.Location = new System.Drawing.Point(227, 230);
+            this.btnGravar.Location = new System.Drawing.Point(339, 213);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(75, 23);
             this.btnGravar.TabIndex = 6;
@@ -212,6 +221,7 @@
             this.labelControl7.Size = new System.Drawing.Size(80, 13);
             this.labelControl7.TabIndex = 15;
             this.labelControl7.Text = "Tipo de Entrada:";
+            this.labelControl7.Visible = false;
             // 
             // txtVlrTotal
             // 
@@ -226,18 +236,69 @@
             // 
             // chkContinuar
             // 
-            this.chkContinuar.Location = new System.Drawing.Point(96, 234);
+            this.chkContinuar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkContinuar.Location = new System.Drawing.Point(208, 217);
             this.chkContinuar.Name = "chkContinuar";
             this.chkContinuar.Properties.Caption = "Fechar ao gravar";
             this.chkContinuar.Size = new System.Drawing.Size(125, 19);
             this.chkContinuar.TabIndex = 7;
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Location = new System.Drawing.Point(258, 136);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(55, 13);
+            this.labelControl8.TabIndex = 18;
+            this.labelControl8.Text = "Percentual:";
+            // 
+            // txtPercentual
+            // 
+            this.txtPercentual.EnterMoveNextControl = true;
+            this.txtPercentual.Location = new System.Drawing.Point(329, 133);
+            this.txtPercentual.Name = "txtPercentual";
+            this.txtPercentual.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtPercentual.Size = new System.Drawing.Size(100, 20);
+            this.txtPercentual.TabIndex = 17;
+            // 
+            // txtVlrFinal
+            // 
+            this.txtVlrFinal.Location = new System.Drawing.Point(329, 159);
+            this.txtVlrFinal.Name = "txtVlrFinal";
+            this.txtVlrFinal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtVlrFinal.Properties.ReadOnly = true;
+            this.txtVlrFinal.Size = new System.Drawing.Size(100, 20);
+            this.txtVlrFinal.TabIndex = 20;
+            this.txtVlrFinal.TabStop = false;
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Location = new System.Drawing.Point(266, 162);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(45, 13);
+            this.labelControl9.TabIndex = 19;
+            this.labelControl9.Text = "Vlr. Final:";
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.EnterMoveNextControl = true;
+            this.textEdit1.Location = new System.Drawing.Point(141, 75);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Size = new System.Drawing.Size(100, 20);
+            this.textEdit1.TabIndex = 21;
             // 
             // frmEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnRetornar;
-            this.ClientSize = new System.Drawing.Size(395, 265);
+            this.ClientSize = new System.Drawing.Size(507, 248);
+            this.Controls.Add(this.textEdit1);
+            this.Controls.Add(this.txtVlrFinal);
+            this.Controls.Add(this.labelControl9);
+            this.Controls.Add(this.labelControl8);
+            this.Controls.Add(this.txtPercentual);
             this.Controls.Add(this.chkContinuar);
             this.Controls.Add(this.txtVlrTotal);
             this.Controls.Add(this.labelControl7);
@@ -268,6 +329,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbTipoEntrada.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVlrTotal.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkContinuar.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPercentual.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVlrFinal.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -292,5 +356,10 @@
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.CalcEdit txtVlrTotal;
         private DevExpress.XtraEditors.CheckEdit chkContinuar;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.CalcEdit txtPercentual;
+        private DevExpress.XtraEditors.CalcEdit txtVlrFinal;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.TextEdit textEdit1;
     }
 }
