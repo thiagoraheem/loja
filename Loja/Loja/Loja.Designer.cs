@@ -678,7 +678,8 @@ namespace Loja
         /// <param name="qtdProduto">No Metadata Documentation available.</param>
         /// <param name="vlrUnitario">No Metadata Documentation available.</param>
         /// <param name="codTipoEntrada">No Metadata Documentation available.</param>
-        public int FU_AdicionarEntrada(global::System.String docEntrada, Nullable<global::System.DateTime> datEntrada, Nullable<global::System.Int32> codProduto, Nullable<global::System.Double> qtdProduto, Nullable<global::System.Decimal> vlrUnitario, Nullable<global::System.Int32> codTipoEntrada)
+        /// <param name="percentual">No Metadata Documentation available.</param>
+        public int FU_AdicionarEntrada(global::System.String docEntrada, Nullable<global::System.DateTime> datEntrada, Nullable<global::System.Int32> codProduto, Nullable<global::System.Double> qtdProduto, Nullable<global::System.Decimal> vlrUnitario, Nullable<global::System.Int32> codTipoEntrada, Nullable<global::System.Double> percentual)
         {
             ObjectParameter docEntradaParameter;
             if (docEntrada != null)
@@ -740,7 +741,17 @@ namespace Loja
                 codTipoEntradaParameter = new ObjectParameter("CodTipoEntrada", typeof(global::System.Int32));
             }
     
-            return base.ExecuteFunction("FU_AdicionarEntrada", docEntradaParameter, datEntradaParameter, codProdutoParameter, qtdProdutoParameter, vlrUnitarioParameter, codTipoEntradaParameter);
+            ObjectParameter percentualParameter;
+            if (percentual.HasValue)
+            {
+                percentualParameter = new ObjectParameter("Percentual", percentual);
+            }
+            else
+            {
+                percentualParameter = new ObjectParameter("Percentual", typeof(global::System.Double));
+            }
+    
+            return base.ExecuteFunction("FU_AdicionarEntrada", docEntradaParameter, datEntradaParameter, codProdutoParameter, qtdProdutoParameter, vlrUnitarioParameter, codTipoEntradaParameter, percentualParameter);
         }
     
         /// <summary>
@@ -1021,6 +1032,30 @@ namespace Loja
         private global::System.Int32 _codigounico;
         partial void OncodigounicoChanging(global::System.Int32 value);
         partial void OncodigounicoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Double> Percentual
+        {
+            get
+            {
+                return _Percentual;
+            }
+            set
+            {
+                OnPercentualChanging(value);
+                ReportPropertyChanging("Percentual");
+                _Percentual = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Percentual");
+                OnPercentualChanged();
+            }
+        }
+        private Nullable<global::System.Double> _Percentual;
+        partial void OnPercentualChanging(Nullable<global::System.Double> value);
+        partial void OnPercentualChanged();
 
         #endregion
     

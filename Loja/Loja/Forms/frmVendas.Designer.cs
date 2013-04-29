@@ -330,6 +330,7 @@
             this.Controls.Add(this.grdDados);
             this.Controls.Add(this.groupControl1);
             this.Name = "frmVendas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vendas";
             this.Load += new System.EventHandler(this.frmVendas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();

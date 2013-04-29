@@ -365,6 +365,7 @@
             this.Controls.Add(this.groupControl1);
             this.KeyPreview = true;
             this.Name = "frmVenda";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Finalizar Venda";
             this.Load += new System.EventHandler(this.frmVenda_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();

@@ -239,6 +239,7 @@
             this.Controls.Add(this.grdDados);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmCadTipoVenda";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tipos de Venda";
             this.Load += new System.EventHandler(this.frmCadTipoVenda_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdDados)).EndInit();

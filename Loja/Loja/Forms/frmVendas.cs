@@ -8,7 +8,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-
+using DevExpress.LookAndFeel;
+using DevExpress.XtraReports.UI;
 namespace Loja
 {
     public partial class frmVendas : DevExpress.XtraEditors.XtraForm
@@ -46,7 +47,19 @@ namespace Loja
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
+            using (Reports.relVendas relatorio = new Reports.relVendas())
+            {
 
+                ReportPrintTool printTool = new ReportPrintTool(relatorio);
+
+                int codproduto = cmbProduto.EditValue == null ? 0 : (int)cmbProduto.EditValue;
+                int codtipovenda = cmbTipoVenda.EditValue == null ? 0 : (int)cmbTipoVenda.EditValue;
+
+                relatorio.SU_SetParam(txtDatInicio.DateTime, txtDatFim.DateTime, codproduto, codtipovenda);
+
+                printTool.ShowRibbonPreviewDialog();
+                printTool.ShowRibbonPreview(UserLookAndFeel.Default);
+            }
         }
 
         private void btnEstornar_Click(object sender, EventArgs e)

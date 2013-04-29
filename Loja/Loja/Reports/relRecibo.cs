@@ -23,7 +23,7 @@ namespace Loja.Reports
                 lblCnpj.Text = "CNPJ: " + Properties.Settings.Default.CNPJ;
             if (!String.IsNullOrEmpty(Properties.Settings.Default.InscEstadual))
             lblInscEstadual.Text = "INSC. ESTADUAL: " + Properties.Settings.Default.InscEstadual;
-            lblEmpresaAssinatura.Text = Properties.Settings.Default.Nome;
+            lblEmpresaAssinatura.Text = Properties.Settings.Default.NomeFantasia;
 
             String data = DateTime.Now.ToLongDateString();
 
