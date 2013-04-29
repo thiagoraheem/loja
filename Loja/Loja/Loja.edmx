@@ -38,6 +38,7 @@
           <Property Name="VlrTotal" Type="numeric" Precision="37" Scale="2" StoreGeneratedPattern="Computed" />
           <Property Name="CodTipoEntrada" Type="int" Nullable="false" />
           <Property Name="codigounico" Type="int" Nullable="false" />
+          <Property Name="Percentual" Type="float" />
         </EntityType>
         <EntityType Name="tbl_Orcamento">
           <Key>
@@ -185,6 +186,7 @@
           <Parameter Name="QtdProduto" Type="float" Mode="In" />
           <Parameter Name="VlrUnitario" Type="money" Mode="In" />
           <Parameter Name="CodTipoEntrada" Type="int" Mode="In" />
+          <Parameter Name="Percentual" Type="float" Mode="In" />
         </Function>
         <Function Name="spc_AdicionarOrcamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CodOrca" Type="varchar" Mode="In" />
@@ -315,6 +317,7 @@
             <Parameter Name="QtdProduto" Mode="In" Type="Double" />
             <Parameter Name="VlrUnitario" Mode="In" Type="Decimal" />
             <Parameter Name="CodTipoEntrada" Mode="In" Type="Int32" />
+            <Parameter Name="Percentual" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="FU_EstornaVenda">
             <Parameter Name="CodVenda" Mode="In" Type="Int32" />
@@ -322,7 +325,7 @@
             <Parameter Name="DesMotivo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="FU_ApagarOrcamento">
-            <Parameter Name="Original_CodOrca" Mode="In" Type="String" />
+          <Parameter Name="Original_CodOrca" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="tbl_Orcamento">
@@ -474,6 +477,7 @@
           <Property Type="Decimal" Name="VlrTotal" Precision="37" Scale="2" annotation:StoreGeneratedPattern="Computed" />
           <Property Type="Int32" Name="CodTipoEntrada" Nullable="false" />
           <Property Type="Int32" Name="codigounico" Nullable="false" />
+          <Property Type="Double" Name="Percentual" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -630,6 +634,7 @@
           <EntitySetMapping Name="tbl_Entrada">
             <EntityTypeMapping TypeName="LojaModel.tbl_Entrada">
               <MappingFragment StoreEntitySet="tbl_Entrada">
+                <ScalarProperty Name="Percentual" ColumnName="Percentual" />
                 <ScalarProperty Name="codigounico" ColumnName="codigounico" />
                 <ScalarProperty Name="CodTipoEntrada" ColumnName="CodTipoEntrada" />
                 <ScalarProperty Name="VlrTotal" ColumnName="VlrTotal" />

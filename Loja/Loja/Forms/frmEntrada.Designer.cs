@@ -49,7 +49,7 @@
             this.txtPercentual = new DevExpress.XtraEditors.CalcEdit();
             this.txtVlrFinal = new DevExpress.XtraEditors.CalcEdit();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.cmbCodProduto = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDocEntrada.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatEntrada.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatEntrada.Properties)).BeginInit();
@@ -61,7 +61,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkContinuar.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPercentual.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVlrFinal.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbCodProduto.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // txtDocEntrada
@@ -104,7 +104,8 @@
             this.cmbProduto.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.cmbProduto.Properties.ValueMember = "codigounico";
             this.cmbProduto.Size = new System.Drawing.Size(242, 20);
-            this.cmbProduto.TabIndex = 2;
+            this.cmbProduto.TabIndex = 12;
+            this.cmbProduto.Validated += new System.EventHandler(this.cmbProduto_Validated);
             // 
             // txtQuantidade
             // 
@@ -124,6 +125,7 @@
             this.txtVlrUnitario.Name = "txtVlrUnitario";
             this.txtVlrUnitario.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtVlrUnitario.Properties.Mask.EditMask = "c";
             this.txtVlrUnitario.Size = new System.Drawing.Size(100, 20);
             this.txtVlrUnitario.TabIndex = 4;
             this.txtVlrUnitario.EditValueChanged += new System.EventHandler(this.txtVlrUnitario_EditValueChanged);
@@ -142,7 +144,7 @@
             this.cmbTipoEntrada.Properties.NullText = "[Selecione um tipo]";
             this.cmbTipoEntrada.Properties.ValueMember = "CodTipoVenda";
             this.cmbTipoEntrada.Size = new System.Drawing.Size(132, 20);
-            this.cmbTipoEntrada.TabIndex = 5;
+            this.cmbTipoEntrada.TabIndex = 6;
             this.cmbTipoEntrada.Visible = false;
             // 
             // btnRetornar
@@ -162,7 +164,7 @@
             this.btnGravar.Location = new System.Drawing.Point(339, 213);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(75, 23);
-            this.btnGravar.TabIndex = 6;
+            this.btnGravar.TabIndex = 7;
             this.btnGravar.Text = "&Gravar";
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
@@ -195,7 +197,7 @@
             this.labelControl4.Location = new System.Drawing.Point(29, 109);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(60, 13);
-            this.labelControl4.TabIndex = 12;
+            this.labelControl4.TabIndex = 13;
             this.labelControl4.Text = "Quantidade:";
             // 
             // labelControl5
@@ -203,7 +205,7 @@
             this.labelControl5.Location = new System.Drawing.Point(29, 136);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(60, 13);
-            this.labelControl5.TabIndex = 13;
+            this.labelControl5.TabIndex = 14;
             this.labelControl5.Text = "Vlr. Unitário:";
             // 
             // labelControl6
@@ -211,7 +213,7 @@
             this.labelControl6.Location = new System.Drawing.Point(29, 162);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(47, 13);
-            this.labelControl6.TabIndex = 14;
+            this.labelControl6.TabIndex = 16;
             this.labelControl6.Text = "Vlr. Total:";
             // 
             // labelControl7
@@ -219,7 +221,7 @@
             this.labelControl7.Location = new System.Drawing.Point(29, 188);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(80, 13);
-            this.labelControl7.TabIndex = 15;
+            this.labelControl7.TabIndex = 20;
             this.labelControl7.Text = "Tipo de Entrada:";
             this.labelControl7.Visible = false;
             // 
@@ -229,9 +231,10 @@
             this.txtVlrTotal.Name = "txtVlrTotal";
             this.txtVlrTotal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtVlrTotal.Properties.Mask.EditMask = "c";
             this.txtVlrTotal.Properties.ReadOnly = true;
             this.txtVlrTotal.Size = new System.Drawing.Size(100, 20);
-            this.txtVlrTotal.TabIndex = 16;
+            this.txtVlrTotal.TabIndex = 17;
             this.txtVlrTotal.TabStop = false;
             // 
             // chkContinuar
@@ -241,14 +244,14 @@
             this.chkContinuar.Name = "chkContinuar";
             this.chkContinuar.Properties.Caption = "Fechar ao gravar";
             this.chkContinuar.Size = new System.Drawing.Size(125, 19);
-            this.chkContinuar.TabIndex = 7;
+            this.chkContinuar.TabIndex = 21;
             // 
             // labelControl8
             // 
             this.labelControl8.Location = new System.Drawing.Point(258, 136);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(55, 13);
-            this.labelControl8.TabIndex = 18;
+            this.labelControl8.TabIndex = 15;
             this.labelControl8.Text = "Percentual:";
             // 
             // txtPercentual
@@ -258,8 +261,10 @@
             this.txtPercentual.Name = "txtPercentual";
             this.txtPercentual.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtPercentual.Properties.Mask.EditMask = "P";
             this.txtPercentual.Size = new System.Drawing.Size(100, 20);
-            this.txtPercentual.TabIndex = 17;
+            this.txtPercentual.TabIndex = 5;
+            this.txtPercentual.Validated += new System.EventHandler(this.txtPercentual_Validated);
             // 
             // txtVlrFinal
             // 
@@ -267,9 +272,10 @@
             this.txtVlrFinal.Name = "txtVlrFinal";
             this.txtVlrFinal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtVlrFinal.Properties.Mask.EditMask = "c";
             this.txtVlrFinal.Properties.ReadOnly = true;
             this.txtVlrFinal.Size = new System.Drawing.Size(100, 20);
-            this.txtVlrFinal.TabIndex = 20;
+            this.txtVlrFinal.TabIndex = 19;
             this.txtVlrFinal.TabStop = false;
             // 
             // labelControl9
@@ -277,16 +283,30 @@
             this.labelControl9.Location = new System.Drawing.Point(266, 162);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(45, 13);
-            this.labelControl9.TabIndex = 19;
+            this.labelControl9.TabIndex = 18;
             this.labelControl9.Text = "Vlr. Final:";
             // 
-            // textEdit1
+            // cmbCodProduto
             // 
-            this.textEdit1.EnterMoveNextControl = true;
-            this.textEdit1.Location = new System.Drawing.Point(141, 75);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(100, 20);
-            this.textEdit1.TabIndex = 21;
+            this.cmbCodProduto.EnterMoveNextControl = true;
+            this.cmbCodProduto.Location = new System.Drawing.Point(141, 75);
+            this.cmbCodProduto.Name = "cmbCodProduto";
+            this.cmbCodProduto.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFit;
+            this.cmbCodProduto.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbCodProduto.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CodProduto", 30, "Código"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("DesProduto", 100, "Descrição"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("DesLocal", 10, "Local"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("QtdProduto", 10, "Est.")});
+            this.cmbCodProduto.Properties.DisplayMember = "CodProduto";
+            this.cmbCodProduto.Properties.NullText = "[Código]";
+            this.cmbCodProduto.Properties.PopupFormMinSize = new System.Drawing.Size(400, 0);
+            this.cmbCodProduto.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.cmbCodProduto.Properties.ValueMember = "codigounico";
+            this.cmbCodProduto.Size = new System.Drawing.Size(100, 20);
+            this.cmbCodProduto.TabIndex = 2;
+            this.cmbCodProduto.Validated += new System.EventHandler(this.cmbCodProduto_Validated);
             // 
             // frmEntrada
             // 
@@ -294,7 +314,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnRetornar;
             this.ClientSize = new System.Drawing.Size(507, 248);
-            this.Controls.Add(this.textEdit1);
+            this.Controls.Add(this.cmbCodProduto);
             this.Controls.Add(this.txtVlrFinal);
             this.Controls.Add(this.labelControl9);
             this.Controls.Add(this.labelControl8);
@@ -318,7 +338,7 @@
             this.Controls.Add(this.txtDocEntrada);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmEntrada";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Entrada de Produtos";
             ((System.ComponentModel.ISupportInitialize)(this.txtDocEntrada.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatEntrada.Properties.VistaTimeProperties)).EndInit();
@@ -331,7 +351,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkContinuar.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPercentual.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVlrFinal.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbCodProduto.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -360,6 +380,6 @@
         private DevExpress.XtraEditors.CalcEdit txtPercentual;
         private DevExpress.XtraEditors.CalcEdit txtVlrFinal;
         private DevExpress.XtraEditors.LabelControl labelControl9;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.LookUpEdit cmbCodProduto;
     }
 }

@@ -18,6 +18,16 @@ namespace Loja.Reports
             lblTelefone.Text = "Telefone: " + Properties.Settings.Default.Telefone;
             lblEndereco.Text = Properties.Settings.Default.Endereco;
             lblEmpresa.Text = Properties.Settings.Default.NomeFantasia;
+            
+            tbl_SaidasAdapter1.FillByParam(relVendas1.tbl_Saidas, _DatIni, _DatFim, _CodTipoVenda, _CodProduto);
+
+        }
+
+        public void SU_SetParam(DateTime DatIni, DateTime DatFim, int CodProduto, int CodTipoVenda) {
+            this._DatIni = DatIni;
+            this._DatFim = DatFim;
+            this._CodProduto = CodProduto;
+            this._CodTipoVenda = CodTipoVenda;
         }
 
     }

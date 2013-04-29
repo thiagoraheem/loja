@@ -182,6 +182,7 @@
             this.Controls.Add(this.grdDados);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmCadTipoEntrada";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tipos de Entrada";
             this.Load += new System.EventHandler(this.frmCadTipoEntrada_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdDados)).EndInit();
