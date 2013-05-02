@@ -64,6 +64,7 @@
             this.btnFazerBackup = new DevExpress.XtraBars.BarButtonItem();
             this.cmbCodOrca = new DevExpress.XtraBars.BarEditItem();
             this.repCodOrca = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.btnExcluirOrca = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
             this.ribbonMiniToolbar1 = new DevExpress.XtraBars.Ribbon.RibbonMiniToolbar(this.components);
             this.homeRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -90,20 +91,20 @@
             this.colFornecedor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
             this.navBarControl = new DevExpress.XtraNavBar.NavBarControl();
+            this.grpRelatorios = new DevExpress.XtraNavBar.NavBarGroup();
+            this.btnEstMinimo = new DevExpress.XtraNavBar.NavBarItem();
+            this.btnRelVendas = new DevExpress.XtraNavBar.NavBarItem();
+            this.btnRelEntradas = new DevExpress.XtraNavBar.NavBarItem();
             this.grpOperacoes = new DevExpress.XtraNavBar.NavBarGroup();
             this.btnVender = new DevExpress.XtraNavBar.NavBarItem();
             this.btnCadastrar = new DevExpress.XtraNavBar.NavBarItem();
             this.btnEntrada = new DevExpress.XtraNavBar.NavBarItem();
             this.btnRecibo = new DevExpress.XtraNavBar.NavBarItem();
             this.btnReajustar = new DevExpress.XtraNavBar.NavBarItem();
-            this.grpRelatorios = new DevExpress.XtraNavBar.NavBarGroup();
-            this.btnEstMinimo = new DevExpress.XtraNavBar.NavBarItem();
-            this.btnRelVendas = new DevExpress.XtraNavBar.NavBarItem();
-            this.btnRelEntradas = new DevExpress.XtraNavBar.NavBarItem();
-            this.btnOrcamentos = new DevExpress.XtraNavBar.NavBarItem();
             this.grpCadastros = new DevExpress.XtraNavBar.NavBarGroup();
             this.btnCadTipoEntrada = new DevExpress.XtraNavBar.NavBarItem();
             this.btnCadTipoVenda = new DevExpress.XtraNavBar.NavBarItem();
+            this.btnOrcamentos = new DevExpress.XtraNavBar.NavBarItem();
             this.splitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
             this.gridOrcamento = new DevExpress.XtraGrid.GridControl();
             this.gridViewOrcamento = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -113,7 +114,6 @@
             this.colValor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colVlrFinal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOrcodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnExcluirOrca = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer2)).BeginInit();
@@ -489,6 +489,15 @@
             this.repCodOrca.ValueMember = "CodOrca";
             this.repCodOrca.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repCodOrca_ButtonClick);
             // 
+            // btnExcluirOrca
+            // 
+            this.btnExcluirOrca.Caption = "Excluir";
+            this.btnExcluirOrca.Enabled = false;
+            this.btnExcluirOrca.Id = 75;
+            this.btnExcluirOrca.LargeImageIndex = 12;
+            this.btnExcluirOrca.Name = "btnExcluirOrca";
+            this.btnExcluirOrca.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExcluirOrca_ItemClick);
+            // 
             // ribbonImageCollectionLarge
             // 
             this.ribbonImageCollectionLarge.ImageSize = new System.Drawing.Size(32, 32);
@@ -728,6 +737,37 @@
             this.navBarControl.StoreDefaultPaintStyleName = true;
             this.navBarControl.TabIndex = 0;
             // 
+            // grpRelatorios
+            // 
+            this.grpRelatorios.Caption = "Relatórios";
+            this.grpRelatorios.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnEstMinimo),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnRelVendas),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnRelEntradas)});
+            this.grpRelatorios.LargeImageIndex = 2;
+            this.grpRelatorios.Name = "grpRelatorios";
+            // 
+            // btnEstMinimo
+            // 
+            this.btnEstMinimo.Caption = "Est. Mínimo";
+            this.btnEstMinimo.Name = "btnEstMinimo";
+            this.btnEstMinimo.SmallImageIndex = 0;
+            this.btnEstMinimo.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnEstMinimo_LinkClicked);
+            // 
+            // btnRelVendas
+            // 
+            this.btnRelVendas.Caption = "Vendas";
+            this.btnRelVendas.Name = "btnRelVendas";
+            this.btnRelVendas.SmallImageIndex = 4;
+            this.btnRelVendas.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnRelVendas_LinkClicked);
+            // 
+            // btnRelEntradas
+            // 
+            this.btnRelEntradas.Caption = "Entradas";
+            this.btnRelEntradas.Name = "btnRelEntradas";
+            this.btnRelEntradas.SmallImageIndex = 5;
+            this.btnRelEntradas.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnRelEntradas_LinkClicked);
+            // 
             // grpOperacoes
             // 
             this.grpOperacoes.Caption = "Operações";
@@ -776,43 +816,6 @@
             this.btnReajustar.SmallImageIndex = 9;
             this.btnReajustar.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnReajustar_LinkClicked);
             // 
-            // grpRelatorios
-            // 
-            this.grpRelatorios.Caption = "Relatórios";
-            this.grpRelatorios.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnEstMinimo),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnRelVendas),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnRelEntradas),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnOrcamentos)});
-            this.grpRelatorios.LargeImageIndex = 2;
-            this.grpRelatorios.Name = "grpRelatorios";
-            // 
-            // btnEstMinimo
-            // 
-            this.btnEstMinimo.Caption = "Est. Mínimo";
-            this.btnEstMinimo.Name = "btnEstMinimo";
-            this.btnEstMinimo.SmallImageIndex = 0;
-            this.btnEstMinimo.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnEstMinimo_LinkClicked);
-            // 
-            // btnRelVendas
-            // 
-            this.btnRelVendas.Caption = "Vendas";
-            this.btnRelVendas.Name = "btnRelVendas";
-            this.btnRelVendas.SmallImageIndex = 4;
-            this.btnRelVendas.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnRelVendas_LinkClicked);
-            // 
-            // btnRelEntradas
-            // 
-            this.btnRelEntradas.Caption = "Entradas";
-            this.btnRelEntradas.Name = "btnRelEntradas";
-            this.btnRelEntradas.SmallImageIndex = 5;
-            // 
-            // btnOrcamentos
-            // 
-            this.btnOrcamentos.Caption = "Orçamentos";
-            this.btnOrcamentos.Name = "btnOrcamentos";
-            this.btnOrcamentos.SmallImageIndex = 7;
-            // 
             // grpCadastros
             // 
             this.grpCadastros.Caption = "Cadastros";
@@ -836,6 +839,12 @@
             this.btnCadTipoVenda.Name = "btnCadTipoVenda";
             this.btnCadTipoVenda.SmallImageIndex = 6;
             this.btnCadTipoVenda.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnCadTipoVenda_LinkClicked);
+            // 
+            // btnOrcamentos
+            // 
+            this.btnOrcamentos.Caption = "Orçamentos";
+            this.btnOrcamentos.Name = "btnOrcamentos";
+            this.btnOrcamentos.SmallImageIndex = 7;
             // 
             // splitContainerControl
             // 
@@ -939,15 +948,6 @@
             this.colOrcodigounico.Caption = "Código Único";
             this.colOrcodigounico.FieldName = "codigounico";
             this.colOrcodigounico.Name = "colOrcodigounico";
-            // 
-            // btnExcluirOrca
-            // 
-            this.btnExcluirOrca.Caption = "Excluir";
-            this.btnExcluirOrca.Enabled = false;
-            this.btnExcluirOrca.Id = 75;
-            this.btnExcluirOrca.LargeImageIndex = 12;
-            this.btnExcluirOrca.Name = "btnExcluirOrca";
-            this.btnExcluirOrca.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExcluirOrca_ItemClick);
             // 
             // frmPrincipal
             // 
