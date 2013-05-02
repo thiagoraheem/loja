@@ -101,6 +101,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\frmEntradas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEntradas.Designer.cs">
+      <DependentUpon>frmEntradas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmVendas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEntrada.resx">
       <DependentUpon>frmEntrada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEntradas.resx">
+      <DependentUpon>frmEntradas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmProduto.resx">
       <DependentUpon>frmProduto.cs</DependentUpon>

@@ -160,6 +160,8 @@ namespace Loja
                                 where prod.QtdProduto > 0 && prod.codigounico == (int)cmbCodProduto.EditValue
                                 select prod).FirstOrDefault();
                 cmbProduto.Text = produtos.DesProduto;
+                cmbProduto.EditValue = produtos.codigounico;
+                cmbProduto.ClosePopup();
             }
         }
 

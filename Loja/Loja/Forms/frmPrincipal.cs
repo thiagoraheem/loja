@@ -393,6 +393,15 @@ namespace Loja
             InitGrid();
         }
 
+        private void btnRelEntradas_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            using (frmEntradas f = new frmEntradas())
+            {
+                f.ShowDialog();
+
+            }
+        }
+
     }  
     #endregion
 
