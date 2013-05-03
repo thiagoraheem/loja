@@ -19,6 +19,7 @@ namespace Loja
 {
     public partial class frmPrincipal : RibbonForm
     {
+        private bool _ModoEdicao = false;
 
         #region Form
 
@@ -46,7 +47,16 @@ namespace Loja
                 DevExpress.Utils.WaitDialogForm wait = new DevExpress.Utils.WaitDialogForm("Carregando os dados");
                 wait.Show();
                 LojaEntities Loja = new LojaEntities();
-                gridProdutos.DataSource = Loja.tbl_Produtos;
+                if (this._ModoEdicao)
+                {
+                    gridProdutos.DataSource = (from produtos in Loja.tbl_Produtos
+                                               select produtos).ToList();
+                }
+                else {
+                    gridProdutos.DataSource = (from produtos in Loja.tbl_Produtos
+                                               where produtos.QtdProduto > 0
+                                               select produtos).ToList();
+                }
 
                 lblQtdProduto.Caption = "Qtd. Produtos: " + Loja.tbl_Produtos.Count().ToString();
 
@@ -230,14 +240,20 @@ namespace Loja
         {
             if (e.KeyCode == Keys.Space)
             {
-                int codproduto = FU_PegaCodigoGrid("P");
+                try
+                {
+                    int codproduto = FU_PegaCodigoGrid("P");
 
-                LojaEntities orcamento = new LojaEntities();
-                ObjectResult<string> codOrca = orcamento.FU_AddItemOrcamento(cmbCodOrca.EditValue.ToString(), codproduto);
+                    LojaEntities orcamento = new LojaEntities();
+                    ObjectResult<string> codOrca = orcamento.FU_AddItemOrcamento(cmbCodOrca.EditValue.ToString(), codproduto);
 
-                cmbCodOrca.EditValue = codOrca.FirstOrDefault();
+                    cmbCodOrca.EditValue = codOrca.FirstOrDefault();
 
-                InitGridOrca();
+                    InitGridOrca();
+                }
+                catch (Exception ex) {
+                    MessageBox.Show(string.Concat("Erro ao adicionar item: ", ex.Message));
+                }
             }
             else if (e.KeyCode == Keys.Return) {
                 int codproduto = FU_PegaCodigoGrid("P");;
@@ -275,14 +291,19 @@ namespace Loja
 
         private void gridProdutos_DoubleClick(object sender, EventArgs e)
         {
-            int codproduto = FU_PegaCodigoGrid("P"); ;
-            string deslocal = FU_PegaLocalGrid();
+            if (_ModoEdicao)
+            {
+                int codproduto = FU_PegaCodigoGrid("P"); ;
+                string deslocal = FU_PegaLocalGrid();
 
-            frmProduto f = new frmProduto();
-            f.SU_CarregaProduto(codproduto);
-            f.ShowDialog();
+                using (frmProduto f = new frmProduto())
+                {
+                    f.SU_CarregaProduto(codproduto);
+                    f.ShowDialog();
+                }
 
-            InitGrid();
+                InitGrid();
+            }
         }
 
         #endregion
@@ -295,9 +316,11 @@ namespace Loja
 
         private void btnCadastrar_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            frmProduto f = new frmProduto();
-            f.SU_NovoProduto();
-            f.ShowDialog();
+            using (frmProduto f = new frmProduto())
+            {
+                f.SU_NovoProduto();
+                f.ShowDialog();
+            }
 
             InitGrid();
         }
@@ -400,6 +423,12 @@ namespace Loja
                 f.ShowDialog();
 
             }
+        }
+
+        private void btnModoEdicao_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            this._ModoEdicao = btnModoEdicao.Down;
+            InitGrid();
         }
 
     }  
