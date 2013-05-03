@@ -13,7 +13,7 @@
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT CodProduto, DesProduto, DesLocal, VlrUnitario, QtdProduto, VlrCusto, VlrPercent, EstMinimo, DatCadastro, DesFornecedor, CodRefAntiga, DesFaz, VlrUltPreco, Imagem FROM dbo.tbl_Produtos
-WHERE QtdProduto &lt;= ISNULL(EstMinimo, 0)</CommandText>
+WHERE QtdProduto &lt; ISNULL(EstMinimo, 0)</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>

@@ -1241,7 +1241,7 @@ namespace Loja.relEstMinimoTableAdapters {
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT CodProduto, DesProduto, DesLocal, VlrUnitario, QtdProduto, VlrCusto, VlrPe" +
                 "rcent, EstMinimo, DatCadastro, DesFornecedor, CodRefAntiga, DesFaz, VlrUltPreco," +
-                " Imagem FROM dbo.tbl_Produtos\r\nWHERE QtdProduto <= ISNULL(EstMinimo, 0)";
+                " Imagem FROM dbo.tbl_Produtos\r\nWHERE QtdProduto < ISNULL(EstMinimo, 0)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
