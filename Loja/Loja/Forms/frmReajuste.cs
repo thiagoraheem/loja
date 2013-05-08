@@ -20,6 +20,9 @@ namespace Loja
 
         private void btnOk_Click(object sender, EventArgs e)
         {
+            if (txtPercentual.Text.Equals(String.Empty) ) {return; }
+            if (txtPercentual.Value <= 0) { return; }
+
             if (MessageBox.Show("Confirma reajustar os preços desses produtos?", "Confirmar reajuste", MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
 

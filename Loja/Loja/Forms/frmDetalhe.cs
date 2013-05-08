@@ -21,7 +21,8 @@ namespace Loja
 
         private void frmDetalhe_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode.Equals(Keys.Escape)) {
+            if (e.KeyCode.Equals(Keys.Escape) || e.KeyCode.Equals(Keys.Return))
+            {
                 Close();
             } else if(e.KeyCode.Equals(Keys.F1)) {
                 double n = double.Parse(txtVlrUnitario.Text);

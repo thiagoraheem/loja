@@ -73,7 +73,8 @@ namespace Loja
         void InitGridOrca()
         {
 
-            if (String.IsNullOrEmpty(cmbCodOrca.EditValue.ToString())) {
+            if (cmbCodOrca.EditValue == null || String.IsNullOrEmpty(cmbCodOrca.EditValue.ToString())) 
+            {
                 btnImprimir.Enabled = false;
                 btnFinalizarVenda.Enabled = false;
                 btnExcluirOrca.Enabled = false;
@@ -429,6 +430,26 @@ namespace Loja
         {
             this._ModoEdicao = btnModoEdicao.Down;
             InitGrid();
+        }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmPrincipal_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.Equals(Keys.Escape)) {
+                if (!String.IsNullOrEmpty(cmbCodOrca.EditValue.ToString()))
+                {
+                    cmbCodOrca.EditValue = null;
+                    InitGrid();
+                    InitGridOrca();
+                }
+                else {
+                    gridViewProduto.ClearColumnsFilter();
+                }
+            }
         }
 
     }  
