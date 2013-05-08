@@ -2,17 +2,18 @@
 <xs:schema id="relEstMinimo" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection ConnectionStringObject="Data Source=(local);Initial Catalog=Loja;Integrated Security=True" IsAppSettingsProperty="false" Modifier="Assembly" Name="Connection" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="LojaConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="LojaConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Loja.Properties.Settings.GlobalReference.Default.LojaConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tbl_ProdutosAdapter" GeneratorDataComponentClassName="tbl_ProdutosAdapter" Name="tbl_Produtos" UserDataComponentName="tbl_ProdutosAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Connection" DbObjectName="Loja.dbo.tbl_Produtos" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="LojaConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT CodProduto, DesProduto, DesLocal, VlrUnitario, QtdProduto, VlrCusto, VlrPercent, EstMinimo, DatCadastro, DesFornecedor, CodRefAntiga, DesFaz, VlrUltPreco, Imagem FROM dbo.tbl_Produtos
+                    <CommandText>SELECT CodProduto, DesProduto, DesLocal, VlrUnitario, QtdProduto, VlrCusto, VlrPercent, EstMinimo, DatCadastro, DesFornecedor, CodRefAntiga, DesFaz, VlrUltPreco, Imagem, codigounico FROM dbo.tbl_Produtos
 WHERE QtdProduto &lt; ISNULL(EstMinimo, 0)</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -34,6 +35,7 @@ WHERE QtdProduto &lt; ISNULL(EstMinimo, 0)</CommandText>
               <Mapping SourceColumn="DesFaz" DataSetColumn="DesFaz" />
               <Mapping SourceColumn="VlrUltPreco" DataSetColumn="VlrUltPreco" />
               <Mapping SourceColumn="Imagem" DataSetColumn="Imagem" />
+              <Mapping SourceColumn="codigounico" DataSetColumn="codigounico" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -98,6 +100,7 @@ WHERE QtdProduto &lt; ISNULL(EstMinimo, 0)</CommandText>
               <xs:element name="DesFaz" msprop:Generator_ColumnVarNameInTable="columnDesFaz" msprop:Generator_ColumnPropNameInRow="DesFaz" msprop:Generator_ColumnPropNameInTable="DesFazColumn" msprop:Generator_UserColumnName="DesFaz" type="xs:double" minOccurs="0" />
               <xs:element name="VlrUltPreco" msprop:Generator_ColumnVarNameInTable="columnVlrUltPreco" msprop:Generator_ColumnPropNameInRow="VlrUltPreco" msprop:Generator_ColumnPropNameInTable="VlrUltPrecoColumn" msprop:Generator_UserColumnName="VlrUltPreco" type="xs:double" minOccurs="0" />
               <xs:element name="Imagem" msprop:Generator_ColumnVarNameInTable="columnImagem" msprop:Generator_ColumnPropNameInRow="Imagem" msprop:Generator_ColumnPropNameInTable="ImagemColumn" msprop:Generator_UserColumnName="Imagem" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="codigounico" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columncodigounico" msprop:Generator_ColumnPropNameInRow="codigounico" msprop:Generator_ColumnPropNameInTable="codigounicoColumn" msprop:Generator_UserColumnName="codigounico" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -105,9 +108,7 @@ WHERE QtdProduto &lt; ISNULL(EstMinimo, 0)</CommandText>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//tbl_Produtos" />
-      <xs:field xpath="CodProduto" />
-      <xs:field xpath="DesProduto" />
-      <xs:field xpath="DesLocal" />
+      <xs:field xpath="codigounico" />
     </xs:unique>
   </xs:element>
 </xs:schema>

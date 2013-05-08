@@ -971,11 +971,14 @@
             this.Controls.Add(this.popupControlContainer2);
             this.Controls.Add(this.ribbonStatusBar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "frmPrincipal";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
             this.Text = "Sistema para controle de Loja";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmPrincipal_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmPrincipal_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.appMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer2)).EndInit();
