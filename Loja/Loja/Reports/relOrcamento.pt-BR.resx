@@ -118,6 +118,43 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="xrLabel16.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 18pt, style=Bold, Italic</value>
+  </data>
+  <data name="xrLabel16.ForeColor" type="System.Drawing.Color, System.Drawing">
+    <value>Navy</value>
+  </data>
+  <assembly alias="DevExpress.Data.v12.2" name="DevExpress.Data.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="xrLabel16.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v12.2">
+    <value>541.9943, 0</value>
+  </data>
+  <data name="xrLabel16.SizeF" type="System.Drawing.SizeF, System.Drawing">
+    <value>72.38983, 30.0000019</value>
+  </data>
+  <data name="xrLabel16.Text" xml:space="preserve">
+    <value>Data:</value>
+  </data>
+  <data name="xrLabel16.TextAlignment" type="DevExpress.XtraPrinting.TextAlignment, DevExpress.Data.v12.2">
+    <value>TopRight</value>
+  </data>
+  <data name="xrPageInfo1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 18pt, style=Bold, Italic</value>
+  </data>
+  <data name="xrPageInfo1.ForeColor" type="System.Drawing.Color, System.Drawing">
+    <value>0, 0, 0</value>
+  </data>
+  <data name="xrPageInfo1.Format" xml:space="preserve">
+    <value>{0:dd/MM/yyyy}</value>
+  </data>
+  <data name="xrPageInfo1.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v12.2">
+    <value>614.3842, 0</value>
+  </data>
+  <data name="xrPageInfo1.SizeF" type="System.Drawing.SizeF, System.Drawing">
+    <value>137.615723, 30</value>
+  </data>
+  <data name="xrLabel8.Text" xml:space="preserve">
+    <value>Vlr. Total </value>
+  </data>
   <data name="xrLine1.SizeF" type="System.Drawing.SizeF, System.Drawing">
     <value>715.999939, 2</value>
   </data>
@@ -131,7 +168,6 @@
   <data name="xrLabel9.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 9pt, style=Bold, Italic</value>
   </data>
-  <assembly alias="DevExpress.Data.v12.2" name="DevExpress.Data.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="xrLabel9.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v12.2">
     <value>231.25, 6.00001</value>
   </data>
@@ -144,35 +180,13 @@
   <data name="xrLabel9.TextAlignment" type="DevExpress.XtraPrinting.TextAlignment, DevExpress.Data.v12.2">
     <value>TopCenter</value>
   </data>
-  <data name="xrPageInfo1.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v12.2">
-    <value>6.00001, 6.00001</value>
-  </data>
-  <data name="xrPageInfo1.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>144.249969, 23</value>
-  </data>
   <data name="pageFooterBand1.HeightF" type="System.Single, mscorlib">
     <value>29.00001</value>
   </data>
   <data name="lblEmpresa.Text" xml:space="preserve">
     <value>AUTO PADRÃO PEÇAS</value>
   </data>
-  <data name="lblTelefone.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v12.2">
-    <value>576.731567, 44.4583244</value>
-  </data>
-  <data name="lblTelefone.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>175.268433, 23.0000038</value>
-  </data>
-  <data name="lblTelefone.Text" xml:space="preserve">
-    <value>
-</value>
-  </data>
-  <data name="lblEndereco.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 11pt</value>
-  </data>
-  <data name="lblEndereco.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>395.670044, 23.0000038</value>
-  </data>
-  <data name="lblEndereco.Text" xml:space="preserve">
-    <value>Rua Parintins, 186 - Cachoeirinha - Cep: 69065-050</value>
+  <data name="PageHeader.HeightF" type="System.Single, mscorlib">
+    <value>54.1666679</value>
   </data>
 </root>

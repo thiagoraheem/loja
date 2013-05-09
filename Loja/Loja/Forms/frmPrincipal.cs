@@ -36,6 +36,22 @@ namespace Loja
         {
             SkinHelper.InitSkinGallery(rgbiSkins, true);
         }
+
+        private void frmPrincipal_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.Equals(Keys.Escape))
+            {
+                if (!gridViewProduto.ActiveFilter.IsEmpty) {
+                    gridViewProduto.ClearColumnsFilter();
+                }
+                else if (cmbCodOrca.EditValue == null || !String.IsNullOrEmpty(cmbCodOrca.EditValue.ToString()))
+                {
+                    cmbCodOrca.EditValue = String.Empty;
+                    InitGrid();
+                    InitGridOrca();
+                }
+            }
+        }
         #endregion
 
         #region Funções e Consultas
@@ -246,7 +262,15 @@ namespace Loja
                     int codproduto = FU_PegaCodigoGrid("P");
 
                     LojaEntities orcamento = new LojaEntities();
-                    ObjectResult<string> codOrca = orcamento.FU_AddItemOrcamento(cmbCodOrca.EditValue.ToString(), codproduto);
+                    String Orca;
+                    if (cmbCodOrca.EditValue == null)
+                    {
+                        Orca = "";
+                    }
+                    else {
+                        Orca = cmbCodOrca.EditValue.ToString();
+                    }
+                    ObjectResult<string> codOrca = orcamento.FU_AddItemOrcamento(Orca, codproduto);
 
                     cmbCodOrca.EditValue = codOrca.FirstOrDefault();
 
@@ -262,6 +286,23 @@ namespace Loja
                 frmDetalhe f = new frmDetalhe();
                 f.SU_CarregaProduto(codproduto);
                 f.ShowDialog();
+            }
+        }
+
+        private void gridProdutos_DoubleClick(object sender, EventArgs e)
+        {
+            if (_ModoEdicao)
+            {
+                int codproduto = FU_PegaCodigoGrid("P"); ;
+                string deslocal = FU_PegaLocalGrid();
+
+                using (frmProduto f = new frmProduto())
+                {
+                    f.SU_CarregaProduto(codproduto);
+                    f.ShowDialog();
+                }
+
+                InitGrid();
             }
         }
 
@@ -290,20 +331,15 @@ namespace Loja
             InitGridOrca();
         }
 
-        private void gridProdutos_DoubleClick(object sender, EventArgs e)
+        private void gridOrcamento_KeyDown(object sender, KeyEventArgs e)
         {
-            if (_ModoEdicao)
+            if (e.KeyCode.Equals(Keys.Delete))
             {
-                int codproduto = FU_PegaCodigoGrid("P"); ;
-                string deslocal = FU_PegaLocalGrid();
-
-                using (frmProduto f = new frmProduto())
+                using (LojaEntities orcamento = new LojaEntities())
                 {
-                    f.SU_CarregaProduto(codproduto);
-                    f.ShowDialog();
+                    orcamento.FU_AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), 0, -1);
                 }
-
-                InitGrid();
+                InitGridOrca();
             }
         }
 
@@ -430,26 +466,6 @@ namespace Loja
         {
             this._ModoEdicao = btnModoEdicao.Down;
             InitGrid();
-        }
-
-        private void frmPrincipal_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void frmPrincipal_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode.Equals(Keys.Escape)) {
-                if (!String.IsNullOrEmpty(cmbCodOrca.EditValue.ToString()))
-                {
-                    cmbCodOrca.EditValue = null;
-                    InitGrid();
-                    InitGridOrca();
-                }
-                else {
-                    gridViewProduto.ClearColumnsFilter();
-                }
-            }
         }
 
     }  
