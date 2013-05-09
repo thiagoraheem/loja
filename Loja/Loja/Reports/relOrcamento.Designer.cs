@@ -41,8 +41,10 @@
             this.tbl_OrcamentoAdapter1 = new Loja.dsOrcamentoTableAdapters.tbl_OrcamentoAdapter();
             this.dsOrcamento1 = new Loja.dsOrcamento();
             this.groupHeaderBand1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
+            this.xrLabel16 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.groupHeaderBand2 = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
@@ -54,7 +56,6 @@
             this.xrLine2 = new DevExpress.XtraReports.UI.XRLine();
             this.pageFooterBand1 = new DevExpress.XtraReports.UI.PageFooterBand();
             this.xrLabel9 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.xrPageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.lblEmpresa = new DevExpress.XtraReports.UI.XRLabel();
             this.Title = new DevExpress.XtraReports.UI.XRControlStyle();
@@ -68,7 +69,9 @@
             this.xrLabel18 = new DevExpress.XtraReports.UI.XRLabel();
             this.CodOrca = new DevExpress.XtraReports.Parameters.Parameter();
             this.PageHeader = new DevExpress.XtraReports.UI.PageHeaderBand();
-            this.xrLabel16 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLine3 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine4 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine5 = new DevExpress.XtraReports.UI.XRLine();
             ((System.ComponentModel.ISupportInitialize)(this.dsOrcamento1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
@@ -172,6 +175,15 @@
             this.groupHeaderBand1.Level = 1;
             this.groupHeaderBand1.Name = "groupHeaderBand1";
             // 
+            // xrLabel16
+            // 
+            resources.ApplyResources(this.xrLabel16, "xrLabel16");
+            this.xrLabel16.Name = "xrLabel16";
+            this.xrLabel16.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel16.StylePriority.UseFont = false;
+            this.xrLabel16.StylePriority.UseForeColor = false;
+            this.xrLabel16.StylePriority.UseTextAlignment = false;
+            // 
             // xrLabel2
             // 
             this.xrLabel2.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
@@ -189,6 +201,16 @@
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel1.StyleName = "FieldCaption";
             this.xrLabel1.StylePriority.UseFont = false;
+            // 
+            // xrPageInfo1
+            // 
+            resources.ApplyResources(this.xrPageInfo1, "xrPageInfo1");
+            this.xrPageInfo1.Name = "xrPageInfo1";
+            this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrPageInfo1.PageInfo = DevExpress.XtraPrinting.PageInfo.DateTime;
+            this.xrPageInfo1.StyleName = "PageInfo";
+            this.xrPageInfo1.StylePriority.UseFont = false;
+            this.xrPageInfo1.StylePriority.UseForeColor = false;
             // 
             // groupHeaderBand2
             // 
@@ -282,16 +304,6 @@
             this.xrLabel9.StylePriority.UseForeColor = false;
             this.xrLabel9.StylePriority.UseTextAlignment = false;
             // 
-            // xrPageInfo1
-            // 
-            resources.ApplyResources(this.xrPageInfo1, "xrPageInfo1");
-            this.xrPageInfo1.Name = "xrPageInfo1";
-            this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrPageInfo1.PageInfo = DevExpress.XtraPrinting.PageInfo.DateTime;
-            this.xrPageInfo1.StyleName = "PageInfo";
-            this.xrPageInfo1.StylePriority.UseFont = false;
-            this.xrPageInfo1.StylePriority.UseForeColor = false;
-            // 
             // xrPageInfo2
             // 
             resources.ApplyResources(this.xrPageInfo2, "xrPageInfo2");
@@ -360,6 +372,8 @@
             // GroupFooter1
             // 
             this.GroupFooter1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLine4,
+            this.xrLine3,
             this.xrLabel19,
             this.xrLabel18});
             resources.ApplyResources(this.GroupFooter1, "GroupFooter1");
@@ -396,18 +410,27 @@
             // PageHeader
             // 
             this.PageHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.lblEmpresa});
+            this.lblEmpresa,
+            this.xrLine5});
             resources.ApplyResources(this.PageHeader, "PageHeader");
             this.PageHeader.Name = "PageHeader";
             // 
-            // xrLabel16
+            // xrLine3
             // 
-            resources.ApplyResources(this.xrLabel16, "xrLabel16");
-            this.xrLabel16.Name = "xrLabel16";
-            this.xrLabel16.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel16.StylePriority.UseFont = false;
-            this.xrLabel16.StylePriority.UseForeColor = false;
-            this.xrLabel16.StylePriority.UseTextAlignment = false;
+            resources.ApplyResources(this.xrLine3, "xrLine3");
+            this.xrLine3.Name = "xrLine3";
+            // 
+            // xrLine4
+            // 
+            resources.ApplyResources(this.xrLine4, "xrLine4");
+            this.xrLine4.Name = "xrLine4";
+            // 
+            // xrLine5
+            // 
+            this.xrLine5.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
+            resources.ApplyResources(this.xrLine5, "xrLine5");
+            this.xrLine5.Name = "xrLine5";
+            this.xrLine5.StylePriority.UseBorderDashStyle = false;
             // 
             // relOrcamento
             // 
@@ -484,5 +507,8 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel9;
         private DevExpress.XtraReports.UI.PageHeaderBand PageHeader;
         private DevExpress.XtraReports.UI.XRLabel xrLabel16;
+        private DevExpress.XtraReports.UI.XRLine xrLine3;
+        private DevExpress.XtraReports.UI.XRLine xrLine4;
+        private DevExpress.XtraReports.UI.XRLine xrLine5;
     }
 }

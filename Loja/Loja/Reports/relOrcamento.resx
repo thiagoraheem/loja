@@ -174,6 +174,9 @@
   <data name="xrLabel17.SizeF" type="System.Drawing.SizeF, System.Drawing">
     <value>735.9999, 33</value>
   </data>
+  <data name="xrLine4.SizeF" type="System.Drawing.SizeF, System.Drawing">
+    <value>753.125, 6.25</value>
+  </data>
   <data name="xrLabel7.TextAlignment" type="DevExpress.XtraPrinting.TextAlignment, DevExpress.Data.v12.2">
     <value>TopRight</value>
   </data>
@@ -240,6 +243,9 @@
   <data name="xrLabel6.SizeF" type="System.Drawing.SizeF, System.Drawing">
     <value>49.77399, 20</value>
   </data>
+  <data name="xrLine4.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v12.2">
+    <value>1.04169846, 38.1944351</value>
+  </data>
   <data name="xrLabel7.Text" xml:space="preserve">
     <value>Vlr. Unitario</value>
   </data>
@@ -257,6 +263,9 @@
   </data>
   <data name="xrLabel11.SizeF" type="System.Drawing.SizeF, System.Drawing">
     <value>283.0181, 15</value>
+  </data>
+  <data name="xrLine6.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v12.2">
+    <value>1.04166663, 33.7499924</value>
   </data>
   <data name="xrLabel6.TextAlignment" type="DevExpress.XtraPrinting.TextAlignment, DevExpress.Data.v12.2">
     <value>TopRight</value>
@@ -291,6 +300,9 @@
   <data name="xrLabel9.ForeColor" type="System.Drawing.Color, System.Drawing">
     <value>Navy</value>
   </data>
+  <data name="xrLine3.SizeF" type="System.Drawing.SizeF, System.Drawing">
+    <value>753.125, 6.25</value>
+  </data>
   <data name="xrLabel7.SizeF" type="System.Drawing.SizeF, System.Drawing">
     <value>91.79572, 20</value>
   </data>
@@ -321,8 +333,20 @@
   <data name="xrLabel18.TextAlignment" type="DevExpress.XtraPrinting.TextAlignment, DevExpress.Data.v12.2">
     <value>TopRight</value>
   </data>
+  <data name="xrLabel17.Text" xml:space="preserve">
+    <value>AUTO PADRÃO PEÇAS</value>
+  </data>
+  <data name="xrLine5.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v12.2">
+    <value>1.04169846, 47.9166679</value>
+  </data>
+  <data name="xrLabel4.SizeF" type="System.Drawing.SizeF, System.Drawing">
+    <value>283.0181, 20</value>
+  </data>
   <data name="xrLabel12.SizeF" type="System.Drawing.SizeF, System.Drawing">
     <value>48.46753, 15</value>
+  </data>
+  <data name="xrLine5.SizeF" type="System.Drawing.SizeF, System.Drawing">
+    <value>746, 6.25</value>
   </data>
   <data name="xrLabel18.SizeF" type="System.Drawing.SizeF, System.Drawing">
     <value>121.9908, 23</value>
@@ -393,11 +417,11 @@
   <data name="xrLabel12.TextAlignment" type="DevExpress.XtraPrinting.TextAlignment, DevExpress.Data.v12.2">
     <value>TopCenter</value>
   </data>
+  <data name="xrLine3.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v12.2">
+    <value>1.04166663, 2.08333325</value>
+  </data>
   <data name="xrLabel11.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v12.2">
     <value>184.8367, 0</value>
-  </data>
-  <data name="xrLabel4.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>283.0181, 20</value>
   </data>
   <data name="xrLabel15.Text" xml:space="preserve">
     <value>xrLabel15</value>
@@ -405,8 +429,8 @@
   <data name="xrLabel3.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v12.2">
     <value>36, 7</value>
   </data>
-  <data name="xrLabel17.Text" xml:space="preserve">
-    <value>AUTO PADRÃO PEÇAS</value>
+  <data name="xrLine6.SizeF" type="System.Drawing.SizeF, System.Drawing">
+    <value>746, 4.58333969</value>
   </data>
   <data name="xrPageInfo2.TextAlignment" type="DevExpress.XtraPrinting.TextAlignment, DevExpress.Data.v12.2">
     <value>TopRight</value>

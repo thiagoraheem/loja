@@ -15,8 +15,6 @@ namespace Loja.Reports
 
         private void relOrcamento_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            lblTelefone.Text = "Telefone: " + Properties.Settings.Default.Telefone;
-            lblEndereco.Text = Properties.Settings.Default.Endereco;
             lblEmpresa.Text = Properties.Settings.Default.NomeFantasia;
         }
 
