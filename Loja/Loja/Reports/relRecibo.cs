@@ -16,7 +16,7 @@ namespace Loja.Reports
 
         private void relRecibo_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            lblEmpresa.Text = Properties.Settings.Default.Nome;
+            lblEmpresa.Text = Properties.Settings.Default.NomeFantasia;
             lblTelefone.Text = Properties.Settings.Default.Telefone;
             lblEndereco.Text = Properties.Settings.Default.Endereco;
             if (!String.IsNullOrEmpty(Properties.Settings.Default.CNPJ))

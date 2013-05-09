@@ -115,10 +115,10 @@
             this.xrLabel9.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding(this.Extenso, "Text", "")});
             this.xrLabel9.Font = new System.Drawing.Font("Times New Roman", 11F);
-            this.xrLabel9.LocationFloat = new DevExpress.Utils.PointFloat(132.2917F, 228.125F);
+            this.xrLabel9.LocationFloat = new DevExpress.Utils.PointFloat(142.7083F, 228.125F);
             this.xrLabel9.Name = "xrLabel9";
             this.xrLabel9.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel9.SizeF = new System.Drawing.SizeF(387.5001F, 42.79169F);
+            this.xrLabel9.SizeF = new System.Drawing.SizeF(377.0836F, 42.79169F);
             this.xrLabel9.StylePriority.UseFont = false;
             this.xrLabel9.StylePriority.UseTextAlignment = false;
             this.xrLabel9.Text = "xrLabel9";
@@ -135,10 +135,10 @@
             this.xrLabel8.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding(this.Referente, "Text", "")});
             this.xrLabel8.Font = new System.Drawing.Font("Times New Roman", 11F);
-            this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(132.2917F, 281.125F);
+            this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(142.7083F, 281.125F);
             this.xrLabel8.Name = "xrLabel8";
             this.xrLabel8.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel8.SizeF = new System.Drawing.SizeF(387.5001F, 44.875F);
+            this.xrLabel8.SizeF = new System.Drawing.SizeF(377.0835F, 44.875F);
             this.xrLabel8.StylePriority.UseFont = false;
             this.xrLabel8.Text = "xrLabel8";
             // 
@@ -153,10 +153,10 @@
             this.xrLabel7.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding(this.Nome, "Text", "")});
             this.xrLabel7.Font = new System.Drawing.Font("Times New Roman", 11F);
-            this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(132.2917F, 189.625F);
+            this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(142.7083F, 189.625F);
             this.xrLabel7.Name = "xrLabel7";
             this.xrLabel7.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel7.SizeF = new System.Drawing.SizeF(387.4999F, 23.00002F);
+            this.xrLabel7.SizeF = new System.Drawing.SizeF(377.0833F, 23.00003F);
             this.xrLabel7.StylePriority.UseFont = false;
             this.xrLabel7.StylePriority.UseTextAlignment = false;
             this.xrLabel7.Text = "xrLabel7";
@@ -282,12 +282,18 @@
             // 
             // xrLabel1
             // 
+            this.xrLabel1.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Double;
+            this.xrLabel1.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Top | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLabel1.BorderWidth = 4;
             this.xrLabel1.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold);
             this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(9.999974F, 101.6667F);
             this.xrLabel1.Multiline = true;
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel1.SizeF = new System.Drawing.SizeF(520.2082F, 32.37501F);
+            this.xrLabel1.SizeF = new System.Drawing.SizeF(520.2082F, 42.79169F);
+            this.xrLabel1.StylePriority.UseBorderDashStyle = false;
+            this.xrLabel1.StylePriority.UseBorders = false;
+            this.xrLabel1.StylePriority.UseBorderWidth = false;
             this.xrLabel1.StylePriority.UseFont = false;
             this.xrLabel1.StylePriority.UseTextAlignment = false;
             this.xrLabel1.Text = "Recibo\r\n";
