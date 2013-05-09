@@ -24,6 +24,8 @@ namespace Loja.Reports
             if (!String.IsNullOrEmpty(Properties.Settings.Default.InscEstadual))
             lblInscEstadual.Text = "INSC. ESTADUAL: " + Properties.Settings.Default.InscEstadual;
             lblEmpresaAssinatura.Text = Properties.Settings.Default.NomeFantasia;
+            lblCidade.Text = Properties.Settings.Default.Cidade;
+            lblEstado.Text = Properties.Settings.Default.Estado;
 
             String data = DateTime.Now.ToLongDateString();
 

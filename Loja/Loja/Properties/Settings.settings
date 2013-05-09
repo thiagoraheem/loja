@@ -37,5 +37,11 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=(local);Initial Catalog=Loja;Integrated Security=True</Value>
     </Setting>
+    <Setting Name="Cidade" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Manaus</Value>
+    </Setting>
+    <Setting Name="Estado" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Amazonas</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
