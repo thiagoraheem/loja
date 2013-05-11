@@ -315,6 +315,7 @@
             this.txtVlrCusto.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtVlrCusto.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtVlrCusto.Properties.Mask.EditMask = "n2";
+            this.txtVlrCusto.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtVlrCusto.Size = new System.Drawing.Size(110, 20);
             this.txtVlrCusto.TabIndex = 7;
             // 
@@ -332,6 +333,7 @@
             this.txtVlrPercent.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtVlrPercent.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtVlrPercent.Properties.Mask.EditMask = "n2";
+            this.txtVlrPercent.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtVlrPercent.Size = new System.Drawing.Size(100, 20);
             this.txtVlrPercent.TabIndex = 8;
             // 
@@ -349,6 +351,7 @@
             this.txtVlrUnitario.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtVlrUnitario.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtVlrUnitario.Properties.Mask.EditMask = "n2";
+            this.txtVlrUnitario.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtVlrUnitario.Size = new System.Drawing.Size(110, 20);
             this.txtVlrUnitario.TabIndex = 9;
             // 
@@ -366,6 +369,7 @@
             this.txtUltPreco.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtUltPreco.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtUltPreco.Properties.Mask.EditMask = "n2";
+            this.txtUltPreco.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtUltPreco.Size = new System.Drawing.Size(100, 20);
             this.txtUltPreco.TabIndex = 10;
             // 
