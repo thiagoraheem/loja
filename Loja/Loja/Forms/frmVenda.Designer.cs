@@ -123,6 +123,7 @@
             this.txtTroco.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtTroco.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtTroco.Properties.Mask.EditMask = "c2";
+            this.txtTroco.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtTroco.Size = new System.Drawing.Size(162, 30);
             this.txtTroco.TabIndex = 4;
             // 
@@ -147,6 +148,7 @@
             this.txtDinheiro.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtDinheiro.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtDinheiro.Properties.Mask.EditMask = "c2";
+            this.txtDinheiro.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtDinheiro.Size = new System.Drawing.Size(162, 30);
             this.txtDinheiro.TabIndex = 3;
             this.txtDinheiro.Validated += new System.EventHandler(this.txtDinheiro_Validated);
@@ -172,6 +174,7 @@
             this.txtVlrTotal.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtVlrTotal.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtVlrTotal.Properties.Mask.EditMask = "c2";
+            this.txtVlrTotal.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtVlrTotal.Size = new System.Drawing.Size(162, 30);
             this.txtVlrTotal.TabIndex = 2;
             // 
@@ -241,6 +244,7 @@
             this.txtDesconto.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtDesconto.Properties.Mask.EditMask = "P";
+            this.txtDesconto.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtDesconto.Size = new System.Drawing.Size(100, 30);
             this.txtDesconto.TabIndex = 1;
             // 

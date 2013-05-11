@@ -97,6 +97,7 @@
             this.txtPercentual.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtPercentual.Properties.Mask.EditMask = "P";
+            this.txtPercentual.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtPercentual.Size = new System.Drawing.Size(112, 20);
             this.txtPercentual.TabIndex = 0;
             // 

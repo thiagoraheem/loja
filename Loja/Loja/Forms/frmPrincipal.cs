@@ -333,6 +333,9 @@ namespace Loja
 
         private void gridOrcamento_KeyDown(object sender, KeyEventArgs e)
         {
+            int linha = gridViewOrcamento.GetSelectedRows()[0];
+            double valor = (double)gridViewOrcamento.GetRowCellValue(linha, colVlrOriginal);
+
             if (e.KeyCode.Equals(Keys.Delete))
             {
                 using (LojaEntities orcamento = new LojaEntities())
@@ -340,6 +343,26 @@ namespace Loja
                     orcamento.FU_AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), 0, -1);
                 }
                 InitGridOrca();
+            }
+            else if (e.KeyCode.Equals(Keys.F1))
+            {
+                gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.92));
+            }
+            else if (e.KeyCode.Equals(Keys.F2))
+            {
+                gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.90));
+            }
+            else if (e.KeyCode.Equals(Keys.F3))
+            {
+                gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.88));
+            }
+            else if (e.KeyCode.Equals(Keys.F4))
+            {
+                gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.85));
+            }
+            else if (e.KeyCode.Equals(Keys.F5))
+            {
+                gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.95));
             }
         }
 

@@ -114,6 +114,7 @@
             this.colValor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colVlrFinal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOrcodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colVlrOriginal = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer2)).BeginInit();
@@ -893,7 +894,8 @@
             this.colQuantidade,
             this.colValor,
             this.colVlrFinal,
-            this.colOrcodigounico});
+            this.colOrcodigounico,
+            this.colVlrOriginal});
             this.gridViewOrcamento.GridControl = this.gridOrcamento;
             this.gridViewOrcamento.GroupPanelText = "Orçamento";
             this.gridViewOrcamento.Name = "gridViewOrcamento";
@@ -959,6 +961,12 @@
             this.colOrcodigounico.Caption = "Código Único";
             this.colOrcodigounico.FieldName = "codigounico";
             this.colOrcodigounico.Name = "colOrcodigounico";
+            // 
+            // colVlrOriginal
+            // 
+            this.colVlrOriginal.Caption = "Vlr. Original";
+            this.colVlrOriginal.FieldName = "VlrCusto";
+            this.colVlrOriginal.Name = "colVlrOriginal";
             // 
             // frmPrincipal
             // 
@@ -1091,6 +1099,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colOrcodigounico;
         private DevExpress.XtraBars.BarButtonItem btnExcluirOrca;
         private DevExpress.XtraBars.BarButtonItem btnModoEdicao;
+        private DevExpress.XtraGrid.Columns.GridColumn colVlrOriginal;
 
     }
 }

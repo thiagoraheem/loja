@@ -126,6 +126,7 @@
             this.txtVlrUnitario.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtVlrUnitario.Properties.Mask.EditMask = "c";
+            this.txtVlrUnitario.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtVlrUnitario.Size = new System.Drawing.Size(100, 20);
             this.txtVlrUnitario.TabIndex = 4;
             this.txtVlrUnitario.EditValueChanged += new System.EventHandler(this.txtVlrUnitario_EditValueChanged);
@@ -232,6 +233,7 @@
             this.txtVlrTotal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtVlrTotal.Properties.Mask.EditMask = "c";
+            this.txtVlrTotal.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtVlrTotal.Properties.ReadOnly = true;
             this.txtVlrTotal.Size = new System.Drawing.Size(100, 20);
             this.txtVlrTotal.TabIndex = 17;
@@ -262,6 +264,7 @@
             this.txtPercentual.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtPercentual.Properties.Mask.EditMask = "P";
+            this.txtPercentual.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtPercentual.Size = new System.Drawing.Size(100, 20);
             this.txtPercentual.TabIndex = 5;
             this.txtPercentual.Validated += new System.EventHandler(this.txtPercentual_Validated);
@@ -273,6 +276,7 @@
             this.txtVlrFinal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtVlrFinal.Properties.Mask.EditMask = "c";
+            this.txtVlrFinal.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtVlrFinal.Properties.ReadOnly = true;
             this.txtVlrFinal.Size = new System.Drawing.Size(100, 20);
             this.txtVlrFinal.TabIndex = 19;

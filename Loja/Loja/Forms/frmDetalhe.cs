@@ -36,6 +36,9 @@ namespace Loja
             } else if (e.KeyCode.Equals(Keys.F4)) {
                 double n = double.Parse(txtVlrUnitario.Text);
                 txtDesconto.Value = (decimal) (n * 0.85);
+            } else if (e.KeyCode.Equals(Keys.F5)) {
+                double n = double.Parse(txtVlrUnitario.Text);
+                txtDesconto.Value = (decimal)(n * 0.95);
             }
         }
 

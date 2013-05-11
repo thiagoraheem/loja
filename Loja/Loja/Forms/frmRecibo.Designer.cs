@@ -103,6 +103,7 @@
             this.txtValor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtValor.Properties.Mask.EditMask = "c";
+            this.txtValor.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtValor.Size = new System.Drawing.Size(351, 20);
             this.txtValor.TabIndex = 0;
             this.txtValor.Validated += new System.EventHandler(this.txtValor_Validated);

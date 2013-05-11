@@ -212,6 +212,7 @@
             this.txtDesconto.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtDesconto.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtDesconto.Properties.Mask.EditMask = "c2";
+            this.txtDesconto.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtDesconto.Properties.ReadOnly = true;
             this.txtDesconto.Size = new System.Drawing.Size(124, 36);
             this.txtDesconto.TabIndex = 15;
@@ -226,8 +227,9 @@
             this.txtVlrUnitario.Properties.Appearance.Options.UseFont = true;
             this.txtVlrUnitario.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtVlrUnitario.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtVlrUnitario.Properties.Mask.EditMask = "c2";
+            this.txtVlrUnitario.Properties.Mask.EditMask = "C2";
             this.txtVlrUnitario.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtVlrUnitario.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtVlrUnitario.Properties.ReadOnly = true;
             this.txtVlrUnitario.Size = new System.Drawing.Size(124, 36);
             this.txtVlrUnitario.TabIndex = 12;
