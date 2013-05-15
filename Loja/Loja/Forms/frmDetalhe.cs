@@ -25,19 +25,19 @@ namespace Loja
             {
                 Close();
             } else if(e.KeyCode.Equals(Keys.F1)) {
-                double n = double.Parse(txtVlrUnitario.Text);
+                double n = double.Parse(txtVlrUnitario.EditValue.ToString());
                 txtDesconto.Value = (decimal) (n * 0.92);
             } else if (e.KeyCode.Equals(Keys.F2)) {
-                double n = double.Parse(txtVlrUnitario.Text);
+                double n = double.Parse(txtVlrUnitario.EditValue.ToString());
                 txtDesconto.Value = (decimal) (n * 0.90);
             } else if (e.KeyCode.Equals(Keys.F3)) {
-                double n = double.Parse(txtVlrUnitario.Text);
+                double n = double.Parse(txtVlrUnitario.EditValue.ToString());
                 txtDesconto.Value = (decimal) (n * 0.88);
             } else if (e.KeyCode.Equals(Keys.F4)) {
-                double n = double.Parse(txtVlrUnitario.Text);
+                double n = double.Parse(txtVlrUnitario.EditValue.ToString());
                 txtDesconto.Value = (decimal) (n * 0.85);
             } else if (e.KeyCode.Equals(Keys.F5)) {
-                double n = double.Parse(txtVlrUnitario.Text);
+                double n = double.Parse(txtVlrUnitario.EditValue.ToString());
                 txtDesconto.Value = (decimal)(n * 0.95);
             }
         }
