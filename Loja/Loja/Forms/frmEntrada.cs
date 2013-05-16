@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Xml;
 
-
 namespace Loja
 {
     public partial class frmEntrada : DevExpress.XtraEditors.XtraForm
@@ -57,33 +56,44 @@ namespace Loja
             }
 
             if (cmbProduto.EditValue == null) {
-                MessageBox.Show("Escolha um produto");
+                Util.MsgBox("Escolha um produto");
                 cmbProduto.Focus();
                 return;
             }
 
             if (txtQuantidade.EditValue == null) {
-                MessageBox.Show("Informe a quantidade");
+                Util.MsgBox("Informe a quantidade");
                 txtQuantidade.Focus();
                 return;
             }
 
             if (txtVlrUnitario.EditValue == null)
             {
-                MessageBox.Show("Informe o valor unitário");
+                Util.MsgBox("Informe o valor unitário");
                 txtVlrUnitario.Focus();
                 return;
             }
-            
-            Loja.FU_AdicionarEntrada(txtDocEntrada.Text, (DateTime)txtDatEntrada.EditValue, (int)cmbCodProduto.EditValue, 
-                                        (double)txtQuantidade.Value, txtVlrTotal.Value, CodTipoEntrada, (double)txtPercentual.Value,cmbFornecedor.Text);
 
-            SU_LimpaTela();
-            if (chkContinuar.Checked) {
-                Close();
+            try
+            {
+
+                Loja.FU_AdicionarEntrada(txtDocEntrada.Text, (DateTime)txtDatEntrada.EditValue, (int)cmbCodProduto.EditValue,
+                                            (double)txtQuantidade.Value, txtVlrTotal.Value, CodTipoEntrada, (double)txtPercentual.Value,
+                                            cmbFornecedor.Text);
+
+            }
+            catch (Exception ex) {
+                Util.MsgBox(ex.InnerException.Message);
             }
 
+            SU_LimpaTela();
+            if (chkContinuar.Checked)
+            {
+                Close();
+            }
             SU_CarregaFornecedor();
+            SU_CarregaEntrada();
+
         }
 
         #endregion
@@ -91,43 +101,61 @@ namespace Loja
         #region Funções
         void SU_CarregaEntrada()
         {
+            try
+            {
 
-            
-            var entradas = from entrada in Loja.tbl_Entrada
-                           join produto in Loja.tbl_Produtos on entrada.codigounico equals produto.codigounico
-                           where entrada.DocEntrada == txtDocEntrada.Text 
-                           select new
-                           {
-                               entrada.DatEntrada,
-                               entrada.DocEntrada,
-                               entrada.Percentual,
-                               entrada.QtdProduto,
-                               entrada.VlrTotal,
-                               entrada.VlrUnitario,
-                               produto.CodProduto,
-                               produto.DesProduto
-                           };
-            grdDados.DataSource = entradas;
+                var entradas = from entrada in Loja.tbl_Entrada
+                               join produto in Loja.tbl_Produtos on entrada.codigounico equals produto.codigounico
+                               where entrada.DocEntrada == txtDocEntrada.Text
+                               select new
+                               {
+                                   entrada.DatEntrada,
+                                   entrada.DocEntrada,
+                                   entrada.Percentual,
+                                   entrada.QtdProduto,
+                                   entrada.VlrTotal,
+                                   entrada.VlrUnitario,
+                                   produto.CodProduto,
+                                   produto.DesProduto
+                               };
+                grdDados.DataSource = entradas;
+            }
+            catch (Exception ex) {
+                Util.MsgBox(ex.Message);
+            }
 
         }
-
-        
+    
         void SU_CarregaProdutos() {
-            var produtos = from prod in Loja.tbl_Produtos
-                       where prod.QtdProduto > 0
-                       select prod;
-            cmbProduto.Properties.DataSource = produtos;
-            cmbCodProduto.Properties.DataSource = produtos;
+            try
+            {
+
+                var produtos = from prod in Loja.tbl_Produtos
+                               where prod.QtdProduto > 0
+                               select prod;
+                cmbProduto.Properties.DataSource = produtos;
+                cmbCodProduto.Properties.DataSource = produtos;
+            }
+            catch (Exception ex) {
+                Util.MsgBox(ex.Message);
+            }
+
 
         }
 
         void SU_CarregaFornecedor()
         {
-            LojaEntities Loja = new LojaEntities();
-            var fornecedores = from forn in Loja.tbl_Produtos
-                               group forn by forn.DesFornecedor into gFornecedor
-                               select new { Fornecedor = gFornecedor.Key };
-            cmbFornecedor.Properties.DataSource = fornecedores;
+            try
+            {
+                LojaEntities Loja = new LojaEntities();
+                var fornecedores = from forn in Loja.tbl_Produtos
+                                   group forn by forn.DesFornecedor into gFornecedor
+                                   select new { Fornecedor = gFornecedor.Key };
+                cmbFornecedor.Properties.DataSource = fornecedores;
+            }
+            catch (Exception ex) {
+                Util.MsgBox(ex.Message);
+            }
 
         }
 
@@ -141,7 +169,9 @@ namespace Loja
             txtVlrUnitario.Text = String.Empty;
             txtQuantidade.Text = String.Empty;
             cmbProduto.EditValue = null;
-            cmbProduto.Focus();
+            cmbCodProduto.EditValue = null;
+            cmbFornecedor.EditValue = null;
+            cmbCodProduto.Focus();
         }
 
         void SU_ValorTotal() {
@@ -155,7 +185,7 @@ namespace Loja
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Util.MsgBox(ex.Message);
             }
 
         }
@@ -172,7 +202,7 @@ namespace Loja
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Util.MsgBox(ex.Message);
             }
 
         }
@@ -202,6 +232,9 @@ namespace Loja
                 cmbProduto.Text = produtos.DesProduto;
                 cmbProduto.EditValue = produtos.codigounico;
                 cmbProduto.ClosePopup();
+                cmbFornecedor.Text = produtos.DesFornecedor;
+                cmbFornecedor.EditValue = produtos.DesFornecedor;
+                cmbFornecedor.ClosePopup();
             }
         }
 
@@ -214,6 +247,9 @@ namespace Loja
                                 select prod).FirstOrDefault();
                 cmbCodProduto.Text = produtos.CodProduto;
                 cmbCodProduto.EditValue = produtos.codigounico;
+                cmbFornecedor.Text = produtos.DesFornecedor;
+                cmbFornecedor.EditValue = produtos.DesFornecedor;
+                cmbFornecedor.ClosePopup();
             }
         }
 
@@ -222,12 +258,14 @@ namespace Loja
             SU_ValorFinal();
         }
 
-        #endregion
-
         private void txtDocEntrada_Validated(object sender, EventArgs e)
         {
             SU_CarregaEntrada();
         }
+
+        #endregion
+
+
 
                 
 

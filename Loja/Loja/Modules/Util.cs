@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Loja
 {
-    class Extenso {
+    class Util {
         // O método toExtenso recebe um valor do tipo decimal
         public static string toExtenso(decimal valor)
         {
@@ -138,6 +138,10 @@ namespace Loja
  
                 return montagem;
             }
+        }
+
+        public static void MsgBox(String msg) {
+            DevExpress.XtraEditors.XtraMessageBox.Show(msg);
         }
     }
 }
