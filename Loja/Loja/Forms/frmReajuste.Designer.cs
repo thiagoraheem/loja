@@ -55,6 +55,7 @@
             this.groupControl1.Size = new System.Drawing.Size(213, 181);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Reajustar preços";
+            this.groupControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl1_Paint);
             // 
             // btnCancelar
             // 

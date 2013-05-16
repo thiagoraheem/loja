@@ -39,6 +39,7 @@
           <Property Name="CodTipoEntrada" Type="int" Nullable="false" />
           <Property Name="codigounico" Type="int" Nullable="false" />
           <Property Name="Percentual" Type="float" />
+          <Property Name="DesFornecedor" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="tbl_Orcamento">
           <Key>
@@ -187,6 +188,7 @@
           <Parameter Name="VlrUnitario" Type="money" Mode="In" />
           <Parameter Name="CodTipoEntrada" Type="int" Mode="In" />
           <Parameter Name="Percentual" Type="float" Mode="In" />
+          <Parameter Name="DesFornecedor" Type="varchar" Mode="In" />
         </Function>
         <Function Name="spc_AdicionarOrcamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CodOrca" Type="varchar" Mode="In" />
@@ -318,6 +320,7 @@
             <Parameter Name="VlrUnitario" Mode="In" Type="Decimal" />
             <Parameter Name="CodTipoEntrada" Mode="In" Type="Int32" />
             <Parameter Name="Percentual" Mode="In" Type="Double" />
+            <Parameter Name="DesFornecedor" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="FU_EstornaVenda">
             <Parameter Name="CodVenda" Mode="In" Type="Int32" />
@@ -478,6 +481,7 @@
           <Property Type="Int32" Name="CodTipoEntrada" Nullable="false" />
           <Property Type="Int32" Name="codigounico" Nullable="false" />
           <Property Type="Double" Name="Percentual" />
+          <Property Type="String" Name="DesFornecedor" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -634,6 +638,7 @@
           <EntitySetMapping Name="tbl_Entrada">
             <EntityTypeMapping TypeName="LojaModel.tbl_Entrada">
               <MappingFragment StoreEntitySet="tbl_Entrada">
+                <ScalarProperty Name="DesFornecedor" ColumnName="DesFornecedor" />
                 <ScalarProperty Name="Percentual" ColumnName="Percentual" />
                 <ScalarProperty Name="codigounico" ColumnName="codigounico" />
                 <ScalarProperty Name="CodTipoEntrada" ColumnName="CodTipoEntrada" />

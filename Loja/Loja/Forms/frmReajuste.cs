@@ -50,5 +50,10 @@ namespace Loja
         {
             SU_CarregaFornecedor();
         }
+
+        private void groupControl1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
