@@ -267,6 +267,7 @@
             this.colCodigounico,
             this.colDocEntrada});
             this.gridDados.GridControl = this.grdDados;
+            this.gridDados.GroupPanelText = "Arraste uma coluna aqui para agrupar";
             this.gridDados.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "DatSaida", this.colData, "")});
             this.gridDados.Name = "gridDados";

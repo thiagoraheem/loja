@@ -679,7 +679,8 @@ namespace Loja
         /// <param name="vlrUnitario">No Metadata Documentation available.</param>
         /// <param name="codTipoEntrada">No Metadata Documentation available.</param>
         /// <param name="percentual">No Metadata Documentation available.</param>
-        public int FU_AdicionarEntrada(global::System.String docEntrada, Nullable<global::System.DateTime> datEntrada, Nullable<global::System.Int32> codProduto, Nullable<global::System.Double> qtdProduto, Nullable<global::System.Decimal> vlrUnitario, Nullable<global::System.Int32> codTipoEntrada, Nullable<global::System.Double> percentual)
+        /// <param name="desFornecedor">No Metadata Documentation available.</param>
+        public int FU_AdicionarEntrada(global::System.String docEntrada, Nullable<global::System.DateTime> datEntrada, Nullable<global::System.Int32> codProduto, Nullable<global::System.Double> qtdProduto, Nullable<global::System.Decimal> vlrUnitario, Nullable<global::System.Int32> codTipoEntrada, Nullable<global::System.Double> percentual, global::System.String desFornecedor)
         {
             ObjectParameter docEntradaParameter;
             if (docEntrada != null)
@@ -751,7 +752,17 @@ namespace Loja
                 percentualParameter = new ObjectParameter("Percentual", typeof(global::System.Double));
             }
     
-            return base.ExecuteFunction("FU_AdicionarEntrada", docEntradaParameter, datEntradaParameter, codProdutoParameter, qtdProdutoParameter, vlrUnitarioParameter, codTipoEntradaParameter, percentualParameter);
+            ObjectParameter desFornecedorParameter;
+            if (desFornecedor != null)
+            {
+                desFornecedorParameter = new ObjectParameter("DesFornecedor", desFornecedor);
+            }
+            else
+            {
+                desFornecedorParameter = new ObjectParameter("DesFornecedor", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction("FU_AdicionarEntrada", docEntradaParameter, datEntradaParameter, codProdutoParameter, qtdProdutoParameter, vlrUnitarioParameter, codTipoEntradaParameter, percentualParameter, desFornecedorParameter);
         }
     
         /// <summary>
@@ -1056,6 +1067,30 @@ namespace Loja
         private Nullable<global::System.Double> _Percentual;
         partial void OnPercentualChanging(Nullable<global::System.Double> value);
         partial void OnPercentualChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DesFornecedor
+        {
+            get
+            {
+                return _DesFornecedor;
+            }
+            set
+            {
+                OnDesFornecedorChanging(value);
+                ReportPropertyChanging("DesFornecedor");
+                _DesFornecedor = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DesFornecedor");
+                OnDesFornecedorChanged();
+            }
+        }
+        private global::System.String _DesFornecedor;
+        partial void OnDesFornecedorChanging(global::System.String value);
+        partial void OnDesFornecedorChanged();
 
         #endregion
     

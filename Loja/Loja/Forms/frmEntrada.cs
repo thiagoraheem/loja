@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using System.Xml;
 
 
 namespace Loja
@@ -29,6 +30,10 @@ namespace Loja
             SU_CarregaTipoEntrada();
         }
 
+        private void frmEntrada_Load(object sender, EventArgs e)
+        {
+            SU_CarregaFornecedor();
+        }
         #endregion
 
         #region Botões
@@ -71,23 +76,58 @@ namespace Loja
             }
             
             Loja.FU_AdicionarEntrada(txtDocEntrada.Text, (DateTime)txtDatEntrada.EditValue, (int)cmbCodProduto.EditValue, 
-                                        (double)txtQuantidade.Value, txtVlrTotal.Value, CodTipoEntrada, (double)txtPercentual.Value);
+                                        (double)txtQuantidade.Value, txtVlrTotal.Value, CodTipoEntrada, (double)txtPercentual.Value,cmbFornecedor.Text);
 
             SU_LimpaTela();
             if (chkContinuar.Checked) {
                 Close();
             }
+
+            SU_CarregaFornecedor();
         }
 
         #endregion
 
         #region Funções
+        void SU_CarregaEntrada()
+        {
+
+            
+            var entradas = from entrada in Loja.tbl_Entrada
+                           join produto in Loja.tbl_Produtos on entrada.codigounico equals produto.codigounico
+                           where entrada.DocEntrada == txtDocEntrada.Text 
+                           select new
+                           {
+                               entrada.DatEntrada,
+                               entrada.DocEntrada,
+                               entrada.Percentual,
+                               entrada.QtdProduto,
+                               entrada.VlrTotal,
+                               entrada.VlrUnitario,
+                               produto.CodProduto,
+                               produto.DesProduto
+                           };
+            grdDados.DataSource = entradas;
+
+        }
+
+        
         void SU_CarregaProdutos() {
             var produtos = from prod in Loja.tbl_Produtos
                        where prod.QtdProduto > 0
                        select prod;
             cmbProduto.Properties.DataSource = produtos;
             cmbCodProduto.Properties.DataSource = produtos;
+
+        }
+
+        void SU_CarregaFornecedor()
+        {
+            LojaEntities Loja = new LojaEntities();
+            var fornecedores = from forn in Loja.tbl_Produtos
+                               group forn by forn.DesFornecedor into gFornecedor
+                               select new { Fornecedor = gFornecedor.Key };
+            cmbFornecedor.Properties.DataSource = fornecedores;
 
         }
 
@@ -183,6 +223,13 @@ namespace Loja
         }
 
         #endregion
+
+        private void txtDocEntrada_Validated(object sender, EventArgs e)
+        {
+            SU_CarregaEntrada();
+        }
+
+                
 
    }
 }

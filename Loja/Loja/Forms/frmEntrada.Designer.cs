@@ -50,6 +50,18 @@
             this.txtVlrFinal = new DevExpress.XtraEditors.CalcEdit();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.cmbCodProduto = new DevExpress.XtraEditors.LookUpEdit();
+            this.grdDados = new DevExpress.XtraGrid.GridControl();
+            this.gridDados = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colData = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCodProduto = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDesProduto = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colVlrUnitario = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colQuantidade = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colVlrFinal = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDocEntrada = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cmbFornecedor = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.txtDocEntrada.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatEntrada.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatEntrada.Properties)).BeginInit();
@@ -62,6 +74,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPercentual.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVlrFinal.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbCodProduto.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDados)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridDados)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbFornecedor.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // txtDocEntrada
@@ -71,6 +86,7 @@
             this.txtDocEntrada.Name = "txtDocEntrada";
             this.txtDocEntrada.Size = new System.Drawing.Size(100, 20);
             this.txtDocEntrada.TabIndex = 0;
+            this.txtDocEntrada.Validated += new System.EventHandler(this.txtDocEntrada_Validated);
             // 
             // txtDatEntrada
             // 
@@ -103,7 +119,7 @@
             this.cmbProduto.Properties.PopupFormMinSize = new System.Drawing.Size(400, 0);
             this.cmbProduto.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.cmbProduto.Properties.ValueMember = "codigounico";
-            this.cmbProduto.Size = new System.Drawing.Size(242, 20);
+            this.cmbProduto.Size = new System.Drawing.Size(327, 20);
             this.cmbProduto.TabIndex = 12;
             this.cmbProduto.Validated += new System.EventHandler(this.cmbProduto_Validated);
             // 
@@ -152,7 +168,7 @@
             // 
             this.btnRetornar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRetornar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnRetornar.Location = new System.Drawing.Point(420, 213);
+            this.btnRetornar.Location = new System.Drawing.Point(499, 424);
             this.btnRetornar.Name = "btnRetornar";
             this.btnRetornar.Size = new System.Drawing.Size(75, 23);
             this.btnRetornar.TabIndex = 8;
@@ -162,7 +178,7 @@
             // btnGravar
             // 
             this.btnGravar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGravar.Location = new System.Drawing.Point(339, 213);
+            this.btnGravar.Location = new System.Drawing.Point(418, 424);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(75, 23);
             this.btnGravar.TabIndex = 7;
@@ -242,7 +258,7 @@
             // chkContinuar
             // 
             this.chkContinuar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkContinuar.Location = new System.Drawing.Point(208, 217);
+            this.chkContinuar.Location = new System.Drawing.Point(287, 428);
             this.chkContinuar.Name = "chkContinuar";
             this.chkContinuar.Properties.Caption = "Fechar ao gravar";
             this.chkContinuar.Size = new System.Drawing.Size(125, 19);
@@ -312,12 +328,149 @@
             this.cmbCodProduto.TabIndex = 2;
             this.cmbCodProduto.Validated += new System.EventHandler(this.cmbCodProduto_Validated);
             // 
+            // grdDados
+            // 
+            this.grdDados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdDados.Location = new System.Drawing.Point(12, 188);
+            this.grdDados.MainView = this.gridDados;
+            this.grdDados.Name = "grdDados";
+            this.grdDados.Size = new System.Drawing.Size(562, 230);
+            this.grdDados.TabIndex = 22;
+            this.grdDados.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridDados});
+            // 
+            // gridDados
+            // 
+            this.gridDados.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colData,
+            this.colCodProduto,
+            this.colDesProduto,
+            this.colVlrUnitario,
+            this.colQuantidade,
+            this.colVlrFinal,
+            this.colCodigounico,
+            this.colDocEntrada});
+            this.gridDados.GridControl = this.grdDados;
+            this.gridDados.GroupPanelText = "Arraste uma coluna aqui para agrupar";
+            this.gridDados.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "DatSaida", this.colData, "")});
+            this.gridDados.Name = "gridDados";
+            this.gridDados.OptionsView.ShowFooter = true;
+            // 
+            // colData
+            // 
+            this.colData.Caption = "Data";
+            this.colData.DisplayFormat.FormatString = "d";
+            this.colData.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.colData.FieldName = "DatEntrada";
+            this.colData.GroupFormat.FormatString = "d";
+            this.colData.GroupFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.colData.Name = "colData";
+            this.colData.OptionsColumn.AllowEdit = false;
+            this.colData.OptionsColumn.ReadOnly = true;
+            this.colData.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count)});
+            this.colData.Visible = true;
+            this.colData.VisibleIndex = 0;
+            this.colData.Width = 72;
+            // 
+            // colCodProduto
+            // 
+            this.colCodProduto.Caption = "Código";
+            this.colCodProduto.FieldName = "CodProduto";
+            this.colCodProduto.Name = "colCodProduto";
+            this.colCodProduto.Visible = true;
+            this.colCodProduto.VisibleIndex = 1;
+            this.colCodProduto.Width = 117;
+            // 
+            // colDesProduto
+            // 
+            this.colDesProduto.Caption = "Descrição";
+            this.colDesProduto.FieldName = "DesProduto";
+            this.colDesProduto.Name = "colDesProduto";
+            this.colDesProduto.Visible = true;
+            this.colDesProduto.VisibleIndex = 2;
+            this.colDesProduto.Width = 267;
+            // 
+            // colVlrUnitario
+            // 
+            this.colVlrUnitario.Caption = "Vlr. Unit.";
+            this.colVlrUnitario.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colVlrUnitario.FieldName = "VlrUnitario";
+            this.colVlrUnitario.Name = "colVlrUnitario";
+            this.colVlrUnitario.Visible = true;
+            this.colVlrUnitario.VisibleIndex = 3;
+            this.colVlrUnitario.Width = 73;
+            // 
+            // colQuantidade
+            // 
+            this.colQuantidade.Caption = "Qtde.";
+            this.colQuantidade.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colQuantidade.FieldName = "QtdProduto";
+            this.colQuantidade.Name = "colQuantidade";
+            this.colQuantidade.Visible = true;
+            this.colQuantidade.VisibleIndex = 4;
+            this.colQuantidade.Width = 49;
+            // 
+            // colVlrFinal
+            // 
+            this.colVlrFinal.Caption = "Vlr. Final";
+            this.colVlrFinal.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colVlrFinal.FieldName = "VlrTotal";
+            this.colVlrFinal.Name = "colVlrFinal";
+            this.colVlrFinal.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
+            this.colVlrFinal.Visible = true;
+            this.colVlrFinal.VisibleIndex = 5;
+            this.colVlrFinal.Width = 70;
+            // 
+            // colCodigounico
+            // 
+            this.colCodigounico.Caption = "Código Único";
+            this.colCodigounico.FieldName = "codigounico";
+            this.colCodigounico.Name = "colCodigounico";
+            // 
+            // colDocEntrada
+            // 
+            this.colDocEntrada.Caption = "Documento";
+            this.colDocEntrada.FieldName = "DocEntrada";
+            this.colDocEntrada.Name = "colDocEntrada";
+            this.colDocEntrada.Visible = true;
+            this.colDocEntrada.VisibleIndex = 6;
+            // 
+            // cmbFornecedor
+            // 
+            this.cmbFornecedor.EnterMoveNextControl = true;
+            this.cmbFornecedor.Location = new System.Drawing.Point(329, 104);
+            this.cmbFornecedor.Name = "cmbFornecedor";
+            this.cmbFornecedor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbFornecedor.Properties.DisplayMember = "Fornecedor";
+            this.cmbFornecedor.Properties.NullText = "Selecione um fornecedor";
+            this.cmbFornecedor.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.cmbFornecedor.Properties.ValueMember = "Fornecedor";
+            this.cmbFornecedor.Size = new System.Drawing.Size(245, 20);
+            this.cmbFornecedor.TabIndex = 23;
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Location = new System.Drawing.Point(252, 107);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(59, 13);
+            this.labelControl10.TabIndex = 24;
+            this.labelControl10.Text = "Fornecedor:";
+            // 
             // frmEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnRetornar;
-            this.ClientSize = new System.Drawing.Size(507, 248);
+            this.ClientSize = new System.Drawing.Size(586, 459);
+            this.Controls.Add(this.cmbFornecedor);
+            this.Controls.Add(this.labelControl10);
+            this.Controls.Add(this.grdDados);
             this.Controls.Add(this.cmbCodProduto);
             this.Controls.Add(this.txtVlrFinal);
             this.Controls.Add(this.labelControl9);
@@ -344,6 +497,7 @@
             this.Name = "frmEntrada";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Entrada de Produtos";
+            this.Load += new System.EventHandler(this.frmEntrada_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtDocEntrada.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatEntrada.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatEntrada.Properties)).EndInit();
@@ -356,6 +510,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPercentual.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVlrFinal.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbCodProduto.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDados)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridDados)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbFornecedor.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -385,5 +542,17 @@
         private DevExpress.XtraEditors.CalcEdit txtVlrFinal;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.LookUpEdit cmbCodProduto;
+        private DevExpress.XtraGrid.GridControl grdDados;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridDados;
+        private DevExpress.XtraGrid.Columns.GridColumn colData;
+        private DevExpress.XtraGrid.Columns.GridColumn colCodProduto;
+        private DevExpress.XtraGrid.Columns.GridColumn colDesProduto;
+        private DevExpress.XtraGrid.Columns.GridColumn colVlrUnitario;
+        private DevExpress.XtraGrid.Columns.GridColumn colQuantidade;
+        private DevExpress.XtraGrid.Columns.GridColumn colVlrFinal;
+        private DevExpress.XtraGrid.Columns.GridColumn colCodigounico;
+        private DevExpress.XtraGrid.Columns.GridColumn colDocEntrada;
+        private DevExpress.XtraEditors.LookUpEdit cmbFornecedor;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
     }
 }
