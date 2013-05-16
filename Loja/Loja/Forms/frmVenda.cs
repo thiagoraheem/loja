@@ -100,7 +100,7 @@ namespace Loja
                     using (frmRecibo f = new frmRecibo())
                     {
                         f.txtValor.Value = txtVlrTotal.Value;
-                        f.txtExtenso.Text = Extenso.toExtenso(txtVlrTotal.Value);
+                        f.txtExtenso.Text = Util.toExtenso(txtVlrTotal.Value);
                         f.ShowDialog();
                     }
                 }

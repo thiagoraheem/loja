@@ -1,2 +1,2 @@
 alter table tbl_entrada
-add DesFornecedor varchar(20)
+add DesFornecedor varchar(10)

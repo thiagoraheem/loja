@@ -20,7 +20,7 @@ namespace Loja
 
         private void txtValor_Validated(object sender, EventArgs e)
         {
-            txtExtenso.Text = Extenso.toExtenso(txtValor.Value);
+            txtExtenso.Text = Util.toExtenso(txtValor.Value);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
