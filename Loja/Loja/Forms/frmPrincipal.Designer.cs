@@ -66,6 +66,7 @@
             this.cmbCodOrca = new DevExpress.XtraBars.BarEditItem();
             this.repCodOrca = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.btnExcluirOrca = new DevExpress.XtraBars.BarButtonItem();
+            this.btnVendaRapida = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
             this.homeRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.fileRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -193,10 +194,11 @@
             this.btnFazerBackup,
             this.cmbCodOrca,
             this.btnExcluirOrca,
-            this.btnModoEdicao});
+            this.btnModoEdicao,
+            this.btnVendaRapida});
             this.ribbonControl.LargeImages = this.ribbonImageCollectionLarge;
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 78;
+            this.ribbonControl.MaxItemId = 79;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.PageHeaderItemLinks.Add(this.iAbout);
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -465,6 +467,7 @@
             this.btnFinalizarVenda.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F12);
             this.btnFinalizarVenda.LargeImageIndex = 11;
             this.btnFinalizarVenda.Name = "btnFinalizarVenda";
+            this.btnFinalizarVenda.ShortcutKeyDisplayString = "<F12>";
             this.btnFinalizarVenda.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFinalizarVenda_ItemClick);
             // 
             // btnFazerBackup
@@ -509,6 +512,16 @@
             this.btnExcluirOrca.Name = "btnExcluirOrca";
             this.btnExcluirOrca.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExcluirOrca_ItemClick);
             // 
+            // btnVendaRapida
+            // 
+            this.btnVendaRapida.Caption = "Venda Rápida";
+            this.btnVendaRapida.Id = 78;
+            this.btnVendaRapida.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F11);
+            this.btnVendaRapida.LargeImageIndex = 13;
+            this.btnVendaRapida.Name = "btnVendaRapida";
+            this.btnVendaRapida.ShortcutKeyDisplayString = "<F11>";
+            this.btnVendaRapida.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnVendaRapida_ItemClick);
+            // 
             // ribbonImageCollectionLarge
             // 
             this.ribbonImageCollectionLarge.ImageSize = new System.Drawing.Size(32, 32);
@@ -526,6 +539,7 @@
             this.ribbonImageCollectionLarge.Images.SetKeyName(10, "SaveAllHS.png");
             this.ribbonImageCollectionLarge.Images.SetKeyName(11, "1365051122_shopcartapply_128x128.png");
             this.ribbonImageCollectionLarge.Images.SetKeyName(12, "Trashcan_full.png");
+            this.ribbonImageCollectionLarge.Images.SetKeyName(13, "1368833657_shopcartdown_48x48.png");
             // 
             // homeRibbonPage
             // 
@@ -559,6 +573,7 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.btnExcluirOrca);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnImprimir);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnFinalizarVenda, "F12");
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnVendaRapida, "F11");
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Orçamento";
             // 
@@ -1100,6 +1115,7 @@
         private DevExpress.XtraBars.BarButtonItem btnExcluirOrca;
         private DevExpress.XtraBars.BarButtonItem btnModoEdicao;
         private DevExpress.XtraGrid.Columns.GridColumn colVlrOriginal;
+        private DevExpress.XtraBars.BarButtonItem btnVendaRapida;
 
     }
 }
