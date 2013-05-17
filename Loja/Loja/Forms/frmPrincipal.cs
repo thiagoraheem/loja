@@ -201,6 +201,27 @@ namespace Loja
 
         }
 
+        String SU_AddOrca(String CodOrca)
+        {
+            try
+            {
+                int codproduto = FU_PegaCodigoGrid("P");
+
+                LojaEntities orcamento = new LojaEntities();
+
+                ObjectResult<string> codOrca = orcamento.FU_AddItemOrcamento(CodOrca, codproduto);
+
+                cmbCodOrca.EditValue = codOrca.FirstOrDefault();
+
+                InitGridOrca();
+                return cmbCodOrca.EditValue.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Concat("Erro ao adicionar item: ", ex.Message));
+                return "";
+            }
+        }
         #endregion
 
         #region Botões RibbonBar
@@ -250,6 +271,31 @@ namespace Loja
             btnExcluirOrca.Enabled = false;
         }
 
+        private void btnVendaRapida_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            String orca = SU_AddOrca("");
+            frmVenda f = new frmVenda();
+            f.CodOrcamento = cmbCodOrca.EditValue.ToString();
+            f.ShowDialog();
+
+            if (f.DialogResult == System.Windows.Forms.DialogResult.Yes)
+            {
+                InitGrid();
+                InitComboOrca();
+                cmbCodOrca.EditValue = "";
+                InitGridOrca();
+            }
+            else {
+                LojaEntities loja = new LojaEntities();
+                loja.FU_ApagarOrcamento(orca);
+                InitGridOrca();
+                InitComboOrca();
+                btnImprimir.Enabled = false;
+                btnFinalizarVenda.Enabled = false;
+                btnExcluirOrca.Enabled = false;
+            }
+        }
+
         #endregion
 
         #region Eventos Grids
@@ -257,28 +303,16 @@ namespace Loja
         {
             if (e.KeyCode == Keys.Space)
             {
-                try
+                String Orca;
+                if (cmbCodOrca.EditValue == null)
                 {
-                    int codproduto = FU_PegaCodigoGrid("P");
-
-                    LojaEntities orcamento = new LojaEntities();
-                    String Orca;
-                    if (cmbCodOrca.EditValue == null)
-                    {
-                        Orca = "";
-                    }
-                    else {
-                        Orca = cmbCodOrca.EditValue.ToString();
-                    }
-                    ObjectResult<string> codOrca = orcamento.FU_AddItemOrcamento(Orca, codproduto);
-
-                    cmbCodOrca.EditValue = codOrca.FirstOrDefault();
-
-                    InitGridOrca();
+                    Orca = "";
                 }
-                catch (Exception ex) {
-                    MessageBox.Show(string.Concat("Erro ao adicionar item: ", ex.Message));
+                else
+                {
+                    Orca = cmbCodOrca.EditValue.ToString();
                 }
+                SU_AddOrca(Orca);
             }
             else if (e.KeyCode == Keys.Return) {
                 int codproduto = FU_PegaCodigoGrid("P");;
