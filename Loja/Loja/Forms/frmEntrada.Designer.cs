@@ -144,7 +144,7 @@
             this.txtVlrUnitario.Properties.Mask.EditMask = "c";
             this.txtVlrUnitario.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtVlrUnitario.Size = new System.Drawing.Size(100, 20);
-            this.txtVlrUnitario.TabIndex = 4;
+            this.txtVlrUnitario.TabIndex = 5;
             this.txtVlrUnitario.EditValueChanged += new System.EventHandler(this.txtVlrUnitario_EditValueChanged);
             // 
             // cmbTipoEntrada
@@ -161,7 +161,7 @@
             this.cmbTipoEntrada.Properties.NullText = "[Selecione um tipo]";
             this.cmbTipoEntrada.Properties.ValueMember = "CodTipoVenda";
             this.cmbTipoEntrada.Size = new System.Drawing.Size(132, 20);
-            this.cmbTipoEntrada.TabIndex = 6;
+            this.cmbTipoEntrada.TabIndex = 21;
             this.cmbTipoEntrada.Visible = false;
             // 
             // btnRetornar
@@ -222,7 +222,7 @@
             this.labelControl5.Location = new System.Drawing.Point(29, 136);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(60, 13);
-            this.labelControl5.TabIndex = 14;
+            this.labelControl5.TabIndex = 15;
             this.labelControl5.Text = "Vlr. Unitário:";
             // 
             // labelControl6
@@ -230,7 +230,7 @@
             this.labelControl6.Location = new System.Drawing.Point(29, 162);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(47, 13);
-            this.labelControl6.TabIndex = 16;
+            this.labelControl6.TabIndex = 17;
             this.labelControl6.Text = "Vlr. Total:";
             // 
             // labelControl7
@@ -238,7 +238,7 @@
             this.labelControl7.Location = new System.Drawing.Point(29, 188);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(80, 13);
-            this.labelControl7.TabIndex = 20;
+            this.labelControl7.TabIndex = 24;
             this.labelControl7.Text = "Tipo de Entrada:";
             this.labelControl7.Visible = false;
             // 
@@ -252,7 +252,7 @@
             this.txtVlrTotal.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtVlrTotal.Properties.ReadOnly = true;
             this.txtVlrTotal.Size = new System.Drawing.Size(100, 20);
-            this.txtVlrTotal.TabIndex = 17;
+            this.txtVlrTotal.TabIndex = 18;
             this.txtVlrTotal.TabStop = false;
             // 
             // chkContinuar
@@ -262,14 +262,14 @@
             this.chkContinuar.Name = "chkContinuar";
             this.chkContinuar.Properties.Caption = "Fechar ao gravar";
             this.chkContinuar.Size = new System.Drawing.Size(125, 19);
-            this.chkContinuar.TabIndex = 21;
+            this.chkContinuar.TabIndex = 0;
             // 
             // labelControl8
             // 
             this.labelControl8.Location = new System.Drawing.Point(258, 136);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(55, 13);
-            this.labelControl8.TabIndex = 15;
+            this.labelControl8.TabIndex = 16;
             this.labelControl8.Text = "Percentual:";
             // 
             // txtPercentual
@@ -279,10 +279,10 @@
             this.txtPercentual.Name = "txtPercentual";
             this.txtPercentual.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtPercentual.Properties.Mask.EditMask = "P";
+            this.txtPercentual.Properties.Mask.EditMask = "P0";
             this.txtPercentual.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtPercentual.Size = new System.Drawing.Size(100, 20);
-            this.txtPercentual.TabIndex = 5;
+            this.txtPercentual.TabIndex = 6;
             this.txtPercentual.Validated += new System.EventHandler(this.txtPercentual_Validated);
             // 
             // txtVlrFinal
@@ -295,7 +295,7 @@
             this.txtVlrFinal.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtVlrFinal.Properties.ReadOnly = true;
             this.txtVlrFinal.Size = new System.Drawing.Size(100, 20);
-            this.txtVlrFinal.TabIndex = 19;
+            this.txtVlrFinal.TabIndex = 20;
             this.txtVlrFinal.TabStop = false;
             // 
             // labelControl9
@@ -303,7 +303,7 @@
             this.labelControl9.Location = new System.Drawing.Point(266, 162);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(45, 13);
-            this.labelControl9.TabIndex = 18;
+            this.labelControl9.TabIndex = 19;
             this.labelControl9.Text = "Vlr. Final:";
             // 
             // cmbCodProduto
@@ -337,9 +337,10 @@
             this.grdDados.MainView = this.gridDados;
             this.grdDados.Name = "grdDados";
             this.grdDados.Size = new System.Drawing.Size(698, 230);
-            this.grdDados.TabIndex = 22;
+            this.grdDados.TabIndex = 23;
             this.grdDados.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridDados});
+            this.grdDados.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdDados_KeyDown);
             // 
             // gridDados
             // 
@@ -381,6 +382,8 @@
             this.colCodProduto.Caption = "Código";
             this.colCodProduto.FieldName = "CodProduto";
             this.colCodProduto.Name = "colCodProduto";
+            this.colCodProduto.OptionsColumn.AllowEdit = false;
+            this.colCodProduto.OptionsColumn.ReadOnly = true;
             this.colCodProduto.Visible = true;
             this.colCodProduto.VisibleIndex = 1;
             this.colCodProduto.Width = 117;
@@ -390,6 +393,8 @@
             this.colDesProduto.Caption = "Descrição";
             this.colDesProduto.FieldName = "DesProduto";
             this.colDesProduto.Name = "colDesProduto";
+            this.colDesProduto.OptionsColumn.AllowEdit = false;
+            this.colDesProduto.OptionsColumn.ReadOnly = true;
             this.colDesProduto.Visible = true;
             this.colDesProduto.VisibleIndex = 2;
             this.colDesProduto.Width = 267;
@@ -400,6 +405,8 @@
             this.colVlrUnitario.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colVlrUnitario.FieldName = "VlrUnitario";
             this.colVlrUnitario.Name = "colVlrUnitario";
+            this.colVlrUnitario.OptionsColumn.AllowEdit = false;
+            this.colVlrUnitario.OptionsColumn.ReadOnly = true;
             this.colVlrUnitario.Visible = true;
             this.colVlrUnitario.VisibleIndex = 3;
             this.colVlrUnitario.Width = 73;
@@ -410,6 +417,8 @@
             this.colQuantidade.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colQuantidade.FieldName = "QtdProduto";
             this.colQuantidade.Name = "colQuantidade";
+            this.colQuantidade.OptionsColumn.AllowEdit = false;
+            this.colQuantidade.OptionsColumn.ReadOnly = true;
             this.colQuantidade.Visible = true;
             this.colQuantidade.VisibleIndex = 4;
             this.colQuantidade.Width = 49;
@@ -420,6 +429,8 @@
             this.colVlrFinal.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colVlrFinal.FieldName = "VlrTotal";
             this.colVlrFinal.Name = "colVlrFinal";
+            this.colVlrFinal.OptionsColumn.AllowEdit = false;
+            this.colVlrFinal.OptionsColumn.ReadOnly = true;
             this.colVlrFinal.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
             this.colVlrFinal.Visible = true;
@@ -431,12 +442,16 @@
             this.colCodigounico.Caption = "Código Único";
             this.colCodigounico.FieldName = "codigounico";
             this.colCodigounico.Name = "colCodigounico";
+            this.colCodigounico.OptionsColumn.AllowEdit = false;
+            this.colCodigounico.OptionsColumn.ReadOnly = true;
             // 
             // colDocEntrada
             // 
             this.colDocEntrada.Caption = "Documento";
             this.colDocEntrada.FieldName = "DocEntrada";
             this.colDocEntrada.Name = "colDocEntrada";
+            this.colDocEntrada.OptionsColumn.AllowEdit = false;
+            this.colDocEntrada.OptionsColumn.ReadOnly = true;
             this.colDocEntrada.Visible = true;
             this.colDocEntrada.VisibleIndex = 6;
             // 
@@ -452,14 +467,14 @@
             this.cmbFornecedor.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.cmbFornecedor.Properties.ValueMember = "Fornecedor";
             this.cmbFornecedor.Size = new System.Drawing.Size(245, 20);
-            this.cmbFornecedor.TabIndex = 23;
+            this.cmbFornecedor.TabIndex = 4;
             // 
             // labelControl10
             // 
             this.labelControl10.Location = new System.Drawing.Point(252, 107);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(59, 13);
-            this.labelControl10.TabIndex = 24;
+            this.labelControl10.TabIndex = 14;
             this.labelControl10.Text = "Fornecedor:";
             // 
             // frmEntrada
@@ -494,6 +509,7 @@
             this.Controls.Add(this.txtDatEntrada);
             this.Controls.Add(this.txtDocEntrada);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.Name = "frmEntrada";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Entrada de Produtos";

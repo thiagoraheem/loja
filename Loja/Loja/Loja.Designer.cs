@@ -824,6 +824,69 @@ namespace Loja
     
             return base.ExecuteFunction("FU_ApagarOrcamento", original_CodOrcaParameter);
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="docEntrada">No Metadata Documentation available.</param>
+        /// <param name="datEntrada">No Metadata Documentation available.</param>
+        /// <param name="codigounico">No Metadata Documentation available.</param>
+        /// <param name="quantidade">No Metadata Documentation available.</param>
+        /// <param name="vlrUnitario">No Metadata Documentation available.</param>
+        public int FU_AlterarEntrada(global::System.String docEntrada, Nullable<global::System.DateTime> datEntrada, Nullable<global::System.Int32> codigounico, Nullable<global::System.Double> quantidade, Nullable<global::System.Double> vlrUnitario)
+        {
+            ObjectParameter docEntradaParameter;
+            if (docEntrada != null)
+            {
+                docEntradaParameter = new ObjectParameter("DocEntrada", docEntrada);
+            }
+            else
+            {
+                docEntradaParameter = new ObjectParameter("DocEntrada", typeof(global::System.String));
+            }
+    
+            ObjectParameter datEntradaParameter;
+            if (datEntrada.HasValue)
+            {
+                datEntradaParameter = new ObjectParameter("DatEntrada", datEntrada);
+            }
+            else
+            {
+                datEntradaParameter = new ObjectParameter("DatEntrada", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter codigounicoParameter;
+            if (codigounico.HasValue)
+            {
+                codigounicoParameter = new ObjectParameter("codigounico", codigounico);
+            }
+            else
+            {
+                codigounicoParameter = new ObjectParameter("codigounico", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter quantidadeParameter;
+            if (quantidade.HasValue)
+            {
+                quantidadeParameter = new ObjectParameter("Quantidade", quantidade);
+            }
+            else
+            {
+                quantidadeParameter = new ObjectParameter("Quantidade", typeof(global::System.Double));
+            }
+    
+            ObjectParameter vlrUnitarioParameter;
+            if (vlrUnitario.HasValue)
+            {
+                vlrUnitarioParameter = new ObjectParameter("VlrUnitario", vlrUnitario);
+            }
+            else
+            {
+                vlrUnitarioParameter = new ObjectParameter("VlrUnitario", typeof(global::System.Double));
+            }
+    
+            return base.ExecuteFunction("FU_AlterarEntrada", docEntradaParameter, datEntradaParameter, codigounicoParameter, quantidadeParameter, vlrUnitarioParameter);
+        }
 
         #endregion
     }

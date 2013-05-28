@@ -194,6 +194,13 @@
           <Parameter Name="CodOrca" Type="varchar" Mode="In" />
           <Parameter Name="CodProduto" Type="int" Mode="In" />
         </Function>
+        <Function Name="spc_AlterarEntrada" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DocEntrada" Type="varchar" Mode="In" />
+          <Parameter Name="DatEntrada" Type="smalldatetime" Mode="In" />
+          <Parameter Name="codigounico" Type="int" Mode="In" />
+          <Parameter Name="Quantidade" Type="float" Mode="In" />
+          <Parameter Name="VlrUnitario" Type="float" Mode="In" />
+        </Function>
         <Function Name="spc_AlterarOrcamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CodOrca" Type="varchar" Mode="In" />
           <Parameter Name="CodProduto" Type="int" Mode="In" />
@@ -329,6 +336,13 @@
           </FunctionImport>
           <FunctionImport Name="FU_ApagarOrcamento">
           <Parameter Name="Original_CodOrca" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="FU_AlterarEntrada">
+            <Parameter Name="DocEntrada" Mode="In" Type="String" />
+            <Parameter Name="DatEntrada" Mode="In" Type="DateTime" />
+            <Parameter Name="codigounico" Mode="In" Type="Int32" />
+            <Parameter Name="Quantidade" Mode="In" Type="Double" />
+            <Parameter Name="VlrUnitario" Mode="In" Type="Double" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="tbl_Orcamento">
@@ -653,6 +667,7 @@
           <FunctionImportMapping FunctionImportName="FU_AdicionarEntrada" FunctionName="LojaModel.Store.spc_AdicionarEntrada" />
           <FunctionImportMapping FunctionImportName="FU_EstornaVenda" FunctionName="LojaModel.Store.spc_EstornaVenda" />
           <FunctionImportMapping FunctionImportName="FU_ApagarOrcamento" FunctionName="LojaModel.Store.spc_ApagarOrcamento" />
+          <FunctionImportMapping FunctionImportName="FU_AlterarEntrada" FunctionName="LojaModel.Store.spc_AlterarEntrada" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
