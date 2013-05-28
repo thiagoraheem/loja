@@ -74,16 +74,24 @@ namespace Loja
                 txtVlrUnitario.Focus();
                 return;
             }
-            
-            Loja.FU_AdicionarEntrada(txtDocEntrada.Text, (DateTime)txtDatEntrada.EditValue, (int)cmbCodProduto.EditValue, 
-                                        (double)txtQuantidade.Value, txtVlrTotal.Value, CodTipoEntrada, (double)txtPercentual.Value,cmbFornecedor.Text);
 
+            try
+            {
+
+                Loja.FU_AdicionarEntrada(txtDocEntrada.Text, (DateTime)txtDatEntrada.EditValue, (int)cmbCodProduto.EditValue,
+                                            (double)txtQuantidade.Value, txtVlrUnitario.Value, CodTipoEntrada, (double)txtPercentual.Value, cmbFornecedor.Text);
+
+            }
+            catch (Exception ex) {
+                Util.MsgBox(ex.Message);
+            }
             SU_LimpaTela();
             if (chkContinuar.Checked) {
                 Close();
             }
 
             SU_CarregaFornecedor();
+            SU_CarregaEntrada();
         }
 
         #endregion
@@ -105,7 +113,8 @@ namespace Loja
                                entrada.VlrTotal,
                                entrada.VlrUnitario,
                                produto.CodProduto,
-                               produto.DesProduto
+                               produto.DesProduto,
+                               produto.codigounico
                            };
             grdDados.DataSource = entradas;
 
@@ -204,6 +213,8 @@ namespace Loja
                                 select prod).FirstOrDefault();
                 cmbProduto.Text = produtos.DesProduto;
                 cmbProduto.EditValue = produtos.codigounico;
+                cmbFornecedor.EditValue = produtos.DesFornecedor;
+                cmbFornecedor.ClosePopup();
                 cmbProduto.ClosePopup();
             }
         }
@@ -217,6 +228,8 @@ namespace Loja
                                 select prod).FirstOrDefault();
                 cmbCodProduto.Text = produtos.CodProduto;
                 cmbCodProduto.EditValue = produtos.codigounico;
+                cmbFornecedor.EditValue = produtos.DesFornecedor;
+                cmbFornecedor.ClosePopup();
             }
         }
 
@@ -230,7 +243,27 @@ namespace Loja
             SU_CarregaEntrada();
         }
 
-        #endregion               
+        private void grdDados_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.Equals(Keys.Delete)) {
+                if (MessageBox.Show("Confirma apagar essa entrada?", "Confirmar exclusão", MessageBoxButtons.YesNo) == DialogResult.No)
+                    return;
+
+                int linha = gridDados.GetSelectedRows()[0];
+                int codigo = (int)gridDados.GetRowCellValue(linha, colCodigounico);
+
+                if (txtDatEntrada.Text.Equals(String.Empty)) {
+                    DateTime data = (DateTime)gridDados.GetRowCellValue(linha, colData);
+                    txtDatEntrada.DateTime = data;
+                }
+
+                LojaEntities loja = new LojaEntities();
+                loja.FU_AlterarEntrada(txtDocEntrada.Text, txtDatEntrada.DateTime, codigo, 0, 0);
+
+                SU_CarregaEntrada();
+            }
+        }
+        #endregion 
 
    }
 }

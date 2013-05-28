@@ -86,7 +86,7 @@
             // labelControl4
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl4.Location = new System.Drawing.Point(251, 179);
+            this.labelControl4.Location = new System.Drawing.Point(311, 180);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(57, 23);
             this.labelControl4.TabIndex = 3;
@@ -112,9 +112,9 @@
             // 
             // imgFoto
             // 
-            this.imgFoto.Location = new System.Drawing.Point(420, 29);
+            this.imgFoto.Location = new System.Drawing.Point(480, 29);
             this.imgFoto.Name = "imgFoto";
-            this.imgFoto.Size = new System.Drawing.Size(254, 296);
+            this.imgFoto.Size = new System.Drawing.Size(280, 296);
             this.imgFoto.TabIndex = 6;
             // 
             // txtCodProduto
@@ -124,7 +124,7 @@
             this.txtCodProduto.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodProduto.Properties.Appearance.Options.UseFont = true;
             this.txtCodProduto.Properties.ReadOnly = true;
-            this.txtCodProduto.Size = new System.Drawing.Size(282, 30);
+            this.txtCodProduto.Size = new System.Drawing.Size(342, 30);
             this.txtCodProduto.TabIndex = 7;
             // 
             // txtFornecedor
@@ -139,7 +139,7 @@
             // 
             // txtDesLocal
             // 
-            this.txtDesLocal.Location = new System.Drawing.Point(314, 175);
+            this.txtDesLocal.Location = new System.Drawing.Point(374, 176);
             this.txtDesLocal.Name = "txtDesLocal";
             this.txtDesLocal.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDesLocal.Properties.Appearance.Options.UseFont = true;
@@ -165,7 +165,7 @@
             this.txtDesProduto.Properties.Appearance.Options.UseFont = true;
             this.txtDesProduto.Properties.ReadOnly = true;
             this.txtDesProduto.Properties.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtDesProduto.Size = new System.Drawing.Size(282, 58);
+            this.txtDesProduto.Size = new System.Drawing.Size(342, 58);
             this.txtDesProduto.TabIndex = 13;
             // 
             // groupControl1
@@ -188,7 +188,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(682, 330);
+            this.groupControl1.Size = new System.Drawing.Size(772, 330);
             this.groupControl1.TabIndex = 14;
             this.groupControl1.Text = "DETALHES DO PRODUTO";
             // 
@@ -214,7 +214,7 @@
             this.txtDesconto.Properties.Mask.EditMask = "c2";
             this.txtDesconto.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtDesconto.Properties.ReadOnly = true;
-            this.txtDesconto.Size = new System.Drawing.Size(124, 36);
+            this.txtDesconto.Size = new System.Drawing.Size(184, 36);
             this.txtDesconto.TabIndex = 15;
             // 
             // txtVlrUnitario
@@ -231,14 +231,14 @@
             this.txtVlrUnitario.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtVlrUnitario.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtVlrUnitario.Properties.ReadOnly = true;
-            this.txtVlrUnitario.Size = new System.Drawing.Size(124, 36);
+            this.txtVlrUnitario.Size = new System.Drawing.Size(184, 36);
             this.txtVlrUnitario.TabIndex = 12;
             // 
             // frmDetalhe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(682, 330);
+            this.ClientSize = new System.Drawing.Size(772, 330);
             this.Controls.Add(this.groupControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
