@@ -36,7 +36,6 @@
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.appMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             this.popupControlContainer2 = new DevExpress.XtraBars.PopupControlContainer(this.components);
-            this.buttonEdit = new DevExpress.XtraEditors.ButtonEdit();
             this.btnModoEdicao = new DevExpress.XtraBars.BarButtonItem();
             this.iExit = new DevExpress.XtraBars.BarButtonItem();
             this.popupControlContainer1 = new DevExpress.XtraBars.PopupControlContainer(this.components);
@@ -119,8 +118,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer2)).BeginInit();
-            this.popupControlContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer1)).BeginInit();
             this.popupControlContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonImageCollection)).BeginInit();
@@ -229,24 +226,12 @@
             this.popupControlContainer2.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.popupControlContainer2.Appearance.Options.UseBackColor = true;
             this.popupControlContainer2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.popupControlContainer2.Controls.Add(this.buttonEdit);
             this.popupControlContainer2.Location = new System.Drawing.Point(238, 289);
             this.popupControlContainer2.Name = "popupControlContainer2";
             this.popupControlContainer2.Ribbon = this.ribbonControl;
             this.popupControlContainer2.Size = new System.Drawing.Size(118, 28);
             this.popupControlContainer2.TabIndex = 3;
             this.popupControlContainer2.Visible = false;
-            // 
-            // buttonEdit
-            // 
-            this.buttonEdit.EditValue = "Some Text";
-            this.buttonEdit.Location = new System.Drawing.Point(3, 5);
-            this.buttonEdit.MenuManager = this.ribbonControl;
-            this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.buttonEdit.Size = new System.Drawing.Size(100, 20);
-            this.buttonEdit.TabIndex = 0;
             // 
             // btnModoEdicao
             // 
@@ -286,17 +271,17 @@
             // 
             this.someLabelControl2.Location = new System.Drawing.Point(3, 57);
             this.someLabelControl2.Name = "someLabelControl2";
-            this.someLabelControl2.Size = new System.Drawing.Size(49, 13);
+            this.someLabelControl2.Size = new System.Drawing.Size(98, 13);
             this.someLabelControl2.TabIndex = 0;
-            this.someLabelControl2.Text = "Some Info";
+            this.someLabelControl2.Text = "Controle de Estoque";
             // 
             // someLabelControl1
             // 
             this.someLabelControl1.Location = new System.Drawing.Point(3, 3);
             this.someLabelControl1.Name = "someLabelControl1";
-            this.someLabelControl1.Size = new System.Drawing.Size(49, 13);
+            this.someLabelControl1.Size = new System.Drawing.Size(39, 13);
             this.someLabelControl1.TabIndex = 0;
-            this.someLabelControl1.Text = "Some Info";
+            this.someLabelControl1.Text = "Loja 1.0";
             // 
             // ribbonImageCollection
             // 
@@ -991,10 +976,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(978, 617);
+            this.Controls.Add(this.popupControlContainer2);
+            this.Controls.Add(this.popupControlContainer1);
             this.Controls.Add(this.splitContainerControl);
             this.Controls.Add(this.ribbonControl);
-            this.Controls.Add(this.popupControlContainer1);
-            this.Controls.Add(this.popupControlContainer2);
             this.Controls.Add(this.ribbonStatusBar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -1007,8 +992,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.appMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer2)).EndInit();
-            this.popupControlContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer1)).EndInit();
             this.popupControlContainer1.ResumeLayout(false);
             this.popupControlContainer1.PerformLayout();
@@ -1057,7 +1040,6 @@
         private DevExpress.XtraEditors.LabelControl someLabelControl2;
         private DevExpress.XtraEditors.LabelControl someLabelControl1;
         private DevExpress.XtraBars.PopupControlContainer popupControlContainer2;
-        private DevExpress.XtraEditors.ButtonEdit buttonEdit;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.Utils.ImageCollection ribbonImageCollection;
         private DevExpress.Utils.ImageCollection ribbonImageCollectionLarge;
