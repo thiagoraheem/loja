@@ -54,6 +54,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>94BD5FF4FE3090A89A2998E8A547EF04A8A56550</ManifestCertificateThumbprint>

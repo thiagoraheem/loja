@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
+using System.Data.OleDb;
+using System.Data.SqlClient;
+using System.Data.Odbc;
 
 namespace Loja
 {
@@ -143,5 +147,62 @@ namespace Loja
         public static void MsgBox(String msg) {
             DevExpress.XtraEditors.XtraMessageBox.Show(msg);
         }
+
+        public static void CopiarDoDbf()
+        {
+            OleDbConnection oConn = new OleDbConnection() { ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=c:\Loja;Extended Properties=dBASE III;" };
+
+            /*OdbcConnection oConn = new OdbcConnection()
+            {
+                ConnectionString = @"Driver={Microsoft Access dBase Driver (*.dbf, *.ndx, *.mdx)};SourceType=DBF;SourceDB=c:\LOJA\;Exclusive=No;  _
+                                                                     Collate=Machine;NULL=NO;DELETED=NO;BACKGROUNDFETCH=NO;"
+            };*/
+
+            //OdbcConnection oConn = new OdbcConnection() { ConnectionString = Properties.Settings.Default.ConnDBF };
+            SqlConnection oConn2 = new SqlConnection() { ConnectionString = Properties.Settings.Default.ConnLOJADBF };
+
+            DataTable dt = new DataTable();
+            try
+            {
+                oConn.Open();
+                using (OleDbCommand oCmd = oConn.CreateCommand())
+                //using (OdbcCommand oCmd = oConn.CreateCommand())
+                {
+                    oCmd.CommandText = @"SELECT * FROM c:\Loja\CAD_PEC.dbf";
+                    dt.Load(oCmd.ExecuteReader());
+                }
+                oConn.Close();
+
+                oConn2.Open();///this is my connection to the sql server
+
+                //create a reader for the datatable
+                SqlCommand exec1 = new SqlCommand("TRUNCATE TABLE CAD_PEC", oConn2);
+                exec1.ExecuteNonQuery();
+
+                using (DataTableReader reader = dt.CreateDataReader())
+                {
+                    SqlBulkCopy sqlcpy = new SqlBulkCopy(oConn2) { DestinationTableName = "CAD_PEC" };
+                    //copy the datatable to the sql table
+                    sqlcpy.WriteToServer(dt);
+                    reader.Close();
+                }
+
+                SqlCommand exec = new SqlCommand("EXEC spc_AtualizaProdutos", oConn2);
+                exec.ExecuteNonQuery();
+
+                oConn2.Close();
+
+            }
+            catch (Exception ex) {
+                MsgBox("Erro ao conectar ao DBF: " + ex.Message);
+            }
+
+        }
+        
+        public Util()
+         {
+             
+         }
+         
     }
 }
