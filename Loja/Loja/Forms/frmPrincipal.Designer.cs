@@ -457,10 +457,11 @@
             // 
             // btnFazerBackup
             // 
-            this.btnFazerBackup.Caption = "Fazer Backup";
+            this.btnFazerBackup.Caption = "Copiar de Loja";
             this.btnFazerBackup.Id = 72;
             this.btnFazerBackup.LargeImageIndex = 10;
             this.btnFazerBackup.Name = "btnFazerBackup";
+            this.btnFazerBackup.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFazerBackup_ItemClick);
             // 
             // cmbCodOrca
             // 

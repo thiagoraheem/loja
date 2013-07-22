@@ -525,6 +525,15 @@ namespace Loja
             InitGrid();
         }
 
+        private void btnFazerBackup_ItemClick(object sender, ItemClickEventArgs e)
+        {
+             if (MessageBox.Show("Confirma copiar os dados a partir do DOS?", "Confirmar importação", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+
+            Util.CopiarDoDbf();
+            InitGrid();
+        }
+
     }  
     #endregion
 
