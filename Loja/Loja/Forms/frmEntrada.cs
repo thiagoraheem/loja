@@ -209,7 +209,7 @@ namespace Loja
             if (cmbCodProduto.EditValue != null)
             {
                 var produtos = (from prod in Loja.tbl_Produtos
-                                where prod.QtdProduto > 0 && prod.codigounico == (int)cmbCodProduto.EditValue
+                                where prod.codigounico == (int)cmbCodProduto.EditValue
                                 select prod).FirstOrDefault();
                 cmbProduto.Text = produtos.DesProduto;
                 cmbProduto.EditValue = produtos.codigounico;
@@ -224,7 +224,7 @@ namespace Loja
             if (cmbProduto.EditValue != null)
             {
                 var produtos = (from prod in Loja.tbl_Produtos
-                                where prod.QtdProduto > 0 && prod.codigounico == (int)cmbProduto.EditValue
+                                where prod.codigounico == (int)cmbProduto.EditValue
                                 select prod).FirstOrDefault();
                 cmbCodProduto.Text = produtos.CodProduto;
                 cmbCodProduto.EditValue = produtos.codigounico;

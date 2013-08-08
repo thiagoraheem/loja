@@ -314,14 +314,14 @@
             // 
             // siStatus
             // 
-            this.siStatus.Caption = "Sistema para controle de loja";
+            this.siStatus.Caption = "Sistema para controle de loja    Versão 1.0";
             this.siStatus.Id = 31;
             this.siStatus.Name = "siStatus";
             this.siStatus.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // siInfo
             // 
-            this.siInfo.Caption = "Versão 1.0";
+            this.siInfo.Caption = "F1 - 8 | F2 - 10 | F3 - 12 | F4 - 15 | F5 - 5 | F6 - 0";
             this.siInfo.Id = 32;
             this.siInfo.Name = "siInfo";
             this.siInfo.TextAlignment = System.Drawing.StringAlignment.Near;
