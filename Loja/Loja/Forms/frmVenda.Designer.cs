@@ -227,7 +227,6 @@
             // 
             // chkEmitirRecibo
             // 
-            this.chkEmitirRecibo.EditValue = true;
             this.chkEmitirRecibo.Location = new System.Drawing.Point(489, 39);
             this.chkEmitirRecibo.Name = "chkEmitirRecibo";
             this.chkEmitirRecibo.Properties.Caption = "Emitir Recibo";

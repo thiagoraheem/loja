@@ -30,6 +30,8 @@ namespace Loja
             InitGrid();
             InitComboOrca();
 
+            gridViewProduto.Columns[colDesProduto.AbsoluteIndex].SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
+
         }
 
         void InitSkinGallery()
@@ -367,8 +369,11 @@ namespace Loja
 
         private void gridOrcamento_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode.Equals(Keys.Escape) ) { return; }
+
             int linha = gridViewOrcamento.GetSelectedRows()[0];
             double valor = (double)gridViewOrcamento.GetRowCellValue(linha, colVlrOriginal);
+            LojaEntities Loja = new LojaEntities();
 
             if (e.KeyCode.Equals(Keys.Delete))
             {
@@ -380,23 +385,39 @@ namespace Loja
             }
             else if (e.KeyCode.Equals(Keys.F1))
             {
-                gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.92));
+                //gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.92));
+                Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 92);
+                InitGridOrca();
             }
             else if (e.KeyCode.Equals(Keys.F2))
             {
-                gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.90));
+                //gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.90));
+                Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 90);
+                InitGridOrca();
             }
             else if (e.KeyCode.Equals(Keys.F3))
             {
-                gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.88));
+                //gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.88));
+                Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 88);
+                InitGridOrca();
             }
             else if (e.KeyCode.Equals(Keys.F4))
             {
-                gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.85));
+                //gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.85));
+                Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 85);
+                InitGridOrca();
             }
             else if (e.KeyCode.Equals(Keys.F5))
             {
-                gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.95));
+                //gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.95));
+                Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 95);
+                InitGridOrca();
+            }
+            else if (e.KeyCode.Equals(Keys.F6))
+            {
+                //gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.95));
+                Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 100);
+                InitGridOrca();
             }
         }
 
