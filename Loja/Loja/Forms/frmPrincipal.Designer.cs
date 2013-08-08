@@ -939,6 +939,7 @@
             // colValor
             // 
             this.colValor.Caption = "Valor Unit.";
+            this.colValor.DisplayFormat.FormatString = "c2";
             this.colValor.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colValor.FieldName = "VlrUnitario";
             this.colValor.Name = "colValor";
@@ -949,6 +950,7 @@
             // colVlrFinal
             // 
             this.colVlrFinal.Caption = "Vlr. Total";
+            this.colVlrFinal.DisplayFormat.FormatString = "c2";
             this.colVlrFinal.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colVlrFinal.FieldName = "PF";
             this.colVlrFinal.Name = "colVlrFinal";
