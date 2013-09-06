@@ -27,7 +27,7 @@ namespace Loja
             } else if(e.KeyCode.Equals(Keys.F1)) {
                 double n = double.Parse(txtVlrUnitario.EditValue.ToString());
                 txtDesconto.Value = (decimal) (n * 0.92);
-            } else if (e.KeyCode.Equals(Keys.F2)) {
+            } else if (e.KeyCode.Equals(Keys.F7)) {
                 double n = double.Parse(txtVlrUnitario.EditValue.ToString());
                 txtDesconto.Value = (decimal) (n * 0.90);
             } else if (e.KeyCode.Equals(Keys.F3)) {
@@ -39,6 +39,9 @@ namespace Loja
             } else if (e.KeyCode.Equals(Keys.F5)) {
                 double n = double.Parse(txtVlrUnitario.EditValue.ToString());
                 txtDesconto.Value = (decimal)(n * 0.95);
+            } else if (e.KeyCode.Equals(Keys.F6)) {
+                double n = double.Parse(txtVlrUnitario.EditValue.ToString());
+                txtDesconto.Value = (decimal)(n * 1);
             }
         }
 

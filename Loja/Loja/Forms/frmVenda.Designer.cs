@@ -273,7 +273,7 @@
             this.gridOrcamento.MainView = this.gridViewOrcamento;
             this.gridOrcamento.Name = "gridOrcamento";
             this.gridOrcamento.Size = new System.Drawing.Size(649, 205);
-            this.gridOrcamento.TabIndex = 2;
+            this.gridOrcamento.TabIndex = 0;
             this.gridOrcamento.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewOrcamento});
             // 
@@ -285,6 +285,9 @@
             this.gridViewOrcamento.Appearance.HeaderPanel.Options.UseFont = true;
             this.gridViewOrcamento.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridViewOrcamento.Appearance.Row.Options.UseFont = true;
+            this.gridViewOrcamento.Appearance.SelectedRow.BackColor = System.Drawing.Color.White;
+            this.gridViewOrcamento.Appearance.SelectedRow.BackColor2 = System.Drawing.Color.White;
+            this.gridViewOrcamento.Appearance.SelectedRow.Options.UseBackColor = true;
             this.gridViewOrcamento.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colOrCodProduto,
             this.colOrDesProduto,

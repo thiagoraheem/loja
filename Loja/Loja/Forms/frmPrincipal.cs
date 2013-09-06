@@ -53,6 +53,11 @@ namespace Loja
                     InitGridOrca();
                 }
             }
+            else if (e.KeyCode.Equals(Keys.F2)) {
+                gridViewProduto.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle;
+                gridViewProduto.FocusedColumn = colDesProduto;
+                gridViewProduto.ShowEditor();
+            }
         }
         #endregion
 
@@ -344,25 +349,32 @@ namespace Loja
 
         private void gridViewOrcamento_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            using (LojaEntities orcamento = new LojaEntities())
+            try
             {
-                if (e.Column == colQuantidade)
+                using (LojaEntities orcamento = new LojaEntities())
                 {
-                    double quantidade;
-
-                    if (e.Value != null)
-                        quantidade = (double)e.Value;
-                    else
-                        quantidade = 0;
-
-
-                    orcamento.FU_AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), quantidade, -1);
-                }
-                else
-                    if (e.Column == colValor)
+                    if (e.Column == colQuantidade)
                     {
-                        orcamento.FU_AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), -1, (double)e.Value);
+                        double quantidade;
+
+                        if (e.Value != null)
+                            quantidade = (double)e.Value;
+                        else
+                            quantidade = 0;
+
+
+                        orcamento.FU_AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), quantidade, -1);
                     }
+                    else
+                        if (e.Column == colValor)
+                        {
+                            orcamento.FU_AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), -1, (double)e.Value);
+                        }
+                }
+            }
+            catch (Exception ex)
+            {
+                Util.MsgBox("Erro na alteração: " + ex.InnerException.Message);
             }
             InitGridOrca();
         }
@@ -389,7 +401,7 @@ namespace Loja
                 Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 92);
                 InitGridOrca();
             }
-            else if (e.KeyCode.Equals(Keys.F2))
+            else if (e.KeyCode.Equals(Keys.F7))
             {
                 //gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.90));
                 Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 90);
