@@ -321,7 +321,7 @@
             // 
             // siInfo
             // 
-            this.siInfo.Caption = "F1 - 8 | F2 - 10 | F3 - 12 | F4 - 15 | F5 - 5 | F6 - 0";
+            this.siInfo.Caption = "F1 - 8 | F2 - Descrição | F3 - 12 | F4 - 15 | F5 - 5 | F6 - 0 | F7 - 10";
             this.siInfo.Id = 32;
             this.siInfo.Name = "siInfo";
             this.siInfo.TextAlignment = System.Drawing.StringAlignment.Near;

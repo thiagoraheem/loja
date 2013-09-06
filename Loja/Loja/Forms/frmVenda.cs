@@ -53,13 +53,38 @@ namespace Loja
 
         private void gridViewOrcamento_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            if (e.Column == colQuantidade)
+            /*if (e.Column == colQuantidade)
             {
                 Loja.FU_AlterarOrcamento(CodOrcamento, FU_PegaCodigoGrid(), (double)e.Value, -1);
             }
             else if (e.Column == colValor)
             {
                 Loja.FU_AlterarOrcamento(CodOrcamento, FU_PegaCodigoGrid(), -1, (double)e.Value);
+            }*/
+            try
+            {
+                using (LojaEntities orcamento = new LojaEntities())
+                {
+                    if (e.Column == colQuantidade)
+                    {
+                        double quantidade;
+
+                        if (e.Value != null)
+                            quantidade = (double)e.Value;
+                        else
+                            quantidade = 0;
+
+                        orcamento.FU_AlterarOrcamento(CodOrcamento, FU_PegaCodigoGrid(), quantidade, -1);
+                    }
+                    else
+                        if (e.Column == colValor)
+                        {
+                            orcamento.FU_AlterarOrcamento(CodOrcamento, FU_PegaCodigoGrid(), -1, (double)e.Value);
+                        }
+                }
+            }
+            catch (Exception ex) {
+                Util.MsgBox("Erro na alteração: " + ex.InnerException.Message);
             }
             SU_CarregaOrcamento(CodOrcamento);
         }
