@@ -105,8 +105,8 @@ namespace Loja
 
         void SU_CarregaVendas() {
 
-            DateTime inicio = txtDatInicio.DateTime.AddDays(-1);
-            DateTime fim = txtDatFim.DateTime;
+            DateTime inicio = DateTime.Parse(txtDatInicio.DateTime.ToShortDateString());
+            DateTime fim = DateTime.Parse(txtDatFim.DateTime.ToShortDateString()).AddDays(1).AddMinutes(-1);
 
             var saidas = from saida in Loja.tbl_Saidas
                          where saida.DatSaida >= inicio && saida.DatSaida <= fim

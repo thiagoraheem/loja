@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.IO;
+using System.Drawing.Imaging;
 
 namespace Loja
 {
@@ -90,10 +91,16 @@ namespace Loja
 
             try {
 
+                MemoryStream ms = new MemoryStream();
+                imgFoto.Image.Save(ms, ImageFormat.Jpeg);
+                byte[] photo_aray = new byte[ms.Length];
+                ms.Position = 0;
+                ms.Read(photo_aray, 0, photo_aray.Length);
+
                 Loja.FU_ManutProduto(produto.codigounico, txtCodProduto.Text, txtDesProduto.Text, txtDesLocal.Text, (double)txtVlrUnitario.Value,
                     (double?)txtQtdEstoque.Value, (double?)txtVlrCusto.Value, (double?)txtVlrPercent.Value,
                     (double?)txtQtdEstMinimo.Value, txtFornecedor.Text, txtCodRefAntiga.Text, (double?)txtUltPreco.Value,
-                    null);
+                    photo_aray);
 
 
 
