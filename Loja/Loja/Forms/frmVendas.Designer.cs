@@ -54,9 +54,9 @@
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTipoVenda.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProduto.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDatFim.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDatFim.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatFim.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDatInicio.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDatInicio.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatInicio.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdDados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDados)).BeginInit();
@@ -64,8 +64,8 @@
             // 
             // groupControl1
             // 
-            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupControl1.Controls.Add(this.labelControl3);
             this.groupControl1.Controls.Add(this.cmbTipoVenda);
             this.groupControl1.Controls.Add(this.cmbProduto);
@@ -176,7 +176,7 @@
             this.txtDatFim.Name = "txtDatFim";
             this.txtDatFim.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtDatFim.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.txtDatFim.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.txtDatFim.Size = new System.Drawing.Size(100, 20);
             this.txtDatFim.TabIndex = 3;
@@ -188,7 +188,7 @@
             this.txtDatInicio.Name = "txtDatInicio";
             this.txtDatInicio.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtDatInicio.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.txtDatInicio.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.txtDatInicio.Size = new System.Drawing.Size(100, 20);
             this.txtDatInicio.TabIndex = 2;
@@ -214,9 +214,9 @@
             // 
             // grdDados
             // 
-            this.grdDados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdDados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grdDados.Location = new System.Drawing.Point(12, 12);
             this.grdDados.MainView = this.gridDados;
             this.grdDados.Name = "grdDados";
@@ -265,7 +265,7 @@
             this.colCodProduto.FieldName = "CodProduto";
             this.colCodProduto.Name = "colCodProduto";
             this.colCodProduto.Visible = true;
-            this.colCodProduto.VisibleIndex = 1;
+            this.colCodProduto.VisibleIndex = 2;
             this.colCodProduto.Width = 117;
             // 
             // colDesProduto
@@ -274,7 +274,7 @@
             this.colDesProduto.FieldName = "DesProduto";
             this.colDesProduto.Name = "colDesProduto";
             this.colDesProduto.Visible = true;
-            this.colDesProduto.VisibleIndex = 2;
+            this.colDesProduto.VisibleIndex = 3;
             this.colDesProduto.Width = 267;
             // 
             // colVlrUnitario
@@ -284,7 +284,7 @@
             this.colVlrUnitario.FieldName = "VlrUnitario";
             this.colVlrUnitario.Name = "colVlrUnitario";
             this.colVlrUnitario.Visible = true;
-            this.colVlrUnitario.VisibleIndex = 3;
+            this.colVlrUnitario.VisibleIndex = 4;
             this.colVlrUnitario.Width = 73;
             // 
             // colQuantidade
@@ -294,7 +294,7 @@
             this.colQuantidade.FieldName = "Quantidade";
             this.colQuantidade.Name = "colQuantidade";
             this.colQuantidade.Visible = true;
-            this.colQuantidade.VisibleIndex = 4;
+            this.colQuantidade.VisibleIndex = 5;
             this.colQuantidade.Width = 49;
             // 
             // colVlrFinal
@@ -306,7 +306,7 @@
             this.colVlrFinal.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
             this.colVlrFinal.Visible = true;
-            this.colVlrFinal.VisibleIndex = 5;
+            this.colVlrFinal.VisibleIndex = 6;
             this.colVlrFinal.Width = 70;
             // 
             // colCodigounico
@@ -320,6 +320,8 @@
             this.colCodVenda.Caption = "Código Venda";
             this.colCodVenda.FieldName = "CodVenda";
             this.colCodVenda.Name = "colCodVenda";
+            this.colCodVenda.Visible = true;
+            this.colCodVenda.VisibleIndex = 1;
             // 
             // frmVendas
             // 
@@ -338,9 +340,9 @@
             this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTipoVenda.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProduto.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDatFim.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDatFim.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatFim.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDatInicio.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDatInicio.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatInicio.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdDados)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDados)).EndInit();

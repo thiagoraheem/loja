@@ -30,7 +30,7 @@ namespace Loja
         private void frmVendas_Load(object sender, EventArgs e)
         {
             txtDatFim.DateTime = DateTime.Now;
-            txtDatInicio.DateTime = DateTime.Now;
+            txtDatInicio.DateTime = DateTime.Now.AddDays(-DateTime.Now.Day).AddDays(1);
 
             SU_CarregaProdutos();
             SU_CarregaTipoVenda();
