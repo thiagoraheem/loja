@@ -121,7 +121,7 @@
   <data name="xrLabel14.SizeF" type="System.Drawing.SizeF, System.Drawing">
     <value>91.79572, 15</value>
   </data>
-  <assembly alias="DevExpress.Data.v15.1" name="DevExpress.Data.v15.1, Version=15.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.Data.v15.1" name="DevExpress.Data.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="lblEmpresa.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v15.1">
     <value>0, 0</value>
   </data>

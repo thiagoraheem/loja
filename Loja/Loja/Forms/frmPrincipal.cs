@@ -398,37 +398,37 @@ namespace Loja
             else if (e.KeyCode.Equals(Keys.F1))
             {
                 //gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.92));
-                Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 92);
+                Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 8);
                 InitGridOrca();
             }
             else if (e.KeyCode.Equals(Keys.F7))
             {
                 //gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.90));
-                Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 90);
+                Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 10);
                 InitGridOrca();
             }
             else if (e.KeyCode.Equals(Keys.F3))
             {
                 //gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.88));
-                Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 88);
+                Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 12);
                 InitGridOrca();
             }
             else if (e.KeyCode.Equals(Keys.F4))
             {
                 //gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.85));
-                Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 85);
+                Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 15);
                 InitGridOrca();
             }
             else if (e.KeyCode.Equals(Keys.F5))
             {
                 //gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.95));
-                Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 95);
+                Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 5);
                 InitGridOrca();
             }
             else if (e.KeyCode.Equals(Keys.F6))
             {
                 //gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.95));
-                Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 100);
+                Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 0);
                 InitGridOrca();
             }
         }
