@@ -10,13 +10,16 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.LookAndFeel;
 using DevExpress.XtraReports.UI;
+using Loja.DAL.Models;
+using Loja.DAL.DAO;
+
 namespace Loja
 {
     public partial class frmVendas : DevExpress.XtraEditors.XtraForm
     {
 
         #region Variáveis
-        LojaEntities Loja = new LojaEntities();
+        //LojaEntities Loja = new LojaEntities();
 
         #endregion
 
@@ -69,8 +72,8 @@ namespace Loja
             int codigo = FU_PegaCodigoGrid();
             int codvenda = FU_PegaCodigoVenda();
 
-            Loja.FU_EstornaVenda(codvenda, codigo, "");
-            Loja.SaveChanges();
+            Cadastros.EstornaVenda(codvenda, codigo, "");
+
 
             MessageBox.Show("Item estornado com sucesso");
 
@@ -88,19 +91,15 @@ namespace Loja
         #region Funções
         void SU_CarregaProdutos()
         {
-            var produtos = from prod in Loja.tbl_Produtos
-                           where prod.QtdProduto > 0
-                           select prod;
+            var produtos = Consultas.ObterProdutosAtivos();
             cmbProduto.Properties.DataSource = produtos;
 
         }
 
         void SU_CarregaTipoVenda()
         {
-            var TipoVenda = from tipovenda in Loja.tbl_TipoVenda
-                            where tipovenda.flgAtivo == true
-                            select new { Codigo = tipovenda.CodTipoVenda, Descricao = tipovenda.DesTipoVenda };
-            cmbTipoVenda.Properties.DataSource = TipoVenda.ToList();
+            var TipoVenda = Consultas.ObterTipoVendaCombo();
+            cmbTipoVenda.Properties.DataSource = TipoVenda;
         }
 
         void SU_CarregaVendas() {
@@ -108,9 +107,7 @@ namespace Loja
             DateTime inicio = DateTime.Parse(txtDatInicio.DateTime.ToShortDateString());
             DateTime fim = DateTime.Parse(txtDatFim.DateTime.ToShortDateString()).AddDays(1).AddMinutes(-1);
 
-            var saidas = from saida in Loja.tbl_Saidas
-                         where saida.DatSaida >= inicio && saida.DatSaida <= fim
-                         select saida;
+            var saidas = Consultas.ObterVendas(inicio, fim);
             grdDados.DataSource = saidas;
 
         }
