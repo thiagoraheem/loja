@@ -70,6 +70,18 @@ namespace Loja.DAL.DAO
 			}
 		}
 
+		public static List<tbl_TipoVenda> ObterTipoVenda()
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var dados = from tipovenda in banco.tbl_TipoVenda
+							select tipovenda;
+
+				return dados.ToList();
+			}
+		}
+
 		public static List<tbl_Saida> ObterVendas(DateTime inicio, DateTime fim)
 		{
 			using (var banco = new LojaContext())

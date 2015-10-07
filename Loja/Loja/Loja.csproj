@@ -127,11 +127,6 @@
     <Compile Include="Forms\frmVendas.Designer.cs">
       <DependentUpon>frmVendas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Loja.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Loja.edmx</DependentUpon>
-    </Compile>
     <Compile Include="dsOrcamento.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -297,10 +292,6 @@
       <DependentUpon>relVendas.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <EntityDeploy Include="Loja.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Loja.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="dsOrcamento.xsc">
       <DependentUpon>dsOrcamento.xsd</DependentUpon>
     </None>

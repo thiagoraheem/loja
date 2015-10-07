@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
-using System.Data.Objects;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using Loja.DAL.Models;
+using Loja.DAL.DAO;
 
 namespace Loja
 {
     public partial class frmCadTipoVenda : DevExpress.XtraEditors.XtraForm
     {
         #region Variáveis
-        LojaEntities Loja = new LojaEntities();
         tbl_TipoVenda TipoVenda;
 
         #endregion
@@ -34,11 +34,10 @@ namespace Loja
 
         #region Funções
         void SU_CarregaGrid() {
-            LojaEntities Loja = new LojaEntities();
-            var tipovenda = from tipo in Loja.tbl_TipoVenda
-                            select tipo;
+            
+            var tipovenda = Consultas.ObterTipoVenda();
 
-            grdDados.DataSource = tipovenda.ToList();
+            grdDados.DataSource = tipovenda;
         }
 
         int FU_PegaCodigoGrid()

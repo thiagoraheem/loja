@@ -51,8 +51,7 @@
   <ItemGroup>
     <Compile Include="DAO\Cadastros.cs" />
     <Compile Include="DAO\Consultas.cs" />
-    <Compile Include="DAO\LojaContext3.cs" />
-    <Compile Include="DAO\LojaContext2.cs" />
+    <Compile Include="DAO\LojaContext.cs" />
     <Compile Include="Models\LojaContext.cs" />
     <Compile Include="Models\Mapping\sysdiagramMap.cs" />
     <Compile Include="Models\Mapping\tbl_EntradaMap.cs" />
