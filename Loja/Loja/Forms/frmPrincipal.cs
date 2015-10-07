@@ -204,9 +204,7 @@ namespace Loja
 			{
 				int codproduto = FU_PegaCodigoGrid("P");
 
-				LojaEntities orcamento = new LojaEntities();
-
-				ObjectResult<string> codOrca = orcamento.FU_AddItemOrcamento(CodOrca, codproduto);
+				var codOrca = Cadastros.AdicionarOrcamento(CodOrca, codproduto);
 
 				cmbCodOrca.EditValue = codOrca.FirstOrDefault();
 
@@ -258,8 +256,8 @@ namespace Loja
 
 		private void btnExcluirOrca_ItemClick(object sender, ItemClickEventArgs e)
 		{
-			LojaEntities loja = new LojaEntities();
-			loja.FU_ApagarOrcamento(cmbCodOrca.EditValue.ToString());
+			
+			Cadastros.ApagarOrcamento(cmbCodOrca.EditValue.ToString());
 			InitGrid();
 			InitGridOrca();
 			InitComboOrca();
@@ -284,8 +282,7 @@ namespace Loja
 			}
 			else
 			{
-				LojaEntities loja = new LojaEntities();
-				loja.FU_ApagarOrcamento(orca);
+				Cadastros.ApagarOrcamento(orca);
 				InitGridOrca();
 				InitComboOrca();
 				btnImprimir.Enabled = false;
@@ -343,26 +340,22 @@ namespace Loja
 		{
 			try
 			{
-				using (LojaEntities orcamento = new LojaEntities())
+				if (e.Column == colQuantidade)
 				{
-					if (e.Column == colQuantidade)
-					{
-						double quantidade;
+					double quantidade;
 
-						if (e.Value != null)
-							quantidade = (double)e.Value;
-						else
-							quantidade = 0;
-
-
-						orcamento.FU_AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), quantidade, -1);
-					}
+					if (e.Value != null)
+						quantidade = (double)e.Value;
 					else
-						if (e.Column == colValor)
-						{
-							orcamento.FU_AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), -1, (double)e.Value);
-						}
+						quantidade = 0;
+
+					Cadastros.AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), quantidade,-1.0);
 				}
+				else
+					if (e.Column == colValor)
+					{
+						Cadastros.AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), -1.0, (double)e.Value);
+					}
 			}
 			catch (Exception ex)
 			{
@@ -377,50 +370,47 @@ namespace Loja
 
 			int linha = gridViewOrcamento.GetSelectedRows()[0];
 			double valor = (double)gridViewOrcamento.GetRowCellValue(linha, colVlrOriginal);
-			LojaEntities Loja = new LojaEntities();
 
 			if (e.KeyCode.Equals(Keys.Delete))
 			{
-				using (LojaEntities orcamento = new LojaEntities())
-				{
-					orcamento.FU_AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), 0, -1);
-				}
+				Cadastros.AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), 0, -1);
+
 				InitGridOrca();
 			}
 			else if (e.KeyCode.Equals(Keys.F1))
 			{
 				//gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.92));
-				Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 8);
+				Cadastros.DescontoVenda(cmbCodOrca.EditValue.ToString(), 8);
 				InitGridOrca();
 			}
 			else if (e.KeyCode.Equals(Keys.F7))
 			{
 				//gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.90));
-				Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 10);
+				Cadastros.DescontoVenda(cmbCodOrca.EditValue.ToString(), 10);
 				InitGridOrca();
 			}
 			else if (e.KeyCode.Equals(Keys.F3))
 			{
 				//gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.88));
-				Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 12);
+				Cadastros.DescontoVenda(cmbCodOrca.EditValue.ToString(), 12);
 				InitGridOrca();
 			}
 			else if (e.KeyCode.Equals(Keys.F4))
 			{
 				//gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.85));
-				Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 15);
+				Cadastros.DescontoVenda(cmbCodOrca.EditValue.ToString(), 15);
 				InitGridOrca();
 			}
 			else if (e.KeyCode.Equals(Keys.F5))
 			{
 				//gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.95));
-				Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 5);
+				Cadastros.DescontoVenda(cmbCodOrca.EditValue.ToString(), 5);
 				InitGridOrca();
 			}
 			else if (e.KeyCode.Equals(Keys.F6))
 			{
 				//gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.95));
-				Loja.FU_DescontoVenda(cmbCodOrca.EditValue.ToString(), 0);
+				Cadastros.DescontoVenda(cmbCodOrca.EditValue.ToString(), 0);
 				InitGridOrca();
 			}
 		}

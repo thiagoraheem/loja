@@ -48,25 +48,8 @@ namespace Loja.DAL.Models
             modelBuilder.Configurations.Add(new tbl_TipoVendaMap());
             modelBuilder.Configurations.Add(new tbl_UsuarioMap());
             modelBuilder.Configurations.Add(new viw_OrcamentoMap());
-			modelBuilder.Conventions.Add(new FunctionsConvention<LojaContext>("dbo"));
+			//modelBuilder.Conventions.Add(new FunctionsConvention<LojaContext>("dbo"));
 		}
 
-		public void spc_EstornaVenda(int codVenda, int codProduto, string desMotivo)
-		{
-			try
-			{
-				var cVenda = new ObjectParameter("CodVenda", codVenda);
-				var cProduto = new ObjectParameter("CodProduto", codProduto);
-				var dMotivo = new ObjectParameter("DesMotivo", desMotivo);
-
-				//int result = this.Database.ExecuteSqlCommand("spc_EstornaVenda", codVenda);
-				((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spc_EstornaVenda", cVenda, cProduto, dMotivo);
-			}
-			catch (Exception ex)
-			{
-				throw new Exception(ex.Message);
-			}
-
-		}
 	}
 }
