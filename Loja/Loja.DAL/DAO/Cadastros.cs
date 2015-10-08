@@ -64,5 +64,11 @@ namespace Loja.DAL.DAO
 
 			}
 		}
+
+		public static void ExcluiTipoVenda(int codTipoVenda) { 
+		
+		
+		}
+
 	}
 }
