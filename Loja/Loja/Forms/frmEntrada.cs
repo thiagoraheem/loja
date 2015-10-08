@@ -8,261 +8,246 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Xml;
-
+using Loja.DAL.Models;
+using Loja.DAL.DAO;
 
 namespace Loja
 {
-    public partial class frmEntrada : DevExpress.XtraEditors.XtraForm
-    {
-        #region Variáveis
-        LojaEntities Loja = new LojaEntities();
+	public partial class frmEntrada : DevExpress.XtraEditors.XtraForm
+	{
+		#region Variáveis
+		#endregion
 
-        #endregion
+		#region Form Events
 
-        #region Form Events
+		public frmEntrada()
+		{
+			InitializeComponent();
 
-        public frmEntrada()
-        {
-            InitializeComponent();
+			SU_CarregaProdutos();
+			SU_CarregaTipoEntrada();
+		}
 
-            SU_CarregaProdutos();
-            SU_CarregaTipoEntrada();
-        }
+		private void frmEntrada_Load(object sender, EventArgs e)
+		{
+			SU_CarregaFornecedor();
+		}
+		#endregion
 
-        private void frmEntrada_Load(object sender, EventArgs e)
-        {
-            SU_CarregaFornecedor();
-        }
-        #endregion
+		#region Botões
+		private void btnRetornar_Click(object sender, EventArgs e)
+		{
+			Close();
+		}
 
-        #region Botões
-        private void btnRetornar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+		private void btnGravar_Click(object sender, EventArgs e)
+		{
 
-        private void btnGravar_Click(object sender, EventArgs e)
-        {
-            
-            int CodTipoEntrada;
+			int CodTipoEntrada;
 
-            if (cmbTipoEntrada.EditValue == null)
-            {
-                CodTipoEntrada = -1;
-            }
-            else
-            {
-                CodTipoEntrada = (int)cmbTipoEntrada.EditValue;
-            }
+			if (cmbTipoEntrada.EditValue == null)
+			{
+				CodTipoEntrada = -1;
+			}
+			else
+			{
+				CodTipoEntrada = (int)cmbTipoEntrada.EditValue;
+			}
 
-            if (cmbProduto.EditValue == null) {
-                MessageBox.Show("Escolha um produto");
-                cmbProduto.Focus();
-                return;
-            }
+			if (cmbProduto.EditValue == null)
+			{
+				MessageBox.Show("Escolha um produto");
+				cmbProduto.Focus();
+				return;
+			}
 
-            if (txtQuantidade.EditValue == null) {
-                MessageBox.Show("Informe a quantidade");
-                txtQuantidade.Focus();
-                return;
-            }
+			if (txtQuantidade.EditValue == null)
+			{
+				MessageBox.Show("Informe a quantidade");
+				txtQuantidade.Focus();
+				return;
+			}
 
-            if (txtVlrUnitario.EditValue == null)
-            {
-                MessageBox.Show("Informe o valor unitário");
-                txtVlrUnitario.Focus();
-                return;
-            }
+			if (txtVlrUnitario.EditValue == null)
+			{
+				MessageBox.Show("Informe o valor unitário");
+				txtVlrUnitario.Focus();
+				return;
+			}
 
-            try
-            {
+			try
+			{
 
-                Loja.FU_AdicionarEntrada(txtDocEntrada.Text, (DateTime)txtDatEntrada.EditValue, (int)cmbCodProduto.EditValue,
-                                            (double)txtQuantidade.Value, txtVlrUnitario.Value, CodTipoEntrada, (double)txtPercentual.Value, cmbFornecedor.Text);
+				Cadastros.AdicionarEntrada(txtDocEntrada.Text, (DateTime)txtDatEntrada.EditValue, (int)cmbCodProduto.EditValue,
+											(double)txtQuantidade.Value, txtVlrUnitario.Value, CodTipoEntrada, (double)txtPercentual.Value, cmbFornecedor.Text);
 
-            }
-            catch (Exception ex) {
-                Util.MsgBox(ex.Message);
-            }
-            SU_LimpaTela();
-            if (chkContinuar.Checked) {
-                Close();
-            }
+			}
+			catch (Exception ex)
+			{
+				Util.MsgBox(ex.Message);
+			}
+			SU_LimpaTela();
+			if (chkContinuar.Checked)
+			{
+				Close();
+			}
 
-            SU_CarregaFornecedor();
-            SU_CarregaEntrada();
-        }
+			SU_CarregaFornecedor();
+			SU_CarregaEntrada();
+		}
 
-        #endregion
+		#endregion
 
-        #region Funções
-        void SU_CarregaEntrada()
-        {
+		#region Funções
+		void SU_CarregaEntrada()
+		{
 
-            
-            var entradas = from entrada in Loja.tbl_Entrada
-                           join produto in Loja.tbl_Produtos on entrada.codigounico equals produto.codigounico
-                           where entrada.DocEntrada == txtDocEntrada.Text 
-                           select new
-                           {
-                               entrada.DatEntrada,
-                               entrada.DocEntrada,
-                               entrada.Percentual,
-                               entrada.QtdProduto,
-                               entrada.VlrTotal,
-                               entrada.VlrUnitario,
-                               produto.CodProduto,
-                               produto.DesProduto,
-                               produto.codigounico
-                           };
-            grdDados.DataSource = entradas;
+			var entradas = Consultas.ObterEntrada(txtDocEntrada.Text);
+			grdDados.DataSource = entradas;
 
-        }
+		}
 
-        void SU_CarregaProdutos() {
-            var produtos = from prod in Loja.tbl_Produtos
-                       select prod;
-            cmbProduto.Properties.DataSource = produtos;
-            cmbCodProduto.Properties.DataSource = produtos;
+		void SU_CarregaProdutos()
+		{
+			var produtos = Consultas.ObterProdutos();
+			cmbProduto.Properties.DataSource = produtos;
+			cmbCodProduto.Properties.DataSource = produtos;
 
-        }
+		}
 
-        void SU_CarregaFornecedor()
-        {
-            LojaEntities Loja = new LojaEntities();
-            var fornecedores = from forn in Loja.tbl_Produtos
-                               group forn by forn.DesFornecedor into gFornecedor
-                               select new { Fornecedor = gFornecedor.Key };
-            cmbFornecedor.Properties.DataSource = fornecedores;
+		void SU_CarregaFornecedor()
+		{
+			var fornecedores = Consultas.ObterFornecedores();
+			cmbFornecedor.Properties.DataSource = fornecedores;
 
-        }
+		}
 
-        void SU_CarregaTipoEntrada() {
-            cmbTipoEntrada.Properties.DataSource = Loja.tbl_TipoEntrada;
+		void SU_CarregaTipoEntrada()
+		{
+			cmbTipoEntrada.Properties.DataSource = Consultas.ObterTipoEntradaCombo();
 
-        }
+		}
 
-        void SU_LimpaTela() { 
-            txtVlrTotal.Text = String.Empty;
-            txtVlrUnitario.Text = String.Empty;
-            txtQuantidade.Text = String.Empty;
-            txtPercentual.Text = String.Empty;
-            txtVlrFinal.Text = String.Empty;
-            cmbCodProduto.EditValue = null;
-            cmbProduto.EditValue = null;
-            cmbFornecedor.EditValue = null;
+		void SU_LimpaTela()
+		{
+			txtVlrTotal.Text = String.Empty;
+			txtVlrUnitario.Text = String.Empty;
+			txtQuantidade.Text = String.Empty;
+			txtPercentual.Text = String.Empty;
+			txtVlrFinal.Text = String.Empty;
+			cmbCodProduto.EditValue = null;
+			cmbProduto.EditValue = null;
+			cmbFornecedor.EditValue = null;
 
-            cmbCodProduto.Focus();
-        }
+			cmbCodProduto.Focus();
+		}
 
-        void SU_ValorTotal() {
+		void SU_ValorTotal()
+		{
 
-            try
-            {
-                if (txtQuantidade.Value > 0 && txtVlrUnitario.Value > 0)
-                {
-                    txtVlrTotal.Value = txtVlrUnitario.Value * txtQuantidade.Value;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+			try
+			{
+				if (txtQuantidade.Value > 0 && txtVlrUnitario.Value > 0)
+				{
+					txtVlrTotal.Value = txtVlrUnitario.Value * txtQuantidade.Value;
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
 
-        }
+		}
 
-        void SU_ValorFinal()
-        {
+		void SU_ValorFinal()
+		{
 
-            try
-            {
-                if (txtPercentual.Value > 0 && txtVlrUnitario.Value > 0)
-                {
-                    txtVlrFinal.Value = ( 1+ (txtPercentual.Value / 100)) * txtVlrUnitario.Value;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+			try
+			{
+				if (txtPercentual.Value > 0 && txtVlrUnitario.Value > 0)
+				{
+					txtVlrFinal.Value = (1 + (txtPercentual.Value / 100)) * txtVlrUnitario.Value;
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
 
-        }
+		}
 
-        #endregion
+		#endregion
 
-        #region Outros eventos
+		#region Outros eventos
 
-        private void txtVlrUnitario_EditValueChanged(object sender, EventArgs e)
-        {
-            SU_ValorTotal();
-            SU_ValorFinal();
-        }
+		private void txtVlrUnitario_EditValueChanged(object sender, EventArgs e)
+		{
+			SU_ValorTotal();
+			SU_ValorFinal();
+		}
 
-        private void txtQuantidade_EditValueChanged(object sender, EventArgs e)
-        {
-            SU_ValorTotal();
-        }
- 
-        private void cmbCodProduto_Validated(object sender, EventArgs e)
-        {
-            if (cmbCodProduto.EditValue != null)
-            {
-                var produtos = (from prod in Loja.tbl_Produtos
-                                where prod.codigounico == (int)cmbCodProduto.EditValue
-                                select prod).FirstOrDefault();
-                cmbProduto.Text = produtos.DesProduto;
-                cmbProduto.EditValue = produtos.codigounico;
-                cmbFornecedor.EditValue = produtos.DesFornecedor;
-                cmbFornecedor.ClosePopup();
-                cmbProduto.ClosePopup();
-            }
-        }
+		private void txtQuantidade_EditValueChanged(object sender, EventArgs e)
+		{
+			SU_ValorTotal();
+		}
 
-        private void cmbProduto_Validated(object sender, EventArgs e)
-        {
-            if (cmbProduto.EditValue != null)
-            {
-                var produtos = (from prod in Loja.tbl_Produtos
-                                where prod.codigounico == (int)cmbProduto.EditValue
-                                select prod).FirstOrDefault();
-                cmbCodProduto.Text = produtos.CodProduto;
-                cmbCodProduto.EditValue = produtos.codigounico;
-                cmbFornecedor.EditValue = produtos.DesFornecedor;
-                cmbFornecedor.ClosePopup();
-            }
-        }
+		private void cmbCodProduto_Validated(object sender, EventArgs e)
+		{
+			if (cmbCodProduto.EditValue != null)
+			{
+				var produtos = Consultas.ObterProduto((int)cmbCodProduto.EditValue);
+				cmbProduto.Text = produtos.DesProduto;
+				cmbProduto.EditValue = produtos.codigounico;
+				cmbFornecedor.EditValue = produtos.DesFornecedor;
+				cmbFornecedor.ClosePopup();
+				cmbProduto.ClosePopup();
+			}
+		}
 
-        private void txtPercentual_Validated(object sender, EventArgs e)
-        {
-            SU_ValorFinal();
-        }
+		private void cmbProduto_Validated(object sender, EventArgs e)
+		{
+			if (cmbProduto.EditValue != null)
+			{
+				var produtos = Consultas.ObterProduto((int)cmbProduto.EditValue);
+				cmbCodProduto.Text = produtos.CodProduto;
+				cmbCodProduto.EditValue = produtos.codigounico;
+				cmbFornecedor.EditValue = produtos.DesFornecedor;
+				cmbFornecedor.ClosePopup();
+			}
+		}
 
-        private void txtDocEntrada_Validated(object sender, EventArgs e)
-        {
-            SU_CarregaEntrada();
-        }
+		private void txtPercentual_Validated(object sender, EventArgs e)
+		{
+			SU_ValorFinal();
+		}
 
-        private void grdDados_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode.Equals(Keys.Delete)) {
-                if (MessageBox.Show("Confirma apagar essa entrada?", "Confirmar exclusão", MessageBoxButtons.YesNo) == DialogResult.No)
-                    return;
+		private void txtDocEntrada_Validated(object sender, EventArgs e)
+		{
+			SU_CarregaEntrada();
+		}
 
-                int linha = gridDados.GetSelectedRows()[0];
-                int codigo = (int)gridDados.GetRowCellValue(linha, colCodigounico);
+		private void grdDados_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode.Equals(Keys.Delete))
+			{
+				if (MessageBox.Show("Confirma apagar essa entrada?", "Confirmar exclusão", MessageBoxButtons.YesNo) == DialogResult.No)
+					return;
 
-                if (txtDatEntrada.Text.Equals(String.Empty)) {
-                    DateTime data = (DateTime)gridDados.GetRowCellValue(linha, colData);
-                    txtDatEntrada.DateTime = data;
-                }
+				int linha = gridDados.GetSelectedRows()[0];
+				int codigo = (int)gridDados.GetRowCellValue(linha, colCodigounico);
 
-                LojaEntities loja = new LojaEntities();
-                loja.FU_AlterarEntrada(txtDocEntrada.Text, txtDatEntrada.DateTime, codigo, 0, 0);
+				if (txtDatEntrada.Text.Equals(String.Empty))
+				{
+					DateTime data = (DateTime)gridDados.GetRowCellValue(linha, colData);
+					txtDatEntrada.DateTime = data;
+				}
 
-                SU_CarregaEntrada();
-            }
-        }
-        #endregion 
+				Cadastros.AlterarEntrada(txtDocEntrada.Text, txtDatEntrada.DateTime, codigo, 0, 0);
 
-   }
+				SU_CarregaEntrada();
+			}
+		}
+		#endregion
+
+	}
 }

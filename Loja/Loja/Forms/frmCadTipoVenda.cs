@@ -12,117 +12,114 @@ using Loja.DAL.DAO;
 
 namespace Loja
 {
-    public partial class frmCadTipoVenda : DevExpress.XtraEditors.XtraForm
-    {
-        #region Variáveis
-        tbl_TipoVenda TipoVenda;
+	public partial class frmCadTipoVenda : DevExpress.XtraEditors.XtraForm
+	{
+		#region Variáveis
+		tbl_TipoVenda TipoVenda;
 
-        #endregion
+		#endregion
 
-        #region Eventos Form
-        public frmCadTipoVenda()
-        {
-            InitializeComponent();
-        }
+		#region Eventos Form
+		public frmCadTipoVenda()
+		{
+			InitializeComponent();
+		}
 
-        private void frmCadTipoVenda_Load(object sender, EventArgs e)
-        {
-            SU_CarregaGrid();
-        }
+		private void frmCadTipoVenda_Load(object sender, EventArgs e)
+		{
+			SU_CarregaGrid();
+		}
 
-        #endregion
+		#endregion
 
-        #region Funções
-        void SU_CarregaGrid() {
-            
-            var tipovenda = Consultas.ObterTipoVenda();
+		#region Funções
+		void SU_CarregaGrid() {
+			
+			var tipovenda = Consultas.ObterTipoVendas();
 
-            grdDados.DataSource = tipovenda;
-        }
+			grdDados.DataSource = tipovenda;
+		}
 
-        int FU_PegaCodigoGrid()
-        {
-            int codigo = -1;
+		int FU_PegaCodigoGrid()
+		{
+			int codigo = -1;
 
-            int linha = gridDados.GetSelectedRows()[0];
-            codigo = (int)gridDados.GetRowCellValue(linha, colCodigo);
+			int linha = gridDados.GetSelectedRows()[0];
+			codigo = (int)gridDados.GetRowCellValue(linha, colCodigo);
 
 
-            return codigo;
-        }
+			return codigo;
+		}
 
-        void SU_LimpaCampos() {
-            txtDescricao.Text = String.Empty;
-            txtQtdDias.Text = String.Empty;
-            chkAtivo.Checked = false;
-            chkAvista.Checked = false;
-            this.TipoVenda = null;
-            btnExcluir.Enabled = false;
-        }
-        #endregion
+		void SU_LimpaCampos() {
+			txtDescricao.Text = String.Empty;
+			txtQtdDias.Text = String.Empty;
+			chkAtivo.Checked = false;
+			chkAvista.Checked = false;
+			this.TipoVenda = null;
+			btnExcluir.Enabled = false;
+		}
+		#endregion
 
-        #region Botões
-        private void btnNovo_Click(object sender, EventArgs e)
-        {
-            SU_LimpaCampos();
-        }
+		#region Botões
+		private void btnNovo_Click(object sender, EventArgs e)
+		{
+			SU_LimpaCampos();
+		}
 
-        private void btnRetornar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+		private void btnRetornar_Click(object sender, EventArgs e)
+		{
+			Close();
+		}
 
-        private void btnExcluir_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Confirma excluir esse registro?", "Confirmar exclusão", MessageBoxButtons.YesNo) == DialogResult.No)
-                return;
+		private void btnExcluir_Click(object sender, EventArgs e)
+		{
+			if (MessageBox.Show("Confirma excluir esse registro?", "Confirmar exclusão", MessageBoxButtons.YesNo) == DialogResult.No)
+				return;
 
-            Loja.DeleteObject(TipoVenda);
-            Loja.SaveChanges();
+			Cadastros.ExcluiTipoVenda(TipoVenda.CodTipoVenda);
+			
+			SU_CarregaGrid();
+			SU_LimpaCampos();
+			MessageBox.Show("Registro excluído com sucesso.");
+		}
+		
+		private void btnGravar_Click(object sender, EventArgs e)
+		{
+			if (TipoVenda == null)
+			{
+				TipoVenda = new tbl_TipoVenda() { DesTipoVenda = txtDescricao.Text, QtdDias = txtQtdDias.Value, flgAVista = chkAvista.Checked, flgAtivo = chkAtivo.Checked };
+			}
+			else
+			{
+				TipoVenda.DesTipoVenda = txtDescricao.Text;
+				TipoVenda.QtdDias = txtQtdDias.Value;
+				TipoVenda.flgAVista = chkAvista.Checked;
+				TipoVenda.flgAtivo = chkAtivo.Checked;
+			}
 
-            SU_CarregaGrid();
-            SU_LimpaCampos();
-            MessageBox.Show("Registro excluído com sucesso.");
-        }
-        
-        private void btnGravar_Click(object sender, EventArgs e)
-        {
-            if (TipoVenda == null)
-            {
-                TipoVenda = new tbl_TipoVenda() { DesTipoVenda = txtDescricao.Text, QtdDias = txtQtdDias.Value, flgAVista = chkAvista.Checked, flgAtivo = chkAtivo.Checked };
-                Loja.tbl_TipoVenda.AddObject(TipoVenda);
-            }
-            else
-            {
-                TipoVenda.DesTipoVenda = txtDescricao.Text;
-                TipoVenda.QtdDias = txtQtdDias.Value;
-                TipoVenda.flgAVista = chkAvista.Checked;
-                TipoVenda.flgAtivo = chkAtivo.Checked;
-            }
+			Cadastros.GravaTipoVenda(TipoVenda);
 
-            Loja.SaveChanges();
-            SU_CarregaGrid();
-            SU_LimpaCampos();
-        }
-        #endregion
+			SU_CarregaGrid();
+			SU_LimpaCampos();
+		}
+		#endregion
 
-        #region Eventos Grid
-        private void gridDados_DoubleClick(object sender, EventArgs e)
-        {
-            int codigo = FU_PegaCodigoGrid();
-            this.TipoVenda = (from tipo in Loja.tbl_TipoVenda
-                             where tipo.CodTipoVenda == codigo
-                             select tipo).First();
+		#region Eventos Grid
+		private void gridDados_DoubleClick(object sender, EventArgs e)
+		{
+			int codigo = FU_PegaCodigoGrid();
+			this.TipoVenda = Consultas.ObterTipoVenda(codigo);
 
-            txtDescricao.Text = TipoVenda.DesTipoVenda;
-            txtQtdDias.Text = TipoVenda.QtdDias.ToString();
-            chkAtivo.Checked = TipoVenda.flgAtivo.Value;
-            chkAvista.Checked = TipoVenda.flgAVista.Value;
+			txtDescricao.Text = TipoVenda.DesTipoVenda;
+			txtQtdDias.Text = TipoVenda.QtdDias.ToString();
+			chkAtivo.Checked = TipoVenda.flgAtivo.Value;
+			chkAvista.Checked = TipoVenda.flgAVista.Value;
 
-            btnExcluir.Enabled = true;
-        }
+			btnExcluir.Enabled = true;
+		}
 
-        #endregion
+		#endregion
 
-    }
+	}
 }

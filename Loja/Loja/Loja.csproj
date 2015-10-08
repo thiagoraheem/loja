@@ -365,12 +365,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Loja.DAL\Loja.DAL.csproj">
-      <Project>{0f303746-6ede-41ff-891f-2d91483a9050}</Project>
-      <Name>Loja.DAL</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Images\Calendar_16x16.png" />
     <Content Include="Images\Drafts_16x16.png" />
     <Content Include="Images\Inbox_16x16.png" />
@@ -404,6 +398,12 @@
     <Content Include="Images\Tasks_16x16.png" />
     <Content Include="Images\Trash_16x16.png" />
     <Content Include="shoppingcart_32x32.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Loja.DAL\Loja.DAL.csproj">
+      <Project>{0f303746-6ede-41ff-891f-2d91483a9050}</Project>
+      <Name>Loja.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

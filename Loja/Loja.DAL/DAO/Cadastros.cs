@@ -65,9 +65,119 @@ namespace Loja.DAL.DAO
 			}
 		}
 
-		public static void ExcluiTipoVenda(int codTipoVenda) { 
+		public static void AdicionarEntrada(string docEntrada, DateTime datEntrada, int codProduto, double qtdProduto, decimal vlrUnitario, int codTipoEntrada, double percentual, string desFornecedor)
+		{
+			using (var banco = new LojaContext())
+			{
+				banco.spc_AdicionarEntrada(docEntrada, datEntrada, codProduto, qtdProduto, vlrUnitario, codTipoEntrada, percentual, desFornecedor);
+			}
+		}
+
+		public static void AlterarEntrada(string docEntrada, DateTime datEntrada, int codProduto, double qtdProduto, double vlrUnitario)
+		{
+			using (var banco = new LojaContext())
+			{
+				banco.spc_AlterarEntrada(docEntrada, datEntrada, codProduto, qtdProduto, vlrUnitario);
+			}
+		}
+
+		public static void ManutProduto(int codigounico, string codProduto, string desProduto, string desLocal, double vlrUnitario,
+									double qtdProduto, double vlrCusto, double vlrPercent, double estMinimo, string desFornecedor,
+									string codRefAntiga, double vlrUltPreco, byte[] imagem)
+		{
+			using (var banco = new LojaContext())
+			{
+				banco.spc_ManutProduto(codigounico, codProduto, desProduto, desLocal, vlrUnitario,
+									qtdProduto, vlrCusto, vlrPercent, estMinimo, desFornecedor,
+									codRefAntiga, vlrUltPreco, imagem);
+			}
+		}
+
+		public static void ExcluiProduto(int codigo)
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var dados = banco.tbl_Produtos.FirstOrDefault(x => x.codigounico == codigo);
+
+				banco.tbl_Produtos.Remove(dados);
+				banco.SaveChanges();
+
+			}
+
+		}
+
+		public static void ExcluiTipoVenda(int codTipoVenda) {
+
+			using (var banco = new LojaContext())
+			{
+				var dados = banco.tbl_TipoVenda.FirstOrDefault(x => x.CodTipoVenda == codTipoVenda);
+
+				banco.tbl_TipoVenda.Remove(dados);
+				banco.SaveChanges();
+
+			}
 		
+		}
+
+		public static void GravaTipoVenda (tbl_TipoVenda dado){
 		
+			using(var banco = new LojaContext())
+			{
+				var registro = banco.tbl_TipoVenda.FirstOrDefault(x => x.CodTipoVenda == dado.CodTipoVenda);
+
+				if (registro == null)
+				{
+					banco.tbl_TipoVenda.Add(dado);
+				}
+				else
+				{
+					registro.DesTipoVenda = dado.DesTipoVenda;
+					registro.flgAtivo = dado.flgAtivo;
+					registro.flgAVista = dado.flgAVista;
+					registro.QtdDias = dado.QtdDias;
+				}
+
+				banco.SaveChanges();
+
+			}
+		
+		}
+
+		public static void ExcluiTipoEntrada(int codTipoEntrada)
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var dados = banco.tbl_TipoEntrada.FirstOrDefault(x => x.CodTipoEntrada == codTipoEntrada);
+
+				banco.tbl_TipoEntrada.Remove(dados);
+				banco.SaveChanges();
+
+			}
+
+		}
+
+		public static void GravaTipoEntrada(tbl_TipoEntrada dado)
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var registro = banco.tbl_TipoEntrada.FirstOrDefault(x => x.CodTipoEntrada == dado.CodTipoEntrada);
+
+				if (registro == null)
+				{
+					banco.tbl_TipoEntrada.Add(dado);
+				}
+				else { 
+					registro.DesTipoEntrada = dado.DesTipoEntrada;
+					registro.flgMovimentaEstoque = dado.flgMovimentaEstoque;
+				}
+
+				banco.SaveChanges();
+
+			}
+
 		}
 
 	}

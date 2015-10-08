@@ -70,18 +70,6 @@ namespace Loja.DAL.DAO
 			}
 		}
 
-		public static List<tbl_TipoVenda> ObterTipoVenda()
-		{
-
-			using (var banco = new LojaContext())
-			{
-				var dados = from tipovenda in banco.tbl_TipoVenda
-							select tipovenda;
-
-				return dados.ToList();
-			}
-		}
-
 		public static List<tbl_Saida> ObterVendas(DateTime inicio, DateTime fim)
 		{
 			using (var banco = new LojaContext())
@@ -118,6 +106,151 @@ namespace Loja.DAL.DAO
 							   Descricao = grupo.Count().ToString()
 						   };
 				return dado.ToList();
+			}
+		}
+
+		public static List<Entrada> ObterEntrada(string docEntrada)
+		{
+
+			using (var banco = new LojaContext())
+			{
+
+				var entradas = from entrada in banco.tbl_Entrada
+							   join produto in banco.tbl_Produtos on entrada.codigounico equals produto.codigounico
+							   where entrada.DocEntrada == docEntrada
+							   select new Entrada()
+							   {
+								   DatEntrada = entrada.DatEntrada,
+								   DocEntrada = entrada.DocEntrada,
+								   Percentual = entrada.Percentual,
+								   QtdProduto = entrada.QtdProduto,
+								   VlrTotal = entrada.VlrTotal,
+								   VlrUnitario = entrada.VlrUnitario,
+								   CodProduto = produto.CodProduto,
+								   DesProduto = produto.DesProduto,
+								   codigounico = produto.codigounico
+							   };
+				return entradas.ToList();
+
+
+			}
+
+		}
+
+		public static List<Entrada> ObterEntrada(DateTime inicio, DateTime fim)
+		{
+
+			using (var banco = new LojaContext())
+			{
+
+				var registro = from entrada in banco.tbl_Entrada
+							   join produto in banco.tbl_Produtos on entrada.codigounico equals produto.codigounico
+							   where entrada.DatEntrada >= inicio && entrada.DatEntrada <= fim
+							   select new Entrada()
+							   {
+								   DatEntrada = entrada.DatEntrada,
+								   DocEntrada = entrada.DocEntrada,
+								   Percentual = entrada.Percentual,
+								   QtdProduto = entrada.QtdProduto,
+								   VlrTotal = entrada.VlrTotal,
+								   VlrUnitario = entrada.VlrUnitario,
+								   CodProduto = produto.CodProduto,
+								   DesProduto = produto.DesProduto,
+								   codigounico = produto.codigounico
+							   };
+				return registro.ToList();
+
+			}
+
+
+		}
+
+		public static List<string> ObterFornecedores()
+		{
+
+			using (var banco = new LojaContext())
+			{
+
+				var cons = from forn in banco.tbl_Produtos
+						   group forn by forn.DesFornecedor into gFornecedor
+						   select gFornecedor.Key;
+
+				return cons.ToList();
+			}
+		}
+
+		public static tbl_Produtos ObterProduto(int codigounico)
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var registro = (from prod in banco.tbl_Produtos
+								where prod.codigounico == codigounico
+								select prod).FirstOrDefault();
+				return registro;
+			}
+		}
+
+
+		public static List<DadosCombo> ObterTipoEntradaCombo()
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var dados = from tipoentrada in banco.tbl_TipoEntrada
+							select new DadosCombo { Codigo = tipoentrada.CodTipoEntrada.ToString(), Descricao = tipoentrada.DesTipoEntrada };
+
+				return dados.ToList();
+			}
+		}
+
+		public static List<tbl_TipoVenda> ObterTipoVendas()
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var dados = from tipovenda in banco.tbl_TipoVenda
+							select tipovenda;
+
+				return dados.ToList();
+			}
+		}
+
+		public static tbl_TipoVenda ObterTipoVenda(int codTipoVenda)
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var dados = from tipovenda in banco.tbl_TipoVenda
+							where tipovenda.CodTipoVenda == codTipoVenda
+							select tipovenda;
+
+				return dados.FirstOrDefault();
+			}
+		}
+
+		public static List<tbl_TipoEntrada> ObterTipoEntradas()
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var dados = from tipoentrada in banco.tbl_TipoEntrada
+							select tipoentrada;
+
+				return dados.ToList();
+			}
+		}
+
+		public static tbl_TipoEntrada ObterTipoEntrada(int codTipoEntrada)
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var dados = from tipoentrada in banco.tbl_TipoEntrada
+							where tipoentrada.CodTipoEntrada == codTipoEntrada
+							select tipoentrada;
+
+				return dados.FirstOrDefault();
 			}
 		}
 
