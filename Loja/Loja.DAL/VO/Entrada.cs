@@ -1,9 +1,12 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Loja.DAL.Models
+namespace Loja.DAL.VO
 {
-	public partial class tbl_Entrada
+	public class Entrada
 	{
 		public string DocEntrada { get; set; }
 		public System.DateTime DatEntrada { get; set; }
@@ -14,7 +17,9 @@ namespace Loja.DAL.Models
 		public int codigounico { get; set; }
 		public Nullable<double> Percentual { get; set; }
 		public string DesFornecedor { get; set; }
-		public virtual tbl_Produtos tbl_Produtos { get; set; }
-		public virtual tbl_TipoEntrada tbl_TipoEntrada { get; set; }
+
+		public string CodProduto { get; set; }
+		public string DesProduto { get; set; }
+
 	}
 }

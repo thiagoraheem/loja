@@ -108,5 +108,81 @@ namespace Loja.DAL.Models
 
 		}
 
+		public ObjectResult<int> spc_AdicionarEntrada(string docEntrada, DateTime datEntrada, int codProduto, double qtdProduto, decimal vlrUnitario, int codTipoEntrada, double percentual, string desFornecedor)
+		{
+			try
+			{
+				var dEntrada = new ObjectParameter("DocEntrada", docEntrada);
+				var dataEntrada = new ObjectParameter("DatEntrada", datEntrada);
+				var cProduto = new ObjectParameter("CodProduto", codProduto);
+				var qProduto = new ObjectParameter("QtdProduto", qtdProduto);
+				var vUnitario = new ObjectParameter("VlrUnitario", vlrUnitario);
+				var cTipoEntrada = new ObjectParameter("CodTipoEntrada", codTipoEntrada);
+				var perce = new ObjectParameter("Percentual", percentual);
+				var dFornecedor = new ObjectParameter("DesFornecedor", desFornecedor);
+
+				return ((IObjectContextAdapter)this).ObjectContext
+					.ExecuteFunction<int>("spc_AdicionarEntrada", dEntrada, dataEntrada, cProduto, qProduto, vUnitario, cTipoEntrada, perce, dFornecedor);
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(ex.Message);
+			}
+
+		}
+
+		public void spc_AlterarEntrada(string docEntrada, DateTime datEntrada, int codigounico, double quantidade, double vlrUnitario)
+		{
+			try
+			{
+				var dEntrada = new ObjectParameter("DocEntrada", docEntrada);
+				var dataEntrada = new ObjectParameter("DatEntrada", datEntrada);
+				var cProduto = new ObjectParameter("CodProduto", codigounico);
+				var qProduto = new ObjectParameter("QtdProduto", quantidade);
+				var vUnitario = new ObjectParameter("VlrUnitario", vlrUnitario);
+
+				((IObjectContextAdapter)this).ObjectContext
+					.ExecuteFunction<int>("spc_AlterarEntrada", dEntrada, dataEntrada, cProduto, qProduto, vUnitario);
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(ex.Message);
+			}
+
+		}
+
+		public void spc_ManutProduto(int codigounico, string codProduto, string desProduto, string desLocal, double vlrUnitario,
+									double qtdProduto, double vlrCusto, double vlrPercent, double estMinimo, string desFornecedor,
+									string codRefAntiga, double vlrUltPreco, byte[] imagem)
+		{
+			try
+			{
+				var codigo = new ObjectParameter("codigounico", codigounico);
+				var cProduto = new ObjectParameter("codProduto", codProduto);
+				var dProduto = new ObjectParameter("desProduto", desProduto);
+				var dLocal = new ObjectParameter("desLocal", desLocal);
+				var vUnitario = new ObjectParameter("VlrUnitario", vlrUnitario);
+
+				var qProduto = new ObjectParameter("qtdProduto", qtdProduto);
+				var vCusto = new ObjectParameter("vlrCusto", vlrCusto);
+				var vPercent = new ObjectParameter("vlrPercent", vlrPercent);
+				var eMinimo = new ObjectParameter("estMinimo", estMinimo);
+				var dFornecedor = new ObjectParameter("desFornecedor", desFornecedor);
+				var cRefAntiga = new ObjectParameter("codRefAntiga", codRefAntiga);
+				var vUltPreco = new ObjectParameter("vlrUltPreco", vlrUltPreco);
+				var img = new ObjectParameter("imagem", imagem);
+
+				((IObjectContextAdapter)this).ObjectContext
+					.ExecuteFunction<int>("spc_ManutProduto", codigo, cProduto, dProduto, dLocal, vUnitario, qProduto, vCusto,
+					vPercent, eMinimo, dFornecedor, cRefAntiga, vUltPreco, img);
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(ex.Message);
+			}
+
+		}
+
+
 	}
 }

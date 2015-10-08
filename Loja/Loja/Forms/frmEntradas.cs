@@ -9,100 +9,93 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.LookAndFeel;
 using DevExpress.XtraReports.UI;
-
+using Loja.DAL.DAO;
+using Loja.DAL.Models;
 
 namespace Loja
 {
-    public partial class frmEntradas : DevExpress.XtraEditors.XtraForm
-    {
-        #region Variáveis
-        LojaEntities Loja = new LojaEntities();
+	public partial class frmEntradas : DevExpress.XtraEditors.XtraForm
+	{
+		#region Variáveis
+		#endregion
 
-        #endregion
+		#region Form Events
 
-        #region Form Events
+		public frmEntradas()
+		{
+			InitializeComponent();
+		}
 
-        public frmEntradas()
-        {
-            InitializeComponent();
-        }
+		private void frmEntradas_Load(object sender, EventArgs e)
+		{
+			txtDatFim.DateTime = DateTime.Now;
+			txtDatInicio.DateTime = DateTime.Now;
 
-        private void frmEntradas_Load(object sender, EventArgs e)
-        {
-            txtDatFim.DateTime = DateTime.Now;
-            txtDatInicio.DateTime = DateTime.Now;
+			SU_CarregaProdutos();
 
-            SU_CarregaProdutos();
+		}
 
-        }
+		#endregion
 
-        #endregion
+		#region Botões
+		private void btnRetornar_Click(object sender, EventArgs e)
+		{
+			Close();
+		}
 
-        #region Botões
-        private void btnRetornar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+		private void btnImprimir_Click(object sender, EventArgs e)
+		{
+			/*using (Reports.relVendas relatorio = new Reports.relVendas())
+			{
 
-        private void btnImprimir_Click(object sender, EventArgs e)
-        {
-            /*using (Reports.relVendas relatorio = new Reports.relVendas())
-            {
+				ReportPrintTool printTool = new ReportPrintTool(relatorio);
 
-                ReportPrintTool printTool = new ReportPrintTool(relatorio);
+				int codproduto = cmbProduto.EditValue == null ? 0 : (int)cmbProduto.EditValue;
 
-                int codproduto = cmbProduto.EditValue == null ? 0 : (int)cmbProduto.EditValue;
+				relatorio.SU_SetParam(txtDatInicio.DateTime, txtDatFim.DateTime, codproduto, codtipovenda);
 
-                relatorio.SU_SetParam(txtDatInicio.DateTime, txtDatFim.DateTime, codproduto, codtipovenda);
+				printTool.ShowRibbonPreviewDialog();
+				printTool.ShowRibbonPreview(UserLookAndFeel.Default);
+			}*/
+		}
 
-                printTool.ShowRibbonPreviewDialog();
-                printTool.ShowRibbonPreview(UserLookAndFeel.Default);
-            }*/
-        }
-
-        private void btnConsultar_Click(object sender, EventArgs e)
-        {
-            SU_CarregaEntrada();
-        }
+		private void btnConsultar_Click(object sender, EventArgs e)
+		{
+			SU_CarregaEntrada();
+		}
 
 
-        #endregion
+		#endregion
 
-        #region Funções
-        void SU_CarregaProdutos()
-        {
-            var produtos = from prod in Loja.tbl_Produtos
-                           where prod.QtdProduto > 0
-                           select prod;
-            cmbProduto.Properties.DataSource = produtos;
+		#region Funções
+		void SU_CarregaProdutos()
+		{
+			var produtos = Consultas.ObterProdutosAtivos();
+			cmbProduto.Properties.DataSource = produtos;
 
-        }
+		}
 
-        void SU_CarregaEntrada() {
+		void SU_CarregaEntrada() {
 
-            DateTime inicio = txtDatInicio.DateTime.AddDays(-1);
-            DateTime fim = txtDatFim.DateTime;
+			DateTime inicio = txtDatInicio.DateTime.AddDays(-1);
+			DateTime fim = txtDatFim.DateTime;
 
-            var entradas = from entrada in Loja.tbl_Entrada
-                           join produto in Loja.tbl_Produtos on entrada.codigounico equals produto.codigounico
-                           where entrada.DatEntrada >= inicio && entrada.DatEntrada <= fim
-                           select new { entrada.DatEntrada, entrada.DocEntrada, entrada.Percentual, 
-                               entrada.QtdProduto, entrada.VlrTotal, entrada.VlrUnitario, produto.CodProduto, produto.DesProduto };
-            grdDados.DataSource = entradas;
+			var entradas = Consultas.ObterEntrada(inicio, fim);
+			grdDados.DataSource = entradas;
 
-        }
+		}
 
-        int FU_PegaCodigoGrid()
-        {
-            int codigo = -1;
+		int FU_PegaCodigoGrid()
+		{
+			int codigo = -1;
 
-            int linha = gridDados.GetSelectedRows()[0];
-            codigo = (int)gridDados.GetRowCellValue(linha, colCodigounico);
+			int linha = gridDados.GetSelectedRows()[0];
+			codigo = (int)gridDados.GetRowCellValue(linha, colCodigounico);
 
-            return codigo;
-        }
+			return codigo;
+		}
 
-#endregion
+		#endregion
 
-    }
+	}
 }

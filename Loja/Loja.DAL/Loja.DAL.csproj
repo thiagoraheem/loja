@@ -81,6 +81,7 @@
     <Compile Include="Models\viw_Orcamento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VO\DadosCombo.cs" />
+    <Compile Include="VO\Entrada.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

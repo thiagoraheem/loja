@@ -7,13 +7,14 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using Loja.DAL.Models;
+using Loja.DAL.DAO;
 
 namespace Loja
 {
     public partial class frmCadTipoEntrada : DevExpress.XtraEditors.XtraForm
     {
         #region Variáveis
-        LojaEntities Loja = new LojaEntities();
         tbl_TipoEntrada TipoEntrada;
 
         #endregion
@@ -33,9 +34,7 @@ namespace Loja
 
         #region Funções
         void SU_CarregaGrid() {
-            LojaEntities Loja = new LojaEntities();
-            var tipoentrada = from tipo in Loja.tbl_TipoEntrada
-                            select tipo;
+            var tipoentrada = Consultas.ObterTipoEntradas();
 
             grdDados.DataSource = tipoentrada.ToList();
         }
@@ -76,8 +75,7 @@ namespace Loja
             if (MessageBox.Show("Confirma excluir esse registro?", "Confirmar exclusão", MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
 
-            Loja.DeleteObject(TipoEntrada);
-            Loja.SaveChanges();
+            Cadastros.ExcluiTipoEntrada(TipoEntrada.CodTipoEntrada);
 
             SU_CarregaGrid();
             SU_LimpaCampos();
@@ -90,7 +88,6 @@ namespace Loja
             if (TipoEntrada == null)
             {
                 TipoEntrada = new tbl_TipoEntrada() { DesTipoEntrada = txtDescricao.Text, flgMovimentaEstoque = chkMovimenta.Checked };
-                Loja.tbl_TipoEntrada.AddObject(TipoEntrada);
             }
             else
             {
@@ -98,7 +95,8 @@ namespace Loja
                 TipoEntrada.flgMovimentaEstoque = chkMovimenta.Checked;
             }
 
-            Loja.SaveChanges();
+			Cadastros.GravaTipoEntrada(TipoEntrada);
+
             SU_CarregaGrid();
             SU_LimpaCampos();
         }
@@ -108,9 +106,7 @@ namespace Loja
         private void gridDados_DoubleClick(object sender, EventArgs e)
         {
             int codigo = FU_PegaCodigoGrid();
-            this.TipoEntrada = (from tipo in Loja.tbl_TipoEntrada
-                             where tipo.CodTipoEntrada == codigo
-                             select tipo).First();
+            this.TipoEntrada = Consultas.ObterTipoEntrada(codigo);
 
             txtDescricao.Text = TipoEntrada.DesTipoEntrada;
             chkMovimenta.Checked = TipoEntrada.flgMovimentaEstoque;
