@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.IO;
+using Loja.DAL.DAO;
 
 namespace Loja
 {
@@ -44,12 +45,10 @@ namespace Loja
             }
         }
 
-        public void SU_CarregaProduto(int CodProduto) {
-            LojaEntities Loja = new LojaEntities();
+        public void SU_CarregaProduto(int codProduto) {
 
-            var produto = (from prod in Loja.tbl_Produtos
-                          where prod.codigounico == CodProduto
-                          select prod).First();
+            var produto = Consultas.ObterProduto(codProduto);
+
             txtCodProduto.Text = produto.CodProduto;
             txtDesProduto.Text = produto.DesProduto;
             txtDesLocal.Text = produto.DesLocal;

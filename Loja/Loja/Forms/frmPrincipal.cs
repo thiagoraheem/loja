@@ -359,7 +359,12 @@ namespace Loja
 			}
 			catch (Exception ex)
 			{
-				Util.MsgBox("Erro na alteração: " + ex.InnerException.Message);
+				if (ex.InnerException != null) { 
+					Util.MsgBox("Erro na alteração: " + ex.InnerException.Message);
+				}
+				else {
+					Util.MsgBox("Erro na alteração: " + ex.Message);
+				}
 			}
 			InitGridOrca();
 		}

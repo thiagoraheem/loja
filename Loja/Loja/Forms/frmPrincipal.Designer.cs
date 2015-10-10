@@ -481,12 +481,12 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)});
 			this.repCodOrca.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CodOrca", "Orçamento"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("QtdItem", "Itens")});
-			this.repCodOrca.DisplayMember = "CodOrca";
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Codigo", "Orçamento"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Descricao", "Itens")});
+			this.repCodOrca.DisplayMember = "Codigo";
 			this.repCodOrca.Name = "repCodOrca";
 			this.repCodOrca.NullText = "[Sem seleção]";
-			this.repCodOrca.ValueMember = "CodOrca";
+			this.repCodOrca.ValueMember = "Codigo";
 			this.repCodOrca.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repCodOrca_ButtonClick);
 			// 
 			// btnExcluirOrca
