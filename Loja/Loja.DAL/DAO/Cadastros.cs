@@ -20,11 +20,11 @@ namespace Loja.DAL.DAO
 			}
 		}
 
-		public static ObjectResult<string> AdicionarOrcamento(string codOrca, int codProduto)
+		public static List<string> AdicionarOrcamento(string codOrca, int codProduto)
 		{
 			using (var banco = new LojaContext())
 			{
-				return banco.spc_AdicionarOrcamento(codOrca, codProduto);
+				return banco.spc_AdicionarOrcamento(codOrca, codProduto).ToList();
 
 			}
 		}
@@ -47,20 +47,27 @@ namespace Loja.DAL.DAO
 			}
 		}
 
-		public static void DescontoVenda(string codOrca, decimal desconto)
+		public static void DescontoVenda(string codOrca, double desconto)
 		{
 			using (var banco = new LojaContext())
 			{
-				banco.spc_DescontoVenda(codOrca, desconto);
+
+				var dado = banco.tbl_Orcamento.Where(x => x.CodOrca == codOrca).ToList();
+
+				dado.ForEach(x => x.VlrUnitario = x.VlrCusto - (x.VlrCusto.Value * (desconto / 100)));
+
+				banco.SaveChanges();
+
+				//banco.spc_DescontoVenda(codOrca, desconto);
 
 			}
 		}
 
-		public static void FinalizaVenda(string codOrca, int codTipoVenda, string flgApagarOrca)
+		public static int FinalizaVenda(string codOrca, int codTipoVenda, string flgApagarOrca)
 		{
 			using (var banco = new LojaContext())
 			{
-				banco.spc_FinalizaVenda(codOrca, codTipoVenda, flgApagarOrca);
+				return banco.spc_FinalizaVenda(codOrca, codTipoVenda, flgApagarOrca).FirstOrDefault();
 
 			}
 		}
@@ -93,6 +100,16 @@ namespace Loja.DAL.DAO
 			}
 		}
 
+		public static void Reajuste(decimal porcentagem, string desFornecedor)
+		{
+			using (var banco = new LojaContext())
+			{
+				banco.spc_Reajuste(porcentagem, desFornecedor);
+
+			}
+		}
+
+
 		public static void ExcluiProduto(int codigo)
 		{
 
@@ -106,7 +123,7 @@ namespace Loja.DAL.DAO
 			}
 
 		}
-
+		
 		public static void ExcluiTipoVenda(int codTipoVenda) {
 
 			using (var banco = new LojaContext())

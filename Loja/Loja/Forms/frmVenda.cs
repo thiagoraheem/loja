@@ -32,7 +32,7 @@ namespace Loja
 		void SU_CarregaTipoVenda()
 		{
 			var TipoVenda = Consultas.ObterTipoVendaCombo();
-			cmbTipoVenda.Properties.DataSource = TipoVenda.ToList();
+			cmbTipoVenda.Properties.DataSource = TipoVenda;
 		}
 
 		void SU_CarregaOrcamento(String codOrca)
@@ -88,7 +88,7 @@ namespace Loja
 
 		private void btnAplicarDesconto_Click(object sender, EventArgs e)
 		{
-			Cadastros.DescontoVenda(CodOrcamento, txtDesconto.Value);
+			Cadastros.DescontoVenda(CodOrcamento, (double)txtDesconto.Value);
 			SU_CarregaOrcamento(CodOrcamento);
 		}
 

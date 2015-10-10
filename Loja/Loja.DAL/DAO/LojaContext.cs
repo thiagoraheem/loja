@@ -4,27 +4,12 @@ using Loja.DAL.Models.Mapping;
 using CodeFirstStoreFunctions;
 using System.Data.Entity.Core.Objects;
 using System;
+using System.Data.SqlClient;
 
 namespace Loja.DAL.Models
 {
 	public partial class LojaContext : DbContext
 	{
-		public void spc_EstornaVenda(int codVenda, int codProduto, string desMotivo)
-		{
-			try
-			{
-				var cVenda = new ObjectParameter("CodVenda", codVenda);
-				var cProduto = new ObjectParameter("CodProduto", codProduto);
-				var dMotivo = new ObjectParameter("DesMotivo", desMotivo);
-
-				((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spc_EstornaVenda", cVenda, cProduto, dMotivo);
-			}
-			catch (Exception ex)
-			{
-				throw new Exception(ex.Message);
-			}
-
-		}
 
 		public ObjectResult<string> spc_AdicionarOrcamento(string codOrcamento, int codProduto)
 		{
@@ -46,13 +31,18 @@ namespace Loja.DAL.Models
 		{
 			try
 			{
-				var cOrca = new ObjectParameter("CodOrca", codOrcamento);
+				var cOrca = new SqlParameter("@Original_CodOrca", codOrcamento);
 
-				((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spc_ApagarOrcamento", cOrca);
+				((IObjectContextAdapter)this).ObjectContext.ExecuteStoreCommand("spc_ApagarOrcamento @Original_CodOrca", cOrca);
 			}
 			catch (Exception ex)
 			{
-				throw new Exception(ex.Message);
+				if (ex.InnerException == null) { 
+					throw new Exception(ex.Message);
+				}
+				else {
+					throw new Exception(ex.InnerException.Message);
+				}
 			}
 
 		}
@@ -61,12 +51,30 @@ namespace Loja.DAL.Models
 		{
 			try
 			{
-				var cOrca = new ObjectParameter("CodOrca", codOrca);
-				var cProduto = new ObjectParameter("CodProduto", codProduto);
-				var qtd = new ObjectParameter("Quantidade", qtde);
-				var vUnitario = new ObjectParameter("VlrUnitario", vlrUnitario);
+				var cOrca = new SqlParameter("@CodOrca", codOrca);
+				var cProduto = new SqlParameter("@CodProduto", codProduto);
+				var qtd = new SqlParameter("@Quantidade", qtde);
+				var vUnitario = new SqlParameter("@VlrUnitario", vlrUnitario);
 
-				((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spc_AlterarOrcamento", cOrca, cProduto, qtd, vUnitario);
+				((IObjectContextAdapter)this).ObjectContext.ExecuteStoreCommand("spc_AlterarOrcamento @CodOrca, @CodProduto, @Quantidade, @VlrUnitario", cOrca, cProduto, qtd, vUnitario);
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(ex.Message);
+			}
+
+		}
+
+		
+		public void spc_EstornaVenda(int codVenda, int codProduto, string desMotivo)
+		{
+			try
+			{
+				var cVenda = new ObjectParameter("CodVenda", codVenda);
+				var cProduto = new ObjectParameter("CodProduto", codProduto);
+				var dMotivo = new ObjectParameter("DesMotivo", desMotivo);
+
+				((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spc_EstornaVenda", cVenda, cProduto, dMotivo);
 			}
 			catch (Exception ex)
 			{
@@ -107,6 +115,7 @@ namespace Loja.DAL.Models
 			}
 
 		}
+
 
 		public ObjectResult<int> spc_AdicionarEntrada(string docEntrada, DateTime datEntrada, int codProduto, double qtdProduto, decimal vlrUnitario, int codTipoEntrada, double percentual, string desFornecedor)
 		{
@@ -151,6 +160,7 @@ namespace Loja.DAL.Models
 
 		}
 
+
 		public void spc_ManutProduto(int codigounico, string codProduto, string desProduto, string desLocal, double vlrUnitario,
 									double qtdProduto, double vlrCusto, double vlrPercent, double estMinimo, string desFornecedor,
 									string codRefAntiga, double vlrUltPreco, byte[] imagem)
@@ -184,5 +194,20 @@ namespace Loja.DAL.Models
 		}
 
 
+		public ObjectResult<int> spc_Reajuste(decimal porcentagem, string desFornecedor)
+		{
+			try
+			{
+				var perc = new ObjectParameter("Porcentagem", porcentagem);
+				var dFornecedor = new ObjectParameter("DesFornecedor", desFornecedor);
+
+				return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<int>("spc_Reajuste", perc, dFornecedor);
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(ex.Message);
+			}
+
+		}
 	}
 }
