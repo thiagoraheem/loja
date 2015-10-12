@@ -17,6 +17,7 @@ namespace Loja.DAL.Models
 		public LojaContext()
 			: base("Name=LojaContext")
 		{
+			this.Configuration.LazyLoadingEnabled = false;
 		}
 
 		public DbSet<sysdiagram> sysdiagrams { get; set; }

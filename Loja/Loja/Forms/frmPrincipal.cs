@@ -14,12 +14,15 @@ using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraBars.Helpers;
 using DevExpress.XtraReports.UI;
 using Loja.DAL.DAO;
+using Loja.DAL.Models;
 
 namespace Loja
 {
 	public partial class frmPrincipal : RibbonForm
 	{
 		private bool _ModoEdicao = false;
+		private List<tbl_Produtos> produtos = new List<tbl_Produtos>();
+		private List<tbl_Orcamento> orcamento = new List<tbl_Orcamento>();
 
 		#region Form
 
@@ -30,7 +33,10 @@ namespace Loja
 			InitGrid();
 			InitComboOrca();
 
+			gridProdutos.DataSource = produtos;
 			gridViewProduto.Columns[colDesProduto.AbsoluteIndex].SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
+
+			gridOrcamento.DataSource = orcamento;
 
 		}
 
@@ -71,15 +77,9 @@ namespace Loja
 			{
 				DevExpress.Utils.WaitDialogForm wait = new DevExpress.Utils.WaitDialogForm("Carregando os dados");
 				wait.Show();
-				//LojaEntities Loja = new LojaEntities();
-				if (this._ModoEdicao)
-				{
-					gridProdutos.DataSource = Consultas.ObterProdutos();
-				}
-				else
-				{
-					gridProdutos.DataSource = Consultas.ObterProdutosAtivos();
-				}
+
+				produtos = (this._ModoEdicao) ? Consultas.ObterProdutos() : produtos = Consultas.ObterProdutosAtivos();
+				
 
 				lblQtdProduto.Caption = "Qtd. Produtos: " + Consultas.ObterQtdeProdutos().ToString();
 
@@ -113,11 +113,11 @@ namespace Loja
 				wait.Show();
 				String CodOrca = cmbCodOrca.EditValue.ToString();
 
-				var orca = Consultas.ObterOrcamentos(CodOrca);
+				orcamento = Consultas.ObterOrcamentos(CodOrca);
 
-				gridOrcamento.DataSource = orca.ToList();
+				gridOrcamento.DataSource = orcamento;
 
-				txtQtdItem.EditValue = orca.Count();
+				txtQtdItem.EditValue = orcamento.Count();
 
 				InitComboOrca();
 
@@ -373,7 +373,7 @@ namespace Loja
 		{
 			if (e.KeyCode.Equals(Keys.Escape)) { return; }
 
-			int linha = gridViewOrcamento.GetSelectedRows()[0];
+			int linha = (gridViewOrcamento.SelectedRowsCount > 0) ? gridViewOrcamento.GetSelectedRows()[0] : 0;
 			double valor = (double)gridViewOrcamento.GetRowCellValue(linha, colVlrOriginal);
 
 			if (e.KeyCode.Equals(Keys.Delete))

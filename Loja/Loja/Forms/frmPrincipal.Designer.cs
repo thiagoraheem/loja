@@ -657,7 +657,7 @@
 			this.gridViewProduto.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
 			this.gridViewProduto.OptionsBehavior.Editable = false;
 			this.gridViewProduto.OptionsBehavior.ReadOnly = true;
-			this.gridViewProduto.OptionsFind.AlwaysVisible = true;
+			this.gridViewProduto.OptionsFind.FindNullPrompt = "Digite o texto a pesquisar";
 			this.gridViewProduto.OptionsView.EnableAppearanceEvenRow = true;
 			this.gridViewProduto.OptionsView.ShowAutoFilterRow = true;
 			// 

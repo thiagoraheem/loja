@@ -55,8 +55,8 @@ namespace Loja.DAL.Models
 				var cProduto = new SqlParameter("@CodProduto", codProduto);
 				var qtd = new SqlParameter("@Quantidade", qtde);
 				var vUnitario = new SqlParameter("@VlrUnitario", vlrUnitario);
-
-				((IObjectContextAdapter)this).ObjectContext.ExecuteStoreCommand("spc_AlterarOrcamento @CodOrca, @CodProduto, @Quantidade, @VlrUnitario", cOrca, cProduto, qtd, vUnitario);
+				
+				this.Database.ExecuteSqlCommand("spc_AlterarOrcamento @CodOrca, @CodProduto, @Quantidade, @VlrUnitario", cOrca, cProduto, qtd, vUnitario);
 			}
 			catch (Exception ex)
 			{
@@ -167,23 +167,23 @@ namespace Loja.DAL.Models
 		{
 			try
 			{
-				var codigo = new ObjectParameter("codigounico", codigounico);
-				var cProduto = new ObjectParameter("codProduto", codProduto);
-				var dProduto = new ObjectParameter("desProduto", desProduto);
-				var dLocal = new ObjectParameter("desLocal", desLocal);
-				var vUnitario = new ObjectParameter("VlrUnitario", vlrUnitario);
+				var codigo = new ObjectParameter("@codigounico", codigounico);
+				var cProduto = new ObjectParameter("@codProduto", codProduto);
+				var dProduto = new ObjectParameter("@desProduto", desProduto);
+				var dLocal = new ObjectParameter("@desLocal", desLocal);
+				var vUnitario = new ObjectParameter("@VlrUnitario", vlrUnitario);
 
-				var qProduto = new ObjectParameter("qtdProduto", qtdProduto);
-				var vCusto = new ObjectParameter("vlrCusto", vlrCusto);
-				var vPercent = new ObjectParameter("vlrPercent", vlrPercent);
-				var eMinimo = new ObjectParameter("estMinimo", estMinimo);
-				var dFornecedor = new ObjectParameter("desFornecedor", desFornecedor);
-				var cRefAntiga = new ObjectParameter("codRefAntiga", codRefAntiga);
-				var vUltPreco = new ObjectParameter("vlrUltPreco", vlrUltPreco);
-				var img = new ObjectParameter("imagem", imagem);
+				var qProduto = new ObjectParameter("@qtdProduto", qtdProduto);
+				var vCusto = new ObjectParameter("@vlrCusto", vlrCusto);
+				var vPercent = new ObjectParameter("@vlrPercent", vlrPercent);
+				var eMinimo = new ObjectParameter("@estMinimo", estMinimo);
+				var dFornecedor = new ObjectParameter("@desFornecedor", desFornecedor);
+				var cRefAntiga = new ObjectParameter("@codRefAntiga", codRefAntiga);
+				var vUltPreco = new ObjectParameter("@vlrUltPreco", vlrUltPreco);
+				var img = new ObjectParameter("@imagem", imagem);
 
-				((IObjectContextAdapter)this).ObjectContext
-					.ExecuteFunction<int>("spc_ManutProduto", codigo, cProduto, dProduto, dLocal, vUnitario, qProduto, vCusto,
+				this.Database.ExecuteSqlCommand("spc_ManutProduto @codigounico, @codProduto, @desProduto, @desLocal, @VlrUnitario, @qtdProduto, @vlrCusto, @vlrPercent, @estMinimo, @desFornecedor, @codRefAntiga, @vlrUltPreco, @imagem", 
+					codigo, cProduto, dProduto, dLocal, vUnitario, qProduto, vCusto,
 					vPercent, eMinimo, dFornecedor, cRefAntiga, vUltPreco, img);
 			}
 			catch (Exception ex)

@@ -25,8 +25,24 @@ namespace Loja
 
 			if (MessageBox.Show("Confirma reajustar os preços desses produtos?", "Confirmar reajuste", MessageBoxButtons.YesNo) == DialogResult.No)
 				return;
+			try
+			{
+				var fornecedor = cmbFornecedor.EditValue != null ? cmbFornecedor.EditValue.ToString() : "";
 
-			Cadastros.Reajuste((decimal)txtPercentual.Value, cmbFornecedor.EditValue.ToString());
+				Cadastros.Reajuste((decimal)txtPercentual.Value, fornecedor);
+			}
+			catch (Exception ex)
+			{
+				if (ex.InnerException == null)
+				{
+					Util.MsgBox(ex.Message);
+				}
+				else
+				{
+					Util.MsgBox(ex.InnerException.Message);
+				}
+			}
+
 		}
 
 		private void btnCancelar_Click(object sender, EventArgs e)
@@ -37,7 +53,7 @@ namespace Loja
 		void SU_CarregaFornecedor()
 		{
 			var fornecedores = Consultas.ObterFornecedores();
-			
+
 			cmbFornecedor.Properties.DataSource = fornecedores;
 
 		}
