@@ -16,6 +16,7 @@ namespace Loja
 	{
 		#region Variáveis
 		tbl_TipoVenda TipoVenda;
+		List<tbl_TipoVenda> tipoVenda = new List<tbl_TipoVenda>();
 
 		#endregion
 
@@ -35,9 +36,8 @@ namespace Loja
 		#region Funções
 		void SU_CarregaGrid() {
 			
-			var tipovenda = Consultas.ObterTipoVendas();
-
-			grdDados.DataSource = tipovenda;
+			tipoVenda = Consultas.ObterTipoVendas();
+			grdDados.DataSource = tipoVenda;
 		}
 
 		int FU_PegaCodigoGrid()

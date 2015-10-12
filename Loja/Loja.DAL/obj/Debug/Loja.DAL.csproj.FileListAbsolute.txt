@@ -1,0 +1,11 @@
+C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\bin\Debug\Loja.DAL.dll.config
+C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\bin\Debug\Loja.DAL.dll
+C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\bin\Debug\Loja.DAL.pdb
+C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\bin\Debug\CodeFirstStoreFunctions.dll
+C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\bin\Debug\EntityFramework.dll
+C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\bin\Debug\EntityFramework.xml
+C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\obj\Debug\Loja.DAL.dll
+C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\obj\Debug\Loja.DAL.pdb
+C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\obj\Debug\Loja.DAL.csprojResolveAssemblyReference.cache
