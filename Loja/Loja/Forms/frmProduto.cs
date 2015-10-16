@@ -18,7 +18,6 @@ namespace Loja
 	{
 
 		#region Variáveis
-		private bool novo;
 		tbl_Produtos produto;
 		#endregion
 	
@@ -59,7 +58,6 @@ namespace Loja
 				btnRemoverImagem.Enabled = true;
 			}
 
-			this.novo = true;
 			btnRemover.Enabled = true;
 		}
 
@@ -80,7 +78,6 @@ namespace Loja
 
 			imgFoto.Image = null;
 
-			this.novo = false;
 			btnRemover.Enabled = false;
 			btnRemoverImagem.Enabled = false;
 		}
@@ -132,6 +129,18 @@ namespace Loja
 			MessageBox.Show("Registro excluído com sucesso.");
 
 			Close();
+		}
+
+		private void btnImagem_Click(object sender, EventArgs e)
+		{
+			
+			diagAbrir.ShowDialog();
+
+			Bitmap bitmap = new Bitmap(diagAbrir.FileName);
+
+			imgFoto.Image = bitmap;
+
+
 		}
 
 		#endregion

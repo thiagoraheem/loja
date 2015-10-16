@@ -59,6 +59,7 @@
 			this.txtVlrUnitario = new DevExpress.XtraEditors.CalcEdit();
 			this.txtUltPreco = new DevExpress.XtraEditors.CalcEdit();
 			this.btnRemover = new DevExpress.XtraEditors.SimpleButton();
+			this.diagAbrir = new System.Windows.Forms.OpenFileDialog();
 			((System.ComponentModel.ISupportInitialize)(this.txtDesProduto.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtDesLocal.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtFornecedor.Properties)).BeginInit();
@@ -116,8 +117,8 @@
 			// 
 			// imgFoto
 			// 
-			this.imgFoto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-						| System.Windows.Forms.AnchorStyles.Right)));
+			this.imgFoto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.imgFoto.Location = new System.Drawing.Point(378, 10);
 			this.imgFoto.Name = "imgFoto";
 			this.imgFoto.Size = new System.Drawing.Size(261, 221);
@@ -260,6 +261,7 @@
 			this.btnImagem.Size = new System.Drawing.Size(99, 23);
 			this.btnImagem.TabIndex = 25;
 			this.btnImagem.Text = "&Importar Imagem";
+			this.btnImagem.Click += new System.EventHandler(this.btnImagem_Click);
 			// 
 			// btnRemoverImagem
 			// 
@@ -278,7 +280,7 @@
 			this.txtQtdEstoque.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtQtdEstoque.Properties.Appearance.Options.UseFont = true;
 			this.txtQtdEstoque.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-			new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
 			this.txtQtdEstoque.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
 			this.txtQtdEstoque.Size = new System.Drawing.Size(77, 20);
 			this.txtQtdEstoque.TabIndex = 5;
@@ -291,7 +293,7 @@
 			this.txtQtdEstMinimo.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtQtdEstMinimo.Properties.Appearance.Options.UseFont = true;
 			this.txtQtdEstMinimo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-			new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
 			this.txtQtdEstMinimo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
 			this.txtQtdEstMinimo.Size = new System.Drawing.Size(77, 20);
 			this.txtQtdEstMinimo.TabIndex = 6;
@@ -306,7 +308,7 @@
 			this.txtVlrCusto.Properties.Appearance.Options.UseBackColor = true;
 			this.txtVlrCusto.Properties.Appearance.Options.UseFont = true;
 			this.txtVlrCusto.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-			new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
 			this.txtVlrCusto.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
 			this.txtVlrCusto.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
 			this.txtVlrCusto.Properties.Mask.EditMask = "n2";
@@ -324,7 +326,7 @@
 			this.txtVlrPercent.Properties.Appearance.Options.UseBackColor = true;
 			this.txtVlrPercent.Properties.Appearance.Options.UseFont = true;
 			this.txtVlrPercent.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-			new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
 			this.txtVlrPercent.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
 			this.txtVlrPercent.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
 			this.txtVlrPercent.Properties.Mask.EditMask = "n2";
@@ -342,7 +344,7 @@
 			this.txtVlrUnitario.Properties.Appearance.Options.UseBackColor = true;
 			this.txtVlrUnitario.Properties.Appearance.Options.UseFont = true;
 			this.txtVlrUnitario.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-			new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
 			this.txtVlrUnitario.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
 			this.txtVlrUnitario.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
 			this.txtVlrUnitario.Properties.Mask.EditMask = "n2";
@@ -360,7 +362,7 @@
 			this.txtUltPreco.Properties.Appearance.Options.UseBackColor = true;
 			this.txtUltPreco.Properties.Appearance.Options.UseFont = true;
 			this.txtUltPreco.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-			new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
 			this.txtUltPreco.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
 			this.txtUltPreco.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
 			this.txtUltPreco.Properties.Mask.EditMask = "n2";
@@ -377,6 +379,10 @@
 			this.btnRemover.TabIndex = 27;
 			this.btnRemover.Text = "Apagar Prod.";
 			this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
+			// 
+			// diagAbrir
+			// 
+			this.diagAbrir.Filter = "Imagens (*.bmp, *.jpg, *.png, *.gif)|*.bmp;*.jpg;*.png;*.gif";
 			// 
 			// frmProduto
 			// 
@@ -464,5 +470,6 @@
 		private DevExpress.XtraEditors.CalcEdit txtVlrUnitario;
 		private DevExpress.XtraEditors.CalcEdit txtUltPreco;
 		private DevExpress.XtraEditors.SimpleButton btnRemover;
+		private System.Windows.Forms.OpenFileDialog diagAbrir;
 	}
 }
