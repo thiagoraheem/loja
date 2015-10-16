@@ -38,6 +38,7 @@ namespace Loja
 			
 			tipoVenda = Consultas.ObterTipoVendas();
 			grdDados.DataSource = tipoVenda;
+
 		}
 
 		int FU_PegaCodigoGrid()
