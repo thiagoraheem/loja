@@ -82,6 +82,26 @@ namespace Loja.DAL.DAO
 			}
 		}
 
+		public static List<tbl_Saida> ObterVendasItens(DateTime inicio, DateTime fim)
+		{
+			using (var banco = new LojaContext())
+			{
+				var dados = banco.tbl_Saida.Include("tbl_SaidaItens").Where(saida => saida.Data >= inicio && saida.Data <= fim).ToList();
+
+				return dados.ToList();
+			}
+		}
+
+		public static List<tbl_SaidaItens> ObterVendaItens(int codVenda)
+		{
+			using (var banco = new LojaContext())
+			{
+				var dados = banco.tbl_SaidaItens.Include("tbl_Produtos").Where(saida => saida.CodVenda == codVenda).ToList();
+
+				return dados.ToList();
+			}
+		}
+
 		public static List<tbl_Orcamento> ObterOrcamentos(string codOrca)
 		{
 			using (var banco = new LojaContext())
@@ -251,6 +271,24 @@ namespace Loja.DAL.DAO
 							select tipoentrada;
 
 				return dados.FirstOrDefault();
+			}
+		}
+
+
+		public static List<tbl_Cliente> ObterClientes() {
+
+			using (var banco = new LojaContext())
+			{
+				return banco.tbl_Cliente.ToList();
+			}
+		}
+
+		public static tbl_Cliente ObterCliente(int codCliente)
+		{
+
+			using (var banco = new LojaContext())
+			{
+				return banco.tbl_Cliente.FirstOrDefault(x => x.CodCliente == codCliente);
 			}
 		}
 

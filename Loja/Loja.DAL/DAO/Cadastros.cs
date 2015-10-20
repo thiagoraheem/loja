@@ -11,11 +11,11 @@ namespace Loja.DAL.DAO
 {
 	public class Cadastros
 	{
-		public static void EstornaVenda(int codVenda, int codProduto, string desMotivo)
+		public static void EstornaVenda(int codVenda, string desMotivo)
 		{
 			using (var banco = new LojaContext())
 			{
-				banco.spc_EstornaVenda(codVenda, codProduto, desMotivo);
+				banco.spc_EstornaVenda(codVenda, desMotivo);
 
 			}
 		}
@@ -63,11 +63,11 @@ namespace Loja.DAL.DAO
 			}
 		}
 
-		public static int FinalizaVenda(string codOrca, int codTipoVenda, string flgApagarOrca)
+		public static int FinalizaVenda(string codOrca, int codTipoVenda, string flgApagarOrca, int? codCliente)
 		{
 			using (var banco = new LojaContext())
 			{
-				return banco.spc_FinalizaVenda(codOrca, codTipoVenda, flgApagarOrca).FirstOrDefault();
+				return banco.spc_FinalizaVenda(codOrca, codTipoVenda, flgApagarOrca, codCliente).FirstOrDefault();
 
 			}
 		}
@@ -189,6 +189,54 @@ namespace Loja.DAL.DAO
 				else { 
 					registro.DesTipoEntrada = dado.DesTipoEntrada;
 					registro.flgMovimentaEstoque = dado.flgMovimentaEstoque;
+				}
+
+				banco.SaveChanges();
+
+			}
+
+		}
+
+
+
+		public static void ExcluiCliente(int codCliente)
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var dados = banco.tbl_Cliente.FirstOrDefault(x => x.CodCliente == codCliente);
+
+				banco.tbl_Cliente.Remove(dados);
+				banco.SaveChanges();
+
+			}
+
+		}
+
+		public static void GravaCliente(tbl_Cliente dado)
+		{
+		
+			using (var banco = new LojaContext())
+			{
+				var registro = banco.tbl_Cliente.FirstOrDefault(x => x.CodCliente == dado.CodCliente);
+
+				if (registro == null)
+				{
+					banco.tbl_Cliente.Add(dado);
+				}
+				else
+				{
+					registro.NomCliente = dado.NomCliente;
+					registro.NumCPF = dado.NumCPF;
+					registro.NumCNPJ = dado.NumCNPJ;
+					registro.NumTelefone = dado.NumTelefone;
+					registro.Endereco = dado.Endereco;
+					registro.Numero = dado.Numero;
+					registro.Bairro = dado.Bairro;
+					registro.Cidade = dado.Cidade;
+					registro.Estado = dado.Estado;
+					registro.Pais = dado.Pais;
+					registro.Email = dado.Email;
 				}
 
 				banco.SaveChanges();

@@ -554,6 +554,12 @@ namespace Loja
 			InitGrid();
 		}
 
+		private void btnCadCliente_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+		{
+			var f = new frmClientes();
+			f.ShowDialog();
+		}
+
 	}
 		#endregion
 

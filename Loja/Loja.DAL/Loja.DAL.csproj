@@ -54,6 +54,7 @@
     <Compile Include="DAO\LojaContext.cs" />
     <Compile Include="Models\LojaContext.cs" />
     <Compile Include="Models\Mapping\sysdiagramMap.cs" />
+    <Compile Include="Models\Mapping\tbl_ClienteMap.cs" />
     <Compile Include="Models\Mapping\tbl_EntradaMap.cs" />
     <Compile Include="Models\Mapping\tbl_OrcamentoMap.cs" />
     <Compile Include="Models\Mapping\tbl_ParametrosMap.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Models\Mapping\tbl_UsuarioMap.cs" />
     <Compile Include="Models\Mapping\viw_OrcamentoMap.cs" />
     <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\tbl_Cliente.cs" />
     <Compile Include="Models\tbl_Entrada.cs" />
     <Compile Include="Models\tbl_Orcamento.cs" />
     <Compile Include="Models\tbl_Parametros.cs" />
@@ -85,9 +87,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="CodeTemplates\ReverseEngineerCodeFirst\Context.tt" />
+    <None Include="CodeTemplates\ReverseEngineerCodeFirst\Entity.tt" />
+    <None Include="CodeTemplates\ReverseEngineerCodeFirst\Mapping.tt" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

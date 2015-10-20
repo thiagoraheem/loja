@@ -2,8 +2,6 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using Loja.DAL.Models.Mapping;
 using CodeFirstStoreFunctions;
-using System.Data.Entity.Core.Objects;
-using System;
 
 namespace Loja.DAL.Models
 {
@@ -21,6 +19,7 @@ namespace Loja.DAL.Models
 		}
 
 		public DbSet<sysdiagram> sysdiagrams { get; set; }
+		public DbSet<tbl_Cliente> tbl_Cliente { get; set; }
 		public DbSet<tbl_Entrada> tbl_Entrada { get; set; }
 		public DbSet<tbl_Orcamento> tbl_Orcamento { get; set; }
 		public DbSet<tbl_Parametros> tbl_Parametros { get; set; }
@@ -37,6 +36,7 @@ namespace Loja.DAL.Models
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
 			modelBuilder.Configurations.Add(new sysdiagramMap());
+			modelBuilder.Configurations.Add(new tbl_ClienteMap());
 			modelBuilder.Configurations.Add(new tbl_EntradaMap());
 			modelBuilder.Configurations.Add(new tbl_OrcamentoMap());
 			modelBuilder.Configurations.Add(new tbl_ParametrosMap());
@@ -49,8 +49,9 @@ namespace Loja.DAL.Models
 			modelBuilder.Configurations.Add(new tbl_TipoVendaMap());
 			modelBuilder.Configurations.Add(new tbl_UsuarioMap());
 			modelBuilder.Configurations.Add(new viw_OrcamentoMap());
-			modelBuilder.Conventions.Add(new FunctionsConvention<LojaContext>("dbo"));
-		}
 
+			modelBuilder.Conventions.Add(new FunctionsConvention<LojaContext>("dbo"));
+
+		}
 	}
 }

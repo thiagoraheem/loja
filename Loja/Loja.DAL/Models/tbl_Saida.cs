@@ -18,6 +18,7 @@ namespace Loja.DAL.Models
         public string ChaveSefaz { get; set; }
         public string FlgStatusNota { get; set; }
         public Nullable<int> CodTipoVenda { get; set; }
+        public Nullable<int> CodCliente { get; set; }
         public virtual tbl_TipoVenda tbl_TipoVenda { get; set; }
         public virtual ICollection<tbl_SaidaItens> tbl_SaidaItens { get; set; }
     }

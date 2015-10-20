@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
 			this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+			this.cmbCliente = new DevExpress.XtraEditors.LookUpEdit();
+			this.btnCliente = new DevExpress.XtraEditors.SimpleButton();
+			this.txtNumCPF = new DevExpress.XtraEditors.TextEdit();
+			this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
 			this.cmbTipoDesconto = new DevExpress.XtraEditors.ComboBoxEdit();
 			this.chkNFE = new DevExpress.XtraEditors.CheckEdit();
 			this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
@@ -56,6 +60,8 @@
 			this.colCodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
 			((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
 			this.groupControl1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.cmbCliente.Properties)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.txtNumCPF.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.cmbTipoDesconto.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.chkNFE.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtTroco.Properties)).BeginInit();
@@ -74,6 +80,10 @@
 			this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupControl1.Controls.Add(this.cmbCliente);
+			this.groupControl1.Controls.Add(this.btnCliente);
+			this.groupControl1.Controls.Add(this.txtNumCPF);
+			this.groupControl1.Controls.Add(this.labelControl6);
 			this.groupControl1.Controls.Add(this.cmbTipoDesconto);
 			this.groupControl1.Controls.Add(this.chkNFE);
 			this.groupControl1.Controls.Add(this.btnCancelar);
@@ -91,16 +101,69 @@
 			this.groupControl1.Controls.Add(this.txtDesconto);
 			this.groupControl1.Controls.Add(this.labelControl2);
 			this.groupControl1.Controls.Add(this.labelControl1);
-			this.groupControl1.Location = new System.Drawing.Point(12, 211);
+			this.groupControl1.Location = new System.Drawing.Point(12, 188);
 			this.groupControl1.Name = "groupControl1";
-			this.groupControl1.Size = new System.Drawing.Size(625, 222);
+			this.groupControl1.Size = new System.Drawing.Size(625, 245);
 			this.groupControl1.TabIndex = 1;
 			this.groupControl1.Text = "Dados da Venda";
+			// 
+			// cmbCliente
+			// 
+			this.cmbCliente.Location = new System.Drawing.Point(333, 26);
+			this.cmbCliente.Name = "cmbCliente";
+			this.cmbCliente.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cmbCliente.Properties.Appearance.Options.UseFont = true;
+			this.cmbCliente.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+			this.cmbCliente.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NomCliente", "Nome"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NumCPF", "CPF"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NumCNPJ", "CNPJ")});
+			this.cmbCliente.Properties.DisplayMember = "NomCliente";
+			this.cmbCliente.Properties.NullText = "Selecione um cliente";
+			this.cmbCliente.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+			this.cmbCliente.Properties.ValueMember = "CodCliente";
+			this.cmbCliente.Size = new System.Drawing.Size(203, 30);
+			this.cmbCliente.TabIndex = 21;
+			this.cmbCliente.EditValueChanged += new System.EventHandler(this.cmbCliente_EditValueChanged);
+			// 
+			// btnCliente
+			// 
+			this.btnCliente.Location = new System.Drawing.Point(542, 24);
+			this.btnCliente.Name = "btnCliente";
+			this.btnCliente.Size = new System.Drawing.Size(78, 33);
+			this.btnCliente.TabIndex = 19;
+			this.btnCliente.Text = "Novo Cliente";
+			this.btnCliente.Click += new System.EventHandler(this.btnCliente_Click);
+			// 
+			// txtNumCPF
+			// 
+			this.txtNumCPF.EditValue = "";
+			this.txtNumCPF.EnterMoveNextControl = true;
+			this.txtNumCPF.Location = new System.Drawing.Point(150, 26);
+			this.txtNumCPF.Name = "txtNumCPF";
+			this.txtNumCPF.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtNumCPF.Properties.Appearance.Options.UseFont = true;
+			this.txtNumCPF.Properties.Mask.EditMask = "([0-9]{2}[\\.][0-9]{3}[\\.][0-9]{3}[\\/][0-9]{4}[-][0-9]{2})|([0-9]{3}[\\.][0-9]{3}[\\" +
+    ".][0-9]{3}[-][0-9]{2})";
+			this.txtNumCPF.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+			this.txtNumCPF.Size = new System.Drawing.Size(177, 30);
+			this.txtNumCPF.TabIndex = 18;
+			this.txtNumCPF.EditValueChanged += new System.EventHandler(this.txtNumCPF_EditValueChanged);
+			// 
+			// labelControl6
+			// 
+			this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelControl6.Location = new System.Drawing.Point(71, 29);
+			this.labelControl6.Name = "labelControl6";
+			this.labelControl6.Size = new System.Drawing.Size(64, 19);
+			this.labelControl6.TabIndex = 17;
+			this.labelControl6.Text = "Cliente:";
 			// 
 			// cmbTipoDesconto
 			// 
 			this.cmbTipoDesconto.EditValue = "%";
-			this.cmbTipoDesconto.Location = new System.Drawing.Point(311, 74);
+			this.cmbTipoDesconto.Location = new System.Drawing.Point(311, 100);
 			this.cmbTipoDesconto.Name = "cmbTipoDesconto";
 			this.cmbTipoDesconto.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cmbTipoDesconto.Properties.Appearance.Options.UseFont = true;
@@ -115,7 +178,7 @@
 			// chkNFE
 			// 
 			this.chkNFE.EditValue = true;
-			this.chkNFE.Location = new System.Drawing.Point(489, 101);
+			this.chkNFE.Location = new System.Drawing.Point(489, 119);
 			this.chkNFE.Name = "chkNFE";
 			this.chkNFE.Properties.Caption = "Emitir NFC-e";
 			this.chkNFE.Size = new System.Drawing.Size(83, 19);
@@ -125,7 +188,7 @@
 			// 
 			this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnCancelar.Location = new System.Drawing.Point(509, 175);
+			this.btnCancelar.Location = new System.Drawing.Point(509, 198);
 			this.btnCancelar.Name = "btnCancelar";
 			this.btnCancelar.Size = new System.Drawing.Size(111, 42);
 			this.btnCancelar.TabIndex = 14;
@@ -134,7 +197,7 @@
 			// 
 			// btnAplicarDesconto
 			// 
-			this.btnAplicarDesconto.Location = new System.Drawing.Point(384, 72);
+			this.btnAplicarDesconto.Location = new System.Drawing.Point(384, 98);
 			this.btnAplicarDesconto.Name = "btnAplicarDesconto";
 			this.btnAplicarDesconto.Size = new System.Drawing.Size(55, 32);
 			this.btnAplicarDesconto.TabIndex = 13;
@@ -144,7 +207,7 @@
 			// txtTroco
 			// 
 			this.txtTroco.EnterMoveNextControl = true;
-			this.txtTroco.Location = new System.Drawing.Point(205, 182);
+			this.txtTroco.Location = new System.Drawing.Point(205, 208);
 			this.txtTroco.Name = "txtTroco";
 			this.txtTroco.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtTroco.Properties.Appearance.Options.UseFont = true;
@@ -160,7 +223,7 @@
 			// labelControl5
 			// 
 			this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl5.Location = new System.Drawing.Point(83, 188);
+			this.labelControl5.Location = new System.Drawing.Point(83, 214);
 			this.labelControl5.Name = "labelControl5";
 			this.labelControl5.Size = new System.Drawing.Size(52, 19);
 			this.labelControl5.TabIndex = 12;
@@ -169,7 +232,7 @@
 			// txtDinheiro
 			// 
 			this.txtDinheiro.EnterMoveNextControl = true;
-			this.txtDinheiro.Location = new System.Drawing.Point(205, 146);
+			this.txtDinheiro.Location = new System.Drawing.Point(205, 172);
 			this.txtDinheiro.Name = "txtDinheiro";
 			this.txtDinheiro.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtDinheiro.Properties.Appearance.Options.UseFont = true;
@@ -186,7 +249,7 @@
 			// labelControl4
 			// 
 			this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl4.Location = new System.Drawing.Point(60, 152);
+			this.labelControl4.Location = new System.Drawing.Point(60, 178);
 			this.labelControl4.Name = "labelControl4";
 			this.labelControl4.Size = new System.Drawing.Size(75, 19);
 			this.labelControl4.TabIndex = 10;
@@ -195,7 +258,7 @@
 			// txtVlrTotal
 			// 
 			this.txtVlrTotal.EnterMoveNextControl = true;
-			this.txtVlrTotal.Location = new System.Drawing.Point(205, 110);
+			this.txtVlrTotal.Location = new System.Drawing.Point(205, 136);
 			this.txtVlrTotal.Name = "txtVlrTotal";
 			this.txtVlrTotal.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtVlrTotal.Properties.Appearance.Options.UseFont = true;
@@ -211,7 +274,7 @@
 			// labelControl3
 			// 
 			this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl3.Location = new System.Drawing.Point(38, 116);
+			this.labelControl3.Location = new System.Drawing.Point(38, 142);
 			this.labelControl3.Name = "labelControl3";
 			this.labelControl3.Size = new System.Drawing.Size(97, 19);
 			this.labelControl3.TabIndex = 8;
@@ -220,7 +283,7 @@
 			// cmbTipoVenda
 			// 
 			this.cmbTipoVenda.EnterMoveNextControl = true;
-			this.cmbTipoVenda.Location = new System.Drawing.Point(150, 38);
+			this.cmbTipoVenda.Location = new System.Drawing.Point(150, 64);
 			this.cmbTipoVenda.Name = "cmbTipoVenda";
 			this.cmbTipoVenda.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cmbTipoVenda.Properties.Appearance.Options.UseFont = true;
@@ -239,7 +302,7 @@
 			// btnFinalizarVenda
 			// 
 			this.btnFinalizarVenda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnFinalizarVenda.Location = new System.Drawing.Point(509, 127);
+			this.btnFinalizarVenda.Location = new System.Drawing.Point(509, 150);
 			this.btnFinalizarVenda.Name = "btnFinalizarVenda";
 			this.btnFinalizarVenda.Size = new System.Drawing.Size(111, 42);
 			this.btnFinalizarVenda.TabIndex = 5;
@@ -249,7 +312,7 @@
 			// chkApagarOrca
 			// 
 			this.chkApagarOrca.EditValue = true;
-			this.chkApagarOrca.Location = new System.Drawing.Point(489, 69);
+			this.chkApagarOrca.Location = new System.Drawing.Point(489, 94);
 			this.chkApagarOrca.Name = "chkApagarOrca";
 			this.chkApagarOrca.Properties.Caption = "Descartar Orçamento";
 			this.chkApagarOrca.Size = new System.Drawing.Size(136, 19);
@@ -257,7 +320,7 @@
 			// 
 			// chkEmitirRecibo
 			// 
-			this.chkEmitirRecibo.Location = new System.Drawing.Point(489, 39);
+			this.chkEmitirRecibo.Location = new System.Drawing.Point(489, 69);
 			this.chkEmitirRecibo.Name = "chkEmitirRecibo";
 			this.chkEmitirRecibo.Properties.Caption = "Emitir Recibo";
 			this.chkEmitirRecibo.Size = new System.Drawing.Size(87, 19);
@@ -266,7 +329,7 @@
 			// txtDesconto
 			// 
 			this.txtDesconto.EnterMoveNextControl = true;
-			this.txtDesconto.Location = new System.Drawing.Point(205, 74);
+			this.txtDesconto.Location = new System.Drawing.Point(205, 100);
 			this.txtDesconto.Name = "txtDesconto";
 			this.txtDesconto.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtDesconto.Properties.Appearance.Options.UseFont = true;
@@ -280,7 +343,7 @@
 			// labelControl2
 			// 
 			this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl2.Location = new System.Drawing.Point(54, 77);
+			this.labelControl2.Location = new System.Drawing.Point(54, 103);
 			this.labelControl2.Name = "labelControl2";
 			this.labelControl2.Size = new System.Drawing.Size(81, 19);
 			this.labelControl2.TabIndex = 2;
@@ -289,7 +352,7 @@
 			// labelControl1
 			// 
 			this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl1.Location = new System.Drawing.Point(12, 41);
+			this.labelControl1.Location = new System.Drawing.Point(12, 67);
 			this.labelControl1.Name = "labelControl1";
 			this.labelControl1.Size = new System.Drawing.Size(125, 19);
 			this.labelControl1.TabIndex = 1;
@@ -302,7 +365,7 @@
 			this.gridOrcamento.Location = new System.Drawing.Point(0, 0);
 			this.gridOrcamento.MainView = this.gridViewOrcamento;
 			this.gridOrcamento.Name = "gridOrcamento";
-			this.gridOrcamento.Size = new System.Drawing.Size(649, 205);
+			this.gridOrcamento.Size = new System.Drawing.Size(649, 182);
 			this.gridOrcamento.TabIndex = 0;
 			this.gridOrcamento.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewOrcamento});
@@ -409,6 +472,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
 			this.groupControl1.ResumeLayout(false);
 			this.groupControl1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.cmbCliente.Properties)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.txtNumCPF.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.cmbTipoDesconto.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.chkNFE.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtTroco.Properties)).EndInit();
@@ -452,5 +517,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn colCodigounico;
 		private DevExpress.XtraEditors.CheckEdit chkNFE;
 		private DevExpress.XtraEditors.ComboBoxEdit cmbTipoDesconto;
+		private DevExpress.XtraEditors.TextEdit txtNumCPF;
+		private DevExpress.XtraEditors.LabelControl labelControl6;
+		private DevExpress.XtraEditors.LookUpEdit cmbCliente;
+		private DevExpress.XtraEditors.SimpleButton btnCliente;
     }
 }

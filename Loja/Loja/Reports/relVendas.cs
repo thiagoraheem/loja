@@ -19,7 +19,7 @@ namespace Loja.Reports
             lblEndereco.Text = Properties.Settings.Default.Endereco;
             lblEmpresa.Text = Properties.Settings.Default.NomeFantasia;
             
-            tbl_SaidasAdapter1.FillByParam(relVendas1.tbl_Saidas, _DatIni, _DatFim, _CodTipoVenda, _CodProduto);
+            //tbl_SaidasAdapter1.FillByParam(relVendas1.tbl_Saidas, _DatIni, _DatFim, _CodTipoVenda, _CodProduto);
 
         }
 

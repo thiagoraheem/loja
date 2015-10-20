@@ -31,6 +31,7 @@ using NFe.Servicos.Retorno;
 using NFe.Classes.Informacoes.Detalhe.Tributacao;
 using NFe.Classes.Informacoes.Detalhe.Tributacao.Federal.Tipos;
 using NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual.Tipos;
+using Loja.DAL.Models;
 
 
 namespace Loja
@@ -45,8 +46,10 @@ namespace Loja
 		private readonly string _path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 		private NFe.Classes.NFe _nfe;
 		private string certificado = "";
+		List<tbl_Cliente> clientes;
 
 		#endregion
+		
 
 		public frmVenda()
 		{
@@ -61,7 +64,11 @@ namespace Loja
 			if (CodOrcamento == "") Close();
 
 			SU_CarregaOrcamento(CodOrcamento);
+
+			CarregaClientes();
 		}
+
+		#region Eventos
 
 		private void gridViewOrcamento_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
 		{
@@ -110,7 +117,24 @@ namespace Loja
 				{
 					flgApagarOrca = "N";
 				}
-				Cadastros.FinalizaVenda(CodOrcamento, (int)cmbTipoVenda.EditValue, flgApagarOrca);
+
+				int? codCliente = null;
+				if (cmbCliente.EditValue != null) { 
+					codCliente = (int)cmbCliente.EditValue;
+				}
+
+				int tipoVenda = int.Parse(cmbTipoVenda.EditValue.ToString());
+
+				int codVenda = Cadastros.FinalizaVenda(CodOrcamento, tipoVenda, flgApagarOrca, codCliente);
+
+				if (chkNFE.Checked == true && !EnviaNFCE(codVenda, 1, (codCliente != null) ? codCliente.Value : -1)) { 
+					Util.MsgBox("Nota fiscal não enviada, venda não realizada");
+
+					Cadastros.EstornaVenda(codVenda, "Não enviada SEFAZ");
+
+					return;
+				}
+
 				this.DialogResult = System.Windows.Forms.DialogResult.Yes;
 
 				if (chkEmitirRecibo.Checked)
@@ -127,7 +151,7 @@ namespace Loja
 			catch (Exception ex)
 			{
 				this.DialogResult = System.Windows.Forms.DialogResult.No;
-				MessageBox.Show(ex.Message);
+				Util.MsgBox(ex.Message);
 			}
 
 		}
@@ -168,28 +192,38 @@ namespace Loja
 			Close();
 		}
 
-		#region Funções
-		void CarregaCertificado()
+		private void btnCliente_Click(object sender, EventArgs e)
 		{
-			try
-			{
-				var cert = new CertificadoDigital();
-				certificado = cert.Serial;
-			}
-			catch (Exception ex)
-			{
-				if (ex.InnerException == null)
-				{
-					Util.MsgBox("Erro ao carregar o certificado digital: " + ex.Message);
-				}
-				else
-				{
-					Util.MsgBox("Erro ao carregar o certificado digital: " + ex.InnerException.Message);
-				}
-			}
+			var f = new frmClientes();
+			f.ShowDialog();
 
+			CarregaClientes();
 		}
 
+		private void cmbCliente_EditValueChanged(object sender, EventArgs e)
+		{
+			if (cmbCliente.EditValue != null && txtNumCPF.Text != cmbCliente.EditValue.ToString()) { 
+				var cpf = clientes.FirstOrDefault(x => x.CodCliente == (int)cmbCliente.EditValue);
+
+				txtNumCPF.Text = cpf.NumCPF ?? cpf.NumCNPJ;
+			}
+		}
+
+		private void txtNumCPF_EditValueChanged(object sender, EventArgs e)
+		{
+
+			
+			cmbCliente.EditValue = null;
+			var cliente = clientes.FirstOrDefault(x => x.NumCNPJ == txtNumCPF.Text || x.NumCPF == txtNumCPF.Text);
+
+			if (cliente != null) { 
+				cmbCliente.EditValue = cliente.CodCliente;
+			}
+		}
+
+		#endregion
+
+		#region Funções
 		void SU_CarregaTipoVenda()
 		{
 			var TipoVenda = Consultas.ObterTipoVendaCombo();
@@ -219,59 +253,88 @@ namespace Loja
 			return codigo;
 		}
 
-		void EnviaNFCE(int numVenda, int numLote) {
+		void CarregaClientes() { 
+		
+			clientes = Consultas.ObterClientes();
+			cmbCliente.Properties.DataSource = clientes;
+
+		}
+
+		#endregion
+
+		#region NFCE
+		void CarregaCertificado()
+		{
+			try
+			{
+				var cert = new CertificadoDigital();
+				certificado = cert.Serial;
+			}
+			catch (Exception ex)
+			{
+				if (ex.InnerException == null)
+				{
+					Util.MsgBox("Erro ao carregar o certificado digital: " + ex.Message);
+				}
+				else
+				{
+					Util.MsgBox("Erro ao carregar o certificado digital: " + ex.InnerException.Message);
+				}
+			}
+
+		}
+
+		bool EnviaNFCE(int numVenda, int numLote, int codCliente) {
 
 			try
 			{
 				#region Cria e Envia NFe
 
-				//var numero = Funcoes.InpuBox(this, "Criar e Enviar NFCe", "Número da NFCe:");
-				//if (string.IsNullOrEmpty(numero)) throw new Exception("O Número deve ser informado!");
-
-				//var lote = Funcoes.InpuBox(this, "Criar e Enviar NFCe", "Id do Lote:");
-				//if (string.IsNullOrEmpty(lote)) throw new Exception("A Id do lote deve ser informada!");
-
 				_nfe = GetNf(Convert.ToInt32(numVenda), ModeloDocumento.NFCe,
-					_configuracoes.CfgServico.VersaoNFeAutorizacao);
+					_configuracoes.CfgServico.VersaoNFeAutorizacao, codCliente);
 				_nfe.Assina(); //não precisa validar aqui, pois o lote será validado em ServicosNFe.NFeAutorizacao
 				var servicoNFe = new ServicosNFe(_configuracoes.CfgServico);
 				var retornoEnvio = servicoNFe.NFeAutorizacao(Convert.ToInt32(numLote), IndicadorSincronizacao.Assincrono,
 					new List<NFe.Classes.NFe> { _nfe });
 
 				TrataRetorno(retornoEnvio);
-
+				return true;
 				#endregion
 			}
 			catch (Exception ex)
 			{
 				if (!string.IsNullOrEmpty(ex.Message))
 					Util.MsgBox(ex.Message);
+				return false;
 			}
 		}
 
-		protected virtual NFe.Classes.NFe GetNf(int numero, ModeloDocumento modelo, VersaoServico versao)
+		protected virtual NFe.Classes.NFe GetNf(int numero, ModeloDocumento modelo, VersaoServico versao, int codCliente)
 		{
-			var nf = new NFe.Classes.NFe { infNFe = GetInf(numero, modelo, versao) };
+			var nf = new NFe.Classes.NFe { infNFe = GetInf(numero, modelo, versao, codCliente) };
 			return nf;
 		}
 
-		protected virtual infNFe GetInf(int numero, ModeloDocumento modelo, VersaoServico versao)
+		protected virtual infNFe GetInf(int numero, ModeloDocumento modelo, VersaoServico versao, int codCliente)
 		{
 			var infNFe = new infNFe
 			{
 				versao = Auxiliar.VersaoServicoParaString(versao),
 				ide = GetIdentificacao(numero, modelo, versao),
 				emit = GetEmitente(),
-				dest = GetDestinatario(versao),
+				dest = GetDestinatario(versao, codCliente),
 				transp = GetTransporte()
 			};
 
 			if (infNFe.ide.mod == ModeloDocumento.NFCe)
 				infNFe.pag = GetPagamento(); //NFCe Somente               
 
-			for (var i = 0; i < 1; i++)
+			var itens = Consultas.ObterVendaItens(numero);
+			var i = 0;
+			foreach (var item in itens)
 			{
-				infNFe.det.Add(GetDetalhe(i, infNFe.emit.CRT, modelo));
+				infNFe.det.Add(GetDetalhe(i, infNFe.emit.CRT, modelo, item));
+				i++;
 			}
 			infNFe.total = GetTotal(versao, infNFe.det);
 
@@ -280,6 +343,8 @@ namespace Loja
 
 		protected virtual ide GetIdentificacao(int numero, ModeloDocumento modelo, VersaoServico versao)
 		{
+			var cnf = new Random();
+
 			var ide = new ide
 			{
 				cUF = Estado.AM,
@@ -292,7 +357,7 @@ namespace Loja
 				cMunFG = 1302603,
 				tpEmis = _configuracoes.CfgServico.tpEmis,
 				tpImp = TipoImpressao.tiRetrato,
-				cNF = "1234",
+				cNF = cnf.Next(9999).ToString(),//"1234", // informar o código numérico que compõe a Chave de Acesso. Número aleatório gerado pelo emitente para cada NF-e para evitar acessos indevidos da NF-e.
 				tpAmb = _configuracoes.CfgServico.tpAmb,
 				finNFe = FinalidadeNFe.fnNormal,
 				verProc = "3.000"
@@ -343,21 +408,33 @@ namespace Loja
 			return emit;
 		}
 
-		protected virtual dest GetDestinatario(VersaoServico versao)
+		protected virtual dest GetDestinatario(VersaoServico versao, int codCliente)
 		{
-			var dest = new dest(versao)
+
+			var cliente = Consultas.ObterCliente(codCliente);
+			var dest = new dest(versao);
+
+			if (cliente.NumCNPJ != null) { 
+				dest.CNPJ = cliente.NumCNPJ;
+				dest.xNome = cliente.NomCliente ?? "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL";
+				dest.enderDest = GetEnderecoDestinatario(codCliente);
+				dest.email = cliente.Email;
+			}
+			else
 			{
-				CNPJ = "99999999000191",
-				//CPF = "99999999999",
-				xNome = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL",
-				enderDest = GetEnderecoDestinatario()
-			};
+				if (cliente.NumCPF != null) { 
+					dest.CPF = cliente.NumCPF;
+					dest.xNome = cliente.NomCliente ?? "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL";
+					dest.enderDest = GetEnderecoDestinatario(codCliente);
+					dest.email = cliente.Email;
+				}
+			}
 
 			//if (versao == VersaoServico.ve200)
 			//    dest.IE = "ISENTO";
 			if (versao != VersaoServico.ve310) return dest;
 			dest.indIEDest = indIEDest.NaoContribuinte; //NFCe: Tem que ser não contribuinte V3.00 Somente
-			dest.email = "teste@gmail.com"; //V3.00 Somente
+			//dest.email = "teste@gmail.com"; //V3.00 Somente
 			return dest;
 		}
 
@@ -378,18 +455,18 @@ namespace Loja
 		{
 			var p = new List<pag>
 			{
-				new pag {tPag = FormaPagamento.fpDinheiro, vPag = 0.45m},
-				new pag {tPag = FormaPagamento.fpCheque, vPag = 0.45m}
+				new pag {tPag = FormaPagamento.fpDinheiro, vPag = 0.45m}//,
+				//new pag {tPag = FormaPagamento.fpCheque, vPag = 0.45m}
 			};
 			return p;
 		}
 
-		protected virtual det GetDetalhe(int i, CRT crt, ModeloDocumento modelo)
+		protected virtual det GetDetalhe(int i, CRT crt, ModeloDocumento modelo, tbl_SaidaItens item)
 		{
 			var det = new det
 			{
 				nItem = i + 1,
-				prod = GetProduto(i + 1),
+				prod = GetProduto(i + 1, item),
 				imposto = new imposto
 				{
 					vTotTrib = 0.17m,
@@ -461,41 +538,43 @@ namespace Loja
 			return enderEmit;
 		}
 
-		protected virtual enderDest GetEnderecoDestinatario()
+		protected virtual enderDest GetEnderecoDestinatario(int codCliente)
 		{
+			var cliente = Consultas.ObterCliente(codCliente);
+
 			var enderDest = new enderDest
 			{
-				xLgr = "RUA ...",
-				nro = "S/N",
-				xBairro = "CENTRO",
-				cMun = 2802908,
-				xMun = "ITABAIANA",
-				UF = "SE",
-				CEP = "49500000",
+				xLgr = cliente.Endereco,
+				nro = cliente.Numero,
+				xBairro = cliente.Bairro,
+				cMun = 1302603,
+				xMun = cliente.Cidade,
+				UF = cliente.Estado,
+				CEP = "",
 				cPais = 1058,
 				xPais = "BRASIL"
 			};
 			return enderDest;
 		}
 
-		protected virtual prod GetProduto(int i)
+		protected virtual prod GetProduto(int i, tbl_SaidaItens item)
 		{
 			var p = new prod
 			{
 				cProd = i.ToString().PadLeft(5, '0'),
-				cEAN = "7770000000012",
-				xProd = "ABRACADEIRA NYLON 6.6 BRANCA 91X92 " + i,
-				NCM = "73269000",
+				cEAN = "",
+				xProd = item.tbl_Produtos.DesProduto,
+				NCM = "",
 				CFOP = 5102,
 				uCom = "UNID",
-				qCom = 1,
-				vUnCom = 1,
-				vProd = 1,
-				vDesc = 0.10m,
-				cEANTrib = "7770000000012",
+				qCom = item.Quantidade,
+				vUnCom = item.VlrUnitario,
+				vProd = item.VlrFinal.Value,
+				vDesc = 0,
+				cEANTrib = "",
 				uTrib = "UNID",
-				qTrib = 1,
-				vUnTrib = 1,
+				qTrib = item.Quantidade,
+				vUnTrib = item.VlrUnitario,
 				indTot = IndicadorTotal.ValorDoItemCompoeTotalNF,
 
 				//ProdutoEspecifico = new arma
@@ -576,5 +655,7 @@ namespace Loja
 		}
 
 		#endregion
+
+
 	}
 }
