@@ -70,7 +70,7 @@ namespace Loja
             int codigo = FU_PegaCodigoGrid();
             int codvenda = FU_PegaCodigoVenda();
 
-            Cadastros.EstornaVenda(codvenda, codigo, "");
+            Cadastros.EstornaVenda(codvenda, "");
 
 
             MessageBox.Show("Item estornado com sucesso");
@@ -105,8 +105,9 @@ namespace Loja
             DateTime inicio = DateTime.Parse(txtDatInicio.DateTime.ToShortDateString());
             DateTime fim = DateTime.Parse(txtDatFim.DateTime.ToShortDateString()).AddDays(1).AddMinutes(-1);
 
-            var saidas = Consultas.ObterVendas(inicio, fim);
+            var saidas = Consultas.ObterVendasItens(inicio, fim);
             grdDados.DataSource = saidas;
+
 
         }
 
@@ -115,7 +116,7 @@ namespace Loja
             int codigo = -1;
 
             int linha = gridDados.GetSelectedRows()[0];
-            codigo = (int)gridDados.GetRowCellValue(linha, colCodigounico);
+            codigo = (int)gridDados.GetRowCellValue(linha, colCodVenda);
 
             return codigo;
         }

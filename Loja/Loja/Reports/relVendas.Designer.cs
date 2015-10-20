@@ -36,8 +36,6 @@
             this.xrLabel10 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel11 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel12 = new DevExpress.XtraReports.UI.XRLabel();
-            this.tbl_SaidasAdapter1 = new Loja.relVendasTableAdapters.tbl_SaidasAdapter();
-            this.relVendas1 = new Loja.relVendas();
             this.groupHeaderBand1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
@@ -66,7 +64,6 @@
             this.lblTelefone = new DevExpress.XtraReports.UI.XRLabel();
             this.lblEndereco = new DevExpress.XtraReports.UI.XRLabel();
             this.lblEmpresa = new DevExpress.XtraReports.UI.XRLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.relVendas1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
@@ -134,15 +131,6 @@
             xrSummary1.FormatString = "{0:$0.00}";
             this.xrLabel12.Summary = xrSummary1;
             this.xrLabel12.Text = "xrLabel12";
-            // 
-            // tbl_SaidasAdapter1
-            // 
-            this.tbl_SaidasAdapter1.ClearBeforeFill = true;
-            // 
-            // relVendas1
-            // 
-            this.relVendas1.DataSetName = "relVendas";
-            this.relVendas1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // groupHeaderBand1
             // 
@@ -410,9 +398,7 @@
             this.bottomMarginBand1,
             this.GroupFooter1,
             this.PageHeader});
-            this.DataAdapter = this.tbl_SaidasAdapter1;
             this.DataMember = "tbl_Saidas";
-            this.DataSource = this.relVendas1;
             this.Margins = new System.Drawing.Printing.Margins(60, 61, 39, 28);
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.Title,
@@ -421,7 +407,6 @@
             this.DataField});
             this.Version = "12.2";
             this.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.relVendas_BeforePrint);
-            ((System.ComponentModel.ISupportInitialize)(this.relVendas1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -434,8 +419,6 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel10;
         private DevExpress.XtraReports.UI.XRLabel xrLabel11;
         private DevExpress.XtraReports.UI.XRLabel xrLabel12;
-        private relVendasTableAdapters.tbl_SaidasAdapter tbl_SaidasAdapter1;
-        private Loja.relVendas relVendas1;
         private DevExpress.XtraReports.UI.GroupHeaderBand groupHeaderBand1;
         private DevExpress.XtraReports.UI.XRLabel xrLabel2;
         private DevExpress.XtraReports.UI.XRLabel xrLabel1;

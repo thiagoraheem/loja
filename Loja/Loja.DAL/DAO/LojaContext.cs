@@ -66,15 +66,14 @@ namespace Loja.DAL.Models
 		}
 
 		
-		public void spc_EstornaVenda(int codVenda, int codProduto, string desMotivo)
+		public void spc_EstornaVenda(int codVenda, string desMotivo)
 		{
 			try
 			{
 				var cVenda = new SqlParameter("@CodVenda", codVenda);
-				var cProduto = new SqlParameter("@CodProduto", codProduto);
 				var dMotivo = new SqlParameter("@DesMotivo", desMotivo);
 
-				this.Database.ExecuteSqlCommand("spc_EstornaVenda @CodVenda, @CodProduto, @DesMotivo", cVenda, cProduto, dMotivo);
+				this.Database.ExecuteSqlCommand("spc_EstornaVenda @CodVenda, @DesMotivo", cVenda,dMotivo);
 			}
 			catch (Exception ex)
 			{
@@ -99,15 +98,17 @@ namespace Loja.DAL.Models
 
 		}
 
-		public ObjectResult<int> spc_FinalizaVenda(string codOrca, int codTipoVenda, string flgApagarOrca)
+		public ObjectResult<int> spc_FinalizaVenda(string codOrca, int codTipoVenda, string flgApagarOrca, int? codCliente)
 		{
 			try
 			{
 				var cOrca = new ObjectParameter("CodOrca", codOrca);
 				var cTipoVenda = new ObjectParameter("CodTipoVenda", codTipoVenda);
 				var fApagarOrca = new ObjectParameter("flgApagarOrca", flgApagarOrca);
+				var cCliente = new ObjectParameter("CodCliente", typeof(int));
+				cCliente.Value = codCliente;
 
-				return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<int>("spc_FinalizaVenda", cOrca, cTipoVenda, fApagarOrca);
+				return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<int>("spc_FinalizaVenda", cOrca, cTipoVenda, fApagarOrca, cCliente);
 			}
 			catch (Exception ex)
 			{
