@@ -221,6 +221,7 @@
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Funcoes.cs" />
+    <Compile Include="Modules\NFCE.cs" />
     <Compile Include="Modules\Util.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

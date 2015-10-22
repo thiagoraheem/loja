@@ -88,7 +88,7 @@ namespace Loja.DAL.DAO
 			{
 				var dados = banco.tbl_Saida.Include("tbl_SaidaItens").Where(saida => saida.Data >= inicio && saida.Data <= fim).ToList();
 
-				return dados.ToList();
+				return dados;
 			}
 		}
 
@@ -98,7 +98,22 @@ namespace Loja.DAL.DAO
 			{
 				var dados = banco.tbl_SaidaItens.Include("tbl_Produtos").Where(saida => saida.CodVenda == codVenda).ToList();
 
-				return dados.ToList();
+				return dados;
+			}
+		}
+
+		public static tbl_Saida ObterVenda(int codVenda)
+		{
+			using (var banco = new LojaContext())
+			{
+				var dados = banco.tbl_Saida.Include("tbl_SaidaItens").FirstOrDefault(saida => saida.CodVenda == codVenda);
+
+				foreach (var item in dados.tbl_SaidaItens) { 
+					var produto = ObterProduto(item.codigounico);
+					item.tbl_Produtos = produto;
+				}
+
+				return dados;
 			}
 		}
 

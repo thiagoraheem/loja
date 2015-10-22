@@ -245,5 +245,35 @@ namespace Loja.DAL.DAO
 
 		}
 
+
+		public static void GravaVenda(tbl_Saida dado)
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var registro = banco.tbl_Saida.FirstOrDefault(x => x.CodVenda == dado.CodVenda);
+
+				if (registro == null)
+				{
+					banco.tbl_Saida.Add(dado);
+				}
+				else
+				{
+					registro.ChaveSefaz = dado.ChaveSefaz;
+					registro.CodCliente = dado.CodCliente;
+					registro.CodTipoVenda = dado.CodTipoVenda;
+					registro.Data = dado.Data;
+					registro.FlgStatusNFE = dado.FlgStatusNFE;
+					registro.FlgStatusNota = dado.FlgStatusNota;
+					registro.QtdItens = dado.QtdItens;
+					registro.ValorTotal = dado.ValorTotal;
+				}
+
+				banco.SaveChanges();
+
+			}
+
+		}
+
 	}
 }
