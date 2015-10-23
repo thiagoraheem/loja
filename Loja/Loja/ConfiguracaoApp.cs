@@ -22,7 +22,7 @@ namespace Loja
 			CfgServico = ConfiguracaoServico.Instancia;
 			CfgServico.tpAmb = TipoAmbiente.taHomologacao;
 			CfgServico.tpEmis = TipoEmissao.teNormal;
-			Emitente = new emit { CPF = "", CRT = CRT.SimplesNacional };
+			Emitente = new emit { CNPJ = "05499801000167", CPF = "", CRT = CRT.SimplesNacional };
 			EnderecoEmitente = new enderEmit();
 			ConfiguracaoDanfeNfce = new ConfiguracaoDanfeNfce(NfceDetalheVendaNormal.UmaLinha, NfceDetalheVendaContigencia.UmaLinha, "", "");
 		}
