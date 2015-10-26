@@ -63,12 +63,22 @@ namespace NFe.Impressao.NFCe.FastReports
             _relatorio.SetParameterValue("NfceDetalheVendaContigencia", configuracaoDanfeNfce.DetalheVendaContigencia);
             ((PictureObject) _relatorio.FindObject("poEmitLogo")).Image = configuracaoDanfeNfce.ObterLogo();
             ((TextObject)_relatorio.FindObject("txtUrl")).Text = EnderecadorDanfeNfce.ObterUrl(proc.NFe.infNFe.ide.tpAmb, proc.NFe.infNFe.ide.cUF, TipoUrlDanfeNfce.UrlConsulta);
-            ((BarcodeObject)_relatorio.FindObject("bcoQrCode")).Text = EnderecadorDanfeNfce.ObterUrlQrCode(proc, configuracaoDanfeNfce);
+            ((BarcodeObject)_relatorio.FindObject("bcoQrCode")).Text = proc.NFe.infNFeSupl  == null ? EnderecadorDanfeNfce.ObterUrlQrCode(proc.NFe, configuracaoDanfeNfce) : proc.NFe.infNFeSupl.qrCode;
 
             //Segundo o Manual de Padrões Padrões Técnicos do DANFE - NFC - e e QR Code, versão 3.2, página 9, nos casos de emissão em contigência deve ser impresso uma segunda cópia como via do estabelecimento
             _relatorio.PrintSettings.Copies = proc.NFe.infNFe.ide.tpEmis == TipoEmissao.teNormal ? 1 : 2;
 
             #endregion
+        }
+
+        /// <summary>
+        /// Construtor da classe reponsável pela impressão do DANFE da NFCe em Fast Reports.
+        /// Use esse construtor apenas para impressão em contigência, já que neste modo ainda não é possível obter o grupo protNFe 
+        /// </summary>
+        /// <param name="nfe">Objeto do tipo NFe</param>
+        /// <param name="configuracaoDanfeNfce">Objeto do tipo ConfiguracaoDanfeNfce contendo as definições de impressão</param>
+        public DanfeFrNfce(Classes.NFe nfe, ConfiguracaoDanfeNfce configuracaoDanfeNfce) : this(new nfeProc() { NFe = nfe }, configuracaoDanfeNfce)
+        {
         }
 
         /// <summary>

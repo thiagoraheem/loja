@@ -66,14 +66,15 @@ namespace Loja.DAL.Models
 		}
 
 		
-		public void spc_EstornaVenda(int codVenda, string desMotivo)
+		public void spc_EstornaVenda(int codVenda, string desMotivo, bool flgVoltaNumero)
 		{
 			try
 			{
 				var cVenda = new SqlParameter("@CodVenda", codVenda);
 				var dMotivo = new SqlParameter("@DesMotivo", desMotivo);
+				var fVoltaNumero = new SqlParameter("@flgVoltaNumero", flgVoltaNumero);
 
-				this.Database.ExecuteSqlCommand("spc_EstornaVenda @CodVenda, @DesMotivo", cVenda,dMotivo);
+				this.Database.ExecuteSqlCommand("spc_EstornaVenda @CodVenda, @DesMotivo, @flgVoltaNumero", cVenda, dMotivo, fVoltaNumero);
 			}
 			catch (Exception ex)
 			{
@@ -98,17 +99,16 @@ namespace Loja.DAL.Models
 
 		}
 
-		public ObjectResult<int> spc_FinalizaVenda(string codOrca, int codTipoVenda, string flgApagarOrca, int? codCliente)
+		public ObjectResult<int> spc_FinalizaVenda(string codOrca, int codTipoVenda, int? codCliente)
 		{
 			try
 			{
 				var cOrca = new ObjectParameter("CodOrca", codOrca);
 				var cTipoVenda = new ObjectParameter("CodTipoVenda", codTipoVenda);
-				var fApagarOrca = new ObjectParameter("flgApagarOrca", flgApagarOrca);
 				var cCliente = new ObjectParameter("CodCliente", typeof(int));
 				cCliente.Value = codCliente;
 
-				return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<int>("spc_FinalizaVenda", cOrca, cTipoVenda, fApagarOrca, cCliente);
+				return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<int>("spc_FinalizaVenda", cOrca, cTipoVenda, cCliente);
 			}
 			catch (Exception ex)
 			{
@@ -163,7 +163,7 @@ namespace Loja.DAL.Models
 
 		public void spc_ManutProduto(int codigounico, string codProduto, string desProduto, string desLocal, double vlrUnitario,
 									double qtdProduto, double vlrCusto, double vlrPercent, double estMinimo, string desFornecedor,
-									string codRefAntiga, double vlrUltPreco, byte[] imagem)
+									string codRefAntiga, double vlrUltPreco, byte[] imagem, string ncm)
 		{
 			try
 			{
@@ -181,10 +181,20 @@ namespace Loja.DAL.Models
 				var cRefAntiga = new SqlParameter("@codRefAntiga", codRefAntiga);
 				var vUltPreco = new SqlParameter("@vlrUltPreco", vlrUltPreco);
 				var img = new SqlParameter("@imagem", imagem);
+				var sNcm = new SqlParameter("@NCM", ncm);
 
-				this.Database.ExecuteSqlCommand("spc_ManutProduto @codigounico, @codProduto, @desProduto, @desLocal, @VlrUnitario, @qtdProduto, @vlrCusto, @vlrPercent, @estMinimo, @desFornecedor, @codRefAntiga, @vlrUltPreco, @imagem", 
-					codigo, cProduto, dProduto, dLocal, vUnitario, qProduto, vCusto,
-					vPercent, eMinimo, dFornecedor, cRefAntiga, vUltPreco, img);
+				if (imagem != null) { 
+
+					this.Database.ExecuteSqlCommand("spc_ManutProduto @codigounico, @codProduto, @desProduto, @desLocal, @VlrUnitario, @qtdProduto, @vlrCusto, @vlrPercent, @estMinimo, @desFornecedor, @codRefAntiga, @vlrUltPreco, @imagem, @NCM", 
+						codigo, cProduto, dProduto, dLocal, vUnitario, qProduto, vCusto,
+						vPercent, eMinimo, dFornecedor, cRefAntiga, vUltPreco, img, sNcm);
+				}
+				else
+				{
+					this.Database.ExecuteSqlCommand("spc_ManutProduto @codigounico, @codProduto, @desProduto, @desLocal, @VlrUnitario, @qtdProduto, @vlrCusto, @vlrPercent, @estMinimo, @desFornecedor, @codRefAntiga, @vlrUltPreco, @NCM",
+							codigo, cProduto, dProduto, dLocal, vUnitario, qProduto, vCusto,
+							vPercent, eMinimo, dFornecedor, cRefAntiga, vUltPreco, sNcm);
+				}
 			}
 			catch (Exception ex)
 			{

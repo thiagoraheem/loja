@@ -70,7 +70,7 @@ namespace Loja
             int codigo = FU_PegaCodigoGrid();
             int codvenda = FU_PegaCodigoVenda();
 
-            Cadastros.EstornaVenda(codvenda, "");
+            Cadastros.EstornaVenda(codvenda, "", false);
 
 
             MessageBox.Show("Item estornado com sucesso");

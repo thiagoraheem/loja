@@ -58,6 +58,11 @@ namespace Loja
 					cmbCodOrca.EditValue = String.Empty;
 					InitGrid();
 					InitGridOrca();
+					InitComboOrca();
+				}
+				else
+				{
+					InitComboOrca();
 				}
 			}
 			else if (e.KeyCode.Equals(Keys.F2))
@@ -187,7 +192,7 @@ namespace Loja
 				f.CodOrcamento = cmbCodOrca.EditValue.ToString();
 				f.ShowDialog();
 
-				if (f.DialogResult == System.Windows.Forms.DialogResult.Yes)
+				if (f.DialogResult != System.Windows.Forms.DialogResult.Cancel)
 				{
 					InitGrid();
 					InitComboOrca();
@@ -558,6 +563,11 @@ namespace Loja
 		{
 			var f = new frmClientes();
 			f.ShowDialog();
+		}
+
+		private void btnStatus_ItemClick(object sender, ItemClickEventArgs e)
+		{
+			Util.MsgBox(Util.ComandoACBR());
 		}
 
 	}

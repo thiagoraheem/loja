@@ -11,11 +11,11 @@ namespace Loja.DAL.DAO
 {
 	public class Cadastros
 	{
-		public static void EstornaVenda(int codVenda, string desMotivo)
+		public static void EstornaVenda(int codVenda, string desMotivo, bool flgVoltaNumero)
 		{
 			using (var banco = new LojaContext())
 			{
-				banco.spc_EstornaVenda(codVenda, desMotivo);
+				banco.spc_EstornaVenda(codVenda, desMotivo, flgVoltaNumero);
 
 			}
 		}
@@ -63,11 +63,11 @@ namespace Loja.DAL.DAO
 			}
 		}
 
-		public static int FinalizaVenda(string codOrca, int codTipoVenda, string flgApagarOrca, int? codCliente)
+		public static int FinalizaVenda(string codOrca, int codTipoVenda, int? codCliente)
 		{
 			using (var banco = new LojaContext())
 			{
-				return banco.spc_FinalizaVenda(codOrca, codTipoVenda, flgApagarOrca, codCliente).FirstOrDefault();
+				return banco.spc_FinalizaVenda(codOrca, codTipoVenda, codCliente).FirstOrDefault();
 
 			}
 		}
@@ -90,13 +90,13 @@ namespace Loja.DAL.DAO
 
 		public static void ManutProduto(int codigounico, string codProduto, string desProduto, string desLocal, double vlrUnitario,
 									double qtdProduto, double vlrCusto, double vlrPercent, double estMinimo, string desFornecedor,
-									string codRefAntiga, double vlrUltPreco, byte[] imagem)
+									string codRefAntiga, double vlrUltPreco, byte[] imagem, string ncm)
 		{
 			using (var banco = new LojaContext())
 			{
 				banco.spc_ManutProduto(codigounico, codProduto, desProduto, desLocal, vlrUnitario,
 									qtdProduto, vlrCusto, vlrPercent, estMinimo, desFornecedor,
-									codRefAntiga, vlrUltPreco, imagem);
+									codRefAntiga, vlrUltPreco, imagem, ncm);
 			}
 		}
 
@@ -118,6 +118,20 @@ namespace Loja.DAL.DAO
 				var dados = banco.tbl_Produtos.FirstOrDefault(x => x.codigounico == codigo);
 
 				banco.tbl_Produtos.Remove(dados);
+				banco.SaveChanges();
+
+			}
+
+		}
+
+		public static void ExcluiOrcamento(string codigo)
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var dados = banco.tbl_Orcamento.Where(x => x.CodOrca == codigo).ToList();
+
+				banco.tbl_Orcamento.RemoveRange(dados);
 				banco.SaveChanges();
 
 			}
@@ -237,6 +251,7 @@ namespace Loja.DAL.DAO
 					registro.Estado = dado.Estado;
 					registro.Pais = dado.Pais;
 					registro.Email = dado.Email;
+					registro.CEP = dado.CEP;
 				}
 
 				banco.SaveChanges();

@@ -37,11 +37,13 @@ namespace Loja.Modules
 		private tbl_Saida _saida;
 		private tbl_Cliente _cliente;
 
-		public NFCE(ConfiguracaoApp conf, tbl_Saida saida) { 
+		public NFCE(ConfiguracaoApp conf, tbl_Saida saida)
+		{
 			_configuracoes = conf;
 			_saida = saida;
 
-			if (saida.CodCliente != null) { 
+			if (saida.CodCliente != null)
+			{
 				_cliente = Consultas.ObterCliente(saida.CodCliente.Value);
 			}
 
@@ -52,8 +54,7 @@ namespace Loja.Modules
 		{
 			try
 			{
-				var cert = new CertificadoDigital();
-				certificado = cert.Serial;
+				certificado = CertificadoDigital.ObterDoRepositorio().SerialNumber;
 			}
 			catch (Exception ex)
 			{
@@ -80,7 +81,7 @@ namespace Loja.Modules
 				var servicoNFe = new ServicosNFe(_configuracoes.CfgServico);
 
 				var retornoEnvio = servicoNFe.NFeAutorizacao(
-					Convert.ToInt32(_saida.CodVenda), 
+					Convert.ToInt32(_saida.CodVenda),
 					IndicadorSincronizacao.Assincrono,
 					new List<NFe.Classes.NFe> { _nfe }
 				);
@@ -93,28 +94,38 @@ namespace Loja.Modules
 			}
 			catch (Exception ex)
 			{
-				if (!string.IsNullOrEmpty(ex.Message))
-					Util.MsgBox(ex.Message);
+				if (ex.InnerException != null)
+				{
+					Util.MsgBox(ex.InnerException.Message);
+
+				}
+				else {
+					if (!string.IsNullOrEmpty(ex.Message))
+						Util.MsgBox(ex.Message);
+				}
 				return false;
 			}
 		}
 
 		protected virtual NFe.Classes.NFe GetNf()
 		{
-			var nf = new NFe.Classes.NFe { infNFe = GetInf( ModeloDocumento.NFCe, _configuracoes.CfgServico.VersaoNFeAutorizacao) };
+			var nf = new NFe.Classes.NFe { infNFe = GetInf(ModeloDocumento.NFCe, _configuracoes.CfgServico.VersaoNFeAutorizacao) };
 			return nf;
 		}
 
-		protected virtual infNFe GetInf( ModeloDocumento modelo, VersaoServico versao)
+		protected virtual infNFe GetInf(ModeloDocumento modelo, VersaoServico versao)
 		{
-			var infNFe = new infNFe
+			var infNFe = new infNFe();
+
+			infNFe.versao = Auxiliar.VersaoServicoParaString(versao);
+			infNFe.ide = GetIdentificacao(modelo, versao);
+			infNFe.emit = GetEmitente();
+			if (_cliente != null)
 			{
-				versao = Auxiliar.VersaoServicoParaString(versao),
-				ide = GetIdentificacao(modelo, versao),
-				emit = GetEmitente(),
-				dest = GetDestinatario(versao),
-				transp = GetTransporte()
-			};
+				infNFe.dest = GetDestinatario(versao);
+			}
+			infNFe.transp = GetTransporte();
+
 
 			if (infNFe.ide.mod == ModeloDocumento.NFCe)
 				infNFe.pag = GetPagamento(); //NFCe Somente               
@@ -201,11 +212,11 @@ namespace Loja.Modules
 
 		protected virtual dest GetDestinatario(VersaoServico versao)
 		{
-			
+
 			var dest = new dest(versao);
 			if (_cliente != null)
 			{
-				if (_cliente.NumCNPJ != null)
+				if (!String.IsNullOrEmpty(_cliente.NumCNPJ.Replace(".", "").Replace("-", "").Replace("/", "")))
 				{
 					dest.CNPJ = _cliente.NumCNPJ;
 					dest.xNome = _cliente.NomCliente ?? "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL";
@@ -214,7 +225,7 @@ namespace Loja.Modules
 				}
 				else
 				{
-					if (_cliente.NumCPF != null)
+					if (!String.IsNullOrEmpty(_cliente.NumCPF.Replace(".", "").Replace("-", "")))
 					{
 						dest.CPF = _cliente.NumCPF;
 						dest.xNome = _cliente.NomCliente ?? "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL";
@@ -267,27 +278,26 @@ namespace Loja.Modules
 				prod = GetProduto(i + 1, item),
 				imposto = new imposto
 				{
-					vTotTrib = 0.17m,
 					ICMS = new ICMS
 					{
 						TipoICMS =
 							crt == CRT.SimplesNacional
-								? InformarCSOSN(Csosnicms.Csosn102)
-								: InformarICMS(Csticms.Cst00, VersaoServico.ve310)
+								? InformarCSOSN(Csosnicms.Csosn500)
+								: InformarICMS(Csticms.Cst50, VersaoServico.ve310)
 					},
 					COFINS =
 						new COFINS
 						{
-							TipoCOFINS = new COFINSOutr { CST = CSTCOFINS.cofins99, pCOFINS = 0, vBC = 0, vCOFINS = 0 }
+							TipoCOFINS = new COFINSNT { CST = CSTCOFINS.cofins08 }
 						},
-					PIS = new PIS { TipoPIS = new PISOutr { CST = CSTPIS.pis99, pPIS = 0, vBC = 0, vPIS = 0 } }
+					PIS = new PIS { TipoPIS = new PISNT { CST = CSTPIS.pis08 } }
 				}
 			};
 
 			if (modelo == ModeloDocumento.NFe) //NFCe não aceita grupo "IPI"
 				det.imposto.IPI = new IPI()
 				{
-					cEnq = "999",
+					cEnq = 999,
 					TipoIPI = new IPITrib() { CST = CSTIPI.ipi00, pIPI = 5, vBC = 1, vIPI = 0.05m }
 				};
 			//det.impostoDevol = new impostoDevol() { IPI = new IPIDevolvido() { vIPIDevol = 10 }, pDevol = 100 };
@@ -341,16 +351,36 @@ namespace Loja.Modules
 
 			var enderDest = new enderDest
 			{
-				xLgr = _cliente.Endereco,
-				nro = _cliente.Numero,
-				xBairro = _cliente.Bairro,
 				cMun = 1302603,
-				xMun = _cliente.Cidade,
-				UF = _cliente.Estado,
-				CEP = "",
 				cPais = 1058,
 				xPais = "BRASIL"
 			};
+
+			if (!String.IsNullOrEmpty(_cliente.Endereco))
+			{
+				enderDest.xLgr = _cliente.Endereco;
+			}
+			if (!String.IsNullOrEmpty(_cliente.Numero))
+			{
+				enderDest.nro = _cliente.Numero;
+			}
+			if (!String.IsNullOrEmpty(_cliente.Bairro))
+			{
+				enderDest.xBairro = _cliente.Bairro;
+			}
+			if (!String.IsNullOrEmpty(_cliente.CEP))
+			{
+				enderDest.CEP = _cliente.CEP;
+			}
+			if (!String.IsNullOrEmpty(_cliente.Cidade))
+			{
+				enderDest.xMun = _cliente.Cidade;
+			}
+			if (!String.IsNullOrEmpty(_cliente.Estado))
+			{
+				enderDest.UF = _cliente.Estado;
+			}
+
 			return enderDest;
 		}
 
@@ -361,26 +391,18 @@ namespace Loja.Modules
 				cProd = i.ToString().PadLeft(5, '0'),
 				cEAN = "",
 				xProd = item.tbl_Produtos.DesProduto,
-				NCM = "",
-				CFOP = 5102,
-				uCom = "UNID",
+				NCM = item.tbl_Produtos.NCM ?? "99999999",
+				CFOP = 5101,
+				uCom = "Unidad",
 				qCom = item.Quantidade,
 				vUnCom = item.VlrUnitario,
 				vProd = item.VlrFinal.Value,
 				vDesc = 0,
 				cEANTrib = "",
-				uTrib = "UNID",
+				uTrib = "Unidad",
 				qTrib = item.Quantidade,
 				vUnTrib = item.VlrUnitario,
 				indTot = IndicadorTotal.ValorDoItemCompoeTotalNF,
-
-				//ProdutoEspecifico = new arma
-				//{
-				//    tpArma = TipoArma.UsoPermitido,
-				//    nSerie = "123456",
-				//    nCano = "123456",
-				//    descr = "TESTE DE ARMA"
-				//}
 			};
 			return p;
 		}
@@ -436,6 +458,13 @@ namespace Loja.Modules
 						CSOSN = Csosnicms.Csosn102,
 						orig = OrigemMercadoria.OmNacional
 					};
+				case Csosnicms.Csosn500:
+					return new ICMSSN500
+					{
+						CSOSN = Csosnicms.Csosn500,
+						orig = OrigemMercadoria.OmNacional
+					};
+
 				//Outros casos aqui
 				default:
 					return new ICMSSN201();

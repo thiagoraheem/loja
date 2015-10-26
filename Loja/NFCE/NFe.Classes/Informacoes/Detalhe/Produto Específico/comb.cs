@@ -75,6 +75,11 @@ namespace NFe.Classes.Informacoes.Detalhe.Produto_Específico
         /// </summary>
         public CIDE CIDE { get; set; }
 
+        /// <summary>
+        /// LA11 - Informações do grupo de “encerrante”
+        /// </summary>
+        public encerrante encerrante { get; set; }
+
         public bool ShouldSerializepMixGN()
         {
             return pMixGN.HasValue;

@@ -27,6 +27,7 @@ namespace Loja.DAL.Models
         public Nullable<double> VlrUltPreco { get; set; }
         public byte[] Imagem { get; set; }
         public int codigounico { get; set; }
+        public string NCM { get; set; }
         public virtual ICollection<tbl_Entrada> tbl_Entrada { get; set; }
         public virtual ICollection<tbl_Orcamento> tbl_Orcamento { get; set; }
         public virtual ICollection<tbl_SaidaItens> tbl_SaidaItens { get; set; }

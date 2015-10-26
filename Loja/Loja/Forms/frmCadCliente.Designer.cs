@@ -52,6 +52,8 @@
 			this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
 			this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
 			this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+			this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+			this.txtCEP = new DevExpress.XtraEditors.TextEdit();
 			((System.ComponentModel.ISupportInitialize)(this.txtNomCliente.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtNumCPF.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtNumCNPJ.Properties)).BeginInit();
@@ -63,6 +65,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.txtEstado.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtPais.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.txtCEP.Properties)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// labelControl1
@@ -85,7 +88,7 @@
 			// 
 			this.btnGravar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.btnGravar.Location = new System.Drawing.Point(263, 192);
+			this.btnGravar.Location = new System.Drawing.Point(263, 208);
 			this.btnGravar.Name = "btnGravar";
 			this.btnGravar.Size = new System.Drawing.Size(75, 23);
 			this.btnGravar.TabIndex = 22;
@@ -96,7 +99,7 @@
 			// 
 			this.btnRetornar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnRetornar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnRetornar.Location = new System.Drawing.Point(344, 192);
+			this.btnRetornar.Location = new System.Drawing.Point(344, 208);
 			this.btnRetornar.Name = "btnRetornar";
 			this.btnRetornar.Size = new System.Drawing.Size(75, 23);
 			this.btnRetornar.TabIndex = 23;
@@ -270,11 +273,32 @@
 			this.labelControl11.TabIndex = 4;
 			this.labelControl11.Text = "CNPJ:";
 			// 
+			// labelControl12
+			// 
+			this.labelControl12.Location = new System.Drawing.Point(55, 180);
+			this.labelControl12.Name = "labelControl12";
+			this.labelControl12.Size = new System.Drawing.Size(23, 13);
+			this.labelControl12.TabIndex = 24;
+			this.labelControl12.Text = "CEP:";
+			// 
+			// txtCEP
+			// 
+			this.txtCEP.EditValue = "";
+			this.txtCEP.EnterMoveNextControl = true;
+			this.txtCEP.Location = new System.Drawing.Point(97, 177);
+			this.txtCEP.Name = "txtCEP";
+			this.txtCEP.Properties.Mask.EditMask = "00000-000";
+			this.txtCEP.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
+			this.txtCEP.Size = new System.Drawing.Size(116, 20);
+			this.txtCEP.TabIndex = 25;
+			// 
 			// frmCadCliente
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(431, 227);
+			this.ClientSize = new System.Drawing.Size(431, 243);
+			this.Controls.Add(this.labelControl12);
+			this.Controls.Add(this.txtCEP);
 			this.Controls.Add(this.labelControl11);
 			this.Controls.Add(this.labelControl10);
 			this.Controls.Add(this.labelControl9);
@@ -312,6 +336,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.txtEstado.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtPais.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.txtCEP.Properties)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -343,5 +368,7 @@
 		private DevExpress.XtraEditors.LabelControl labelControl9;
 		private DevExpress.XtraEditors.LabelControl labelControl10;
 		private DevExpress.XtraEditors.LabelControl labelControl11;
+		private DevExpress.XtraEditors.LabelControl labelControl12;
+		private DevExpress.XtraEditors.TextEdit txtCEP;
 	}
 }

@@ -44,6 +44,9 @@ namespace Loja.DAL.Models.Mapping
 			this.Property(t => t.Email)
 				.HasMaxLength(100);
 
+			this.Property(t => t.CEP)
+				.HasMaxLength(9);
+
 			// Table & Column Mappings
 			this.ToTable("tbl_Cliente");
 			this.Property(t => t.CodCliente).HasColumnName("CodCliente");
@@ -58,6 +61,7 @@ namespace Loja.DAL.Models.Mapping
 			this.Property(t => t.Estado).HasColumnName("Estado");
 			this.Property(t => t.Pais).HasColumnName("Pais");
 			this.Property(t => t.Email).HasColumnName("Email");
+			this.Property(t => t.CEP).HasColumnName("CEP");
 		}
 	}
 }

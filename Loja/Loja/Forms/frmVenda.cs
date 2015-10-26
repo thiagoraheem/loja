@@ -13,6 +13,10 @@ using System.Reflection;
 
 using Loja.DAL.Models;
 using NFe.Utils;
+using NFe.Classes;
+using NFe.Impressao.NFCe.FastReports;
+using NFe.Impressao.NFCe;
+using NFe.Impressao;
 
 
 namespace Loja
@@ -89,16 +93,6 @@ namespace Loja
 		{
 			try
 			{
-				String flgApagarOrca;
-				if (chkApagarOrca.Checked)
-				{
-					flgApagarOrca = "S";
-				}
-				else
-				{
-					flgApagarOrca = "N";
-				}
-
 				int? codCliente = null;
 				if (cmbCliente.EditValue != null)
 				{
@@ -107,7 +101,7 @@ namespace Loja
 
 				int tipoVenda = int.Parse(cmbTipoVenda.EditValue.ToString());
 
-				int codVenda = Cadastros.FinalizaVenda(CodOrcamento, tipoVenda, flgApagarOrca, codCliente);
+				int codVenda = Cadastros.FinalizaVenda(CodOrcamento, tipoVenda, codCliente);
 
 				saida = Consultas.ObterVenda(codVenda);
 
@@ -119,12 +113,26 @@ namespace Loja
 					{
 						Util.MsgBox("Nota fiscal não enviada, venda não realizada");
 
-						Cadastros.EstornaVenda(codVenda, "Não enviada SEFAZ");
+						Cadastros.EstornaVenda(codVenda, "Não enviada SEFAZ", true);
 
+						this.DialogResult = System.Windows.Forms.DialogResult.No;
+						this.Close();
 						return;
+						
 					}
+
+					//var proc = new nfeProc().CarregarDeArquivoXml(nota.);
+					//var danfe = new DanfeFrNfce(proc, new ConfiguracaoDanfeNfce(NfceDetalheVendaNormal.UmaLinha, NfceDetalheVendaContigencia.UmaLinha, _configuracoes.ConfiguracaoDanfeNfce.cIdToken, _configuracoes.ConfiguracaoDanfeNfce.CSC, null/*Logomarca em byte[]*/));
+					//danfe.Visualizar();
+					//danfe.Imprimir();
+					//danfe.ExibirDesign();
 				}
 
+				if (chkApagarOrca.Checked)
+				{
+					Cadastros.ExcluiOrcamento(CodOrcamento);
+				}
+				
 				this.DialogResult = System.Windows.Forms.DialogResult.Yes;
 
 				if (chkEmitirRecibo.Checked)

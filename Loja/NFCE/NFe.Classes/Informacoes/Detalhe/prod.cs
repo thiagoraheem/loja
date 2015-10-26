@@ -53,6 +53,7 @@ namespace NFe.Classes.Informacoes.Detalhe
         private decimal? _vOutro;
         private string _cEan;
         private string _cEanTrib;
+        private decimal _vUnCom;
 
         /// <summary>
         ///     I02 - Código do produto ou serviço
@@ -111,7 +112,11 @@ namespace NFe.Classes.Informacoes.Detalhe
         /// <summary>
         ///     I10a - Valor Unitário de Comercialização
         /// </summary>
-        public decimal vUnCom { get; set; }
+        public decimal vUnCom
+        {
+            get { return _vUnCom; }
+            set { _vUnCom = Valor.Arredondar(value, 10); }
+        }
 
         /// <summary>
         ///     I11 - Valor Total Bruto dos Produtos ou Serviços
@@ -226,7 +231,7 @@ namespace NFe.Classes.Informacoes.Detalhe
         ///     <para>129 (veicProd) - Detalhamento de Veículos novos</para>
         ///     <para>K01 (med) - Detalhamento de Medicamentos e de matérias-primas farmacêuticas</para>
         ///     <para>L01 (arma) - Detalhamento de Armamento</para>
-        ///     <para>162a (comb) - Informações específicas para combustíveis líquidos e lubrificantes</para>
+        ///     <para>LA01 (comb) - Informações específicas para combustíveis líquidos e lubrificantes</para>
         /// </summary>
         [XmlElement("veicProd", typeof (veicProd))]
         [XmlElement("med", typeof (med))]
