@@ -17,6 +17,5 @@ namespace Loja.DAL.Models
         public Nullable<decimal> VlrFinal { get; set; }
         public virtual tbl_Produtos tbl_Produtos { get; set; }
         public virtual tbl_Saida tbl_Saida { get; set; }
-        public virtual tbl_SaidasEstorno tbl_SaidasEstorno { get; set; }
     }
 }

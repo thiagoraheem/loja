@@ -48,11 +48,6 @@ namespace Loja.DAL.Models.Mapping
 			this.Property(t => t.CodTipoVenda).HasColumnName("CodTipoVenda");
 			this.Property(t => t.DatEstorno).HasColumnName("DatEstorno");
 			this.Property(t => t.MotivoEstorno).HasColumnName("MotivoEstorno");
-
-			// Relationships
-			this.HasRequired(t => t.tbl_SaidaItens)
-				.WithOptional(t => t.tbl_SaidasEstorno);
-
 		}
 	}
 }

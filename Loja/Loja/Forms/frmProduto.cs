@@ -47,12 +47,14 @@ namespace Loja
 			txtUltPreco.Text = this.produto.VlrUltPreco.ToString();
 			txtVlrCusto.Text = this.produto.VlrCusto.ToString();
 			txtVlrPercent.Text = this.produto.VlrPercent.ToString();
+			txtNCM.Text = this.produto.NCM;
 
 			if (produto.Imagem != null)
 			{
 				MemoryStream ms = new MemoryStream(this.produto.Imagem);
 
 				ms.Write(this.produto.Imagem, 0, this.produto.Imagem.Length);
+
 				imgFoto.Image = Image.FromStream(ms);
 
 				btnRemoverImagem.Enabled = true;
@@ -75,6 +77,7 @@ namespace Loja
 			txtUltPreco.Text = String.Empty;
 			txtVlrCusto.Text = String.Empty;
 			txtVlrPercent.Text = String.Empty;
+			txtNCM.Text = String.Empty;
 
 			imgFoto.Image = null;
 
@@ -85,24 +88,30 @@ namespace Loja
 		void SU_Gravar() {
 
 			try {
+				byte[] photo_aray = null;
 
-				MemoryStream ms = new MemoryStream();
-				imgFoto.Image.Save(ms, ImageFormat.Jpeg);
-				byte[] photo_aray = new byte[ms.Length];
-				ms.Position = 0;
-				ms.Read(photo_aray, 0, photo_aray.Length);
+				if (imgFoto.Image != null) { 
 
-				Cadastros.ManutProduto(produto.codigounico, txtCodProduto.Text, txtDesProduto.Text, txtDesLocal.Text, (double)txtVlrUnitario.Value,
-					(double)txtQtdEstoque.Value, (double)txtVlrCusto.Value, (double)txtVlrPercent.Value,
-					(double)txtQtdEstMinimo.Value, txtFornecedor.Text, txtCodRefAntiga.Text, (double)txtUltPreco.Value,
-					photo_aray);
+					MemoryStream ms = new MemoryStream();
+					imgFoto.Image.Save(ms, ImageFormat.Jpeg);
+					photo_aray = new byte[ms.Length];
+					ms.Position = 0;
+					ms.Read(photo_aray, 0, photo_aray.Length);
+				}
+
+
+
+				Cadastros.ManutProduto(produto.codigounico, txtCodProduto.Text, txtDesProduto.Text, txtDesLocal.Text, Convert.ToDouble(txtVlrUnitario.EditValue),
+					Convert.ToDouble(txtQtdEstoque.EditValue), Convert.ToDouble(txtVlrCusto.EditValue), Convert.ToDouble(txtVlrPercent.EditValue),
+					Convert.ToDouble(txtQtdEstMinimo.EditValue), txtFornecedor.Text, txtCodRefAntiga.Text, Convert.ToDouble(txtUltPreco.EditValue),
+					photo_aray, txtNCM.Text);
 
 
 
 				Close();
 			}
 			catch (Exception ex) {
-				MessageBox.Show(ex.Message);
+				Util.MsgBox(ex.Message);
 			}
 		}
 		#endregion

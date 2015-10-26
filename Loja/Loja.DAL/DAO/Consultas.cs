@@ -35,6 +35,18 @@ namespace Loja.DAL.DAO
 			}
 		}
 
+		public static tbl_Produtos ObterProduto(int codigounico)
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var registro = (from prod in banco.tbl_Produtos
+								where prod.codigounico == codigounico
+								select prod).FirstOrDefault();
+				return registro;
+			}
+		}
+
 		public static int ObterQtdeProdutos()
 		{
 			using (var banco = new LojaContext())
@@ -211,18 +223,6 @@ namespace Loja.DAL.DAO
 						   select gFornecedor.Key;
 
 				return cons.ToList();
-			}
-		}
-
-		public static tbl_Produtos ObterProduto(int codigounico)
-		{
-
-			using (var banco = new LojaContext())
-			{
-				var registro = (from prod in banco.tbl_Produtos
-								where prod.codigounico == codigounico
-								select prod).FirstOrDefault();
-				return registro;
 			}
 		}
 

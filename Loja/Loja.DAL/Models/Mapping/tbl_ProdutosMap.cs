@@ -32,6 +32,9 @@ namespace Loja.DAL.Models.Mapping
 			this.Property(t => t.CodRefAntiga)
 				.HasMaxLength(10);
 
+			this.Property(t => t.NCM)
+				.HasMaxLength(8);
+
 			// Table & Column Mappings
 			this.ToTable("tbl_Produtos");
 			this.Property(t => t.CodProduto).HasColumnName("CodProduto");
@@ -49,6 +52,7 @@ namespace Loja.DAL.Models.Mapping
 			this.Property(t => t.VlrUltPreco).HasColumnName("VlrUltPreco");
 			this.Property(t => t.Imagem).HasColumnName("Imagem");
 			this.Property(t => t.codigounico).HasColumnName("codigounico");
+			this.Property(t => t.NCM).HasColumnName("NCM");
 		}
 	}
 }

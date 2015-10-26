@@ -48,6 +48,7 @@ namespace Loja
 			txtEstado.Text = cliente.Estado;
 			txtPais.Text = cliente.Pais;
 			txtEmail.Text = cliente.Email;
+			txtCEP.Text = cliente.CEP;
 
 		}
 
@@ -64,6 +65,7 @@ namespace Loja
 			cliente.Estado = txtEstado.Text;
 			cliente.Pais = txtPais.Text;
 			cliente.Email = txtEmail.Text;
+			cliente.CEP = txtCEP.Text;
 
 			Cadastros.GravaCliente(cliente);
 

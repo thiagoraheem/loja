@@ -60,6 +60,8 @@
 			this.txtUltPreco = new DevExpress.XtraEditors.CalcEdit();
 			this.btnRemover = new DevExpress.XtraEditors.SimpleButton();
 			this.diagAbrir = new System.Windows.Forms.OpenFileDialog();
+			this.txtNCM = new DevExpress.XtraEditors.TextEdit();
+			this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
 			((System.ComponentModel.ISupportInitialize)(this.txtDesProduto.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtDesLocal.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtFornecedor.Properties)).BeginInit();
@@ -72,6 +74,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.txtVlrPercent.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtVlrUnitario.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtUltPreco.Properties)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.txtNCM.Properties)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// txtDesProduto
@@ -121,7 +124,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.imgFoto.Location = new System.Drawing.Point(378, 10);
 			this.imgFoto.Name = "imgFoto";
-			this.imgFoto.Size = new System.Drawing.Size(261, 221);
+			this.imgFoto.Size = new System.Drawing.Size(261, 245);
 			this.imgFoto.TabIndex = 11;
 			// 
 			// labelControl6
@@ -182,7 +185,7 @@
 			// 
 			this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnCancelar.Location = new System.Drawing.Point(564, 244);
+			this.btnCancelar.Location = new System.Drawing.Point(564, 268);
 			this.btnCancelar.Name = "btnCancelar";
 			this.btnCancelar.Size = new System.Drawing.Size(75, 23);
 			this.btnCancelar.TabIndex = 13;
@@ -192,7 +195,7 @@
 			// cmdGravar
 			// 
 			this.cmdGravar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.cmdGravar.Location = new System.Drawing.Point(402, 244);
+			this.cmdGravar.Location = new System.Drawing.Point(402, 268);
 			this.cmdGravar.Name = "cmdGravar";
 			this.cmdGravar.Size = new System.Drawing.Size(75, 23);
 			this.cmdGravar.TabIndex = 12;
@@ -256,7 +259,8 @@
 			// 
 			// btnImagem
 			// 
-			this.btnImagem.Location = new System.Drawing.Point(294, 244);
+			this.btnImagem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnImagem.Location = new System.Drawing.Point(294, 268);
 			this.btnImagem.Name = "btnImagem";
 			this.btnImagem.Size = new System.Drawing.Size(99, 23);
 			this.btnImagem.TabIndex = 25;
@@ -265,8 +269,9 @@
 			// 
 			// btnRemoverImagem
 			// 
+			this.btnRemoverImagem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnRemoverImagem.Enabled = false;
-			this.btnRemoverImagem.Location = new System.Drawing.Point(189, 244);
+			this.btnRemoverImagem.Location = new System.Drawing.Point(189, 268);
 			this.btnRemoverImagem.Name = "btnRemoverImagem";
 			this.btnRemoverImagem.Size = new System.Drawing.Size(99, 23);
 			this.btnRemoverImagem.TabIndex = 26;
@@ -347,7 +352,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
 			this.txtVlrUnitario.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
 			this.txtVlrUnitario.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-			this.txtVlrUnitario.Properties.Mask.EditMask = "n2";
+			this.txtVlrUnitario.Properties.Mask.EditMask = "c";
 			this.txtVlrUnitario.Properties.Mask.UseMaskAsDisplayFormat = true;
 			this.txtVlrUnitario.Size = new System.Drawing.Size(110, 20);
 			this.txtVlrUnitario.TabIndex = 9;
@@ -372,8 +377,9 @@
 			// 
 			// btnRemover
 			// 
+			this.btnRemover.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnRemover.Enabled = false;
-			this.btnRemover.Location = new System.Drawing.Point(483, 244);
+			this.btnRemover.Location = new System.Drawing.Point(483, 268);
 			this.btnRemover.Name = "btnRemover";
 			this.btnRemover.Size = new System.Drawing.Size(75, 23);
 			this.btnRemover.TabIndex = 27;
@@ -384,12 +390,35 @@
 			// 
 			this.diagAbrir.Filter = "Imagens (*.bmp, *.jpg, *.png, *.gif)|*.bmp;*.jpg;*.png;*.gif";
 			// 
+			// txtNCM
+			// 
+			this.txtNCM.EnterMoveNextControl = true;
+			this.txtNCM.Location = new System.Drawing.Point(89, 234);
+			this.txtNCM.Name = "txtNCM";
+			this.txtNCM.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtNCM.Properties.Appearance.Options.UseFont = true;
+			this.txtNCM.Properties.Mask.EditMask = "\\d{8}";
+			this.txtNCM.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+			this.txtNCM.Size = new System.Drawing.Size(100, 20);
+			this.txtNCM.TabIndex = 28;
+			// 
+			// labelControl12
+			// 
+			this.labelControl12.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelControl12.Location = new System.Drawing.Point(53, 238);
+			this.labelControl12.Name = "labelControl12";
+			this.labelControl12.Size = new System.Drawing.Size(27, 13);
+			this.labelControl12.TabIndex = 29;
+			this.labelControl12.Text = "NCM:";
+			// 
 			// frmProduto
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnCancelar;
-			this.ClientSize = new System.Drawing.Size(651, 279);
+			this.ClientSize = new System.Drawing.Size(651, 303);
+			this.Controls.Add(this.txtNCM);
+			this.Controls.Add(this.labelControl12);
 			this.Controls.Add(this.btnRemover);
 			this.Controls.Add(this.btnRemoverImagem);
 			this.Controls.Add(this.btnImagem);
@@ -435,6 +464,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.txtVlrPercent.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtVlrUnitario.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtUltPreco.Properties)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.txtNCM.Properties)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -471,5 +501,7 @@
 		private DevExpress.XtraEditors.CalcEdit txtUltPreco;
 		private DevExpress.XtraEditors.SimpleButton btnRemover;
 		private System.Windows.Forms.OpenFileDialog diagAbrir;
+		private DevExpress.XtraEditors.TextEdit txtNCM;
+		private DevExpress.XtraEditors.LabelControl labelControl12;
 	}
 }

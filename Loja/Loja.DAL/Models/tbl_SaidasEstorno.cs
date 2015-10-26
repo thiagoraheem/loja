@@ -18,6 +18,5 @@ namespace Loja.DAL.Models
         public int CodTipoVenda { get; set; }
         public System.DateTime DatEstorno { get; set; }
         public string MotivoEstorno { get; set; }
-        public virtual tbl_SaidaItens tbl_SaidaItens { get; set; }
     }
 }
