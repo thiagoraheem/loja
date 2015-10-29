@@ -85,18 +85,34 @@ namespace Loja
 
 		private void btnAplicarDesconto_Click(object sender, EventArgs e)
 		{
-			Cadastros.DescontoVenda(CodOrcamento, (double)txtDesconto.Value);
+			var tipo = (cmbTipoDesconto.Text == "%") ? "P" : "R";
+			Cadastros.DescontoVenda(CodOrcamento, (double)txtDesconto.Value, tipo);
 			SU_CarregaOrcamento(CodOrcamento);
 		}
 
 		private void btnFinalizarVenda_Click(object sender, EventArgs e)
 		{
+			bool bApagar = false;
+			int? codCliente = null;
+
 			try
 			{
-				int? codCliente = null;
+				
+				
 				if (cmbCliente.EditValue != null)
 				{
 					codCliente = (int)cmbCliente.EditValue;
+				}
+				else
+				{
+					if (!String.IsNullOrEmpty(txtNumCPF.Text))
+					{
+						var nomCliente = "";
+						
+						var cCliente = Cadastros.GravaCliente(new tbl_Cliente(){NumCPF = txtNumCPF.Text, NomCliente = nomCliente});
+						codCliente = cCliente;
+						bApagar = true;
+					}
 				}
 
 				int tipoVenda = int.Parse(cmbTipoVenda.EditValue.ToString());
@@ -120,12 +136,11 @@ namespace Loja
 						return;
 						
 					}
+				}
 
-					//var proc = new nfeProc().CarregarDeArquivoXml(nota.);
-					//var danfe = new DanfeFrNfce(proc, new ConfiguracaoDanfeNfce(NfceDetalheVendaNormal.UmaLinha, NfceDetalheVendaContigencia.UmaLinha, _configuracoes.ConfiguracaoDanfeNfce.cIdToken, _configuracoes.ConfiguracaoDanfeNfce.CSC, null/*Logomarca em byte[]*/));
-					//danfe.Visualizar();
-					//danfe.Imprimir();
-					//danfe.ExibirDesign();
+				if (bApagar && codCliente != null)
+				{
+					Cadastros.ExcluiCliente(codCliente.Value);
 				}
 
 				if (chkApagarOrca.Checked)
@@ -139,8 +154,8 @@ namespace Loja
 				{
 					using (frmRecibo f = new frmRecibo())
 					{
-						f.txtValor.Value = txtVlrTotal.Value;
-						f.txtExtenso.Text = Util.toExtenso(txtVlrTotal.Value);
+						f.txtValor.Value = txtVlrFinal.Value;
+						f.txtExtenso.Text = Util.toExtenso(txtVlrFinal.Value);
 						f.ShowDialog();
 					}
 				}
@@ -148,6 +163,10 @@ namespace Loja
 			}
 			catch (Exception ex)
 			{
+				if (bApagar && codCliente != null)
+				{
+					Cadastros.ExcluiCliente(codCliente.Value);
+				}
 				this.DialogResult = System.Windows.Forms.DialogResult.No;
 				Util.MsgBox(ex.Message);
 			}
@@ -163,7 +182,7 @@ namespace Loja
 				if (!txtDinheiro.Text.Equals(String.Empty) && !txtDinheiro.Text.Equals("0"))
 				{
 					decimal dinheiro = txtDinheiro.Value;
-					decimal vlrtotal = txtVlrTotal.Value;
+					decimal vlrtotal = txtVlrFinal.Value;
 
 					if (dinheiro >= vlrtotal)
 					{
@@ -210,8 +229,7 @@ namespace Loja
 
 		private void txtNumCPF_EditValueChanged(object sender, EventArgs e)
 		{
-
-
+			
 			cmbCliente.EditValue = null;
 			var cliente = clientes.FirstOrDefault(x => x.NumCNPJ == txtNumCPF.Text || x.NumCPF == txtNumCPF.Text);
 
@@ -238,9 +256,18 @@ namespace Loja
 			gridOrcamento.DataSource = orca.ToList();
 
 
-			var total = orca.AsEnumerable().Sum(o => o.PF);
+			var final = orca.AsEnumerable().Sum(o => o.PF);
+
+			txtVlrFinal.EditValue = final;
+
+			var total = orca.AsEnumerable().Sum(o => o.VlrCusto * o.Quantidade);
 
 			txtVlrTotal.EditValue = total;
+
+			var desconto = orca.AsEnumerable().Sum(o => o.VlrDesconto);
+
+			txtDesconto.EditValue = desconto;
+
 		}
 
 		int FU_PegaCodigoGrid()

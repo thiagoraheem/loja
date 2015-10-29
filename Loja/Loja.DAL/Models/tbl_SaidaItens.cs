@@ -15,6 +15,7 @@ namespace Loja.DAL.Models
         public int Quantidade { get; set; }
         public decimal VlrCusto { get; set; }
         public Nullable<decimal> VlrFinal { get; set; }
+        public Nullable<decimal> VlrDesconto { get; set; }
         public virtual tbl_Produtos tbl_Produtos { get; set; }
         public virtual tbl_Saida tbl_Saida { get; set; }
     }

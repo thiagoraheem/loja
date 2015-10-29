@@ -70,7 +70,6 @@
 			this.btnExcluirOrca = new DevExpress.XtraBars.BarButtonItem();
 			this.btnVendaRapida = new DevExpress.XtraBars.BarButtonItem();
 			this.btnStatus = new DevExpress.XtraBars.BarButtonItem();
-			this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
 			this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
 			this.homeRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
 			this.fileRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -84,6 +83,7 @@
 			this.repositoryItemGridLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
 			this.repositoryItemGridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
 			this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+			this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
 			this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
 			this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
 			this.gridProdutos = new DevExpress.XtraGrid.GridControl();
@@ -121,6 +121,7 @@
 			this.colVlrFinal = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colOrcodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colVlrOriginal = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.colNCM = new DevExpress.XtraGrid.Columns.GridColumn();
 			((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.appMenu)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.popupControlContainer2)).BeginInit();
@@ -130,11 +131,11 @@
 			((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.repCodOrca)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.ribbonImageCollectionLarge)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gridProdutos)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gridViewProduto)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.navBarControl)).BeginInit();
@@ -528,11 +529,6 @@
 			this.btnStatus.Name = "btnStatus";
 			this.btnStatus.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStatus_ItemClick);
 			// 
-			// repositoryItemMemoEdit1
-			// 
-			this.repositoryItemMemoEdit1.LinesCount = 3;
-			this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
-			// 
 			// ribbonImageCollectionLarge
 			// 
 			this.ribbonImageCollectionLarge.ImageSize = new System.Drawing.Size(32, 32);
@@ -642,6 +638,11 @@
 			this.repositoryItemTextEdit3.AutoHeight = false;
 			this.repositoryItemTextEdit3.Name = "repositoryItemTextEdit3";
 			// 
+			// repositoryItemMemoEdit1
+			// 
+			this.repositoryItemMemoEdit1.LinesCount = 3;
+			this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
+			// 
 			// ribbonStatusBar
 			// 
 			this.ribbonStatusBar.ItemLinks.Add(this.siStatus);
@@ -676,6 +677,7 @@
             this.colQtdProduto,
             this.colRefAntiga,
             this.colFornecedor,
+            this.colNCM,
             this.colCodigounico});
 			this.gridViewProduto.GridControl = this.gridProdutos;
 			this.gridViewProduto.GroupPanelText = "Arraste uma coluna aqui para agrupar";
@@ -1024,6 +1026,14 @@
 			this.colVlrOriginal.VisibleIndex = 5;
 			this.colVlrOriginal.Width = 142;
 			// 
+			// colNCM
+			// 
+			this.colNCM.Caption = "NCM";
+			this.colNCM.FieldName = "NCM";
+			this.colNCM.Name = "colNCM";
+			this.colNCM.Visible = true;
+			this.colNCM.VisibleIndex = 6;
+			// 
 			// frmPrincipal
 			// 
 			this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
@@ -1040,7 +1050,7 @@
 			this.Name = "frmPrincipal";
 			this.Ribbon = this.ribbonControl;
 			this.StatusBar = this.ribbonStatusBar;
-			this.Text = "Sistema para controle de Loja";
+			this.Text = "Sistema para controle de Loja - v1.0.2";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmPrincipal_KeyDown);
 			((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
@@ -1053,11 +1063,11 @@
 			((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.repCodOrca)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.ribbonImageCollectionLarge)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.gridProdutos)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.gridViewProduto)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.navBarControl)).EndInit();
@@ -1159,6 +1169,7 @@
 		private DevExpress.XtraNavBar.NavBarItem btnCadCliente;
 		private DevExpress.XtraBars.BarButtonItem btnStatus;
 		private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
+		private DevExpress.XtraGrid.Columns.GridColumn colNCM;
 
     }
 }

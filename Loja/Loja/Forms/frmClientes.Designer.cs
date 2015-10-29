@@ -137,12 +137,12 @@
 			// btnExcluir
 			// 
 			this.btnExcluir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-			this.btnExcluir.Enabled = false;
 			this.btnExcluir.Location = new System.Drawing.Point(469, 334);
 			this.btnExcluir.Name = "btnExcluir";
 			this.btnExcluir.Size = new System.Drawing.Size(75, 23);
 			this.btnExcluir.TabIndex = 8;
 			this.btnExcluir.Text = "&Excluir";
+			this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
 			// 
 			// frmClientes
 			// 

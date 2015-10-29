@@ -16,6 +16,7 @@ namespace Loja.DAL.Models
         public string FlgStatus { get; set; }
         public Nullable<System.DateTime> DatOrca { get; set; }
         public int codigounico { get; set; }
-        public virtual tbl_Produtos tbl_Produtos { get; set; }
+        public Nullable<decimal> VlrDesconto { get; set; }
+        public Nullable<double> VlrBruto { get; set; }
     }
 }

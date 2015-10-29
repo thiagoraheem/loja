@@ -14,7 +14,6 @@ namespace Loja.DAL.Models
         public int codigounico { get; set; }
         public Nullable<double> Percentual { get; set; }
         public string DesFornecedor { get; set; }
-        public virtual tbl_Produtos tbl_Produtos { get; set; }
         public virtual tbl_TipoEntrada tbl_TipoEntrada { get; set; }
     }
 }

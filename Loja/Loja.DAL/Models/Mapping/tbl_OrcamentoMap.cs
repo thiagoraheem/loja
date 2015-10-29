@@ -45,12 +45,8 @@ namespace Loja.DAL.Models.Mapping
 			this.Property(t => t.FlgStatus).HasColumnName("FlgStatus");
 			this.Property(t => t.DatOrca).HasColumnName("DatOrca");
 			this.Property(t => t.codigounico).HasColumnName("codigounico");
-
-			// Relationships
-			this.HasRequired(t => t.tbl_Produtos)
-				.WithMany(t => t.tbl_Orcamento)
-				.HasForeignKey(d => d.codigounico);
-
+			this.Property(t => t.VlrDesconto).HasColumnName("VlrDesconto");
+			this.Property(t => t.VlrBruto).HasColumnName("VlrBruto");
 		}
 	}
 }

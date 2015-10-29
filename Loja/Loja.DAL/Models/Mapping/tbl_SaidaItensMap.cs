@@ -41,6 +41,7 @@ namespace Loja.DAL.Models.Mapping
 			this.Property(t => t.Quantidade).HasColumnName("Quantidade");
 			this.Property(t => t.VlrCusto).HasColumnName("VlrCusto");
 			this.Property(t => t.VlrFinal).HasColumnName("VlrFinal");
+			this.Property(t => t.VlrDesconto).HasColumnName("VlrDesconto");
 
 			// Relationships
 			this.HasRequired(t => t.tbl_Produtos)

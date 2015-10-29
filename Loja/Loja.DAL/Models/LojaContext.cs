@@ -31,6 +31,7 @@ namespace Loja.DAL.Models
 		public DbSet<tbl_TipoEntrada> tbl_TipoEntrada { get; set; }
 		public DbSet<tbl_TipoVenda> tbl_TipoVenda { get; set; }
 		public DbSet<tbl_Usuario> tbl_Usuario { get; set; }
+		public DbSet<tmp_Produtos> tmp_Produtos { get; set; }
 		public DbSet<viw_Orcamento> viw_Orcamento { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -48,6 +49,7 @@ namespace Loja.DAL.Models
 			modelBuilder.Configurations.Add(new tbl_TipoEntradaMap());
 			modelBuilder.Configurations.Add(new tbl_TipoVendaMap());
 			modelBuilder.Configurations.Add(new tbl_UsuarioMap());
+			modelBuilder.Configurations.Add(new tmp_ProdutosMap());
 			modelBuilder.Configurations.Add(new viw_OrcamentoMap());
 
 			modelBuilder.Conventions.Add(new FunctionsConvention<LojaContext>("dbo"));

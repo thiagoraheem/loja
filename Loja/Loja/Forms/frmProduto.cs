@@ -99,14 +99,23 @@ namespace Loja
 					ms.Read(photo_aray, 0, photo_aray.Length);
 				}
 
+				Double ultPreco = 0;
+				Double vlrCusto = 0;
+				Double vlrUnitario = 0;
+				Double qtdEstoque = 0;
+				Double vlrPercent = 0;
+				Double qtdEstMinimo = 0;
 
+				if (txtUltPreco.EditValue.ToString() != "") ultPreco = Convert.ToDouble(txtUltPreco.EditValue);
+				if (txtQtdEstMinimo.EditValue.ToString() != "") qtdEstMinimo = Convert.ToDouble(txtQtdEstMinimo.EditValue);
+				if (txtVlrCusto.EditValue.ToString() != "") vlrCusto = Convert.ToDouble(txtVlrCusto.EditValue);
+				if (txtVlrUnitario.EditValue.ToString() != "") vlrUnitario = Convert.ToDouble(txtVlrUnitario.EditValue);
+				if (txtQtdEstoque.EditValue.ToString() != "") qtdEstoque = Convert.ToDouble(txtQtdEstoque.EditValue);
+				if (txtVlrPercent.EditValue.ToString() != "") vlrPercent = Convert.ToDouble(txtVlrPercent.EditValue);
 
-				Cadastros.ManutProduto(produto.codigounico, txtCodProduto.Text, txtDesProduto.Text, txtDesLocal.Text, Convert.ToDouble(txtVlrUnitario.EditValue),
-					Convert.ToDouble(txtQtdEstoque.EditValue), Convert.ToDouble(txtVlrCusto.EditValue), Convert.ToDouble(txtVlrPercent.EditValue),
-					Convert.ToDouble(txtQtdEstMinimo.EditValue), txtFornecedor.Text, txtCodRefAntiga.Text, Convert.ToDouble(txtUltPreco.EditValue),
+				Cadastros.ManutProduto(produto.codigounico, txtCodProduto.Text, txtDesProduto.Text, txtDesLocal.Text, vlrUnitario,
+					qtdEstoque, vlrCusto, vlrPercent, qtdEstMinimo, txtFornecedor.Text, txtCodRefAntiga.Text, ultPreco,
 					photo_aray, txtNCM.Text);
-
-
 
 				Close();
 			}

@@ -30,10 +30,10 @@ namespace Loja.DAL.Models.Mapping
 				.HasMaxLength(10);
 
 			this.Property(t => t.CodRefAntiga)
-				.HasMaxLength(10);
+				.HasMaxLength(20);
 
 			this.Property(t => t.NCM)
-				.HasMaxLength(8);
+				.HasMaxLength(10);
 
 			// Table & Column Mappings
 			this.ToTable("tbl_Produtos");

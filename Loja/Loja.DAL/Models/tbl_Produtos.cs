@@ -7,8 +7,6 @@ namespace Loja.DAL.Models
     {
         public tbl_Produtos()
         {
-            this.tbl_Entrada = new List<tbl_Entrada>();
-            this.tbl_Orcamento = new List<tbl_Orcamento>();
             this.tbl_SaidaItens = new List<tbl_SaidaItens>();
         }
 
@@ -28,8 +26,6 @@ namespace Loja.DAL.Models
         public byte[] Imagem { get; set; }
         public int codigounico { get; set; }
         public string NCM { get; set; }
-        public virtual ICollection<tbl_Entrada> tbl_Entrada { get; set; }
-        public virtual ICollection<tbl_Orcamento> tbl_Orcamento { get; set; }
         public virtual ICollection<tbl_SaidaItens> tbl_SaidaItens { get; set; }
     }
 }
