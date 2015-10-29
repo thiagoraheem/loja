@@ -278,6 +278,7 @@
 			// btnEstornar
 			// 
 			this.btnEstornar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnEstornar.Enabled = false;
 			this.btnEstornar.Location = new System.Drawing.Point(424, 97);
 			this.btnEstornar.Name = "btnEstornar";
 			this.btnEstornar.Size = new System.Drawing.Size(75, 23);

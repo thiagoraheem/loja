@@ -9,6 +9,7 @@ using System.Data.Odbc;
 using System.Net.Sockets;
 using System.Net;
 using System.IO;
+using System.Threading;
 
 namespace Loja
 {
@@ -151,6 +152,11 @@ namespace Loja
 			DevExpress.XtraEditors.XtraMessageBox.Show(msg);
 		}
 
+		public static void MsgBox2(String msg)
+		{
+			//DevExpress.XtraEditors.XtraMessageBoxForm..XtraMessageBox.Show(msg);
+		}
+
 		public static void CopiarDoDbf()
 		{
 			OleDbConnection oConn = new OleDbConnection() { ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=c:\Loja;Extended Properties=dBASE III;" };
@@ -202,7 +208,7 @@ namespace Loja
 
 		}
 
-		public static string ComandoACBR()
+		public static string ComandoACBR(string comando)
 		{
 			var retorno = "";
 			
@@ -210,25 +216,53 @@ namespace Loja
 			{
 				using (var cliente = new TcpClient())
 				{
-
-					retorno += "Conectando ao serviço... \n" ;
+					String responseData = String.Empty;
+					Byte[] data = new Byte[512];
 
 					cliente.Connect("127.0.0.1", 3434);
 
-					retorno += "Conectado ao serviço! \n";
-
-					NetworkStream serverStream = cliente.GetStream();
-					byte[] outStream = System.Text.Encoding.ASCII.GetBytes("NFE.StatusServico");
-					serverStream.Write(outStream, 0, outStream.Length);
-					serverStream.Flush();
-
-					retorno += "Enviado o texto! \n";
-
-					byte[] inStream = new byte[10025];
-					serverStream.Read(inStream, 0, cliente.ReceiveBufferSize);
-					string returndata = System.Text.Encoding.ASCII.GetString(inStream);
+					if (String.IsNullOrEmpty(comando)) { comando = "NFE.StatusServico"; }
 					
-					retorno += "OK: " + returndata;
+					// concatena na string com o comando os códigos para o monitor entender
+					comando += "\r\n.\r\n";
+
+					// abre um stream para comunicação
+					NetworkStream stream = cliente.GetStream();
+
+					// lê o que possivelmente estiver sendo enviado pelo monitor
+					Int32 bytes = stream.Read(data, 0, data.Length);
+
+					// traduz os bytes em string
+					responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
+
+
+					// Traduz a string para bytes
+					data = System.Text.Encoding.ASCII.GetBytes(comando);
+
+					// envia o comando
+					stream.Write(data, 0, data.Length);
+					stream.Flush();
+
+					int i = -1;
+					i = stream.Read(data, 0, 1);
+					var letra = "";
+					responseData = String.Empty;
+
+					while (letra != ((char)3).ToString()) { 
+
+						i = stream.Read(data, 0, 1);
+						letra = System.Text.Encoding.ASCII.GetString(data, 0, i);
+						if (letra != ((char)3).ToString())
+						{
+							responseData += letra;
+						}
+
+					}
+
+					retorno = responseData;
+
+					stream.Close();
+					cliente.Close();
 
 					return retorno;
 				}

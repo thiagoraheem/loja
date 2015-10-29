@@ -86,9 +86,36 @@ namespace Loja.Modules
 					new List<NFe.Classes.NFe> { _nfe }
 				);
 
-				_saida.FlgStatusNFE = retornoEnvio.Retorno.cStat.ToString();
+				//Util.MsgBox("Arquivo gerado: " + retornoEnvio.EnvioStr);
 
-				TrataRetorno(retornoEnvio);
+				if (retornoEnvio.EnvioStr != null)
+				{
+					var valida = NFe.Wsdl.Monitor.ValidarNFE(retornoEnvio.EnvioStr);
+
+					if (valida.Status)
+					{
+						valida = NFe.Wsdl.Monitor.EnviaNFE(retornoEnvio.EnvioStr, _saida.CodVenda, 0, 0);
+						if (!valida.Status)
+						{
+							throw new Exception("Erro ao enviar NFC-e");
+						}
+						else
+						{
+							NFe.Wsdl.Monitor.ImprimirDANFE(retornoEnvio.EnvioStr);
+				
+						}
+					}
+					else
+					{
+						throw new Exception("Erro ao enviar NFC-e: \n" + valida.Resultado);
+					}
+
+
+					//NFe.Wsdl.Monitor.ImprimirDANFE(retornoEnvio.EnvioStr);
+				}
+				//_saida.FlgStatusNFE = retornoEnvio.Retorno.cStat.ToString();
+
+				//TrataRetorno(retornoEnvio);
 
 				return true;
 			}
@@ -216,21 +243,23 @@ namespace Loja.Modules
 			var dest = new dest(versao);
 			if (_cliente != null)
 			{
-				if (!String.IsNullOrEmpty(_cliente.NumCNPJ.Replace(".", "").Replace("-", "").Replace("/", "")))
+				if (!String.IsNullOrEmpty(_cliente.NumCNPJ))
 				{
-					dest.CNPJ = _cliente.NumCNPJ;
+					dest.CNPJ = _cliente.NumCNPJ.Replace(".", "").Replace("-", "").Replace("/", "");
 					dest.xNome = _cliente.NomCliente ?? "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL";
 					dest.enderDest = GetEnderecoDestinatario();
-					dest.email = _cliente.Email;
+					if (!String.IsNullOrEmpty(_cliente.Email))
+						dest.email = _cliente.Email;
 				}
 				else
 				{
-					if (!String.IsNullOrEmpty(_cliente.NumCPF.Replace(".", "").Replace("-", "")))
+					if (!String.IsNullOrEmpty(_cliente.NumCPF))
 					{
-						dest.CPF = _cliente.NumCPF;
+						dest.CPF = _cliente.NumCPF.Replace(".", "").Replace("-", "");
 						dest.xNome = _cliente.NomCliente ?? "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL";
 						dest.enderDest = GetEnderecoDestinatario();
-						dest.email = _cliente.Email;
+						if (!String.IsNullOrEmpty(_cliente.Email))
+							dest.email = _cliente.Email;
 					}
 				}
 			}
@@ -349,36 +378,32 @@ namespace Loja.Modules
 		protected virtual enderDest GetEnderecoDestinatario()
 		{
 
-			var enderDest = new enderDest
-			{
-				cMun = 1302603,
-				cPais = 1058,
-				xPais = "BRASIL"
-			};
+			enderDest enderDest;
 
-			if (!String.IsNullOrEmpty(_cliente.Endereco))
+			if(!String.IsNullOrEmpty(_cliente.Endereco) && !String.IsNullOrEmpty(_cliente.Numero) && !String.IsNullOrEmpty(_cliente.Bairro) &&
+			!String.IsNullOrEmpty(_cliente.CEP) && !String.IsNullOrEmpty(_cliente.Cidade) && !String.IsNullOrEmpty(_cliente.Estado)
+			)
 			{
+				enderDest = new enderDest();
+
+				enderDest.cMun = 1302603;
+				enderDest.cPais = 1058;
+				enderDest.xPais = "BRASIL";
+				enderDest.xMun = "MANAUS";
+
 				enderDest.xLgr = _cliente.Endereco;
-			}
-			if (!String.IsNullOrEmpty(_cliente.Numero))
-			{
+
 				enderDest.nro = _cliente.Numero;
-			}
-			if (!String.IsNullOrEmpty(_cliente.Bairro))
-			{
+
 				enderDest.xBairro = _cliente.Bairro;
-			}
-			if (!String.IsNullOrEmpty(_cliente.CEP))
-			{
+
 				enderDest.CEP = _cliente.CEP;
-			}
-			if (!String.IsNullOrEmpty(_cliente.Cidade))
-			{
-				enderDest.xMun = _cliente.Cidade;
-			}
-			if (!String.IsNullOrEmpty(_cliente.Estado))
-			{
+
 				enderDest.UF = _cliente.Estado;
+			}
+			else
+			{
+				enderDest = null;
 			}
 
 			return enderDest;
@@ -396,8 +421,8 @@ namespace Loja.Modules
 				uCom = "Unidad",
 				qCom = item.Quantidade,
 				vUnCom = item.VlrUnitario,
-				vProd = item.VlrFinal.Value,
-				vDesc = 0,
+				vProd = (item.VlrUnitario * item.Quantidade),
+				vDesc = item.VlrDesconto,
 				cEANTrib = "",
 				uTrib = "Unidad",
 				qTrib = item.Quantidade,

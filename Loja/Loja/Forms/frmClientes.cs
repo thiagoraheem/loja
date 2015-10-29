@@ -61,5 +61,20 @@ namespace Loja
 
 			CarregaClientes();
 		}
+
+		private void btnExcluir_Click(object sender, EventArgs e)
+		{
+
+			if (MessageBox.Show("Confirma excluir esse registro?", "Confirmar exclusão", MessageBoxButtons.YesNo) == DialogResult.No)
+				return;
+
+			int codigo = FU_PegaCodigoGrid();
+			Cadastros.ExcluiCliente(codigo);
+
+			CarregaClientes();
+
+			MessageBox.Show("Registro excluído com sucesso.");
+
+		}
 	}
 }

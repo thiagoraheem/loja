@@ -1,0 +1,64 @@
+<ConfiguracaoApp>
+	<CfgServico>
+		<Certificado>
+			<Serial>27B6F60D70039B4E</Serial>
+		</Certificado>
+		<TimeOut>100</TimeOut>
+		<cUF>13</cUF>
+		<tpAmb>2</tpAmb>
+		<tpEmis>1</tpEmis>
+		<ModeloDocumento>65</ModeloDocumento>
+		<VersaoRecepcaoEvento>3.10</VersaoRecepcaoEvento>
+		<VersaoNfeRecepcao>3.10</VersaoNfeRecepcao>
+		<VersaoNfeRetRecepcao>3.10</VersaoNfeRetRecepcao>
+		<VersaoNfeConsultaCadastro>3.10</VersaoNfeConsultaCadastro>
+		<VersaoNfeInutilizacao>3.10</VersaoNfeInutilizacao>
+		<VersaoNfeConsultaProtocolo>3.10</VersaoNfeConsultaProtocolo>
+		<VersaoNfeStatusServico>3.10</VersaoNfeStatusServico>
+		<VersaoNFeAutorizacao>3.10</VersaoNFeAutorizacao>
+		<VersaoNFeRetAutorizacao>3.10</VersaoNFeRetAutorizacao>
+		<VersaoNFeDistribuicaoDFe>3.10</VersaoNFeDistribuicaoDFe>
+		<VersaoNfeConsultaDest>3.10</VersaoNfeConsultaDest>
+		<VersaoNfeDownloadNF>3.10</VersaoNfeDownloadNF>
+		<DiretorioSchemas>C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja\Schemas</DiretorioSchemas>
+		<SalvarXmlServicos>true</SalvarXmlServicos>
+		<DiretorioSalvarXml>C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja\bin\Debug\XML</DiretorioSalvarXml>
+	</CfgServico>
+	<Emitente>
+		<CNPJ>05499801000167</CNPJ>
+		<xNome>Jorge Antônio Santana Giffoni</xNome>
+		<xFant>Auto Padrão Peças</xFant>
+		<enderEmit>
+			<xLgr>Rua Parintins</xLgr>
+			<nro>186</nro>
+			<xBairro>Cachoeirinha</xBairro>
+			<cMun>1302603</cMun>
+			<xMun>Manaus</xMun>
+			<UF>AM</UF>
+			<CEP>69065050</CEP>
+			<cPais>1058</cPais>
+			<xPais>BRASIL</xPais>
+			<fone>9236632211</fone>
+		</enderEmit>
+		<IE>041764811</IE>
+		<CRT>1</CRT>
+	</Emitente>
+	<EnderecoEmitente>
+		<xLgr>Rua Parintins</xLgr>
+		<nro>186</nro>
+		<xBairro>Cachoeirinha</xBairro>
+		<cMun>1302603</cMun>
+		<xMun>Manaus</xMun>
+		<UF>AM</UF>
+		<CEP>69065050</CEP>
+		<cPais>1058</cPais>
+		<xPais>BRASIL</xPais>
+		<fone>9236632211</fone>
+	</EnderecoEmitente>
+	<ConfiguracaoDanfeNfce>
+		<DetalheVendaNormal>UmaLinha</DetalheVendaNormal>
+		<DetalheVendaContigencia>UmaLinha</DetalheVendaContigencia>
+		<cIdToken>000001</cIdToken>
+		<CSC>6c15dd175e08d810</CSC>
+	</ConfiguracaoDanfeNfce>
+</ConfiguracaoApp>

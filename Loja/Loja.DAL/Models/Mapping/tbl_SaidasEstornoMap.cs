@@ -8,7 +8,7 @@ namespace Loja.DAL.Models.Mapping
 		public tbl_SaidasEstornoMap()
 		{
 			// Primary Key
-			this.HasKey(t => new { t.CodVenda, t.codigounico });
+			this.HasKey(t => new { t.CodVenda, t.codigounico, t.DatEstorno });
 
 			// Properties
 			this.Property(t => t.CodVenda)

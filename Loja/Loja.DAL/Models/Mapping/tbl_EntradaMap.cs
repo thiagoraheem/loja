@@ -34,9 +34,6 @@ namespace Loja.DAL.Models.Mapping
 			this.Property(t => t.DesFornecedor).HasColumnName("DesFornecedor");
 
 			// Relationships
-			this.HasRequired(t => t.tbl_Produtos)
-				.WithMany(t => t.tbl_Entrada)
-				.HasForeignKey(d => d.codigounico);
 			this.HasRequired(t => t.tbl_TipoEntrada)
 				.WithMany(t => t.tbl_Entrada)
 				.HasForeignKey(d => d.CodTipoEntrada);

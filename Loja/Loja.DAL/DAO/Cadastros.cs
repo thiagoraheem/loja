@@ -47,15 +47,23 @@ namespace Loja.DAL.DAO
 			}
 		}
 
-		public static void DescontoVenda(string codOrca, double desconto)
+		public static void DescontoVenda(string codOrca, double desconto, string tipo)
 		{
 			using (var banco = new LojaContext())
 			{
 
 				var dado = banco.tbl_Orcamento.Where(x => x.CodOrca == codOrca).ToList();
 
-				dado.ForEach(x => x.VlrUnitario = x.VlrCusto - (x.VlrCusto.Value * (desconto / 100)));
+				var vlrTotal = dado.Sum(x => x.VlrUnitario);
 
+				if (tipo == "P")
+				{
+					dado.ForEach(x => x.VlrDesconto = (decimal)(x.VlrCusto.Value * (desconto / 100)));
+				}
+				else
+				{
+					dado.ForEach(x => x.VlrDesconto = (decimal)((x.VlrCusto / vlrTotal) * desconto));
+				}
 				banco.SaveChanges();
 
 				//banco.spc_DescontoVenda(codOrca, desconto);
@@ -227,7 +235,7 @@ namespace Loja.DAL.DAO
 
 		}
 
-		public static void GravaCliente(tbl_Cliente dado)
+		public static int GravaCliente(tbl_Cliente dado)
 		{
 		
 			using (var banco = new LojaContext())
@@ -255,6 +263,8 @@ namespace Loja.DAL.DAO
 				}
 
 				banco.SaveChanges();
+
+				return registro.CodCliente;
 
 			}
 

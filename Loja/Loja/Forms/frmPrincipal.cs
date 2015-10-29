@@ -91,6 +91,9 @@ namespace Loja
 				var qtditens = Consultas.ObterQtdeItens().ToString();
 				lblQtdItens.Caption = "Qtd. Itens: " + qtditens;
 
+				gridProdutos.DataSource = produtos;
+				gridProdutos.RefreshDataSource();
+
 				wait.Close();
 			}
 			catch (Exception ex)
@@ -390,37 +393,37 @@ namespace Loja
 			else if (e.KeyCode.Equals(Keys.F1))
 			{
 				//gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.92));
-				Cadastros.DescontoVenda(cmbCodOrca.EditValue.ToString(), 8);
+				Cadastros.DescontoVenda(cmbCodOrca.EditValue.ToString(), 8, "P");
 				InitGridOrca();
 			}
 			else if (e.KeyCode.Equals(Keys.F7))
 			{
 				//gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.90));
-				Cadastros.DescontoVenda(cmbCodOrca.EditValue.ToString(), 10);
+				Cadastros.DescontoVenda(cmbCodOrca.EditValue.ToString(), 10, "P");
 				InitGridOrca();
 			}
 			else if (e.KeyCode.Equals(Keys.F3))
 			{
 				//gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.88));
-				Cadastros.DescontoVenda(cmbCodOrca.EditValue.ToString(), 12);
+				Cadastros.DescontoVenda(cmbCodOrca.EditValue.ToString(), 12, "P");
 				InitGridOrca();
 			}
 			else if (e.KeyCode.Equals(Keys.F4))
 			{
 				//gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.85));
-				Cadastros.DescontoVenda(cmbCodOrca.EditValue.ToString(), 15);
+				Cadastros.DescontoVenda(cmbCodOrca.EditValue.ToString(), 15, "P");
 				InitGridOrca();
 			}
 			else if (e.KeyCode.Equals(Keys.F5))
 			{
 				//gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.95));
-				Cadastros.DescontoVenda(cmbCodOrca.EditValue.ToString(), 5);
+				Cadastros.DescontoVenda(cmbCodOrca.EditValue.ToString(), 5, "P");
 				InitGridOrca();
 			}
 			else if (e.KeyCode.Equals(Keys.F6))
 			{
 				//gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.95));
-				Cadastros.DescontoVenda(cmbCodOrca.EditValue.ToString(), 0);
+				Cadastros.DescontoVenda(cmbCodOrca.EditValue.ToString(), 0, "P");
 				InitGridOrca();
 			}
 		}
@@ -567,7 +570,7 @@ namespace Loja
 
 		private void btnStatus_ItemClick(object sender, ItemClickEventArgs e)
 		{
-			Util.MsgBox(Util.ComandoACBR());
+			Util.MsgBox(Util.ComandoACBR("NFE.StatusServico"));
 		}
 
 	}

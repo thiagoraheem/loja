@@ -1,0 +1,1 @@
+DBCC CHECKIDENT('tbl_Produtos', RESEED, 0)
