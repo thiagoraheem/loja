@@ -55,6 +55,7 @@
     <Compile Include="DAO\LojaContext.cs" />
     <Compile Include="Models\LojaContext.cs" />
     <Compile Include="Models\Mapping\sysdiagramMap.cs" />
+    <Compile Include="Models\Mapping\tbl_CEPMap.cs" />
     <Compile Include="Models\Mapping\tbl_ClienteMap.cs" />
     <Compile Include="Models\Mapping\tbl_EntradaMap.cs" />
     <Compile Include="Models\Mapping\tbl_OrcamentoMap.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Models\Mapping\tmp_ProdutosMap.cs" />
     <Compile Include="Models\Mapping\viw_OrcamentoMap.cs" />
     <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\tbl_CEP.cs" />
     <Compile Include="Models\tbl_Cliente.cs" />
     <Compile Include="Models\tbl_Entrada.cs" />
     <Compile Include="Models\tbl_Orcamento.cs" />

@@ -15,6 +15,7 @@ namespace Loja.DAL.Models
         public Nullable<bool> flgAtivo { get; set; }
         public Nullable<bool> flgAVista { get; set; }
         public Nullable<decimal> QtdDias { get; set; }
+        public string CodigoSefaz { get; set; }
         public virtual ICollection<tbl_Saida> tbl_Saida { get; set; }
     }
 }

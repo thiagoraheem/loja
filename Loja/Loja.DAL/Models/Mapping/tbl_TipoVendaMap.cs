@@ -14,6 +14,10 @@ namespace Loja.DAL.Models.Mapping
 			this.Property(t => t.DesTipoVenda)
 				.HasMaxLength(50);
 
+			this.Property(t => t.CodigoSefaz)
+				.IsFixedLength()
+                .HasMaxLength(2);
+
 			// Table & Column Mappings
 			this.ToTable("tbl_TipoVenda");
 			this.Property(t => t.CodTipoVenda).HasColumnName("CodTipoVenda");
@@ -21,6 +25,7 @@ namespace Loja.DAL.Models.Mapping
 			this.Property(t => t.flgAtivo).HasColumnName("flgAtivo");
 			this.Property(t => t.flgAVista).HasColumnName("flgAVista");
 			this.Property(t => t.QtdDias).HasColumnName("QtdDias");
+			this.Property(t => t.CodigoSefaz).HasColumnName("CodigoSefaz");
 		}
 	}
 }
