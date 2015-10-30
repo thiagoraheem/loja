@@ -307,6 +307,7 @@ namespace Loja.Modules
 				prod = GetProduto(i + 1, item),
 				imposto = new imposto
 				{
+					vTotTrib = 0,
 					ICMS = new ICMS
 					{
 						TipoICMS =

@@ -145,8 +145,9 @@ namespace Loja.DAL.DAO
 			}
 
 		}
-		
-		public static void ExcluiTipoVenda(int codTipoVenda) {
+
+		public static void ExcluiTipoVenda(int codTipoVenda)
+		{
 
 			using (var banco = new LojaContext())
 			{
@@ -156,12 +157,13 @@ namespace Loja.DAL.DAO
 				banco.SaveChanges();
 
 			}
-		
+
 		}
 
-		public static void GravaTipoVenda (tbl_TipoVenda dado){
-		
-			using(var banco = new LojaContext())
+		public static void GravaTipoVenda(tbl_TipoVenda dado)
+		{
+
+			using (var banco = new LojaContext())
 			{
 				var registro = banco.tbl_TipoVenda.FirstOrDefault(x => x.CodTipoVenda == dado.CodTipoVenda);
 
@@ -180,7 +182,7 @@ namespace Loja.DAL.DAO
 				banco.SaveChanges();
 
 			}
-		
+
 		}
 
 		public static void ExcluiTipoEntrada(int codTipoEntrada)
@@ -208,7 +210,8 @@ namespace Loja.DAL.DAO
 				{
 					banco.tbl_TipoEntrada.Add(dado);
 				}
-				else { 
+				else
+				{
 					registro.DesTipoEntrada = dado.DesTipoEntrada;
 					registro.flgMovimentaEstoque = dado.flgMovimentaEstoque;
 				}
@@ -227,9 +230,11 @@ namespace Loja.DAL.DAO
 			using (var banco = new LojaContext())
 			{
 				var dados = banco.tbl_Cliente.FirstOrDefault(x => x.CodCliente == codCliente);
-
-				banco.tbl_Cliente.Remove(dados);
-				banco.SaveChanges();
+				if (dados != null)
+				{
+					banco.tbl_Cliente.Remove(dados);
+					banco.SaveChanges();
+				}
 
 			}
 
@@ -237,10 +242,12 @@ namespace Loja.DAL.DAO
 
 		public static int GravaCliente(tbl_Cliente dado)
 		{
-		
+
 			using (var banco = new LojaContext())
 			{
 				var registro = banco.tbl_Cliente.FirstOrDefault(x => x.CodCliente == dado.CodCliente);
+
+				var codCliente = -1;
 
 				if (registro == null)
 				{
@@ -264,7 +271,15 @@ namespace Loja.DAL.DAO
 
 				banco.SaveChanges();
 
-				return registro.CodCliente;
+				if (registro == null)
+				{
+					codCliente = dado.CodCliente;
+				}
+				else
+				{
+					codCliente = registro.CodCliente;
+				}
+				return codCliente;
 
 			}
 

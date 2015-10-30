@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-			DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+			DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
 			this.grdItens = new DevExpress.XtraGrid.Views.Grid.GridView();
 			this.colCodProduto = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colCodigoProduto = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -124,9 +124,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.grdDados.DataMember = "tbl_Saida";
-			gridLevelNode1.RelationName = "FK_tbl_SaidaItens_tbl_Saida";
+			gridLevelNode2.RelationName = "FK_tbl_SaidaItens_tbl_Saida";
 			this.grdDados.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
 			this.grdDados.Location = new System.Drawing.Point(12, 12);
 			this.grdDados.MainView = this.gridDados;
 			this.grdDados.Name = "grdDados";
