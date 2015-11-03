@@ -101,7 +101,7 @@ namespace Loja.Modules
 						}
 						else
 						{
-							NFe.Wsdl.Monitor.ImprimirDANFE(retornoEnvio.EnvioStr);
+							NFe.Wsdl.Monitor.ImprimirDANFE(retornoEnvio.EnvioStr, Properties.Settings.Default.ImpressoraNFE);
 				
 						}
 					}
@@ -307,7 +307,7 @@ namespace Loja.Modules
 				prod = GetProduto(i + 1, item),
 				imposto = new imposto
 				{
-					vTotTrib = 0,
+					//vTotTrib = 0,
 					ICMS = new ICMS
 					{
 						TipoICMS =
@@ -418,7 +418,7 @@ namespace Loja.Modules
 				cEAN = "",
 				xProd = item.tbl_Produtos.DesProduto,
 				NCM = item.tbl_Produtos.NCM ?? "99999999",
-				CFOP = 5101,
+				CFOP = 5405,
 				uCom = "Unidad",
 				qCom = item.Quantidade,
 				vUnCom = item.VlrUnitario,

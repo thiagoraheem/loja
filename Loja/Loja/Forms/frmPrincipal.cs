@@ -83,8 +83,12 @@ namespace Loja
 				DevExpress.Utils.WaitDialogForm wait = new DevExpress.Utils.WaitDialogForm("Carregando os dados");
 				wait.Show();
 
-				produtos = (this._ModoEdicao) ? Consultas.ObterProdutos() : produtos = Consultas.ObterProdutosAtivos();
-				
+				if (this._ModoEdicao) {
+					produtos = Consultas.ObterProdutos();
+				}
+				else{
+					produtos = Consultas.ObterProdutosAtivos();
+				}
 
 				lblQtdProduto.Caption = "Qtd. Produtos: " + Consultas.ObterQtdeProdutos().ToString();
 
@@ -551,6 +555,16 @@ namespace Loja
 		{
 			this._ModoEdicao = btnModoEdicao.Down;
 			InitGrid();
+
+			if (_ModoEdicao)
+			{
+				UserLookAndFeel.Default.SetSkinStyle("Sharp");
+			}
+			else
+			{
+				UserLookAndFeel.Default.SetSkinStyle("Money Twins");
+			}
+
 		}
 
 		private void btnFazerBackup_ItemClick(object sender, ItemClickEventArgs e)

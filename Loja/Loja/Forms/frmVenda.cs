@@ -97,8 +97,12 @@ namespace Loja
 
 			try
 			{
-				
-				
+
+				boxEnviando.Show();
+
+				this.Refresh();
+				this.ForceRefresh();
+
 				if (cmbCliente.EditValue != null)
 				{
 					codCliente = (int)cmbCliente.EditValue;
@@ -112,6 +116,9 @@ namespace Loja
 						var cCliente = Cadastros.GravaCliente(new tbl_Cliente(){NumCPF = txtNumCPF.Text, NomCliente = nomCliente});
 						codCliente = cCliente;
 						bApagar = true;
+
+						this.Refresh();
+						this.ForceRefresh();
 					}
 				}
 
@@ -119,7 +126,13 @@ namespace Loja
 
 				int codVenda = Cadastros.FinalizaVenda(CodOrcamento, tipoVenda, codCliente);
 
+				this.Refresh();
+				this.ForceRefresh();
+
 				saida = Consultas.ObterVenda(codVenda);
+
+				this.Refresh();
+				this.ForceRefresh();
 
 				if (chkNFE.Checked == true)
 				{
@@ -136,6 +149,10 @@ namespace Loja
 						return;
 						
 					}
+
+					this.Refresh();
+					this.ForceRefresh();
+
 				}
 
 				if (bApagar && codCliente != null)
@@ -169,6 +186,7 @@ namespace Loja
 				}
 				this.DialogResult = System.Windows.Forms.DialogResult.No;
 				Util.MsgBox(ex.Message);
+				boxEnviando.Hide();
 			}
 
 		}
@@ -321,9 +339,6 @@ namespace Loja
 		}
 
 		#endregion
-
-
-
 
 	}
 }

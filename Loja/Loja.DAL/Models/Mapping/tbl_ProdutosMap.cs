@@ -53,6 +53,7 @@ namespace Loja.DAL.Models.Mapping
 			this.Property(t => t.Imagem).HasColumnName("Imagem");
 			this.Property(t => t.codigounico).HasColumnName("codigounico");
 			this.Property(t => t.NCM).HasColumnName("NCM");
+			this.Property(t => t.VlrICMSST).HasColumnName("VlrICMSST");
 		}
 	}
 }

@@ -59,5 +59,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Dsn=dBASE Files</Value>
     </Setting>
+    <Setting Name="ImpressoraNFE" Type="System.String" Scope="User">
+      <Value Profile="(Default)">EPSON TM-T20 Receipt</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

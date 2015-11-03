@@ -41,6 +41,7 @@ namespace Loja {
             base.Tables.CollectionChanged += schemaChangedHandler;
             base.Relations.CollectionChanged += schemaChangedHandler;
             this.EndInit();
+            this.InitExpressions();
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -52,6 +53,9 @@ namespace Loja {
                 global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler1 = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
                 this.Tables.CollectionChanged += schemaChangedHandler1;
                 this.Relations.CollectionChanged += schemaChangedHandler1;
+                if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.ExcludeSchema)) {
+                    this.InitExpressions();
+                }
                 return;
             }
             string strSchema = ((string)(info.GetValue("XmlSchema", typeof(string))));
@@ -75,6 +79,7 @@ namespace Loja {
             }
             else {
                 this.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
+                this.InitExpressions();
             }
             this.GetSerializationData(info, context);
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -146,6 +151,7 @@ namespace Loja {
         public override global::System.Data.DataSet Clone() {
             relVendas cln = ((relVendas)(base.Clone()));
             cln.InitVars();
+            cln.InitExpressions();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
         }
@@ -232,7 +238,7 @@ namespace Loja {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tabletbl_Saida = new tbl_SaidaDataTable();
             base.Tables.Add(this.tabletbl_Saida);
-            this.tabletbl_SaidaItens = new tbl_SaidaItensDataTable();
+            this.tabletbl_SaidaItens = new tbl_SaidaItensDataTable(false);
             base.Tables.Add(this.tabletbl_SaidaItens);
             this.relationFK_tbl_SaidaItens_tbl_Saida = new global::System.Data.DataRelation("FK_tbl_SaidaItens_tbl_Saida", new global::System.Data.DataColumn[] {
                         this.tabletbl_Saida.CodVendaColumn}, new global::System.Data.DataColumn[] {
@@ -305,6 +311,12 @@ namespace Loja {
             }
             xs.Add(dsSchema);
             return type;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitExpressions() {
+            this.tbl_SaidaItens.VlrBrutoColumn.Expression = "VlrUnitario * Quantidade";
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -717,12 +729,25 @@ namespace Loja {
             
             private global::System.Data.DataColumn columnVlrFinal;
             
+            private global::System.Data.DataColumn columnVlrBruto;
+            
+            private global::System.Data.DataColumn columnVlrDesconto;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tbl_SaidaItensDataTable() {
+            public tbl_SaidaItensDataTable() : 
+                    this(false) {
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public tbl_SaidaItensDataTable(bool initExpressions) {
                 this.TableName = "tbl_SaidaItens";
                 this.BeginInit();
                 this.InitClass();
+                if ((initExpressions == true)) {
+                    this.InitExpressions();
+                }
                 this.EndInit();
             }
             
@@ -832,6 +857,22 @@ namespace Loja {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn VlrBrutoColumn {
+                get {
+                    return this.columnVlrBruto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn VlrDescontoColumn {
+                get {
+                    return this.columnVlrDesconto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -867,7 +908,7 @@ namespace Loja {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tbl_SaidaItensRow Addtbl_SaidaItensRow(tbl_SaidaRow parenttbl_SaidaRowByFK_tbl_SaidaItens_tbl_Saida, int codigounico, System.DateTime DatSaida, string CodOrcamento, string CodProduto, string DesProduto, decimal VlrUnitario, int Quantidade, decimal VlrCusto, decimal VlrFinal) {
+            public tbl_SaidaItensRow Addtbl_SaidaItensRow(tbl_SaidaRow parenttbl_SaidaRowByFK_tbl_SaidaItens_tbl_Saida, int codigounico, System.DateTime DatSaida, string CodOrcamento, string CodProduto, string DesProduto, decimal VlrUnitario, int Quantidade, decimal VlrCusto, decimal VlrFinal, decimal VlrBruto, decimal VlrDesconto) {
                 tbl_SaidaItensRow rowtbl_SaidaItensRow = ((tbl_SaidaItensRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -879,7 +920,34 @@ namespace Loja {
                         VlrUnitario,
                         Quantidade,
                         VlrCusto,
-                        VlrFinal};
+                        VlrFinal,
+                        VlrBruto,
+                        VlrDesconto};
+                if ((parenttbl_SaidaRowByFK_tbl_SaidaItens_tbl_Saida != null)) {
+                    columnValuesArray[0] = parenttbl_SaidaRowByFK_tbl_SaidaItens_tbl_Saida[0];
+                }
+                rowtbl_SaidaItensRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowtbl_SaidaItensRow);
+                return rowtbl_SaidaItensRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public tbl_SaidaItensRow Addtbl_SaidaItensRow(tbl_SaidaRow parenttbl_SaidaRowByFK_tbl_SaidaItens_tbl_Saida, int codigounico, System.DateTime DatSaida, string CodOrcamento, string CodProduto, string DesProduto, decimal VlrUnitario, int Quantidade, decimal VlrCusto, decimal VlrFinal, decimal VlrDesconto) {
+                tbl_SaidaItensRow rowtbl_SaidaItensRow = ((tbl_SaidaItensRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        codigounico,
+                        DatSaida,
+                        CodOrcamento,
+                        CodProduto,
+                        DesProduto,
+                        VlrUnitario,
+                        Quantidade,
+                        VlrCusto,
+                        VlrFinal,
+                        null,
+                        VlrDesconto};
                 if ((parenttbl_SaidaRowByFK_tbl_SaidaItens_tbl_Saida != null)) {
                     columnValuesArray[0] = parenttbl_SaidaRowByFK_tbl_SaidaItens_tbl_Saida[0];
                 }
@@ -923,6 +991,8 @@ namespace Loja {
                 this.columnQuantidade = base.Columns["Quantidade"];
                 this.columnVlrCusto = base.Columns["VlrCusto"];
                 this.columnVlrFinal = base.Columns["VlrFinal"];
+                this.columnVlrBruto = base.Columns["VlrBruto"];
+                this.columnVlrDesconto = base.Columns["VlrDesconto"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -948,6 +1018,10 @@ namespace Loja {
                 base.Columns.Add(this.columnVlrCusto);
                 this.columnVlrFinal = new global::System.Data.DataColumn("VlrFinal", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnVlrFinal);
+                this.columnVlrBruto = new global::System.Data.DataColumn("VlrBruto", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVlrBruto);
+                this.columnVlrDesconto = new global::System.Data.DataColumn("VlrDesconto", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVlrDesconto);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnCodVenda,
                                 this.columncodigounico}, true));
@@ -964,6 +1038,7 @@ namespace Loja {
                 this.columnQuantidade.AllowDBNull = false;
                 this.columnVlrCusto.AllowDBNull = false;
                 this.columnVlrFinal.ReadOnly = true;
+                this.columnVlrBruto.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -982,6 +1057,12 @@ namespace Loja {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(tbl_SaidaItensRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitExpressions() {
+                this.VlrBrutoColumn.Expression = "VlrUnitario * Quantidade";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1482,6 +1563,38 @@ namespace Loja {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal VlrBruto {
+                get {
+                    try {
+                        return ((decimal)(this[this.tabletbl_SaidaItens.VlrBrutoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'VlrBruto\' na tabela \'tbl_SaidaItens\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletbl_SaidaItens.VlrBrutoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal VlrDesconto {
+                get {
+                    try {
+                        return ((decimal)(this[this.tabletbl_SaidaItens.VlrDescontoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'VlrDesconto\' na tabela \'tbl_SaidaItens\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletbl_SaidaItens.VlrDescontoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public tbl_SaidaRow tbl_SaidaRow {
                 get {
                     return ((tbl_SaidaRow)(this.GetParentRow(this.Table.ParentRelations["FK_tbl_SaidaItens_tbl_Saida"])));
@@ -1501,6 +1614,30 @@ namespace Loja {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetVlrFinalNull() {
                 this[this.tabletbl_SaidaItens.VlrFinalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsVlrBrutoNull() {
+                return this.IsNull(this.tabletbl_SaidaItens.VlrBrutoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetVlrBrutoNull() {
+                this[this.tabletbl_SaidaItens.VlrBrutoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsVlrDescontoNull() {
+                return this.IsNull(this.tabletbl_SaidaItens.VlrDescontoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetVlrDescontoNull() {
+                this[this.tabletbl_SaidaItens.VlrDescontoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1756,12 +1893,20 @@ SELECT CodVenda, Data, ValorTotal, QtdItens, FlgStatusNFE, ChaveSefaz, FlgStatus
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT CodVenda, Data, ValorTotal, QtdItens, FlgStatusNFE, ChaveSefaz, FlgStatusN" +
                 "ota, CodTipoVenda, CodCliente FROM dbo.tbl_Saida";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT        CodVenda, Data, ValorTotal, QtdItens, FlgStatusNFE, ChaveSefaz, Flg" +
+                "StatusNota, CodTipoVenda, CodCliente\r\nFROM            tbl_Saida\r\nWHERE        (D" +
+                "ata >= @DatIni) AND (Data <= @DatFim)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DatIni", global::System.Data.SqlDbType.SmallDateTime, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Data", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DatFim", global::System.Data.SqlDbType.SmallDateTime, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Data", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1783,6 +1928,54 @@ SELECT CodVenda, Data, ValorTotal, QtdItens, FlgStatusNFE, ChaveSefaz, FlgStatus
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual relVendas.tbl_SaidaDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            relVendas.tbl_SaidaDataTable dataTable = new relVendas.tbl_SaidaDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByPeriodo(relVendas.tbl_SaidaDataTable dataTable, global::System.Nullable<global::System.DateTime> DatIni, global::System.Nullable<global::System.DateTime> DatFim) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((DatIni.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(DatIni.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((DatFim.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(DatFim.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual relVendas.tbl_SaidaDataTable GetDataByPeriodo(global::System.Nullable<global::System.DateTime> DatIni, global::System.Nullable<global::System.DateTime> DatFim) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((DatIni.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(DatIni.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((DatFim.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(DatFim.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
             relVendas.tbl_SaidaDataTable dataTable = new relVendas.tbl_SaidaDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -2254,10 +2447,11 @@ SELECT CodVenda, Data, ValorTotal, QtdItens, FlgStatusNFE, ChaveSefaz, FlgStatus
             tableMapping.ColumnMappings.Add("Quantidade", "Quantidade");
             tableMapping.ColumnMappings.Add("VlrCusto", "VlrCusto");
             tableMapping.ColumnMappings.Add("VlrFinal", "VlrFinal");
+            tableMapping.ColumnMappings.Add("VlrDesconto", "VlrDesconto");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[tbl_SaidaItens] WHERE (([CodVenda] = @Original_CodVenda) AND ([codigounico] = @Original_codigounico) AND ([DatSaida] = @Original_DatSaida) AND ([CodOrcamento] = @Original_CodOrcamento) AND ([CodProduto] = @Original_CodProduto) AND ([DesProduto] = @Original_DesProduto) AND ([VlrUnitario] = @Original_VlrUnitario) AND ([Quantidade] = @Original_Quantidade) AND ([VlrCusto] = @Original_VlrCusto) AND ((@IsNull_VlrFinal = 1 AND [VlrFinal] IS NULL) OR ([VlrFinal] = @Original_VlrFinal)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [tbl_SaidaItens] WHERE (([CodVenda] = @Original_CodVenda) AND ([codigounico] = @Original_codigounico) AND ([DatSaida] = @Original_DatSaida) AND ([CodOrcamento] = @Original_CodOrcamento) AND ([CodProduto] = @Original_CodProduto) AND ([DesProduto] = @Original_DesProduto) AND ([VlrUnitario] = @Original_VlrUnitario) AND ([Quantidade] = @Original_Quantidade) AND ([VlrCusto] = @Original_VlrCusto) AND ((@IsNull_VlrFinal = 1 AND [VlrFinal] IS NULL) OR ([VlrFinal] = @Original_VlrFinal)) AND ((@IsNull_VlrDesconto = 1 AND [VlrDesconto] IS NULL) OR ([VlrDesconto] = @Original_VlrDesconto)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CodVenda", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CodVenda", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_codigounico", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codigounico", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -2270,10 +2464,12 @@ SELECT CodVenda, Data, ValorTotal, QtdItens, FlgStatusNFE, ChaveSefaz, FlgStatus
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VlrCusto", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VlrCusto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_VlrFinal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VlrFinal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VlrFinal", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VlrFinal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_VlrDesconto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VlrDesconto", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VlrDesconto", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VlrDesconto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[tbl_SaidaItens] ([CodVenda], [codigounico], [DatSaida], [CodOrcamento], [CodProduto], [DesProduto], [VlrUnitario], [Quantidade], [VlrCusto]) VALUES (@CodVenda, @codigounico, @DatSaida, @CodOrcamento, @CodProduto, @DesProduto, @VlrUnitario, @Quantidade, @VlrCusto);
-SELECT CodVenda, codigounico, DatSaida, CodOrcamento, CodProduto, DesProduto, VlrUnitario, Quantidade, VlrCusto, VlrFinal FROM tbl_SaidaItens WHERE (CodVenda = @CodVenda) AND (codigounico = @codigounico)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [tbl_SaidaItens] ([CodVenda], [codigounico], [DatSaida], [CodOrcamento], [CodProduto], [DesProduto], [VlrUnitario], [Quantidade], [VlrCusto], [VlrDesconto]) VALUES (@CodVenda, @codigounico, @DatSaida, @CodOrcamento, @CodProduto, @DesProduto, @VlrUnitario, @Quantidade, @VlrCusto, @VlrDesconto);
+SELECT CodVenda, codigounico, DatSaida, CodOrcamento, CodProduto, DesProduto, VlrUnitario, Quantidade, VlrCusto, VlrFinal, VlrDesconto FROM tbl_SaidaItens WHERE (CodVenda = @CodVenda) AND (codigounico = @codigounico)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodVenda", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CodVenda", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@codigounico", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codigounico", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2284,10 +2480,11 @@ SELECT CodVenda, codigounico, DatSaida, CodOrcamento, CodProduto, DesProduto, Vl
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VlrUnitario", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VlrUnitario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantidade", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantidade", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VlrCusto", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VlrCusto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VlrDesconto", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VlrDesconto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[tbl_SaidaItens] SET [CodVenda] = @CodVenda, [codigounico] = @codigounico, [DatSaida] = @DatSaida, [CodOrcamento] = @CodOrcamento, [CodProduto] = @CodProduto, [DesProduto] = @DesProduto, [VlrUnitario] = @VlrUnitario, [Quantidade] = @Quantidade, [VlrCusto] = @VlrCusto WHERE (([CodVenda] = @Original_CodVenda) AND ([codigounico] = @Original_codigounico) AND ([DatSaida] = @Original_DatSaida) AND ([CodOrcamento] = @Original_CodOrcamento) AND ([CodProduto] = @Original_CodProduto) AND ([DesProduto] = @Original_DesProduto) AND ([VlrUnitario] = @Original_VlrUnitario) AND ([Quantidade] = @Original_Quantidade) AND ([VlrCusto] = @Original_VlrCusto) AND ((@IsNull_VlrFinal = 1 AND [VlrFinal] IS NULL) OR ([VlrFinal] = @Original_VlrFinal)));
-SELECT CodVenda, codigounico, DatSaida, CodOrcamento, CodProduto, DesProduto, VlrUnitario, Quantidade, VlrCusto, VlrFinal FROM tbl_SaidaItens WHERE (CodVenda = @CodVenda) AND (codigounico = @codigounico)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [tbl_SaidaItens] SET [CodVenda] = @CodVenda, [codigounico] = @codigounico, [DatSaida] = @DatSaida, [CodOrcamento] = @CodOrcamento, [CodProduto] = @CodProduto, [DesProduto] = @DesProduto, [VlrUnitario] = @VlrUnitario, [Quantidade] = @Quantidade, [VlrCusto] = @VlrCusto, [VlrDesconto] = @VlrDesconto WHERE (([CodVenda] = @Original_CodVenda) AND ([codigounico] = @Original_codigounico) AND ([DatSaida] = @Original_DatSaida) AND ([CodOrcamento] = @Original_CodOrcamento) AND ([CodProduto] = @Original_CodProduto) AND ([DesProduto] = @Original_DesProduto) AND ([VlrUnitario] = @Original_VlrUnitario) AND ([Quantidade] = @Original_Quantidade) AND ([VlrCusto] = @Original_VlrCusto) AND ((@IsNull_VlrFinal = 1 AND [VlrFinal] IS NULL) OR ([VlrFinal] = @Original_VlrFinal)) AND ((@IsNull_VlrDesconto = 1 AND [VlrDesconto] IS NULL) OR ([VlrDesconto] = @Original_VlrDesconto)));
+SELECT CodVenda, codigounico, DatSaida, CodOrcamento, CodProduto, DesProduto, VlrUnitario, Quantidade, VlrCusto, VlrFinal, VlrDesconto FROM tbl_SaidaItens WHERE (CodVenda = @CodVenda) AND (codigounico = @codigounico)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodVenda", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CodVenda", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@codigounico", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codigounico", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2298,6 +2495,7 @@ SELECT CodVenda, codigounico, DatSaida, CodOrcamento, CodProduto, DesProduto, Vl
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VlrUnitario", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VlrUnitario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantidade", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantidade", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VlrCusto", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VlrCusto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VlrDesconto", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VlrDesconto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CodVenda", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CodVenda", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_codigounico", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codigounico", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DatSaida", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DatSaida", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -2309,6 +2507,8 @@ SELECT CodVenda, codigounico, DatSaida, CodOrcamento, CodProduto, DesProduto, Vl
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VlrCusto", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VlrCusto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_VlrFinal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VlrFinal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VlrFinal", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VlrFinal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_VlrDesconto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VlrDesconto", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VlrDesconto", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VlrDesconto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2324,8 +2524,9 @@ SELECT CodVenda, codigounico, DatSaida, CodOrcamento, CodProduto, DesProduto, Vl
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT CodVenda, codigounico, DatSaida, CodOrcamento, CodProduto, DesProduto, Vlr" +
-                "Unitario, Quantidade, VlrCusto, VlrFinal FROM dbo.tbl_SaidaItens";
+            this._commandCollection[0].CommandText = "SELECT        CodVenda, codigounico, DatSaida, CodOrcamento, CodProduto, DesProdu" +
+                "to, VlrUnitario, Quantidade, VlrCusto, VlrFinal, VlrDesconto\r\nFROM            tb" +
+                "l_SaidaItens";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2348,7 +2549,7 @@ SELECT CodVenda, codigounico, DatSaida, CodOrcamento, CodProduto, DesProduto, Vl
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual relVendas.tbl_SaidaItensDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            relVendas.tbl_SaidaItensDataTable dataTable = new relVendas.tbl_SaidaItensDataTable();
+            relVendas.tbl_SaidaItensDataTable dataTable = new relVendas.tbl_SaidaItensDataTable(true);
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -2386,7 +2587,7 @@ SELECT CodVenda, codigounico, DatSaida, CodOrcamento, CodProduto, DesProduto, Vl
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_CodVenda, int Original_codigounico, System.DateTime Original_DatSaida, string Original_CodOrcamento, string Original_CodProduto, string Original_DesProduto, decimal Original_VlrUnitario, int Original_Quantidade, decimal Original_VlrCusto, global::System.Nullable<decimal> Original_VlrFinal) {
+        public virtual int Delete(int Original_CodVenda, int Original_codigounico, System.DateTime Original_DatSaida, string Original_CodOrcamento, string Original_CodProduto, string Original_DesProduto, decimal Original_VlrUnitario, int Original_Quantidade, decimal Original_VlrCusto, global::System.Nullable<decimal> Original_VlrFinal, global::System.Nullable<decimal> Original_VlrDesconto) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_CodVenda));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_codigounico));
             this.Adapter.DeleteCommand.Parameters[2].Value = ((System.DateTime)(Original_DatSaida));
@@ -2419,6 +2620,14 @@ SELECT CodVenda, codigounico, DatSaida, CodOrcamento, CodProduto, DesProduto, Vl
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
+            if ((Original_VlrDesconto.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((decimal)(Original_VlrDesconto.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2439,7 +2648,7 @@ SELECT CodVenda, codigounico, DatSaida, CodOrcamento, CodProduto, DesProduto, Vl
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int CodVenda, int codigounico, System.DateTime DatSaida, string CodOrcamento, string CodProduto, string DesProduto, decimal VlrUnitario, int Quantidade, decimal VlrCusto) {
+        public virtual int Insert(int CodVenda, int codigounico, System.DateTime DatSaida, string CodOrcamento, string CodProduto, string DesProduto, decimal VlrUnitario, int Quantidade, decimal VlrCusto, global::System.Nullable<decimal> VlrDesconto) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(CodVenda));
             this.Adapter.InsertCommand.Parameters[1].Value = ((int)(codigounico));
             this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(DatSaida));
@@ -2464,6 +2673,12 @@ SELECT CodVenda, codigounico, DatSaida, CodOrcamento, CodProduto, DesProduto, Vl
             this.Adapter.InsertCommand.Parameters[6].Value = ((decimal)(VlrUnitario));
             this.Adapter.InsertCommand.Parameters[7].Value = ((int)(Quantidade));
             this.Adapter.InsertCommand.Parameters[8].Value = ((decimal)(VlrCusto));
+            if ((VlrDesconto.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((decimal)(VlrDesconto.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2494,6 +2709,7 @@ SELECT CodVenda, codigounico, DatSaida, CodOrcamento, CodProduto, DesProduto, Vl
                     decimal VlrUnitario, 
                     int Quantidade, 
                     decimal VlrCusto, 
+                    global::System.Nullable<decimal> VlrDesconto, 
                     int Original_CodVenda, 
                     int Original_codigounico, 
                     System.DateTime Original_DatSaida, 
@@ -2503,7 +2719,8 @@ SELECT CodVenda, codigounico, DatSaida, CodOrcamento, CodProduto, DesProduto, Vl
                     decimal Original_VlrUnitario, 
                     int Original_Quantidade, 
                     decimal Original_VlrCusto, 
-                    global::System.Nullable<decimal> Original_VlrFinal) {
+                    global::System.Nullable<decimal> Original_VlrFinal, 
+                    global::System.Nullable<decimal> Original_VlrDesconto) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(CodVenda));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(codigounico));
             this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(DatSaida));
@@ -2528,37 +2745,51 @@ SELECT CodVenda, codigounico, DatSaida, CodOrcamento, CodProduto, DesProduto, Vl
             this.Adapter.UpdateCommand.Parameters[6].Value = ((decimal)(VlrUnitario));
             this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Quantidade));
             this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(VlrCusto));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_CodVenda));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_codigounico));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((System.DateTime)(Original_DatSaida));
+            if ((VlrDesconto.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((decimal)(VlrDesconto.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_CodVenda));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_codigounico));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((System.DateTime)(Original_DatSaida));
             if ((Original_CodOrcamento == null)) {
                 throw new global::System.ArgumentNullException("Original_CodOrcamento");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_CodOrcamento));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_CodOrcamento));
             }
             if ((Original_CodProduto == null)) {
                 throw new global::System.ArgumentNullException("Original_CodProduto");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_CodProduto));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_CodProduto));
             }
             if ((Original_DesProduto == null)) {
                 throw new global::System.ArgumentNullException("Original_DesProduto");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_DesProduto));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_DesProduto));
             }
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((decimal)(Original_VlrUnitario));
-            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_Quantidade));
-            this.Adapter.UpdateCommand.Parameters[17].Value = ((decimal)(Original_VlrCusto));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((decimal)(Original_VlrUnitario));
+            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_Quantidade));
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((decimal)(Original_VlrCusto));
             if ((Original_VlrFinal.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((decimal)(Original_VlrFinal.Value));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((decimal)(Original_VlrFinal.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            if ((Original_VlrDesconto.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((decimal)(Original_VlrDesconto.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2588,6 +2819,7 @@ SELECT CodVenda, codigounico, DatSaida, CodOrcamento, CodProduto, DesProduto, Vl
                     decimal VlrUnitario, 
                     int Quantidade, 
                     decimal VlrCusto, 
+                    global::System.Nullable<decimal> VlrDesconto, 
                     int Original_CodVenda, 
                     int Original_codigounico, 
                     System.DateTime Original_DatSaida, 
@@ -2597,8 +2829,9 @@ SELECT CodVenda, codigounico, DatSaida, CodOrcamento, CodProduto, DesProduto, Vl
                     decimal Original_VlrUnitario, 
                     int Original_Quantidade, 
                     decimal Original_VlrCusto, 
-                    global::System.Nullable<decimal> Original_VlrFinal) {
-            return this.Update(Original_CodVenda, Original_codigounico, DatSaida, CodOrcamento, CodProduto, DesProduto, VlrUnitario, Quantidade, VlrCusto, Original_CodVenda, Original_codigounico, Original_DatSaida, Original_CodOrcamento, Original_CodProduto, Original_DesProduto, Original_VlrUnitario, Original_Quantidade, Original_VlrCusto, Original_VlrFinal);
+                    global::System.Nullable<decimal> Original_VlrFinal, 
+                    global::System.Nullable<decimal> Original_VlrDesconto) {
+            return this.Update(Original_CodVenda, Original_codigounico, DatSaida, CodOrcamento, CodProduto, DesProduto, VlrUnitario, Quantidade, VlrCusto, VlrDesconto, Original_CodVenda, Original_codigounico, Original_DatSaida, Original_CodOrcamento, Original_CodProduto, Original_DesProduto, Original_VlrUnitario, Original_Quantidade, Original_VlrCusto, Original_VlrFinal, Original_VlrDesconto);
         }
     }
 }

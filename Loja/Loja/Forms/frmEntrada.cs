@@ -11,6 +11,11 @@ using System.Xml;
 using Loja.DAL.Models;
 using Loja.DAL.DAO;
 
+using NFe.Classes;
+using NFe.Utils;
+using NFe.Utils.NFe;
+using NFe.Wsdl;
+
 namespace Loja
 {
 	public partial class frmEntrada : DevExpress.XtraEditors.XtraForm
@@ -248,6 +253,50 @@ namespace Loja
 			}
 		}
 		#endregion
+
+		private void btnCarregarNF_Click(object sender, EventArgs e)
+		{
+
+			if (!String.IsNullOrEmpty(txtNumChave.Text))
+			{
+				var cnpj = Util.SemFormatacao(Properties.Settings.Default.CNPJ.ToString());
+				var nfe = Monitor.DownloadNFe(cnpj, txtNumChave.Text);
+
+				var arquivoXml = "";
+
+				var nf = new NFe.Classes.NFe().CarregarDeArquivoXml(arquivoXml);
+			}
+			else
+			{
+				Util.MsgBox("Informe a chave de acesso da NF de Entrada");
+
+				txtNumChave.Focus();
+			}
+
+		}
+
+		private void btnImportarXML_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				if (!String.IsNullOrEmpty(txtArquivoXML.Text))
+				{
+					var nf = new NFe.Classes.NFe().CarregarDeArquivoXml(txtArquivoXML.Text);
+					txtDocEntrada.Text = nf.infNFe.ide.nNF.ToString();
+				}
+			}
+			catch (Exception ex)
+			{
+				
+				Util.MsgBox(ex.InnerException != null ? ex.Message : ex.InnerException.Message);
+			}
+
+		}
+
+		private void txtArquivoXML_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+		{
+			txtArquivoXML.Text = Util.BuscarArquivo("Selecione o arquivo XML", ".xml", "Arquivo XML (.xml)|*.xml");
+		}
 
 	}
 }

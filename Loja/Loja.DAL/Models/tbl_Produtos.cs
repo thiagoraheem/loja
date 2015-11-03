@@ -26,6 +26,7 @@ namespace Loja.DAL.Models
         public byte[] Imagem { get; set; }
         public int codigounico { get; set; }
         public string NCM { get; set; }
+        public Nullable<double> VlrICMSST { get; set; }
         public virtual ICollection<tbl_SaidaItens> tbl_SaidaItens { get; set; }
     }
 }

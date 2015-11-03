@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
 			this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+			this.boxEnviando = new DevExpress.XtraEditors.PopupContainerControl();
+			this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+			this.progressoNota = new DevExpress.XtraEditors.MarqueeProgressBarControl();
 			this.txtVlrTotal = new DevExpress.XtraEditors.CalcEdit();
 			this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
 			this.cmbCliente = new DevExpress.XtraEditors.LookUpEdit();
@@ -65,6 +68,9 @@
 			this.colCodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
 			((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
 			this.groupControl1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.boxEnviando)).BeginInit();
+			this.boxEnviando.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.progressoNota.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtVlrTotal.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.cmbCliente.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtNumCPF.Properties)).BeginInit();
@@ -85,6 +91,7 @@
 			// 
 			this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupControl1.Controls.Add(this.boxEnviando);
 			this.groupControl1.Controls.Add(this.txtVlrTotal);
 			this.groupControl1.Controls.Add(this.labelControl7);
 			this.groupControl1.Controls.Add(this.cmbCliente);
@@ -113,6 +120,35 @@
 			this.groupControl1.Size = new System.Drawing.Size(707, 291);
 			this.groupControl1.TabIndex = 1;
 			this.groupControl1.Text = "Dados da Venda";
+			// 
+			// boxEnviando
+			// 
+			this.boxEnviando.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.boxEnviando.Controls.Add(this.labelControl8);
+			this.boxEnviando.Controls.Add(this.progressoNota);
+			this.boxEnviando.Location = new System.Drawing.Point(445, 63);
+			this.boxEnviando.Name = "boxEnviando";
+			this.boxEnviando.Size = new System.Drawing.Size(244, 51);
+			this.boxEnviando.TabIndex = 26;
+			// 
+			// labelControl8
+			// 
+			this.labelControl8.Location = new System.Drawing.Point(6, 4);
+			this.labelControl8.Name = "labelControl8";
+			this.labelControl8.Size = new System.Drawing.Size(81, 13);
+			this.labelControl8.TabIndex = 27;
+			this.labelControl8.Text = "Enviando nota...";
+			// 
+			// progressoNota
+			// 
+			this.progressoNota.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.progressoNota.EditValue = 0;
+			this.progressoNota.Location = new System.Drawing.Point(6, 23);
+			this.progressoNota.Name = "progressoNota";
+			this.progressoNota.Size = new System.Drawing.Size(233, 24);
+			this.progressoNota.TabIndex = 26;
 			// 
 			// txtVlrTotal
 			// 
@@ -544,6 +580,10 @@
 			((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
 			this.groupControl1.ResumeLayout(false);
 			this.groupControl1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.boxEnviando)).EndInit();
+			this.boxEnviando.ResumeLayout(false);
+			this.boxEnviando.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.progressoNota.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtVlrTotal.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.cmbCliente.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtNumCPF.Properties)).EndInit();
@@ -599,5 +639,8 @@
 		private DevExpress.XtraEditors.LabelControl labelControl7;
 		private DevExpress.XtraGrid.Columns.GridColumn colVlrDesconto;
 		private DevExpress.XtraGrid.Columns.GridColumn colVlrBruto;
+		private DevExpress.XtraEditors.PopupContainerControl boxEnviando;
+		private DevExpress.XtraEditors.LabelControl labelControl8;
+		private DevExpress.XtraEditors.MarqueeProgressBarControl progressoNota;
     }
 }

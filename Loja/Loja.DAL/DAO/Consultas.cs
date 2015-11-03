@@ -163,19 +163,19 @@ namespace Loja.DAL.DAO
 			{
 
 				var entradas = from entrada in banco.tbl_Entrada
-							   join produto in banco.tbl_Produtos on entrada.codigounico equals produto.codigounico
+								join itens in banco.tbl_EntradaItens on entrada.CodEntrada equals itens.CodEntrada
+							   join produto in banco.tbl_Produtos on itens.codigounico equals produto.codigounico
 							   where entrada.DocEntrada == docEntrada
 							   select new Entrada()
 							   {
 								   DatEntrada = entrada.DatEntrada,
 								   DocEntrada = entrada.DocEntrada,
-								   Percentual = entrada.Percentual,
-								   QtdProduto = entrada.QtdProduto,
-								   VlrTotal = entrada.VlrTotal,
-								   VlrUnitario = entrada.VlrUnitario,
+								   QtdProduto = itens.Quantidade ?? 0,
+								   VlrTotal = itens.VlrFinal,
+								   VlrUnitario = itens.VlrUnitario ?? 0,
 								   CodProduto = produto.CodProduto,
 								   DesProduto = produto.DesProduto,
-								   codigounico = produto.codigounico
+								   codigounico = itens.codigounico
 							   };
 				return entradas.ToList();
 
@@ -191,19 +191,19 @@ namespace Loja.DAL.DAO
 			{
 
 				var registro = from entrada in banco.tbl_Entrada
-							   join produto in banco.tbl_Produtos on entrada.codigounico equals produto.codigounico
+							   join itens in banco.tbl_EntradaItens on entrada.CodEntrada equals itens.CodEntrada
+							   join produto in banco.tbl_Produtos on itens.codigounico equals produto.codigounico
 							   where entrada.DatEntrada >= inicio && entrada.DatEntrada <= fim
 							   select new Entrada()
 							   {
 								   DatEntrada = entrada.DatEntrada,
 								   DocEntrada = entrada.DocEntrada,
-								   Percentual = entrada.Percentual,
-								   QtdProduto = entrada.QtdProduto,
-								   VlrTotal = entrada.VlrTotal,
-								   VlrUnitario = entrada.VlrUnitario,
+								   QtdProduto = itens.Quantidade ?? 0,
+								   VlrTotal = itens.VlrFinal,
+								   VlrUnitario = itens.VlrUnitario ?? 0,
 								   CodProduto = produto.CodProduto,
 								   DesProduto = produto.DesProduto,
-								   codigounico = produto.codigounico
+								   codigounico = itens.codigounico
 							   };
 				return registro.ToList();
 

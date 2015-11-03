@@ -79,6 +79,7 @@
     <Reference Include="DevExpress.BonusSkins.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Charts.v15.1.Core, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataAccess.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Mvvm.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Office.v15.1.Core, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.PivotGrid.v15.1.Core, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -86,10 +87,12 @@
     <Reference Include="DevExpress.RichEdit.v15.1.Core, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v15.1.UI, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v15.1.Wizard, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v15.1.Core, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraNavBar.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -218,6 +221,10 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Include="relVendas.cs">
+      <DependentUpon>relVendas.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="relVendas.Designer.cs">
       <DependentUpon>relVendas.xsd</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -241,11 +248,23 @@
     <Compile Include="Reports\relRecibo.Designer.cs">
       <DependentUpon>relRecibo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\relResumoVendas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\relResumoVendas.Designer.cs">
+      <DependentUpon>relResumoVendas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\relVendas.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\relVendas.Designer.cs">
       <DependentUpon>relVendas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\relVendasNFE.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\relVendasNFE.Designer.cs">
+      <DependentUpon>relVendasNFE.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\frmCadCliente.resx">
       <DependentUpon>frmCadCliente.cs</DependentUpon>
@@ -312,8 +331,14 @@
     <EmbeddedResource Include="Reports\relRecibo.resx">
       <DependentUpon>relRecibo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\relResumoVendas.resx">
+      <DependentUpon>relResumoVendas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\relVendas.resx">
       <DependentUpon>relVendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\relVendasNFE.resx">
+      <DependentUpon>relVendasNFE.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="dsOrcamento.xsc">

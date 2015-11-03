@@ -160,13 +160,31 @@ namespace NFe.Wsdl
 		public static RetornoComando ImprimirDANFEPDF(string path)
 		{
 
-			var comando = String.Format("NFE.IMPRIMIRDANFEPDF(\"{0}\")");
+			var comando = String.Format("NFE.IMPRIMIRDANFEPDF(\"{0}\")", path);
 
 			var retorno = ComandoACBR(comando);
 
 			return new RetornoComando(retorno);
 
 		}
+
+		/// <summary>
+		/// Comando que permite baixar NFE (xml).
+		/// </summary>
+		/// <param name="cnpj"></param>
+		/// <param name="chave">Chave de acesso da NF</param>
+		/// <returns>XML da NF</returns>
+		public static RetornoComando DownloadNFe(string cnpj, string chave)
+		{
+
+			var comando = String.Format("NFE.DownloadNFe({0}, {1})", cnpj, chave);
+
+			var retorno = ComandoACBR(comando);
+
+			return new RetornoComando(retorno);
+
+		}
+
 	}
 
 	public class RetornoComando
