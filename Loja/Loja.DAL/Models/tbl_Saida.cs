@@ -11,7 +11,7 @@ namespace Loja.DAL.Models
         }
 
         public int CodVenda { get; set; }
-        public Nullable<System.DateTime> Data { get; set; }
+        public System.DateTime Data { get; set; }
         public Nullable<decimal> ValorTotal { get; set; }
         public Nullable<int> QtdItens { get; set; }
         public string FlgStatusNFE { get; set; }

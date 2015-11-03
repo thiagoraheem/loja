@@ -184,5 +184,17 @@ namespace Loja.Properties {
                 return ((string)(this["ConnDBF"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("EPSON TM-T20 Receipt")]
+        public string ImpressoraNFE {
+            get {
+                return ((string)(this["ImpressoraNFE"]));
+            }
+            set {
+                this["ImpressoraNFE"] = value;
+            }
+        }
     }
 }

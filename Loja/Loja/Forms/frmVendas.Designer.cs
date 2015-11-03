@@ -28,14 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-			DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+			this.components = new System.ComponentModel.Container();
+			DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
 			this.grdItens = new DevExpress.XtraGrid.Views.Grid.GridView();
 			this.colCodProduto = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colCodigoProduto = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colQtdProduto = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colVlrUnitario = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colVlrFinal = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.colVlrDesconto = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.colVlrBruto = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.grdDados = new DevExpress.XtraGrid.GridControl();
+			this.relVendasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.relVendas = new Loja.relVendas();
 			this.gridDados = new DevExpress.XtraGrid.Views.Grid.GridView();
 			this.colCodVenda = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colData = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -43,6 +48,7 @@
 			this.colVlrTotal = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colCliente = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+			this.btnReimprimir = new DevExpress.XtraEditors.SimpleButton();
 			this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
 			this.cmbTipoVenda = new DevExpress.XtraEditors.LookUpEdit();
 			this.cmbProduto = new DevExpress.XtraEditors.LookUpEdit();
@@ -54,8 +60,13 @@
 			this.txtDatInicio = new DevExpress.XtraEditors.DateEdit();
 			this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
 			this.btnRetornar = new DevExpress.XtraEditors.SimpleButton();
+			this.tbl_SaidaTableAdapter1 = new Loja.relVendasTableAdapters.tbl_SaidaTableAdapter();
+			this.tbl_SaidaItensTableAdapter1 = new Loja.relVendasTableAdapters.tbl_SaidaItensTableAdapter();
+			this.colDesProduto = new DevExpress.XtraGrid.Columns.GridColumn();
 			((System.ComponentModel.ISupportInitialize)(this.grdItens)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.grdDados)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.relVendasBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.relVendas)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gridDados)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
 			this.groupControl1.SuspendLayout();
@@ -72,9 +83,12 @@
 			this.grdItens.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colCodProduto,
             this.colCodigoProduto,
+            this.colDesProduto,
             this.colQtdProduto,
             this.colVlrUnitario,
-            this.colVlrFinal});
+            this.colVlrFinal,
+            this.colVlrDesconto,
+            this.colVlrBruto});
 			this.grdItens.GridControl = this.grdDados;
 			this.grdItens.Name = "grdItens";
 			// 
@@ -83,8 +97,6 @@
 			this.colCodProduto.Caption = "Cód. Produto";
 			this.colCodProduto.FieldName = "codigounico";
 			this.colCodProduto.Name = "colCodProduto";
-			this.colCodProduto.Visible = true;
-			this.colCodProduto.VisibleIndex = 0;
 			// 
 			// colCodigoProduto
 			// 
@@ -92,7 +104,7 @@
 			this.colCodigoProduto.FieldName = "CodProduto";
 			this.colCodigoProduto.Name = "colCodigoProduto";
 			this.colCodigoProduto.Visible = true;
-			this.colCodigoProduto.VisibleIndex = 1;
+			this.colCodigoProduto.VisibleIndex = 0;
 			// 
 			// colQtdProduto
 			// 
@@ -118,15 +130,33 @@
 			this.colVlrFinal.Visible = true;
 			this.colVlrFinal.VisibleIndex = 4;
 			// 
+			// colVlrDesconto
+			// 
+			this.colVlrDesconto.Caption = "Desconto";
+			this.colVlrDesconto.FieldName = "VlrDesconto";
+			this.colVlrDesconto.Name = "colVlrDesconto";
+			this.colVlrDesconto.Visible = true;
+			this.colVlrDesconto.VisibleIndex = 5;
+			// 
+			// colVlrBruto
+			// 
+			this.colVlrBruto.Caption = "Valor Bruto";
+			this.colVlrBruto.FieldName = "VlrBruto";
+			this.colVlrBruto.Name = "colVlrBruto";
+			this.colVlrBruto.Visible = true;
+			this.colVlrBruto.VisibleIndex = 6;
+			// 
 			// grdDados
 			// 
 			this.grdDados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.grdDados.DataMember = "tbl_Saida";
-			gridLevelNode2.RelationName = "FK_tbl_SaidaItens_tbl_Saida";
+			this.grdDados.DataSource = this.relVendasBindingSource;
+			gridLevelNode1.LevelTemplate = this.grdItens;
+			gridLevelNode1.RelationName = "FK_tbl_SaidaItens_tbl_Saida";
 			this.grdDados.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
 			this.grdDados.Location = new System.Drawing.Point(12, 12);
 			this.grdDados.MainView = this.gridDados;
 			this.grdDados.Name = "grdDados";
@@ -135,6 +165,16 @@
 			this.grdDados.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridDados,
             this.grdItens});
+			// 
+			// relVendasBindingSource
+			// 
+			this.relVendasBindingSource.DataSource = this.relVendas;
+			this.relVendasBindingSource.Position = 0;
+			// 
+			// relVendas
+			// 
+			this.relVendas.DataSetName = "relVendas";
+			this.relVendas.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
 			// 
 			// gridDados
 			// 
@@ -210,6 +250,7 @@
 			// 
 			this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupControl1.Controls.Add(this.btnReimprimir);
 			this.groupControl1.Controls.Add(this.labelControl3);
 			this.groupControl1.Controls.Add(this.cmbTipoVenda);
 			this.groupControl1.Controls.Add(this.cmbProduto);
@@ -226,6 +267,16 @@
 			this.groupControl1.Size = new System.Drawing.Size(666, 125);
 			this.groupControl1.TabIndex = 0;
 			this.groupControl1.Text = "Opções e Filtros";
+			// 
+			// btnReimprimir
+			// 
+			this.btnReimprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnReimprimir.Location = new System.Drawing.Point(368, 97);
+			this.btnReimprimir.Name = "btnReimprimir";
+			this.btnReimprimir.Size = new System.Drawing.Size(102, 23);
+			this.btnReimprimir.TabIndex = 12;
+			this.btnReimprimir.Text = "Re-Imprimir &DANFE";
+			this.btnReimprimir.Click += new System.EventHandler(this.btnReimprimir_Click);
 			// 
 			// labelControl3
 			// 
@@ -279,7 +330,7 @@
 			// 
 			this.btnEstornar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnEstornar.Enabled = false;
-			this.btnEstornar.Location = new System.Drawing.Point(424, 97);
+			this.btnEstornar.Location = new System.Drawing.Point(287, 97);
 			this.btnEstornar.Name = "btnEstornar";
 			this.btnEstornar.Size = new System.Drawing.Size(75, 23);
 			this.btnEstornar.TabIndex = 8;
@@ -289,11 +340,11 @@
 			// btnImprimir
 			// 
 			this.btnImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnImprimir.Location = new System.Drawing.Point(505, 97);
+			this.btnImprimir.Location = new System.Drawing.Point(476, 97);
 			this.btnImprimir.Name = "btnImprimir";
-			this.btnImprimir.Size = new System.Drawing.Size(75, 23);
+			this.btnImprimir.Size = new System.Drawing.Size(104, 23);
 			this.btnImprimir.TabIndex = 7;
-			this.btnImprimir.Text = "&Imprimir";
+			this.btnImprimir.Text = "&Imprimir Relatório";
 			this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
 			// 
 			// labelControl2
@@ -307,7 +358,7 @@
 			// btnConsultar
 			// 
 			this.btnConsultar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnConsultar.Location = new System.Drawing.Point(343, 97);
+			this.btnConsultar.Location = new System.Drawing.Point(206, 97);
 			this.btnConsultar.Name = "btnConsultar";
 			this.btnConsultar.Size = new System.Drawing.Size(75, 23);
 			this.btnConsultar.TabIndex = 4;
@@ -357,6 +408,22 @@
 			this.btnRetornar.Text = "&Retornar";
 			this.btnRetornar.Click += new System.EventHandler(this.btnRetornar_Click);
 			// 
+			// tbl_SaidaTableAdapter1
+			// 
+			this.tbl_SaidaTableAdapter1.ClearBeforeFill = true;
+			// 
+			// tbl_SaidaItensTableAdapter1
+			// 
+			this.tbl_SaidaItensTableAdapter1.ClearBeforeFill = true;
+			// 
+			// colDesProduto
+			// 
+			this.colDesProduto.Caption = "Descrição";
+			this.colDesProduto.FieldName = "DesProduto";
+			this.colDesProduto.Name = "colDesProduto";
+			this.colDesProduto.Visible = true;
+			this.colDesProduto.VisibleIndex = 1;
+			// 
 			// frmVendas
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -368,9 +435,12 @@
 			this.Name = "frmVendas";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Vendas";
+			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.Load += new System.EventHandler(this.frmVendas_Load);
 			((System.ComponentModel.ISupportInitialize)(this.grdItens)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.grdDados)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.relVendasBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.relVendas)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.gridDados)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
 			this.groupControl1.ResumeLayout(false);
@@ -412,5 +482,13 @@
 		private DevExpress.XtraGrid.Columns.GridColumn colVlrFinal;
 		private DevExpress.XtraGrid.Columns.GridColumn colCliente;
 		private DevExpress.XtraGrid.Columns.GridColumn colQtdeItens;
+		private DevExpress.XtraEditors.SimpleButton btnReimprimir;
+		private System.Windows.Forms.BindingSource relVendasBindingSource;
+		private relVendas relVendas;
+		private relVendasTableAdapters.tbl_SaidaTableAdapter tbl_SaidaTableAdapter1;
+		private relVendasTableAdapters.tbl_SaidaItensTableAdapter tbl_SaidaItensTableAdapter1;
+		private DevExpress.XtraGrid.Columns.GridColumn colVlrDesconto;
+		private DevExpress.XtraGrid.Columns.GridColumn colVlrBruto;
+		private DevExpress.XtraGrid.Columns.GridColumn colDesProduto;
     }
 }

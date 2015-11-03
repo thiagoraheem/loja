@@ -8,30 +8,38 @@ namespace Loja.DAL.Models.Mapping
 		public tbl_EntradaMap()
 		{
 			// Primary Key
-			this.HasKey(t => new { t.DocEntrada, t.DatEntrada, t.codigounico });
+			this.HasKey(t => t.CodEntrada);
 
 			// Properties
 			this.Property(t => t.DocEntrada)
 				.IsRequired()
-                .HasMaxLength(15);
+                .HasMaxLength(20);
 
-			this.Property(t => t.codigounico)
-				.HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+			this.Property(t => t.SerieNota)
+				.HasMaxLength(5);
 
-			this.Property(t => t.DesFornecedor)
-				.HasMaxLength(10);
+			this.Property(t => t.CNPJ)
+				.IsFixedLength()
+                .HasMaxLength(14);
+
+			this.Property(t => t.CPF)
+				.IsFixedLength()
+                .HasMaxLength(12);
+
+			this.Property(t => t.Nome)
+				.HasMaxLength(30);
 
 			// Table & Column Mappings
 			this.ToTable("tbl_Entrada");
+			this.Property(t => t.CodEntrada).HasColumnName("CodEntrada");
 			this.Property(t => t.DocEntrada).HasColumnName("DocEntrada");
+			this.Property(t => t.SerieNota).HasColumnName("SerieNota");
+			this.Property(t => t.DatEmissao).HasColumnName("DatEmissao");
 			this.Property(t => t.DatEntrada).HasColumnName("DatEntrada");
-			this.Property(t => t.QtdProduto).HasColumnName("QtdProduto");
-			this.Property(t => t.VlrUnitario).HasColumnName("VlrUnitario");
-			this.Property(t => t.VlrTotal).HasColumnName("VlrTotal");
 			this.Property(t => t.CodTipoEntrada).HasColumnName("CodTipoEntrada");
-			this.Property(t => t.codigounico).HasColumnName("codigounico");
-			this.Property(t => t.Percentual).HasColumnName("Percentual");
-			this.Property(t => t.DesFornecedor).HasColumnName("DesFornecedor");
+			this.Property(t => t.CNPJ).HasColumnName("CNPJ");
+			this.Property(t => t.CPF).HasColumnName("CPF");
+			this.Property(t => t.Nome).HasColumnName("Nome");
 
 			// Relationships
 			this.HasRequired(t => t.tbl_TipoEntrada)

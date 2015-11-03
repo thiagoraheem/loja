@@ -11,6 +11,8 @@ using DevExpress.LookAndFeel;
 using DevExpress.XtraReports.UI;
 using Loja.DAL.Models;
 using Loja.DAL.DAO;
+using System.IO;
+using System.Reflection;
 
 namespace Loja
 {
@@ -18,7 +20,6 @@ namespace Loja
 	{
 
 		#region Variáveis
-		List<tbl_Saida> _vendas;
 		#endregion
 
 		#region Form Events
@@ -48,7 +49,7 @@ namespace Loja
 
 		private void btnImprimir_Click(object sender, EventArgs e)
 		{
-			using (Reports.relVendas relatorio = new Reports.relVendas())
+			using (Reports.relVendasNFE relatorio = new Reports.relVendasNFE())
 			{
 
 				ReportPrintTool printTool = new ReportPrintTool(relatorio);
@@ -65,7 +66,7 @@ namespace Loja
 
 		private void btnEstornar_Click(object sender, EventArgs e)
 		{
-			if (_vendas.Any())
+			if (relVendas.tbl_Saida.Any())
 			{
 
 				if (MessageBox.Show("Confirma estornar essa venda?", "Confirmar exclusão", MessageBoxButtons.YesNo) == DialogResult.No)
@@ -88,7 +89,23 @@ namespace Loja
 			SU_CarregaVendas();
 		}
 
+		private void btnReimprimir_Click(object sender, EventArgs e)
+		{
 
+			var caminho = "";
+			int codvenda = FU_PegaCodigoVenda();
+
+			caminho = String.Format("{0}\\XML\\{1}-env-lot.xml", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), codvenda);
+
+			if (File.Exists(caminho))
+			{
+				NFe.Wsdl.Monitor.ImprimirDANFE(caminho, Properties.Settings.Default.ImpressoraNFE);
+			}
+			else { 
+				Util.MsgBox("Erro ao tentar reimprimir DANFE, arquivo XML não encontrado");
+			}
+
+		}
 		#endregion
 
 		#region Funções
@@ -111,11 +128,12 @@ namespace Loja
 			DateTime inicio = DateTime.Parse(txtDatInicio.DateTime.ToShortDateString());
 			DateTime fim = DateTime.Parse(txtDatFim.DateTime.ToShortDateString()).AddDays(1).AddMinutes(-1);
 
-			_vendas = Consultas.ObterVendasItens(inicio, fim);
-			grdDados.DataSource = _vendas;
+			tbl_SaidaTableAdapter1.FillByPeriodo(relVendas.tbl_Saida, inicio, fim);
+			tbl_SaidaItensTableAdapter1.Fill(relVendas.tbl_SaidaItens);
+
 			grdDados.RefreshDataSource();
 
-			if (_vendas.Any())
+			if (relVendas.tbl_Saida.Any())
 			{
 				btnEstornar.Enabled = true;
 			}
@@ -147,6 +165,9 @@ namespace Loja
 		}
 
 		#endregion
+
+
+
 
 
 	}

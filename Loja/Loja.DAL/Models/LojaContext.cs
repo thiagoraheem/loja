@@ -22,6 +22,8 @@ namespace Loja.DAL.Models
 		public DbSet<tbl_CEP> tbl_CEP { get; set; }
 		public DbSet<tbl_Cliente> tbl_Cliente { get; set; }
 		public DbSet<tbl_Entrada> tbl_Entrada { get; set; }
+		public DbSet<tbl_EntradaItens> tbl_EntradaItens { get; set; }
+		public DbSet<tbl_NCM> tbl_NCM { get; set; }
 		public DbSet<tbl_Orcamento> tbl_Orcamento { get; set; }
 		public DbSet<tbl_Parametros> tbl_Parametros { get; set; }
 		public DbSet<tbl_Preco> tbl_Preco { get; set; }
@@ -33,6 +35,7 @@ namespace Loja.DAL.Models
 		public DbSet<tbl_TipoVenda> tbl_TipoVenda { get; set; }
 		public DbSet<tbl_Usuario> tbl_Usuario { get; set; }
 		public DbSet<viw_Orcamento> viw_Orcamento { get; set; }
+		public DbSet<viw_ResumoDiario> viw_ResumoDiario { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
@@ -40,6 +43,8 @@ namespace Loja.DAL.Models
 			modelBuilder.Configurations.Add(new tbl_CEPMap());
 			modelBuilder.Configurations.Add(new tbl_ClienteMap());
 			modelBuilder.Configurations.Add(new tbl_EntradaMap());
+			modelBuilder.Configurations.Add(new tbl_EntradaItensMap());
+			modelBuilder.Configurations.Add(new tbl_NCMMap());
 			modelBuilder.Configurations.Add(new tbl_OrcamentoMap());
 			modelBuilder.Configurations.Add(new tbl_ParametrosMap());
 			modelBuilder.Configurations.Add(new tbl_PrecoMap());
@@ -51,6 +56,7 @@ namespace Loja.DAL.Models
 			modelBuilder.Configurations.Add(new tbl_TipoVendaMap());
 			modelBuilder.Configurations.Add(new tbl_UsuarioMap());
 			modelBuilder.Configurations.Add(new viw_OrcamentoMap());
+			modelBuilder.Configurations.Add(new viw_ResumoDiarioMap());
 
 			modelBuilder.Conventions.Add(new FunctionsConvention<LojaContext>("dbo"));
 
