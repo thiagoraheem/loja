@@ -15,12 +15,16 @@ using NFe.Classes;
 using NFe.Utils;
 using NFe.Utils.NFe;
 using NFe.Wsdl;
+using System.Data.Entity;
 
 namespace Loja
 {
 	public partial class frmEntrada : DevExpress.XtraEditors.XtraForm
 	{
 		#region Variáveis
+		List<tbl_EntradaItens> itens;
+		tbl_Entrada capa;
+
 		#endregion
 
 		#region Form Events
@@ -31,11 +35,13 @@ namespace Loja
 
 			SU_CarregaProdutos();
 			SU_CarregaTipoEntrada();
+
+			grdDados.DataSource = itens;
 		}
 
 		private void frmEntrada_Load(object sender, EventArgs e)
 		{
-			SU_CarregaFornecedor();
+			//SU_CarregaFornecedor();
 		}
 		#endregion
 
@@ -48,7 +54,8 @@ namespace Loja
 		private void btnGravar_Click(object sender, EventArgs e)
 		{
 
-			int CodTipoEntrada;
+			#region Depreciado
+			/*int CodTipoEntrada;
 
 			if (cmbTipoEntrada.EditValue == null)
 			{
@@ -83,7 +90,7 @@ namespace Loja
 			try
 			{
 
-				Cadastros.AdicionarEntrada(txtDocEntrada.Text, (DateTime)txtDatEntrada.EditValue, (int)cmbCodProduto.EditValue,
+				Cadastros.AdicionarEntrada(txtDocEntrada.Text, (DateTime)txtDatEmissao.EditValue, (int)cmbCodProduto.EditValue,
 											(double)txtQuantidade.Value, txtVlrUnitario.Value, CodTipoEntrada, (double)txtPercentual.Value, cmbFornecedor.Text);
 
 			}
@@ -98,7 +105,8 @@ namespace Loja
 			}
 
 			SU_CarregaFornecedor();
-			SU_CarregaEntrada();
+			SU_CarregaEntrada();*/
+			#endregion
 		}
 
 		#endregion
@@ -241,18 +249,17 @@ namespace Loja
 				int linha = gridDados.GetSelectedRows()[0];
 				int codigo = (int)gridDados.GetRowCellValue(linha, colCodigounico);
 
-				if (txtDatEntrada.Text.Equals(String.Empty))
+				if (txtDatEmissao.Text.Equals(String.Empty))
 				{
 					DateTime data = (DateTime)gridDados.GetRowCellValue(linha, colData);
-					txtDatEntrada.DateTime = data;
+					txtDatEmissao.DateTime = data;
 				}
 
-				Cadastros.AlterarEntrada(txtDocEntrada.Text, txtDatEntrada.DateTime, codigo, 0, 0);
+				Cadastros.AlterarEntrada(txtDocEntrada.Text, txtDatEmissao.DateTime, codigo, 0, 0);
 
 				SU_CarregaEntrada();
 			}
 		}
-		#endregion
 
 		private void btnCarregarNF_Click(object sender, EventArgs e)
 		{
@@ -298,5 +305,6 @@ namespace Loja
 			txtArquivoXML.Text = Util.BuscarArquivo("Selecione o arquivo XML", ".xml", "Arquivo XML (.xml)|*.xml");
 		}
 
+		#endregion
 	}
 }

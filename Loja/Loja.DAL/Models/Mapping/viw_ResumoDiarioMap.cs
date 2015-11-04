@@ -11,15 +11,15 @@ namespace Loja.DAL.Models.Mapping
 			this.HasKey(t => t.Data);
 
 			// Properties
-			this.Property(t => t.Data)
-				.IsRequired()
-                .IsFixedLength()
-                .HasMaxLength(10);
+			this.Property(t => t.Mes)
+				.IsFixedLength()
+                .HasMaxLength(7);
 
 			// Table & Column Mappings
 			this.ToTable("viw_ResumoDiario");
 			this.Property(t => t.Data).HasColumnName("Data");
 			this.Property(t => t.ValorTotal).HasColumnName("ValorTotal");
+			this.Property(t => t.Mes).HasColumnName("Mes");
 		}
 	}
 }
