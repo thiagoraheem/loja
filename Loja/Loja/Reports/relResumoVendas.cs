@@ -13,5 +13,10 @@ namespace Loja.Reports
 			InitializeComponent();
 		}
 
+		private void relResumoVendas_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+		{
+			//XtraReport1.Parameters["DatInicio"].Value = _datIni;
+		}
+
 	}
 }

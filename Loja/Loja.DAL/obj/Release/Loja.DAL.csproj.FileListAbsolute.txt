@@ -6,5 +6,6 @@ C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\bin\Release\EntityFramework.dll
 C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\bin\Release\EntityFramework.SqlServer.dll
 C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\bin\Release\EntityFramework.xml
 C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\bin\Release\EntityFramework.SqlServer.xml
+C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\obj\Release\Loja.DAL.csprojResolveAssemblyReference.cache
 C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\obj\Release\Loja.DAL.dll
 C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\obj\Release\Loja.DAL.pdb

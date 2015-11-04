@@ -5,7 +5,8 @@ namespace Loja.DAL.Models
 {
     public partial class viw_ResumoDiario
     {
-        public string Data { get; set; }
+        public System.DateTime Data { get; set; }
         public Nullable<decimal> ValorTotal { get; set; }
+        public string Mes { get; set; }
     }
 }

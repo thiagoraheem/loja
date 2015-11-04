@@ -33,6 +33,7 @@
 			this.grdItens = new DevExpress.XtraGrid.Views.Grid.GridView();
 			this.colCodProduto = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colCodigoProduto = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.colDesProduto = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colQtdProduto = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colVlrUnitario = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colVlrFinal = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -48,6 +49,7 @@
 			this.colVlrTotal = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colCliente = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+			this.btnImprimirResumo = new DevExpress.XtraEditors.SimpleButton();
 			this.btnReimprimir = new DevExpress.XtraEditors.SimpleButton();
 			this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
 			this.cmbTipoVenda = new DevExpress.XtraEditors.LookUpEdit();
@@ -62,7 +64,6 @@
 			this.btnRetornar = new DevExpress.XtraEditors.SimpleButton();
 			this.tbl_SaidaTableAdapter1 = new Loja.relVendasTableAdapters.tbl_SaidaTableAdapter();
 			this.tbl_SaidaItensTableAdapter1 = new Loja.relVendasTableAdapters.tbl_SaidaItensTableAdapter();
-			this.colDesProduto = new DevExpress.XtraGrid.Columns.GridColumn();
 			((System.ComponentModel.ISupportInitialize)(this.grdItens)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.grdDados)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.relVendasBindingSource)).BeginInit();
@@ -105,6 +106,16 @@
 			this.colCodigoProduto.Name = "colCodigoProduto";
 			this.colCodigoProduto.Visible = true;
 			this.colCodigoProduto.VisibleIndex = 0;
+			this.colCodigoProduto.Width = 147;
+			// 
+			// colDesProduto
+			// 
+			this.colDesProduto.Caption = "Descrição";
+			this.colDesProduto.FieldName = "DesProduto";
+			this.colDesProduto.Name = "colDesProduto";
+			this.colDesProduto.Visible = true;
+			this.colDesProduto.VisibleIndex = 1;
+			this.colDesProduto.Width = 323;
 			// 
 			// colQtdProduto
 			// 
@@ -113,6 +124,7 @@
 			this.colQtdProduto.Name = "colQtdProduto";
 			this.colQtdProduto.Visible = true;
 			this.colQtdProduto.VisibleIndex = 2;
+			this.colQtdProduto.Width = 43;
 			// 
 			// colVlrUnitario
 			// 
@@ -121,6 +133,7 @@
 			this.colVlrUnitario.Name = "colVlrUnitario";
 			this.colVlrUnitario.Visible = true;
 			this.colVlrUnitario.VisibleIndex = 3;
+			this.colVlrUnitario.Width = 120;
 			// 
 			// colVlrFinal
 			// 
@@ -129,6 +142,7 @@
 			this.colVlrFinal.Name = "colVlrFinal";
 			this.colVlrFinal.Visible = true;
 			this.colVlrFinal.VisibleIndex = 4;
+			this.colVlrFinal.Width = 116;
 			// 
 			// colVlrDesconto
 			// 
@@ -137,6 +151,7 @@
 			this.colVlrDesconto.Name = "colVlrDesconto";
 			this.colVlrDesconto.Visible = true;
 			this.colVlrDesconto.VisibleIndex = 5;
+			this.colVlrDesconto.Width = 107;
 			// 
 			// colVlrBruto
 			// 
@@ -145,6 +160,7 @@
 			this.colVlrBruto.Name = "colVlrBruto";
 			this.colVlrBruto.Visible = true;
 			this.colVlrBruto.VisibleIndex = 6;
+			this.colVlrBruto.Width = 222;
 			// 
 			// grdDados
 			// 
@@ -195,28 +211,25 @@
 			// 
 			// colCodVenda
 			// 
-			this.colCodVenda.Caption = "Código Venda";
+			this.colCodVenda.Caption = "NF";
 			this.colCodVenda.FieldName = "CodVenda";
 			this.colCodVenda.Name = "colCodVenda";
 			this.colCodVenda.Visible = true;
 			this.colCodVenda.VisibleIndex = 0;
+			this.colCodVenda.Width = 84;
 			// 
 			// colData
 			// 
 			this.colData.Caption = "Data";
-			this.colData.DisplayFormat.FormatString = "d";
 			this.colData.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
 			this.colData.FieldName = "Data";
-			this.colData.GroupFormat.FormatString = "d";
 			this.colData.GroupFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
 			this.colData.Name = "colData";
 			this.colData.OptionsColumn.AllowEdit = false;
 			this.colData.OptionsColumn.ReadOnly = true;
-			this.colData.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count)});
 			this.colData.Visible = true;
 			this.colData.VisibleIndex = 1;
-			this.colData.Width = 72;
+			this.colData.Width = 244;
 			// 
 			// colQtdeItens
 			// 
@@ -225,6 +238,7 @@
 			this.colQtdeItens.Name = "colQtdeItens";
 			this.colQtdeItens.Visible = true;
 			this.colQtdeItens.VisibleIndex = 2;
+			this.colQtdeItens.Width = 104;
 			// 
 			// colVlrTotal
 			// 
@@ -236,7 +250,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
 			this.colVlrTotal.Visible = true;
 			this.colVlrTotal.VisibleIndex = 3;
-			this.colVlrTotal.Width = 70;
+			this.colVlrTotal.Width = 308;
 			// 
 			// colCliente
 			// 
@@ -245,11 +259,13 @@
 			this.colCliente.Name = "colCliente";
 			this.colCliente.Visible = true;
 			this.colCliente.VisibleIndex = 4;
+			this.colCliente.Width = 338;
 			// 
 			// groupControl1
 			// 
 			this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupControl1.Controls.Add(this.btnImprimirResumo);
 			this.groupControl1.Controls.Add(this.btnReimprimir);
 			this.groupControl1.Controls.Add(this.labelControl3);
 			this.groupControl1.Controls.Add(this.cmbTipoVenda);
@@ -268,10 +284,18 @@
 			this.groupControl1.TabIndex = 0;
 			this.groupControl1.Text = "Opções e Filtros";
 			// 
+			// btnImprimirResumo
+			// 
+			this.btnImprimirResumo.Location = new System.Drawing.Point(119, 69);
+			this.btnImprimirResumo.Name = "btnImprimirResumo";
+			this.btnImprimirResumo.Size = new System.Drawing.Size(104, 23);
+			this.btnImprimirResumo.TabIndex = 13;
+			this.btnImprimirResumo.Text = "I&mprimir Resumo";
+			this.btnImprimirResumo.Click += new System.EventHandler(this.btnImprimirResumo_Click);
+			// 
 			// btnReimprimir
 			// 
-			this.btnReimprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnReimprimir.Location = new System.Drawing.Point(368, 97);
+			this.btnReimprimir.Location = new System.Drawing.Point(9, 97);
 			this.btnReimprimir.Name = "btnReimprimir";
 			this.btnReimprimir.Size = new System.Drawing.Size(102, 23);
 			this.btnReimprimir.TabIndex = 12;
@@ -285,6 +309,7 @@
 			this.labelControl3.Size = new System.Drawing.Size(68, 13);
 			this.labelControl3.TabIndex = 11;
 			this.labelControl3.Text = "Tipo de Venda";
+			this.labelControl3.Visible = false;
 			// 
 			// cmbTipoVenda
 			// 
@@ -304,6 +329,7 @@
 			this.cmbTipoVenda.Properties.ValueMember = "Codigo";
 			this.cmbTipoVenda.Size = new System.Drawing.Size(139, 20);
 			this.cmbTipoVenda.TabIndex = 10;
+			this.cmbTipoVenda.Visible = false;
 			// 
 			// cmbProduto
 			// 
@@ -325,12 +351,13 @@
 			this.cmbProduto.Properties.ValueMember = "codigounico";
 			this.cmbProduto.Size = new System.Drawing.Size(242, 20);
 			this.cmbProduto.TabIndex = 9;
+			this.cmbProduto.Visible = false;
 			// 
 			// btnEstornar
 			// 
 			this.btnEstornar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnEstornar.Enabled = false;
-			this.btnEstornar.Location = new System.Drawing.Point(287, 97);
+			this.btnEstornar.Location = new System.Drawing.Point(505, 97);
 			this.btnEstornar.Name = "btnEstornar";
 			this.btnEstornar.Size = new System.Drawing.Size(75, 23);
 			this.btnEstornar.TabIndex = 8;
@@ -339,8 +366,7 @@
 			// 
 			// btnImprimir
 			// 
-			this.btnImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnImprimir.Location = new System.Drawing.Point(476, 97);
+			this.btnImprimir.Location = new System.Drawing.Point(9, 69);
 			this.btnImprimir.Name = "btnImprimir";
 			this.btnImprimir.Size = new System.Drawing.Size(104, 23);
 			this.btnImprimir.TabIndex = 7;
@@ -354,11 +380,12 @@
 			this.labelControl2.Size = new System.Drawing.Size(38, 13);
 			this.labelControl2.TabIndex = 6;
 			this.labelControl2.Text = "Produto";
+			this.labelControl2.Visible = false;
 			// 
 			// btnConsultar
 			// 
 			this.btnConsultar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnConsultar.Location = new System.Drawing.Point(206, 97);
+			this.btnConsultar.Location = new System.Drawing.Point(424, 97);
 			this.btnConsultar.Name = "btnConsultar";
 			this.btnConsultar.Size = new System.Drawing.Size(75, 23);
 			this.btnConsultar.TabIndex = 4;
@@ -415,14 +442,6 @@
 			// tbl_SaidaItensTableAdapter1
 			// 
 			this.tbl_SaidaItensTableAdapter1.ClearBeforeFill = true;
-			// 
-			// colDesProduto
-			// 
-			this.colDesProduto.Caption = "Descrição";
-			this.colDesProduto.FieldName = "DesProduto";
-			this.colDesProduto.Name = "colDesProduto";
-			this.colDesProduto.Visible = true;
-			this.colDesProduto.VisibleIndex = 1;
 			// 
 			// frmVendas
 			// 
@@ -490,5 +509,6 @@
 		private DevExpress.XtraGrid.Columns.GridColumn colVlrDesconto;
 		private DevExpress.XtraGrid.Columns.GridColumn colVlrBruto;
 		private DevExpress.XtraGrid.Columns.GridColumn colDesProduto;
+		private DevExpress.XtraEditors.SimpleButton btnImprimirResumo;
     }
 }
