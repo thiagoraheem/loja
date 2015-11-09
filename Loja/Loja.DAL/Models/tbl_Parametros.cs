@@ -15,5 +15,6 @@ namespace Loja.DAL.Models
         public string EmpresaCNPJ { get; set; }
         public string EmpresaInscEstadual { get; set; }
         public Nullable<int> SisCodVenda { get; set; }
+        public Nullable<int> SisNumNF { get; set; }
     }
 }

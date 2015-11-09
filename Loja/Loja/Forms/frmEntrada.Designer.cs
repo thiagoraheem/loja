@@ -28,6 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+			DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+			DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+			this.colCodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.lueProdutos = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+			this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
 			this.txtDocEntrada = new DevExpress.XtraEditors.TextEdit();
 			this.txtDatEmissao = new DevExpress.XtraEditors.DateEdit();
 			this.cmbTipoEntrada = new DevExpress.XtraEditors.LookUpEdit();
@@ -39,16 +44,23 @@
 			this.chkContinuar = new DevExpress.XtraEditors.CheckEdit();
 			this.grdDados = new DevExpress.XtraGrid.GridControl();
 			this.gridDados = new DevExpress.XtraGrid.Views.Grid.GridView();
-			this.colData = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colCodProduto = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colDesProduto = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.colUnidade = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colVlrUnitario = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colQuantidade = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colVlrFinal = new DevExpress.XtraGrid.Columns.GridColumn();
-			this.colCodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
-			this.colDocEntrada = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.colNCM = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.colVlrICMS = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.colVlrICMSST = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.colPIS = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.colCOFINS = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.colCodOriginal = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.colDesOriginal = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
 			this.tabDados = new DevExpress.XtraTab.XtraTabPage();
+			this.txtNumOrdem = new DevExpress.XtraEditors.TextEdit();
+			this.labelControl30 = new DevExpress.XtraEditors.LabelControl();
 			this.txtNCM = new DevExpress.XtraEditors.TextEdit();
 			this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
 			this.txtUnidade = new DevExpress.XtraEditors.TextEdit();
@@ -110,8 +122,10 @@
 			this.btnIncluir = new DevExpress.XtraEditors.SimpleButton();
 			this.btnExcluirItem = new DevExpress.XtraEditors.SimpleButton();
 			this.btnAlterarItem = new DevExpress.XtraEditors.SimpleButton();
-			this.txtNumOrdem = new DevExpress.XtraEditors.TextEdit();
-			this.labelControl30 = new DevExpress.XtraEditors.LabelControl();
+			this.lcolCodProduto = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.lcolDesProduto = new DevExpress.XtraGrid.Columns.GridColumn();
+			((System.ComponentModel.ISupportInitialize)(this.lueProdutos)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtDocEntrada.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtDatEmissao.Properties.CalendarTimeProperties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtDatEmissao.Properties)).BeginInit();
@@ -122,6 +136,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
 			this.xtraTabControl1.SuspendLayout();
 			this.tabDados.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.txtNumOrdem.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtNCM.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtUnidade.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.cmbCodProduto.Properties)).BeginInit();
@@ -154,8 +169,37 @@
 			((System.ComponentModel.ISupportInitialize)(this.txtNome.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtNumCNPJ.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtSerieNota.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtNumOrdem.Properties)).BeginInit();
 			this.SuspendLayout();
+			// 
+			// colCodigounico
+			// 
+			this.colCodigounico.Caption = "Código Único";
+			this.colCodigounico.ColumnEdit = this.lueProdutos;
+			this.colCodigounico.FieldName = "codigounico";
+			this.colCodigounico.Name = "colCodigounico";
+			this.colCodigounico.Visible = true;
+			this.colCodigounico.VisibleIndex = 11;
+			// 
+			// lueProdutos
+			// 
+			this.lueProdutos.AutoHeight = false;
+			this.lueProdutos.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+			this.lueProdutos.DisplayMember = "CodProduto";
+			this.lueProdutos.Name = "lueProdutos";
+			this.lueProdutos.NullText = "[Selecione um produto]";
+			this.lueProdutos.ValueMember = "codigounico";
+			this.lueProdutos.View = this.repositoryItemSearchLookUpEdit1View;
+			// 
+			// repositoryItemSearchLookUpEdit1View
+			// 
+			this.repositoryItemSearchLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.lcolCodProduto,
+            this.lcolDesProduto});
+			this.repositoryItemSearchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+			this.repositoryItemSearchLookUpEdit1View.Name = "repositoryItemSearchLookUpEdit1View";
+			this.repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+			this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
 			// 
 			// txtDocEntrada
 			// 
@@ -256,10 +300,12 @@
 			this.grdDados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.grdDados.Location = new System.Drawing.Point(12, 268);
+			this.grdDados.Location = new System.Drawing.Point(12, 267);
 			this.grdDados.MainView = this.gridDados;
 			this.grdDados.Name = "grdDados";
-			this.grdDados.Size = new System.Drawing.Size(720, 119);
+			this.grdDados.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.lueProdutos});
+			this.grdDados.Size = new System.Drawing.Size(720, 120);
 			this.grdDados.TabIndex = 23;
 			this.grdDados.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridDados});
@@ -268,39 +314,38 @@
 			// gridDados
 			// 
 			this.gridDados.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colData,
+            this.colCodigounico,
             this.colCodProduto,
             this.colDesProduto,
+            this.colUnidade,
             this.colVlrUnitario,
             this.colQuantidade,
             this.colVlrFinal,
-            this.colCodigounico,
-            this.colDocEntrada});
+            this.colNCM,
+            this.colVlrICMS,
+            this.colVlrICMSST,
+            this.colPIS,
+            this.colCOFINS,
+            this.colCodOriginal,
+            this.colDesOriginal});
+			gridFormatRule1.ApplyToRow = true;
+			gridFormatRule1.Column = this.colCodigounico;
+			gridFormatRule1.Name = "naoCadastrado1";
+			formatConditionRuleValue1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+			formatConditionRuleValue1.Appearance.Options.UseBackColor = true;
+			formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+			formatConditionRuleValue1.PredefinedName = "Não cadastrado";
+			formatConditionRuleValue1.Value1 = "-1";
+			formatConditionRuleValue1.Value2 = "";
+			gridFormatRule1.Rule = formatConditionRuleValue1;
+			this.gridDados.FormatRules.Add(gridFormatRule1);
 			this.gridDados.GridControl = this.grdDados;
 			this.gridDados.GroupPanelText = "Arraste uma coluna aqui para agrupar";
-			this.gridDados.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "DatSaida", this.colData, "")});
 			this.gridDados.Name = "gridDados";
 			this.gridDados.OptionsCustomization.AllowGroup = false;
 			this.gridDados.OptionsView.ShowFooter = true;
 			this.gridDados.OptionsView.ShowGroupPanel = false;
-			// 
-			// colData
-			// 
-			this.colData.Caption = "Data";
-			this.colData.DisplayFormat.FormatString = "d";
-			this.colData.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-			this.colData.FieldName = "DatEntrada";
-			this.colData.GroupFormat.FormatString = "d";
-			this.colData.GroupFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-			this.colData.Name = "colData";
-			this.colData.OptionsColumn.AllowEdit = false;
-			this.colData.OptionsColumn.ReadOnly = true;
-			this.colData.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count)});
-			this.colData.Visible = true;
-			this.colData.VisibleIndex = 0;
-			this.colData.Width = 72;
+			this.gridDados.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridDados_CellValueChanged);
 			// 
 			// colCodProduto
 			// 
@@ -308,9 +353,10 @@
 			this.colCodProduto.FieldName = "CodProduto";
 			this.colCodProduto.Name = "colCodProduto";
 			this.colCodProduto.OptionsColumn.AllowEdit = false;
-			this.colCodProduto.OptionsColumn.ReadOnly = true;
+			this.colCodProduto.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "CodProduto", "Total de itens: {0}")});
 			this.colCodProduto.Visible = true;
-			this.colCodProduto.VisibleIndex = 1;
+			this.colCodProduto.VisibleIndex = 0;
 			this.colCodProduto.Width = 117;
 			// 
 			// colDesProduto
@@ -319,10 +365,18 @@
 			this.colDesProduto.FieldName = "DesProduto";
 			this.colDesProduto.Name = "colDesProduto";
 			this.colDesProduto.OptionsColumn.AllowEdit = false;
-			this.colDesProduto.OptionsColumn.ReadOnly = true;
 			this.colDesProduto.Visible = true;
-			this.colDesProduto.VisibleIndex = 2;
+			this.colDesProduto.VisibleIndex = 1;
 			this.colDesProduto.Width = 267;
+			// 
+			// colUnidade
+			// 
+			this.colUnidade.Caption = "Unidade";
+			this.colUnidade.FieldName = "Unidade";
+			this.colUnidade.Name = "colUnidade";
+			this.colUnidade.OptionsColumn.AllowEdit = false;
+			this.colUnidade.Visible = true;
+			this.colUnidade.VisibleIndex = 2;
 			// 
 			// colVlrUnitario
 			// 
@@ -331,7 +385,6 @@
 			this.colVlrUnitario.FieldName = "VlrUnitario";
 			this.colVlrUnitario.Name = "colVlrUnitario";
 			this.colVlrUnitario.OptionsColumn.AllowEdit = false;
-			this.colVlrUnitario.OptionsColumn.ReadOnly = true;
 			this.colVlrUnitario.Visible = true;
 			this.colVlrUnitario.VisibleIndex = 3;
 			this.colVlrUnitario.Width = 73;
@@ -340,10 +393,9 @@
 			// 
 			this.colQuantidade.Caption = "Qtde.";
 			this.colQuantidade.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-			this.colQuantidade.FieldName = "QtdProduto";
+			this.colQuantidade.FieldName = "Quantidade";
 			this.colQuantidade.Name = "colQuantidade";
 			this.colQuantidade.OptionsColumn.AllowEdit = false;
-			this.colQuantidade.OptionsColumn.ReadOnly = true;
 			this.colQuantidade.Visible = true;
 			this.colQuantidade.VisibleIndex = 4;
 			this.colQuantidade.Width = 49;
@@ -352,33 +404,72 @@
 			// 
 			this.colVlrFinal.Caption = "Vlr. Final";
 			this.colVlrFinal.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-			this.colVlrFinal.FieldName = "VlrTotal";
+			this.colVlrFinal.FieldName = "VlrFinal";
 			this.colVlrFinal.Name = "colVlrFinal";
 			this.colVlrFinal.OptionsColumn.AllowEdit = false;
 			this.colVlrFinal.OptionsColumn.ReadOnly = true;
 			this.colVlrFinal.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "VlrFinal", "", "Valor total da nota")});
 			this.colVlrFinal.Visible = true;
 			this.colVlrFinal.VisibleIndex = 5;
 			this.colVlrFinal.Width = 70;
 			// 
-			// colCodigounico
+			// colNCM
 			// 
-			this.colCodigounico.Caption = "Código Único";
-			this.colCodigounico.FieldName = "codigounico";
-			this.colCodigounico.Name = "colCodigounico";
-			this.colCodigounico.OptionsColumn.AllowEdit = false;
-			this.colCodigounico.OptionsColumn.ReadOnly = true;
+			this.colNCM.Caption = "NCM";
+			this.colNCM.FieldName = "NCM";
+			this.colNCM.Name = "colNCM";
+			this.colNCM.OptionsColumn.AllowEdit = false;
+			this.colNCM.Visible = true;
+			this.colNCM.VisibleIndex = 6;
 			// 
-			// colDocEntrada
+			// colVlrICMS
 			// 
-			this.colDocEntrada.Caption = "Documento";
-			this.colDocEntrada.FieldName = "DocEntrada";
-			this.colDocEntrada.Name = "colDocEntrada";
-			this.colDocEntrada.OptionsColumn.AllowEdit = false;
-			this.colDocEntrada.OptionsColumn.ReadOnly = true;
-			this.colDocEntrada.Visible = true;
-			this.colDocEntrada.VisibleIndex = 6;
+			this.colVlrICMS.Caption = "Vlr. ICMS";
+			this.colVlrICMS.FieldName = "VlrICMS";
+			this.colVlrICMS.Name = "colVlrICMS";
+			this.colVlrICMS.OptionsColumn.AllowEdit = false;
+			this.colVlrICMS.Visible = true;
+			this.colVlrICMS.VisibleIndex = 7;
+			// 
+			// colVlrICMSST
+			// 
+			this.colVlrICMSST.Caption = "ICMS ST";
+			this.colVlrICMSST.FieldName = "VlrICMSST";
+			this.colVlrICMSST.Name = "colVlrICMSST";
+			this.colVlrICMSST.OptionsColumn.AllowEdit = false;
+			this.colVlrICMSST.Visible = true;
+			this.colVlrICMSST.VisibleIndex = 8;
+			// 
+			// colPIS
+			// 
+			this.colPIS.Caption = "PIS";
+			this.colPIS.FieldName = "VlrPIS";
+			this.colPIS.Name = "colPIS";
+			// 
+			// colCOFINS
+			// 
+			this.colCOFINS.Caption = "COFINS";
+			this.colCOFINS.FieldName = "VlrCOFINS";
+			this.colCOFINS.Name = "colCOFINS";
+			// 
+			// colCodOriginal
+			// 
+			this.colCodOriginal.Caption = "Cód. Orig.";
+			this.colCodOriginal.FieldName = "CodOriginal";
+			this.colCodOriginal.Name = "colCodOriginal";
+			this.colCodOriginal.OptionsColumn.AllowEdit = false;
+			this.colCodOriginal.Visible = true;
+			this.colCodOriginal.VisibleIndex = 9;
+			// 
+			// colDesOriginal
+			// 
+			this.colDesOriginal.Caption = "Desc. Original";
+			this.colDesOriginal.FieldName = "DesOriginal";
+			this.colDesOriginal.Name = "colDesOriginal";
+			this.colDesOriginal.OptionsColumn.AllowEdit = false;
+			this.colDesOriginal.Visible = true;
+			this.colDesOriginal.VisibleIndex = 10;
 			// 
 			// xtraTabControl1
 			// 
@@ -417,6 +508,23 @@
 			this.tabDados.Name = "tabDados";
 			this.tabDados.Size = new System.Drawing.Size(719, 114);
 			this.tabDados.Text = "Dados Produto";
+			// 
+			// txtNumOrdem
+			// 
+			this.txtNumOrdem.EditValue = "1";
+			this.txtNumOrdem.EnterMoveNextControl = true;
+			this.txtNumOrdem.Location = new System.Drawing.Point(452, 33);
+			this.txtNumOrdem.Name = "txtNumOrdem";
+			this.txtNumOrdem.Size = new System.Drawing.Size(79, 20);
+			this.txtNumOrdem.TabIndex = 40;
+			// 
+			// labelControl30
+			// 
+			this.labelControl30.Location = new System.Drawing.Point(393, 36);
+			this.labelControl30.Name = "labelControl30";
+			this.labelControl30.Size = new System.Drawing.Size(53, 13);
+			this.labelControl30.TabIndex = 41;
+			this.labelControl30.Text = "Sequëncia:";
 			// 
 			// txtNCM
 			// 
@@ -599,6 +707,7 @@
 			this.cmbProduto.Properties.ValueMember = "codigounico";
 			this.cmbProduto.Size = new System.Drawing.Size(354, 20);
 			this.cmbProduto.TabIndex = 27;
+			this.cmbProduto.Validated += new System.EventHandler(this.cmbProduto_Validated);
 			// 
 			// tabImpostos
 			// 
@@ -627,7 +736,7 @@
 			this.tabImpostos.Controls.Add(this.labelControl16);
 			this.tabImpostos.Controls.Add(this.txtVlrBaseICMS);
 			this.tabImpostos.Name = "tabImpostos";
-			this.tabImpostos.Size = new System.Drawing.Size(719, 123);
+			this.tabImpostos.Size = new System.Drawing.Size(719, 114);
 			this.tabImpostos.Text = "Impostos";
 			// 
 			// labelControl25
@@ -916,6 +1025,7 @@
 			this.btnImportarXML.Size = new System.Drawing.Size(75, 23);
 			this.btnImportarXML.TabIndex = 36;
 			this.btnImportarXML.Text = "Importar...";
+			this.btnImportarXML.Click += new System.EventHandler(this.btnImportarXML_Click);
 			// 
 			// labelControl12
 			// 
@@ -935,6 +1045,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton()});
 			this.txtArquivoXML.Size = new System.Drawing.Size(289, 20);
 			this.txtArquivoXML.TabIndex = 34;
+			this.txtArquivoXML.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtArquivoXML_ButtonClick);
 			// 
 			// labelControl11
 			// 
@@ -952,6 +1063,7 @@
 			this.btnCarregarNF.Size = new System.Drawing.Size(75, 23);
 			this.btnCarregarNF.TabIndex = 32;
 			this.btnCarregarNF.Text = "Carregar...";
+			this.btnCarregarNF.Click += new System.EventHandler(this.btnCarregarNF_Click);
 			// 
 			// txtNumChave
 			// 
@@ -1049,6 +1161,7 @@
 			this.btnIncluir.Size = new System.Drawing.Size(75, 23);
 			this.btnIncluir.TabIndex = 34;
 			this.btnIncluir.Text = "&Incluir Item";
+			this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
 			// 
 			// btnExcluirItem
 			// 
@@ -1057,30 +1170,31 @@
 			this.btnExcluirItem.Size = new System.Drawing.Size(75, 23);
 			this.btnExcluirItem.TabIndex = 35;
 			this.btnExcluirItem.Text = "&Excluir Item";
+			this.btnExcluirItem.Click += new System.EventHandler(this.btnExcluirItem_Click);
 			// 
 			// btnAlterarItem
 			// 
-			this.btnAlterarItem.Location = new System.Drawing.Point(495, 240);
+			this.btnAlterarItem.Location = new System.Drawing.Point(495, 239);
 			this.btnAlterarItem.Name = "btnAlterarItem";
 			this.btnAlterarItem.Size = new System.Drawing.Size(75, 23);
 			this.btnAlterarItem.TabIndex = 36;
 			this.btnAlterarItem.Text = "&Alterar Item";
 			// 
-			// txtNumOrdem
+			// lcolCodProduto
 			// 
-			this.txtNumOrdem.EnterMoveNextControl = true;
-			this.txtNumOrdem.Location = new System.Drawing.Point(452, 33);
-			this.txtNumOrdem.Name = "txtNumOrdem";
-			this.txtNumOrdem.Size = new System.Drawing.Size(79, 20);
-			this.txtNumOrdem.TabIndex = 40;
+			this.lcolCodProduto.Caption = "Código";
+			this.lcolCodProduto.FieldName = "CodProduto";
+			this.lcolCodProduto.Name = "lcolCodProduto";
+			this.lcolCodProduto.Visible = true;
+			this.lcolCodProduto.VisibleIndex = 0;
 			// 
-			// labelControl30
+			// lcolDesProduto
 			// 
-			this.labelControl30.Location = new System.Drawing.Point(393, 36);
-			this.labelControl30.Name = "labelControl30";
-			this.labelControl30.Size = new System.Drawing.Size(53, 13);
-			this.labelControl30.TabIndex = 41;
-			this.labelControl30.Text = "Sequëncia:";
+			this.lcolDesProduto.Caption = "Decrição";
+			this.lcolDesProduto.FieldName = "DesProduto";
+			this.lcolDesProduto.Name = "lcolDesProduto";
+			this.lcolDesProduto.Visible = true;
+			this.lcolDesProduto.VisibleIndex = 1;
 			// 
 			// frmEntrada
 			// 
@@ -1105,6 +1219,8 @@
 			this.Text = "Entrada de Produtos";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.Load += new System.EventHandler(this.frmEntrada_Load);
+			((System.ComponentModel.ISupportInitialize)(this.lueProdutos)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtDocEntrada.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtDatEmissao.Properties.CalendarTimeProperties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtDatEmissao.Properties)).EndInit();
@@ -1116,6 +1232,7 @@
 			this.xtraTabControl1.ResumeLayout(false);
 			this.tabDados.ResumeLayout(false);
 			this.tabDados.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.txtNumOrdem.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtNCM.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtUnidade.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.cmbCodProduto.Properties)).EndInit();
@@ -1151,7 +1268,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.txtNome.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtNumCNPJ.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtSerieNota.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtNumOrdem.Properties)).EndInit();
 			this.ResumeLayout(false);
 
         }
@@ -1168,15 +1284,13 @@
 		private DevExpress.XtraEditors.LabelControl labelControl7;
 		private DevExpress.XtraEditors.CheckEdit chkContinuar;
         private DevExpress.XtraGrid.GridControl grdDados;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridDados;
-        private DevExpress.XtraGrid.Columns.GridColumn colData;
+		private DevExpress.XtraGrid.Views.Grid.GridView gridDados;
         private DevExpress.XtraGrid.Columns.GridColumn colCodProduto;
         private DevExpress.XtraGrid.Columns.GridColumn colDesProduto;
         private DevExpress.XtraGrid.Columns.GridColumn colVlrUnitario;
         private DevExpress.XtraGrid.Columns.GridColumn colQuantidade;
         private DevExpress.XtraGrid.Columns.GridColumn colVlrFinal;
-        private DevExpress.XtraGrid.Columns.GridColumn colCodigounico;
-		private DevExpress.XtraGrid.Columns.GridColumn colDocEntrada;
+		private DevExpress.XtraGrid.Columns.GridColumn colCodigounico;
 		private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
 		private DevExpress.XtraTab.XtraTabPage tabDados;
 		private DevExpress.XtraEditors.LookUpEdit cmbFornecedor;
@@ -1242,5 +1356,17 @@
 		private DevExpress.XtraEditors.SimpleButton btnAlterarItem;
 		private DevExpress.XtraEditors.TextEdit txtNumOrdem;
 		private DevExpress.XtraEditors.LabelControl labelControl30;
+		private DevExpress.XtraGrid.Columns.GridColumn colUnidade;
+		private DevExpress.XtraGrid.Columns.GridColumn colNCM;
+		private DevExpress.XtraGrid.Columns.GridColumn colVlrICMS;
+		private DevExpress.XtraGrid.Columns.GridColumn colVlrICMSST;
+		private DevExpress.XtraGrid.Columns.GridColumn colPIS;
+		private DevExpress.XtraGrid.Columns.GridColumn colCOFINS;
+		private DevExpress.XtraGrid.Columns.GridColumn colCodOriginal;
+		private DevExpress.XtraGrid.Columns.GridColumn colDesOriginal;
+		private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit lueProdutos;
+		private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit1View;
+		private DevExpress.XtraGrid.Columns.GridColumn lcolCodProduto;
+		private DevExpress.XtraGrid.Columns.GridColumn lcolDesProduto;
     }
 }

@@ -10,6 +10,8 @@ namespace Loja.DAL.DAO
 {
 	public class Consultas
 	{
+
+		#region Produto
 		public static List<tbl_Produtos> ObterProdutosAtivos()
 		{
 			using (var banco = new LojaContext())
@@ -47,6 +49,57 @@ namespace Loja.DAL.DAO
 			}
 		}
 
+		public static tbl_Produtos ObterProduto(string codProduto)
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var registro = (from prod in banco.tbl_Produtos
+								where prod.CodProduto == codProduto || prod.CodRefAntiga == codProduto
+								select prod).FirstOrDefault();
+				return registro;
+			}
+		}
+
+		public static string ObterCodProduto(int codigounico)
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var prod = banco.tbl_Produtos.FirstOrDefault(x => x.codigounico == codigounico);
+				if (prod != null)
+				{
+					return prod.CodProduto;
+				}
+				else
+				{
+					return "";
+
+				}
+			}
+
+		}
+
+		public static int Obtercodigounico(string CodProduto)
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var prod = banco.tbl_Produtos.FirstOrDefault(x => x.CodProduto == CodProduto);
+				if (prod != null)
+				{
+					return prod.codigounico;
+				}
+				else
+				{
+					return -1;
+
+				}
+			}
+
+		}
+
+
 		public static int ObterQtdeProdutos()
 		{
 			using (var banco = new LojaContext())
@@ -68,6 +121,8 @@ namespace Loja.DAL.DAO
 
 			}
 		}
+
+		#endregion
 
 		public static List<DadosCombo> ObterTipoVendaCombo()
 		{
@@ -104,7 +159,7 @@ namespace Loja.DAL.DAO
 			}
 		}
 
-		public static List<tbl_SaidaItens> ObterVendaItens(int codVenda)
+		public static List<tbl_SaidaItens> ObterVendaItens(string codVenda)
 		{
 			using (var banco = new LojaContext())
 			{
@@ -114,7 +169,7 @@ namespace Loja.DAL.DAO
 			}
 		}
 
-		public static tbl_Saida ObterVenda(int codVenda)
+		public static tbl_Saida ObterVenda(string codVenda)
 		{
 			using (var banco = new LojaContext())
 			{
@@ -169,13 +224,13 @@ namespace Loja.DAL.DAO
 							   select new Entrada()
 							   {
 								   DatEntrada = entrada.DatEntrada,
-								   DocEntrada = entrada.DocEntrada,
-								   QtdProduto = itens.Quantidade ?? 0,
-								   VlrTotal = itens.VlrFinal,
-								   VlrUnitario = itens.VlrUnitario ?? 0,
-								   CodProduto = produto.CodProduto,
-								   DesProduto = produto.DesProduto,
-								   codigounico = itens.codigounico
+								   DocEntrada = entrada.DocEntrada//,
+								   //QtdProduto = itens.Quantidade ?? 0,
+								   //VlrTotal = itens.VlrFinal,
+								   //VlrUnitario = itens.VlrUnitario ?? 0,
+								   //CodProduto = produto.CodProduto,
+								   //DesProduto = produto.DesProduto,
+								   //codigounico = itens.codigounico*/
 							   };
 				return entradas.ToList();
 
@@ -198,17 +253,34 @@ namespace Loja.DAL.DAO
 							   {
 								   DatEntrada = entrada.DatEntrada,
 								   DocEntrada = entrada.DocEntrada,
-								   QtdProduto = itens.Quantidade ?? 0,
-								   VlrTotal = itens.VlrFinal,
-								   VlrUnitario = itens.VlrUnitario ?? 0,
-								   CodProduto = produto.CodProduto,
-								   DesProduto = produto.DesProduto,
-								   codigounico = itens.codigounico
+								   //QtdProduto = itens.Quantidade ?? 0,
+								   //VlrTotal = itens.VlrFinal,
+								   //VlrUnitario = itens.VlrUnitario ?? 0,
+								   //CodProduto = produto.CodProduto,
+								   //DesProduto = produto.DesProduto,
+								   //codigounico = itens.codigounico
 							   };
 				return registro.ToList();
 
 			}
 
+
+		}
+
+		public static tbl_Entrada ObterEntrada(string docEntrada, string serie, string cnpj)
+		{
+
+			using (var banco = new LojaContext())
+			{
+
+				var entradas = from entrada in banco.tbl_Entrada
+							   where entrada.DocEntrada == docEntrada && entrada.CNPJ == cnpj && entrada.SerieNota == serie
+							   select entrada;
+
+				return entradas.FirstOrDefault();
+
+
+			}
 
 		}
 

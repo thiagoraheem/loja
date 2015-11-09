@@ -164,17 +164,27 @@ namespace Loja
 
 		int FU_PegaCodigoGrid(String origem)
 		{
+
 			int codigo = -1;
 
-			if (origem == "P")
+			try
 			{
-				int linha = gridViewProduto.GetSelectedRows()[0];
-				codigo = (int)gridViewProduto.GetRowCellValue(linha, colCodigounico);
+
+				if (origem == "P")
+				{
+					int linha = gridViewProduto.GetSelectedRows()[0];
+					codigo = (int)gridViewProduto.GetRowCellValue(linha, colCodigounico);
+				}
+				else if (origem == "O")
+				{
+					int linha = gridViewOrcamento.GetSelectedRows()[0];
+					codigo = (int)gridViewOrcamento.GetRowCellValue(linha, colOrcodigounico);
+				}
+
 			}
-			else if (origem == "O")
+			catch (Exception ex)
 			{
-				int linha = gridViewOrcamento.GetSelectedRows()[0];
-				codigo = (int)gridViewOrcamento.GetRowCellValue(linha, colOrcodigounico);
+				Util.MsgBox(ex.Message);
 			}
 
 			return codigo;

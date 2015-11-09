@@ -41,6 +41,8 @@ namespace Loja.DAL.Models.Mapping
 			this.Property(t => t.Unidade).HasColumnName("Unidade");
 			this.Property(t => t.Quantidade).HasColumnName("Quantidade");
 			this.Property(t => t.VlrUnitario).HasColumnName("VlrUnitario");
+			this.Property(t => t.VlrTotal).HasColumnName("VlrTotal");
+			this.Property(t => t.Percentual).HasColumnName("Percentual");
 			this.Property(t => t.VlrFinal).HasColumnName("VlrFinal");
 			this.Property(t => t.VlrBaseICMS).HasColumnName("VlrBaseICMS");
 			this.Property(t => t.VlrPercICMS).HasColumnName("VlrPercICMS");

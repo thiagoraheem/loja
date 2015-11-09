@@ -162,5 +162,19 @@ namespace Loja
 		}
 
 		#endregion
+
+		#region Eventos gerais
+
+		private void txtVlrPercent_Validated(object sender, EventArgs e)
+		{
+			if (txtVlrPercent.Text != String.Empty && txtVlrCusto.Value > 0)
+			{
+				var valornovo = decimal.Parse(txtVlrCusto.Text) * (1 + (decimal.Parse(txtVlrPercent.Text) / 100m));
+				txtVlrUnitario.Value = valornovo;
+
+			}
+		}
+		
+		#endregion
 	}
 }

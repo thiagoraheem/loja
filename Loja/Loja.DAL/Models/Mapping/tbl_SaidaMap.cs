@@ -12,7 +12,8 @@ namespace Loja.DAL.Models.Mapping
 
 			// Properties
 			this.Property(t => t.CodVenda)
-				.HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+				.IsRequired()
+                .HasMaxLength(10);
 
 			this.Property(t => t.FlgStatusNFE)
 				.IsFixedLength()

@@ -28,7 +28,7 @@ namespace Loja {
         
         private tbl_SaidaItensDataTable tabletbl_SaidaItens;
         
-        private global::System.Data.DataRelation relationFK_tbl_SaidaItens_tbl_Saida;
+        private global::System.Data.DataRelation relationtbl_Saida_tbl_SaidaItens;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -226,7 +226,7 @@ namespace Loja {
                     this.tabletbl_SaidaItens.InitVars();
                 }
             }
-            this.relationFK_tbl_SaidaItens_tbl_Saida = this.Relations["FK_tbl_SaidaItens_tbl_Saida"];
+            this.relationtbl_Saida_tbl_SaidaItens = this.Relations["tbl_Saida_tbl_SaidaItens"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -240,10 +240,10 @@ namespace Loja {
             base.Tables.Add(this.tabletbl_Saida);
             this.tabletbl_SaidaItens = new tbl_SaidaItensDataTable(false);
             base.Tables.Add(this.tabletbl_SaidaItens);
-            this.relationFK_tbl_SaidaItens_tbl_Saida = new global::System.Data.DataRelation("FK_tbl_SaidaItens_tbl_Saida", new global::System.Data.DataColumn[] {
+            this.relationtbl_Saida_tbl_SaidaItens = new global::System.Data.DataRelation("tbl_Saida_tbl_SaidaItens", new global::System.Data.DataColumn[] {
                         this.tabletbl_Saida.CodVendaColumn}, new global::System.Data.DataColumn[] {
                         this.tabletbl_SaidaItens.CodVendaColumn}, false);
-            this.Relations.Add(this.relationFK_tbl_SaidaItens_tbl_Saida);
+            this.Relations.Add(this.relationtbl_Saida_tbl_SaidaItens);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -492,10 +492,10 @@ namespace Loja {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tbl_SaidaRow Addtbl_SaidaRow(System.DateTime Data, decimal ValorTotal, int QtdItens, string FlgStatusNFE, string ChaveSefaz, string FlgStatusNota, int CodTipoVenda, int CodCliente) {
+            public tbl_SaidaRow Addtbl_SaidaRow(string CodVenda, System.DateTime Data, decimal ValorTotal, int QtdItens, string FlgStatusNFE, string ChaveSefaz, string FlgStatusNota, int CodTipoVenda, int CodCliente) {
                 tbl_SaidaRow rowtbl_SaidaRow = ((tbl_SaidaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
+                        CodVenda,
                         Data,
                         ValorTotal,
                         QtdItens,
@@ -511,7 +511,7 @@ namespace Loja {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tbl_SaidaRow FindByCodVenda(int CodVenda) {
+            public tbl_SaidaRow FindByCodVenda(string CodVenda) {
                 return ((tbl_SaidaRow)(this.Rows.Find(new object[] {
                             CodVenda})));
             }
@@ -547,7 +547,7 @@ namespace Loja {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnCodVenda = new global::System.Data.DataColumn("CodVenda", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnCodVenda = new global::System.Data.DataColumn("CodVenda", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCodVenda);
                 this.columnData = new global::System.Data.DataColumn("Data", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnData);
@@ -567,7 +567,6 @@ namespace Loja {
                 base.Columns.Add(this.columnCodCliente);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnCodVenda}, true));
-                this.columnCodVenda.AutoIncrement = true;
                 this.columnCodVenda.AutoIncrementSeed = -1;
                 this.columnCodVenda.AutoIncrementStep = -1;
                 this.columnCodVenda.AllowDBNull = false;
@@ -908,7 +907,7 @@ namespace Loja {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tbl_SaidaItensRow Addtbl_SaidaItensRow(tbl_SaidaRow parenttbl_SaidaRowByFK_tbl_SaidaItens_tbl_Saida, int codigounico, System.DateTime DatSaida, string CodOrcamento, string CodProduto, string DesProduto, decimal VlrUnitario, int Quantidade, decimal VlrCusto, decimal VlrFinal, decimal VlrBruto, decimal VlrDesconto) {
+            public tbl_SaidaItensRow Addtbl_SaidaItensRow(tbl_SaidaRow parenttbl_SaidaRowBytbl_Saida_tbl_SaidaItens, int codigounico, System.DateTime DatSaida, string CodOrcamento, string CodProduto, string DesProduto, decimal VlrUnitario, int Quantidade, decimal VlrCusto, decimal VlrFinal, decimal VlrBruto, decimal VlrDesconto) {
                 tbl_SaidaItensRow rowtbl_SaidaItensRow = ((tbl_SaidaItensRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -923,8 +922,8 @@ namespace Loja {
                         VlrFinal,
                         VlrBruto,
                         VlrDesconto};
-                if ((parenttbl_SaidaRowByFK_tbl_SaidaItens_tbl_Saida != null)) {
-                    columnValuesArray[0] = parenttbl_SaidaRowByFK_tbl_SaidaItens_tbl_Saida[0];
+                if ((parenttbl_SaidaRowBytbl_Saida_tbl_SaidaItens != null)) {
+                    columnValuesArray[0] = parenttbl_SaidaRowBytbl_Saida_tbl_SaidaItens[0];
                 }
                 rowtbl_SaidaItensRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowtbl_SaidaItensRow);
@@ -933,7 +932,7 @@ namespace Loja {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tbl_SaidaItensRow Addtbl_SaidaItensRow(tbl_SaidaRow parenttbl_SaidaRowByFK_tbl_SaidaItens_tbl_Saida, int codigounico, System.DateTime DatSaida, string CodOrcamento, string CodProduto, string DesProduto, decimal VlrUnitario, int Quantidade, decimal VlrCusto, decimal VlrFinal, decimal VlrDesconto) {
+            public tbl_SaidaItensRow Addtbl_SaidaItensRow(tbl_SaidaRow parenttbl_SaidaRowBytbl_Saida_tbl_SaidaItens, int codigounico, System.DateTime DatSaida, string CodOrcamento, string CodProduto, string DesProduto, decimal VlrUnitario, int Quantidade, decimal VlrCusto, decimal VlrFinal, decimal VlrDesconto) {
                 tbl_SaidaItensRow rowtbl_SaidaItensRow = ((tbl_SaidaItensRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -948,8 +947,8 @@ namespace Loja {
                         VlrFinal,
                         null,
                         VlrDesconto};
-                if ((parenttbl_SaidaRowByFK_tbl_SaidaItens_tbl_Saida != null)) {
-                    columnValuesArray[0] = parenttbl_SaidaRowByFK_tbl_SaidaItens_tbl_Saida[0];
+                if ((parenttbl_SaidaRowBytbl_Saida_tbl_SaidaItens != null)) {
+                    columnValuesArray[0] = parenttbl_SaidaRowBytbl_Saida_tbl_SaidaItens[0];
                 }
                 rowtbl_SaidaItensRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowtbl_SaidaItensRow);
@@ -958,7 +957,7 @@ namespace Loja {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tbl_SaidaItensRow FindByCodVendacodigounico(int CodVenda, int codigounico) {
+            public tbl_SaidaItensRow FindByCodVendacodigounico(string CodVenda, int codigounico) {
                 return ((tbl_SaidaItensRow)(this.Rows.Find(new object[] {
                             CodVenda,
                             codigounico})));
@@ -998,7 +997,7 @@ namespace Loja {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnCodVenda = new global::System.Data.DataColumn("CodVenda", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnCodVenda = new global::System.Data.DataColumn("CodVenda", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCodVenda);
                 this.columncodigounico = new global::System.Data.DataColumn("codigounico", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncodigounico);
@@ -1187,9 +1186,9 @@ namespace Loja {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int CodVenda {
+            public string CodVenda {
                 get {
-                    return ((int)(this[this.tabletbl_Saida.CodVendaColumn]));
+                    return ((string)(this[this.tabletbl_Saida.CodVendaColumn]));
                 }
                 set {
                     this[this.tabletbl_Saida.CodVendaColumn] = value;
@@ -1423,11 +1422,11 @@ namespace Loja {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public tbl_SaidaItensRow[] Gettbl_SaidaItensRows() {
-                if ((this.Table.ChildRelations["FK_tbl_SaidaItens_tbl_Saida"] == null)) {
+                if ((this.Table.ChildRelations["tbl_Saida_tbl_SaidaItens"] == null)) {
                     return new tbl_SaidaItensRow[0];
                 }
                 else {
-                    return ((tbl_SaidaItensRow[])(base.GetChildRows(this.Table.ChildRelations["FK_tbl_SaidaItens_tbl_Saida"])));
+                    return ((tbl_SaidaItensRow[])(base.GetChildRows(this.Table.ChildRelations["tbl_Saida_tbl_SaidaItens"])));
                 }
             }
         }
@@ -1448,9 +1447,9 @@ namespace Loja {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int CodVenda {
+            public string CodVenda {
                 get {
-                    return ((int)(this[this.tabletbl_SaidaItens.CodVendaColumn]));
+                    return ((string)(this[this.tabletbl_SaidaItens.CodVendaColumn]));
                 }
                 set {
                     this[this.tabletbl_SaidaItens.CodVendaColumn] = value;
@@ -1597,10 +1596,10 @@ namespace Loja {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public tbl_SaidaRow tbl_SaidaRow {
                 get {
-                    return ((tbl_SaidaRow)(this.GetParentRow(this.Table.ParentRelations["FK_tbl_SaidaItens_tbl_Saida"])));
+                    return ((tbl_SaidaRow)(this.GetParentRow(this.Table.ParentRelations["tbl_Saida_tbl_SaidaItens"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_tbl_SaidaItens_tbl_Saida"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["tbl_Saida_tbl_SaidaItens"]);
                 }
             }
             

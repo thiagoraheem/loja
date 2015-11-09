@@ -94,7 +94,7 @@ namespace Loja.Modules
 
 					if (valida.Status)
 					{
-						valida = NFe.Wsdl.Monitor.EnviaNFE(retornoEnvio.EnvioStr, _saida.CodVenda, 0, 0);
+						valida = NFe.Wsdl.Monitor.EnviaNFE(retornoEnvio.EnvioStr, int.Parse(_saida.CodVenda), 0, 0);
 						if (!valida.Status)
 						{
 							throw new Exception("Erro ao enviar NFC-e");
@@ -181,7 +181,7 @@ namespace Loja.Modules
 				indPag = IndicadorPagamento.ipVista,
 				mod = modelo,
 				serie = 1,
-				nNF = _saida.CodVenda,
+				nNF = int.Parse(_saida.CodVenda),
 				tpNF = TipoNFe.tnSaida,
 				cMunFG = 1302603,
 				tpEmis = _configuracoes.CfgServico.tpEmis,
@@ -198,7 +198,7 @@ namespace Loja.Modules
 					DateTime.Now.ToString(versao == VersaoServico.ve310
 						? "yyyy-MM-ddTHH:mm:sszzz"
 						: "yyyy-MM-ddTHH:mm:ss");
-				ide.xJust = "TESTE DE CONTIGÊNCIA PARA NFe/NFCe";
+				ide.xJust = "CONTIGÊNCIA PARA NFe/NFCe";
 			}
 
 			#region V2.00
@@ -246,7 +246,7 @@ namespace Loja.Modules
 				if (!String.IsNullOrEmpty(_cliente.NumCNPJ))
 				{
 					dest.CNPJ = _cliente.NumCNPJ.Replace(".", "").Replace("-", "").Replace("/", "");
-					dest.xNome = _cliente.NomCliente ?? "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL";
+					dest.xNome = _cliente.NomCliente ?? "CLIENTE NÃO IDENTIFICADO";
 					dest.enderDest = GetEnderecoDestinatario();
 					if (!String.IsNullOrEmpty(_cliente.Email))
 						dest.email = _cliente.Email;
@@ -256,7 +256,7 @@ namespace Loja.Modules
 					if (!String.IsNullOrEmpty(_cliente.NumCPF))
 					{
 						dest.CPF = _cliente.NumCPF.Replace(".", "").Replace("-", "");
-						dest.xNome = _cliente.NomCliente ?? "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL";
+						dest.xNome = _cliente.NomCliente ?? "CLIENTE NÃO IDENTIFICADO";
 						dest.enderDest = GetEnderecoDestinatario();
 						if (!String.IsNullOrEmpty(_cliente.Email))
 							dest.email = _cliente.Email;
@@ -265,7 +265,7 @@ namespace Loja.Modules
 			}
 			else
 			{
-				dest.xNome = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL";
+				dest.xNome = "CLIENTE NÃO IDENTIFICADO";
 			}
 
 			//if (versao == VersaoServico.ve200)

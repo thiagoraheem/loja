@@ -111,9 +111,10 @@ namespace Loja
 				{
 					if (!String.IsNullOrEmpty(txtNumCPF.Text))
 					{
-						var nomCliente = "";
-						
-						var cCliente = Cadastros.GravaCliente(new tbl_Cliente(){NumCPF = txtNumCPF.Text, NomCliente = nomCliente});
+						var nomCliente = txtNome.Text;
+						if (nomCliente == "") nomCliente = "CLIENTE NÃO IDENTIFICADO";
+
+						var cCliente = Cadastros.GravaCliente(new tbl_Cliente() { NumCPF = txtNumCPF.Text, NomCliente = nomCliente });
 						codCliente = cCliente;
 						bApagar = true;
 
@@ -123,8 +124,9 @@ namespace Loja
 				}
 
 				int tipoVenda = int.Parse(cmbTipoVenda.EditValue.ToString());
+				var nfe = (chkNFE.Checked == true ? 1 : 0);
 
-				int codVenda = Cadastros.FinalizaVenda(CodOrcamento, tipoVenda, codCliente);
+				var codVenda = Cadastros.FinalizaVenda(CodOrcamento, tipoVenda, codCliente, nfe);
 
 				this.Refresh();
 				this.ForceRefresh();
@@ -134,7 +136,7 @@ namespace Loja
 				this.Refresh();
 				this.ForceRefresh();
 
-				if (chkNFE.Checked == true)
+				if (nfe == 1)
 				{
 					var nota = new Modules.NFCE(_configuracoes, saida);
 
@@ -147,7 +149,7 @@ namespace Loja
 						this.DialogResult = System.Windows.Forms.DialogResult.No;
 						this.Close();
 						return;
-						
+
 					}
 
 					this.Refresh();
@@ -164,7 +166,7 @@ namespace Loja
 				{
 					Cadastros.ExcluiOrcamento(CodOrcamento);
 				}
-				
+
 				this.DialogResult = System.Windows.Forms.DialogResult.Yes;
 
 				if (chkEmitirRecibo.Checked)
@@ -173,6 +175,15 @@ namespace Loja
 					{
 						f.txtValor.Value = txtVlrFinal.Value;
 						f.txtExtenso.Text = Util.toExtenso(txtVlrFinal.Value);
+						f.txtNome.Text = txtNome.Text;
+						if (saida != null)
+						{
+							f.txtReferente.Text = string.Format("VENDA DE MERCADORIA COM A NF: {0}", saida.CodVenda);
+						}
+						else
+						{
+							f.txtReferente.Text = "VENDA DE PEÇAS AUTOMOTIVAS";
+						}
 						f.ShowDialog();
 					}
 				}
@@ -237,23 +248,25 @@ namespace Loja
 
 		private void cmbCliente_EditValueChanged(object sender, EventArgs e)
 		{
-			if (cmbCliente.EditValue != null && txtNumCPF.Text != cmbCliente.EditValue.ToString())
+			if (cmbCliente.EditValue != null)
 			{
 				var cpf = clientes.FirstOrDefault(x => x.CodCliente == (int)cmbCliente.EditValue);
 
 				txtNumCPF.Text = cpf.NumCPF ?? cpf.NumCNPJ;
+				txtNome.Text = cmbCliente.Text;
 			}
 		}
 
 		private void txtNumCPF_EditValueChanged(object sender, EventArgs e)
 		{
-			
+
 			cmbCliente.EditValue = null;
 			var cliente = clientes.FirstOrDefault(x => x.NumCNPJ == txtNumCPF.Text || x.NumCPF == txtNumCPF.Text);
 
 			if (cliente != null)
 			{
 				cmbCliente.EditValue = cliente.CodCliente;
+				txtNome.Text = cliente.NomCliente;
 			}
 		}
 

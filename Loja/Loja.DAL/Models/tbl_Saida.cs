@@ -10,7 +10,7 @@ namespace Loja.DAL.Models
             this.tbl_SaidaItens = new List<tbl_SaidaItens>();
         }
 
-        public int CodVenda { get; set; }
+        public string CodVenda { get; set; }
         public System.DateTime Data { get; set; }
         public Nullable<decimal> ValorTotal { get; set; }
         public Nullable<int> QtdItens { get; set; }

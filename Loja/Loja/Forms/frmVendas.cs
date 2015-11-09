@@ -73,8 +73,8 @@ namespace Loja
 
 				if (MessageBox.Show("Confirma estornar essa venda?", "Confirmar exclusão", MessageBoxButtons.YesNo) == DialogResult.No)
 					return;
-				int codigo = FU_PegaCodigoGrid();
-				int codvenda = FU_PegaCodigoVenda();
+				
+				string codvenda = FU_PegaCodigoVenda();
 
 				Cadastros.EstornaVenda(codvenda, "", false);
 
@@ -95,7 +95,7 @@ namespace Loja
 		{
 
 			var caminho = "";
-			int codvenda = FU_PegaCodigoVenda();
+			var codvenda = FU_PegaCodigoVenda();
 
 			caminho = String.Format("{0}\\XML\\{1}-env-lot.xml", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), codvenda);
 
@@ -166,22 +166,12 @@ namespace Loja
 
 		}
 
-		int FU_PegaCodigoGrid()
+		string FU_PegaCodigoVenda()
 		{
-			int codigo = -1;
+			var codigo = "";
 
 			int linha = gridDados.GetSelectedRows()[0];
-			codigo = (int)gridDados.GetRowCellValue(linha, colCodVenda);
-
-			return codigo;
-		}
-
-		int FU_PegaCodigoVenda()
-		{
-			int codigo = -1;
-
-			int linha = gridDados.GetSelectedRows()[0];
-			codigo = (int)gridDados.GetRowCellValue(linha, colCodVenda);
+			codigo = gridDados.GetRowCellValue(linha, colCodVenda).ToString();
 
 			return codigo;
 		}

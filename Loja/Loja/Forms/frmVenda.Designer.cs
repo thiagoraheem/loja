@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
 			this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+			this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+			this.txtNome = new DevExpress.XtraEditors.TextEdit();
+			this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
 			this.boxEnviando = new DevExpress.XtraEditors.PopupContainerControl();
 			this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
 			this.progressoNota = new DevExpress.XtraEditors.MarqueeProgressBarControl();
@@ -68,6 +71,7 @@
 			this.colCodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
 			((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
 			this.groupControl1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.txtNome.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.boxEnviando)).BeginInit();
 			this.boxEnviando.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.progressoNota.Properties)).BeginInit();
@@ -91,6 +95,9 @@
 			// 
 			this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupControl1.Controls.Add(this.labelControl10);
+			this.groupControl1.Controls.Add(this.txtNome);
+			this.groupControl1.Controls.Add(this.labelControl9);
 			this.groupControl1.Controls.Add(this.boxEnviando);
 			this.groupControl1.Controls.Add(this.txtVlrTotal);
 			this.groupControl1.Controls.Add(this.labelControl7);
@@ -115,11 +122,42 @@
 			this.groupControl1.Controls.Add(this.txtDesconto);
 			this.groupControl1.Controls.Add(this.labelControl2);
 			this.groupControl1.Controls.Add(this.labelControl1);
-			this.groupControl1.Location = new System.Drawing.Point(12, 188);
+			this.groupControl1.Location = new System.Drawing.Point(12, 149);
 			this.groupControl1.Name = "groupControl1";
-			this.groupControl1.Size = new System.Drawing.Size(707, 291);
+			this.groupControl1.Size = new System.Drawing.Size(707, 330);
 			this.groupControl1.TabIndex = 1;
 			this.groupControl1.Text = "Dados da Venda";
+			// 
+			// labelControl10
+			// 
+			this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelControl10.Location = new System.Drawing.Point(354, 68);
+			this.labelControl10.Name = "labelControl10";
+			this.labelControl10.Size = new System.Drawing.Size(53, 19);
+			this.labelControl10.TabIndex = 29;
+			this.labelControl10.Text = "Nome:";
+			// 
+			// txtNome
+			// 
+			this.txtNome.EditValue = "";
+			this.txtNome.EnterMoveNextControl = true;
+			this.txtNome.Location = new System.Drawing.Point(413, 62);
+			this.txtNome.Name = "txtNome";
+			this.txtNome.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtNome.Properties.Appearance.Options.UseFont = true;
+			this.txtNome.Properties.Mask.EditMask = "([0-9]{2}[\\.][0-9]{3}[\\.][0-9]{3}[\\/][0-9]{4}[-][0-9]{2})|([0-9]{3}[\\.][0-9]{3}[\\" +
+    ".][0-9]{3}[-][0-9]{2})";
+			this.txtNome.Size = new System.Drawing.Size(246, 30);
+			this.txtNome.TabIndex = 2;
+			// 
+			// labelControl9
+			// 
+			this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelControl9.Location = new System.Drawing.Point(47, 68);
+			this.labelControl9.Name = "labelControl9";
+			this.labelControl9.Size = new System.Drawing.Size(88, 19);
+			this.labelControl9.TabIndex = 27;
+			this.labelControl9.Text = "CPF/CNPJ:";
 			// 
 			// boxEnviando
 			// 
@@ -127,9 +165,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.boxEnviando.Controls.Add(this.labelControl8);
 			this.boxEnviando.Controls.Add(this.progressoNota);
-			this.boxEnviando.Location = new System.Drawing.Point(445, 63);
+			this.boxEnviando.Location = new System.Drawing.Point(445, 101);
 			this.boxEnviando.Name = "boxEnviando";
-			this.boxEnviando.Size = new System.Drawing.Size(244, 51);
+			this.boxEnviando.Size = new System.Drawing.Size(252, 51);
 			this.boxEnviando.TabIndex = 26;
 			// 
 			// labelControl8
@@ -147,13 +185,13 @@
 			this.progressoNota.EditValue = 0;
 			this.progressoNota.Location = new System.Drawing.Point(6, 23);
 			this.progressoNota.Name = "progressoNota";
-			this.progressoNota.Size = new System.Drawing.Size(233, 24);
+			this.progressoNota.Size = new System.Drawing.Size(241, 24);
 			this.progressoNota.TabIndex = 26;
 			// 
 			// txtVlrTotal
 			// 
 			this.txtVlrTotal.EnterMoveNextControl = true;
-			this.txtVlrTotal.Location = new System.Drawing.Point(205, 100);
+			this.txtVlrTotal.Location = new System.Drawing.Point(205, 134);
 			this.txtVlrTotal.Name = "txtVlrTotal";
 			this.txtVlrTotal.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtVlrTotal.Properties.Appearance.Options.UseFont = true;
@@ -164,12 +202,12 @@
 			this.txtVlrTotal.Properties.Mask.EditMask = "c2";
 			this.txtVlrTotal.Properties.Mask.UseMaskAsDisplayFormat = true;
 			this.txtVlrTotal.Size = new System.Drawing.Size(234, 30);
-			this.txtVlrTotal.TabIndex = 3;
+			this.txtVlrTotal.TabIndex = 4;
 			// 
 			// labelControl7
 			// 
 			this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl7.Location = new System.Drawing.Point(38, 106);
+			this.labelControl7.Location = new System.Drawing.Point(38, 140);
 			this.labelControl7.Name = "labelControl7";
 			this.labelControl7.Size = new System.Drawing.Size(97, 19);
 			this.labelControl7.TabIndex = 23;
@@ -178,7 +216,7 @@
 			// cmbCliente
 			// 
 			this.cmbCliente.EnterMoveNextControl = true;
-			this.cmbCliente.Location = new System.Drawing.Point(333, 26);
+			this.cmbCliente.Location = new System.Drawing.Point(150, 26);
 			this.cmbCliente.Name = "cmbCliente";
 			this.cmbCliente.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
 			this.cmbCliente.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -194,24 +232,24 @@
 			this.cmbCliente.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
 			this.cmbCliente.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
 			this.cmbCliente.Properties.ValueMember = "CodCliente";
-			this.cmbCliente.Size = new System.Drawing.Size(203, 30);
-			this.cmbCliente.TabIndex = 1;
+			this.cmbCliente.Size = new System.Drawing.Size(386, 30);
+			this.cmbCliente.TabIndex = 0;
 			this.cmbCliente.EditValueChanged += new System.EventHandler(this.cmbCliente_EditValueChanged);
 			// 
 			// btnCliente
 			// 
 			this.btnCliente.Location = new System.Drawing.Point(542, 24);
 			this.btnCliente.Name = "btnCliente";
-			this.btnCliente.Size = new System.Drawing.Size(78, 33);
+			this.btnCliente.Size = new System.Drawing.Size(117, 33);
 			this.btnCliente.TabIndex = 19;
-			this.btnCliente.Text = "Novo Cliente";
+			this.btnCliente.Text = "Cadastro de Clientes";
 			this.btnCliente.Click += new System.EventHandler(this.btnCliente_Click);
 			// 
 			// txtNumCPF
 			// 
 			this.txtNumCPF.EditValue = "";
 			this.txtNumCPF.EnterMoveNextControl = true;
-			this.txtNumCPF.Location = new System.Drawing.Point(150, 26);
+			this.txtNumCPF.Location = new System.Drawing.Point(150, 62);
 			this.txtNumCPF.Name = "txtNumCPF";
 			this.txtNumCPF.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtNumCPF.Properties.Appearance.Options.UseFont = true;
@@ -219,7 +257,7 @@
     ".][0-9]{3}[-][0-9]{2})";
 			this.txtNumCPF.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
 			this.txtNumCPF.Size = new System.Drawing.Size(177, 30);
-			this.txtNumCPF.TabIndex = 0;
+			this.txtNumCPF.TabIndex = 1;
 			this.txtNumCPF.EditValueChanged += new System.EventHandler(this.txtNumCPF_EditValueChanged);
 			// 
 			// labelControl6
@@ -234,7 +272,7 @@
 			// cmbTipoDesconto
 			// 
 			this.cmbTipoDesconto.EditValue = "R$";
-			this.cmbTipoDesconto.Location = new System.Drawing.Point(311, 138);
+			this.cmbTipoDesconto.Location = new System.Drawing.Point(311, 172);
 			this.cmbTipoDesconto.Name = "cmbTipoDesconto";
 			this.cmbTipoDesconto.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cmbTipoDesconto.Properties.Appearance.Options.UseFont = true;
@@ -244,13 +282,13 @@
             "R$",
             "%"});
 			this.cmbTipoDesconto.Size = new System.Drawing.Size(57, 30);
-			this.cmbTipoDesconto.TabIndex = 5;
+			this.cmbTipoDesconto.TabIndex = 6;
 			// 
 			// chkNFE
 			// 
-			this.chkNFE.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.chkNFE.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.chkNFE.EditValue = true;
-			this.chkNFE.Location = new System.Drawing.Point(619, 170);
+			this.chkNFE.Location = new System.Drawing.Point(619, 209);
 			this.chkNFE.Name = "chkNFE";
 			this.chkNFE.Properties.Caption = "Emitir NFC-e";
 			this.chkNFE.Size = new System.Drawing.Size(83, 19);
@@ -260,7 +298,7 @@
 			// 
 			this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnCancelar.Location = new System.Drawing.Point(591, 244);
+			this.btnCancelar.Location = new System.Drawing.Point(591, 283);
 			this.btnCancelar.Name = "btnCancelar";
 			this.btnCancelar.Size = new System.Drawing.Size(111, 42);
 			this.btnCancelar.TabIndex = 11;
@@ -269,17 +307,17 @@
 			// 
 			// btnAplicarDesconto
 			// 
-			this.btnAplicarDesconto.Location = new System.Drawing.Point(384, 136);
+			this.btnAplicarDesconto.Location = new System.Drawing.Point(384, 170);
 			this.btnAplicarDesconto.Name = "btnAplicarDesconto";
 			this.btnAplicarDesconto.Size = new System.Drawing.Size(55, 32);
-			this.btnAplicarDesconto.TabIndex = 6;
+			this.btnAplicarDesconto.TabIndex = 7;
 			this.btnAplicarDesconto.Text = "&Aplicar";
 			this.btnAplicarDesconto.Click += new System.EventHandler(this.btnAplicarDesconto_Click);
 			// 
 			// txtTroco
 			// 
 			this.txtTroco.EnterMoveNextControl = true;
-			this.txtTroco.Location = new System.Drawing.Point(205, 246);
+			this.txtTroco.Location = new System.Drawing.Point(205, 280);
 			this.txtTroco.Name = "txtTroco";
 			this.txtTroco.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtTroco.Properties.Appearance.Options.UseFont = true;
@@ -290,12 +328,12 @@
 			this.txtTroco.Properties.Mask.EditMask = "c2";
 			this.txtTroco.Properties.Mask.UseMaskAsDisplayFormat = true;
 			this.txtTroco.Size = new System.Drawing.Size(234, 30);
-			this.txtTroco.TabIndex = 9;
+			this.txtTroco.TabIndex = 10;
 			// 
 			// labelControl5
 			// 
 			this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl5.Location = new System.Drawing.Point(83, 252);
+			this.labelControl5.Location = new System.Drawing.Point(83, 286);
 			this.labelControl5.Name = "labelControl5";
 			this.labelControl5.Size = new System.Drawing.Size(52, 19);
 			this.labelControl5.TabIndex = 12;
@@ -304,7 +342,7 @@
 			// txtDinheiro
 			// 
 			this.txtDinheiro.EnterMoveNextControl = true;
-			this.txtDinheiro.Location = new System.Drawing.Point(205, 210);
+			this.txtDinheiro.Location = new System.Drawing.Point(205, 244);
 			this.txtDinheiro.Name = "txtDinheiro";
 			this.txtDinheiro.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtDinheiro.Properties.Appearance.Options.UseFont = true;
@@ -315,13 +353,13 @@
 			this.txtDinheiro.Properties.Mask.EditMask = "c2";
 			this.txtDinheiro.Properties.Mask.UseMaskAsDisplayFormat = true;
 			this.txtDinheiro.Size = new System.Drawing.Size(234, 30);
-			this.txtDinheiro.TabIndex = 8;
+			this.txtDinheiro.TabIndex = 9;
 			this.txtDinheiro.Validated += new System.EventHandler(this.txtDinheiro_Validated);
 			// 
 			// labelControl4
 			// 
 			this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl4.Location = new System.Drawing.Point(60, 216);
+			this.labelControl4.Location = new System.Drawing.Point(60, 250);
 			this.labelControl4.Name = "labelControl4";
 			this.labelControl4.Size = new System.Drawing.Size(75, 19);
 			this.labelControl4.TabIndex = 10;
@@ -330,7 +368,7 @@
 			// txtVlrFinal
 			// 
 			this.txtVlrFinal.EnterMoveNextControl = true;
-			this.txtVlrFinal.Location = new System.Drawing.Point(205, 174);
+			this.txtVlrFinal.Location = new System.Drawing.Point(205, 208);
 			this.txtVlrFinal.Name = "txtVlrFinal";
 			this.txtVlrFinal.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtVlrFinal.Properties.Appearance.Options.UseFont = true;
@@ -341,12 +379,12 @@
 			this.txtVlrFinal.Properties.Mask.EditMask = "c2";
 			this.txtVlrFinal.Properties.Mask.UseMaskAsDisplayFormat = true;
 			this.txtVlrFinal.Size = new System.Drawing.Size(234, 30);
-			this.txtVlrFinal.TabIndex = 7;
+			this.txtVlrFinal.TabIndex = 8;
 			// 
 			// labelControl3
 			// 
 			this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl3.Location = new System.Drawing.Point(38, 180);
+			this.labelControl3.Location = new System.Drawing.Point(38, 214);
 			this.labelControl3.Name = "labelControl3";
 			this.labelControl3.Size = new System.Drawing.Size(93, 19);
 			this.labelControl3.TabIndex = 8;
@@ -355,7 +393,7 @@
 			// cmbTipoVenda
 			// 
 			this.cmbTipoVenda.EnterMoveNextControl = true;
-			this.cmbTipoVenda.Location = new System.Drawing.Point(150, 64);
+			this.cmbTipoVenda.Location = new System.Drawing.Point(150, 98);
 			this.cmbTipoVenda.Name = "cmbTipoVenda";
 			this.cmbTipoVenda.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cmbTipoVenda.Properties.Appearance.Options.UseFont = true;
@@ -369,23 +407,23 @@
 			this.cmbTipoVenda.Properties.NullText = "";
 			this.cmbTipoVenda.Properties.ValueMember = "Codigo";
 			this.cmbTipoVenda.Size = new System.Drawing.Size(289, 30);
-			this.cmbTipoVenda.TabIndex = 2;
+			this.cmbTipoVenda.TabIndex = 3;
 			// 
 			// btnFinalizarVenda
 			// 
 			this.btnFinalizarVenda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnFinalizarVenda.Location = new System.Drawing.Point(591, 196);
+			this.btnFinalizarVenda.Location = new System.Drawing.Point(591, 235);
 			this.btnFinalizarVenda.Name = "btnFinalizarVenda";
 			this.btnFinalizarVenda.Size = new System.Drawing.Size(111, 42);
-			this.btnFinalizarVenda.TabIndex = 10;
+			this.btnFinalizarVenda.TabIndex = 11;
 			this.btnFinalizarVenda.Text = "Finalizar Venda";
 			this.btnFinalizarVenda.Click += new System.EventHandler(this.btnFinalizarVenda_Click);
 			// 
 			// chkApagarOrca
 			// 
-			this.chkApagarOrca.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.chkApagarOrca.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.chkApagarOrca.EditValue = true;
-			this.chkApagarOrca.Location = new System.Drawing.Point(577, 145);
+			this.chkApagarOrca.Location = new System.Drawing.Point(577, 184);
 			this.chkApagarOrca.Name = "chkApagarOrca";
 			this.chkApagarOrca.Properties.Caption = "Descartar Orçamento";
 			this.chkApagarOrca.Size = new System.Drawing.Size(125, 19);
@@ -393,8 +431,8 @@
 			// 
 			// chkEmitirRecibo
 			// 
-			this.chkEmitirRecibo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.chkEmitirRecibo.Location = new System.Drawing.Point(615, 120);
+			this.chkEmitirRecibo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.chkEmitirRecibo.Location = new System.Drawing.Point(615, 159);
 			this.chkEmitirRecibo.Name = "chkEmitirRecibo";
 			this.chkEmitirRecibo.Properties.Caption = "Emitir Recibo";
 			this.chkEmitirRecibo.Size = new System.Drawing.Size(87, 19);
@@ -403,7 +441,7 @@
 			// txtDesconto
 			// 
 			this.txtDesconto.EnterMoveNextControl = true;
-			this.txtDesconto.Location = new System.Drawing.Point(205, 138);
+			this.txtDesconto.Location = new System.Drawing.Point(205, 172);
 			this.txtDesconto.Name = "txtDesconto";
 			this.txtDesconto.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtDesconto.Properties.Appearance.Options.UseFont = true;
@@ -412,12 +450,12 @@
 			this.txtDesconto.Properties.Mask.EditMask = "n";
 			this.txtDesconto.Properties.Mask.UseMaskAsDisplayFormat = true;
 			this.txtDesconto.Size = new System.Drawing.Size(100, 30);
-			this.txtDesconto.TabIndex = 4;
+			this.txtDesconto.TabIndex = 5;
 			// 
 			// labelControl2
 			// 
 			this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl2.Location = new System.Drawing.Point(54, 141);
+			this.labelControl2.Location = new System.Drawing.Point(54, 175);
 			this.labelControl2.Name = "labelControl2";
 			this.labelControl2.Size = new System.Drawing.Size(81, 19);
 			this.labelControl2.TabIndex = 2;
@@ -426,7 +464,7 @@
 			// labelControl1
 			// 
 			this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl1.Location = new System.Drawing.Point(12, 67);
+			this.labelControl1.Location = new System.Drawing.Point(12, 101);
 			this.labelControl1.Name = "labelControl1";
 			this.labelControl1.Size = new System.Drawing.Size(125, 19);
 			this.labelControl1.TabIndex = 1;
@@ -441,7 +479,7 @@
 			this.gridOrcamento.Location = new System.Drawing.Point(0, 0);
 			this.gridOrcamento.MainView = this.gridViewOrcamento;
 			this.gridOrcamento.Name = "gridOrcamento";
-			this.gridOrcamento.Size = new System.Drawing.Size(730, 182);
+			this.gridOrcamento.Size = new System.Drawing.Size(730, 143);
 			this.gridOrcamento.TabIndex = 0;
 			this.gridOrcamento.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewOrcamento});
@@ -580,6 +618,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
 			this.groupControl1.ResumeLayout(false);
 			this.groupControl1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.txtNome.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.boxEnviando)).EndInit();
 			this.boxEnviando.ResumeLayout(false);
 			this.boxEnviando.PerformLayout();
@@ -642,5 +681,8 @@
 		private DevExpress.XtraEditors.PopupContainerControl boxEnviando;
 		private DevExpress.XtraEditors.LabelControl labelControl8;
 		private DevExpress.XtraEditors.MarqueeProgressBarControl progressoNota;
+		private DevExpress.XtraEditors.LabelControl labelControl10;
+		private DevExpress.XtraEditors.TextEdit txtNome;
+		private DevExpress.XtraEditors.LabelControl labelControl9;
     }
 }

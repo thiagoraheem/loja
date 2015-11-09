@@ -11,7 +11,7 @@ namespace Loja.DAL.DAO
 {
 	public class Cadastros
 	{
-		public static void EstornaVenda(int codVenda, string desMotivo, bool flgVoltaNumero)
+		public static void EstornaVenda(string codVenda, string desMotivo, bool flgVoltaNumero)
 		{
 			using (var banco = new LojaContext())
 			{
@@ -71,11 +71,11 @@ namespace Loja.DAL.DAO
 			}
 		}
 
-		public static int FinalizaVenda(string codOrca, int codTipoVenda, int? codCliente)
+		public static string FinalizaVenda(string codOrca, int codTipoVenda, int? codCliente, int flgNFE)
 		{
 			using (var banco = new LojaContext())
 			{
-				return banco.spc_FinalizaVenda(codOrca, codTipoVenda, codCliente).FirstOrDefault();
+				return banco.spc_FinalizaVenda(codOrca, codTipoVenda, codCliente, flgNFE).FirstOrDefault();
 
 			}
 		}
@@ -247,11 +247,9 @@ namespace Loja.DAL.DAO
 			{
 				var registro = banco.tbl_Cliente.FirstOrDefault(x => x.CodCliente == dado.CodCliente);
 
-				var codCliente = -1;
-
 				if (registro == null)
 				{
-					banco.tbl_Cliente.Add(dado);
+					registro = banco.tbl_Cliente.Add(dado);
 				}
 				else
 				{
@@ -271,15 +269,7 @@ namespace Loja.DAL.DAO
 
 				banco.SaveChanges();
 
-				if (registro == null)
-				{
-					codCliente = dado.CodCliente;
-				}
-				else
-				{
-					codCliente = registro.CodCliente;
-				}
-				return codCliente;
+				return registro.CodCliente;
 
 			}
 
@@ -314,6 +304,130 @@ namespace Loja.DAL.DAO
 			}
 
 		}
+
+
+		#region Entrada de Produtos
+
+		public static void ExcluiEntrada(int codEntrada)
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var dados = banco.tbl_Entrada.FirstOrDefault(x => x.CodEntrada == codEntrada);
+				if (dados != null)
+				{
+					banco.tbl_Entrada.Remove(dados);
+					banco.SaveChanges();
+				}
+
+			}
+
+		}
+
+		public static int GravaEntrada(tbl_Entrada dado)
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var registro = banco.tbl_Entrada.FirstOrDefault(x => x.CodEntrada == dado.CodEntrada);
+
+				var codEntrada = -1;
+
+				if (registro == null)
+				{
+					dado.DatEntrada = DateTime.Now;
+					banco.tbl_Entrada.Add(dado);
+				}
+				else
+				{
+					registro.DocEntrada = dado.DocEntrada;
+					registro.SerieNota = dado.SerieNota;
+					registro.DatEmissao = dado.DatEmissao;
+					registro.DatEntrada = dado.DatEntrada;
+					registro.CodTipoEntrada = dado.CodTipoEntrada;
+					registro.CNPJ = dado.CNPJ;
+					registro.CPF = dado.CPF;
+					registro.Nome = dado.Nome;
+				}
+
+				banco.SaveChanges();
+
+				if (registro == null)
+				{
+					codEntrada = dado.CodEntrada;
+				}
+				else
+				{
+					codEntrada = registro.CodEntrada;
+				}
+				return codEntrada;
+
+			}
+
+		}
+
+
+		public static void ExcluiEntradaItem(int codEntrada, int codigounico)
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var dados = banco.tbl_EntradaItens.FirstOrDefault(x => x.CodEntrada == codEntrada && x.codigounico == codigounico);
+				if (dados != null)
+				{
+					banco.tbl_EntradaItens.Remove(dados);
+					banco.SaveChanges();
+				}
+
+			}
+
+		}
+
+		public static int GravaEntradaItem(tbl_EntradaItens dado)
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var registro = banco.tbl_EntradaItens.FirstOrDefault(x => x.CodEntrada == dado.CodEntrada && x.codigounico == dado.codigounico);
+
+				if (registro == null)
+				{
+					registro = banco.tbl_EntradaItens.Add(dado);
+				}
+				else
+				{
+					registro.NumOrdem = dado.NumOrdem;
+					registro.NCM = dado.NCM;
+					registro.Unidade = dado.Unidade;
+					registro.Quantidade = dado.Quantidade;
+					registro.VlrUnitario = dado.VlrUnitario;
+					registro.VlrTotal = dado.VlrTotal;
+					registro.Percentual = dado.Percentual;
+					registro.VlrFinal = dado.VlrFinal;
+					registro.VlrBaseICMS = dado.VlrBaseICMS;
+					registro.VlrPercICMS = dado.VlrPercICMS;
+					registro.VlrICMS = dado.VlrICMS;
+					registro.VlrBaseICMSST = dado.VlrBaseICMSST;
+					registro.VlrPercICMSST = dado.VlrPercICMSST;
+					registro.VlrICMSST = dado.VlrICMSST;
+					registro.VlrBasePIS = dado.VlrBasePIS;
+					registro.VlrPercPIS = dado.VlrPercPIS;
+					registro.VlrPIS = dado.VlrPIS;
+					registro.VlrBaseCOFINS = dado.VlrBaseCOFINS;
+					registro.VlrPercCOFINS = dado.VlrPercCOFINS;
+					registro.VlrCOFINS = dado.VlrCOFINS;
+					
+				}
+
+				banco.SaveChanges();
+
+				return registro.CodEntrada;
+
+			}
+
+		}
+
+		#endregion
 
 	}
 }
