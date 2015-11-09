@@ -49,6 +49,7 @@ namespace Loja.DAL.Models.Mapping
 			this.Property(t => t.EmpresaCNPJ).HasColumnName("EmpresaCNPJ");
 			this.Property(t => t.EmpresaInscEstadual).HasColumnName("EmpresaInscEstadual");
 			this.Property(t => t.SisCodVenda).HasColumnName("SisCodVenda");
+			this.Property(t => t.SisNumNF).HasColumnName("SisNumNF");
 		}
 	}
 }

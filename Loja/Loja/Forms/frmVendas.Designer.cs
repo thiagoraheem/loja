@@ -1,33 +1,33 @@
 ﻿namespace Loja
 {
-    partial class frmVendas
-    {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+	partial class frmVendas
+	{
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        #region Windows Form Designer generated code
+		#region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
 			this.components = new System.ComponentModel.Container();
 			DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
 			this.grdItens = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -82,14 +82,14 @@
 			// grdItens
 			// 
 			this.grdItens.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colCodProduto,
-            this.colCodigoProduto,
-            this.colDesProduto,
-            this.colQtdProduto,
-            this.colVlrUnitario,
-            this.colVlrFinal,
-            this.colVlrDesconto,
-            this.colVlrBruto});
+			this.colCodProduto,
+			this.colCodigoProduto,
+			this.colDesProduto,
+			this.colQtdProduto,
+			this.colVlrUnitario,
+			this.colVlrFinal,
+			this.colVlrDesconto,
+			this.colVlrBruto});
 			this.grdItens.GridControl = this.grdDados;
 			this.grdItens.Name = "grdItens";
 			// 
@@ -165,22 +165,22 @@
 			// grdDados
 			// 
 			this.grdDados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			| System.Windows.Forms.AnchorStyles.Left) 
+			| System.Windows.Forms.AnchorStyles.Right)));
 			this.grdDados.DataMember = "tbl_Saida";
 			this.grdDados.DataSource = this.relVendasBindingSource;
 			gridLevelNode1.LevelTemplate = this.grdItens;
 			gridLevelNode1.RelationName = "FK_tbl_SaidaItens_tbl_Saida";
 			this.grdDados.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+			gridLevelNode1});
 			this.grdDados.Location = new System.Drawing.Point(12, 12);
 			this.grdDados.MainView = this.gridDados;
 			this.grdDados.Name = "grdDados";
 			this.grdDados.Size = new System.Drawing.Size(666, 283);
 			this.grdDados.TabIndex = 1;
 			this.grdDados.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridDados,
-            this.grdItens});
+			this.gridDados,
+			this.grdItens});
 			// 
 			// relVendasBindingSource
 			// 
@@ -195,14 +195,14 @@
 			// gridDados
 			// 
 			this.gridDados.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colCodVenda,
-            this.colData,
-            this.colQtdeItens,
-            this.colVlrTotal,
-            this.colCliente});
+			this.colCodVenda,
+			this.colData,
+			this.colQtdeItens,
+			this.colVlrTotal,
+			this.colCliente});
 			this.gridDados.GridControl = this.grdDados;
 			this.gridDados.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "DatSaida", this.colData, "")});
+			new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "DatSaida", this.colData, "")});
 			this.gridDados.Name = "gridDados";
 			this.gridDados.OptionsDetail.ShowDetailTabs = false;
 			this.gridDados.OptionsView.ShowFooter = true;
@@ -247,7 +247,7 @@
 			this.colVlrTotal.FieldName = "ValorTotal";
 			this.colVlrTotal.Name = "colVlrTotal";
 			this.colVlrTotal.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
+			new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
 			this.colVlrTotal.Visible = true;
 			this.colVlrTotal.VisibleIndex = 3;
 			this.colVlrTotal.Width = 308;
@@ -264,7 +264,7 @@
 			// groupControl1
 			// 
 			this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			| System.Windows.Forms.AnchorStyles.Right)));
 			this.groupControl1.Controls.Add(this.btnImprimirResumo);
 			this.groupControl1.Controls.Add(this.btnReimprimir);
 			this.groupControl1.Controls.Add(this.labelControl3);
@@ -319,10 +319,10 @@
 			this.cmbTipoVenda.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cmbTipoVenda.Properties.Appearance.Options.UseFont = true;
 			this.cmbTipoVenda.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+			new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
 			this.cmbTipoVenda.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Codigo", "Código"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Descricao", 70, "Descrição")});
+			new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Codigo", "Código"),
+			new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Descricao", 70, "Descrição")});
 			this.cmbTipoVenda.Properties.DisplayMember = "Descricao";
 			this.cmbTipoVenda.Properties.ImmediatePopup = true;
 			this.cmbTipoVenda.Properties.NullText = "";
@@ -338,12 +338,12 @@
 			this.cmbProduto.Name = "cmbProduto";
 			this.cmbProduto.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFit;
 			this.cmbProduto.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+			new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
 			this.cmbProduto.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CodProduto", 30, "Código"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("DesProduto", 100, "Descrição"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("DesLocal", 10, "Local"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("QtdProduto", 10, "Est.")});
+			new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CodProduto", 30, "Código"),
+			new DevExpress.XtraEditors.Controls.LookUpColumnInfo("DesProduto", 100, "Descrição"),
+			new DevExpress.XtraEditors.Controls.LookUpColumnInfo("DesLocal", 10, "Local"),
+			new DevExpress.XtraEditors.Controls.LookUpColumnInfo("QtdProduto", 10, "Est.")});
 			this.cmbProduto.Properties.DisplayMember = "DesProduto";
 			this.cmbProduto.Properties.NullText = "[Selecione um produto]";
 			this.cmbProduto.Properties.PopupFormMinSize = new System.Drawing.Size(400, 0);
@@ -398,9 +398,9 @@
 			this.txtDatFim.Location = new System.Drawing.Point(115, 43);
 			this.txtDatFim.Name = "txtDatFim";
 			this.txtDatFim.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+			new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
 			this.txtDatFim.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
+			new DevExpress.XtraEditors.Controls.EditorButton()});
 			this.txtDatFim.Size = new System.Drawing.Size(100, 20);
 			this.txtDatFim.TabIndex = 3;
 			// 
@@ -410,9 +410,9 @@
 			this.txtDatInicio.Location = new System.Drawing.Point(9, 43);
 			this.txtDatInicio.Name = "txtDatInicio";
 			this.txtDatInicio.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+			new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
 			this.txtDatInicio.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
+			new DevExpress.XtraEditors.Controls.EditorButton()});
 			this.txtDatInicio.Size = new System.Drawing.Size(100, 20);
 			this.txtDatInicio.TabIndex = 2;
 			// 
@@ -472,27 +472,27 @@
 			((System.ComponentModel.ISupportInitialize)(this.txtDatInicio.Properties)).EndInit();
 			this.ResumeLayout(false);
 
-        }
+		}
 
-        #endregion
+		#endregion
 
-        private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.SimpleButton btnRetornar;
-        private DevExpress.XtraGrid.GridControl grdDados;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridDados;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.DateEdit txtDatFim;
-        private DevExpress.XtraEditors.DateEdit txtDatInicio;
+		private DevExpress.XtraEditors.GroupControl groupControl1;
+		private DevExpress.XtraEditors.SimpleButton btnRetornar;
+		private DevExpress.XtraGrid.GridControl grdDados;
+		private DevExpress.XtraGrid.Views.Grid.GridView gridDados;
+		private DevExpress.XtraEditors.LabelControl labelControl1;
+		private DevExpress.XtraEditors.DateEdit txtDatFim;
+		private DevExpress.XtraEditors.DateEdit txtDatInicio;
 		private DevExpress.XtraGrid.Columns.GridColumn colData;
-        private DevExpress.XtraGrid.Columns.GridColumn colVlrTotal;
-        private DevExpress.XtraEditors.SimpleButton btnEstornar;
-        private DevExpress.XtraEditors.SimpleButton btnImprimir;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.SimpleButton btnConsultar;
-        private DevExpress.XtraEditors.LookUpEdit cmbProduto;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
+		private DevExpress.XtraGrid.Columns.GridColumn colVlrTotal;
+		private DevExpress.XtraEditors.SimpleButton btnEstornar;
+		private DevExpress.XtraEditors.SimpleButton btnImprimir;
+		private DevExpress.XtraEditors.LabelControl labelControl2;
+		private DevExpress.XtraEditors.SimpleButton btnConsultar;
+		private DevExpress.XtraEditors.LookUpEdit cmbProduto;
+		private DevExpress.XtraEditors.LabelControl labelControl3;
 		private DevExpress.XtraEditors.LookUpEdit cmbTipoVenda;
-        private DevExpress.XtraGrid.Columns.GridColumn colCodVenda;
+		private DevExpress.XtraGrid.Columns.GridColumn colCodVenda;
 		private DevExpress.XtraGrid.Views.Grid.GridView grdItens;
 		private DevExpress.XtraGrid.Columns.GridColumn colCodProduto;
 		private DevExpress.XtraGrid.Columns.GridColumn colCodigoProduto;
@@ -510,5 +510,5 @@
 		private DevExpress.XtraGrid.Columns.GridColumn colVlrBruto;
 		private DevExpress.XtraGrid.Columns.GridColumn colDesProduto;
 		private DevExpress.XtraEditors.SimpleButton btnImprimirResumo;
-    }
+	}
 }

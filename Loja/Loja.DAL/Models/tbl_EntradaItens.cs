@@ -14,6 +14,8 @@ namespace Loja.DAL.Models
         public string Unidade { get; set; }
         public Nullable<decimal> Quantidade { get; set; }
         public Nullable<decimal> VlrUnitario { get; set; }
+        public Nullable<decimal> VlrTotal { get; set; }
+        public Nullable<decimal> Percentual { get; set; }
         public Nullable<decimal> VlrFinal { get; set; }
         public Nullable<decimal> VlrBaseICMS { get; set; }
         public Nullable<decimal> VlrPercICMS { get; set; }

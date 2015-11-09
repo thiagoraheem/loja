@@ -338,6 +338,7 @@
 			this.txtVlrPercent.Properties.Mask.UseMaskAsDisplayFormat = true;
 			this.txtVlrPercent.Size = new System.Drawing.Size(100, 20);
 			this.txtVlrPercent.TabIndex = 8;
+			this.txtVlrPercent.Validated += new System.EventHandler(this.txtVlrPercent_Validated);
 			// 
 			// txtVlrUnitario
 			// 
@@ -400,7 +401,7 @@
 			this.txtNCM.Properties.Mask.EditMask = "\\d{8}";
 			this.txtNCM.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
 			this.txtNCM.Size = new System.Drawing.Size(100, 20);
-			this.txtNCM.TabIndex = 28;
+			this.txtNCM.TabIndex = 11;
 			// 
 			// labelControl12
 			// 

@@ -66,7 +66,7 @@ namespace Loja.DAL.Models
 		}
 
 		
-		public void spc_EstornaVenda(int codVenda, string desMotivo, bool flgVoltaNumero)
+		public void spc_EstornaVenda(string codVenda, string desMotivo, bool flgVoltaNumero)
 		{
 			try
 			{
@@ -99,20 +99,21 @@ namespace Loja.DAL.Models
 
 		}
 
-		public ObjectResult<int> spc_FinalizaVenda(string codOrca, int codTipoVenda, int? codCliente)
+		public ObjectResult<string> spc_FinalizaVenda(string codOrca, int codTipoVenda, int? codCliente, int flgNFE)
 		{
 			try
 			{
 				var cOrca = new ObjectParameter("CodOrca", codOrca);
 				var cTipoVenda = new ObjectParameter("CodTipoVenda", codTipoVenda);
 				var cCliente = new ObjectParameter("CodCliente", typeof(int));
+				var fNFE = new ObjectParameter("FlgNFE", flgNFE);
 				cCliente.Value = codCliente;
 
-				return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<int>("spc_FinalizaVenda", cOrca, cTipoVenda, cCliente);
+				return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("spc_FinalizaVenda", cOrca, cTipoVenda, cCliente, fNFE);
 			}
 			catch (Exception ex)
 			{
-				throw new Exception(ex.Message);
+				throw new Exception(ex.InnerException != null ? ex.InnerException.Message : ex.Message);
 			}
 
 		}

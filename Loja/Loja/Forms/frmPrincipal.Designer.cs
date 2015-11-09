@@ -94,6 +94,7 @@
 			this.colQtdProduto = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colRefAntiga = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colFornecedor = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.colNCM = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colCodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.navBarControl = new DevExpress.XtraNavBar.NavBarControl();
 			this.grpOperacoes = new DevExpress.XtraNavBar.NavBarGroup();
@@ -121,7 +122,6 @@
 			this.colVlrFinal = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colOrcodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colVlrOriginal = new DevExpress.XtraGrid.Columns.GridColumn();
-			this.colNCM = new DevExpress.XtraGrid.Columns.GridColumn();
 			((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.appMenu)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.popupControlContainer2)).BeginInit();
@@ -743,6 +743,14 @@
 			this.colFornecedor.VisibleIndex = 5;
 			this.colFornecedor.Width = 50;
 			// 
+			// colNCM
+			// 
+			this.colNCM.Caption = "NCM";
+			this.colNCM.FieldName = "NCM";
+			this.colNCM.Name = "colNCM";
+			this.colNCM.Visible = true;
+			this.colNCM.VisibleIndex = 6;
+			// 
 			// colCodigounico
 			// 
 			this.colCodigounico.Caption = "Código Único";
@@ -1026,14 +1034,6 @@
 			this.colVlrOriginal.VisibleIndex = 5;
 			this.colVlrOriginal.Width = 142;
 			// 
-			// colNCM
-			// 
-			this.colNCM.Caption = "NCM";
-			this.colNCM.FieldName = "NCM";
-			this.colNCM.Name = "colNCM";
-			this.colNCM.Visible = true;
-			this.colNCM.VisibleIndex = 6;
-			// 
 			// frmPrincipal
 			// 
 			this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
@@ -1050,7 +1050,7 @@
 			this.Name = "frmPrincipal";
 			this.Ribbon = this.ribbonControl;
 			this.StatusBar = this.ribbonStatusBar;
-			this.Text = "Sistema para controle de Loja - v1.0.2";
+			this.Text = "Sistema para controle de Loja - v1.0.3";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmPrincipal_KeyDown);
 			((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();

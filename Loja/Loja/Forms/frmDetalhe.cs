@@ -12,58 +12,76 @@ using Loja.DAL.DAO;
 
 namespace Loja
 {
-    public partial class frmDetalhe : DevExpress.XtraEditors.XtraForm
-    {
-        public frmDetalhe()
-        {
-            InitializeComponent();
-        }
+	public partial class frmDetalhe : DevExpress.XtraEditors.XtraForm
+	{
+		int codproduto;
 
-        private void frmDetalhe_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode.Equals(Keys.Escape) || e.KeyCode.Equals(Keys.Return))
-            {
-                Close();
-            } else if(e.KeyCode.Equals(Keys.F1)) {
-                double n = double.Parse(txtVlrUnitario.EditValue.ToString());
-                txtDesconto.Value = (decimal) (n * 0.92);
-            } else if (e.KeyCode.Equals(Keys.F7)) {
-                double n = double.Parse(txtVlrUnitario.EditValue.ToString());
-                txtDesconto.Value = (decimal) (n * 0.90);
-            } else if (e.KeyCode.Equals(Keys.F3)) {
-                double n = double.Parse(txtVlrUnitario.EditValue.ToString());
-                txtDesconto.Value = (decimal) (n * 0.88);
-            } else if (e.KeyCode.Equals(Keys.F4)) {
-                double n = double.Parse(txtVlrUnitario.EditValue.ToString());
-                txtDesconto.Value = (decimal) (n * 0.85);
-            } else if (e.KeyCode.Equals(Keys.F5)) {
-                double n = double.Parse(txtVlrUnitario.EditValue.ToString());
-                txtDesconto.Value = (decimal)(n * 0.95);
-            } else if (e.KeyCode.Equals(Keys.F6)) {
-                double n = double.Parse(txtVlrUnitario.EditValue.ToString());
-                txtDesconto.Value = (decimal)(n * 1);
-            }
-        }
+		public frmDetalhe()
+		{
+			InitializeComponent();
+		}
 
-        public void SU_CarregaProduto(int codProduto) {
+		private void frmDetalhe_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode.Equals(Keys.Escape) || e.KeyCode.Equals(Keys.Return))
+			{
+				Close();
+			} else if(e.KeyCode.Equals(Keys.F1)) {
+				double n = double.Parse(txtVlrUnitario.EditValue.ToString());
+				txtDesconto.Value = (decimal) (n * 0.92);
+			} else if (e.KeyCode.Equals(Keys.F7)) {
+				double n = double.Parse(txtVlrUnitario.EditValue.ToString());
+				txtDesconto.Value = (decimal) (n * 0.90);
+			} else if (e.KeyCode.Equals(Keys.F3)) {
+				double n = double.Parse(txtVlrUnitario.EditValue.ToString());
+				txtDesconto.Value = (decimal) (n * 0.88);
+			} else if (e.KeyCode.Equals(Keys.F4)) {
+				double n = double.Parse(txtVlrUnitario.EditValue.ToString());
+				txtDesconto.Value = (decimal) (n * 0.85);
+			} else if (e.KeyCode.Equals(Keys.F5)) {
+				double n = double.Parse(txtVlrUnitario.EditValue.ToString());
+				txtDesconto.Value = (decimal)(n * 0.95);
+			} else if (e.KeyCode.Equals(Keys.F6)) {
+				double n = double.Parse(txtVlrUnitario.EditValue.ToString());
+				txtDesconto.Value = (decimal)(n * 1);
+			}
+			else if (e.KeyCode.Equals(Keys.F11)) {
+			
+				var orca = Cadastros.AdicionarOrcamento("", codproduto);
+				frmVenda f = new frmVenda();
 
-            var produto = Consultas.ObterProduto(codProduto);
+				f.CodOrcamento = orca.FirstOrDefault();
+				f.ShowDialog();
 
-            txtCodProduto.Text = produto.CodProduto;
-            txtDesProduto.Text = produto.DesProduto;
-            txtDesLocal.Text = produto.DesLocal;
-            txtFornecedor.Text = produto.DesFornecedor;
-            txtQtdEstoque.Text = produto.QtdProduto.ToString();
-            txtVlrUnitario.Text = produto.VlrUnitario.ToString();
+				if (! (f.DialogResult == System.Windows.Forms.DialogResult.Yes))
+				{
+					Cadastros.ApagarOrcamento(orca.FirstOrDefault());
+					
+				}
+				Close();
+			}
+		}
 
-            if (produto.Imagem != null)
-            {
-                MemoryStream ms = new MemoryStream(produto.Imagem);
+		public void SU_CarregaProduto(int codProduto) {
 
-                ms.Write(produto.Imagem, 0, produto.Imagem.Length);
-                imgFoto.Image = Image.FromStream(ms);
-            }
-        }
+			var produto = Consultas.ObterProduto(codProduto);
 
-    }
+			codproduto = produto.codigounico;
+			txtCodProduto.Text = produto.CodProduto;
+			txtDesProduto.Text = produto.DesProduto;
+			txtDesLocal.Text = produto.DesLocal;
+			txtFornecedor.Text = produto.DesFornecedor;
+			txtQtdEstoque.Text = produto.QtdProduto.ToString();
+			txtVlrUnitario.Text = produto.VlrUnitario.ToString();
+
+			if (produto.Imagem != null)
+			{
+				MemoryStream ms = new MemoryStream(produto.Imagem);
+
+				ms.Write(produto.Imagem, 0, produto.Imagem.Length);
+				imgFoto.Image = Image.FromStream(ms);
+			}
+		}
+
+	}
 }
