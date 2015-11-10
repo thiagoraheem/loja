@@ -71,8 +71,69 @@ namespace Loja
 			if (capa == null) return;
 			if (!itens.Any()) return;
 
-			Cadastros.GravaEntrada(capa);
+			if (itens.Any(x => x.codigounico == -1))
+			{
+				Util.MsgBox("Há itens que não foram encontrados no cadastro e serão cadastrados nesse momento.");
+			}
 
+			int codEntrada = -1;
+			try
+			{
+
+				codEntrada = Cadastros.GravaEntrada(capa);
+
+				foreach (var item in itens)
+				{
+					item.CodEntrada = codEntrada;
+
+					Cadastros.GravaEntradaItem(item);
+
+					var produto = Consultas.ObterProduto(item.codigounico);
+					if (produto != null)
+					{
+						produto.VlrUltPreco = produto.VlrCusto;
+						produto.VlrCusto = (double)item.VlrUnitario;
+						produto.VlrICMSST = (double?)item.VlrICMSST;
+						produto.VlrPercent = (double?)item.Percentual;
+						produto.VlrUnitario = (double)(item.VlrUnitario * (1 + item.Percentual / 100));
+						produto.QtdProduto += (double)item.Quantidade;
+					}
+					else
+					{
+						produto = new tbl_Produtos(){
+							CodProduto = item.CodProduto,
+							CodRefAntiga = "",
+							DatCadastro = DateTime.Now.ToString(),
+							DesFaz = 0,
+							DesFornecedor = "",
+							DesLocal = "",
+							DesProduto = item.DesProduto,
+							NCM = item.NCM,
+							QtdProduto = (double)item.Quantidade,
+							VlrCusto = (double)item.VlrUnitario,
+							VlrICMSST = (double?)item.VlrICMSST,
+							VlrPercent = (double?)item.Percentual,
+							VlrUltPreco = 0,
+							VlrUnitario = (double)(item.VlrUnitario * (1 + item.Percentual / 100))
+						};
+					}
+
+					Cadastros.GravaProduto(produto);
+
+				}
+
+				Util.MsgBox("Entrada registrada com sucesso");
+
+				Close();
+
+			}
+			catch (Exception ex)
+			{
+				Util.MsgBox("Erro ao gravar a entrada: " + ex.Message);
+
+				Cadastros.ExcluiEntradaItens(codEntrada);
+				Cadastros.ExcluiEntrada(codEntrada);
+			}
 
 			#region Depreciado
 			/*int CodTipoEntrada;
@@ -357,7 +418,12 @@ namespace Loja
 						item.Quantidade = produto.prod.qCom;
 						item.Unidade = produto.prod.uCom;
 						item.VlrUnitario = produto.prod.vUnCom;
-						item.VlrFinal = produto.prod.vProd;
+						item.VlrTotal = produto.prod.vProd;
+
+						if (!String.IsNullOrEmpty(txtPercentual.Text)) { 
+							item.Percentual = decimal.Parse(txtPercentual.Text.Replace("%", ""));
+							item.VlrFinal = (item.VlrUnitario * (1 + item.Percentual / 100));
+						}
 
 						if (produto.imposto.ICMS.TipoICMS != null && (produto.imposto.ICMS.TipoICMS.GetType() == typeof(ICMS10)))
 						{
@@ -419,6 +485,7 @@ namespace Loja
 			}
 
 		}
+
 		#endregion
 
 		#region Outros eventos
@@ -500,22 +567,21 @@ namespace Loja
 		{
 			try
 			{
-				if (e.Column == colCodigounico)
+				if (e.Column == colPercentual)
 				{
-					double quantidade;
 
 					if (e.Value != null)
-						quantidade = (double)e.Value;
-					else
-						quantidade = 0;
-
-					//var registro = itens.Where()
-				}
-				else
-					if (e.Column == colDesProduto)
 					{
-						//Cadastros.AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), -1.0, (double)e.Value);
+						
+						var codigounico = (int)gridDados.GetRowCellValue(e.RowHandle, colCodigounico);
+
+						var registro = itens.FirstOrDefault(x => x.codigounico == codigounico);
+
+						registro.VlrFinal = registro.VlrUnitario * (1 + (registro.Percentual / 100));
+
+						gridDados.RefreshData();
 					}
+				}
 			}
 			catch (Exception ex)
 			{

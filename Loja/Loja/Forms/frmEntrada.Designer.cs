@@ -33,6 +33,8 @@
 			this.colCodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.lueProdutos = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
 			this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+			this.lcolCodProduto = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.lcolDesProduto = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.txtDocEntrada = new DevExpress.XtraEditors.TextEdit();
 			this.txtDatEmissao = new DevExpress.XtraEditors.DateEdit();
 			this.cmbTipoEntrada = new DevExpress.XtraEditors.LookUpEdit();
@@ -49,7 +51,7 @@
 			this.colUnidade = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colVlrUnitario = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colQuantidade = new DevExpress.XtraGrid.Columns.GridColumn();
-			this.colVlrFinal = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.colVlrTotal = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colNCM = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colVlrICMS = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colVlrICMSST = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -122,8 +124,8 @@
 			this.btnIncluir = new DevExpress.XtraEditors.SimpleButton();
 			this.btnExcluirItem = new DevExpress.XtraEditors.SimpleButton();
 			this.btnAlterarItem = new DevExpress.XtraEditors.SimpleButton();
-			this.lcolCodProduto = new DevExpress.XtraGrid.Columns.GridColumn();
-			this.lcolDesProduto = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.colPercentual = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.colVlrFinal = new DevExpress.XtraGrid.Columns.GridColumn();
 			((System.ComponentModel.ISupportInitialize)(this.lueProdutos)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtDocEntrada.Properties)).BeginInit();
@@ -200,6 +202,22 @@
 			this.repositoryItemSearchLookUpEdit1View.Name = "repositoryItemSearchLookUpEdit1View";
 			this.repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
 			this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+			// 
+			// lcolCodProduto
+			// 
+			this.lcolCodProduto.Caption = "Código";
+			this.lcolCodProduto.FieldName = "CodProduto";
+			this.lcolCodProduto.Name = "lcolCodProduto";
+			this.lcolCodProduto.Visible = true;
+			this.lcolCodProduto.VisibleIndex = 0;
+			// 
+			// lcolDesProduto
+			// 
+			this.lcolDesProduto.Caption = "Decrição";
+			this.lcolDesProduto.FieldName = "DesProduto";
+			this.lcolDesProduto.Name = "lcolDesProduto";
+			this.lcolDesProduto.Visible = true;
+			this.lcolDesProduto.VisibleIndex = 1;
 			// 
 			// txtDocEntrada
 			// 
@@ -320,14 +338,16 @@
             this.colUnidade,
             this.colVlrUnitario,
             this.colQuantidade,
-            this.colVlrFinal,
+            this.colVlrTotal,
             this.colNCM,
             this.colVlrICMS,
             this.colVlrICMSST,
             this.colPIS,
             this.colCOFINS,
             this.colCodOriginal,
-            this.colDesOriginal});
+            this.colDesOriginal,
+            this.colPercentual,
+            this.colVlrFinal});
 			gridFormatRule1.ApplyToRow = true;
 			gridFormatRule1.Column = this.colCodigounico;
 			gridFormatRule1.Name = "naoCadastrado1";
@@ -400,19 +420,19 @@
 			this.colQuantidade.VisibleIndex = 4;
 			this.colQuantidade.Width = 49;
 			// 
-			// colVlrFinal
+			// colVlrTotal
 			// 
-			this.colVlrFinal.Caption = "Vlr. Final";
-			this.colVlrFinal.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-			this.colVlrFinal.FieldName = "VlrFinal";
-			this.colVlrFinal.Name = "colVlrFinal";
-			this.colVlrFinal.OptionsColumn.AllowEdit = false;
-			this.colVlrFinal.OptionsColumn.ReadOnly = true;
-			this.colVlrFinal.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+			this.colVlrTotal.Caption = "Vlr. Total";
+			this.colVlrTotal.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+			this.colVlrTotal.FieldName = "VlrTotal";
+			this.colVlrTotal.Name = "colVlrTotal";
+			this.colVlrTotal.OptionsColumn.AllowEdit = false;
+			this.colVlrTotal.OptionsColumn.ReadOnly = true;
+			this.colVlrTotal.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "VlrFinal", "", "Valor total da nota")});
-			this.colVlrFinal.Visible = true;
-			this.colVlrFinal.VisibleIndex = 5;
-			this.colVlrFinal.Width = 70;
+			this.colVlrTotal.Visible = true;
+			this.colVlrTotal.VisibleIndex = 5;
+			this.colVlrTotal.Width = 70;
 			// 
 			// colNCM
 			// 
@@ -1180,21 +1200,21 @@
 			this.btnAlterarItem.TabIndex = 36;
 			this.btnAlterarItem.Text = "&Alterar Item";
 			// 
-			// lcolCodProduto
+			// colPercentual
 			// 
-			this.lcolCodProduto.Caption = "Código";
-			this.lcolCodProduto.FieldName = "CodProduto";
-			this.lcolCodProduto.Name = "lcolCodProduto";
-			this.lcolCodProduto.Visible = true;
-			this.lcolCodProduto.VisibleIndex = 0;
+			this.colPercentual.Caption = "Percent.";
+			this.colPercentual.FieldName = "Percentual";
+			this.colPercentual.Name = "colPercentual";
+			this.colPercentual.Visible = true;
+			this.colPercentual.VisibleIndex = 12;
 			// 
-			// lcolDesProduto
+			// colVlrFinal
 			// 
-			this.lcolDesProduto.Caption = "Decrição";
-			this.lcolDesProduto.FieldName = "DesProduto";
-			this.lcolDesProduto.Name = "lcolDesProduto";
-			this.lcolDesProduto.Visible = true;
-			this.lcolDesProduto.VisibleIndex = 1;
+			this.colVlrFinal.Caption = "Vlr. Final";
+			this.colVlrFinal.FieldName = "VlrFinal";
+			this.colVlrFinal.Name = "colVlrFinal";
+			this.colVlrFinal.Visible = true;
+			this.colVlrFinal.VisibleIndex = 13;
 			// 
 			// frmEntrada
 			// 
@@ -1289,7 +1309,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colDesProduto;
         private DevExpress.XtraGrid.Columns.GridColumn colVlrUnitario;
         private DevExpress.XtraGrid.Columns.GridColumn colQuantidade;
-        private DevExpress.XtraGrid.Columns.GridColumn colVlrFinal;
+        private DevExpress.XtraGrid.Columns.GridColumn colVlrTotal;
 		private DevExpress.XtraGrid.Columns.GridColumn colCodigounico;
 		private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
 		private DevExpress.XtraTab.XtraTabPage tabDados;
@@ -1368,5 +1388,7 @@
 		private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit1View;
 		private DevExpress.XtraGrid.Columns.GridColumn lcolCodProduto;
 		private DevExpress.XtraGrid.Columns.GridColumn lcolDesProduto;
+		private DevExpress.XtraGrid.Columns.GridColumn colPercentual;
+		private DevExpress.XtraGrid.Columns.GridColumn colVlrFinal;
     }
 }

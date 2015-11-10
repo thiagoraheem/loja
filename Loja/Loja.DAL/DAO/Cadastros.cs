@@ -96,42 +96,7 @@ namespace Loja.DAL.DAO
 			}
 		}
 
-		public static void ManutProduto(int codigounico, string codProduto, string desProduto, string desLocal, double vlrUnitario,
-									double qtdProduto, double vlrCusto, double vlrPercent, double estMinimo, string desFornecedor,
-									string codRefAntiga, double vlrUltPreco, byte[] imagem, string ncm)
-		{
-			using (var banco = new LojaContext())
-			{
-				banco.spc_ManutProduto(codigounico, codProduto, desProduto, desLocal, vlrUnitario,
-									qtdProduto, vlrCusto, vlrPercent, estMinimo, desFornecedor,
-									codRefAntiga, vlrUltPreco, imagem, ncm);
-			}
-		}
-
-		public static void Reajuste(decimal porcentagem, string desFornecedor)
-		{
-			using (var banco = new LojaContext())
-			{
-				banco.spc_Reajuste(porcentagem, desFornecedor);
-
-			}
-		}
-
-
-		public static void ExcluiProduto(int codigo)
-		{
-
-			using (var banco = new LojaContext())
-			{
-				var dados = banco.tbl_Produtos.FirstOrDefault(x => x.codigounico == codigo);
-
-				banco.tbl_Produtos.Remove(dados);
-				banco.SaveChanges();
-
-			}
-
-		}
-
+			
 		public static void ExcluiOrcamento(string codigo)
 		{
 
@@ -305,6 +270,81 @@ namespace Loja.DAL.DAO
 
 		}
 
+		#region Produto
+		public static void ManutProduto(int codigounico, string codProduto, string desProduto, string desLocal, double vlrUnitario,
+									double qtdProduto, double vlrCusto, double vlrPercent, double estMinimo, string desFornecedor,
+									string codRefAntiga, double vlrUltPreco, byte[] imagem, string ncm)
+		{
+			using (var banco = new LojaContext())
+			{
+				banco.spc_ManutProduto(codigounico, codProduto, desProduto, desLocal, vlrUnitario,
+									qtdProduto, vlrCusto, vlrPercent, estMinimo, desFornecedor,
+									codRefAntiga, vlrUltPreco, imagem, ncm);
+			}
+		}
+
+		public static void Reajuste(decimal porcentagem, string desFornecedor)
+		{
+			using (var banco = new LojaContext())
+			{
+				banco.spc_Reajuste(porcentagem, desFornecedor);
+
+			}
+		}
+
+		public static int GravaProduto(tbl_Produtos dados)
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var registro = banco.tbl_Produtos.FirstOrDefault(s => s.codigounico == dados.codigounico);
+
+				if (registro == null)
+				{
+					registro = banco.tbl_Produtos.Add(dados);
+				}
+				else
+				{
+					registro.CodProduto = dados.CodProduto;
+					registro.CodRefAntiga = dados.CodRefAntiga;
+					registro.DatCadastro = dados.DatCadastro;
+					registro.DesFaz = dados.DesFaz;
+					registro.DesFornecedor = dados.DesFornecedor;
+					registro.DesLocal = dados.DesLocal;
+					registro.DesProduto = dados.DesProduto;
+					registro.EstMinimo = dados.EstMinimo;
+					registro.Imagem = dados.Imagem;
+					registro.NCM = dados.NCM;
+					registro.QtdProduto = dados.QtdProduto;
+					registro.VlrCusto = dados.VlrCusto;
+					registro.VlrICMSST = dados.VlrICMSST;
+					registro.VlrPercent = dados.VlrPercent;
+					registro.VlrUltPreco = dados.VlrUltPreco;
+					registro.VlrUnitario = dados.VlrUnitario;
+				
+				}
+
+				banco.SaveChanges();
+
+				return registro.codigounico;
+			}
+		
+		}
+
+		public static void ExcluiProduto(int codigo)
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var dados = banco.tbl_Produtos.FirstOrDefault(x => x.codigounico == codigo);
+
+				banco.tbl_Produtos.Remove(dados);
+				banco.SaveChanges();
+
+			}
+
+		}
+		#endregion
 
 		#region Entrada de Produtos
 
@@ -331,12 +371,10 @@ namespace Loja.DAL.DAO
 			{
 				var registro = banco.tbl_Entrada.FirstOrDefault(x => x.CodEntrada == dado.CodEntrada);
 
-				var codEntrada = -1;
-
 				if (registro == null)
 				{
 					dado.DatEntrada = DateTime.Now;
-					banco.tbl_Entrada.Add(dado);
+					registro = banco.tbl_Entrada.Add(dado);
 				}
 				else
 				{
@@ -352,15 +390,7 @@ namespace Loja.DAL.DAO
 
 				banco.SaveChanges();
 
-				if (registro == null)
-				{
-					codEntrada = dado.CodEntrada;
-				}
-				else
-				{
-					codEntrada = registro.CodEntrada;
-				}
-				return codEntrada;
+				return registro.CodEntrada;
 
 			}
 
@@ -376,6 +406,22 @@ namespace Loja.DAL.DAO
 				if (dados != null)
 				{
 					banco.tbl_EntradaItens.Remove(dados);
+					banco.SaveChanges();
+				}
+
+			}
+
+		}
+
+		public static void ExcluiEntradaItens(int codEntrada)
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var dados = banco.tbl_EntradaItens.Where(x => x.CodEntrada == codEntrada).ToList();
+				if (dados != null)
+				{
+					banco.tbl_EntradaItens.RemoveRange(dados);
 					banco.SaveChanges();
 				}
 
