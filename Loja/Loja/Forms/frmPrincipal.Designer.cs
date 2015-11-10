@@ -470,6 +470,7 @@
 			// btnFazerBackup
 			// 
 			this.btnFazerBackup.Caption = "Copiar de Loja";
+			this.btnFazerBackup.Enabled = false;
 			this.btnFazerBackup.Id = 72;
 			this.btnFazerBackup.LargeImageIndex = 10;
 			this.btnFazerBackup.Name = "btnFazerBackup";
