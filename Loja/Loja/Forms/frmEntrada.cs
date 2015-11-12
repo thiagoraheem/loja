@@ -10,6 +10,7 @@ using DevExpress.XtraEditors;
 using System.Xml;
 using Loja.DAL.Models;
 using Loja.DAL.DAO;
+using Loja.DAL.VO;
 
 using NFe.Classes;
 using NFe.Utils;
@@ -24,8 +25,8 @@ namespace Loja
 	public partial class frmEntrada : DevExpress.XtraEditors.XtraForm
 	{
 		#region Variáveis
-		List<tbl_EntradaItens> itens;
-		tbl_Entrada capa;
+		List<EntradaItens> itens;
+		Entrada capa;
 
 		#endregion
 
@@ -40,8 +41,8 @@ namespace Loja
 
 			grdDados.DataSource = itens;
 
-			capa = new tbl_Entrada();
-			capa.CodEntrada = -1;
+			capa = new Entrada();
+			//capa.CodEntrada = -1;
 
 			txtDocEntrada.DataBindings.Add(new Binding("EditValue", capa, "DocEntrada"));
 			txtDatEmissao.DataBindings.Add(new Binding("EditValue", capa, "DatEmissao"));
@@ -50,7 +51,7 @@ namespace Loja
 			txtSerieNota.DataBindings.Add(new Binding("EditValue", capa, "SerieNota"));
 			cmbTipoEntrada.DataBindings.Add(new Binding("EditValue", capa, "CodTipoEntrada"));
 
-			itens = new List<tbl_EntradaItens>();
+			itens = new List<EntradaItens>();
 		}
 
 		private void frmEntrada_Load(object sender, EventArgs e)
@@ -77,30 +78,30 @@ namespace Loja
 			}
 
 			int codEntrada = -1;
+			var produto = new tbl_Produtos();
 			try
 			{
 
-				codEntrada = Cadastros.GravaEntrada(capa);
+				var entrada = new tbl_Entrada(){
+					CodTipoEntrada = capa.CodTipoEntrada,
+					CNPJ = capa.CNPJ,
+					CPF = capa.CPF,
+					DatEmissao = capa.DatEmissao,
+					DatEntrada = capa.DatEntrada,
+					DocEntrada = capa.DocEntrada,
+					Nome = capa.Nome,
+					SerieNota = capa.SerieNota
+				};
+
+				codEntrada = Cadastros.GravaEntrada(entrada);
 
 				foreach (var item in itens)
 				{
 					item.CodEntrada = codEntrada;
 
-					Cadastros.GravaEntradaItem(item);
-
-					var produto = Consultas.ObterProduto(item.codigounico);
-					if (produto != null)
-					{
-						produto.VlrUltPreco = produto.VlrCusto;
-						produto.VlrCusto = (double)item.VlrUnitario;
-						produto.VlrICMSST = (double?)item.VlrICMSST;
-						produto.VlrPercent = (double?)item.Percentual;
-						produto.VlrUnitario = (double)(item.VlrUnitario * (1 + item.Percentual / 100));
-						produto.QtdProduto += (double)item.Quantidade;
-					}
-					else
-					{
-						produto = new tbl_Produtos(){
+					if (item.codigounico == -1) { 
+						produto = new tbl_Produtos()
+						{
 							CodProduto = item.CodProduto,
 							CodRefAntiga = "",
 							DatCadastro = DateTime.Now.ToString(),
@@ -111,14 +112,55 @@ namespace Loja
 							NCM = item.NCM,
 							QtdProduto = (double)item.Quantidade,
 							VlrCusto = (double)item.VlrUnitario,
-							VlrICMSST = (double?)item.VlrICMSST,
+							VlrICMSST = (double?)(item.VlrICMSST ?? item.VlrICMS),
 							VlrPercent = (double?)item.Percentual,
 							VlrUltPreco = 0,
 							VlrUnitario = (double)(item.VlrUnitario * (1 + item.Percentual / 100))
 						};
+						Cadastros.GravaProduto(produto);
+					}
+					else { 
+						var prod = Consultas.ObterProduto(item.codigounico);
+						produto = prod;
+
+						prod.VlrUltPreco = produto.VlrCusto;
+						prod.VlrCusto = (double)item.VlrUnitario;
+						prod.VlrICMSST = (double?)item.VlrICMSST;
+						prod.VlrPercent = (double?)item.Percentual;
+						prod.VlrUnitario = (double)(item.VlrUnitario * (1 + item.Percentual / 100));
+						prod.QtdProduto += (double)item.Quantidade;
+
+						Cadastros.GravaProduto(prod);
 					}
 
-					Cadastros.GravaProduto(produto);
+					var entradaItem = new tbl_EntradaItens(){
+						CodEntrada = item.CodEntrada,
+						codigounico = item.codigounico,
+						CodProduto = item.CodProduto,
+						DesProduto = item.DesProduto,
+						NCM = item.NCM,
+						NumOrdem = item.NumOrdem,
+						Percentual = item.Percentual,
+						Quantidade = item.Quantidade,
+						Unidade = item.Unidade,
+						VlrBaseCOFINS = item.VlrBaseCOFINS,
+						VlrBaseICMS = item.VlrBaseICMS,
+						VlrBaseICMSST = item.VlrBaseICMSST,
+						VlrBasePIS = item.VlrBasePIS,
+						VlrCOFINS = item.VlrCOFINS,
+						VlrFinal = item.VlrFinal,
+						VlrICMS = item.VlrICMS,
+						VlrICMSST = item.VlrICMSST,
+						VlrPercCOFINS = item.VlrPercCOFINS,
+						VlrPercICMS = item.VlrPercICMS,
+						VlrPercICMSST = item.VlrPercICMSST,
+						VlrPercPIS = item.VlrPercPIS,
+						VlrPIS = item.VlrPIS,
+						VlrTotal = item.VlrTotal,
+						VlrUnitario = item.VlrUnitario
+					};
+
+					Cadastros.GravaEntradaItem(entradaItem);
 
 				}
 
@@ -130,9 +172,19 @@ namespace Loja
 			catch (Exception ex)
 			{
 				Util.MsgBox("Erro ao gravar a entrada: " + ex.Message);
+				if (codEntrada != -1) { 
 
-				Cadastros.ExcluiEntradaItens(codEntrada);
-				Cadastros.ExcluiEntrada(codEntrada);
+					Cadastros.ExcluiEntradaItens(codEntrada);
+					Cadastros.ExcluiEntrada(codEntrada);
+
+					if (produto.codigounico > 0) { 
+						Cadastros.GravaProduto(produto);
+					}
+					else
+					{
+						Cadastros.ExcluiProduto(produto.codigounico);
+					}
+				}
 			}
 
 			#region Depreciado
@@ -231,7 +283,7 @@ namespace Loja
 				{
 
 
-					var item = new tbl_EntradaItens()
+					var item = new EntradaItens()
 					{
 						CodEntrada = capa.CodEntrada,
 						codigounico = (int)cmbCodProduto.EditValue,
@@ -382,13 +434,14 @@ namespace Loja
 					capa.Nome = nf.infNFe.emit.xNome;
 					capa.CNPJ = nf.infNFe.emit.CNPJ;
 					capa.CPF = nf.infNFe.emit.CPF;
+					capa.CodTipoEntrada = 1;
 
-					itens = new List<tbl_EntradaItens>();
+					itens = new List<EntradaItens>();
 
 					foreach (var produto in nf.infNFe.det)
 					{
 
-						var item = new tbl_EntradaItens();
+						var item = new EntradaItens();
 
 						var codigo = produto.prod.cProd;
 						codigo = codigo.Replace("/", "-").Replace(" ", "");

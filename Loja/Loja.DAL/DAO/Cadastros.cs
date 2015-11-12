@@ -96,7 +96,7 @@ namespace Loja.DAL.DAO
 			}
 		}
 
-			
+
 		public static void ExcluiOrcamento(string codigo)
 		{
 
@@ -321,14 +321,14 @@ namespace Loja.DAL.DAO
 					registro.VlrPercent = dados.VlrPercent;
 					registro.VlrUltPreco = dados.VlrUltPreco;
 					registro.VlrUnitario = dados.VlrUnitario;
-				
+
 				}
 
 				banco.SaveChanges();
 
 				return registro.codigounico;
 			}
-		
+
 		}
 
 		public static void ExcluiProduto(int codigo)
@@ -366,34 +366,40 @@ namespace Loja.DAL.DAO
 
 		public static int GravaEntrada(tbl_Entrada dado)
 		{
-
-			using (var banco = new LojaContext())
+			try
 			{
-				var registro = banco.tbl_Entrada.FirstOrDefault(x => x.CodEntrada == dado.CodEntrada);
 
-				if (registro == null)
+				using (var banco = new LojaContext())
 				{
-					dado.DatEntrada = DateTime.Now;
-					registro = banco.tbl_Entrada.Add(dado);
+					var registro = banco.tbl_Entrada.FirstOrDefault(x => x.CodEntrada == dado.CodEntrada);
+
+					if (registro == null)
+					{
+						dado.DatEntrada = DateTime.Now;
+						registro = banco.tbl_Entrada.Add(dado);
+					}
+					else
+					{
+						registro.DocEntrada = dado.DocEntrada;
+						registro.SerieNota = dado.SerieNota;
+						registro.DatEmissao = dado.DatEmissao;
+						registro.DatEntrada = dado.DatEntrada;
+						registro.CodTipoEntrada = dado.CodTipoEntrada;
+						registro.CNPJ = dado.CNPJ;
+						registro.CPF = dado.CPF;
+						registro.Nome = dado.Nome;
+					}
+
+					banco.SaveChanges();
+
+					return registro.CodEntrada;
+
 				}
-				else
-				{
-					registro.DocEntrada = dado.DocEntrada;
-					registro.SerieNota = dado.SerieNota;
-					registro.DatEmissao = dado.DatEmissao;
-					registro.DatEntrada = dado.DatEntrada;
-					registro.CodTipoEntrada = dado.CodTipoEntrada;
-					registro.CNPJ = dado.CNPJ;
-					registro.CPF = dado.CPF;
-					registro.Nome = dado.Nome;
-				}
-
-				banco.SaveChanges();
-
-				return registro.CodEntrada;
-
 			}
-
+			catch (Exception ex)
+			{
+				throw new Exception(ex.InnerException == null ? ex.Message : ex.InnerException.Message);
+			}
 		}
 
 
@@ -432,43 +438,52 @@ namespace Loja.DAL.DAO
 		public static int GravaEntradaItem(tbl_EntradaItens dado)
 		{
 
-			using (var banco = new LojaContext())
+			try
 			{
-				var registro = banco.tbl_EntradaItens.FirstOrDefault(x => x.CodEntrada == dado.CodEntrada && x.codigounico == dado.codigounico);
 
-				if (registro == null)
+				using (var banco = new LojaContext())
 				{
-					registro = banco.tbl_EntradaItens.Add(dado);
+					var registro = banco.tbl_EntradaItens.FirstOrDefault(x => x.CodEntrada == dado.CodEntrada && x.codigounico == dado.codigounico);
+
+					if (registro == null)
+					{
+						registro = banco.tbl_EntradaItens.Add(dado);
+					}
+					else
+					{
+						registro.NumOrdem = dado.NumOrdem;
+						registro.NCM = dado.NCM;
+						registro.Unidade = dado.Unidade;
+						registro.Quantidade = dado.Quantidade;
+						registro.VlrUnitario = dado.VlrUnitario;
+						registro.VlrTotal = dado.VlrTotal;
+						registro.Percentual = dado.Percentual;
+						registro.VlrFinal = dado.VlrFinal;
+						registro.VlrBaseICMS = dado.VlrBaseICMS;
+						registro.VlrPercICMS = dado.VlrPercICMS;
+						registro.VlrICMS = dado.VlrICMS;
+						registro.VlrBaseICMSST = dado.VlrBaseICMSST;
+						registro.VlrPercICMSST = dado.VlrPercICMSST;
+						registro.VlrICMSST = dado.VlrICMSST;
+						registro.VlrBasePIS = dado.VlrBasePIS;
+						registro.VlrPercPIS = dado.VlrPercPIS;
+						registro.VlrPIS = dado.VlrPIS;
+						registro.VlrBaseCOFINS = dado.VlrBaseCOFINS;
+						registro.VlrPercCOFINS = dado.VlrPercCOFINS;
+						registro.VlrCOFINS = dado.VlrCOFINS;
+
+					}
+
+					banco.SaveChanges();
+
+					return registro.CodEntrada;
+
 				}
-				else
-				{
-					registro.NumOrdem = dado.NumOrdem;
-					registro.NCM = dado.NCM;
-					registro.Unidade = dado.Unidade;
-					registro.Quantidade = dado.Quantidade;
-					registro.VlrUnitario = dado.VlrUnitario;
-					registro.VlrTotal = dado.VlrTotal;
-					registro.Percentual = dado.Percentual;
-					registro.VlrFinal = dado.VlrFinal;
-					registro.VlrBaseICMS = dado.VlrBaseICMS;
-					registro.VlrPercICMS = dado.VlrPercICMS;
-					registro.VlrICMS = dado.VlrICMS;
-					registro.VlrBaseICMSST = dado.VlrBaseICMSST;
-					registro.VlrPercICMSST = dado.VlrPercICMSST;
-					registro.VlrICMSST = dado.VlrICMSST;
-					registro.VlrBasePIS = dado.VlrBasePIS;
-					registro.VlrPercPIS = dado.VlrPercPIS;
-					registro.VlrPIS = dado.VlrPIS;
-					registro.VlrBaseCOFINS = dado.VlrBaseCOFINS;
-					registro.VlrPercCOFINS = dado.VlrPercCOFINS;
-					registro.VlrCOFINS = dado.VlrCOFINS;
-					
-				}
 
-				banco.SaveChanges();
-
-				return registro.CodEntrada;
-
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(ex.InnerException == null ? ex.Message : ex.InnerException.Message);
 			}
 
 		}

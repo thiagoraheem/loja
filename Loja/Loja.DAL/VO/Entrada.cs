@@ -7,11 +7,6 @@ namespace Loja.DAL.VO
 {
 	public partial class Entrada : INotifyPropertyChanged
 	{
-		public Entrada()
-		{
-			this.tbl_EntradaItens = new List<tbl_EntradaItens>();
-		}
-
 		private int codEntrada;
 		public int CodEntrada { get { return codEntrada; } set { codEntrada = value; NotifyPropertyChanged("CodEntrada"); } }
 
@@ -39,9 +34,6 @@ namespace Loja.DAL.VO
 		private string nome;
 		public string Nome { get { return nome; } set { nome = value; NotifyPropertyChanged("Nome"); } }
 		
-		
-		public virtual tbl_TipoEntrada tbl_TipoEntrada { get; set; }
-		public virtual ICollection<tbl_EntradaItens> tbl_EntradaItens { get; set; }
 
 		private void NotifyPropertyChanged(String propertyName)
 		{

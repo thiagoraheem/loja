@@ -1,56 +1,25 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-
 
 namespace Loja.DAL.Models
 {
-	public partial class tbl_Entrada : INotifyPropertyChanged
-	{
-		public tbl_Entrada()
-		{
-			this.tbl_EntradaItens = new List<tbl_EntradaItens>();
-		}
+    public partial class tbl_Entrada
+    {
+        public tbl_Entrada()
+        {
+            this.tbl_EntradaItens = new List<tbl_EntradaItens>();
+        }
 
-		private int codEntrada;
-		public int CodEntrada { get { return codEntrada; } set { codEntrada = value; NotifyPropertyChanged("CodEntrada"); } }
-
-		private string docEntrada;
-		public string DocEntrada { get { return docEntrada; } set { docEntrada = value; NotifyPropertyChanged("DocEntrada"); } }
-
-		private string serieNota;
-		public string SerieNota { get { return serieNota; } set { serieNota = value; NotifyPropertyChanged("SerieNota"); } }
-
-		private DateTime? datEmissao;
-		public Nullable<System.DateTime> DatEmissao { get { return datEmissao; } set { datEmissao = value; NotifyPropertyChanged("DatEmissao"); } }
-
-		private DateTime datEntrada;
-		public System.DateTime DatEntrada { get { return datEntrada; } set { datEntrada = value; NotifyPropertyChanged("DatEntrada"); } }
-
-		private int codTipoEntrada;
-		public int CodTipoEntrada { get { return codTipoEntrada; } set { codTipoEntrada = value; NotifyPropertyChanged("CodTipoEntrada"); } }
-		
-		private string cnpj;
-		public string CNPJ { get { return cnpj; } set { cnpj = value; NotifyPropertyChanged("CNPJ"); } }
-		
-		private string cpf;
-		public string CPF { get { return cpf; } set { cpf = value; NotifyPropertyChanged("CPF"); } }
-		
-		private string nome;
-		public string Nome { get { return nome; } set { nome = value; NotifyPropertyChanged("Nome"); } }
-		
-		
-		public virtual tbl_TipoEntrada tbl_TipoEntrada { get; set; }
-		public virtual ICollection<tbl_EntradaItens> tbl_EntradaItens { get; set; }
-
-		private void NotifyPropertyChanged(String propertyName)
-		{
-			if (PropertyChanged != null)
-			{
-				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-
-		public event PropertyChangedEventHandler PropertyChanged;
-	}
+        public int CodEntrada { get; set; }
+        public string DocEntrada { get; set; }
+        public string SerieNota { get; set; }
+        public Nullable<System.DateTime> DatEmissao { get; set; }
+        public System.DateTime DatEntrada { get; set; }
+        public int CodTipoEntrada { get; set; }
+        public string CNPJ { get; set; }
+        public string CPF { get; set; }
+        public string Nome { get; set; }
+        public virtual tbl_TipoEntrada tbl_TipoEntrada { get; set; }
+        public virtual ICollection<tbl_EntradaItens> tbl_EntradaItens { get; set; }
+    }
 }

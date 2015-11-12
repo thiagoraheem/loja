@@ -5,7 +5,7 @@ namespace Loja.DAL.Models
 {
     public partial class tbl_SaidasEstorno
     {
-        public int CodVenda { get; set; }
+        public string CodVenda { get; set; }
         public int codigounico { get; set; }
         public System.DateTime DatSaida { get; set; }
         public string CodOrcamento { get; set; }

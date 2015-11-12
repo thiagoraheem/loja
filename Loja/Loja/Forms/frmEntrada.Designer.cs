@@ -59,6 +59,8 @@
 			this.colCOFINS = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colCodOriginal = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colDesOriginal = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.colPercentual = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.colVlrFinal = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
 			this.tabDados = new DevExpress.XtraTab.XtraTabPage();
 			this.txtNumOrdem = new DevExpress.XtraEditors.TextEdit();
@@ -124,8 +126,6 @@
 			this.btnIncluir = new DevExpress.XtraEditors.SimpleButton();
 			this.btnExcluirItem = new DevExpress.XtraEditors.SimpleButton();
 			this.btnAlterarItem = new DevExpress.XtraEditors.SimpleButton();
-			this.colPercentual = new DevExpress.XtraGrid.Columns.GridColumn();
-			this.colVlrFinal = new DevExpress.XtraGrid.Columns.GridColumn();
 			((System.ComponentModel.ISupportInitialize)(this.lueProdutos)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtDocEntrada.Properties)).BeginInit();
@@ -224,6 +224,7 @@
 			this.txtDocEntrada.EnterMoveNextControl = true;
 			this.txtDocEntrada.Location = new System.Drawing.Point(83, 23);
 			this.txtDocEntrada.Name = "txtDocEntrada";
+			this.txtDocEntrada.Properties.MaxLength = 20;
 			this.txtDocEntrada.Size = new System.Drawing.Size(79, 20);
 			this.txtDocEntrada.TabIndex = 0;
 			this.txtDocEntrada.Validated += new System.EventHandler(this.txtDocEntrada_Validated);
@@ -491,6 +492,22 @@
 			this.colDesOriginal.Visible = true;
 			this.colDesOriginal.VisibleIndex = 10;
 			// 
+			// colPercentual
+			// 
+			this.colPercentual.Caption = "Percent.";
+			this.colPercentual.FieldName = "Percentual";
+			this.colPercentual.Name = "colPercentual";
+			this.colPercentual.Visible = true;
+			this.colPercentual.VisibleIndex = 12;
+			// 
+			// colVlrFinal
+			// 
+			this.colVlrFinal.Caption = "Vlr. Final";
+			this.colVlrFinal.FieldName = "VlrFinal";
+			this.colVlrFinal.Name = "colVlrFinal";
+			this.colVlrFinal.Visible = true;
+			this.colVlrFinal.VisibleIndex = 13;
+			// 
 			// xtraTabControl1
 			// 
 			this.xtraTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -630,6 +647,11 @@
 			// 
 			// txtPercentual
 			// 
+			this.txtPercentual.EditValue = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
 			this.txtPercentual.EnterMoveNextControl = true;
 			this.txtPercentual.Location = new System.Drawing.Point(81, 85);
 			this.txtPercentual.Name = "txtPercentual";
@@ -1124,6 +1146,7 @@
 			this.txtNome.EnterMoveNextControl = true;
 			this.txtNome.Location = new System.Drawing.Point(357, 49);
 			this.txtNome.Name = "txtNome";
+			this.txtNome.Properties.MaxLength = 50;
 			this.txtNome.Size = new System.Drawing.Size(120, 20);
 			this.txtNome.TabIndex = 29;
 			// 
@@ -1146,6 +1169,7 @@
 			this.txtNumCNPJ.Properties.Mask.EditMask = "([0-9]{3}[\\.][0-9]{3}[\\.][0-9]{3}[-][0-9]{2})|([0-9]{2}[\\.][0-9]{3}[\\.][0-9]{3}[\\" +
     "/][0-9]{4}[-][0-9]{2})";
 			this.txtNumCNPJ.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+			this.txtNumCNPJ.Properties.MaxLength = 14;
 			this.txtNumCNPJ.Size = new System.Drawing.Size(177, 20);
 			this.txtNumCNPJ.TabIndex = 27;
 			// 
@@ -1163,6 +1187,7 @@
 			this.txtSerieNota.EnterMoveNextControl = true;
 			this.txtSerieNota.Location = new System.Drawing.Point(218, 23);
 			this.txtSerieNota.Name = "txtSerieNota";
+			this.txtSerieNota.Properties.MaxLength = 5;
 			this.txtSerieNota.Size = new System.Drawing.Size(41, 20);
 			this.txtSerieNota.TabIndex = 25;
 			// 
@@ -1199,22 +1224,6 @@
 			this.btnAlterarItem.Size = new System.Drawing.Size(75, 23);
 			this.btnAlterarItem.TabIndex = 36;
 			this.btnAlterarItem.Text = "&Alterar Item";
-			// 
-			// colPercentual
-			// 
-			this.colPercentual.Caption = "Percent.";
-			this.colPercentual.FieldName = "Percentual";
-			this.colPercentual.Name = "colPercentual";
-			this.colPercentual.Visible = true;
-			this.colPercentual.VisibleIndex = 12;
-			// 
-			// colVlrFinal
-			// 
-			this.colVlrFinal.Caption = "Vlr. Final";
-			this.colVlrFinal.FieldName = "VlrFinal";
-			this.colVlrFinal.Name = "colVlrFinal";
-			this.colVlrFinal.Visible = true;
-			this.colVlrFinal.VisibleIndex = 13;
 			// 
 			// frmEntrada
 			// 

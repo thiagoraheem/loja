@@ -31,9 +31,9 @@
 			this.components = new System.ComponentModel.Container();
 			DevExpress.XtraSplashScreen.SplashScreenManager mgrSplash = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Loja.frmApresentacao), true, true);
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
-			DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-			DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-			DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+			DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+			DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+			DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
 			this.navbarImageListLarge = new System.Windows.Forms.ImageList(this.components);
 			this.navbarImageList = new System.Windows.Forms.ImageList(this.components);
 			this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -900,12 +900,12 @@
 			this.btnCadCliente.LargeImageIndex = 5;
 			this.btnCadCliente.Name = "btnCadCliente";
 			this.btnCadCliente.SmallImageIndex = 10;
-			toolTipTitleItem1.Text = "Dica";
-			toolTipItem1.LeftIndent = 6;
-			toolTipItem1.Text = "Cadastro de Clientes";
-			superToolTip1.Items.Add(toolTipTitleItem1);
-			superToolTip1.Items.Add(toolTipItem1);
-			this.btnCadCliente.SuperTip = superToolTip1;
+			toolTipTitleItem2.Text = "Dica";
+			toolTipItem2.LeftIndent = 6;
+			toolTipItem2.Text = "Cadastro de Clientes";
+			superToolTip2.Items.Add(toolTipTitleItem2);
+			superToolTip2.Items.Add(toolTipItem2);
+			this.btnCadCliente.SuperTip = superToolTip2;
 			this.btnCadCliente.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnCadCliente_LinkClicked);
 			// 
 			// btnOrcamentos

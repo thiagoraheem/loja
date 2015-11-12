@@ -25,7 +25,7 @@ namespace Loja.DAL.Models.Mapping
 
 			this.Property(t => t.NCM)
 				.IsFixedLength()
-                .HasMaxLength(8);
+				.HasMaxLength(8);
 
 			this.Property(t => t.Unidade)
 				.HasMaxLength(15);
