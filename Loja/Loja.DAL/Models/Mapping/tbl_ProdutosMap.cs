@@ -11,20 +11,17 @@ namespace Loja.DAL.Models.Mapping
 			this.HasKey(t => t.codigounico);
 
 			// Properties
-			this.Property(t => t.codigounico)
-				.HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-
 			this.Property(t => t.CodProduto)
 				.IsRequired()
-				.HasMaxLength(20);
+                .HasMaxLength(20);
 
 			this.Property(t => t.DesProduto)
 				.IsRequired()
-				.HasMaxLength(30);
+                .HasMaxLength(30);
 
 			this.Property(t => t.DesLocal)
 				.IsRequired()
-				.HasMaxLength(4);
+                .HasMaxLength(4);
 
 			this.Property(t => t.DatCadastro)
 				.HasMaxLength(10);

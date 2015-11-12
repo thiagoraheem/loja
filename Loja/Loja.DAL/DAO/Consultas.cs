@@ -211,6 +211,7 @@ namespace Loja.DAL.DAO
 			}
 		}
 
+		#region Entrada
 		public static List<Entrada> ObterEntrada(string docEntrada)
 		{
 
@@ -283,6 +284,8 @@ namespace Loja.DAL.DAO
 			}
 
 		}
+
+		#endregion
 
 		public static List<string> ObterFornecedores()
 		{
