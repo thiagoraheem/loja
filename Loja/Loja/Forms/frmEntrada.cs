@@ -123,6 +123,7 @@ namespace Loja
 						var prod = Consultas.ObterProduto(item.codigounico);
 						produto = prod;
 
+						prod.NCM = item.NCM;
 						prod.VlrUltPreco = produto.VlrCusto;
 						prod.VlrCusto = (double)item.VlrUnitario;
 						prod.VlrICMSST = (double?)item.VlrICMSST;

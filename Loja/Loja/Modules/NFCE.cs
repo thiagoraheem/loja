@@ -247,9 +247,6 @@ namespace Loja.Modules
 				{
 					dest.CNPJ = _cliente.NumCNPJ.Replace(".", "").Replace("-", "").Replace("/", "");
 					dest.xNome = _cliente.NomCliente ?? "CLIENTE NÃO IDENTIFICADO";
-					dest.enderDest = GetEnderecoDestinatario();
-					if (!String.IsNullOrEmpty(_cliente.Email))
-						dest.email = _cliente.Email;
 				}
 				else
 				{
@@ -257,11 +254,20 @@ namespace Loja.Modules
 					{
 						dest.CPF = _cliente.NumCPF.Replace(".", "").Replace("-", "");
 						dest.xNome = _cliente.NomCliente ?? "CLIENTE NÃO IDENTIFICADO";
-						dest.enderDest = GetEnderecoDestinatario();
-						if (!String.IsNullOrEmpty(_cliente.Email))
-							dest.email = _cliente.Email;
 					}
 				}
+				// verifica se os dados de endereço existem
+				if(!String.IsNullOrEmpty(_cliente.Endereco) && !String.IsNullOrEmpty(_cliente.Numero) && !String.IsNullOrEmpty(_cliente.Bairro) &&
+					!String.IsNullOrEmpty(_cliente.CEP) && !String.IsNullOrEmpty(_cliente.Cidade) && !String.IsNullOrEmpty(_cliente.Estado)
+					)
+				{
+					dest.enderDest = GetEnderecoDestinatario();
+				}
+
+				// verifica se tem email cadastrado
+				if (!String.IsNullOrEmpty(_cliente.Email))
+					dest.email = _cliente.Email;
+
 			}
 			else
 			{
@@ -307,7 +313,6 @@ namespace Loja.Modules
 				prod = GetProduto(i + 1, item),
 				imposto = new imposto
 				{
-					//vTotTrib = 0,
 					ICMS = new ICMS
 					{
 						TipoICMS =
@@ -323,6 +328,11 @@ namespace Loja.Modules
 					PIS = new PIS { TipoPIS = new PISNT { CST = CSTPIS.pis08 } }
 				}
 			};
+
+			if (item.VlrImposto != null && item.VlrImposto > 0)
+			{
+				det.imposto.vTotTrib = item.VlrImposto;
+			}
 
 			if (modelo == ModeloDocumento.NFe) //NFCe não aceita grupo "IPI"
 				det.imposto.IPI = new IPI()
@@ -379,33 +389,23 @@ namespace Loja.Modules
 		protected virtual enderDest GetEnderecoDestinatario()
 		{
 
-			enderDest enderDest;
+			enderDest enderDest = new enderDest();
 
-			if(!String.IsNullOrEmpty(_cliente.Endereco) && !String.IsNullOrEmpty(_cliente.Numero) && !String.IsNullOrEmpty(_cliente.Bairro) &&
-			!String.IsNullOrEmpty(_cliente.CEP) && !String.IsNullOrEmpty(_cliente.Cidade) && !String.IsNullOrEmpty(_cliente.Estado)
-			)
-			{
-				enderDest = new enderDest();
+			enderDest.cMun = 1302603;
+			enderDest.cPais = 1058;
+			enderDest.xPais = "BRASIL";
+			enderDest.xMun = "MANAUS";
 
-				enderDest.cMun = 1302603;
-				enderDest.cPais = 1058;
-				enderDest.xPais = "BRASIL";
-				enderDest.xMun = "MANAUS";
+			enderDest.xLgr = _cliente.Endereco;
 
-				enderDest.xLgr = _cliente.Endereco;
+			enderDest.nro = _cliente.Numero;
 
-				enderDest.nro = _cliente.Numero;
+			enderDest.xBairro = _cliente.Bairro;
 
-				enderDest.xBairro = _cliente.Bairro;
+			enderDest.CEP = _cliente.CEP;
 
-				enderDest.CEP = _cliente.CEP;
+			enderDest.UF = _cliente.Estado;
 
-				enderDest.UF = _cliente.Estado;
-			}
-			else
-			{
-				enderDest = null;
-			}
 
 			return enderDest;
 		}
@@ -414,8 +414,8 @@ namespace Loja.Modules
 		{
 			var p = new prod
 			{
-				cProd = i.ToString().PadLeft(5, '0'),
 				cEAN = "",
+				cProd = i.ToString().PadLeft(5, '0'),
 				xProd = item.tbl_Produtos.DesProduto,
 				NCM = item.tbl_Produtos.NCM ?? "99999999",
 				CFOP = 5405,
@@ -429,6 +429,7 @@ namespace Loja.Modules
 				qTrib = item.Quantidade,
 				vUnTrib = item.VlrUnitario,
 				indTot = IndicadorTotal.ValorDoItemCompoeTotalNF,
+				
 			};
 			return p;
 		}

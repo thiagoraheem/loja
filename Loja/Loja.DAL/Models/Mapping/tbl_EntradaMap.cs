@@ -11,22 +11,20 @@ namespace Loja.DAL.Models.Mapping
 			this.HasKey(t => t.CodEntrada);
 
 			// Properties
-			this.Property(t => t.CodEntrada).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-
 			this.Property(t => t.DocEntrada)
 				.IsRequired()
-				.HasMaxLength(20);
+                .HasMaxLength(20);
 
 			this.Property(t => t.SerieNota)
 				.HasMaxLength(5);
 
 			this.Property(t => t.CNPJ)
 				.IsFixedLength()
-				.HasMaxLength(14);
+                .HasMaxLength(14);
 
 			this.Property(t => t.CPF)
 				.IsFixedLength()
-				.HasMaxLength(12);
+                .HasMaxLength(12);
 
 			this.Property(t => t.Nome)
 				.HasMaxLength(50);
