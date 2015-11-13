@@ -124,6 +124,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.imgFoto.Location = new System.Drawing.Point(378, 10);
 			this.imgFoto.Name = "imgFoto";
+			this.imgFoto.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
 			this.imgFoto.Size = new System.Drawing.Size(261, 245);
 			this.imgFoto.TabIndex = 11;
 			// 

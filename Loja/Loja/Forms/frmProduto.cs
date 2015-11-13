@@ -10,6 +10,7 @@ using DevExpress.XtraEditors;
 using System.IO;
 using System.Drawing.Imaging;
 using Loja.DAL.Models;
+using Loja.DAL.VO;
 using Loja.DAL.DAO;
 
 namespace Loja
@@ -18,7 +19,7 @@ namespace Loja
 	{
 
 		#region Variáveis
-		tbl_Produtos produto;
+		Produtos produto = new Produtos();
 		#endregion
 	
 		#region Form Events
@@ -26,6 +27,21 @@ namespace Loja
 		public frmProduto()
 		{
 			InitializeComponent();
+
+			txtCodProduto.DataBindings.Add(new Binding("EditValue", produto, "CodProduto", true, DataSourceUpdateMode.OnValidation));
+			txtDesProduto.DataBindings.Add(new Binding("EditValue", produto, "DesProduto", true, DataSourceUpdateMode.OnValidation));
+			txtDesLocal.DataBindings.Add(new Binding("EditValue", produto, "DesLocal", true, DataSourceUpdateMode.OnValidation));
+			txtFornecedor.DataBindings.Add(new Binding("EditValue", produto, "DesFornecedor", true, DataSourceUpdateMode.OnValidation));
+			txtQtdEstoque.DataBindings.Add(new Binding("EditValue", produto, "QtdProduto", true, DataSourceUpdateMode.OnValidation));
+			txtVlrUnitario.DataBindings.Add(new Binding("EditValue", produto, "VlrUnitario", true, DataSourceUpdateMode.OnValidation));
+			txtCodRefAntiga.DataBindings.Add(new Binding("EditValue", produto, "CodRefAntiga", true, DataSourceUpdateMode.OnValidation));
+			txtQtdEstMinimo.DataBindings.Add(new Binding("EditValue", produto, "EstMinimo", true, DataSourceUpdateMode.OnValidation));
+			txtUltPreco.DataBindings.Add(new Binding("EditValue", produto, "VlrUltPreco", true, DataSourceUpdateMode.OnValidation));
+			txtVlrCusto.DataBindings.Add(new Binding("EditValue", produto, "VlrCusto", true, DataSourceUpdateMode.OnValidation));
+			txtVlrPercent.DataBindings.Add(new Binding("EditValue", produto, "VlrPercent", true, DataSourceUpdateMode.OnValidation));
+			txtNCM.DataBindings.Add(new Binding("EditValue", produto, "NCM", true, DataSourceUpdateMode.OnValidation));
+			imgFoto.DataBindings.Add(new Binding("Image", produto, "Imagem", true, DataSourceUpdateMode.OnValidation));
+
 		}
 
 		#endregion
@@ -34,22 +50,27 @@ namespace Loja
 
 		public void SU_CarregaProduto(int CodProduto)
 		{
-			this.produto = Consultas.ObterProduto(CodProduto);
+			var prod = Consultas.ObterProduto(CodProduto);
 
-			txtCodProduto.Text = this.produto.CodProduto;
-			txtDesProduto.Text = this.produto.DesProduto;
-			txtDesLocal.Text = this.produto.DesLocal;
-			txtFornecedor.Text = this.produto.DesFornecedor;
-			txtQtdEstoque.Text = this.produto.QtdProduto.ToString();
-			txtVlrUnitario.Text = this.produto.VlrUnitario.ToString();
-			txtCodRefAntiga.Text = this.produto.CodRefAntiga;
-			txtQtdEstMinimo.Text = this.produto.EstMinimo.ToString();
-			txtUltPreco.Text = this.produto.VlrUltPreco.ToString();
-			txtVlrCusto.Text = this.produto.VlrCusto.ToString();
-			txtVlrPercent.Text = this.produto.VlrPercent.ToString();
-			txtNCM.Text = this.produto.NCM;
+			produto.codigounico = prod.codigounico;
+			produto.CodProduto = prod.CodProduto;
+			produto.DesProduto = prod.DesProduto;
+			produto.DesLocal = prod.DesLocal;
+			produto.DesFornecedor = prod.DesFornecedor;
+			produto.QtdProduto = prod.QtdProduto;
+			produto.VlrUnitario = prod.VlrUnitario;
+			produto.CodRefAntiga = prod.CodRefAntiga;
+			produto.EstMinimo = prod.EstMinimo;
+			produto.VlrUltPreco = prod.VlrUltPreco;
+			produto.VlrCusto = prod.VlrCusto;
+			produto.VlrPercent = prod.VlrPercent;
+			produto.NCM = prod.NCM;
+			produto.VlrICMSST = prod.VlrICMSST;
+			produto.DatCadastro = prod.DatCadastro;
+			produto.DesFaz = prod.DesFaz;
+			produto.Imagem = prod.Imagem;
 
-			if (produto.Imagem != null)
+			/*if (produto.Imagem != null)
 			{
 				MemoryStream ms = new MemoryStream(this.produto.Imagem);
 
@@ -58,15 +79,16 @@ namespace Loja
 				imgFoto.Image = Image.FromStream(ms);
 
 				btnRemoverImagem.Enabled = true;
-			}
+			}*/
 
 			btnRemover.Enabled = true;
 		}
 
 		public void SU_NovoProduto() {
-			this.produto = new tbl_Produtos();
+			
+			this.produto = new Produtos();
 
-			txtCodProduto.Text = String.Empty;
+			/*txtCodProduto.Text = String.Empty;
 			txtDesProduto.Text = String.Empty;
 			txtDesLocal.Text = String.Empty;
 			txtFornecedor.Text = String.Empty;
@@ -79,7 +101,7 @@ namespace Loja
 			txtVlrPercent.Text = String.Empty;
 			txtNCM.Text = String.Empty;
 
-			imgFoto.Image = null;
+			imgFoto.Image = null;*/
 
 			btnRemover.Enabled = false;
 			btnRemoverImagem.Enabled = false;
@@ -88,7 +110,7 @@ namespace Loja
 		void SU_Gravar() {
 
 			try {
-				byte[] photo_aray = null;
+				/*byte[] photo_aray = null;
 
 				if (imgFoto.Image != null) { 
 
@@ -115,7 +137,28 @@ namespace Loja
 
 				Cadastros.ManutProduto(produto.codigounico, txtCodProduto.Text, txtDesProduto.Text, txtDesLocal.Text, vlrUnitario,
 					qtdEstoque, vlrCusto, vlrPercent, qtdEstMinimo, txtFornecedor.Text, txtCodRefAntiga.Text, ultPreco,
-					photo_aray, txtNCM.Text);
+					photo_aray, txtNCM.Text);*/
+				var prod = new tbl_Produtos();
+
+				prod.codigounico = produto.codigounico;
+				prod.CodProduto = produto.CodProduto;
+				prod.DesProduto = produto.DesProduto;
+				prod.DesLocal = produto.DesLocal;
+				prod.DesFornecedor = produto.DesFornecedor;
+				prod.QtdProduto = produto.QtdProduto;
+				prod.VlrUnitario = produto.VlrUnitario;
+				prod.CodRefAntiga = produto.CodRefAntiga;
+				prod.EstMinimo = produto.EstMinimo;
+				prod.VlrUltPreco = produto.VlrUltPreco;
+				prod.VlrCusto = produto.VlrCusto;
+				prod.VlrPercent = produto.VlrPercent;
+				prod.NCM = produto.NCM;
+				prod.VlrICMSST = produto.VlrICMSST;
+				prod.DatCadastro = produto.DatCadastro;
+				prod.DesFaz = produto.DesFaz;
+				prod.Imagem = produto.Imagem;
+
+				Cadastros.GravaProduto(prod);
 
 				Close();
 			}
@@ -151,12 +194,28 @@ namespace Loja
 
 		private void btnImagem_Click(object sender, EventArgs e)
 		{
+			imgFoto.LoadImage();
 			
+			//produto.Imagem = imgFoto.Image;
+			/*
 			diagAbrir.ShowDialog();
 
 			Bitmap bitmap = new Bitmap(diagAbrir.FileName);
+			*/
+			byte[] photo_aray = null;
 
-			imgFoto.Image = bitmap;
+			/*if (bitmap != null)
+			{
+			*/
+				MemoryStream ms = new MemoryStream();
+				
+				imgFoto.Image.Save(ms, ImageFormat.Jpeg);
+				photo_aray = new byte[ms.Length];
+				ms.Position = 0;
+				ms.Read(photo_aray, 0, photo_aray.Length);
+			//}
+
+			produto.Imagem = photo_aray;
 
 
 		}
