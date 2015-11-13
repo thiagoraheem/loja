@@ -112,9 +112,19 @@
 			// 
 			// imgFoto
 			// 
+			this.imgFoto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.imgFoto.Location = new System.Drawing.Point(480, 29);
 			this.imgFoto.Name = "imgFoto";
-			this.imgFoto.Size = new System.Drawing.Size(280, 296);
+			this.imgFoto.Properties.AllowScrollViaMouseDrag = true;
+			this.imgFoto.Properties.AllowZoomOnMouseWheel = DevExpress.Utils.DefaultBoolean.True;
+			this.imgFoto.Properties.ReadOnly = true;
+			this.imgFoto.Properties.ShowScrollBars = true;
+			this.imgFoto.Properties.ShowZoomSubMenu = DevExpress.Utils.DefaultBoolean.True;
+			this.imgFoto.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+			this.imgFoto.Properties.ZoomingOperationMode = DevExpress.XtraEditors.Repository.ZoomingOperationMode.MouseWheel;
+			this.imgFoto.Size = new System.Drawing.Size(327, 327);
 			this.imgFoto.TabIndex = 6;
 			// 
 			// txtCodProduto
@@ -188,7 +198,7 @@
 			this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.groupControl1.Location = new System.Drawing.Point(0, 0);
 			this.groupControl1.Name = "groupControl1";
-			this.groupControl1.Size = new System.Drawing.Size(772, 330);
+			this.groupControl1.Size = new System.Drawing.Size(819, 368);
 			this.groupControl1.TabIndex = 14;
 			this.groupControl1.Text = "DETALHES DO PRODUTO";
 			// 
@@ -238,7 +248,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(772, 330);
+			this.ClientSize = new System.Drawing.Size(819, 368);
 			this.Controls.Add(this.groupControl1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.KeyPreview = true;

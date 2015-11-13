@@ -70,7 +70,6 @@
     <Compile Include="Models\Mapping\tbl_TipoEntradaMap.cs" />
     <Compile Include="Models\Mapping\tbl_TipoVendaMap.cs" />
     <Compile Include="Models\Mapping\tbl_UsuarioMap.cs" />
-    <Compile Include="Models\Mapping\tmp_ProdutosMap.cs" />
     <Compile Include="Models\Mapping\viw_OrcamentoMap.cs" />
     <Compile Include="Models\Mapping\viw_ResumoDiarioMap.cs" />
     <Compile Include="Models\sysdiagram.cs" />
@@ -89,13 +88,13 @@
     <Compile Include="Models\tbl_TipoEntrada.cs" />
     <Compile Include="Models\tbl_TipoVenda.cs" />
     <Compile Include="Models\tbl_Usuario.cs" />
-    <Compile Include="Models\tmp_Produtos.cs" />
     <Compile Include="Models\viw_Orcamento.cs" />
     <Compile Include="Models\viw_ResumoDiario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VO\DadosCombo.cs" />
     <Compile Include="VO\Entrada.cs" />
     <Compile Include="VO\EntradaItens.cs" />
+    <Compile Include="VO\Produtos.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
