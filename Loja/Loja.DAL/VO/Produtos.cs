@@ -32,7 +32,22 @@ namespace Loja.DAL.VO
 		public Nullable<double> EstMinimo { get { return this._estMinimo; } set { this._estMinimo = value; NotifyPropertyChanged("EstMinimo"); } }
 
 		private string _datCadastro;
-		public string DatCadastro { get { return this._datCadastro; } set { this._datCadastro = value; NotifyPropertyChanged("DatCadastro"); } }
+		public string DatCadastro
+		{
+			get { return this._datCadastro; }
+			set
+			{
+				if (value.Length > 10)
+				{
+					this._datCadastro = value;
+				}
+				else
+				{ 
+					this._datCadastro = value.Substring(0,10);
+				}
+				NotifyPropertyChanged("DatCadastro");
+			}
+		}
 
 		private string _desFornecedor;
 		public string DesFornecedor { get { return this._desFornecedor; } set { this._desFornecedor = value; NotifyPropertyChanged("DesFornecedor"); } }

@@ -62,6 +62,8 @@
 			this.diagAbrir = new System.Windows.Forms.OpenFileDialog();
 			this.txtNCM = new DevExpress.XtraEditors.TextEdit();
 			this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+			this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
+			this.txtVlrICMSST = new DevExpress.XtraEditors.CalcEdit();
 			((System.ComponentModel.ISupportInitialize)(this.txtDesProduto.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtDesLocal.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtFornecedor.Properties)).BeginInit();
@@ -75,6 +77,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.txtVlrUnitario.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtUltPreco.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtNCM.Properties)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.txtVlrICMSST.Properties)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// txtDesProduto
@@ -84,6 +87,7 @@
 			this.txtDesProduto.Name = "txtDesProduto";
 			this.txtDesProduto.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtDesProduto.Properties.Appearance.Options.UseFont = true;
+			this.txtDesProduto.Properties.MaxLength = 30;
 			this.txtDesProduto.Properties.ScrollBars = System.Windows.Forms.ScrollBars.None;
 			this.txtDesProduto.Size = new System.Drawing.Size(282, 58);
 			this.txtDesProduto.TabIndex = 1;
@@ -95,6 +99,7 @@
 			this.txtDesLocal.Name = "txtDesLocal";
 			this.txtDesLocal.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtDesLocal.Properties.Appearance.Options.UseFont = true;
+			this.txtDesLocal.Properties.MaxLength = 4;
 			this.txtDesLocal.Size = new System.Drawing.Size(100, 20);
 			this.txtDesLocal.TabIndex = 3;
 			// 
@@ -105,6 +110,7 @@
 			this.txtFornecedor.Name = "txtFornecedor";
 			this.txtFornecedor.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtFornecedor.Properties.Appearance.Options.UseFont = true;
+			this.txtFornecedor.Properties.MaxLength = 10;
 			this.txtFornecedor.Size = new System.Drawing.Size(100, 20);
 			this.txtFornecedor.TabIndex = 2;
 			// 
@@ -115,6 +121,7 @@
 			this.txtCodProduto.Name = "txtCodProduto";
 			this.txtCodProduto.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtCodProduto.Properties.Appearance.Options.UseFont = true;
+			this.txtCodProduto.Properties.MaxLength = 20;
 			this.txtCodProduto.Size = new System.Drawing.Size(282, 20);
 			this.txtCodProduto.TabIndex = 0;
 			// 
@@ -210,6 +217,7 @@
 			this.txtCodRefAntiga.Name = "txtCodRefAntiga";
 			this.txtCodRefAntiga.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtCodRefAntiga.Properties.Appearance.Options.UseFont = true;
+			this.txtCodRefAntiga.Properties.MaxLength = 20;
 			this.txtCodRefAntiga.Size = new System.Drawing.Size(282, 20);
 			this.txtCodRefAntiga.TabIndex = 4;
 			// 
@@ -401,6 +409,7 @@
 			this.txtNCM.Properties.Appearance.Options.UseFont = true;
 			this.txtNCM.Properties.Mask.EditMask = "\\d{8}";
 			this.txtNCM.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+			this.txtNCM.Properties.MaxLength = 10;
 			this.txtNCM.Size = new System.Drawing.Size(100, 20);
 			this.txtNCM.TabIndex = 11;
 			// 
@@ -413,12 +422,41 @@
 			this.labelControl12.TabIndex = 29;
 			this.labelControl12.Text = "NCM:";
 			// 
+			// labelControl13
+			// 
+			this.labelControl13.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelControl13.Location = new System.Drawing.Point(220, 238);
+			this.labelControl13.Name = "labelControl13";
+			this.labelControl13.Size = new System.Drawing.Size(45, 13);
+			this.labelControl13.TabIndex = 31;
+			this.labelControl13.Text = "Impostos:";
+			// 
+			// txtVlrICMSST
+			// 
+			this.txtVlrICMSST.EnterMoveNextControl = true;
+			this.txtVlrICMSST.Location = new System.Drawing.Point(271, 235);
+			this.txtVlrICMSST.Name = "txtVlrICMSST";
+			this.txtVlrICMSST.Properties.Appearance.BackColor = System.Drawing.Color.White;
+			this.txtVlrICMSST.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtVlrICMSST.Properties.Appearance.Options.UseBackColor = true;
+			this.txtVlrICMSST.Properties.Appearance.Options.UseFont = true;
+			this.txtVlrICMSST.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+			this.txtVlrICMSST.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+			this.txtVlrICMSST.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+			this.txtVlrICMSST.Properties.Mask.EditMask = "n2";
+			this.txtVlrICMSST.Properties.Mask.UseMaskAsDisplayFormat = true;
+			this.txtVlrICMSST.Size = new System.Drawing.Size(100, 20);
+			this.txtVlrICMSST.TabIndex = 32;
+			// 
 			// frmProduto
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnCancelar;
 			this.ClientSize = new System.Drawing.Size(651, 303);
+			this.Controls.Add(this.txtVlrICMSST);
+			this.Controls.Add(this.labelControl13);
 			this.Controls.Add(this.txtNCM);
 			this.Controls.Add(this.labelControl12);
 			this.Controls.Add(this.btnRemover);
@@ -467,6 +505,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.txtVlrUnitario.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtUltPreco.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtNCM.Properties)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.txtVlrICMSST.Properties)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -505,5 +544,7 @@
 		private System.Windows.Forms.OpenFileDialog diagAbrir;
 		private DevExpress.XtraEditors.TextEdit txtNCM;
 		private DevExpress.XtraEditors.LabelControl labelControl12;
+		private DevExpress.XtraEditors.LabelControl labelControl13;
+		private DevExpress.XtraEditors.CalcEdit txtVlrICMSST;
 	}
 }

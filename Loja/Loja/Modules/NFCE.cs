@@ -274,6 +274,8 @@ namespace Loja.Modules
 				dest.xNome = "CLIENTE NÃO IDENTIFICADO";
 			}
 
+			dest.xNome = dest.xNome.Trim();
+
 			//if (versao == VersaoServico.ve200)
 			//    dest.IE = "ISENTO";
 			if (versao != VersaoServico.ve310) return dest;
