@@ -9,3 +9,14 @@ C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\bin\Debug\EntityFramework.SqlSer
 C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\obj\Debug\Loja.DAL.csprojResolveAssemblyReference.cache
 C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\obj\Debug\Loja.DAL.dll
 C:\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\obj\Debug\Loja.DAL.pdb
+E:\Thiago\Documents\Personal\loja\Loja\Loja.DAL\bin\Debug\Loja.DAL.dll.config
+E:\Thiago\Documents\Personal\loja\Loja\Loja.DAL\bin\Debug\Loja.DAL.dll
+E:\Thiago\Documents\Personal\loja\Loja\Loja.DAL\bin\Debug\Loja.DAL.pdb
+E:\Thiago\Documents\Personal\loja\Loja\Loja.DAL\bin\Debug\CodeFirstStoreFunctions.dll
+E:\Thiago\Documents\Personal\loja\Loja\Loja.DAL\bin\Debug\EntityFramework.dll
+E:\Thiago\Documents\Personal\loja\Loja\Loja.DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\Thiago\Documents\Personal\loja\Loja\Loja.DAL\bin\Debug\EntityFramework.xml
+E:\Thiago\Documents\Personal\loja\Loja\Loja.DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\Thiago\Documents\Personal\loja\Loja\Loja.DAL\obj\Debug\Loja.DAL.csprojResolveAssemblyReference.cache
+E:\Thiago\Documents\Personal\loja\Loja\Loja.DAL\obj\Debug\Loja.DAL.dll
+E:\Thiago\Documents\Personal\loja\Loja\Loja.DAL\obj\Debug\Loja.DAL.pdb

@@ -294,41 +294,65 @@ namespace Loja.DAL.DAO
 
 		public static int GravaProduto(tbl_Produtos dados)
 		{
-
-			using (var banco = new LojaContext())
+			try
 			{
-				var registro = banco.tbl_Produtos.FirstOrDefault(s => s.codigounico == dados.codigounico);
 
-				if (registro == null)
+
+				using (var banco = new LojaContext())
 				{
-					registro = banco.tbl_Produtos.Add(dados);
+					var registro = banco.tbl_Produtos.FirstOrDefault(s => s.codigounico == dados.codigounico);
+
+					if (registro == null)
+					{
+						registro = banco.tbl_Produtos.Add(dados);
+					}
+					else
+					{
+						registro.CodProduto = dados.CodProduto;
+						registro.CodRefAntiga = dados.CodRefAntiga;
+						registro.DatCadastro = dados.DatCadastro;
+						registro.DesFaz = dados.DesFaz;
+						registro.DesFornecedor = dados.DesFornecedor;
+						registro.DesLocal = dados.DesLocal;
+						registro.DesProduto = dados.DesProduto;
+						registro.EstMinimo = dados.EstMinimo;
+						registro.Imagem = dados.Imagem;
+						registro.NCM = dados.NCM;
+						registro.QtdProduto = dados.QtdProduto;
+						registro.VlrCusto = dados.VlrCusto;
+						registro.VlrICMSST = dados.VlrICMSST;
+						registro.VlrPercent = dados.VlrPercent;
+						registro.VlrUltPreco = dados.VlrUltPreco;
+						registro.VlrUnitario = dados.VlrUnitario;
+
+					}
+
+					banco.SaveChanges();
+
+					return registro.codigounico;
 				}
-				else
-				{
-					registro.CodProduto = dados.CodProduto;
-					registro.CodRefAntiga = dados.CodRefAntiga;
-					registro.DatCadastro = dados.DatCadastro;
-					registro.DesFaz = dados.DesFaz;
-					registro.DesFornecedor = dados.DesFornecedor;
-					registro.DesLocal = dados.DesLocal;
-					registro.DesProduto = dados.DesProduto;
-					registro.EstMinimo = dados.EstMinimo;
-					registro.Imagem = dados.Imagem;
-					registro.NCM = dados.NCM;
-					registro.QtdProduto = dados.QtdProduto;
-					registro.VlrCusto = dados.VlrCusto;
-					registro.VlrICMSST = dados.VlrICMSST;
-					registro.VlrPercent = dados.VlrPercent;
-					registro.VlrUltPreco = dados.VlrUltPreco;
-					registro.VlrUnitario = dados.VlrUnitario;
-
-				}
-
-				banco.SaveChanges();
-
-				return registro.codigounico;
 			}
-
+			catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+			{
+				Exception raise = dbEx;
+				foreach (var validationErrors in dbEx.EntityValidationErrors)
+				{
+					foreach (var validationError in validationErrors.ValidationErrors)
+					{
+						string message = string.Format("{0}:{1}",
+							validationErrors.Entry.Entity.ToString(),
+							validationError.ErrorMessage);
+						// raise a new exception nesting
+						// the current instance as InnerException
+						raise = new InvalidOperationException(message, raise);
+					}
+				}
+				throw raise;
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(ex.InnerException != null ? ex.InnerException.Message : ex.Message);
+			}
 		}
 
 		public static void ExcluiProduto(int codigo)
@@ -338,8 +362,11 @@ namespace Loja.DAL.DAO
 			{
 				var dados = banco.tbl_Produtos.FirstOrDefault(x => x.codigounico == codigo);
 
-				banco.tbl_Produtos.Remove(dados);
-				banco.SaveChanges();
+				if (dados != null) 
+				{
+					banco.tbl_Produtos.Remove(dados);
+					banco.SaveChanges();
+				}
 
 			}
 

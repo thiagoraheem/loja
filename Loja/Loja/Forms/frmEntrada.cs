@@ -99,16 +99,19 @@ namespace Loja
 				{
 					item.CodEntrada = codEntrada;
 
+					if (item.CodProduto.Length > 20) item.CodProduto = item.CodProduto.Substring(0,20);
+					if (item.DesProduto.Length > 30) item.DesProduto = item.DesProduto.Substring(0, 30);
+
 					if (item.codigounico == -1) { 
 						produto = new tbl_Produtos()
 						{
-							CodProduto = item.CodProduto,
+							CodProduto = item.CodProduto.Trim(),
 							CodRefAntiga = "",
-							DatCadastro = DateTime.Now.ToString(),
+							DatCadastro = DateTime.Now.ToShortDateString(),
 							DesFaz = 0,
 							DesFornecedor = "",
 							DesLocal = "",
-							DesProduto = item.DesProduto,
+							DesProduto = item.DesProduto.Trim(),
 							NCM = item.NCM,
 							QtdProduto = (double)item.Quantidade,
 							VlrCusto = (double)item.VlrUnitario,

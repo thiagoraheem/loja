@@ -5,3 +5,10 @@ C:\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Utils\bin\Debug\NFe.Classes.pdb
 C:\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Utils\obj\Debug\NFe.Utils.csprojResolveAssemblyReference.cache
 C:\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Utils\obj\Debug\NFe.Utils.dll
 C:\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Utils\obj\Debug\NFe.Utils.pdb
+E:\Thiago\Documents\Personal\loja\Loja\NFCE\NFe.Utils\bin\Debug\NFe.Utils.dll
+E:\Thiago\Documents\Personal\loja\Loja\NFCE\NFe.Utils\bin\Debug\NFe.Utils.pdb
+E:\Thiago\Documents\Personal\loja\Loja\NFCE\NFe.Utils\bin\Debug\NFe.Classes.dll
+E:\Thiago\Documents\Personal\loja\Loja\NFCE\NFe.Utils\bin\Debug\NFe.Classes.pdb
+E:\Thiago\Documents\Personal\loja\Loja\NFCE\NFe.Utils\obj\Debug\NFe.Utils.csprojResolveAssemblyReference.cache
+E:\Thiago\Documents\Personal\loja\Loja\NFCE\NFe.Utils\obj\Debug\NFe.Utils.dll
+E:\Thiago\Documents\Personal\loja\Loja\NFCE\NFe.Utils\obj\Debug\NFe.Utils.pdb
