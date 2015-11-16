@@ -11,14 +11,8 @@ namespace Loja.DAL.DAO
 {
 	public class Cadastros
 	{
-		public static void EstornaVenda(string codVenda, string desMotivo, bool flgVoltaNumero)
-		{
-			using (var banco = new LojaContext())
-			{
-				banco.spc_EstornaVenda(codVenda, desMotivo, flgVoltaNumero);
 
-			}
-		}
+		#region Orçamento
 
 		public static List<string> AdicionarOrcamento(string codOrca, int codProduto)
 		{
@@ -47,56 +41,6 @@ namespace Loja.DAL.DAO
 			}
 		}
 
-		public static void DescontoVenda(string codOrca, double desconto, string tipo)
-		{
-			using (var banco = new LojaContext())
-			{
-
-				var dado = banco.tbl_Orcamento.Where(x => x.CodOrca == codOrca).ToList();
-
-				var vlrTotal = dado.Sum(x => x.VlrUnitario);
-
-				if (tipo == "P")
-				{
-					dado.ForEach(x => x.VlrDesconto = (decimal)(x.VlrCusto.Value * (desconto / 100)));
-				}
-				else
-				{
-					dado.ForEach(x => x.VlrDesconto = (decimal)((x.VlrCusto / vlrTotal) * desconto));
-				}
-				banco.SaveChanges();
-
-				//banco.spc_DescontoVenda(codOrca, desconto);
-
-			}
-		}
-
-		public static string FinalizaVenda(string codOrca, int codTipoVenda, int? codCliente, int flgNFE)
-		{
-			using (var banco = new LojaContext())
-			{
-				return banco.spc_FinalizaVenda(codOrca, codTipoVenda, codCliente, flgNFE).FirstOrDefault();
-
-			}
-		}
-
-		public static void AdicionarEntrada(string docEntrada, DateTime datEntrada, int codProduto, double qtdProduto, decimal vlrUnitario, int codTipoEntrada, double percentual, string desFornecedor)
-		{
-			using (var banco = new LojaContext())
-			{
-				banco.spc_AdicionarEntrada(docEntrada, datEntrada, codProduto, qtdProduto, vlrUnitario, codTipoEntrada, percentual, desFornecedor);
-			}
-		}
-
-		public static void AlterarEntrada(string docEntrada, DateTime datEntrada, int codProduto, double qtdProduto, double vlrUnitario)
-		{
-			using (var banco = new LojaContext())
-			{
-				banco.spc_AlterarEntrada(docEntrada, datEntrada, codProduto, qtdProduto, vlrUnitario);
-			}
-		}
-
-
 		public static void ExcluiOrcamento(string codigo)
 		{
 
@@ -110,6 +54,10 @@ namespace Loja.DAL.DAO
 			}
 
 		}
+
+		#endregion
+
+		#region Parametros
 
 		public static void ExcluiTipoVenda(int codTipoVenda)
 		{
@@ -187,7 +135,9 @@ namespace Loja.DAL.DAO
 
 		}
 
+		#endregion
 
+		#region Clientes
 
 		public static void ExcluiCliente(int codCliente)
 		{
@@ -240,6 +190,9 @@ namespace Loja.DAL.DAO
 
 		}
 
+		#endregion
+
+		#region Venda
 
 		public static void GravaVenda(tbl_Saida dado)
 		{
@@ -269,6 +222,50 @@ namespace Loja.DAL.DAO
 			}
 
 		}
+
+		public static void DescontoVenda(string codOrca, double desconto, string tipo)
+		{
+			using (var banco = new LojaContext())
+			{
+
+				var dado = banco.tbl_Orcamento.Where(x => x.CodOrca == codOrca).ToList();
+
+				var vlrTotal = dado.Sum(x => x.VlrUnitario);
+
+				if (tipo == "P")
+				{
+					dado.ForEach(x => x.VlrDesconto = (decimal)(x.VlrCusto.Value * (desconto / 100)));
+				}
+				else
+				{
+					dado.ForEach(x => x.VlrDesconto = (decimal)((x.VlrCusto / vlrTotal) * desconto));
+				}
+				banco.SaveChanges();
+
+				//banco.spc_DescontoVenda(codOrca, desconto);
+
+			}
+		}
+
+		public static string FinalizaVenda(string codOrca, int codTipoVenda, int? codCliente, int flgNFE)
+		{
+			using (var banco = new LojaContext())
+			{
+				return banco.spc_FinalizaVenda(codOrca, codTipoVenda, codCliente, flgNFE).FirstOrDefault();
+
+			}
+		}
+
+		public static void EstornaVenda(string codVenda, string desMotivo, bool flgVoltaNumero)
+		{
+			using (var banco = new LojaContext())
+			{
+				banco.spc_EstornaVenda(codVenda, desMotivo, flgVoltaNumero);
+
+			}
+		}
+
+		#endregion
 
 		#region Produto
 		public static void ManutProduto(int codigounico, string codProduto, string desProduto, string desLocal, double vlrUnitario,
@@ -374,6 +371,23 @@ namespace Loja.DAL.DAO
 		#endregion
 
 		#region Entrada de Produtos
+
+		public static void AdicionarEntrada(string docEntrada, DateTime datEntrada, int codProduto, double qtdProduto, decimal vlrUnitario, int codTipoEntrada, double percentual, string desFornecedor)
+		{
+			using (var banco = new LojaContext())
+			{
+				banco.spc_AdicionarEntrada(docEntrada, datEntrada, codProduto, qtdProduto, vlrUnitario, codTipoEntrada, percentual, desFornecedor);
+			}
+		}
+
+		public static void AlterarEntrada(string docEntrada, DateTime datEntrada, int codProduto, double qtdProduto, double vlrUnitario)
+		{
+			using (var banco = new LojaContext())
+			{
+				banco.spc_AlterarEntrada(docEntrada, datEntrada, codProduto, qtdProduto, vlrUnitario);
+			}
+		}
+
 
 		public static void ExcluiEntrada(int codEntrada)
 		{

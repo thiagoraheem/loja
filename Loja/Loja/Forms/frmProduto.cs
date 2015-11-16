@@ -181,7 +181,7 @@ namespace Loja
 				photo_aray = new byte[ms.Length];
 				ms.Position = 0;
 				ms.Read(photo_aray, 0, photo_aray.Length);
-			//}
+			//}3 
 
 			produto.Imagem = photo_aray;
 
