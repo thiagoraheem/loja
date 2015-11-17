@@ -124,18 +124,7 @@ namespace Loja.DAL.DAO
 
 		#endregion
 
-		public static List<DadosCombo> ObterTipoVendaCombo()
-		{
-
-			using (var banco = new LojaContext())
-			{
-				var dados = from tipovenda in banco.tbl_TipoVenda
-							where tipovenda.flgAtivo == true
-							select new DadosCombo { Codigo = tipovenda.CodTipoVenda.ToString(), Descricao = tipovenda.DesTipoVenda };
-
-				return dados.ToList();
-			}
-		}
+		#region Venda
 
 		public static List<tbl_Saida> ObterVendas(DateTime inicio, DateTime fim)
 		{
@@ -175,7 +164,8 @@ namespace Loja.DAL.DAO
 			{
 				var dados = banco.tbl_Saida.Include("tbl_SaidaItens").FirstOrDefault(saida => saida.CodVenda == codVenda);
 
-				foreach (var item in dados.tbl_SaidaItens) { 
+				foreach (var item in dados.tbl_SaidaItens)
+				{
 					var produto = ObterProduto(item.codigounico);
 					item.tbl_Produtos = produto;
 				}
@@ -184,6 +174,31 @@ namespace Loja.DAL.DAO
 			}
 		}
 
+		public static List<tbl_Saida> ObterVendasContingencia() 
+		{
+			using (var banco = new LojaContext())
+			{
+				var dados = from saida in banco.tbl_Saida
+							where saida.FlgStatusNFE == "C"
+							select saida;
+
+				return dados.ToList();
+			}
+		}
+
+		public static int ObterQtdContingencia() 
+		{
+			using (var banco = new LojaContext())
+			{
+				var dados = banco.tbl_Saida.Count(x => x.FlgStatusNFE == "C");
+
+				return dados;
+			}
+		}
+
+		#endregion
+
+		#region Orçamento
 		public static List<tbl_Orcamento> ObterOrcamentos(string codOrca)
 		{
 			using (var banco = new LojaContext())
@@ -210,6 +225,7 @@ namespace Loja.DAL.DAO
 				return dado.ToList();
 			}
 		}
+		#endregion
 
 		#region Entrada
 		public static List<Entrada> ObterEntrada(string docEntrada)
@@ -287,6 +303,19 @@ namespace Loja.DAL.DAO
 
 		#endregion
 
+		public static List<DadosCombo> ObterTipoVendaCombo()
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var dados = from tipovenda in banco.tbl_TipoVenda
+							where tipovenda.flgAtivo == true
+							select new DadosCombo { Codigo = tipovenda.CodTipoVenda.ToString(), Descricao = tipovenda.DesTipoVenda };
+
+				return dados.ToList();
+			}
+		}
+
 		public static List<string> ObterFornecedores()
 		{
 
@@ -300,7 +329,6 @@ namespace Loja.DAL.DAO
 				return cons.ToList();
 			}
 		}
-
 
 		public static List<DadosCombo> ObterTipoEntradaCombo()
 		{

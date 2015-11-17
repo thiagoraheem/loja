@@ -303,5 +303,21 @@ namespace Loja
 			return texto.Replace(".", "").Replace("/", "").Replace("-", "").Replace(",", "").Replace(":", "");
 
 		}
+
+		public static bool PingHost(string nameOrAddress)
+		{
+			bool pingable = false;
+			System.Net.NetworkInformation.Ping pinger = new System.Net.NetworkInformation.Ping();
+			try
+			{
+				System.Net.NetworkInformation.PingReply reply = pinger.Send(nameOrAddress);
+				pingable = reply.Status == System.Net.NetworkInformation.IPStatus.Success;
+			}
+			catch (System.Net.NetworkInformation.PingException)
+			{
+				// Discard PingExceptions and return false;
+			}
+			return pingable;
+		}
 	}
 }
