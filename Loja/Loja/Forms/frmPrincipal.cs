@@ -1,20 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using DevExpress.Skins;
 using DevExpress.LookAndFeel;
-using DevExpress.UserSkins;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraBars.Helpers;
 using DevExpress.XtraReports.UI;
 using Loja.DAL.DAO;
 using Loja.DAL.Models;
+using System.Threading;
 
 namespace Loja
 {
@@ -23,6 +18,9 @@ namespace Loja
 		private bool _ModoEdicao = false;
 		private List<tbl_Produtos> produtos = new List<tbl_Produtos>();
 		private List<tbl_Orcamento> orcamento = new List<tbl_Orcamento>();
+		Thread t = null;
+		Thread c = null;
+		int contAviso = 0;
 
 		#region Form
 
@@ -37,6 +35,12 @@ namespace Loja
 			gridViewProduto.Columns[colDesProduto.AbsoluteIndex].SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
 
 			gridOrcamento.DataSource = orcamento;
+
+			t = new Thread(VerificaStatus) { IsBackground = true };
+			t.Start();
+
+			c = new Thread(VerificaContingencia) { IsBackground = true };
+			c.Start();
 
 		}
 
@@ -72,10 +76,89 @@ namespace Loja
 				gridViewProduto.ShowEditor();
 			}
 		}
+
 		#endregion
 
 		#region Funções e Consultas
 
+		void VerificaStatus()
+		{
+
+			while (true)
+			{
+
+				var retorno = Util.PingHost("www.google.com.br");
+
+				chkInternet.Checked = retorno;
+
+				if (!retorno)
+				{
+					chkInternet.ItemAppearance.Normal.BackColor = System.Drawing.Color.Red;
+					chkInternet.ItemAppearance.Normal.ForeColor = System.Drawing.Color.White;
+
+					chkStatusSefaz.Checked = retorno;
+					chkStatusSefaz.ItemAppearance.Normal.BackColor = System.Drawing.Color.Red;
+					chkStatusSefaz.ItemAppearance.Normal.ForeColor = System.Drawing.Color.White;
+
+					if (contAviso == 0)
+					{
+						Util.MsgBox("ATENÇÃO! Internet indisponível");
+						contAviso++;
+					}
+				}
+				else
+				{
+					chkInternet.ItemAppearance.Normal.Options.UseBackColor = false;
+					chkInternet.ItemAppearance.Normal.Options.UseForeColor = false;
+
+					if (contAviso > 0)
+					{
+						contAviso = 0;
+					}
+
+					var retornoS = NFe.Wsdl.Monitor.StatusServico();
+
+					chkStatusSefaz.Checked = retornoS.Status;
+
+					if (!retornoS.Status)
+					{
+						chkStatusSefaz.ItemAppearance.Normal.BackColor = System.Drawing.Color.Red;
+						chkStatusSefaz.ItemAppearance.Normal.ForeColor = System.Drawing.Color.White;
+
+						if (contAviso == 0)
+						{
+							Util.MsgBox("Serviço SEFAZ indisponível ou internet fora do ar");
+							contAviso++;
+						}
+					}
+					else
+					{
+						chkStatusSefaz.ItemAppearance.Normal.Options.UseBackColor = false;
+						chkStatusSefaz.ItemAppearance.Normal.Options.UseForeColor = false;
+						if (contAviso > 0)
+						{
+							contAviso = 0;
+						}
+					}
+				}
+				Thread.Sleep(10000);
+
+			}
+
+		}
+
+		void VerificaContingencia()
+		{
+			while (true)
+			{
+
+				var qtde = Consultas.ObterQtdContingencia();
+				barQtdContingencia.Caption = String.Format("Notas em Contingência: <b>{0}</b>", qtde.ToString());
+
+				Thread.Sleep(25000);
+
+			}
+		}
 		void InitGrid()
 		{
 			try
@@ -83,10 +166,12 @@ namespace Loja
 				DevExpress.Utils.WaitDialogForm wait = new DevExpress.Utils.WaitDialogForm("Carregando os dados");
 				wait.Show();
 
-				if (this._ModoEdicao) {
+				if (this._ModoEdicao)
+				{
 					produtos = Consultas.ObterProdutos();
 				}
-				else{
+				else
+				{
 					produtos = Consultas.ObterProdutosAtivos();
 				}
 
@@ -203,6 +288,16 @@ namespace Loja
 
 		void SU_FinalizarVenda()
 		{
+
+			if (chkStatusSefaz.Checked == false && btnContingencia.Checked == false)
+			{
+				if (MessageBox.Show(this, "Deseja entrar em modo Contingência?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
+				{
+					btnContingencia.Checked = true;
+				}
+
+			}
+
 			if (cmbCodOrca.EditValue.ToString() != "")
 			{
 				frmVenda f = new frmVenda();
@@ -278,7 +373,7 @@ namespace Loja
 
 		private void btnExcluirOrca_ItemClick(object sender, ItemClickEventArgs e)
 		{
-			
+
 			Cadastros.ApagarOrcamento(cmbCodOrca.EditValue.ToString());
 			InitGrid();
 			InitGridOrca();
@@ -371,7 +466,7 @@ namespace Loja
 					else
 						quantidade = 0;
 
-					Cadastros.AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), quantidade,-1.0);
+					Cadastros.AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), quantidade, -1.0);
 				}
 				else
 					if (e.Column == colValor)
@@ -381,10 +476,12 @@ namespace Loja
 			}
 			catch (Exception ex)
 			{
-				if (ex.InnerException != null) { 
+				if (ex.InnerException != null)
+				{
 					Util.MsgBox("Erro na alteração: " + ex.InnerException.Message);
 				}
-				else {
+				else
+				{
 					Util.MsgBox("Erro na alteração: " + ex.Message);
 				}
 			}

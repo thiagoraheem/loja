@@ -1,33 +1,33 @@
 ﻿namespace Loja
 {
-    partial class frmPrincipal
-    {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+	partial class frmPrincipal
+	{
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        #region Windows Form Designer generated code
+		#region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
 			this.components = new System.ComponentModel.Container();
 			DevExpress.XtraSplashScreen.SplashScreenManager mgrSplash = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Loja.frmApresentacao), true, true);
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
@@ -70,6 +70,9 @@
 			this.btnExcluirOrca = new DevExpress.XtraBars.BarButtonItem();
 			this.btnVendaRapida = new DevExpress.XtraBars.BarButtonItem();
 			this.btnStatus = new DevExpress.XtraBars.BarButtonItem();
+			this.chkStatusSefaz = new DevExpress.XtraBars.BarCheckItem();
+			this.chkInternet = new DevExpress.XtraBars.BarCheckItem();
+			this.btnContingencia = new DevExpress.XtraBars.BarToggleSwitchItem();
 			this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
 			this.homeRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
 			this.fileRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -122,6 +125,10 @@
 			this.colVlrFinal = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colOrcodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colVlrOriginal = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.barQtdContingencia = new DevExpress.XtraBars.BarHeaderItem();
+			this.backstageViewControl1 = new DevExpress.XtraBars.Ribbon.BackstageViewControl();
+			this.backstageViewClientControl1 = new DevExpress.XtraBars.Ribbon.BackstageViewClientControl();
+			this.backstageViewTabItem1 = new DevExpress.XtraBars.Ribbon.BackstageViewTabItem();
 			((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.appMenu)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.popupControlContainer2)).BeginInit();
@@ -143,6 +150,8 @@
 			this.splitContainerControl.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.gridOrcamento)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gridViewOrcamento)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.backstageViewControl1)).BeginInit();
+			this.backstageViewControl1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// navbarImageListLarge
@@ -174,7 +183,7 @@
 			// 
 			// ribbonControl
 			// 
-			this.ribbonControl.ApplicationButtonDropDownControl = this.appMenu;
+			this.ribbonControl.ApplicationButtonDropDownControl = this.backstageViewControl1;
 			this.ribbonControl.ApplicationButtonText = null;
 			this.ribbonControl.ExpandCollapseItem.Id = 0;
 			this.ribbonControl.Images = this.ribbonImageCollection;
@@ -203,10 +212,14 @@
             this.btnExcluirOrca,
             this.btnModoEdicao,
             this.btnVendaRapida,
-            this.btnStatus});
+            this.btnStatus,
+            this.chkStatusSefaz,
+            this.chkInternet,
+            this.btnContingencia,
+            this.barQtdContingencia});
 			this.ribbonControl.LargeImages = this.ribbonImageCollectionLarge;
 			this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-			this.ribbonControl.MaxItemId = 81;
+			this.ribbonControl.MaxItemId = 90;
 			this.ribbonControl.Name = "ribbonControl";
 			this.ribbonControl.PageHeaderItemLinks.Add(this.iAbout);
 			this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -219,8 +232,8 @@
             this.repositoryItemTextEdit3,
             this.repCodOrca,
             this.repositoryItemMemoEdit1});
-			this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010;
-			this.ribbonControl.Size = new System.Drawing.Size(978, 143);
+			this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
+			this.ribbonControl.Size = new System.Drawing.Size(1039, 143);
 			this.ribbonControl.StatusBar = this.ribbonStatusBar;
 			// 
 			// appMenu
@@ -474,6 +487,7 @@
 			this.btnFazerBackup.Id = 72;
 			this.btnFazerBackup.LargeImageIndex = 10;
 			this.btnFazerBackup.Name = "btnFazerBackup";
+			this.btnFazerBackup.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
 			this.btnFazerBackup.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFazerBackup_ItemClick);
 			// 
 			// cmbCodOrca
@@ -528,7 +542,37 @@
 			this.btnStatus.Id = 79;
 			this.btnStatus.LargeImageIndex = 14;
 			this.btnStatus.Name = "btnStatus";
+			this.btnStatus.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
 			this.btnStatus.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStatus_ItemClick);
+			// 
+			// chkStatusSefaz
+			// 
+			this.chkStatusSefaz.BindableChecked = true;
+			this.chkStatusSefaz.Caption = "Status Sefaz";
+			this.chkStatusSefaz.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+			this.chkStatusSefaz.Checked = true;
+			this.chkStatusSefaz.CheckStyle = DevExpress.XtraBars.BarCheckStyles.Radio;
+			this.chkStatusSefaz.Description = "Identifica se o serviço da Sefaz para a Nota Fiscal Eletrônica está ativo";
+			this.chkStatusSefaz.Id = 82;
+			this.chkStatusSefaz.Name = "chkStatusSefaz";
+			// 
+			// chkInternet
+			// 
+			this.chkInternet.BindableChecked = true;
+			this.chkInternet.Caption = "Status Internet";
+			this.chkInternet.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+			this.chkInternet.Checked = true;
+			this.chkInternet.CheckStyle = DevExpress.XtraBars.BarCheckStyles.Radio;
+			this.chkInternet.Description = "Identifica se há conexão com a internet";
+			this.chkInternet.Id = 84;
+			this.chkInternet.Name = "chkInternet";
+			// 
+			// btnContingencia
+			// 
+			this.btnContingencia.Caption = "Contingência";
+			this.btnContingencia.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+			this.btnContingencia.Id = 86;
+			this.btnContingencia.Name = "btnContingencia";
 			// 
 			// ribbonImageCollectionLarge
 			// 
@@ -595,9 +639,12 @@
 			// 
 			// ribbonPageGroup2
 			// 
-			this.ribbonPageGroup2.ItemLinks.Add(this.btnFazerBackup);
+			this.ribbonPageGroup2.ItemLinks.Add(this.chkStatusSefaz);
+			this.ribbonPageGroup2.ItemLinks.Add(this.chkInternet);
+			this.ribbonPageGroup2.ItemLinks.Add(this.btnContingencia);
+			this.ribbonPageGroup2.ItemLinks.Add(this.barQtdContingencia);
 			this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-			this.ribbonPageGroup2.Text = "Opções";
+			this.ribbonPageGroup2.Text = "NFC-e";
 			// 
 			// exitRibbonPageGroup
 			// 
@@ -651,7 +698,7 @@
 			this.ribbonStatusBar.Location = new System.Drawing.Point(0, 586);
 			this.ribbonStatusBar.Name = "ribbonStatusBar";
 			this.ribbonStatusBar.Ribbon = this.ribbonControl;
-			this.ribbonStatusBar.Size = new System.Drawing.Size(978, 31);
+			this.ribbonStatusBar.Size = new System.Drawing.Size(1039, 31);
 			// 
 			// gridProdutos
 			// 
@@ -661,7 +708,7 @@
 			this.gridProdutos.Location = new System.Drawing.Point(0, 0);
 			this.gridProdutos.MainView = this.gridViewProduto;
 			this.gridProdutos.Name = "gridProdutos";
-			this.gridProdutos.Size = new System.Drawing.Size(847, 276);
+			this.gridProdutos.Size = new System.Drawing.Size(908, 276);
 			this.gridProdutos.TabIndex = 0;
 			this.gridProdutos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewProduto});
@@ -925,7 +972,7 @@
 			this.splitContainerControl.Panel2.Controls.Add(this.gridOrcamento);
 			this.splitContainerControl.Panel2.Controls.Add(this.gridProdutos);
 			this.splitContainerControl.Panel2.Text = "Panel2";
-			this.splitContainerControl.Size = new System.Drawing.Size(978, 443);
+			this.splitContainerControl.Size = new System.Drawing.Size(1039, 443);
 			this.splitContainerControl.SplitterPosition = 114;
 			this.splitContainerControl.TabIndex = 0;
 			this.splitContainerControl.Text = "splitContainerControl1";
@@ -937,7 +984,7 @@
 			this.gridOrcamento.MainView = this.gridViewOrcamento;
 			this.gridOrcamento.MenuManager = this.ribbonControl;
 			this.gridOrcamento.Name = "gridOrcamento";
-			this.gridOrcamento.Size = new System.Drawing.Size(847, 149);
+			this.gridOrcamento.Size = new System.Drawing.Size(908, 149);
 			this.gridOrcamento.TabIndex = 1;
 			this.gridOrcamento.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewOrcamento});
@@ -1035,16 +1082,52 @@
 			this.colVlrOriginal.VisibleIndex = 5;
 			this.colVlrOriginal.Width = 142;
 			// 
+			// barQtdContingencia
+			// 
+			this.barQtdContingencia.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+			this.barQtdContingencia.Caption = "Notas em Contingência: <b>0</b>";
+			this.barQtdContingencia.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+			this.barQtdContingencia.Id = 87;
+			this.barQtdContingencia.Name = "barQtdContingencia";
+			this.barQtdContingencia.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+			// 
+			// backstageViewControl1
+			// 
+			this.backstageViewControl1.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Yellow;
+			this.backstageViewControl1.Controls.Add(this.backstageViewClientControl1);
+			this.backstageViewControl1.Items.Add(this.backstageViewTabItem1);
+			this.backstageViewControl1.Location = new System.Drawing.Point(71, 214);
+			this.backstageViewControl1.Name = "backstageViewControl1";
+			this.backstageViewControl1.Ribbon = this.ribbonControl;
+			this.backstageViewControl1.SelectedTab = null;
+			this.backstageViewControl1.Size = new System.Drawing.Size(480, 150);
+			this.backstageViewControl1.TabIndex = 6;
+			// 
+			// backstageViewClientControl1
+			// 
+			this.backstageViewClientControl1.Location = new System.Drawing.Point(0, 0);
+			this.backstageViewClientControl1.Name = "backstageViewClientControl1";
+			this.backstageViewClientControl1.Size = new System.Drawing.Size(150, 150);
+			this.backstageViewClientControl1.TabIndex = 1;
+			// 
+			// backstageViewTabItem1
+			// 
+			this.backstageViewTabItem1.Caption = "backstageViewTabItem1";
+			this.backstageViewTabItem1.ContentControl = this.backstageViewClientControl1;
+			this.backstageViewTabItem1.Name = "backstageViewTabItem1";
+			this.backstageViewTabItem1.Selected = false;
+			// 
 			// frmPrincipal
 			// 
-			this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
+			this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.True;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(978, 617);
+			this.ClientSize = new System.Drawing.Size(1039, 617);
 			this.Controls.Add(this.popupControlContainer2);
 			this.Controls.Add(this.popupControlContainer1);
 			this.Controls.Add(this.splitContainerControl);
 			this.Controls.Add(this.ribbonStatusBar);
+			this.Controls.Add(this.backstageViewControl1);
 			this.Controls.Add(this.ribbonControl);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.KeyPreview = true;
@@ -1076,101 +1159,110 @@
 			this.splitContainerControl.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.gridOrcamento)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.gridViewOrcamento)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.backstageViewControl1)).EndInit();
+			this.backstageViewControl1.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
-        }
+		}
 
-        #endregion
+		#endregion
 
-        private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl;
-        private DevExpress.XtraBars.BarButtonItem iExit;
-        private DevExpress.XtraBars.BarButtonItem iAbout;
-        private DevExpress.XtraBars.BarStaticItem siStatus;
-        private DevExpress.XtraBars.BarStaticItem siInfo;
-        private DevExpress.XtraBars.BarButtonItem iBoldFontStyle;
-        private DevExpress.XtraBars.BarButtonItem iItalicFontStyle;
-        private DevExpress.XtraBars.BarButtonItem iUnderlinedFontStyle;
-        private DevExpress.XtraBars.BarButtonItem iLeftTextAlign;
-        private DevExpress.XtraBars.BarButtonItem iCenterTextAlign;
-        private DevExpress.XtraBars.BarButtonItem iRightTextAlign;
-        private DevExpress.XtraBars.RibbonGalleryBarItem rgbiSkins;
-        private DevExpress.XtraBars.Ribbon.RibbonPage homeRibbonPage;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup fileRibbonPageGroup;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup formatRibbonPageGroup;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup skinsRibbonPageGroup;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup exitRibbonPageGroup;
-        private DevExpress.XtraBars.Ribbon.RibbonPage helpRibbonPage;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup helpRibbonPageGroup;
-        private DevExpress.XtraBars.Ribbon.ApplicationMenu appMenu;
-        private DevExpress.XtraBars.PopupControlContainer popupControlContainer1;
-        private DevExpress.XtraEditors.LabelControl someLabelControl2;
-        private DevExpress.XtraEditors.LabelControl someLabelControl1;
-        private DevExpress.XtraBars.PopupControlContainer popupControlContainer2;
-        private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
-        private DevExpress.Utils.ImageCollection ribbonImageCollection;
-        private DevExpress.Utils.ImageCollection ribbonImageCollectionLarge;
-        private System.Windows.Forms.ImageList navbarImageList;
-        private System.Windows.Forms.ImageList navbarImageListLarge;
-        private DevExpress.XtraBars.BarStaticItem lblQtdProduto;
-        private DevExpress.XtraBars.BarStaticItem lblQtdItens;
-        private DevExpress.XtraBars.BarButtonItem btnRecarregarDados;
-        private DevExpress.XtraBars.Alerter.AlertControl alertControl1;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
-        private DevExpress.XtraBars.BarEditItem txtQtdItem;
-        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
-        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit repositoryItemGridLookUpEdit1;
-        private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemGridLookUpEdit1View;
-        private DevExpress.XtraBars.BarEditItem txtValorTotal;
-        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
-        private DevExpress.XtraBars.BarButtonItem btnImprimir;
-        private DevExpress.XtraBars.BarButtonItem btnFinalizarVenda;
-        private DevExpress.XtraGrid.GridControl gridProdutos;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewProduto;
-        private DevExpress.XtraGrid.Columns.GridColumn colCodProduto;
-        private DevExpress.XtraGrid.Columns.GridColumn colDesProduto;
-        private DevExpress.XtraGrid.Columns.GridColumn colLocal;
-        private DevExpress.XtraGrid.Columns.GridColumn colQtdProduto;
-        private DevExpress.XtraGrid.Columns.GridColumn colRefAntiga;
-        private DevExpress.XtraGrid.Columns.GridColumn colFornecedor;
-        private DevExpress.XtraNavBar.NavBarControl navBarControl;
-        private DevExpress.XtraNavBar.NavBarGroup grpOperacoes;
-        private DevExpress.XtraNavBar.NavBarItem btnVender;
-        private DevExpress.XtraNavBar.NavBarItem btnCadastrar;
-        private DevExpress.XtraNavBar.NavBarItem btnEntrada;
-        private DevExpress.XtraNavBar.NavBarItem btnRecibo;
-        private DevExpress.XtraNavBar.NavBarGroup grpRelatorios;
-        private DevExpress.XtraNavBar.NavBarItem btnRelVendas;
-        private DevExpress.XtraNavBar.NavBarItem btnRelEntradas;
-        private DevExpress.XtraNavBar.NavBarItem btnOrcamentos;
-        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl;
-        private DevExpress.XtraGrid.GridControl gridOrcamento;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewOrcamento;
-        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit3;
-        private DevExpress.XtraGrid.Columns.GridColumn colOrCodProduto;
-        private DevExpress.XtraGrid.Columns.GridColumn colOrDesProduto;
-        private DevExpress.XtraGrid.Columns.GridColumn colQuantidade;
-        private DevExpress.XtraGrid.Columns.GridColumn colValor;
-        private DevExpress.XtraGrid.Columns.GridColumn colVlrFinal;
-        private DevExpress.XtraBars.BarButtonItem btnFazerBackup;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
-        private DevExpress.XtraBars.BarEditItem cmbCodOrca;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repCodOrca;
-        private DevExpress.XtraNavBar.NavBarItem btnReajustar;
-        private DevExpress.XtraNavBar.NavBarItem btnEstMinimo;
-        private DevExpress.XtraNavBar.NavBarGroup grpCadastros;
-        private DevExpress.XtraNavBar.NavBarItem btnCadTipoEntrada;
-        private DevExpress.XtraNavBar.NavBarItem btnCadTipoVenda;
-        private DevExpress.XtraGrid.Columns.GridColumn colCodigounico;
-        private DevExpress.XtraGrid.Columns.GridColumn colOrcodigounico;
-        private DevExpress.XtraBars.BarButtonItem btnExcluirOrca;
-        private DevExpress.XtraBars.BarButtonItem btnModoEdicao;
-        private DevExpress.XtraGrid.Columns.GridColumn colVlrOriginal;
-        private DevExpress.XtraBars.BarButtonItem btnVendaRapida;
+		private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl;
+		private DevExpress.XtraBars.BarButtonItem iExit;
+		private DevExpress.XtraBars.BarButtonItem iAbout;
+		private DevExpress.XtraBars.BarStaticItem siStatus;
+		private DevExpress.XtraBars.BarStaticItem siInfo;
+		private DevExpress.XtraBars.BarButtonItem iBoldFontStyle;
+		private DevExpress.XtraBars.BarButtonItem iItalicFontStyle;
+		private DevExpress.XtraBars.BarButtonItem iUnderlinedFontStyle;
+		private DevExpress.XtraBars.BarButtonItem iLeftTextAlign;
+		private DevExpress.XtraBars.BarButtonItem iCenterTextAlign;
+		private DevExpress.XtraBars.BarButtonItem iRightTextAlign;
+		private DevExpress.XtraBars.RibbonGalleryBarItem rgbiSkins;
+		private DevExpress.XtraBars.Ribbon.RibbonPage homeRibbonPage;
+		private DevExpress.XtraBars.Ribbon.RibbonPageGroup fileRibbonPageGroup;
+		private DevExpress.XtraBars.Ribbon.RibbonPageGroup formatRibbonPageGroup;
+		private DevExpress.XtraBars.Ribbon.RibbonPageGroup skinsRibbonPageGroup;
+		private DevExpress.XtraBars.Ribbon.RibbonPageGroup exitRibbonPageGroup;
+		private DevExpress.XtraBars.Ribbon.RibbonPage helpRibbonPage;
+		private DevExpress.XtraBars.Ribbon.RibbonPageGroup helpRibbonPageGroup;
+		private DevExpress.XtraBars.Ribbon.ApplicationMenu appMenu;
+		private DevExpress.XtraBars.PopupControlContainer popupControlContainer1;
+		private DevExpress.XtraEditors.LabelControl someLabelControl2;
+		private DevExpress.XtraEditors.LabelControl someLabelControl1;
+		private DevExpress.XtraBars.PopupControlContainer popupControlContainer2;
+		private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
+		private DevExpress.Utils.ImageCollection ribbonImageCollection;
+		private DevExpress.Utils.ImageCollection ribbonImageCollectionLarge;
+		private System.Windows.Forms.ImageList navbarImageList;
+		private System.Windows.Forms.ImageList navbarImageListLarge;
+		private DevExpress.XtraBars.BarStaticItem lblQtdProduto;
+		private DevExpress.XtraBars.BarStaticItem lblQtdItens;
+		private DevExpress.XtraBars.BarButtonItem btnRecarregarDados;
+		private DevExpress.XtraBars.Alerter.AlertControl alertControl1;
+		private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+		private DevExpress.XtraBars.BarEditItem txtQtdItem;
+		private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
+		private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit repositoryItemGridLookUpEdit1;
+		private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemGridLookUpEdit1View;
+		private DevExpress.XtraBars.BarEditItem txtValorTotal;
+		private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
+		private DevExpress.XtraBars.BarButtonItem btnImprimir;
+		private DevExpress.XtraBars.BarButtonItem btnFinalizarVenda;
+		private DevExpress.XtraGrid.GridControl gridProdutos;
+		private DevExpress.XtraGrid.Views.Grid.GridView gridViewProduto;
+		private DevExpress.XtraGrid.Columns.GridColumn colCodProduto;
+		private DevExpress.XtraGrid.Columns.GridColumn colDesProduto;
+		private DevExpress.XtraGrid.Columns.GridColumn colLocal;
+		private DevExpress.XtraGrid.Columns.GridColumn colQtdProduto;
+		private DevExpress.XtraGrid.Columns.GridColumn colRefAntiga;
+		private DevExpress.XtraGrid.Columns.GridColumn colFornecedor;
+		private DevExpress.XtraNavBar.NavBarControl navBarControl;
+		private DevExpress.XtraNavBar.NavBarGroup grpOperacoes;
+		private DevExpress.XtraNavBar.NavBarItem btnVender;
+		private DevExpress.XtraNavBar.NavBarItem btnCadastrar;
+		private DevExpress.XtraNavBar.NavBarItem btnEntrada;
+		private DevExpress.XtraNavBar.NavBarItem btnRecibo;
+		private DevExpress.XtraNavBar.NavBarGroup grpRelatorios;
+		private DevExpress.XtraNavBar.NavBarItem btnRelVendas;
+		private DevExpress.XtraNavBar.NavBarItem btnRelEntradas;
+		private DevExpress.XtraNavBar.NavBarItem btnOrcamentos;
+		private DevExpress.XtraEditors.SplitContainerControl splitContainerControl;
+		private DevExpress.XtraGrid.GridControl gridOrcamento;
+		private DevExpress.XtraGrid.Views.Grid.GridView gridViewOrcamento;
+		private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit3;
+		private DevExpress.XtraGrid.Columns.GridColumn colOrCodProduto;
+		private DevExpress.XtraGrid.Columns.GridColumn colOrDesProduto;
+		private DevExpress.XtraGrid.Columns.GridColumn colQuantidade;
+		private DevExpress.XtraGrid.Columns.GridColumn colValor;
+		private DevExpress.XtraGrid.Columns.GridColumn colVlrFinal;
+		private DevExpress.XtraBars.BarButtonItem btnFazerBackup;
+		private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+		private DevExpress.XtraBars.BarEditItem cmbCodOrca;
+		private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repCodOrca;
+		private DevExpress.XtraNavBar.NavBarItem btnReajustar;
+		private DevExpress.XtraNavBar.NavBarItem btnEstMinimo;
+		private DevExpress.XtraNavBar.NavBarGroup grpCadastros;
+		private DevExpress.XtraNavBar.NavBarItem btnCadTipoEntrada;
+		private DevExpress.XtraNavBar.NavBarItem btnCadTipoVenda;
+		private DevExpress.XtraGrid.Columns.GridColumn colCodigounico;
+		private DevExpress.XtraGrid.Columns.GridColumn colOrcodigounico;
+		private DevExpress.XtraBars.BarButtonItem btnExcluirOrca;
+		private DevExpress.XtraBars.BarButtonItem btnModoEdicao;
+		private DevExpress.XtraGrid.Columns.GridColumn colVlrOriginal;
+		private DevExpress.XtraBars.BarButtonItem btnVendaRapida;
 		private DevExpress.XtraNavBar.NavBarItem btnCadCliente;
 		private DevExpress.XtraBars.BarButtonItem btnStatus;
 		private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
 		private DevExpress.XtraGrid.Columns.GridColumn colNCM;
+		private DevExpress.XtraBars.BarCheckItem chkStatusSefaz;
+		private DevExpress.XtraBars.BarCheckItem chkInternet;
+		private DevExpress.XtraBars.BarToggleSwitchItem btnContingencia;
+		private DevExpress.XtraBars.BarHeaderItem barQtdContingencia;
+		private DevExpress.XtraBars.Ribbon.BackstageViewControl backstageViewControl1;
+		private DevExpress.XtraBars.Ribbon.BackstageViewClientControl backstageViewClientControl1;
+		private DevExpress.XtraBars.Ribbon.BackstageViewTabItem backstageViewTabItem1;
 
-    }
+	}
 }

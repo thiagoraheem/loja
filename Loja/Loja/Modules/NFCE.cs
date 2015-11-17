@@ -117,6 +117,10 @@ namespace Loja.Modules
 
 				//TrataRetorno(retornoEnvio);
 
+				_saida.FlgStatusNFE = "A";
+				_saida.ChaveSefaz = _nfe.infNFe.Id;
+				Cadastros.GravaVenda(_saida);
+
 				return true;
 			}
 			catch (Exception ex)

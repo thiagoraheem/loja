@@ -80,6 +80,16 @@ namespace NFe.Wsdl
 		}
 
 
+		public static RetornoComando StatusServico()
+		{
+			var comando = "NFE.StatusServico";
+
+			var retorno = ComandoACBR(comando);
+
+			return new RetornoComando(retorno);
+
+		}
+
 		/// <summary>
 		/// Validar o arquivo da NFe. Arquivo deve estar assinado
 		/// </summary>
