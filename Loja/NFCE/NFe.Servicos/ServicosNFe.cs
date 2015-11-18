@@ -735,9 +735,6 @@ namespace NFe.Servicos
 		{
 			try
 			{
-
-
-
 				var versaoServico = Auxiliar.VersaoServicoParaString(ServicoNFe.NFeAutorizacao,
 					_cFgServico.VersaoNFeAutorizacao);
 

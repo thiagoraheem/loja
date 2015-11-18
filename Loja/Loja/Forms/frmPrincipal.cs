@@ -10,17 +10,28 @@ using DevExpress.XtraReports.UI;
 using Loja.DAL.DAO;
 using Loja.DAL.Models;
 using System.Threading;
+using System.IO;
+using System.Reflection;
+using NFe.Utils;
 
 namespace Loja
 {
 	public partial class frmPrincipal : RibbonForm
 	{
+
+		#region Variáveis e Configurações
+		public ConfiguracaoApp _configuracoes;
+		private const string ArquivoConfiguracao = @"\configuracao.xml";
+		private readonly string _path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
 		private bool _ModoEdicao = false;
 		private List<tbl_Produtos> produtos = new List<tbl_Produtos>();
 		private List<tbl_Orcamento> orcamento = new List<tbl_Orcamento>();
 		Thread t = null;
 		Thread c = null;
 		int contAviso = 0;
+
+		#endregion
 
 		#region Form
 
@@ -41,6 +52,8 @@ namespace Loja
 
 			c = new Thread(VerificaContingencia) { IsBackground = true };
 			c.Start();
+
+			CarregarConfiguracao();
 
 		}
 
@@ -153,12 +166,45 @@ namespace Loja
 			{
 
 				var qtde = Consultas.ObterQtdContingencia();
-				barQtdContingencia.Caption = String.Format("Notas em Contingência: <b>{0}</b>", qtde.ToString());
+				btnQtdContingencia.Caption = String.Format("Notas em Contingência: <b>{0}</b>", qtde.ToString() ?? "0");
 
 				Thread.Sleep(25000);
 
 			}
 		}
+
+		private void CarregarConfiguracao()
+		{
+			var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+			try
+			{
+				_configuracoes = !File.Exists(path + ArquivoConfiguracao)
+					? new ConfiguracaoApp()
+					: FuncoesXml.ArquivoXmlParaClasse<ConfiguracaoApp>(path + ArquivoConfiguracao);
+				if (_configuracoes.CfgServico.TimeOut == 0)
+					_configuracoes.CfgServico.TimeOut = 100; //mínimo
+
+				#region Carrega a logo no controle logoEmitente
+
+				/*if (_configuracoes.ConfiguracaoDanfeNfce.Logomarca != null && _configuracoes.ConfiguracaoDanfeNfce.Logomarca.Length > 0)
+					using (var stream = new MemoryStream(_configuracoes.ConfiguracaoDanfeNfce.Logomarca))
+					{
+						LogoEmitente.Source = BitmapFrame.Create(stream, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+					}*/
+
+				#endregion
+
+
+
+			}
+			catch (Exception ex)
+			{
+				if (!string.IsNullOrEmpty(ex.Message))
+					Util.MsgBox(ex.Message);
+			}
+		}
+
 		void InitGrid()
 		{
 			try
@@ -300,16 +346,18 @@ namespace Loja
 
 			if (cmbCodOrca.EditValue.ToString() != "")
 			{
-				frmVenda f = new frmVenda();
-				f.CodOrcamento = cmbCodOrca.EditValue.ToString();
-				f.ShowDialog();
-
-				if (f.DialogResult != System.Windows.Forms.DialogResult.Cancel)
+				using (frmVenda f = new frmVenda(_configuracoes))
 				{
-					InitGrid();
-					InitComboOrca();
-					cmbCodOrca.EditValue = "";
-					InitGridOrca();
+					f.CodOrcamento = cmbCodOrca.EditValue.ToString();
+					f.ShowDialog();
+
+					if (f.DialogResult != System.Windows.Forms.DialogResult.Cancel)
+					{
+						InitGrid();
+						InitComboOrca();
+						cmbCodOrca.EditValue = "";
+						InitGridOrca();
+					}
 				}
 			}
 
@@ -386,7 +434,7 @@ namespace Loja
 		private void btnVendaRapida_ItemClick(object sender, ItemClickEventArgs e)
 		{
 			String orca = SU_AddOrca("");
-			frmVenda f = new frmVenda();
+			frmVenda f = new frmVenda(_configuracoes);
 			f.CodOrcamento = cmbCodOrca.EditValue.ToString();
 			f.ShowDialog();
 
@@ -405,6 +453,41 @@ namespace Loja
 				btnImprimir.Enabled = false;
 				btnFinalizarVenda.Enabled = false;
 				btnExcluirOrca.Enabled = false;
+			}
+		}
+
+		private void btnQtdContingencia_ItemClick(object sender, ItemClickEventArgs e)
+		{
+			using (var f = new frmVendas())
+			{
+				f.SU_CarregaVendasContingencia();
+				f.Show();
+			}
+		}
+
+		private void btnStatus_ItemClick(object sender, ItemClickEventArgs e)
+		{
+			Util.MsgBox(Util.ComandoACBR("NFE.StatusServico"));
+		}
+
+		private void btnFazerBackup_ItemClick(object sender, ItemClickEventArgs e)
+		{
+			if (MessageBox.Show("Confirma copiar os dados a partir do DOS?", "Confirmar importação", MessageBoxButtons.YesNo) == DialogResult.No)
+				return;
+
+			Util.CopiarDoDbf();
+			InitGrid();
+		}
+
+		private void btnContingencia_CheckedChanged(object sender, ItemClickEventArgs e)
+		{
+			if (btnContingencia.Checked)
+			{
+				_configuracoes.CfgServico.tpEmis = NFe.Classes.Informacoes.Identificacao.Tipos.TipoEmissao.teOffLine;
+			}
+			else
+			{
+				_configuracoes.CfgServico.tpEmis = NFe.Classes.Informacoes.Identificacao.Tipos.TipoEmissao.teNormal;
 			}
 		}
 
@@ -430,7 +513,7 @@ namespace Loja
 			{
 				int codproduto = FU_PegaCodigoGrid("P"); ;
 
-				frmDetalhe f = new frmDetalhe();
+				frmDetalhe f = new frmDetalhe(this);
 				f.SU_CarregaProduto(codproduto);
 				f.ShowDialog();
 			}
@@ -674,24 +757,10 @@ namespace Loja
 
 		}
 
-		private void btnFazerBackup_ItemClick(object sender, ItemClickEventArgs e)
-		{
-			if (MessageBox.Show("Confirma copiar os dados a partir do DOS?", "Confirmar importação", MessageBoxButtons.YesNo) == DialogResult.No)
-				return;
-
-			Util.CopiarDoDbf();
-			InitGrid();
-		}
-
 		private void btnCadCliente_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
 		{
 			var f = new frmClientes();
 			f.ShowDialog();
-		}
-
-		private void btnStatus_ItemClick(object sender, ItemClickEventArgs e)
-		{
-			Util.MsgBox(Util.ComandoACBR("NFE.StatusServico"));
 		}
 
 	}

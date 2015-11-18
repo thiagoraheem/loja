@@ -34,10 +34,10 @@ namespace Loja
 			txtDatFim.DateTime = DateTime.Parse(DateTime.Now.ToShortDateString());
 			txtDatInicio.DateTime = txtDatFim.DateTime.AddDays(-DateTime.Now.Day).AddDays(1);
 
-			SU_CarregaProdutos();
-			SU_CarregaTipoVenda();
-
-			SU_CarregaVendas();
+			if (!relVendas.tbl_Saida.Any()) 
+			{
+				SU_CarregaVendas();
+			}
 
 		}
 
@@ -56,8 +56,8 @@ namespace Loja
 
 				ReportPrintTool printTool = new ReportPrintTool(relatorio);
 
-				int codproduto = cmbProduto.EditValue == null ? 0 : (int)cmbProduto.EditValue;
-				int codtipovenda = cmbTipoVenda.EditValue == null ? 0 : (int)cmbTipoVenda.EditValue;
+				int codproduto = -1;
+				int codtipovenda = cmbStatusNFE.EditValue == null ? 0 : (int)cmbStatusNFE.EditValue;
 
 				relatorio.SU_SetParam(txtDatInicio.DateTime, txtDatFim.DateTime, codproduto, codtipovenda);
 
@@ -131,26 +131,59 @@ namespace Loja
 		#endregion
 
 		#region Funções
-		void SU_CarregaProdutos()
-		{
-			var produtos = Consultas.ObterProdutosAtivos();
-			cmbProduto.Properties.DataSource = produtos;
-
-		}
-
-		void SU_CarregaTipoVenda()
-		{
-			var TipoVenda = Consultas.ObterTipoVendaCombo();
-			cmbTipoVenda.Properties.DataSource = TipoVenda;
-		}
-
-		void SU_CarregaVendas()
+		public void SU_CarregaVendas()
 		{
 
 			DateTime inicio = DateTime.Parse(txtDatInicio.DateTime.ToShortDateString());
 			DateTime fim = DateTime.Parse(txtDatFim.DateTime.ToShortDateString()).AddDays(1).AddMinutes(-1);
 
-			tbl_SaidaTableAdapter1.FillByPeriodo(relVendas.tbl_Saida, inicio, fim);
+			if (String.IsNullOrEmpty(cmbStatusNFE.Text)) 
+			{ 
+				tbl_SaidaTableAdapter1.FillByPeriodo(relVendas.tbl_Saida, inicio, fim);
+			}
+			else 
+			{
+				tbl_SaidaTableAdapter1.FillByStatus(relVendas.tbl_Saida, cmbStatusNFE.Text.Substring(0,1), inicio, fim);
+			}
+
+			tbl_SaidaItensTableAdapter1.Fill(relVendas.tbl_SaidaItens);
+
+			grdDados.RefreshDataSource();
+
+			if (relVendas.tbl_Saida.Any())
+			{
+				btnEstornar.Enabled = true;
+			}
+			else
+			{
+				btnEstornar.Enabled = false;
+			}
+
+		}
+
+		public void SU_CarregaVendas(string tipo, DateTime datIni, DateTime datFim)
+		{
+
+			tbl_SaidaTableAdapter1.FillByStatus(relVendas.tbl_Saida, tipo, datIni, datFim);
+			tbl_SaidaItensTableAdapter1.Fill(relVendas.tbl_SaidaItens);
+
+			grdDados.RefreshDataSource();
+
+			if (relVendas.tbl_Saida.Any())
+			{
+				btnEstornar.Enabled = true;
+			}
+			else
+			{
+				btnEstornar.Enabled = false;
+			}
+
+		}
+
+		public void SU_CarregaVendasContingencia()
+		{
+
+			tbl_SaidaTableAdapter1.FillByContingencia(relVendas.tbl_Saida);
 			tbl_SaidaItensTableAdapter1.Fill(relVendas.tbl_SaidaItens);
 
 			grdDados.RefreshDataSource();

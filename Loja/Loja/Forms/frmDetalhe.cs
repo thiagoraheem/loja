@@ -15,10 +15,12 @@ namespace Loja
 	public partial class frmDetalhe : DevExpress.XtraEditors.XtraForm
 	{
 		int codproduto;
+		private frmPrincipal principal;
 
-		public frmDetalhe()
+		public frmDetalhe(frmPrincipal p)
 		{
 			InitializeComponent();
+			principal = p;
 		}
 
 		private void frmDetalhe_KeyDown(object sender, KeyEventArgs e)
@@ -48,7 +50,7 @@ namespace Loja
 			else if (e.KeyCode.Equals(Keys.F11)) {
 			
 				var orca = Cadastros.AdicionarOrcamento("", codproduto);
-				frmVenda f = new frmVenda();
+				frmVenda f = new frmVenda(principal._configuracoes);
 
 				f.CodOrcamento = orca.FirstOrDefault();
 				f.ShowDialog();
