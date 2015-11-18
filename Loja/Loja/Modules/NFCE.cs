@@ -86,41 +86,47 @@ namespace Loja.Modules
 					new List<NFe.Classes.NFe> { _nfe }
 				);
 
-				//Util.MsgBox("Arquivo gerado: " + retornoEnvio.EnvioStr);
-
 				if (retornoEnvio.EnvioStr != null)
 				{
-					var valida = NFe.Wsdl.Monitor.ValidarNFE(retornoEnvio.EnvioStr);
-
-					if (valida.Status)
+					if (_configuracoes.CfgServico.tpEmis == TipoEmissao.teNormal)
 					{
-						valida = NFe.Wsdl.Monitor.EnviaNFE(retornoEnvio.EnvioStr, int.Parse(_saida.CodVenda), 0, 0);
-						if (!valida.Status)
+
+						var valida = NFe.Wsdl.Monitor.ValidarNFE(retornoEnvio.EnvioStr);
+
+						if (valida.Status)
 						{
-							throw new Exception("Erro ao enviar NFC-e");
+							valida = NFe.Wsdl.Monitor.EnviaNFE(retornoEnvio.EnvioStr, int.Parse(_saida.CodVenda), 0, 0);
+							if (!valida.Status)
+							{
+								throw new Exception("Erro ao enviar NFC-e");
+							}
+							else
+							{
+								NFe.Wsdl.Monitor.ImprimirDANFE(retornoEnvio.EnvioStr, Properties.Settings.Default.ImpressoraNFE);
+
+							}
 						}
 						else
 						{
-							NFe.Wsdl.Monitor.ImprimirDANFE(retornoEnvio.EnvioStr, Properties.Settings.Default.ImpressoraNFE);
-				
+							throw new Exception("Erro ao enviar NFC-e: \n" + valida.Resultado);
 						}
 					}
 					else
 					{
-						throw new Exception("Erro ao enviar NFC-e: \n" + valida.Resultado);
+						NFe.Wsdl.Monitor.ImprimirDANFE(retornoEnvio.EnvioStr, Properties.Settings.Default.ImpressoraNFE);
 					}
 
-
-					//NFe.Wsdl.Monitor.ImprimirDANFE(retornoEnvio.EnvioStr);
 				}
-				//_saida.FlgStatusNFE = retornoEnvio.Retorno.cStat.ToString();
-
-				//TrataRetorno(retornoEnvio);
 
 				_saida.FlgStatusNFE = "A";
 				_saida.ChaveSefaz = _nfe.infNFe.Id;
 				Cadastros.GravaVenda(_saida);
 
+				return true;
+			}
+			catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+			{
+				Util.MsgBox(ex.InnerException.Message ?? ex.Message);
 				return true;
 			}
 			catch (Exception ex)
@@ -130,7 +136,8 @@ namespace Loja.Modules
 					Util.MsgBox(ex.InnerException.Message);
 
 				}
-				else {
+				else
+				{
 					if (!string.IsNullOrEmpty(ex.Message))
 						Util.MsgBox(ex.Message);
 				}
@@ -261,7 +268,7 @@ namespace Loja.Modules
 					}
 				}
 				// verifica se os dados de endereço existem
-				if(!String.IsNullOrEmpty(_cliente.Endereco) && !String.IsNullOrEmpty(_cliente.Numero) && !String.IsNullOrEmpty(_cliente.Bairro) &&
+				if (!String.IsNullOrEmpty(_cliente.Endereco) && !String.IsNullOrEmpty(_cliente.Numero) && !String.IsNullOrEmpty(_cliente.Bairro) &&
 					!String.IsNullOrEmpty(_cliente.CEP) && !String.IsNullOrEmpty(_cliente.Cidade) && !String.IsNullOrEmpty(_cliente.Estado)
 					)
 				{
@@ -435,7 +442,7 @@ namespace Loja.Modules
 				qTrib = item.Quantidade,
 				vUnTrib = item.VlrUnitario,
 				indTot = IndicadorTotal.ValorDoItemCompoeTotalNF,
-				
+
 			};
 			return p;
 		}

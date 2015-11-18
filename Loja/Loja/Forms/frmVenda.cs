@@ -27,19 +27,15 @@ namespace Loja
 
 		public String CodOrcamento;
 		private ConfiguracaoApp _configuracoes;
-		private const string ArquivoConfiguracao = @"\configuracao.xml";
-		private readonly string _path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 		List<tbl_Cliente> clientes;
 		tbl_Saida saida;
-
 		#endregion
 
-
-		public frmVenda()
+		public frmVenda(ConfiguracaoApp config)
 		{
 			InitializeComponent();
-			CarregarConfiguracao();
-			//CarregaCertificado();
+
+			_configuracoes = config;
 		}
 
 		private void frmVenda_Load(object sender, EventArgs e)
@@ -138,6 +134,12 @@ namespace Loja
 
 				if (nfe == 1)
 				{
+
+					if (_configuracoes.CfgServico.tpEmis == NFe.Classes.Informacoes.Identificacao.Tipos.TipoEmissao.teOffLine)
+					{
+						saida.FlgStatusNFE = "C";
+					}
+
 					var nota = new Modules.NFCE(_configuracoes, saida);
 
 					if (!nota.EnviaNFCE())
@@ -317,38 +319,6 @@ namespace Loja
 			clientes = Consultas.ObterClientes();
 			cmbCliente.Properties.DataSource = clientes;
 
-		}
-
-		private void CarregarConfiguracao()
-		{
-			var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-
-			try
-			{
-				_configuracoes = !File.Exists(path + ArquivoConfiguracao)
-					? new ConfiguracaoApp()
-					: FuncoesXml.ArquivoXmlParaClasse<ConfiguracaoApp>(path + ArquivoConfiguracao);
-				if (_configuracoes.CfgServico.TimeOut == 0)
-					_configuracoes.CfgServico.TimeOut = 100; //mínimo
-
-				#region Carrega a logo no controle logoEmitente
-
-				/*if (_configuracoes.ConfiguracaoDanfeNfce.Logomarca != null && _configuracoes.ConfiguracaoDanfeNfce.Logomarca.Length > 0)
-					using (var stream = new MemoryStream(_configuracoes.ConfiguracaoDanfeNfce.Logomarca))
-					{
-						LogoEmitente.Source = BitmapFrame.Create(stream, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
-					}*/
-
-				#endregion
-
-
-
-			}
-			catch (Exception ex)
-			{
-				if (!string.IsNullOrEmpty(ex.Message))
-					Util.MsgBox(ex.Message);
-			}
 		}
 
 		#endregion

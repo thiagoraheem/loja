@@ -31,20 +31,17 @@
 			this.components = new System.ComponentModel.Container();
 			DevExpress.XtraSplashScreen.SplashScreenManager mgrSplash = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Loja.frmApresentacao), true, true);
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
-			DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-			DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-			DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+			DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+			DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+			DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
 			this.navbarImageListLarge = new System.Windows.Forms.ImageList(this.components);
 			this.navbarImageList = new System.Windows.Forms.ImageList(this.components);
 			this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
-			this.appMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
-			this.popupControlContainer2 = new DevExpress.XtraBars.PopupControlContainer(this.components);
-			this.btnModoEdicao = new DevExpress.XtraBars.BarButtonItem();
-			this.iExit = new DevExpress.XtraBars.BarButtonItem();
-			this.popupControlContainer1 = new DevExpress.XtraBars.PopupControlContainer(this.components);
-			this.someLabelControl2 = new DevExpress.XtraEditors.LabelControl();
-			this.someLabelControl1 = new DevExpress.XtraEditors.LabelControl();
+			this.backstageViewControl1 = new DevExpress.XtraBars.Ribbon.BackstageViewControl();
+			this.backstageViewClientControl1 = new DevExpress.XtraBars.Ribbon.BackstageViewClientControl();
+			this.backstageViewTabItem1 = new DevExpress.XtraBars.Ribbon.BackstageViewTabItem();
 			this.ribbonImageCollection = new DevExpress.Utils.ImageCollection(this.components);
+			this.iExit = new DevExpress.XtraBars.BarButtonItem();
 			this.iAbout = new DevExpress.XtraBars.BarButtonItem();
 			this.siStatus = new DevExpress.XtraBars.BarStaticItem();
 			this.siInfo = new DevExpress.XtraBars.BarStaticItem();
@@ -68,6 +65,7 @@
 			this.cmbCodOrca = new DevExpress.XtraBars.BarEditItem();
 			this.repCodOrca = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
 			this.btnExcluirOrca = new DevExpress.XtraBars.BarButtonItem();
+			this.btnModoEdicao = new DevExpress.XtraBars.BarButtonItem();
 			this.btnVendaRapida = new DevExpress.XtraBars.BarButtonItem();
 			this.btnStatus = new DevExpress.XtraBars.BarButtonItem();
 			this.chkStatusSefaz = new DevExpress.XtraBars.BarCheckItem();
@@ -88,6 +86,11 @@
 			this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
 			this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
 			this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+			this.appMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
+			this.popupControlContainer2 = new DevExpress.XtraBars.PopupControlContainer(this.components);
+			this.popupControlContainer1 = new DevExpress.XtraBars.PopupControlContainer(this.components);
+			this.someLabelControl2 = new DevExpress.XtraEditors.LabelControl();
+			this.someLabelControl1 = new DevExpress.XtraEditors.LabelControl();
 			this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
 			this.gridProdutos = new DevExpress.XtraGrid.GridControl();
 			this.gridViewProduto = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -125,15 +128,10 @@
 			this.colVlrFinal = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colOrcodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colVlrOriginal = new DevExpress.XtraGrid.Columns.GridColumn();
-			this.barQtdContingencia = new DevExpress.XtraBars.BarHeaderItem();
-			this.backstageViewControl1 = new DevExpress.XtraBars.Ribbon.BackstageViewControl();
-			this.backstageViewClientControl1 = new DevExpress.XtraBars.Ribbon.BackstageViewClientControl();
-			this.backstageViewTabItem1 = new DevExpress.XtraBars.Ribbon.BackstageViewTabItem();
+			this.btnQtdContingencia = new DevExpress.XtraBars.BarButtonItem();
 			((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.appMenu)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.popupControlContainer2)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.popupControlContainer1)).BeginInit();
-			this.popupControlContainer1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.backstageViewControl1)).BeginInit();
+			this.backstageViewControl1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ribbonImageCollection)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
@@ -143,6 +141,10 @@
 			((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.appMenu)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.popupControlContainer2)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.popupControlContainer1)).BeginInit();
+			this.popupControlContainer1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.gridProdutos)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gridViewProduto)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.navBarControl)).BeginInit();
@@ -150,8 +152,6 @@
 			this.splitContainerControl.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.gridOrcamento)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gridViewOrcamento)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.backstageViewControl1)).BeginInit();
-			this.backstageViewControl1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// navbarImageListLarge
@@ -216,10 +216,10 @@
             this.chkStatusSefaz,
             this.chkInternet,
             this.btnContingencia,
-            this.barQtdContingencia});
+            this.btnQtdContingencia});
 			this.ribbonControl.LargeImages = this.ribbonImageCollectionLarge;
 			this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-			this.ribbonControl.MaxItemId = 90;
+			this.ribbonControl.MaxItemId = 91;
 			this.ribbonControl.Name = "ribbonControl";
 			this.ribbonControl.PageHeaderItemLinks.Add(this.iAbout);
 			this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -236,77 +236,31 @@
 			this.ribbonControl.Size = new System.Drawing.Size(1039, 143);
 			this.ribbonControl.StatusBar = this.ribbonStatusBar;
 			// 
-			// appMenu
+			// backstageViewControl1
 			// 
-			this.appMenu.BottomPaneControlContainer = this.popupControlContainer2;
-			this.appMenu.ItemLinks.Add(this.btnModoEdicao);
-			this.appMenu.ItemLinks.Add(this.iExit);
-			this.appMenu.Name = "appMenu";
-			this.appMenu.Ribbon = this.ribbonControl;
-			this.appMenu.RightPaneControlContainer = this.popupControlContainer1;
-			this.appMenu.ShowRightPane = true;
+			this.backstageViewControl1.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Yellow;
+			this.backstageViewControl1.Controls.Add(this.backstageViewClientControl1);
+			this.backstageViewControl1.Items.Add(this.backstageViewTabItem1);
+			this.backstageViewControl1.Location = new System.Drawing.Point(71, 214);
+			this.backstageViewControl1.Name = "backstageViewControl1";
+			this.backstageViewControl1.Ribbon = this.ribbonControl;
+			this.backstageViewControl1.SelectedTab = null;
+			this.backstageViewControl1.Size = new System.Drawing.Size(480, 150);
+			this.backstageViewControl1.TabIndex = 6;
 			// 
-			// popupControlContainer2
+			// backstageViewClientControl1
 			// 
-			this.popupControlContainer2.Appearance.BackColor = System.Drawing.Color.Transparent;
-			this.popupControlContainer2.Appearance.Options.UseBackColor = true;
-			this.popupControlContainer2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-			this.popupControlContainer2.Location = new System.Drawing.Point(238, 289);
-			this.popupControlContainer2.Name = "popupControlContainer2";
-			this.popupControlContainer2.Ribbon = this.ribbonControl;
-			this.popupControlContainer2.Size = new System.Drawing.Size(118, 28);
-			this.popupControlContainer2.TabIndex = 3;
-			this.popupControlContainer2.Visible = false;
+			this.backstageViewClientControl1.Location = new System.Drawing.Point(189, 63);
+			this.backstageViewClientControl1.Name = "backstageViewClientControl1";
+			this.backstageViewClientControl1.Size = new System.Drawing.Size(290, 86);
+			this.backstageViewClientControl1.TabIndex = 1;
 			// 
-			// btnModoEdicao
+			// backstageViewTabItem1
 			// 
-			this.btnModoEdicao.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check;
-			this.btnModoEdicao.Caption = "Modo Edição";
-			this.btnModoEdicao.Id = 77;
-			this.btnModoEdicao.LargeImageIndex = 7;
-			this.btnModoEdicao.Name = "btnModoEdicao";
-			this.btnModoEdicao.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnModoEdicao_ItemClick);
-			// 
-			// iExit
-			// 
-			this.iExit.Caption = "Sair";
-			this.iExit.Description = "Fechar o sistema";
-			this.iExit.Hint = "Fechar o sistema";
-			this.iExit.Id = 20;
-			this.iExit.ImageIndex = 6;
-			this.iExit.LargeImageIndex = 6;
-			this.iExit.Name = "iExit";
-			this.iExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.iExit_ItemClick);
-			// 
-			// popupControlContainer1
-			// 
-			this.popupControlContainer1.Appearance.BackColor = System.Drawing.Color.Transparent;
-			this.popupControlContainer1.Appearance.Options.UseBackColor = true;
-			this.popupControlContainer1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-			this.popupControlContainer1.Controls.Add(this.someLabelControl2);
-			this.popupControlContainer1.Controls.Add(this.someLabelControl1);
-			this.popupControlContainer1.Location = new System.Drawing.Point(111, 197);
-			this.popupControlContainer1.Name = "popupControlContainer1";
-			this.popupControlContainer1.Ribbon = this.ribbonControl;
-			this.popupControlContainer1.Size = new System.Drawing.Size(76, 70);
-			this.popupControlContainer1.TabIndex = 2;
-			this.popupControlContainer1.Visible = false;
-			// 
-			// someLabelControl2
-			// 
-			this.someLabelControl2.Location = new System.Drawing.Point(3, 57);
-			this.someLabelControl2.Name = "someLabelControl2";
-			this.someLabelControl2.Size = new System.Drawing.Size(98, 13);
-			this.someLabelControl2.TabIndex = 0;
-			this.someLabelControl2.Text = "Controle de Estoque";
-			// 
-			// someLabelControl1
-			// 
-			this.someLabelControl1.Location = new System.Drawing.Point(3, 3);
-			this.someLabelControl1.Name = "someLabelControl1";
-			this.someLabelControl1.Size = new System.Drawing.Size(39, 13);
-			this.someLabelControl1.TabIndex = 0;
-			this.someLabelControl1.Text = "Loja 1.0";
+			this.backstageViewTabItem1.Caption = "backstageViewTabItem1";
+			this.backstageViewTabItem1.ContentControl = this.backstageViewClientControl1;
+			this.backstageViewTabItem1.Name = "backstageViewTabItem1";
+			this.backstageViewTabItem1.Selected = false;
 			// 
 			// ribbonImageCollection
 			// 
@@ -326,6 +280,17 @@
 			this.ribbonImageCollection.Images.SetKeyName(12, "Ribbon_AlignLeft_16x16.png");
 			this.ribbonImageCollection.Images.SetKeyName(13, "Ribbon_AlignCenter_16x16.png");
 			this.ribbonImageCollection.Images.SetKeyName(14, "Ribbon_AlignRight_16x16.png");
+			// 
+			// iExit
+			// 
+			this.iExit.Caption = "Sair";
+			this.iExit.Description = "Fechar o sistema";
+			this.iExit.Hint = "Fechar o sistema";
+			this.iExit.Id = 20;
+			this.iExit.ImageIndex = 6;
+			this.iExit.LargeImageIndex = 6;
+			this.iExit.Name = "iExit";
+			this.iExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.iExit_ItemClick);
 			// 
 			// iAbout
 			// 
@@ -525,6 +490,15 @@
 			this.btnExcluirOrca.Name = "btnExcluirOrca";
 			this.btnExcluirOrca.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExcluirOrca_ItemClick);
 			// 
+			// btnModoEdicao
+			// 
+			this.btnModoEdicao.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check;
+			this.btnModoEdicao.Caption = "Modo Edição";
+			this.btnModoEdicao.Id = 77;
+			this.btnModoEdicao.LargeImageIndex = 7;
+			this.btnModoEdicao.Name = "btnModoEdicao";
+			this.btnModoEdicao.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnModoEdicao_ItemClick);
+			// 
 			// btnVendaRapida
 			// 
 			this.btnVendaRapida.Caption = "Venda Rápida";
@@ -573,6 +547,7 @@
 			this.btnContingencia.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
 			this.btnContingencia.Id = 86;
 			this.btnContingencia.Name = "btnContingencia";
+			this.btnContingencia.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.btnContingencia_CheckedChanged);
 			// 
 			// ribbonImageCollectionLarge
 			// 
@@ -642,7 +617,7 @@
 			this.ribbonPageGroup2.ItemLinks.Add(this.chkStatusSefaz);
 			this.ribbonPageGroup2.ItemLinks.Add(this.chkInternet);
 			this.ribbonPageGroup2.ItemLinks.Add(this.btnContingencia);
-			this.ribbonPageGroup2.ItemLinks.Add(this.barQtdContingencia);
+			this.ribbonPageGroup2.ItemLinks.Add(this.btnQtdContingencia);
 			this.ribbonPageGroup2.Name = "ribbonPageGroup2";
 			this.ribbonPageGroup2.Text = "NFC-e";
 			// 
@@ -699,6 +674,58 @@
 			this.ribbonStatusBar.Name = "ribbonStatusBar";
 			this.ribbonStatusBar.Ribbon = this.ribbonControl;
 			this.ribbonStatusBar.Size = new System.Drawing.Size(1039, 31);
+			// 
+			// appMenu
+			// 
+			this.appMenu.BottomPaneControlContainer = this.popupControlContainer2;
+			this.appMenu.ItemLinks.Add(this.btnModoEdicao);
+			this.appMenu.ItemLinks.Add(this.iExit);
+			this.appMenu.Name = "appMenu";
+			this.appMenu.Ribbon = this.ribbonControl;
+			this.appMenu.RightPaneControlContainer = this.popupControlContainer1;
+			this.appMenu.ShowRightPane = true;
+			// 
+			// popupControlContainer2
+			// 
+			this.popupControlContainer2.Appearance.BackColor = System.Drawing.Color.Transparent;
+			this.popupControlContainer2.Appearance.Options.UseBackColor = true;
+			this.popupControlContainer2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+			this.popupControlContainer2.Location = new System.Drawing.Point(238, 289);
+			this.popupControlContainer2.Name = "popupControlContainer2";
+			this.popupControlContainer2.Ribbon = this.ribbonControl;
+			this.popupControlContainer2.Size = new System.Drawing.Size(118, 28);
+			this.popupControlContainer2.TabIndex = 3;
+			this.popupControlContainer2.Visible = false;
+			// 
+			// popupControlContainer1
+			// 
+			this.popupControlContainer1.Appearance.BackColor = System.Drawing.Color.Transparent;
+			this.popupControlContainer1.Appearance.Options.UseBackColor = true;
+			this.popupControlContainer1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+			this.popupControlContainer1.Controls.Add(this.someLabelControl2);
+			this.popupControlContainer1.Controls.Add(this.someLabelControl1);
+			this.popupControlContainer1.Location = new System.Drawing.Point(111, 197);
+			this.popupControlContainer1.Name = "popupControlContainer1";
+			this.popupControlContainer1.Ribbon = this.ribbonControl;
+			this.popupControlContainer1.Size = new System.Drawing.Size(76, 70);
+			this.popupControlContainer1.TabIndex = 2;
+			this.popupControlContainer1.Visible = false;
+			// 
+			// someLabelControl2
+			// 
+			this.someLabelControl2.Location = new System.Drawing.Point(3, 57);
+			this.someLabelControl2.Name = "someLabelControl2";
+			this.someLabelControl2.Size = new System.Drawing.Size(98, 13);
+			this.someLabelControl2.TabIndex = 0;
+			this.someLabelControl2.Text = "Controle de Estoque";
+			// 
+			// someLabelControl1
+			// 
+			this.someLabelControl1.Location = new System.Drawing.Point(3, 3);
+			this.someLabelControl1.Name = "someLabelControl1";
+			this.someLabelControl1.Size = new System.Drawing.Size(39, 13);
+			this.someLabelControl1.TabIndex = 0;
+			this.someLabelControl1.Text = "Loja 1.0";
 			// 
 			// gridProdutos
 			// 
@@ -947,12 +974,12 @@
 			this.btnCadCliente.LargeImageIndex = 5;
 			this.btnCadCliente.Name = "btnCadCliente";
 			this.btnCadCliente.SmallImageIndex = 10;
-			toolTipTitleItem2.Text = "Dica";
-			toolTipItem2.LeftIndent = 6;
-			toolTipItem2.Text = "Cadastro de Clientes";
-			superToolTip2.Items.Add(toolTipTitleItem2);
-			superToolTip2.Items.Add(toolTipItem2);
-			this.btnCadCliente.SuperTip = superToolTip2;
+			toolTipTitleItem5.Text = "Dica";
+			toolTipItem5.LeftIndent = 6;
+			toolTipItem5.Text = "Cadastro de Clientes";
+			superToolTip5.Items.Add(toolTipTitleItem5);
+			superToolTip5.Items.Add(toolTipItem5);
+			this.btnCadCliente.SuperTip = superToolTip5;
 			this.btnCadCliente.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnCadCliente_LinkClicked);
 			// 
 			// btnOrcamentos
@@ -1082,40 +1109,15 @@
 			this.colVlrOriginal.VisibleIndex = 5;
 			this.colVlrOriginal.Width = 142;
 			// 
-			// barQtdContingencia
+			// btnQtdContingencia
 			// 
-			this.barQtdContingencia.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-			this.barQtdContingencia.Caption = "Notas em Contingência: <b>0</b>";
-			this.barQtdContingencia.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-			this.barQtdContingencia.Id = 87;
-			this.barQtdContingencia.Name = "barQtdContingencia";
-			this.barQtdContingencia.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-			// 
-			// backstageViewControl1
-			// 
-			this.backstageViewControl1.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Yellow;
-			this.backstageViewControl1.Controls.Add(this.backstageViewClientControl1);
-			this.backstageViewControl1.Items.Add(this.backstageViewTabItem1);
-			this.backstageViewControl1.Location = new System.Drawing.Point(71, 214);
-			this.backstageViewControl1.Name = "backstageViewControl1";
-			this.backstageViewControl1.Ribbon = this.ribbonControl;
-			this.backstageViewControl1.SelectedTab = null;
-			this.backstageViewControl1.Size = new System.Drawing.Size(480, 150);
-			this.backstageViewControl1.TabIndex = 6;
-			// 
-			// backstageViewClientControl1
-			// 
-			this.backstageViewClientControl1.Location = new System.Drawing.Point(0, 0);
-			this.backstageViewClientControl1.Name = "backstageViewClientControl1";
-			this.backstageViewClientControl1.Size = new System.Drawing.Size(150, 150);
-			this.backstageViewClientControl1.TabIndex = 1;
-			// 
-			// backstageViewTabItem1
-			// 
-			this.backstageViewTabItem1.Caption = "backstageViewTabItem1";
-			this.backstageViewTabItem1.ContentControl = this.backstageViewClientControl1;
-			this.backstageViewTabItem1.Name = "backstageViewTabItem1";
-			this.backstageViewTabItem1.Selected = false;
+			this.btnQtdContingencia.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+			this.btnQtdContingencia.Caption = "Notas em Contingência: <b>0</b>";
+			this.btnQtdContingencia.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+			this.btnQtdContingencia.Id = 90;
+			this.btnQtdContingencia.Name = "btnQtdContingencia";
+			this.btnQtdContingencia.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+			this.btnQtdContingencia.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnQtdContingencia_ItemClick);
 			// 
 			// frmPrincipal
 			// 
@@ -1138,11 +1140,8 @@
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmPrincipal_KeyDown);
 			((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.appMenu)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.popupControlContainer2)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.popupControlContainer1)).EndInit();
-			this.popupControlContainer1.ResumeLayout(false);
-			this.popupControlContainer1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.backstageViewControl1)).EndInit();
+			this.backstageViewControl1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.ribbonImageCollection)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
@@ -1152,6 +1151,11 @@
 			((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.appMenu)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.popupControlContainer2)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.popupControlContainer1)).EndInit();
+			this.popupControlContainer1.ResumeLayout(false);
+			this.popupControlContainer1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.gridProdutos)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.gridViewProduto)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.navBarControl)).EndInit();
@@ -1159,8 +1163,6 @@
 			this.splitContainerControl.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.gridOrcamento)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.gridViewOrcamento)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.backstageViewControl1)).EndInit();
-			this.backstageViewControl1.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -1258,11 +1260,11 @@
 		private DevExpress.XtraGrid.Columns.GridColumn colNCM;
 		private DevExpress.XtraBars.BarCheckItem chkStatusSefaz;
 		private DevExpress.XtraBars.BarCheckItem chkInternet;
-		private DevExpress.XtraBars.BarToggleSwitchItem btnContingencia;
-		private DevExpress.XtraBars.BarHeaderItem barQtdContingencia;
 		private DevExpress.XtraBars.Ribbon.BackstageViewControl backstageViewControl1;
 		private DevExpress.XtraBars.Ribbon.BackstageViewClientControl backstageViewClientControl1;
 		private DevExpress.XtraBars.Ribbon.BackstageViewTabItem backstageViewTabItem1;
+		private DevExpress.XtraBars.BarButtonItem btnQtdContingencia;
+		public DevExpress.XtraBars.BarToggleSwitchItem btnContingencia;
 
 	}
 }
