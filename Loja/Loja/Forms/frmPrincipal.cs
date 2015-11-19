@@ -461,7 +461,7 @@ namespace Loja
 			using (var f = new frmVendas())
 			{
 				f.SU_CarregaVendasContingencia();
-				f.Show();
+				f.ShowDialog();
 			}
 		}
 

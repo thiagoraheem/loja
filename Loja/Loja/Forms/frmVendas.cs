@@ -34,8 +34,8 @@ namespace Loja
 			txtDatFim.DateTime = DateTime.Parse(DateTime.Now.ToShortDateString());
 			txtDatInicio.DateTime = txtDatFim.DateTime.AddDays(-DateTime.Now.Day).AddDays(1);
 
-			if (!relVendas.tbl_Saida.Any()) 
-			{
+			if (relVendas.tbl_Saida.Any()) 
+			{ 
 				SU_CarregaVendas();
 			}
 
