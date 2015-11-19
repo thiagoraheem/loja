@@ -98,7 +98,7 @@ namespace Loja.Modules
 							valida = NFe.Wsdl.Monitor.EnviaNFE(retornoEnvio.EnvioStr, int.Parse(_saida.CodVenda), 0, 0);
 							if (!valida.Status)
 							{
-								throw new Exception("Erro ao enviar NFC-e");
+								throw new Exception("Erro ao enviar NFC-e: \n" + valida.Resultado);
 							}
 							else
 							{
@@ -116,6 +116,64 @@ namespace Loja.Modules
 						NFe.Wsdl.Monitor.ImprimirDANFE(retornoEnvio.EnvioStr, Properties.Settings.Default.ImpressoraNFE);
 					}
 
+				}
+
+				_saida.FlgStatusNFE = "A";
+				_saida.ChaveSefaz = _nfe.infNFe.Id;
+				Cadastros.GravaVenda(_saida);
+
+				return true;
+			}
+			catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+			{
+				Util.MsgBox(ex.InnerException.Message ?? ex.Message);
+				return true;
+			}
+			catch (Exception ex)
+			{
+				if (ex.InnerException != null)
+				{
+					Util.MsgBox(ex.InnerException.Message);
+
+				}
+				else
+				{
+					if (!string.IsNullOrEmpty(ex.Message))
+						Util.MsgBox(ex.Message);
+				}
+				return false;
+			}
+		}
+
+		public bool EnviaNFCE(string notaContingencia)
+		{
+
+			try
+			{
+
+				if (notaContingencia != null && notaContingencia != "")
+				{
+					
+					var valida = NFe.Wsdl.Monitor.ValidarNFE(notaContingencia);
+
+					if (valida.Status)
+					{
+						valida = NFe.Wsdl.Monitor.EnviaNFE(notaContingencia, int.Parse(_saida.CodVenda), 0, 0);
+						if (!valida.Status)
+						{
+							throw new Exception("Erro ao enviar NFC-e: \n" + valida.Resultado);
+						}
+						else
+						{
+							NFe.Wsdl.Monitor.ImprimirDANFE(notaContingencia, Properties.Settings.Default.ImpressoraNFE);
+
+						}
+					}
+					else
+					{
+						throw new Exception("Erro ao enviar NFC-e: \n" + valida.Resultado);
+					}
+					
 				}
 
 				_saida.FlgStatusNFE = "A";

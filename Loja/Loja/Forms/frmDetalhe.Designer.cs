@@ -254,6 +254,7 @@
 			this.KeyPreview = true;
 			this.Name = "frmDetalhe";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmDetalhe_KeyDown);
 			((System.ComponentModel.ISupportInitialize)(this.imgFoto.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtCodProduto.Properties)).EndInit();

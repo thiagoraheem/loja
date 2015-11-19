@@ -573,7 +573,7 @@ namespace Loja {
                 this.columnCodVenda.ReadOnly = true;
                 this.columnCodVenda.Unique = true;
                 this.columnFlgStatusNFE.MaxLength = 10;
-                this.columnChaveSefaz.MaxLength = 30;
+                this.columnChaveSefaz.MaxLength = 50;
                 this.columnFlgStatusNota.MaxLength = 1;
             }
             
