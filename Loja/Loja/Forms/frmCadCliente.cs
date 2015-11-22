@@ -22,6 +22,7 @@ namespace Loja
 			InitializeComponent();
 
 			cliente = new tbl_Cliente();
+			cliente.FlgStatus = true;
 		}
 
 		public frmCadCliente(int codCliente) {

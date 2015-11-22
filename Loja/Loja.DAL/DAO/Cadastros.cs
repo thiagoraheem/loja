@@ -147,7 +147,9 @@ namespace Loja.DAL.DAO
 				var dados = banco.tbl_Cliente.FirstOrDefault(x => x.CodCliente == codCliente);
 				if (dados != null)
 				{
-					banco.tbl_Cliente.Remove(dados);
+					//banco.tbl_Cliente.Remove(dados);
+					dados.FlgStatus = false;
+
 					banco.SaveChanges();
 				}
 
@@ -180,6 +182,7 @@ namespace Loja.DAL.DAO
 					registro.Pais = dado.Pais;
 					registro.Email = dado.Email;
 					registro.CEP = dado.CEP;
+					registro.FlgStatus = dado.FlgStatus;
 				}
 
 				banco.SaveChanges();
@@ -264,6 +267,27 @@ namespace Loja.DAL.DAO
 
 			}
 		}
+
+		public static void AtualizaStatusNFE(string codVenda, string flgStatusNFE, string chave)
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var registro = banco.tbl_Saida.FirstOrDefault(x => x.CodVenda == codVenda);
+
+				registro.FlgStatusNFE = flgStatusNFE;
+
+				if (!String.IsNullOrEmpty(chave))
+				{
+					registro.ChaveSefaz = chave;
+				}
+				
+				banco.SaveChanges();
+
+			}
+
+		}
+
 
 		#endregion
 

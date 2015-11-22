@@ -735,18 +735,17 @@ namespace NFe.Servicos
 		{
 			try
 			{
-				var versaoServico = Auxiliar.VersaoServicoParaString(ServicoNFe.NFeAutorizacao,
-					_cFgServico.VersaoNFeAutorizacao);
+				var versaoServico = Auxiliar.VersaoServicoParaString(ServicoNFe.NFeAutorizacao, _cFgServico.VersaoNFeAutorizacao);
 
 				#region Cria o objeto wdsl para consulta
 
-				var ws = CriarServico(ServicoNFe.NFeAutorizacao, TipoRecepcaoEvento.Nenhum);
+				/*var ws = CriarServico(ServicoNFe.NFeAutorizacao, TipoRecepcaoEvento.Nenhum);
 
 				ws.nfeCabecMsg = new nfeCabecMsg
 				{
 					cUF = _cFgServico.cUF,
 					versaoDados = versaoServico
-				};
+				};*/
 
 				#endregion
 
