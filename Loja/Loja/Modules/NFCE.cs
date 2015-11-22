@@ -26,11 +26,15 @@ using NFe.Classes.Informacoes.Detalhe.Tributacao.Federal.Tipos;
 using NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual.Tipos;
 using Loja.DAL.DAO;
 using Loja.DAL.Models;
+using System.Reflection;
+using System.IO;
 
 namespace Loja.Modules
 {
 	public class NFCE
 	{
+
+		private string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 		private string certificado;
 		private NFe.Classes.NFe _nfe;
 		private ConfiguracaoApp _configuracoes;
@@ -42,14 +46,14 @@ namespace Loja.Modules
 			_configuracoes = conf;
 			_saida = saida;
 
-			if (saida.CodCliente != null)
+			if (saida != null && saida.CodCliente != null)
 			{
 				_cliente = Consultas.ObterCliente(saida.CodCliente.Value);
 			}
 
 		}
 
-		#region NFCE
+		
 		void CarregaCertificado()
 		{
 			try
@@ -88,6 +92,7 @@ namespace Loja.Modules
 
 				if (retornoEnvio.EnvioStr != null)
 				{
+					#region Envio Normal
 					if (_configuracoes.CfgServico.tpEmis == TipoEmissao.teNormal)
 					{
 
@@ -103,7 +108,7 @@ namespace Loja.Modules
 							else
 							{
 								NFe.Wsdl.Monitor.ImprimirDANFE(retornoEnvio.EnvioStr, Properties.Settings.Default.ImpressoraNFE);
-
+								_saida.FlgStatusNFE = "A";
 							}
 						}
 						else
@@ -111,14 +116,19 @@ namespace Loja.Modules
 							throw new Exception("Erro ao enviar NFC-e: \n" + valida.Resultado);
 						}
 					}
+					#endregion
+					#region Impressão em contingência
 					else
 					{
+						
+						NFe.Wsdl.Monitor.SetFormaEmissao("9");
 						NFe.Wsdl.Monitor.ImprimirDANFE(retornoEnvio.EnvioStr, Properties.Settings.Default.ImpressoraNFE);
+						NFe.Wsdl.Monitor.SetFormaEmissao("1");
 					}
+					#endregion
 
 				}
 
-				_saida.FlgStatusNFE = "A";
 				_saida.ChaveSefaz = _nfe.infNFe.Id;
 				Cadastros.GravaVenda(_saida);
 
@@ -143,6 +153,16 @@ namespace Loja.Modules
 				}
 				return false;
 			}
+		}
+
+		#region para contingência
+		public void EnviarContingencia() { 
+		
+			var notas = Consultas.ObterVendasContingencia();
+
+			notas.ForEach(x => EnviaNFCE(x.CodVenda.ToString()));
+
+
 		}
 
 		public bool EnviaNFCE(string notaContingencia)
@@ -153,19 +173,38 @@ namespace Loja.Modules
 
 				if (notaContingencia != null && notaContingencia != "")
 				{
+					var xml = CarregarXML(notaContingencia);
+
+					xml = xml.Replace("<tpEmis>9</tpEmis>", "<tpEmis>1</tpEmis>");
+
+					var arquivo = FuncoesXml.XmlStringParaClasse<NFe.Classes.Servicos.Autorizacao.enviNFe3>(xml);
+					/*_nfe = FuncoesXml.XmlStringParaClasse<NFe.Classes.NFe>(xml);
+
+					if (_nfe == null) return false;
+					*/
+					_nfe = arquivo.NFe.FirstOrDefault();
+
+					_nfe.infNFe.ide.tpEmis = TipoEmissao.teNormal;
+					_nfe.infNFe.ide.dhEmi = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:sszzz");
+
+					var xmlEnvio = _nfe.ObterXmlString();
+
+					SalvarArquivoXml(notaContingencia + "-env-lot-c.xml", xmlEnvio);
+
+					var caminhodoarquivo = String.Format("{0}\\XML\\{1}-env-lot-c.xml", path, notaContingencia);
 					
-					var valida = NFe.Wsdl.Monitor.ValidarNFE(notaContingencia);
+					var valida = NFe.Wsdl.Monitor.ValidarNFE(caminhodoarquivo);
 
 					if (valida.Status)
 					{
-						valida = NFe.Wsdl.Monitor.EnviaNFE(notaContingencia, int.Parse(_saida.CodVenda), 0, 0);
+						valida = NFe.Wsdl.Monitor.EnviaNFE(caminhodoarquivo, int.Parse(notaContingencia), 0, 0);
 						if (!valida.Status)
 						{
 							throw new Exception("Erro ao enviar NFC-e: \n" + valida.Resultado);
 						}
 						else
 						{
-							NFe.Wsdl.Monitor.ImprimirDANFE(notaContingencia, Properties.Settings.Default.ImpressoraNFE);
+							NFe.Wsdl.Monitor.ImprimirDANFE(caminhodoarquivo, Properties.Settings.Default.ImpressoraNFE);
 
 						}
 					}
@@ -176,9 +215,7 @@ namespace Loja.Modules
 					
 				}
 
-				_saida.FlgStatusNFE = "A";
-				_saida.ChaveSefaz = _nfe.infNFe.Id;
-				Cadastros.GravaVenda(_saida);
+				Cadastros.AtualizaStatusNFE(notaContingencia, "A", _nfe.infNFe.Id);
 
 				return true;
 			}
@@ -203,6 +240,36 @@ namespace Loja.Modules
 			}
 		}
 
+		private string CarregarXML(string numNF)
+		{
+			try
+			{
+				var caminho = String.Format("{0}\\XML\\{1}-env-lot.xml", path, numNF);
+
+				return !File.Exists(caminho)
+					? ""
+					: FuncoesXml.ArquivoXmlParaString(caminho);//FuncoesXml.ArquivoXmlParaClasse<NFe.Classes.NFe>(caminho);
+
+			}
+			catch (Exception ex)
+			{
+				if (!string.IsNullOrEmpty(ex.Message))
+					Util.MsgBox(ex.Message);
+					return "";
+			}
+		}
+
+		private void SalvarArquivoXml(string nomeArquivo, string xmlString)
+		{
+			var dir = path + "\\XML\\";
+			var stw = new StreamWriter(dir + @"\" + nomeArquivo);
+			stw.WriteLine(xmlString);
+			stw.Close();
+		}
+		#endregion
+
+		
+		#region NFCE
 		protected virtual NFe.Classes.NFe GetNf()
 		{
 			var nf = new NFe.Classes.NFe { infNFe = GetInf(ModeloDocumento.NFCe, _configuracoes.CfgServico.VersaoNFeAutorizacao) };

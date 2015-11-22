@@ -120,7 +120,7 @@ namespace NFe.Wsdl
 
 				if (retornoComando.Resultado.Contains("Rejeicao"))
 				{
-					retornoComando.Resultado.Replace("OK", "REJEICAO");
+					retornoComando.Resultado = retornoComando.Resultado.Replace("OK", "REJEICAO");
 
 				}
 
@@ -188,6 +188,30 @@ namespace NFe.Wsdl
 		{
 
 			var comando = String.Format("NFE.DownloadNFe({0}, {1})", cnpj, chave);
+
+			var retorno = ComandoACBR(comando);
+
+			return new RetornoComando(retorno);
+
+		}
+
+		/// <summary>
+		/// Comando para definir a forma de emissão.
+		/// </summary>
+		/// <param name="nFormaEmissao">1=Emissão normal (não em contingência);
+		///2=Contingência FS-IA, com impressão do DANFE em formulário de segurança;
+		///3=Contingência SCAN (Sistema de Contingência do Ambiente Nacional) (*em desativação*);
+		///4=Contingência DPEC (Declaração Prévia da Emissão em Contingência);
+		///5=Contingência FS-DA, com impressão do DANFE em formulário de segurança;
+		///6=Contingência SVC-AN (SEFAZ Virtual de Contingência do AN);
+		///7=Contingência SVC-RS (SEFAZ Virtual de Contingência do RS);
+		///9=Contingência off-line da NFC-e;
+		///Nota: Para a NFC-e somente estão disponíveis e são válidas as opções de contingência 5 e 9.</param>
+		/// <returns></returns>
+		public static RetornoComando SetFormaEmissao(string nFormaEmissao)
+		{
+
+			var comando = String.Format("NFE.SetFormaEmissao({0})", nFormaEmissao);
 
 			var retorno = ComandoACBR(comando);
 

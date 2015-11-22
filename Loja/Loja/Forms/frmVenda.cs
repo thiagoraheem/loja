@@ -148,6 +148,11 @@ namespace Loja
 
 						Cadastros.EstornaVenda(codVenda, "Não enviada SEFAZ", true);
 
+						if (bApagar && codCliente != null)
+						{
+							Cadastros.ExcluiCliente(codCliente.Value);
+						}
+
 						this.DialogResult = System.Windows.Forms.DialogResult.No;
 						this.Close();
 						return;

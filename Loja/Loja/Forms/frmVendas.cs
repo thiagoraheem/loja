@@ -188,15 +188,6 @@ namespace Loja
 
 			grdDados.RefreshDataSource();
 
-			if (relVendas.tbl_Saida.Any())
-			{
-				btnEstornar.Enabled = true;
-			}
-			else
-			{
-				btnEstornar.Enabled = false;
-			}
-
 		}
 
 		string FU_PegaCodigoVenda()
@@ -210,7 +201,6 @@ namespace Loja
 		}
 
 		#endregion
-
 		
 	}
 }

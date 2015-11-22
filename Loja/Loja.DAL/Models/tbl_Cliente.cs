@@ -18,5 +18,6 @@ namespace Loja.DAL.Models
         public string Pais { get; set; }
         public string Email { get; set; }
         public string CEP { get; set; }
+        public Nullable<bool> FlgStatus { get; set; }
     }
 }

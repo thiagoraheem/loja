@@ -31,9 +31,9 @@
 			this.components = new System.ComponentModel.Container();
 			DevExpress.XtraSplashScreen.SplashScreenManager mgrSplash = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Loja.frmApresentacao), true, true);
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
-			DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-			DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-			DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+			DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+			DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+			DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
 			this.navbarImageListLarge = new System.Windows.Forms.ImageList(this.components);
 			this.navbarImageList = new System.Windows.Forms.ImageList(this.components);
 			this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -71,6 +71,7 @@
 			this.chkStatusSefaz = new DevExpress.XtraBars.BarCheckItem();
 			this.chkInternet = new DevExpress.XtraBars.BarCheckItem();
 			this.btnContingencia = new DevExpress.XtraBars.BarToggleSwitchItem();
+			this.btnQtdContingencia = new DevExpress.XtraBars.BarButtonItem();
 			this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
 			this.homeRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
 			this.fileRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -128,7 +129,6 @@
 			this.colVlrFinal = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colOrcodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colVlrOriginal = new DevExpress.XtraGrid.Columns.GridColumn();
-			this.btnQtdContingencia = new DevExpress.XtraBars.BarButtonItem();
 			((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.backstageViewControl1)).BeginInit();
 			this.backstageViewControl1.SuspendLayout();
@@ -548,6 +548,17 @@
 			this.btnContingencia.Id = 86;
 			this.btnContingencia.Name = "btnContingencia";
 			this.btnContingencia.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.btnContingencia_CheckedChanged);
+			// 
+			// btnQtdContingencia
+			// 
+			this.btnQtdContingencia.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+			this.btnQtdContingencia.Caption = "Notas em Conting.: 0";
+			this.btnQtdContingencia.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+			this.btnQtdContingencia.CloseSubMenuOnClick = false;
+			this.btnQtdContingencia.Id = 90;
+			this.btnQtdContingencia.Name = "btnQtdContingencia";
+			this.btnQtdContingencia.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+			this.btnQtdContingencia.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnQtdContingencia_ItemClick);
 			// 
 			// ribbonImageCollectionLarge
 			// 
@@ -974,12 +985,12 @@
 			this.btnCadCliente.LargeImageIndex = 5;
 			this.btnCadCliente.Name = "btnCadCliente";
 			this.btnCadCliente.SmallImageIndex = 10;
-			toolTipTitleItem5.Text = "Dica";
-			toolTipItem5.LeftIndent = 6;
-			toolTipItem5.Text = "Cadastro de Clientes";
-			superToolTip5.Items.Add(toolTipTitleItem5);
-			superToolTip5.Items.Add(toolTipItem5);
-			this.btnCadCliente.SuperTip = superToolTip5;
+			toolTipTitleItem2.Text = "Dica";
+			toolTipItem2.LeftIndent = 6;
+			toolTipItem2.Text = "Cadastro de Clientes";
+			superToolTip2.Items.Add(toolTipTitleItem2);
+			superToolTip2.Items.Add(toolTipItem2);
+			this.btnCadCliente.SuperTip = superToolTip2;
 			this.btnCadCliente.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnCadCliente_LinkClicked);
 			// 
 			// btnOrcamentos
@@ -1108,16 +1119,6 @@
 			this.colVlrOriginal.Visible = true;
 			this.colVlrOriginal.VisibleIndex = 5;
 			this.colVlrOriginal.Width = 142;
-			// 
-			// btnQtdContingencia
-			// 
-			this.btnQtdContingencia.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-			this.btnQtdContingencia.Caption = "Notas em Contingência: <b>0</b>";
-			this.btnQtdContingencia.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-			this.btnQtdContingencia.Id = 90;
-			this.btnQtdContingencia.Name = "btnQtdContingencia";
-			this.btnQtdContingencia.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-			this.btnQtdContingencia.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnQtdContingencia_ItemClick);
 			// 
 			// frmPrincipal
 			// 

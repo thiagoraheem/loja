@@ -50,6 +50,7 @@
 			this.colCliente = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colFlgStatusNFE = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+			this.cmbStatusNFE = new DevExpress.XtraEditors.ComboBoxEdit();
 			this.btnImprimirResumo = new DevExpress.XtraEditors.SimpleButton();
 			this.btnReimprimir = new DevExpress.XtraEditors.SimpleButton();
 			this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -62,7 +63,6 @@
 			this.btnRetornar = new DevExpress.XtraEditors.SimpleButton();
 			this.tbl_SaidaTableAdapter1 = new Loja.relVendasTableAdapters.tbl_SaidaTableAdapter();
 			this.tbl_SaidaItensTableAdapter1 = new Loja.relVendasTableAdapters.tbl_SaidaItensTableAdapter();
-			this.cmbStatusNFE = new DevExpress.XtraEditors.ComboBoxEdit();
 			((System.ComponentModel.ISupportInitialize)(this.grdItens)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.grdDados)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.relVendasBindingSource)).BeginInit();
@@ -70,11 +70,11 @@
 			((System.ComponentModel.ISupportInitialize)(this.gridDados)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
 			this.groupControl1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.cmbStatusNFE.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtDatFim.Properties.CalendarTimeProperties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtDatFim.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtDatInicio.Properties.CalendarTimeProperties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtDatInicio.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.cmbStatusNFE.Properties)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// grdItens
@@ -289,6 +289,20 @@
 			this.groupControl1.TabIndex = 0;
 			this.groupControl1.Text = "Opções e Filtros";
 			// 
+			// cmbStatusNFE
+			// 
+			this.cmbStatusNFE.Location = new System.Drawing.Point(243, 43);
+			this.cmbStatusNFE.Name = "cmbStatusNFE";
+			this.cmbStatusNFE.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+			this.cmbStatusNFE.Properties.Items.AddRange(new object[] {
+            "E - Emitida",
+            "A - Aprovada",
+            "C - Contingência",
+            "X - Cancelada"});
+			this.cmbStatusNFE.Size = new System.Drawing.Size(168, 20);
+			this.cmbStatusNFE.TabIndex = 14;
+			// 
 			// btnImprimirResumo
 			// 
 			this.btnImprimirResumo.Location = new System.Drawing.Point(119, 69);
@@ -396,20 +410,6 @@
 			// 
 			this.tbl_SaidaItensTableAdapter1.ClearBeforeFill = true;
 			// 
-			// cmbStatusNFE
-			// 
-			this.cmbStatusNFE.Location = new System.Drawing.Point(243, 43);
-			this.cmbStatusNFE.Name = "cmbStatusNFE";
-			this.cmbStatusNFE.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-			this.cmbStatusNFE.Properties.Items.AddRange(new object[] {
-            "E - Emitida",
-            "A - Aprovada",
-            "C - Contingência",
-            "X - Cancelada"});
-			this.cmbStatusNFE.Size = new System.Drawing.Size(168, 20);
-			this.cmbStatusNFE.TabIndex = 14;
-			// 
 			// frmVendas
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -431,11 +431,11 @@
 			((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
 			this.groupControl1.ResumeLayout(false);
 			this.groupControl1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.cmbStatusNFE.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtDatFim.Properties.CalendarTimeProperties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtDatFim.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtDatInicio.Properties.CalendarTimeProperties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtDatInicio.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.cmbStatusNFE.Properties)).EndInit();
 			this.ResumeLayout(false);
 
 		}

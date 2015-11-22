@@ -397,6 +397,15 @@ namespace Loja.DAL.DAO
 
 			using (var banco = new LojaContext())
 			{
+				return banco.tbl_Cliente.Where(x => x.FlgStatus == true).ToList();
+			}
+		}
+
+		public static List<tbl_Cliente> ObterClientesFull()
+		{
+
+			using (var banco = new LojaContext())
+			{
 				return banco.tbl_Cliente.ToList();
 			}
 		}

@@ -150,7 +150,7 @@ namespace Loja
 		}
 
 		public static void MsgBox(String msg) {
-			DevExpress.XtraEditors.XtraMessageBox.Show(msg);
+			DevExpress.XtraEditors.XtraMessageBox.Show(msg, DevExpress.Utils.DefaultBoolean.True);
 		}
 
 		public static void MsgBox2(String msg)

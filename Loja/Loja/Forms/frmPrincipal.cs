@@ -30,6 +30,7 @@ namespace Loja
 		Thread t = null;
 		Thread c = null;
 		int contAviso = 0;
+		private int QtdContingencia = 0;
 
 		#endregion
 
@@ -100,58 +101,19 @@ namespace Loja
 			while (true)
 			{
 
-				var retorno = Util.PingHost("www.google.com.br");
-
-				chkInternet.Checked = retorno;
-
-				if (!retorno)
+				if (VerificaInternet())
 				{
-					chkInternet.ItemAppearance.Normal.BackColor = System.Drawing.Color.Red;
-					chkInternet.ItemAppearance.Normal.ForeColor = System.Drawing.Color.White;
-
-					chkStatusSefaz.Checked = retorno;
-					chkStatusSefaz.ItemAppearance.Normal.BackColor = System.Drawing.Color.Red;
-					chkStatusSefaz.ItemAppearance.Normal.ForeColor = System.Drawing.Color.White;
-
-					if (contAviso == 0)
+					if (VerificaSefaz())
 					{
-						Util.MsgBox("ATENÇÃO! Internet indisponível");
-						contAviso++;
-					}
-				}
-				else
-				{
-					chkInternet.ItemAppearance.Normal.Options.UseBackColor = false;
-					chkInternet.ItemAppearance.Normal.Options.UseForeColor = false;
+						ModoContingencia(false);
 
-					if (contAviso > 0)
-					{
-						contAviso = 0;
-					}
-
-					var retornoS = NFe.Wsdl.Monitor.StatusServico();
-
-					chkStatusSefaz.Checked = retornoS.Status;
-
-					if (!retornoS.Status)
-					{
-						chkStatusSefaz.ItemAppearance.Normal.BackColor = System.Drawing.Color.Red;
-						chkStatusSefaz.ItemAppearance.Normal.ForeColor = System.Drawing.Color.White;
-
-						if (contAviso == 0)
+						if (QtdContingencia > 0)
 						{
-							Util.MsgBox("Serviço SEFAZ indisponível ou internet fora do ar");
-							contAviso++;
+							var cont = new Modules.NFCE(_configuracoes, null);
+							cont.EnviarContingencia();
+							Util.MsgBox(String.Format("Havia{0} {1} nota{2} em contingência que foram enviadas após cessarem os problemas de conexão!", QtdContingencia > 1 ? "m" : "", QtdContingencia, QtdContingencia > 1 ? "s" : ""));
 						}
-					}
-					else
-					{
-						chkStatusSefaz.ItemAppearance.Normal.Options.UseBackColor = false;
-						chkStatusSefaz.ItemAppearance.Normal.Options.UseForeColor = false;
-						if (contAviso > 0)
-						{
-							contAviso = 0;
-						}
+
 					}
 				}
 				Thread.Sleep(10000);
@@ -160,18 +122,100 @@ namespace Loja
 
 		}
 
+		private bool VerificaInternet()
+		{
+
+			var retorno = Util.PingHost("www.google.com.br");
+
+			chkInternet.Checked = retorno;
+
+			if (!retorno)
+			{
+				chkInternet.ItemAppearance.Normal.BackColor = System.Drawing.Color.Red;
+				chkInternet.ItemAppearance.Normal.ForeColor = System.Drawing.Color.White;
+
+				chkStatusSefaz.Checked = retorno;
+
+				if (contAviso == 0)
+				{
+					Util.MsgBox("ATENÇÃO! Internet indisponível, <b>entrando em modo de contingência</b>");
+					ModoContingencia(true);
+					contAviso++;
+				}
+			}
+			else
+			{
+				chkInternet.ItemAppearance.Normal.Options.UseBackColor = false;
+				chkInternet.ItemAppearance.Normal.Options.UseForeColor = false;
+
+				if (contAviso > 0)
+				{
+					contAviso = 0;
+				}
+			}
+
+			return retorno;
+		}
+
+		private bool VerificaSefaz()
+		{
+			var retornoS = NFe.Wsdl.Monitor.StatusServico();
+
+			chkStatusSefaz.Checked = retornoS.Status;
+
+			if (!retornoS.Status)
+			{
+				chkStatusSefaz.ItemAppearance.Normal.BackColor = System.Drawing.Color.Red;
+				chkStatusSefaz.ItemAppearance.Normal.ForeColor = System.Drawing.Color.White;
+
+				if (contAviso == 0)
+				{
+					Util.MsgBox("Serviço SEFAZ indisponível ou internet fora do ar, <b>entrando em modo de contingência</b>");
+					ModoContingencia(true);
+					contAviso++;
+				}
+			}
+			else
+			{
+				chkStatusSefaz.ItemAppearance.Normal.Options.UseBackColor = false;
+				chkStatusSefaz.ItemAppearance.Normal.Options.UseForeColor = false;
+
+				if (contAviso > 0)
+				{
+					contAviso = 0;
+				}
+			}
+
+			return retornoS.Status;
+		}
+
 		void VerificaContingencia()
 		{
 			while (true)
 			{
 
-				var qtde = Consultas.ObterQtdContingencia();
-				btnQtdContingencia.Caption = String.Format("Notas em Contingência: <b>{0}</b>", qtde.ToString() ?? "0");
+				QtdContingencia = Consultas.ObterQtdContingencia();
+				btnQtdContingencia.Caption = String.Format("Notas em Contingência: <b>{0}</b>", QtdContingencia.ToString() ?? "0");
 
 				Thread.Sleep(25000);
 
 			}
 		}
+
+		void ModoContingencia(bool tipo)
+		{
+			if (tipo)
+			{
+				btnContingencia.Checked = true;
+				_configuracoes.CfgServico.tpEmis = NFe.Classes.Informacoes.Identificacao.Tipos.TipoEmissao.teOffLine;
+			}
+			else
+			{
+				btnContingencia.Checked = false;
+				_configuracoes.CfgServico.tpEmis = NFe.Classes.Informacoes.Identificacao.Tipos.TipoEmissao.teNormal;
+			}
+		}
+
 
 		private void CarregarConfiguracao()
 		{
