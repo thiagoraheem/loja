@@ -62,6 +62,7 @@ namespace Loja.DAL.Models.Mapping
 			this.Property(t => t.Pais).HasColumnName("Pais");
 			this.Property(t => t.Email).HasColumnName("Email");
 			this.Property(t => t.CEP).HasColumnName("CEP");
+			this.Property(t => t.FlgStatus).HasColumnName("FlgStatus");
 		}
 	}
 }

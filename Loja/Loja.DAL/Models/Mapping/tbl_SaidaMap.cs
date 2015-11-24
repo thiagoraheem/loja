@@ -13,18 +13,18 @@ namespace Loja.DAL.Models.Mapping
 			// Properties
 			this.Property(t => t.CodVenda)
 				.IsRequired()
-				.HasMaxLength(10);
+                .HasMaxLength(10);
 
 			this.Property(t => t.FlgStatusNFE)
 				.IsFixedLength()
-				.HasMaxLength(10);
+                .HasMaxLength(10);
 
 			this.Property(t => t.ChaveSefaz)
 				.HasMaxLength(50);
 
 			this.Property(t => t.FlgStatusNota)
 				.IsFixedLength()
-				.HasMaxLength(1);
+                .HasMaxLength(1);
 
 			// Table & Column Mappings
 			this.ToTable("tbl_Saida");
