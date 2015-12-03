@@ -288,6 +288,27 @@ namespace Loja.DAL.DAO
 
 		}
 
+		public static void CancelarVenda(string codVenda)
+		{
+
+			using (var banco = new LojaContext())
+			{
+				var registro = banco.tbl_Saida.FirstOrDefault(x => x.CodVenda == codVenda);
+				var itens = banco.tbl_SaidaItens.Where(x => x.CodVenda == codVenda).ToList();
+
+				// voltar a quantidade de estoque para antes da venda
+				foreach (var item in itens)
+				{
+					AlterarEstoque(item.codigounico, (item.Quantidade * -1));
+				}
+				
+				registro.FlgStatusNFE = "X";
+
+				banco.SaveChanges();
+
+			}
+
+		}
 
 		#endregion
 
@@ -349,6 +370,48 @@ namespace Loja.DAL.DAO
 					}
 
 					banco.SaveChanges();
+
+					return registro.codigounico;
+				}
+			}
+			catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+			{
+				Exception raise = dbEx;
+				foreach (var validationErrors in dbEx.EntityValidationErrors)
+				{
+					foreach (var validationError in validationErrors.ValidationErrors)
+					{
+						string message = string.Format("{0}:{1}",
+							validationErrors.Entry.Entity.ToString(),
+							validationError.ErrorMessage);
+						// raise a new exception nesting
+						// the current instance as InnerException
+						raise = new InvalidOperationException(message, raise);
+					}
+				}
+				throw raise;
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(ex.InnerException != null ? ex.InnerException.Message : ex.Message);
+			}
+		}
+
+		public static int AlterarEstoque(int codigounico, int qtdEstoque)
+		{
+			try
+			{
+
+				using (var banco = new LojaContext())
+				{
+					var registro = banco.tbl_Produtos.FirstOrDefault(s => s.codigounico == codigounico);
+
+					if (registro != null)
+					{
+						registro.QtdProduto += qtdEstoque;
+					
+						banco.SaveChanges();
+					}
 
 					return registro.codigounico;
 				}

@@ -50,6 +50,7 @@
 			this.colCliente = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colFlgStatusNFE = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+			this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
 			this.cmbStatusNFE = new DevExpress.XtraEditors.ComboBoxEdit();
 			this.btnImprimirResumo = new DevExpress.XtraEditors.SimpleButton();
 			this.btnReimprimir = new DevExpress.XtraEditors.SimpleButton();
@@ -272,6 +273,7 @@
 			// 
 			this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupControl1.Controls.Add(this.btnCancelar);
 			this.groupControl1.Controls.Add(this.cmbStatusNFE);
 			this.groupControl1.Controls.Add(this.btnImprimirResumo);
 			this.groupControl1.Controls.Add(this.btnReimprimir);
@@ -288,6 +290,17 @@
 			this.groupControl1.Size = new System.Drawing.Size(666, 125);
 			this.groupControl1.TabIndex = 0;
 			this.groupControl1.Text = "Opções e Filtros";
+			// 
+			// btnCancelar
+			// 
+			this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnCancelar.Enabled = false;
+			this.btnCancelar.Location = new System.Drawing.Point(505, 69);
+			this.btnCancelar.Name = "btnCancelar";
+			this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+			this.btnCancelar.TabIndex = 15;
+			this.btnCancelar.Text = "Cancelar &NFE";
+			this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
 			// 
 			// cmbStatusNFE
 			// 
@@ -475,5 +488,6 @@
 		private DevExpress.XtraEditors.SimpleButton btnImprimirResumo;
 		private DevExpress.XtraGrid.Columns.GridColumn colFlgStatusNFE;
 		private DevExpress.XtraEditors.ComboBoxEdit cmbStatusNFE;
+		private DevExpress.XtraEditors.SimpleButton btnCancelar;
 	}
 }
