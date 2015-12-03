@@ -70,17 +70,69 @@ namespace Loja
 		{
 			if (relVendas.tbl_Saida.Any())
 			{
+				string codvenda = FU_PegaCodigoVenda();
+				int cvenda;
+
+				if (int.TryParse(codvenda, out cvenda))
+				{
+					Util.MsgBox("Venda é NFE e não pode ser estornada.");
+					return;
+				}
 
 				if (MessageBox.Show("Confirma estornar essa venda?", "Confirmar exclusão", MessageBoxButtons.YesNo) == DialogResult.No)
 					return;
-				
-				string codvenda = FU_PegaCodigoVenda();
+			
 
 				Cadastros.EstornaVenda(codvenda, "", false);
 
 
-				MessageBox.Show("Item estornado com sucesso");
+				MessageBox.Show("Venda estornada com sucesso");
 
+
+				SU_CarregaVendas();
+			}
+		}
+
+		private void btnCancelar_Click(object sender, EventArgs e)
+		{
+			if (relVendas.tbl_Saida.Any())
+			{
+				string codvenda = FU_PegaCodigoVenda();
+				int cvenda;
+
+				if (!int.TryParse(codvenda, out cvenda))
+				{
+					Util.MsgBox("Venda não é NFE para ser cancelada.");
+					return;
+				}
+
+				var saida = Consultas.ObterVenda(codvenda);
+
+				if (saida.FlgStatusNFE == "X")
+				{
+					Util.MsgBox("NFE já cancelada.");
+					return;
+				}
+
+				if (DateTime.Now.Subtract(saida.Data).Days > 1)
+				{
+					Util.MsgBox("NFE emitida há mais de 24 horas, não é permitido fazer o cancelamento da mesma");
+					return;
+				}
+
+				if (MessageBox.Show("Confirma cancelar essa NFE?", "Confirmar exclusão", MessageBoxButtons.YesNo) == DialogResult.No)
+					return;
+
+				var retorno = NFe.Wsdl.Monitor.CancelarNFE(saida.ChaveSefaz, "Erro na emissão da nota", "", "");
+
+				if (retorno.Status == true) { 
+					Cadastros.CancelarVenda(codvenda);
+					Util.MsgBox("NFCe- cancelada com sucesso");
+				}
+				else
+				{
+					Util.MsgBox(retorno.Resultado);
+				}
 
 				SU_CarregaVendas();
 			}
@@ -153,10 +205,12 @@ namespace Loja
 			if (relVendas.tbl_Saida.Any())
 			{
 				btnEstornar.Enabled = true;
+				btnCancelar.Enabled = true;
 			}
 			else
 			{
 				btnEstornar.Enabled = false;
+				btnCancelar.Enabled = false;
 			}
 
 		}
@@ -172,10 +226,12 @@ namespace Loja
 			if (relVendas.tbl_Saida.Any())
 			{
 				btnEstornar.Enabled = true;
+				btnCancelar.Enabled = true;
 			}
 			else
 			{
 				btnEstornar.Enabled = false;
+				btnCancelar.Enabled = false;
 			}
 
 		}
@@ -201,6 +257,8 @@ namespace Loja
 		}
 
 		#endregion
+
+
 		
 	}
 }

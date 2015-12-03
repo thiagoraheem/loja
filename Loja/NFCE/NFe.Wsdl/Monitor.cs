@@ -219,6 +219,25 @@ namespace NFe.Wsdl
 
 		}
 
+		/// <summary>
+		/// Cancela um NFe já autorizada.
+		/// </summary>
+		/// <param name="cChaveNFe"">Número da Chave da NFE gerada</param>
+		/// <param name="cJustificativa">Justificativa para o cancelamento[OBRIGATÓRIO]</param>
+		/// <param name="cCNPJ">CNPJ emitente</param>
+		/// <param name="nEvento"></param>
+		/// <returns></returns>
+		public static RetornoComando CancelarNFE(string cChaveNFe, string cJustificativa,string cCNPJ, string nEvento)
+		{
+
+			var comando = String.Format("NFE.CANCELARNFE(\"{0}\", \"{1}\", \"{2}\", \"{3}\")", cChaveNFe, cJustificativa, cCNPJ, nEvento);
+
+			var retorno = ComandoACBR(comando);
+
+			return new RetornoComando(retorno);
+
+		}
+
 	}
 
 	public class RetornoComando
