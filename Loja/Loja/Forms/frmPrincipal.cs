@@ -30,6 +30,7 @@ namespace Loja
 		Thread t = null;
 		Thread c = null;
 		int contAviso = 0;
+		int contAvisoInt = 0;
 		private int QtdContingencia = 0;
 
 		#endregion
@@ -136,11 +137,11 @@ namespace Loja
 
 				chkStatusSefaz.Checked = retorno;
 
-				if (contAviso == 0)
+				if (contAvisoInt == 0)
 				{
 					Util.MsgBox("ATENÇÃO! Internet indisponível, <b>entrando em modo de contingência</b>");
 					ModoContingencia(true);
-					contAviso++;
+					contAvisoInt++;
 				}
 			}
 			else
@@ -148,9 +149,9 @@ namespace Loja
 				chkInternet.ItemAppearance.Normal.Options.UseBackColor = false;
 				chkInternet.ItemAppearance.Normal.Options.UseForeColor = false;
 
-				if (contAviso > 0)
+				if (contAvisoInt > 0)
 				{
-					contAviso = 0;
+					contAvisoInt = 0;
 				}
 			}
 

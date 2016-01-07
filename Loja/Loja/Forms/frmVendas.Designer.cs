@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+			DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
 			this.grdItens = new DevExpress.XtraGrid.Views.Grid.GridView();
 			this.colCodProduto = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colCodigoProduto = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -64,6 +64,7 @@
 			this.btnRetornar = new DevExpress.XtraEditors.SimpleButton();
 			this.tbl_SaidaTableAdapter1 = new Loja.relVendasTableAdapters.tbl_SaidaTableAdapter();
 			this.tbl_SaidaItensTableAdapter1 = new Loja.relVendasTableAdapters.tbl_SaidaItensTableAdapter();
+			this.btnExcluir = new DevExpress.XtraEditors.SimpleButton();
 			((System.ComponentModel.ISupportInitialize)(this.grdItens)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.grdDados)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.relVendasBindingSource)).BeginInit();
@@ -168,10 +169,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.grdDados.DataMember = "tbl_Saida";
 			this.grdDados.DataSource = this.relVendasBindingSource;
-			gridLevelNode2.LevelTemplate = this.grdItens;
-			gridLevelNode2.RelationName = "FK_tbl_SaidaItens_tbl_Saida";
+			gridLevelNode1.LevelTemplate = this.grdItens;
+			gridLevelNode1.RelationName = "FK_tbl_SaidaItens_tbl_Saida";
 			this.grdDados.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
 			this.grdDados.Location = new System.Drawing.Point(12, 12);
 			this.grdDados.MainView = this.gridDados;
 			this.grdDados.Name = "grdDados";
@@ -273,6 +274,7 @@
 			// 
 			this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupControl1.Controls.Add(this.btnExcluir);
 			this.groupControl1.Controls.Add(this.btnCancelar);
 			this.groupControl1.Controls.Add(this.cmbStatusNFE);
 			this.groupControl1.Controls.Add(this.btnImprimirResumo);
@@ -423,6 +425,17 @@
 			// 
 			this.tbl_SaidaItensTableAdapter1.ClearBeforeFill = true;
 			// 
+			// btnExcluir
+			// 
+			this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnExcluir.Enabled = false;
+			this.btnExcluir.Location = new System.Drawing.Point(424, 69);
+			this.btnExcluir.Name = "btnExcluir";
+			this.btnExcluir.Size = new System.Drawing.Size(75, 23);
+			this.btnExcluir.TabIndex = 16;
+			this.btnExcluir.Text = "E&xcluir";
+			this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+			// 
 			// frmVendas
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -489,5 +502,6 @@
 		private DevExpress.XtraGrid.Columns.GridColumn colFlgStatusNFE;
 		private DevExpress.XtraEditors.ComboBoxEdit cmbStatusNFE;
 		private DevExpress.XtraEditors.SimpleButton btnCancelar;
+		private DevExpress.XtraEditors.SimpleButton btnExcluir;
 	}
 }

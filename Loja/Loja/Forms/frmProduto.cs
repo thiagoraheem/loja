@@ -162,6 +162,7 @@ namespace Loja
 
 		private void btnImagem_Click(object sender, EventArgs e)
 		{
+
 			imgFoto.LoadImage();
 			
 			//produto.Imagem = imgFoto.Image;

@@ -553,7 +553,7 @@ namespace Loja.Modules
 			var p = new prod
 			{
 				cEAN = "",
-				cProd = i.ToString().PadLeft(5, '0'),
+				cProd = item.CodProduto, //i.ToString().PadLeft(5, '0'),
 				xProd = item.tbl_Produtos.DesProduto,
 				NCM = item.tbl_Produtos.NCM ?? "99999999",
 				CFOP = 5405,

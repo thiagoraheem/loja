@@ -1136,7 +1136,7 @@
 			this.Name = "frmPrincipal";
 			this.Ribbon = this.ribbonControl;
 			this.StatusBar = this.ribbonStatusBar;
-			this.Text = "Sistema para controle de Loja - v1.0.3";
+			this.Text = "Sistema para controle de Loja - v1.0.4";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmPrincipal_KeyDown);
 			((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
