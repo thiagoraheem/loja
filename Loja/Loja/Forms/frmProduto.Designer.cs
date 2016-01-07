@@ -87,7 +87,7 @@
 			this.txtDesProduto.Name = "txtDesProduto";
 			this.txtDesProduto.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtDesProduto.Properties.Appearance.Options.UseFont = true;
-			this.txtDesProduto.Properties.MaxLength = 30;
+			this.txtDesProduto.Properties.MaxLength = 60;
 			this.txtDesProduto.Properties.ScrollBars = System.Windows.Forms.ScrollBars.None;
 			this.txtDesProduto.Size = new System.Drawing.Size(282, 58);
 			this.txtDesProduto.TabIndex = 1;

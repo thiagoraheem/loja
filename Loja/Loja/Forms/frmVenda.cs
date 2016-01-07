@@ -259,7 +259,14 @@ namespace Loja
 			{
 				var cpf = clientes.FirstOrDefault(x => x.CodCliente == (int)cmbCliente.EditValue);
 
-				txtNumCPF.Text = cpf.NumCPF ?? cpf.NumCNPJ;
+				if (!String.IsNullOrEmpty(cpf.NumCPF)) 
+				{
+					txtNumCPF.Text = cpf.NumCPF;
+				}
+				else
+				{
+					txtNumCPF.Text = cpf.NumCNPJ;
+				}
 				txtNome.Text = cmbCliente.Text;
 			}
 		}

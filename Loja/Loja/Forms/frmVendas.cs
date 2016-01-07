@@ -108,7 +108,7 @@ namespace Loja
 
 				var saida = Consultas.ObterVenda(codvenda);
 
-				if (saida.FlgStatusNFE == "X")
+				if (saida.FlgStatusNFE.Trim() == "X")
 				{
 					Util.MsgBox("NFE já cancelada.");
 					return;
@@ -123,11 +123,11 @@ namespace Loja
 				if (MessageBox.Show("Confirma cancelar essa NFE?", "Confirmar exclusão", MessageBoxButtons.YesNo) == DialogResult.No)
 					return;
 
-				var retorno = NFe.Wsdl.Monitor.CancelarNFE(saida.ChaveSefaz, "Erro na emissão da nota", "", "");
+				var retorno = NFe.Wsdl.Monitor.CancelarNFE(saida.ChaveSefaz.Replace("NFe", ""), "Erro na emissao da nota", Util.SemFormatacao(Properties.Settings.Default.CNPJ), saida.CodVenda);
 
 				if (retorno.Status == true) { 
 					Cadastros.CancelarVenda(codvenda);
-					Util.MsgBox("NFCe- cancelada com sucesso");
+					Util.MsgBox("NFC-e cancelada com sucesso");
 				}
 				else
 				{
@@ -180,6 +180,40 @@ namespace Loja
 			}
 		}
 
+		private void btnExcluir_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				if (relVendas.tbl_Saida.Any())
+				{
+					string codvenda = FU_PegaCodigoVenda();
+					int cvenda;
+
+					if (int.TryParse(codvenda, out cvenda))
+					{
+						Util.MsgBox("Venda é NFE e não pode ser excluída.");
+						return;
+					}
+
+					if (MessageBox.Show("Confirma cancelar essa Venda?", "Confirmar exclusão", MessageBoxButtons.YesNo) == DialogResult.No)
+						return;
+
+					Cadastros.ExcluirVenda(codvenda);
+
+					Util.MsgBox("Venda excluída com sucesso");
+
+
+					SU_CarregaVendas();
+				}
+			}
+			catch (Exception ex)
+			{
+				Util.MsgBox("Erro ao excluir nota: " + ex.Message);
+				return;
+			}
+
+		}
+
 		#endregion
 
 		#region Funções
@@ -206,11 +240,13 @@ namespace Loja
 			{
 				btnEstornar.Enabled = true;
 				btnCancelar.Enabled = true;
+				btnExcluir.Enabled = true;
 			}
 			else
 			{
 				btnEstornar.Enabled = false;
 				btnCancelar.Enabled = false;
+				btnExcluir.Enabled = false;
 			}
 
 		}
@@ -227,11 +263,13 @@ namespace Loja
 			{
 				btnEstornar.Enabled = true;
 				btnCancelar.Enabled = true;
+				btnExcluir.Enabled = true;
 			}
 			else
 			{
 				btnEstornar.Enabled = false;
 				btnCancelar.Enabled = false;
+				btnExcluir.Enabled = false;
 			}
 
 		}
@@ -259,6 +297,5 @@ namespace Loja
 		#endregion
 
 
-		
 	}
 }

@@ -234,7 +234,20 @@ namespace NFe.Wsdl
 
 			var retorno = ComandoACBR(comando);
 
-			return new RetornoComando(retorno);
+			var retornoComando = new RetornoComando(retorno);
+
+			if (retornoComando.Status)
+			{
+
+				if (retornoComando.Resultado.Contains("Rejeicao"))
+				{
+					retornoComando.Resultado = retornoComando.Resultado.Replace("OK", "REJEICAO");
+
+				}
+
+			}
+
+			return retornoComando;
 
 		}
 
