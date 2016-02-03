@@ -122,7 +122,7 @@ namespace Loja
 				prod.VlrPercent = produto.VlrPercent;
 				prod.NCM = produto.NCM;
 				prod.VlrICMSST = produto.VlrICMSST;
-				prod.DatCadastro = produto.DatCadastro;
+				prod.DatCadastro = produto.DatCadastro ?? DateTime.Now.ToShortDateString();
 				prod.DesFaz = produto.DesFaz;
 				prod.Imagem = produto.Imagem;
 
