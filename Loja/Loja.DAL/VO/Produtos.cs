@@ -37,13 +37,20 @@ namespace Loja.DAL.VO
 			get { return this._datCadastro; }
 			set
 			{
-				if (value.Length > 10)
+				if (value != null && value.Length > 10)
 				{
 					this._datCadastro = value;
 				}
 				else
 				{ 
-					this._datCadastro = value.Substring(0,10);
+					if(value != null)
+					{ 
+						this._datCadastro = value.Substring(0,10);
+					}
+					else
+					{
+						this._datCadastro = DateTime.Now.ToShortDateString();
+					}
 				}
 				NotifyPropertyChanged("DatCadastro");
 			}
