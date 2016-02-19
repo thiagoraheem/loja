@@ -171,22 +171,24 @@ namespace Loja
 
 			Bitmap bitmap = new Bitmap(diagAbrir.FileName);
 			*/
-			byte[] photo_aray = null;
+			if (imgFoto.Image != null) { 
 
-			/*if (bitmap != null)
-			{
-			*/
-				MemoryStream ms = new MemoryStream();
+				byte[] photo_aray = null;
+
+				/*if (bitmap != null)
+				{
+				*/
+					MemoryStream ms = new MemoryStream();
 				
-				imgFoto.Image.Save(ms, ImageFormat.Jpeg);
-				photo_aray = new byte[ms.Length];
-				ms.Position = 0;
-				ms.Read(photo_aray, 0, photo_aray.Length);
-			//}3 
+					imgFoto.Image.Save(ms, ImageFormat.Jpeg);
+					photo_aray = new byte[ms.Length];
+					ms.Position = 0;
+					ms.Read(photo_aray, 0, photo_aray.Length);
+				//}3 
 
-			produto.Imagem = photo_aray;
+				produto.Imagem = photo_aray;
 
-
+			}
 		}
 
 		#endregion
