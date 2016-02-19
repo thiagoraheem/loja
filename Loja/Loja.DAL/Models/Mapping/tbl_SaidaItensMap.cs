@@ -13,22 +13,22 @@ namespace Loja.DAL.Models.Mapping
 			// Properties
 			this.Property(t => t.CodVenda)
 				.IsRequired()
-                .HasMaxLength(10);
+				.HasMaxLength(10);
 
 			this.Property(t => t.codigounico)
 				.HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
 			this.Property(t => t.CodOrcamento)
 				.IsRequired()
-                .HasMaxLength(5);
+				.HasMaxLength(5);
 
 			this.Property(t => t.CodProduto)
 				.IsRequired()
-                .HasMaxLength(20);
+				.HasMaxLength(20);
 
 			this.Property(t => t.DesProduto)
 				.IsRequired()
-                .HasMaxLength(30);
+				.HasMaxLength(60);
 
 			// Table & Column Mappings
 			this.ToTable("tbl_SaidaItens");

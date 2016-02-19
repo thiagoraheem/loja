@@ -13,21 +13,21 @@ namespace Loja.DAL.Models.Mapping
 			// Properties
 			this.Property(t => t.CodOrca)
 				.IsRequired()
-                .HasMaxLength(5);
+				.HasMaxLength(5);
 
 			this.Property(t => t.CodProduto)
 				.IsRequired()
-                .HasMaxLength(20);
+				.HasMaxLength(20);
 
 			this.Property(t => t.DescProduto)
-				.HasMaxLength(30);
+				.HasMaxLength(60);
 
 			this.Property(t => t.DesLocal)
 				.HasMaxLength(4);
 
 			this.Property(t => t.FlgStatus)
 				.IsFixedLength()
-                .HasMaxLength(1);
+				.HasMaxLength(1);
 
 			this.Property(t => t.codigounico)
 				.HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
