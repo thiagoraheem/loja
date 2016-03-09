@@ -49,13 +49,13 @@ namespace Loja
 
 			gridOrcamento.DataSource = orcamento;
 
+			CarregarConfiguracao();
+
 			t = new Thread(VerificaStatus) { IsBackground = true };
 			t.Start();
 
 			c = new Thread(VerificaContingencia) { IsBackground = true };
 			c.Start();
-
-			CarregarConfiguracao();
 
 		}
 
@@ -66,6 +66,7 @@ namespace Loja
 
 		private void frmPrincipal_KeyDown(object sender, KeyEventArgs e)
 		{
+			#region Sair
 			if (e.KeyCode.Equals(Keys.Escape))
 			{
 				if (!gridViewProduto.ActiveFilter.IsEmpty)
@@ -84,12 +85,22 @@ namespace Loja
 					InitComboOrca();
 				}
 			}
+			#endregion
+			#region Ir para pesquisa
 			else if (e.KeyCode.Equals(Keys.F2))
 			{
 				gridViewProduto.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle;
 				gridViewProduto.FocusedColumn = colDesProduto;
 				gridViewProduto.ShowEditor();
 			}
+			#endregion
+			#region Abrir destaque orçamento
+			else if (e.KeyCode.Equals(Keys.F9))
+			{
+				AbrirDetalheOrca();
+
+			}
+			#endregion
 		}
 
 		#endregion
@@ -290,6 +301,7 @@ namespace Loja
 				btnImprimir.Enabled = false;
 				btnFinalizarVenda.Enabled = false;
 				btnExcluirOrca.Enabled = false;
+				btnAbrirOrca.Enabled = false;
 				txtQtdItem.EditValue = "";
 				gridOrcamento.DataSource = null;
 				return;
@@ -312,6 +324,7 @@ namespace Loja
 				btnFinalizarVenda.Enabled = true;
 				btnImprimir.Enabled = true;
 				btnExcluirOrca.Enabled = true;
+				btnAbrirOrca.Enabled = true;
 
 				wait.Close();
 			}
@@ -377,7 +390,7 @@ namespace Loja
 			return codigo;
 		}
 
-		void SU_FinalizarVenda()
+		public void SU_FinalizarVenda()
 		{
 
 			if (chkStatusSefaz.Checked == false && btnContingencia.Checked == false)
@@ -427,6 +440,17 @@ namespace Loja
 				return "";
 			}
 		}
+
+		void AbrirDetalheOrca() {
+
+			if (cmbCodOrca.EditValue != null && cmbCodOrca.EditValue.ToString() != "")
+			{
+				var frmOrca = new Loja.Forms.frmOrcamento(cmbCodOrca.EditValue.ToString(), orcamento, this);
+
+				frmOrca.ShowDialog();
+			}
+		}
+
 		#endregion
 
 		#region Botões RibbonBar
@@ -806,6 +830,11 @@ namespace Loja
 		{
 			var f = new frmClientes();
 			f.ShowDialog();
+		}
+
+		private void btnAbrirOrca_ItemClick(object sender, ItemClickEventArgs e)
+		{
+			AbrirDetalheOrca();
 		}
 
 	}
