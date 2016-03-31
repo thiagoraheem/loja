@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsOrcamento" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Data Source=(local);Initial Catalog=Loja;Integrated Security=True" IsAppSettingsProperty="false" Modifier="Assembly" Name="Connection" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="LojaConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="LojaConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Loja.Properties.Settings.GlobalReference.Default.LojaConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tbl_OrcamentoAdapter" GeneratorDataComponentClassName="tbl_OrcamentoAdapter" Name="tbl_Orcamento" UserDataComponentName="tbl_OrcamentoAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="LojaConnectionString (Settings)" DbObjectName="Loja.dbo.tbl_Orcamento" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT CodOrca, CodProduto, DescProduto, Quantidade, VlrUnitario, VlrCusto, DesLocal, PF, FlgStatus, DatOrca FROM dbo.tbl_Orcamento</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CodOrca" DataSetColumn="CodOrca" />
+              <Mapping SourceColumn="CodProduto" DataSetColumn="CodProduto" />
+              <Mapping SourceColumn="DescProduto" DataSetColumn="DescProduto" />
+              <Mapping SourceColumn="Quantidade" DataSetColumn="Quantidade" />
+              <Mapping SourceColumn="VlrUnitario" DataSetColumn="VlrUnitario" />
+              <Mapping SourceColumn="VlrCusto" DataSetColumn="VlrCusto" />
+              <Mapping SourceColumn="DesLocal" DataSetColumn="DesLocal" />
+              <Mapping SourceColumn="PF" DataSetColumn="PF" />
+              <Mapping SourceColumn="FlgStatus" DataSetColumn="FlgStatus" />
+              <Mapping SourceColumn="DatOrca" DataSetColumn="DatOrca" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsOrcamento" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsOrcamento" msprop:Generator_UserDSName="dsOrcamento">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tbl_Orcamento" msprop:Generator_TableClassName="tbl_OrcamentoDataTable" msprop:Generator_TableVarName="tabletbl_Orcamento" msprop:Generator_RowChangedName="tbl_OrcamentoRowChanged" msprop:Generator_TablePropName="tbl_Orcamento" msprop:Generator_RowDeletingName="tbl_OrcamentoRowDeleting" msprop:Generator_RowChangingName="tbl_OrcamentoRowChanging" msprop:Generator_RowEvHandlerName="tbl_OrcamentoRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_OrcamentoRowDeleted" msprop:Generator_RowClassName="tbl_OrcamentoRow" msprop:Generator_UserTableName="tbl_Orcamento" msprop:Generator_RowEvArgName="tbl_OrcamentoRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodOrca" msprop:Generator_ColumnVarNameInTable="columnCodOrca" msprop:Generator_ColumnPropNameInRow="CodOrca" msprop:Generator_ColumnPropNameInTable="CodOrcaColumn" msprop:Generator_UserColumnName="CodOrca">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CodProduto" msprop:Generator_ColumnVarNameInTable="columnCodProduto" msprop:Generator_ColumnPropNameInRow="CodProduto" msprop:Generator_ColumnPropNameInTable="CodProdutoColumn" msprop:Generator_UserColumnName="CodProduto">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DescProduto" msprop:Generator_ColumnVarNameInTable="columnDescProduto" msprop:Generator_ColumnPropNameInRow="DescProduto" msprop:Generator_ColumnPropNameInTable="DescProdutoColumn" msprop:Generator_UserColumnName="DescProduto" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Quantidade" msprop:Generator_ColumnVarNameInTable="columnQuantidade" msprop:Generator_ColumnPropNameInRow="Quantidade" msprop:Generator_ColumnPropNameInTable="QuantidadeColumn" msprop:Generator_UserColumnName="Quantidade" type="xs:double" minOccurs="0" />
+              <xs:element name="VlrUnitario" msprop:Generator_ColumnVarNameInTable="columnVlrUnitario" msprop:Generator_ColumnPropNameInRow="VlrUnitario" msprop:Generator_ColumnPropNameInTable="VlrUnitarioColumn" msprop:Generator_UserColumnName="VlrUnitario" type="xs:double" minOccurs="0" />
+              <xs:element name="VlrCusto" msprop:Generator_ColumnVarNameInTable="columnVlrCusto" msprop:Generator_ColumnPropNameInRow="VlrCusto" msprop:Generator_ColumnPropNameInTable="VlrCustoColumn" msprop:Generator_UserColumnName="VlrCusto" type="xs:double" minOccurs="0" />
+              <xs:element name="DesLocal" msprop:Generator_ColumnVarNameInTable="columnDesLocal" msprop:Generator_ColumnPropNameInRow="DesLocal" msprop:Generator_ColumnPropNameInTable="DesLocalColumn" msprop:Generator_UserColumnName="DesLocal" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PF" msprop:Generator_ColumnVarNameInTable="columnPF" msprop:Generator_ColumnPropNameInRow="PF" msprop:Generator_ColumnPropNameInTable="PFColumn" msprop:Generator_UserColumnName="PF" type="xs:double" minOccurs="0" />
+              <xs:element name="FlgStatus" msprop:Generator_ColumnVarNameInTable="columnFlgStatus" msprop:Generator_ColumnPropNameInRow="FlgStatus" msprop:Generator_ColumnPropNameInTable="FlgStatusColumn" msprop:Generator_UserColumnName="FlgStatus" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DatOrca" msprop:Generator_ColumnVarNameInTable="columnDatOrca" msprop:Generator_ColumnPropNameInRow="DatOrca" msprop:Generator_ColumnPropNameInTable="DatOrcaColumn" msprop:Generator_UserColumnName="DatOrca" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//tbl_Orcamento" />
+      <xs:field xpath="CodOrca" />
+      <xs:field xpath="CodProduto" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
