@@ -20,3 +20,14 @@ E:\Thiago\Documents\Personal\LOJA\Loja\Loja.DAL\bin\Release\EntityFramework.SqlS
 E:\Thiago\Documents\Personal\LOJA\Loja\Loja.DAL\obj\Release\Loja.DAL.csprojResolveAssemblyReference.cache
 E:\Thiago\Documents\Personal\LOJA\Loja\Loja.DAL\obj\Release\Loja.DAL.dll
 E:\Thiago\Documents\Personal\LOJA\Loja\Loja.DAL\obj\Release\Loja.DAL.pdb
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\bin\Release\Loja.DAL.dll.config
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\bin\Release\Loja.DAL.dll
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\bin\Release\Loja.DAL.pdb
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\bin\Release\CodeFirstStoreFunctions.dll
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\bin\Release\EntityFramework.dll
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\bin\Release\EntityFramework.SqlServer.dll
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\bin\Release\EntityFramework.xml
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\bin\Release\EntityFramework.SqlServer.xml
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\obj\Release\Loja.DAL.csprojResolveAssemblyReference.cache
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\obj\Release\Loja.DAL.dll
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\Loja.DAL\obj\Release\Loja.DAL.pdb
