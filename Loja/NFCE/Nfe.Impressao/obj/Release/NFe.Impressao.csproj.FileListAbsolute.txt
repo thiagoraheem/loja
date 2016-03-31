@@ -22,3 +22,15 @@ E:\Thiago\Documents\Personal\loja\Loja\NFCE\Nfe.Impressao\bin\Release\NFe.Classe
 E:\Thiago\Documents\Personal\loja\Loja\NFCE\Nfe.Impressao\bin\Release\NFe.Utils.dll
 E:\Thiago\Documents\Personal\loja\Loja\NFCE\Nfe.Impressao\bin\Release\NFe.Classes.pdb
 E:\Thiago\Documents\Personal\loja\Loja\NFCE\Nfe.Impressao\bin\Release\NFe.Utils.pdb
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\Nfe.Impressao\obj\Release\NFe.Impressao.csprojResolveAssemblyReference.cache
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\Nfe.Impressao\obj\Release\NFe.Impressao.g.resources
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\Nfe.Impressao\obj\Release\NFe.Impressao.Properties.Resources.resources
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\Nfe.Impressao\obj\Release\NFe.Impressao.csproj.GenerateResource.Cache
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\Nfe.Impressao\obj\Release\NFe.Impressao.dll
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\Nfe.Impressao\obj\Release\NFe.Impressao.pdb
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\Nfe.Impressao\bin\Release\NFe.Impressao.dll
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\Nfe.Impressao\bin\Release\NFe.Impressao.pdb
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\Nfe.Impressao\bin\Release\NFe.Classes.dll
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\Nfe.Impressao\bin\Release\NFe.Utils.dll
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\Nfe.Impressao\bin\Release\NFe.Classes.pdb
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\Nfe.Impressao\bin\Release\NFe.Utils.pdb

@@ -20,3 +20,14 @@ E:\Thiago\Documents\Personal\LOJA\Loja\NFCE\NFe.Servicos\bin\Release\NFe.Wsdl.pd
 E:\Thiago\Documents\Personal\LOJA\Loja\NFCE\NFe.Servicos\obj\Release\NFe.Servicos.csprojResolveAssemblyReference.cache
 E:\Thiago\Documents\Personal\LOJA\Loja\NFCE\NFe.Servicos\obj\Release\NFe.Servicos.dll
 E:\Thiago\Documents\Personal\LOJA\Loja\NFCE\NFe.Servicos\obj\Release\NFe.Servicos.pdb
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Servicos\bin\Release\NFe.Servicos.dll
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Servicos\bin\Release\NFe.Servicos.pdb
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Servicos\bin\Release\NFe.Classes.dll
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Servicos\bin\Release\NFe.Utils.dll
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Servicos\bin\Release\NFe.Wsdl.dll
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Servicos\bin\Release\NFe.Classes.pdb
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Servicos\bin\Release\NFe.Utils.pdb
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Servicos\bin\Release\NFe.Wsdl.pdb
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Servicos\obj\Release\NFe.Servicos.csprojResolveAssemblyReference.cache
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Servicos\obj\Release\NFe.Servicos.dll
+D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Servicos\obj\Release\NFe.Servicos.pdb
