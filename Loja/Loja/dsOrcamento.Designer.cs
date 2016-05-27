@@ -468,14 +468,6 @@ namespace Loja {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tbl_OrcamentoRow FindByCodOrcaCodProduto(string CodOrca, string CodProduto) {
-                return ((tbl_OrcamentoRow)(this.Rows.Find(new object[] {
-                            CodOrca,
-                            CodProduto})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 tbl_OrcamentoDataTable cln = ((tbl_OrcamentoDataTable)(base.Clone()));
                 cln.InitVars();
@@ -526,9 +518,6 @@ namespace Loja {
                 base.Columns.Add(this.columnFlgStatus);
                 this.columnDatOrca = new global::System.Data.DataColumn("DatOrca", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDatOrca);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnCodOrca,
-                                this.columnCodProduto}, true));
                 this.columnCodOrca.AllowDBNull = false;
                 this.columnCodOrca.MaxLength = 5;
                 this.columnCodProduto.AllowDBNull = false;
@@ -1077,12 +1066,19 @@ namespace Loja.dsOrcamentoTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT CodOrca, CodProduto, DescProduto, Quantidade, VlrUnitario, VlrCusto, DesLo" +
                 "cal, PF, FlgStatus, DatOrca FROM dbo.tbl_Orcamento";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT        CodOrca, CodProduto, DescProduto, Quantidade, VlrUnitario, VlrCusto" +
+                ", DesLocal, PF, FlgStatus, DatOrca\r\nFROM            tbl_Orcamento\r\nWHERE        " +
+                "(CodOrca = @CodOrca)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodOrca", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "CodOrca", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1104,6 +1100,42 @@ namespace Loja.dsOrcamentoTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual dsOrcamento.tbl_OrcamentoDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            dsOrcamento.tbl_OrcamentoDataTable dataTable = new dsOrcamento.tbl_OrcamentoDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByCodigo(dsOrcamento.tbl_OrcamentoDataTable dataTable, string CodOrca) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((CodOrca == null)) {
+                throw new global::System.ArgumentNullException("CodOrca");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(CodOrca));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual dsOrcamento.tbl_OrcamentoDataTable GetDataByCodigo(string CodOrca) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((CodOrca == null)) {
+                throw new global::System.ArgumentNullException("CodOrca");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(CodOrca));
+            }
             dsOrcamento.tbl_OrcamentoDataTable dataTable = new dsOrcamento.tbl_OrcamentoDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

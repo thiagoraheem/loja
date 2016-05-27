@@ -131,16 +131,6 @@ namespace Loja.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(local);Initial Catalog=Loja;Integrated Security=True")]
-        public string LojaConnectionString {
-            get {
-                return ((string)(this["LojaConnectionString"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Manaus")]
@@ -194,6 +184,17 @@ namespace Loja.Properties {
             }
             set {
                 this["ImpressoraNFE"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=loja01;Initial Catalog=Loja;Persist Security Info=True;User ID=sa;Pas" +
+            "sword=master")]
+        public string LojaConnectionString {
+            get {
+                return ((string)(this["LojaConnectionString"]));
             }
         }
     }

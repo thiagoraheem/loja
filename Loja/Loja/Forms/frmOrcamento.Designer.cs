@@ -40,6 +40,7 @@
 			this.lblCodOrca = new DevExpress.XtraEditors.LabelControl();
 			this.txtCodOrca = new DevExpress.XtraEditors.TextEdit();
 			this.btnFechar = new DevExpress.XtraEditors.SimpleButton();
+			this.colDesconto = new DevExpress.XtraGrid.Columns.GridColumn();
 			((System.ComponentModel.ISupportInitialize)(this.gridOrcamento)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gridViewOrcamento)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtCodOrca.Properties)).BeginInit();
@@ -70,6 +71,7 @@
             this.colOrDesProduto,
             this.colQuantidade,
             this.colValor,
+            this.colDesconto,
             this.colVlrFinal,
             this.colOrcodigounico,
             this.colVlrOriginal});
@@ -153,8 +155,6 @@
 			this.colVlrOriginal.FieldName = "VlrCusto";
 			this.colVlrOriginal.Name = "colVlrOriginal";
 			this.colVlrOriginal.OptionsColumn.AllowEdit = false;
-			this.colVlrOriginal.Visible = true;
-			this.colVlrOriginal.VisibleIndex = 5;
 			this.colVlrOriginal.Width = 105;
 			// 
 			// lblCodOrca
@@ -185,6 +185,15 @@
 			this.btnFechar.TabIndex = 5;
 			this.btnFechar.Text = "&Fechar";
 			this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
+			// 
+			// colDesconto
+			// 
+			this.colDesconto.Caption = "Desconto";
+			this.colDesconto.DisplayFormat.FormatString = "R$ {0:#,#.00}";
+			this.colDesconto.FieldName = "VlrDesconto";
+			this.colDesconto.Name = "colDesconto";
+			this.colDesconto.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "VlrDesconto", "R$ {0:#,#.00}")});
 			// 
 			// frmOrcamento
 			// 
@@ -227,5 +236,6 @@
 		private DevExpress.XtraEditors.LabelControl lblCodOrca;
 		private DevExpress.XtraEditors.TextEdit txtCodOrca;
 		private DevExpress.XtraEditors.SimpleButton btnFechar;
+		private DevExpress.XtraGrid.Columns.GridColumn colDesconto;
 	}
 }

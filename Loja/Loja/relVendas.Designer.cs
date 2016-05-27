@@ -1030,9 +1030,9 @@ namespace Loja {
                 this.columnCodOrcamento.AllowDBNull = false;
                 this.columnCodOrcamento.MaxLength = 5;
                 this.columnCodProduto.AllowDBNull = false;
-                this.columnCodProduto.MaxLength = 20;
+                this.columnCodProduto.MaxLength = 40;
                 this.columnDesProduto.AllowDBNull = false;
-                this.columnDesProduto.MaxLength = 30;
+                this.columnDesProduto.MaxLength = 60;
                 this.columnVlrUnitario.AllowDBNull = false;
                 this.columnQuantidade.AllowDBNull = false;
                 this.columnVlrCusto.AllowDBNull = false;

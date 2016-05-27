@@ -210,6 +210,17 @@ namespace Loja.DAL.DAO
 			}
 		}
 
+		public static tbl_Orcamento ObterOrcamentoItem(string codOrca, int codigounico)
+		{
+			using (var banco = new LojaContext())
+			{
+				var dado = from orcam in banco.tbl_Orcamento
+						   where orcam.CodOrca == codOrca && orcam.codigounico == codigounico
+						   select orcam;
+				return dado.FirstOrDefault();
+			}
+		}
+
 		public static List<DadosCombo> ObterOrcamentosCombo()
 		{
 			using (var banco = new LojaContext())

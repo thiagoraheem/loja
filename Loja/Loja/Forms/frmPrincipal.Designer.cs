@@ -31,9 +31,9 @@
 			this.components = new System.ComponentModel.Container();
 			DevExpress.XtraSplashScreen.SplashScreenManager mgrSplash = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Loja.frmApresentacao), true, true);
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
-			DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-			DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-			DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+			DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+			DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+			DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
 			this.navbarImageListLarge = new System.Windows.Forms.ImageList(this.components);
 			this.navbarImageList = new System.Windows.Forms.ImageList(this.components);
 			this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -74,6 +74,7 @@
 			this.chkInternet = new DevExpress.XtraBars.BarCheckItem();
 			this.btnContingencia = new DevExpress.XtraBars.BarToggleSwitchItem();
 			this.btnQtdContingencia = new DevExpress.XtraBars.BarButtonItem();
+			this.btnAbrirOrca = new DevExpress.XtraBars.BarButtonItem();
 			this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
 			this.homeRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
 			this.fileRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -129,7 +130,6 @@
 			this.colVlrFinal = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colOrcodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colVlrOriginal = new DevExpress.XtraGrid.Columns.GridColumn();
-			this.btnAbrirOrca = new DevExpress.XtraBars.BarButtonItem();
 			((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.appMenu)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.popupControlContainer2)).BeginInit();
@@ -590,6 +590,20 @@
 			this.btnQtdContingencia.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
 			this.btnQtdContingencia.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnQtdContingencia_ItemClick);
 			// 
+			// btnAbrirOrca
+			// 
+			this.btnAbrirOrca.Caption = "Ver Orcam. (F9)";
+			this.btnAbrirOrca.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+			this.btnAbrirOrca.Enabled = false;
+			this.btnAbrirOrca.Id = 1;
+			this.btnAbrirOrca.ImageIndex = 15;
+			this.btnAbrirOrca.LargeImageIndex = 15;
+			this.btnAbrirOrca.Name = "btnAbrirOrca";
+			this.btnAbrirOrca.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+			this.btnAbrirOrca.ShortcutKeyDisplayString = "F9";
+			this.btnAbrirOrca.ShowItemShortcut = DevExpress.Utils.DefaultBoolean.True;
+			this.btnAbrirOrca.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAbrirOrca_ItemClick);
+			// 
 			// ribbonImageCollectionLarge
 			// 
 			this.ribbonImageCollectionLarge.ImageSize = new System.Drawing.Size(32, 32);
@@ -990,12 +1004,12 @@
 			this.btnCadCliente.LargeImageIndex = 5;
 			this.btnCadCliente.Name = "btnCadCliente";
 			this.btnCadCliente.SmallImageIndex = 10;
-			toolTipTitleItem5.Text = "Dica";
-			toolTipItem5.LeftIndent = 6;
-			toolTipItem5.Text = "Cadastro de Clientes";
-			superToolTip5.Items.Add(toolTipTitleItem5);
-			superToolTip5.Items.Add(toolTipItem5);
-			this.btnCadCliente.SuperTip = superToolTip5;
+			toolTipTitleItem1.Text = "Dica";
+			toolTipItem1.LeftIndent = 6;
+			toolTipItem1.Text = "Cadastro de Clientes";
+			superToolTip1.Items.Add(toolTipTitleItem1);
+			superToolTip1.Items.Add(toolTipItem1);
+			this.btnCadCliente.SuperTip = superToolTip1;
 			this.btnCadCliente.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnCadCliente_LinkClicked);
 			// 
 			// btnOrcamentos
@@ -1125,20 +1139,6 @@
 			this.colVlrOriginal.VisibleIndex = 5;
 			this.colVlrOriginal.Width = 142;
 			// 
-			// btnAbrirOrca
-			// 
-			this.btnAbrirOrca.Caption = "Ver Orcam. (F9)";
-			this.btnAbrirOrca.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-			this.btnAbrirOrca.Enabled = false;
-			this.btnAbrirOrca.Id = 1;
-			this.btnAbrirOrca.ImageIndex = 15;
-			this.btnAbrirOrca.LargeImageIndex = 15;
-			this.btnAbrirOrca.Name = "btnAbrirOrca";
-			this.btnAbrirOrca.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
-			this.btnAbrirOrca.ShortcutKeyDisplayString = "F9";
-			this.btnAbrirOrca.ShowItemShortcut = DevExpress.Utils.DefaultBoolean.True;
-			this.btnAbrirOrca.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAbrirOrca_ItemClick);
-			// 
 			// frmPrincipal
 			// 
 			this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.True;
@@ -1156,7 +1156,7 @@
 			this.Name = "frmPrincipal";
 			this.Ribbon = this.ribbonControl;
 			this.StatusBar = this.ribbonStatusBar;
-			this.Text = "Sistema para controle de Loja - v1.0.4";
+			this.Text = "Sistema para controle de Loja - v1.0.5";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmPrincipal_KeyDown);
 			((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();

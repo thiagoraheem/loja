@@ -36,6 +36,42 @@ namespace Loja.Forms
 				principal.SU_FinalizarVenda();
 				Close();
 			}
+			else if (e.KeyCode.Equals(Keys.F1))
+			{
+				//gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.92));
+				Cadastros.DescontoVenda(txtCodOrca.Text, 8, "P");
+				InitGridOrca();
+			}
+			else if (e.KeyCode.Equals(Keys.F7))
+			{
+				//gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.90));
+				Cadastros.DescontoVenda(txtCodOrca.Text, 10, "P");
+				InitGridOrca();
+			}
+			else if (e.KeyCode.Equals(Keys.F3))
+			{
+				//gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.88));
+				Cadastros.DescontoVenda(txtCodOrca.Text, 12, "P");
+				InitGridOrca();
+			}
+			else if (e.KeyCode.Equals(Keys.F4))
+			{
+				//gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.85));
+				Cadastros.DescontoVenda(txtCodOrca.Text, 15, "P");
+				InitGridOrca();
+			}
+			else if (e.KeyCode.Equals(Keys.F5))
+			{
+				//gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.95));
+				Cadastros.DescontoVenda(txtCodOrca.Text, 5, "P");
+				InitGridOrca();
+			}
+			else if (e.KeyCode.Equals(Keys.F6))
+			{
+				//gridViewOrcamento.SetRowCellValue(linha, colValor, (valor * 0.95));
+				Cadastros.DescontoVenda(txtCodOrca.Text, 0, "P");
+				InitGridOrca();
+			}
 			else
 			{
 				Close();
@@ -46,5 +82,28 @@ namespace Loja.Forms
 		{
 			Close();
 		}
+
+		void InitGridOrca()
+		{
+
+			try
+			{
+				DevExpress.Utils.WaitDialogForm wait = new DevExpress.Utils.WaitDialogForm("Carregando os dados");
+				wait.Show();
+				String CodOrca = txtCodOrca.Text;
+
+				var orcamento = Consultas.ObterOrcamentos(CodOrca);
+
+				gridOrcamento.DataSource = orcamento;
+				
+				wait.Close();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Erro ao acessar o banco de dados: " + ex.Message);
+			}
+
+		}
+
 	}
 }

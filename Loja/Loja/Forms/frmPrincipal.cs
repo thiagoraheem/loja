@@ -128,7 +128,7 @@ namespace Loja
 
 					}
 				}
-				Thread.Sleep(10000);
+				Thread.Sleep(360000);
 
 			}
 
@@ -209,7 +209,7 @@ namespace Loja
 				QtdContingencia = Consultas.ObterQtdContingencia();
 				btnQtdContingencia.Caption = String.Format("Notas em Contingência: <b>{0}</b>", QtdContingencia.ToString() ?? "0");
 
-				Thread.Sleep(25000);
+				Thread.Sleep(360000);
 
 			}
 		}
@@ -645,7 +645,7 @@ namespace Loja
 			if (e.KeyCode.Equals(Keys.Escape)) { return; }
 
 			int linha = (gridViewOrcamento.SelectedRowsCount > 0) ? gridViewOrcamento.GetSelectedRows()[0] : 0;
-			double valor = (double)gridViewOrcamento.GetRowCellValue(linha, colVlrOriginal);
+			double valor = (gridViewOrcamento.SelectedRowsCount > 0) ? (double)gridViewOrcamento.GetRowCellValue(linha, colVlrOriginal) : 0;
 
 			if (e.KeyCode.Equals(Keys.Delete))
 			{
