@@ -545,7 +545,7 @@
 			// colValor
 			// 
 			this.colValor.Caption = "Valor Unit.";
-			this.colValor.DisplayFormat.FormatString = "c2";
+			this.colValor.DisplayFormat.FormatString = "R$ #,#.00";
 			this.colValor.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
 			this.colValor.FieldName = "VlrUnitario";
 			this.colValor.Name = "colValor";
@@ -556,33 +556,36 @@
 			// colVlrBruto
 			// 
 			this.colVlrBruto.Caption = "Vlr. Bruto";
+			this.colVlrBruto.DisplayFormat.FormatString = "R$ #,#.00";
+			this.colVlrBruto.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
 			this.colVlrBruto.FieldName = "VlrBruto";
 			this.colVlrBruto.Name = "colVlrBruto";
 			this.colVlrBruto.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "VlrBruto", "R$ {0:#,#.00}")});
 			this.colVlrBruto.Visible = true;
 			this.colVlrBruto.VisibleIndex = 4;
 			// 
 			// colVlrDesconto
 			// 
 			this.colVlrDesconto.Caption = "Desc.";
+			this.colVlrDesconto.DisplayFormat.FormatString = "R$ #,#.00";
 			this.colVlrDesconto.FieldName = "VlrDesconto";
 			this.colVlrDesconto.Name = "colVlrDesconto";
 			this.colVlrDesconto.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "VlrDesconto", "R$ {0:#,#.00}")});
 			this.colVlrDesconto.Visible = true;
 			this.colVlrDesconto.VisibleIndex = 5;
 			// 
 			// colVlrFinal
 			// 
 			this.colVlrFinal.Caption = "Vlr. Total";
-			this.colVlrFinal.DisplayFormat.FormatString = "c2";
+			this.colVlrFinal.DisplayFormat.FormatString = "R$ #,#.00";
 			this.colVlrFinal.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
 			this.colVlrFinal.FieldName = "PF";
 			this.colVlrFinal.Name = "colVlrFinal";
 			this.colVlrFinal.OptionsColumn.AllowEdit = false;
 			this.colVlrFinal.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "PF", "R$ {0:#,#.00}")});
 			this.colVlrFinal.Visible = true;
 			this.colVlrFinal.VisibleIndex = 6;
 			this.colVlrFinal.Width = 107;
@@ -643,8 +646,7 @@
 
         #endregion
 
-        private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.CalcEdit txtDesconto;
+		private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton btnFinalizarVenda;
@@ -684,5 +686,6 @@
 		private DevExpress.XtraEditors.LabelControl labelControl10;
 		private DevExpress.XtraEditors.TextEdit txtNome;
 		private DevExpress.XtraEditors.LabelControl labelControl9;
+		public DevExpress.XtraEditors.CalcEdit txtDesconto;
     }
 }

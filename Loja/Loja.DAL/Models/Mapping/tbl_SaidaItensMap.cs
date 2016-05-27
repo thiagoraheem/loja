@@ -24,7 +24,7 @@ namespace Loja.DAL.Models.Mapping
 
 			this.Property(t => t.CodProduto)
 				.IsRequired()
-				.HasMaxLength(20);
+				.HasMaxLength(40);
 
 			this.Property(t => t.DesProduto)
 				.IsRequired()

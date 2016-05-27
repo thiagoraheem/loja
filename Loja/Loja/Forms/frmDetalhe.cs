@@ -16,6 +16,7 @@ namespace Loja
 	{
 		int codproduto;
 		private frmPrincipal principal;
+		double desconto = 0;
 
 		public frmDetalhe(frmPrincipal p)
 		{
@@ -31,25 +32,35 @@ namespace Loja
 			} else if(e.KeyCode.Equals(Keys.F1)) {
 				double n = double.Parse(txtVlrUnitario.EditValue.ToString());
 				txtDesconto.Value = (decimal) (n * 0.92);
+				desconto = 0.92;
 			} else if (e.KeyCode.Equals(Keys.F7)) {
 				double n = double.Parse(txtVlrUnitario.EditValue.ToString());
 				txtDesconto.Value = (decimal) (n * 0.90);
+				desconto = 0.90;
 			} else if (e.KeyCode.Equals(Keys.F3)) {
 				double n = double.Parse(txtVlrUnitario.EditValue.ToString());
 				txtDesconto.Value = (decimal) (n * 0.88);
+				desconto = 0.88;
 			} else if (e.KeyCode.Equals(Keys.F4)) {
 				double n = double.Parse(txtVlrUnitario.EditValue.ToString());
 				txtDesconto.Value = (decimal) (n * 0.85);
+				desconto = 0.85;
 			} else if (e.KeyCode.Equals(Keys.F5)) {
 				double n = double.Parse(txtVlrUnitario.EditValue.ToString());
 				txtDesconto.Value = (decimal)(n * 0.95);
+				desconto = 0.95;
 			} else if (e.KeyCode.Equals(Keys.F6)) {
 				double n = double.Parse(txtVlrUnitario.EditValue.ToString());
 				txtDesconto.Value = (decimal)(n * 1);
+				desconto = 1;
 			}
 			else if (e.KeyCode.Equals(Keys.F11)) {
 			
 				var orca = Cadastros.AdicionarOrcamento("", codproduto);
+				//Cadastros.AlterarOrcamento(orca.FirstOrDefault(), codproduto, 1, (double)txtDesconto.Value);
+
+				Cadastros.DescontoVenda(orca.FirstOrDefault(), desconto, "P");
+
 				frmVenda f = new frmVenda(principal._configuracoes);
 
 				f.CodOrcamento = orca.FirstOrDefault();

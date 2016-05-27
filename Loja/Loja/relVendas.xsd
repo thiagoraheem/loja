@@ -296,14 +296,14 @@ SELECT CodVenda, codigounico, DatSaida, CodOrcamento, CodProduto, DesProduto, Vl
               <xs:element name="CodProduto" msprop:Generator_ColumnVarNameInTable="columnCodProduto" msprop:Generator_ColumnPropNameInRow="CodProduto" msprop:Generator_ColumnPropNameInTable="CodProdutoColumn" msprop:Generator_UserColumnName="CodProduto">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
+                    <xs:maxLength value="40" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="DesProduto" msprop:Generator_ColumnVarNameInTable="columnDesProduto" msprop:Generator_ColumnPropNameInRow="DesProduto" msprop:Generator_ColumnPropNameInTable="DesProdutoColumn" msprop:Generator_UserColumnName="DesProduto">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="30" />
+                    <xs:maxLength value="60" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

@@ -113,6 +113,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
@@ -122,6 +123,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfiguracaoApp.cs" />
+    <Compile Include="dsOrcamento.cs">
+      <DependentUpon>dsOrcamento.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="dsOrcamento.Designer.cs">
       <DependentUpon>dsOrcamento.xsd</DependentUpon>
       <DesignTime>True</DesignTime>
