@@ -16,11 +16,47 @@ namespace Loja.DAL.DAO
 		{
 			using (var banco = new LojaContext())
 			{
-				var produtos = from prod in banco.tbl_Produtos
-							   where prod.QtdProduto > 0
-							   select prod;
+				var produtos = (from p in banco.tbl_Produtos
+							   where p.QtdProduto > 0
+							   select new {
+									CodProduto = p.CodProduto,
+									DesProduto = p.DesProduto,
+									DesLocal = p.DesLocal,
+									VlrUnitario = p.VlrUnitario,
+									QtdProduto = p.QtdProduto,
+									VlrCusto = p.VlrCusto,
+									VlrPercent = p.VlrPercent,
+									EstMinimo = p.EstMinimo,
+									DatCadastro = p.DatCadastro,
+									DesFornecedor = p.DesFornecedor,
+									CodRefAntiga = p.CodRefAntiga,
+									DesFaz = p.DesFaz,
+									VlrUltPreco = p.VlrUltPreco,
+									codigounico = p.codigounico,
+									NCM = p.NCM,
+									VlrICMSST = p.VlrICMSST
+									
+							   }).ToList();
 
-				return produtos.ToList();
+				return produtos.Select(p => new tbl_Produtos(){
+									CodProduto = p.CodProduto,
+									DesProduto = p.DesProduto,
+									DesLocal = p.DesLocal,
+									VlrUnitario = p.VlrUnitario,
+									QtdProduto = p.QtdProduto,
+									VlrCusto = p.VlrCusto,
+									VlrPercent = p.VlrPercent,
+									EstMinimo = p.EstMinimo,
+									DatCadastro = p.DatCadastro,
+									DesFornecedor = p.DesFornecedor,
+									CodRefAntiga = p.CodRefAntiga,
+									DesFaz = p.DesFaz,
+									VlrUltPreco = p.VlrUltPreco,
+									codigounico = p.codigounico,
+									NCM = p.NCM,
+									VlrICMSST = p.VlrICMSST
+									
+							   }).ToList();
 
 			}
 		}
@@ -29,10 +65,28 @@ namespace Loja.DAL.DAO
 		{
 			using (var banco = new LojaContext())
 			{
-				var produtos = from prod in banco.tbl_Produtos
-							   select prod;
+				var produtos = (from p in banco.tbl_Produtos
+							   select new tbl_Produtos(){
+									CodProduto = p.CodProduto,
+									DesProduto = p.DesProduto,
+									DesLocal = p.DesLocal,
+									VlrUnitario = p.VlrUnitario,
+									QtdProduto = p.QtdProduto,
+									VlrCusto = p.VlrCusto,
+									VlrPercent = p.VlrPercent,
+									EstMinimo = p.EstMinimo,
+									DatCadastro = p.DatCadastro,
+									DesFornecedor = p.DesFornecedor,
+									CodRefAntiga = p.CodRefAntiga,
+									DesFaz = p.DesFaz,
+									VlrUltPreco = p.VlrUltPreco,
+									codigounico = p.codigounico,
+									NCM = p.NCM,
+									VlrICMSST = p.VlrICMSST
+									
+							   }).ToList();
 
-				return produtos.ToList();
+				return produtos;
 
 			}
 		}

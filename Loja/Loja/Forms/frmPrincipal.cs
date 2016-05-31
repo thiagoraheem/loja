@@ -727,6 +727,32 @@ namespace Loja
 					// Invoke the Ribbon Print Preview form
 					// with the specified look and feel setting.
 					printTool.ShowRibbonPreview(UserLookAndFeel.Default);
+
+					if (MessageBox.Show(this, "Deseja dar baixa nesse orçamento?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
+					{
+						try
+						{
+
+							this.Refresh();
+							this.ForceRefresh();
+
+							var codVenda = Cadastros.FinalizaVenda(cmbCodOrca.EditValue.ToString(), 1, null, 2);
+
+							this.Refresh();
+							this.ForceRefresh();
+
+							Cadastros.ExcluiOrcamento(cmbCodOrca.EditValue.ToString());
+
+							InitComboOrca();
+							InitGrid();
+							InitGridOrca();
+						}
+						catch (Exception ex)
+						{
+							Util.MsgBox(ex.Message);
+
+						}
+					}
 				}
 
 			}
