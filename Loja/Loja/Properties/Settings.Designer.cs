@@ -190,8 +190,8 @@ namespace Loja.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=loja01;Initial Catalog=Loja;Persist Security Info=True;User ID=sa;Pas" +
-            "sword=master")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=Loja;Persist Security Info=True;User ID=sa;" +
+            "Password=master")]
         public string LojaConnectionString {
             get {
                 return ((string)(this["LojaConnectionString"]));

@@ -523,11 +523,9 @@ namespace Loja {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tbl_ProdutosRow FindByCodProdutoDesProdutoDesLocal(string CodProduto, string DesProduto, string DesLocal) {
+            public tbl_ProdutosRow FindBycodigounico(int codigounico) {
                 return ((tbl_ProdutosRow)(this.Rows.Find(new object[] {
-                            CodProduto,
-                            DesProduto,
-                            DesLocal})));
+                            codigounico})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -598,14 +596,9 @@ namespace Loja {
                 this.columncodigounico = new global::System.Data.DataColumn("codigounico", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncodigounico);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnCodProduto,
-                                this.columnDesProduto,
-                                this.columnDesLocal}, true));
-                this.columnCodProduto.AllowDBNull = false;
+                                this.columncodigounico}, true));
                 this.columnCodProduto.MaxLength = 20;
-                this.columnDesProduto.AllowDBNull = false;
                 this.columnDesProduto.MaxLength = 30;
-                this.columnDesLocal.AllowDBNull = false;
                 this.columnDesLocal.MaxLength = 4;
                 this.columnDatCadastro.MaxLength = 10;
                 this.columnDesFornecedor.MaxLength = 10;
@@ -615,6 +608,7 @@ namespace Loja {
                 this.columncodigounico.AutoIncrementStep = -1;
                 this.columncodigounico.AllowDBNull = false;
                 this.columncodigounico.ReadOnly = true;
+                this.columncodigounico.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -759,7 +753,12 @@ namespace Loja {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string CodProduto {
                 get {
-                    return ((string)(this[this.tabletbl_Produtos.CodProdutoColumn]));
+                    try {
+                        return ((string)(this[this.tabletbl_Produtos.CodProdutoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'CodProduto\' na tabela \'tbl_Produtos\' é DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tabletbl_Produtos.CodProdutoColumn] = value;
@@ -770,7 +769,12 @@ namespace Loja {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string DesProduto {
                 get {
-                    return ((string)(this[this.tabletbl_Produtos.DesProdutoColumn]));
+                    try {
+                        return ((string)(this[this.tabletbl_Produtos.DesProdutoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'DesProduto\' na tabela \'tbl_Produtos\' é DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tabletbl_Produtos.DesProdutoColumn] = value;
@@ -781,7 +785,12 @@ namespace Loja {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string DesLocal {
                 get {
-                    return ((string)(this[this.tabletbl_Produtos.DesLocalColumn]));
+                    try {
+                        return ((string)(this[this.tabletbl_Produtos.DesLocalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'DesLocal\' na tabela \'tbl_Produtos\' é DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tabletbl_Produtos.DesLocalColumn] = value;
@@ -973,6 +982,42 @@ namespace Loja {
                 set {
                     this[this.tabletbl_Produtos.codigounicoColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodProdutoNull() {
+                return this.IsNull(this.tabletbl_Produtos.CodProdutoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodProdutoNull() {
+                this[this.tabletbl_Produtos.CodProdutoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDesProdutoNull() {
+                return this.IsNull(this.tabletbl_Produtos.DesProdutoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDesProdutoNull() {
+                this[this.tabletbl_Produtos.DesProdutoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDesLocalNull() {
+                return this.IsNull(this.tabletbl_Produtos.DesLocalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDesLocalNull() {
+                this[this.tabletbl_Produtos.DesLocalColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1286,7 +1331,7 @@ namespace Loja.relEstMinimoTableAdapters {
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = @"INSERT INTO [tbl_Produtos] ([CodProduto], [DesProduto], [DesLocal], [VlrUnitario], [QtdProduto], [VlrCusto], [VlrPercent], [EstMinimo], [DatCadastro], [DesFornecedor], [CodRefAntiga], [DesFaz], [VlrUltPreco], [Imagem]) VALUES (@CodProduto, @DesProduto, @DesLocal, @VlrUnitario, @QtdProduto, @VlrCusto, @VlrPercent, @EstMinimo, @DatCadastro, @DesFornecedor, @CodRefAntiga, @DesFaz, @VlrUltPreco, @Imagem);
-SELECT CodProduto, DesProduto, DesLocal, VlrUnitario, QtdProduto, VlrCusto, VlrPercent, EstMinimo, DatCadastro, DesFornecedor, CodRefAntiga, DesFaz, VlrUltPreco, Imagem, codigounico FROM tbl_Produtos WHERE (CodProduto = @CodProduto) AND (DesLocal = @DesLocal) AND (DesProduto = @DesProduto)";
+SELECT CodProduto, DesProduto, DesLocal, VlrUnitario, QtdProduto, VlrCusto, VlrPercent, EstMinimo, DatCadastro, DesFornecedor, CodRefAntiga, DesFaz, VlrUltPreco, Imagem, codigounico FROM tbl_Produtos WHERE (codigounico = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodProduto", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CodProduto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DesProduto", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DesProduto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1325,9 +1370,8 @@ SELECT CodProduto, DesProduto, DesLocal, VlrUnitario, QtdProduto, VlrCusto, VlrP
                 "lrUltPreco] IS NULL) OR ([VlrUltPreco] = @Original_VlrUltPreco)) AND ([codigouni" +
                 "co] = @Original_codigounico));\r\nSELECT CodProduto, DesProduto, DesLocal, VlrUnit" +
                 "ario, QtdProduto, VlrCusto, VlrPercent, EstMinimo, DatCadastro, DesFornecedor, C" +
-                "odRefAntiga, DesFaz, VlrUltPreco, Imagem, codigounico FROM tbl_Produtos WHERE (C" +
-                "odProduto = @CodProduto) AND (DesLocal = @DesLocal) AND (DesProduto = @DesProdut" +
-                "o)";
+                "odRefAntiga, DesFaz, VlrUltPreco, Imagem, codigounico FROM tbl_Produtos WHERE (c" +
+                "odigounico = @codigounico)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodProduto", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CodProduto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DesProduto", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DesProduto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1367,6 +1411,7 @@ SELECT CodProduto, DesProduto, DesLocal, VlrUnitario, QtdProduto, VlrCusto, VlrP
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_VlrUltPreco", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VlrUltPreco", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VlrUltPreco", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VlrUltPreco", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_codigounico", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codigounico", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@codigounico", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "codigounico", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

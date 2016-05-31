@@ -367,6 +367,8 @@
       <DependentUpon>dsOrcamento.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Loja.DAL.DAO.Cadastros.datasource" />
+    <None Include="Properties\DataSources\Loja.DAL.DAO.Consultas.datasource" />
     <None Include="Properties\DataSources\Loja.DAO.LojaEntities.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
