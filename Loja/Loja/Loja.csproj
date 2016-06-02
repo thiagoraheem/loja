@@ -123,15 +123,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfiguracaoApp.cs" />
-    <Compile Include="dsOrcamento.cs">
-      <DependentUpon>dsOrcamento.xsd</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="dsOrcamento.Designer.cs">
-      <DependentUpon>dsOrcamento.xsd</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
     <Compile Include="Forms\frmCadCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -227,19 +218,12 @@
     <Compile Include="Modules\Util.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="relEstMinimo.Designer.cs">
-      <DependentUpon>relEstMinimo.xsd</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
     <Compile Include="relVendas.cs">
       <DependentUpon>relVendas.xsd</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="relVendas.Designer.cs">
-      <DependentUpon>relVendas.xsd</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
+      <DependentUpon>relVendas.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\relEstMinimo.cs">
       <SubType>Component</SubType>
@@ -355,17 +339,6 @@
       <DependentUpon>relVendasNFE.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="dsOrcamento.xsc">
-      <DependentUpon>dsOrcamento.xsd</DependentUpon>
-    </None>
-    <None Include="dsOrcamento.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsOrcamento.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="dsOrcamento.xss">
-      <DependentUpon>dsOrcamento.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Loja.DAL.DAO.Cadastros.datasource" />
     <None Include="Properties\DataSources\Loja.DAL.DAO.Consultas.datasource" />
@@ -379,24 +352,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="relEstMinimo.xsc">
-      <DependentUpon>relEstMinimo.xsd</DependentUpon>
-    </None>
-    <None Include="relEstMinimo.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>relEstMinimo.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="relEstMinimo.xss">
-      <DependentUpon>relEstMinimo.xsd</DependentUpon>
-    </None>
     <None Include="relVendas.xsc">
       <DependentUpon>relVendas.xsd</DependentUpon>
     </None>
     <None Include="relVendas.xsd">
-      <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>relVendas.Designer.cs</LastGenOutput>
+      <LastGenOutput>relVendas1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <None Include="relVendas.xss">
       <DependentUpon>relVendas.xsd</DependentUpon>

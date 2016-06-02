@@ -1,34 +1,58 @@
 ﻿namespace Loja.Reports
 {
-    partial class relVendas
-    {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+	partial class relVendas
+	{
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		/// <summary> 
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        #region Designer generated code
+		#region Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
+			this.components = new System.ComponentModel.Container();
+			DevExpress.DataAccess.Sql.TableQuery tableQuery1 = new DevExpress.DataAccess.Sql.TableQuery();
+			DevExpress.DataAccess.Sql.RelationInfo relationInfo1 = new DevExpress.DataAccess.Sql.RelationInfo();
+			DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo1 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
+			DevExpress.DataAccess.Sql.TableInfo tableInfo1 = new DevExpress.DataAccess.Sql.TableInfo();
+			DevExpress.DataAccess.Sql.ColumnInfo columnInfo1 = new DevExpress.DataAccess.Sql.ColumnInfo();
+			DevExpress.DataAccess.Sql.ColumnInfo columnInfo2 = new DevExpress.DataAccess.Sql.ColumnInfo();
+			DevExpress.DataAccess.Sql.ColumnInfo columnInfo3 = new DevExpress.DataAccess.Sql.ColumnInfo();
+			DevExpress.DataAccess.Sql.ColumnInfo columnInfo4 = new DevExpress.DataAccess.Sql.ColumnInfo();
+			DevExpress.DataAccess.Sql.ColumnInfo columnInfo5 = new DevExpress.DataAccess.Sql.ColumnInfo();
+			DevExpress.DataAccess.Sql.ColumnInfo columnInfo6 = new DevExpress.DataAccess.Sql.ColumnInfo();
+			DevExpress.DataAccess.Sql.ColumnInfo columnInfo7 = new DevExpress.DataAccess.Sql.ColumnInfo();
+			DevExpress.DataAccess.Sql.ColumnInfo columnInfo8 = new DevExpress.DataAccess.Sql.ColumnInfo();
+			DevExpress.DataAccess.Sql.ColumnInfo columnInfo9 = new DevExpress.DataAccess.Sql.ColumnInfo();
+			DevExpress.DataAccess.Sql.TableInfo tableInfo2 = new DevExpress.DataAccess.Sql.TableInfo();
+			DevExpress.DataAccess.Sql.ColumnInfo columnInfo10 = new DevExpress.DataAccess.Sql.ColumnInfo();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(relVendas));
 			this.Detail = new DevExpress.XtraReports.UI.DetailBand();
+			this.xrTable1 = new DevExpress.XtraReports.UI.XRTable();
+			this.xrTableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
+			this.xrTableCell4 = new DevExpress.XtraReports.UI.XRTableCell();
+			this.xrTableCell5 = new DevExpress.XtraReports.UI.XRTableCell();
+			this.xrTableCell6 = new DevExpress.XtraReports.UI.XRTableCell();
+			this.xrTableCell8 = new DevExpress.XtraReports.UI.XRTableCell();
+			this.xrTableCell9 = new DevExpress.XtraReports.UI.XRTableCell();
 			this.pageFooterBand1 = new DevExpress.XtraReports.UI.PageFooterBand();
 			this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
 			this.xrPageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
@@ -43,18 +67,9 @@
 			this.lblEmpresa = new DevExpress.XtraReports.UI.XRLabel();
 			this.lblEndereco = new DevExpress.XtraReports.UI.XRLabel();
 			this.lblTelefone = new DevExpress.XtraReports.UI.XRLabel();
-			this.tbl_SaidaTableAdapter1 = new Loja.relVendasTableAdapters.tbl_SaidaTableAdapter();
-			this.relVendas1 = new Loja.relVendas();
-			this.tbl_SaidaItensTableAdapter1 = new Loja.relVendasTableAdapters.tbl_SaidaItensTableAdapter();
-			this.xrTable1 = new DevExpress.XtraReports.UI.XRTable();
-			this.xrTableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
-			this.xrTableCell4 = new DevExpress.XtraReports.UI.XRTableCell();
-			this.xrTableCell5 = new DevExpress.XtraReports.UI.XRTableCell();
-			this.xrTableCell6 = new DevExpress.XtraReports.UI.XRTableCell();
-			this.xrTableCell7 = new DevExpress.XtraReports.UI.XRTableCell();
-			this.xrTableCell8 = new DevExpress.XtraReports.UI.XRTableCell();
-			this.xrTableCell9 = new DevExpress.XtraReports.UI.XRTableCell();
-			((System.ComponentModel.ISupportInitialize)(this.relVendas1)).BeginInit();
+			this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
+			this.DatIni = new DevExpress.XtraReports.Parameters.Parameter();
+			this.DatFim = new DevExpress.XtraReports.Parameters.Parameter();
 			((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
 			// 
@@ -67,6 +82,64 @@
 			this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
 			this.Detail.StyleName = "DataField";
 			this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+			// 
+			// xrTable1
+			// 
+			this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(202.5417F, 0F);
+			this.xrTable1.Name = "xrTable1";
+			this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
+            this.xrTableRow1});
+			this.xrTable1.SizeF = new System.Drawing.SizeF(516.4583F, 25F);
+			// 
+			// xrTableRow1
+			// 
+			this.xrTableRow1.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+            this.xrTableCell4,
+            this.xrTableCell5,
+            this.xrTableCell6,
+            this.xrTableCell8,
+            this.xrTableCell9});
+			this.xrTableRow1.Name = "xrTableRow1";
+			this.xrTableRow1.Weight = 11.5D;
+			// 
+			// xrTableCell4
+			// 
+			this.xrTableCell4.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_Saida.CodVenda")});
+			this.xrTableCell4.Name = "xrTableCell4";
+			this.xrTableCell4.Text = "xrTableCell4";
+			this.xrTableCell4.Weight = 0.23243410362376352D;
+			// 
+			// xrTableCell5
+			// 
+			this.xrTableCell5.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_Saida.Data")});
+			this.xrTableCell5.Name = "xrTableCell5";
+			this.xrTableCell5.Text = "xrTableCell5";
+			this.xrTableCell5.Weight = 0.23066997645730528D;
+			// 
+			// xrTableCell6
+			// 
+			this.xrTableCell6.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_Saida.DesTipoVenda")});
+			this.xrTableCell6.Name = "xrTableCell6";
+			this.xrTableCell6.Weight = 0.13717421124828533D;
+			// 
+			// xrTableCell8
+			// 
+			this.xrTableCell8.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_Saida.QtdItens")});
+			this.xrTableCell8.Name = "xrTableCell8";
+			this.xrTableCell8.Text = "xrTableCell8";
+			this.xrTableCell8.Weight = 0.13717421124828533D;
+			// 
+			// xrTableCell9
+			// 
+			this.xrTableCell9.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_Saida.ValorTotal")});
+			this.xrTableCell9.Name = "xrTableCell9";
+			this.xrTableCell9.Text = "xrTableCell9";
+			this.xrTableCell9.Weight = 0.13717421124828533D;
 			// 
 			// pageFooterBand1
 			// 
@@ -194,86 +267,65 @@
 			this.lblTelefone.SizeF = new System.Drawing.SizeF(175.2684F, 23F);
 			this.lblTelefone.Text = "\r\n";
 			// 
-			// tbl_SaidaTableAdapter1
+			// sqlDataSource1
 			// 
-			this.tbl_SaidaTableAdapter1.ClearBeforeFill = true;
+			this.sqlDataSource1.ConnectionName = "LojaContext";
+			this.sqlDataSource1.Name = "sqlDataSource1";
+			tableQuery1.Name = "tbl_Saida";
+			relationColumnInfo1.NestedKeyColumn = "CodTipoVenda";
+			relationColumnInfo1.ParentKeyColumn = "CodTipoVenda";
+			relationInfo1.KeyColumns.AddRange(new DevExpress.DataAccess.Sql.RelationColumnInfo[] {
+            relationColumnInfo1});
+			relationInfo1.NestedTable = "tbl_TipoVenda";
+			relationInfo1.ParentTable = "tbl_Saida";
+			tableQuery1.Relations.AddRange(new DevExpress.DataAccess.Sql.RelationInfo[] {
+            relationInfo1});
+			tableInfo1.Name = "tbl_Saida";
+			columnInfo1.Name = "CodVenda";
+			columnInfo2.Name = "Data";
+			columnInfo3.Name = "ValorTotal";
+			columnInfo4.Name = "QtdItens";
+			columnInfo5.Name = "FlgStatusNFE";
+			columnInfo6.Name = "ChaveSefaz";
+			columnInfo7.Name = "FlgStatusNota";
+			columnInfo8.Name = "CodTipoVenda";
+			columnInfo9.Name = "CodCliente";
+			tableInfo1.SelectedColumns.AddRange(new DevExpress.DataAccess.Sql.ColumnInfo[] {
+            columnInfo1,
+            columnInfo2,
+            columnInfo3,
+            columnInfo4,
+            columnInfo5,
+            columnInfo6,
+            columnInfo7,
+            columnInfo8,
+            columnInfo9});
+			tableInfo2.Name = "tbl_TipoVenda";
+			columnInfo10.Name = "DesTipoVenda";
+			tableInfo2.SelectedColumns.AddRange(new DevExpress.DataAccess.Sql.ColumnInfo[] {
+            columnInfo10});
+			tableQuery1.Tables.AddRange(new DevExpress.DataAccess.Sql.TableInfo[] {
+            tableInfo1,
+            tableInfo2});
+			this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
+            tableQuery1});
+			this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
 			// 
-			// relVendas1
+			// DatIni
 			// 
-			this.relVendas1.DataSetName = "relVendas";
-			this.relVendas1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+			this.DatIni.Description = "Data Inicial";
+			this.DatIni.Name = "DatIni";
+			this.DatIni.Type = typeof(System.DateTime);
+			this.DatIni.ValueInfo = "2016-03-01";
+			this.DatIni.Visible = false;
 			// 
-			// tbl_SaidaItensTableAdapter1
+			// DatFim
 			// 
-			this.tbl_SaidaItensTableAdapter1.ClearBeforeFill = true;
-			// 
-			// xrTable1
-			// 
-			this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(243F, 0F);
-			this.xrTable1.Name = "xrTable1";
-			this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
-            this.xrTableRow1});
-			this.xrTable1.SizeF = new System.Drawing.SizeF(486F, 25F);
-			// 
-			// xrTableRow1
-			// 
-			this.xrTableRow1.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell4,
-            this.xrTableCell5,
-            this.xrTableCell6,
-            this.xrTableCell7,
-            this.xrTableCell8,
-            this.xrTableCell9});
-			this.xrTableRow1.Name = "xrTableRow1";
-			this.xrTableRow1.Weight = 11.5D;
-			// 
-			// xrTableCell4
-			// 
-			this.xrTableCell4.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_Saida.CodVenda")});
-			this.xrTableCell4.Name = "xrTableCell4";
-			this.xrTableCell4.Text = "xrTableCell4";
-			this.xrTableCell4.Weight = 0.13717421124828533D;
-			// 
-			// xrTableCell5
-			// 
-			this.xrTableCell5.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_Saida.Data")});
-			this.xrTableCell5.Name = "xrTableCell5";
-			this.xrTableCell5.Text = "xrTableCell5";
-			this.xrTableCell5.Weight = 0.13717421124828533D;
-			// 
-			// xrTableCell6
-			// 
-			this.xrTableCell6.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_Saida.FlgStatusNFE")});
-			this.xrTableCell6.Name = "xrTableCell6";
-			this.xrTableCell6.Text = "xrTableCell6";
-			this.xrTableCell6.Weight = 0.13717421124828533D;
-			// 
-			// xrTableCell7
-			// 
-			this.xrTableCell7.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_Saida.FlgStatusNota")});
-			this.xrTableCell7.Name = "xrTableCell7";
-			this.xrTableCell7.Text = "xrTableCell7";
-			this.xrTableCell7.Weight = 0.13717421124828533D;
-			// 
-			// xrTableCell8
-			// 
-			this.xrTableCell8.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_Saida.QtdItens")});
-			this.xrTableCell8.Name = "xrTableCell8";
-			this.xrTableCell8.Text = "xrTableCell8";
-			this.xrTableCell8.Weight = 0.13717421124828533D;
-			// 
-			// xrTableCell9
-			// 
-			this.xrTableCell9.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_Saida.ValorTotal")});
-			this.xrTableCell9.Name = "xrTableCell9";
-			this.xrTableCell9.Text = "xrTableCell9";
-			this.xrTableCell9.Weight = 0.13717421124828533D;
+			this.DatFim.Description = "Data Final";
+			this.DatFim.Name = "DatFim";
+			this.DatFim.Type = typeof(System.DateTime);
+			this.DatFim.ValueInfo = "2016-03-31";
+			this.DatFim.Visible = false;
 			// 
 			// relVendas
 			// 
@@ -283,10 +335,15 @@
             this.topMarginBand1,
             this.bottomMarginBand1,
             this.PageHeader});
-			this.DataAdapter = this.tbl_SaidaTableAdapter1;
+			this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
+            this.sqlDataSource1});
 			this.DataMember = "tbl_Saida";
-			this.DataSource = this.relVendas1;
+			this.DataSource = this.sqlDataSource1;
+			this.FilterString = "[Data] Between(?DatIni, ?DatFim)";
 			this.Margins = new System.Drawing.Printing.Margins(60, 61, 39, 28);
+			this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {
+            this.DatIni,
+            this.DatFim});
 			this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.Title,
             this.FieldCaption,
@@ -294,39 +351,37 @@
             this.DataField});
 			this.Version = "15.1";
 			this.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.relVendas_BeforePrint);
-			((System.ComponentModel.ISupportInitialize)(this.relVendas1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
-        }
+		}
 
-        #endregion
+		#endregion
 
 		private DevExpress.XtraReports.UI.DetailBand Detail;
-        private DevExpress.XtraReports.UI.PageFooterBand pageFooterBand1;
-        private DevExpress.XtraReports.UI.XRPageInfo xrPageInfo1;
-        private DevExpress.XtraReports.UI.XRPageInfo xrPageInfo2;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel13;
-        private DevExpress.XtraReports.UI.XRControlStyle Title;
-        private DevExpress.XtraReports.UI.XRControlStyle FieldCaption;
-        private DevExpress.XtraReports.UI.XRControlStyle PageInfo;
-        private DevExpress.XtraReports.UI.XRControlStyle DataField;
-        private DevExpress.XtraReports.UI.TopMarginBand topMarginBand1;
+		private DevExpress.XtraReports.UI.PageFooterBand pageFooterBand1;
+		private DevExpress.XtraReports.UI.XRPageInfo xrPageInfo1;
+		private DevExpress.XtraReports.UI.XRPageInfo xrPageInfo2;
+		private DevExpress.XtraReports.UI.XRLabel xrLabel13;
+		private DevExpress.XtraReports.UI.XRControlStyle Title;
+		private DevExpress.XtraReports.UI.XRControlStyle FieldCaption;
+		private DevExpress.XtraReports.UI.XRControlStyle PageInfo;
+		private DevExpress.XtraReports.UI.XRControlStyle DataField;
+		private DevExpress.XtraReports.UI.TopMarginBand topMarginBand1;
 		private DevExpress.XtraReports.UI.BottomMarginBand bottomMarginBand1;
-        private DevExpress.XtraReports.UI.PageHeaderBand PageHeader;
-        private DevExpress.XtraReports.UI.XRLabel lblEmpresa;
-        private DevExpress.XtraReports.UI.XRLabel lblEndereco;
-        private DevExpress.XtraReports.UI.XRLabel lblTelefone;
-		private relVendasTableAdapters.tbl_SaidaTableAdapter tbl_SaidaTableAdapter1;
-		private Loja.relVendas relVendas1;
-		private relVendasTableAdapters.tbl_SaidaItensTableAdapter tbl_SaidaItensTableAdapter1;
+		private DevExpress.XtraReports.UI.PageHeaderBand PageHeader;
+		private DevExpress.XtraReports.UI.XRLabel lblEmpresa;
+		private DevExpress.XtraReports.UI.XRLabel lblEndereco;
+		private DevExpress.XtraReports.UI.XRLabel lblTelefone;
 		private DevExpress.XtraReports.UI.XRTable xrTable1;
 		private DevExpress.XtraReports.UI.XRTableRow xrTableRow1;
 		private DevExpress.XtraReports.UI.XRTableCell xrTableCell4;
 		private DevExpress.XtraReports.UI.XRTableCell xrTableCell5;
 		private DevExpress.XtraReports.UI.XRTableCell xrTableCell6;
-		private DevExpress.XtraReports.UI.XRTableCell xrTableCell7;
 		private DevExpress.XtraReports.UI.XRTableCell xrTableCell8;
 		private DevExpress.XtraReports.UI.XRTableCell xrTableCell9;
-    }
+		private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource1;
+		private DevExpress.XtraReports.Parameters.Parameter DatIni;
+		private DevExpress.XtraReports.Parameters.Parameter DatFim;
+	}
 }

@@ -101,6 +101,15 @@ namespace Loja
 
 			}
 			#endregion
+			#region Vendas
+			else if (e.KeyCode.Equals(Keys.F11)){
+				btnVendaRapida_ItemClick(sender, null);
+			}
+			else if (e.KeyCode.Equals(Keys.F12)){
+				btnFinalizarVenda_ItemClick(sender, null);
+			}
+
+			#endregion
 		}
 
 		#endregion

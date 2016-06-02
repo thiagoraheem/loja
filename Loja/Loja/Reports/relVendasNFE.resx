@@ -117,13 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="relVendas1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="sqlDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="tbl_SaidaTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 56</value>
-  </metadata>
-  <metadata name="tbl_SaidaItensTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 95</value>
-  </metadata>
+  <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9InRibF9TYWlkYUl0ZW5zIj48RmllbGQgTmFtZT0iQ29kVmVuZGEiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iY29kaWdvdW5pY28iIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJEYXRTYWlkYSIgVHlwZT0iRGF0ZVRpbWUiIC8+PEZpZWxkIE5hbWU9IkNvZE9yY2FtZW50byIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJDb2RQcm9kdXRvIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkRlc1Byb2R1dG8iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iVmxyVW5pdGFyaW8iIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IlF1YW50aWRhZGUiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJWbHJDdXN0byIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iVmxyRmluYWwiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IlZsckRlc2NvbnRvIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJWbHJJbXBvc3RvIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJ0YmxfU2FpZGFfQ29kVmVuZGEiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iRGF0YSIgVHlwZT0iRGF0ZVRpbWUiIC8+PEZpZWxkIE5hbWU9IlZhbG9yVG90YWwiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IlF0ZEl0ZW5zIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iRmxnU3RhdHVzTkZFIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkNoYXZlU2VmYXoiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iRmxnU3RhdHVzTm90YSIgVHlwZT0iQ2hhciIgLz48RmllbGQgTmFtZT0iQ29kVGlwb1ZlbmRhIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iQ29kQ2xpZW50ZSIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9IkRlc1RpcG9WZW5kYSIgVHlwZT0iU3RyaW5nIiAvPjwvVmlldz48L0RhdGFTZXQ+</value>
+  </data>
 </root>

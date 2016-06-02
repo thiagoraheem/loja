@@ -29,7 +29,7 @@ namespace Loja.Reports
 
 		private void relVendasNFE_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
 		{
-			tbl_SaidaTableAdapter.FillByPeriodo(relVendas1.tbl_Saida, _DatIni, _DatFim);
+			//tbl_SaidaTableAdapter.FillByPeriodo(relVendas1.tbl_Saida, _DatIni, _DatFim);
 			//tbl_SaidaItensTableAdapter.Fill(relVendas1.tbl_SaidaItens);
 		}
 	}
