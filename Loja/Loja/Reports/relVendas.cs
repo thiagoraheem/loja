@@ -19,8 +19,8 @@ namespace Loja.Reports
 			lblEndereco.Text = Properties.Settings.Default.Endereco;
 			lblEmpresa.Text = Properties.Settings.Default.NomeFantasia;
 			
-			tbl_SaidaTableAdapter1.FillByPeriodo(relVendas1.tbl_Saida, _DatIni, _DatFim);
-			tbl_SaidaItensTableAdapter1.Fill(relVendas1.tbl_SaidaItens);
+			// tbl_SaidaTableAdapter1.FillByPeriodo(relVendas1.tbl_Saida, _DatIni, _DatFim);
+			//tbl_SaidaItensTableAdapter1.Fill(relVendas1.tbl_SaidaItens);
 
 		}
 

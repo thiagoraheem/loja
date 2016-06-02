@@ -17,6 +17,7 @@ namespace Loja
 		int codproduto;
 		private frmPrincipal principal;
 		double desconto = 0;
+		Loja.DAL.Models.tbl_Produtos produto = new Loja.DAL.Models.tbl_Produtos();
 
 		public frmDetalhe(frmPrincipal p)
 		{
@@ -59,7 +60,9 @@ namespace Loja
 				var orca = Cadastros.AdicionarOrcamento("", codproduto);
 				//Cadastros.AlterarOrcamento(orca.FirstOrDefault(), codproduto, 1, (double)txtDesconto.Value);
 
-				Cadastros.DescontoVenda(orca.FirstOrDefault(), desconto, "P");
+				desconto = produto.VlrUnitario.Value - (double)txtDesconto.Value;
+
+				Cadastros.DescontoVenda(orca.FirstOrDefault(), desconto, "R");
 
 				frmVenda f = new frmVenda(principal._configuracoes);
 
@@ -77,7 +80,7 @@ namespace Loja
 
 		public void SU_CarregaProduto(int codProduto) {
 
-			var produto = Consultas.ObterProduto(codProduto);
+			produto = Consultas.ObterProduto(codProduto);
 
 			codproduto = produto.codigounico;
 			txtCodProduto.Text = produto.CodProduto;

@@ -66,7 +66,7 @@ namespace Loja.DAL.DAO
 			using (var banco = new LojaContext())
 			{
 				var produtos = (from p in banco.tbl_Produtos
-							   select new tbl_Produtos(){
+							   select new {
 									CodProduto = p.CodProduto,
 									DesProduto = p.DesProduto,
 									DesLocal = p.DesLocal,
@@ -86,7 +86,26 @@ namespace Loja.DAL.DAO
 									
 							   }).ToList();
 
-				return produtos;
+				return produtos.Select(p => new tbl_Produtos()
+				{
+					CodProduto = p.CodProduto,
+					DesProduto = p.DesProduto,
+					DesLocal = p.DesLocal,
+					VlrUnitario = p.VlrUnitario,
+					QtdProduto = p.QtdProduto,
+					VlrCusto = p.VlrCusto,
+					VlrPercent = p.VlrPercent,
+					EstMinimo = p.EstMinimo,
+					DatCadastro = p.DatCadastro,
+					DesFornecedor = p.DesFornecedor,
+					CodRefAntiga = p.CodRefAntiga,
+					DesFaz = p.DesFaz,
+					VlrUltPreco = p.VlrUltPreco,
+					codigounico = p.codigounico,
+					NCM = p.NCM,
+					VlrICMSST = p.VlrICMSST
+
+				}).ToList();
 
 			}
 		}
