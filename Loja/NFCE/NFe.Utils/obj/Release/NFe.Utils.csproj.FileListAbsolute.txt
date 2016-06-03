@@ -1,10 +1,3 @@
-C:\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Utils\bin\Release\NFe.Utils.dll
-C:\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Utils\bin\Release\NFe.Utils.pdb
-C:\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Utils\bin\Release\NFe.Classes.dll
-C:\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Utils\bin\Release\NFe.Classes.pdb
-C:\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Utils\obj\Release\NFe.Utils.csprojResolveAssemblyReference.cache
-C:\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Utils\obj\Release\NFe.Utils.dll
-C:\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Utils\obj\Release\NFe.Utils.pdb
 E:\Thiago\Documents\Personal\LOJA\Loja\NFCE\NFe.Utils\bin\Release\NFe.Utils.dll
 E:\Thiago\Documents\Personal\LOJA\Loja\NFCE\NFe.Utils\bin\Release\NFe.Utils.pdb
 E:\Thiago\Documents\Personal\LOJA\Loja\NFCE\NFe.Utils\bin\Release\NFe.Classes.dll
@@ -19,3 +12,10 @@ D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Utils\bin\Releas
 D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Utils\obj\Release\NFe.Utils.csprojResolveAssemblyReference.cache
 D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Utils\obj\Release\NFe.Utils.dll
 D:\Arquivos Gerais\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Utils\obj\Release\NFe.Utils.pdb
+C:\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Utils\bin\Release\NFe.Utils.dll
+C:\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Utils\bin\Release\NFe.Utils.pdb
+C:\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Utils\bin\Release\NFe.Classes.dll
+C:\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Utils\bin\Release\NFe.Classes.pdb
+C:\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Utils\obj\Release\NFe.Utils.csprojResolveAssemblyReference.cache
+C:\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Utils\obj\Release\NFe.Utils.dll
+C:\Projetos\Sistemas\Loja\Loja C#\Loja\NFCE\NFe.Utils\obj\Release\NFe.Utils.pdb
