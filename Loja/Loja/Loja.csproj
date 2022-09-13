@@ -79,6 +79,15 @@
   <PropertyGroup>
     <ApplicationIcon>shoppingcart_32x32.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseBug|AnyCPU'">
+    <OutputPath>bin\ReleaseBug\</OutputPath>
+    <Optimize>false</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -185,6 +194,12 @@
     </Reference>
     <Reference Include="NFe.Classes, Version=2022.9.1.1659, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Zeus.Net.NFe.NFCe.2022.9.1.1659\lib\net462\NFe.Classes.dll</HintPath>
+    </Reference>
+    <Reference Include="NFe.Danfe.Base">
+      <HintPath>..\..\..\..\Loja C#\Loja\NFCE\NFe.Danfe.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="NFe.Danfe.Nativo">
+      <HintPath>..\..\..\..\Loja C#\Loja\NFCE\NFe.Danfe.Nativo.dll</HintPath>
     </Reference>
     <Reference Include="NFe.Servicos, Version=2022.9.1.1659, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Zeus.Net.NFe.NFCe.2022.9.1.1659\lib\net462\NFe.Servicos.dll</HintPath>

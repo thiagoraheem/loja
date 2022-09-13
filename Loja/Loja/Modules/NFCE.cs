@@ -85,27 +85,22 @@ namespace Loja.Modules
 
 				#region Cria e Envia NFe
 
-				var numero = _saida.CodVenda; //Funcoes.InpuBox("Criar e Enviar NFe", "Número da Nota:");
-				if (string.IsNullOrEmpty(numero)) return new Retorno(false, "O Número deve ser informado!"); //throw new Exception("O Número deve ser informado!");
+				var numero = _saida.CodVenda;
+				if (string.IsNullOrEmpty(numero)) return new Retorno(false, "O Número deve ser informado!");
 
-				var lote = numero;//"1";//Funcoes.InpuBox("Criar e Enviar NFe", "Id do Lote:");
+				var lote = numero;
 				if (string.IsNullOrEmpty(lote)) return new Retorno(false, "A Id do lote deve ser informada!");
 
 				_nfe = GetNf(Convert.ToInt32(numero), _configuracoes.CfgServico.ModeloDocumento,
 					_configuracoes.CfgServico.VersaoNFeAutorizacao);
 
-				/*if (_nfe.infNFe.ide.mod == ModeloDocumento.NFCe && _configuracoes.CfgServico.VersaoNFeAutorizacao == VersaoServico.ve400)
-				{
-					_nfe.infNFeSupl = new infNFeSupl();
-					_nfe.infNFeSupl.urlChave = _nfe.infNFeSupl.ObterUrl(_configuracoes.CfgServico.tpAmb, _configuracoes.CfgServico.cUF, TipoUrlConsultaPublica.UrlConsulta);
-				}*/
 				if (_nfe.infNFe.infRespTec == null)
 				{
 					_nfe.infNFe.infRespTec = new Shared.NFe.Classes.Informacoes.InfRespTec.infRespTec();
 				}
 				_nfe.infNFe.infRespTec.CNPJ = "24409668000155";
 				_nfe.infNFe.infRespTec.email = "tisimplessolucoes@gmail.com";
-				_nfe.infNFe.infRespTec.fone = "92981524505";
+				_nfe.infNFe.infRespTec.fone = "92992002858";
 				_nfe.infNFe.infRespTec.xContato = "Thiago Raheem";
 
 				_nfe.Assina(); //não precisa validar aqui, pois o lote será validado em ServicosNFe.NFeAutorizacao
@@ -719,7 +714,6 @@ namespace Loja.Modules
 			var p = new prod
 			{
 				cProd = item.CodProduto,
-				cEAN = "",
 				xProd = _configuracoes.CfgServico.tpAmb.Equals(TipoAmbiente.Homologacao) && i == 1 ? "NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL" : item.tbl_Produtos.DesProduto,
 				NCM = item.tbl_Produtos.NCM ?? "99999999",
 				CFOP = 5405,
@@ -728,7 +722,8 @@ namespace Loja.Modules
 				vUnCom = item.VlrUnitario,
 				vProd = (item.VlrUnitario * item.Quantidade),
 				vDesc = item.VlrDesconto,
-				cEANTrib = "",
+				cEAN = "SEM GTIN",
+				cEANTrib = "SEM GTIN",
 				uTrib = "UNID",
 				qTrib = item.Quantidade,
 				vUnTrib = item.VlrUnitario,
