@@ -81,21 +81,23 @@ namespace Loja
 		public void SU_CarregaProduto(int codProduto) {
 
 			produto = Consultas.ObterProduto(codProduto);
-
-			codproduto = produto.codigounico;
-			txtCodProduto.Text = produto.CodProduto;
-			txtDesProduto.Text = produto.DesProduto;
-			txtDesLocal.Text = produto.DesLocal;
-			txtFornecedor.Text = produto.DesFornecedor;
-			txtQtdEstoque.Text = produto.QtdProduto.ToString();
-			txtVlrUnitario.Text = produto.VlrUnitario.ToString();
-
-			if (produto.Imagem != null)
+			if (produto != null)
 			{
-				MemoryStream ms = new MemoryStream(produto.Imagem);
+				codproduto = produto.codigounico;
+				txtCodProduto.Text = produto.CodProduto;
+				txtDesProduto.Text = produto.DesProduto;
+				txtDesLocal.Text = produto.DesLocal;
+				txtFornecedor.Text = produto.DesFornecedor;
+				txtQtdEstoque.Text = produto.QtdProduto.ToString();
+				txtVlrUnitario.Text = produto.VlrUnitario.ToString();
 
-				ms.Write(produto.Imagem, 0, produto.Imagem.Length);
-				imgFoto.Image = Image.FromStream(ms);
+				if (produto.Imagem != null)
+				{
+					MemoryStream ms = new MemoryStream(produto.Imagem);
+
+					ms.Write(produto.Imagem, 0, produto.Imagem.Length);
+					imgFoto.Image = Image.FromStream(ms);
+				}
 			}
 		}
 

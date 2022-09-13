@@ -1,8 +1,10 @@
-﻿namespace Loja {
-    
-    
-    public partial class relVendas {
-    }
+﻿namespace Loja
+{
+
+
+	public partial class relVendas
+	{
+	}
 }
 
 namespace Loja.relVendasTableAdapters {

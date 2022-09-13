@@ -1,28 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Linq;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using System.Xml;
 using Loja.DAL.Models;
 using Loja.DAL.DAO;
 using Loja.DAL.VO;
-
-using NFe.Classes;
-using NFe.Utils;
 using NFe.Utils.NFe;
-using NFe.Wsdl;
-using System.Data.Entity;
 using NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual;
 using NFe.Classes.Informacoes.Detalhe.Tributacao.Federal;
 
 namespace Loja
 {
-	public partial class frmEntrada : DevExpress.XtraEditors.XtraForm
+    public partial class frmEntrada : DevExpress.XtraEditors.XtraForm
 	{
 		#region Variáveis
 		List<EntradaItens> itens;
@@ -252,7 +241,7 @@ namespace Loja
 			if (!String.IsNullOrEmpty(txtNumChave.Text))
 			{
 				var cnpj = Util.SemFormatacao(Properties.Settings.Default.CNPJ.ToString());
-				var nfe = Monitor.DownloadNFe(cnpj, txtNumChave.Text);
+				//var nfe = Monitor.DownloadNFe(cnpj, txtNumChave.Text);
 
 				var arquivoXml = "";
 
@@ -434,7 +423,8 @@ namespace Loja
 				{
 					capa.DocEntrada = nf.infNFe.ide.nNF.ToString();
 					capa.SerieNota = nf.infNFe.ide.serie.ToString();
-					capa.DatEmissao = DateTime.Parse(nf.infNFe.ide.dhEmi);
+					//capa.DatEmissao = DateTime.Parse(nf.infNFe.ide.dhEmi);
+					capa.DatEmissao = nf.infNFe.ide.dhEmi.DateTime;
 					capa.Nome = nf.infNFe.emit.xNome;
 					capa.CNPJ = nf.infNFe.emit.CNPJ;
 					capa.CPF = nf.infNFe.emit.CPF;

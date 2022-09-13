@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
 			this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+			this.chkGerarPDF = new DevExpress.XtraEditors.CheckEdit();
 			this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
 			this.txtNome = new DevExpress.XtraEditors.TextEdit();
 			this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
@@ -71,6 +72,7 @@
 			this.colCodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
 			((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
 			this.groupControl1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.chkGerarPDF.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtNome.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.boxEnviando)).BeginInit();
 			this.boxEnviando.SuspendLayout();
@@ -95,6 +97,7 @@
 			// 
 			this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupControl1.Controls.Add(this.chkGerarPDF);
 			this.groupControl1.Controls.Add(this.labelControl10);
 			this.groupControl1.Controls.Add(this.txtNome);
 			this.groupControl1.Controls.Add(this.labelControl9);
@@ -124,13 +127,23 @@
 			this.groupControl1.Controls.Add(this.labelControl1);
 			this.groupControl1.Location = new System.Drawing.Point(12, 149);
 			this.groupControl1.Name = "groupControl1";
-			this.groupControl1.Size = new System.Drawing.Size(707, 330);
+			this.groupControl1.Size = new System.Drawing.Size(876, 330);
 			this.groupControl1.TabIndex = 1;
 			this.groupControl1.Text = "Dados da Venda";
+			// 
+			// chkGerarPDF
+			// 
+			this.chkGerarPDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.chkGerarPDF.Location = new System.Drawing.Point(701, 209);
+			this.chkGerarPDF.Name = "chkGerarPDF";
+			this.chkGerarPDF.Properties.Caption = "Gerar PDF";
+			this.chkGerarPDF.Size = new System.Drawing.Size(81, 19);
+			this.chkGerarPDF.TabIndex = 30;
 			// 
 			// labelControl10
 			// 
 			this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelControl10.Appearance.Options.UseFont = true;
 			this.labelControl10.Location = new System.Drawing.Point(354, 68);
 			this.labelControl10.Name = "labelControl10";
 			this.labelControl10.Size = new System.Drawing.Size(53, 19);
@@ -153,6 +166,7 @@
 			// labelControl9
 			// 
 			this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelControl9.Appearance.Options.UseFont = true;
 			this.labelControl9.Location = new System.Drawing.Point(47, 68);
 			this.labelControl9.Name = "labelControl9";
 			this.labelControl9.Size = new System.Drawing.Size(88, 19);
@@ -167,7 +181,7 @@
 			this.boxEnviando.Controls.Add(this.progressoNota);
 			this.boxEnviando.Location = new System.Drawing.Point(445, 101);
 			this.boxEnviando.Name = "boxEnviando";
-			this.boxEnviando.Size = new System.Drawing.Size(252, 51);
+			this.boxEnviando.Size = new System.Drawing.Size(421, 51);
 			this.boxEnviando.TabIndex = 26;
 			// 
 			// labelControl8
@@ -185,7 +199,7 @@
 			this.progressoNota.EditValue = 0;
 			this.progressoNota.Location = new System.Drawing.Point(6, 23);
 			this.progressoNota.Name = "progressoNota";
-			this.progressoNota.Size = new System.Drawing.Size(241, 24);
+			this.progressoNota.Size = new System.Drawing.Size(410, 24);
 			this.progressoNota.TabIndex = 26;
 			// 
 			// txtVlrTotal
@@ -207,6 +221,7 @@
 			// labelControl7
 			// 
 			this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelControl7.Appearance.Options.UseFont = true;
 			this.labelControl7.Location = new System.Drawing.Point(38, 140);
 			this.labelControl7.Name = "labelControl7";
 			this.labelControl7.Size = new System.Drawing.Size(97, 19);
@@ -263,6 +278,7 @@
 			// labelControl6
 			// 
 			this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelControl6.Appearance.Options.UseFont = true;
 			this.labelControl6.Location = new System.Drawing.Point(71, 29);
 			this.labelControl6.Name = "labelControl6";
 			this.labelControl6.Size = new System.Drawing.Size(64, 19);
@@ -288,7 +304,7 @@
 			// 
 			this.chkNFE.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.chkNFE.EditValue = true;
-			this.chkNFE.Location = new System.Drawing.Point(619, 209);
+			this.chkNFE.Location = new System.Drawing.Point(788, 209);
 			this.chkNFE.Name = "chkNFE";
 			this.chkNFE.Properties.Caption = "Emitir NFC-e";
 			this.chkNFE.Size = new System.Drawing.Size(83, 19);
@@ -298,7 +314,7 @@
 			// 
 			this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnCancelar.Location = new System.Drawing.Point(591, 283);
+			this.btnCancelar.Location = new System.Drawing.Point(760, 283);
 			this.btnCancelar.Name = "btnCancelar";
 			this.btnCancelar.Size = new System.Drawing.Size(111, 42);
 			this.btnCancelar.TabIndex = 11;
@@ -333,6 +349,7 @@
 			// labelControl5
 			// 
 			this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelControl5.Appearance.Options.UseFont = true;
 			this.labelControl5.Location = new System.Drawing.Point(83, 286);
 			this.labelControl5.Name = "labelControl5";
 			this.labelControl5.Size = new System.Drawing.Size(52, 19);
@@ -359,6 +376,7 @@
 			// labelControl4
 			// 
 			this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelControl4.Appearance.Options.UseFont = true;
 			this.labelControl4.Location = new System.Drawing.Point(60, 250);
 			this.labelControl4.Name = "labelControl4";
 			this.labelControl4.Size = new System.Drawing.Size(75, 19);
@@ -384,6 +402,7 @@
 			// labelControl3
 			// 
 			this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelControl3.Appearance.Options.UseFont = true;
 			this.labelControl3.Location = new System.Drawing.Point(38, 214);
 			this.labelControl3.Name = "labelControl3";
 			this.labelControl3.Size = new System.Drawing.Size(93, 19);
@@ -401,7 +420,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
 			this.cmbTipoVenda.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Codigo", "Código"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Descricao", 70, "Descrição")});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Descricao", "Descrição", 70, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
 			this.cmbTipoVenda.Properties.DisplayMember = "Descricao";
 			this.cmbTipoVenda.Properties.ImmediatePopup = true;
 			this.cmbTipoVenda.Properties.NullText = "";
@@ -412,7 +431,7 @@
 			// btnFinalizarVenda
 			// 
 			this.btnFinalizarVenda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnFinalizarVenda.Location = new System.Drawing.Point(591, 235);
+			this.btnFinalizarVenda.Location = new System.Drawing.Point(760, 235);
 			this.btnFinalizarVenda.Name = "btnFinalizarVenda";
 			this.btnFinalizarVenda.Size = new System.Drawing.Size(111, 42);
 			this.btnFinalizarVenda.TabIndex = 11;
@@ -423,7 +442,7 @@
 			// 
 			this.chkApagarOrca.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.chkApagarOrca.EditValue = true;
-			this.chkApagarOrca.Location = new System.Drawing.Point(577, 184);
+			this.chkApagarOrca.Location = new System.Drawing.Point(746, 184);
 			this.chkApagarOrca.Name = "chkApagarOrca";
 			this.chkApagarOrca.Properties.Caption = "Descartar Orçamento";
 			this.chkApagarOrca.Size = new System.Drawing.Size(125, 19);
@@ -432,7 +451,7 @@
 			// chkEmitirRecibo
 			// 
 			this.chkEmitirRecibo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.chkEmitirRecibo.Location = new System.Drawing.Point(615, 159);
+			this.chkEmitirRecibo.Location = new System.Drawing.Point(784, 159);
 			this.chkEmitirRecibo.Name = "chkEmitirRecibo";
 			this.chkEmitirRecibo.Properties.Caption = "Emitir Recibo";
 			this.chkEmitirRecibo.Size = new System.Drawing.Size(87, 19);
@@ -455,6 +474,7 @@
 			// labelControl2
 			// 
 			this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelControl2.Appearance.Options.UseFont = true;
 			this.labelControl2.Location = new System.Drawing.Point(54, 175);
 			this.labelControl2.Name = "labelControl2";
 			this.labelControl2.Size = new System.Drawing.Size(81, 19);
@@ -464,6 +484,7 @@
 			// labelControl1
 			// 
 			this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelControl1.Appearance.Options.UseFont = true;
 			this.labelControl1.Location = new System.Drawing.Point(12, 101);
 			this.labelControl1.Name = "labelControl1";
 			this.labelControl1.Size = new System.Drawing.Size(125, 19);
@@ -479,7 +500,7 @@
 			this.gridOrcamento.Location = new System.Drawing.Point(0, 0);
 			this.gridOrcamento.MainView = this.gridViewOrcamento;
 			this.gridOrcamento.Name = "gridOrcamento";
-			this.gridOrcamento.Size = new System.Drawing.Size(730, 143);
+			this.gridOrcamento.Size = new System.Drawing.Size(899, 143);
 			this.gridOrcamento.TabIndex = 0;
 			this.gridOrcamento.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewOrcamento});
@@ -609,7 +630,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnCancelar;
-			this.ClientSize = new System.Drawing.Size(731, 491);
+			this.ClientSize = new System.Drawing.Size(900, 491);
 			this.Controls.Add(this.gridOrcamento);
 			this.Controls.Add(this.groupControl1);
 			this.KeyPreview = true;
@@ -621,6 +642,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
 			this.groupControl1.ResumeLayout(false);
 			this.groupControl1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.chkGerarPDF.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtNome.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.boxEnviando)).EndInit();
 			this.boxEnviando.ResumeLayout(false);
@@ -687,5 +709,6 @@
 		private DevExpress.XtraEditors.TextEdit txtNome;
 		private DevExpress.XtraEditors.LabelControl labelControl9;
 		public DevExpress.XtraEditors.CalcEdit txtDesconto;
+		private DevExpress.XtraEditors.CheckEdit chkGerarPDF;
     }
 }

@@ -1,23 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Linq;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 using Loja.DAL.DAO;
-using System.IO;
-using System.Reflection;
 
 using Loja.DAL.Models;
-using NFe.Utils;
-using NFe.Classes;
-using NFe.Impressao.NFCe.FastReports;
-using NFe.Impressao.NFCe;
-using NFe.Impressao;
-
 
 namespace Loja
 {
@@ -132,7 +120,7 @@ namespace Loja
 				this.Refresh();
 				this.ForceRefresh();
 
-				if (nfe == 1)
+				if (chkNFE.Checked)
 				{
 
 					if (_configuracoes.CfgServico.tpEmis == NFe.Classes.Informacoes.Identificacao.Tipos.TipoEmissao.teOffLine)
@@ -141,10 +129,11 @@ namespace Loja
 					}
 
 					var nota = new Modules.NFCE(_configuracoes, saida);
+					var enviar = nota.EnviaNFCE(chkGerarPDF.Checked);
 
-					if (!nota.EnviaNFCE())
+					if (!enviar.Resultado)
 					{
-						Util.MsgBox("Nota fiscal não enviada, venda não realizada");
+						Util.MsgBox($"Nota fiscal não enviada, venda não realizada.\nRetorno do serviço: {enviar.Mensagem}");
 
 						Cadastros.EstornaVenda(codVenda, "Não enviada SEFAZ", true);
 
@@ -158,6 +147,28 @@ namespace Loja
 						return;
 
 					}
+
+					/*if (chkGerarPDF.Checked)
+					{
+						var caminho = "";
+
+						caminho = String.Format("{0}\\XML\\{1}-env-lot.xml", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), codVenda);
+
+						if (File.Exists(caminho))
+						{
+
+							var retorno = Modules.Monitor.ImprimirDANFEPDF(caminho);
+							if (!retorno.Status) 
+							{ 
+								Util.MsgBox("Erro ao gerar o PDF: " + retorno.Resultado);
+							}
+						}
+						else
+						{
+							Util.MsgBox("Erro ao tentar gerar o PDF do DANFE, arquivo XML não encontrado");
+						}
+
+					}*/
 
 					this.Refresh();
 					this.ForceRefresh();

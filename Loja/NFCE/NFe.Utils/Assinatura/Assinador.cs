@@ -31,56 +31,87 @@
 /* Rua Comendador Francisco josé da Cunha, 111 - Itabaiana - SE - 49500-000     */
 /********************************************************************************/
 using System;
+using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
 using System.Xml;
-using Signature = NFe.Classes.Assinatura.Signature;
+using DFe.Utils;
+using DFe.Utils.Assinatura;
+using Signature = DFe.Classes.Assinatura.Signature;
 
 namespace NFe.Utils.Assinatura
 {
     public static class Assinador
     {
         /// <summary>
-        ///     Obtém a asinatura de um objeto serializável
+        ///     Obtém a assinatura de um objeto serializável
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="objeto"></param>
         /// <param name="id"></param>
+        /// <param name="certificadoDigital">Informe o certificado digital, se já possuir esse em cache, evitando novo acesso ao certificado</param>
         /// <returns>Retorna um objeto do tipo Classes.Assinatura.Signature, contendo a assinatura do objeto passado como parâmetro</returns>
-        public static Signature ObterAssinatura<T>(T objeto, string id) where T : class
+        public static Signature ObterAssinatura<T>(T objeto, string id, ConfiguracaoServico cfgServico = null) where T : class
+        {
+            if (cfgServico == null)
+                cfgServico = ConfiguracaoServico.Instancia;
+
+            return ObterAssinatura<T>(objeto, id, CertificadoDigital.ObterCertificado(cfgServico.Certificado), cfgServico.Certificado.ManterDadosEmCache, cfgServico.Certificado.SignatureMethodSignedXml, cfgServico.Certificado.DigestMethodReference);
+        }
+
+        /// <summary>
+        ///     Obtém a assinatura de um objeto serializável
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="objeto"></param>
+        /// <param name="id"></param>
+        /// <param name="certificadoDigital">Informe o certificado digital</param>
+        /// <param name="manterDadosEmCache">Validador para manter o certificado em cache</param>
+        /// <returns>Retorna um objeto do tipo Classes.Assinatura.Signature, contendo a assinatura do objeto passado como parâmetro</returns>
+        public static Signature ObterAssinatura<T>(T objeto, string id, X509Certificate2 certificadoDigital, bool manterDadosEmCache = false, string signatureMethod = "http://www.w3.org/2000/09/xmldsig#rsa-sha1", string digestMethod = "http://www.w3.org/2000/09/xmldsig#sha1") where T : class
         {
             var objetoLocal = objeto;
             if (id == null)
                 throw new Exception("Não é possível assinar um objeto evento sem sua respectiva Id!");
 
-            var certificado = string.IsNullOrEmpty(ConfiguracaoServico.Instancia.Certificado.Arquivo)
-                ? CertificadoDigital.ObterDoRepositorio(ConfiguracaoServico.Instancia.Certificado.Serial, ConfiguracaoServico.Instancia.Certificado.Senha)
-                : CertificadoDigital.ObterDeArquivo(ConfiguracaoServico.Instancia.Certificado.Arquivo, ConfiguracaoServico.Instancia.Certificado.Senha);
+            try
+            {
+                var documento = new XmlDocument { PreserveWhitespace = true };
+                documento.LoadXml(FuncoesXml.ClasseParaXmlString(objetoLocal));
+                var docXml = new SignedXml(documento) { SigningKey = certificadoDigital.PrivateKey };
 
-            var documento = new XmlDocument {PreserveWhitespace = true};
-            documento.LoadXml(FuncoesXml.ClasseParaXmlString(objetoLocal));
-            var docXml = new SignedXml(documento) {SigningKey = certificado.PrivateKey};
-            var reference = new Reference {Uri = "#" + id};
+                docXml.SignedInfo.SignatureMethod = signatureMethod;
 
-            // adicionando EnvelopedSignatureTransform a referencia
-            var envelopedSigntature = new XmlDsigEnvelopedSignatureTransform();
-            reference.AddTransform(envelopedSigntature);
+                var reference = new Reference { Uri = "#" + id, DigestMethod = digestMethod};
 
-            var c14Transform = new XmlDsigC14NTransform();
-            reference.AddTransform(c14Transform);
+                // adicionando EnvelopedSignatureTransform a referencia
+                var envelopedSigntature = new XmlDsigEnvelopedSignatureTransform();
+                reference.AddTransform(envelopedSigntature);
 
-            docXml.AddReference(reference);
+                var c14Transform = new XmlDsigC14NTransform();
+                reference.AddTransform(c14Transform);
 
-            // carrega o certificado em KeyInfoX509Data para adicionar a KeyInfo
-            var keyInfo = new KeyInfo();
-            keyInfo.AddClause(new KeyInfoX509Data(certificado));
+                docXml.AddReference(reference);
 
-            docXml.KeyInfo = keyInfo;
-            docXml.ComputeSignature();
+                // carrega o certificado em KeyInfoX509Data para adicionar a KeyInfo
+                var keyInfo = new KeyInfo();
+                keyInfo.AddClause(new KeyInfoX509Data(certificadoDigital));
 
-            //// recuperando a representacao do XML assinado
-            var xmlDigitalSignature = docXml.GetXml();
-            var assinatura = FuncoesXml.XmlStringParaClasse<Signature>(xmlDigitalSignature.OuterXml);
-            return assinatura;
+                docXml.KeyInfo = keyInfo;
+                docXml.ComputeSignature();
+
+                //// recuperando a representação do XML assinado
+                var xmlDigitalSignature = docXml.GetXml();
+                var assinatura = FuncoesXml.XmlStringParaClasse<Signature>(xmlDigitalSignature.OuterXml);
+                return assinatura;
+            }
+            finally
+            {
+                //Se não mantém os dados do certificado em cache e o certificado não foi passado por parâmetro(isto é, ele foi criado dentro deste método), 
+                //então libera o certificado, chamando o método reset.
+                if (!manterDadosEmCache & certificadoDigital == null)
+                    certificadoDigital.Reset();
+            }
+
         }
     }
 }

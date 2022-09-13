@@ -32,7 +32,9 @@
 /********************************************************************************/
 using System;
 using System.Xml.Serialization;
-using NFe.Classes.Informacoes.Identificacao.Tipos;
+using DFe.Classes.Entidades;
+using DFe.Classes.Flags;
+using NFe.Classes.Protocolo;
 
 namespace NFe.Classes.Servicos.Recepcao
 {
@@ -57,7 +59,7 @@ namespace NFe.Classes.Servicos.Recepcao
         public string verAplic { get; set; }
 
         /// <summary>
-        ///     AR05 - Código do status da resposta (vide item 5.1.1)
+        ///     AR05 - Código do status da resposta
         /// </summary>
         public int cStat { get; set; }
 
@@ -80,5 +82,20 @@ namespace NFe.Classes.Servicos.Recepcao
         ///     AR07 - Dados do Recibo do Lote (Só é gerado se o Lote for aceito)
         /// </summary>
         public infRec infRec { get; set; }
+
+        /// <summary>
+        /// AR08 - Número do Recibo gerado pelo Portal da Secretaria de Fazenda Estadual
+        /// </summary>
+        public int nRec { get; set; }
+
+        /// <summary>
+        /// AR10 - Tempo médio de resposta do serviço (em segundos) dos últimos 5 minutos
+        /// </summary>
+        public decimal tMed { get; set; }
+
+        /// <summary>
+        /// AR11 - ados do Protocolo de recebimento da NF-e gerado no caso do processamento síncrono do Lote de NF-e
+        /// </summary>
+        public protNFe protNFe { get; set; }
     }
 }

@@ -32,6 +32,7 @@
 /********************************************************************************/
 using System;
 using System.Globalization;
+using DFe.Utils;
 using NFe.Classes.Servicos.Tipos;
 using NFe.Utils.Assinatura;
 using NFe.Utils.Validacao;
@@ -88,19 +89,20 @@ namespace NFe.Utils.NFe
         ///     Gera id, cdv, assina e faz alguns ajustes nos dados da classe NFe antes de utilizá-la
         /// </summary>
         /// <param name="nfe"></param>
+        /// <param name="cfgServico1"></param>
         /// <returns>Retorna um objeto NFe devidamente tradado</returns>
-        public static Classes.NFe Valida(this Classes.NFe nfe)
+        public static Classes.NFe Valida(this Classes.NFe nfe, ConfiguracaoServico cfgServico = null)
         {
             if (nfe == null) throw new ArgumentNullException("nfe");
 
             var versao = (Decimal.Parse(nfe.infNFe.versao, CultureInfo.InvariantCulture));
 
             var xmlNfe = nfe.ObterXmlString();
-            var cfgServico = ConfiguracaoServico.Instancia;
+            var config = cfgServico ?? ConfiguracaoServico.Instancia;
             if (versao < 3)
-                Validador.Valida(ServicoNFe.NfeRecepcao, TipoRecepcaoEvento.Nenhum, cfgServico.VersaoNfeRecepcao, xmlNfe, false);
+                Validador.Valida(ServicoNFe.NfeRecepcao, config.VersaoNfeRecepcao, xmlNfe, false, config);
             if (versao >= 3)
-                Validador.Valida(ServicoNFe.NFeAutorizacao, TipoRecepcaoEvento.Nenhum, cfgServico.VersaoNFeAutorizacao, xmlNfe, false);
+                Validador.Valida(ServicoNFe.NFeAutorizacao, config.VersaoNFeAutorizacao, xmlNfe, false, config);
 
             return nfe; //Para uso no formato fluent
         }
@@ -109,8 +111,9 @@ namespace NFe.Utils.NFe
         ///     Assina um objeto NFe
         /// </summary>
         /// <param name="nfe"></param>
+        /// <param name="cfgServico">ConfiguracaoServico para uso na classe Assinador</param>
         /// <returns>Retorna um objeto do tipo NFe assinado</returns>
-        public static Classes.NFe Assina(this Classes.NFe nfe)
+        public static Classes.NFe Assina(this Classes.NFe nfe, ConfiguracaoServico cfgServico = null)
         {
             var nfeLocal = nfe;
             if (nfeLocal == null) throw new ArgumentNullException("nfe");
@@ -118,18 +121,27 @@ namespace NFe.Utils.NFe
             #region Define cNF
 
             var tamanhocNf = 9;
-            var versao = (Decimal.Parse(nfeLocal.infNFe.versao, CultureInfo.InvariantCulture));
+            var versao = (decimal.Parse(nfeLocal.infNFe.versao, CultureInfo.InvariantCulture));
             if (versao >= 2) tamanhocNf = 8;
             nfeLocal.infNFe.ide.cNF = Convert.ToInt32(nfeLocal.infNFe.ide.cNF).ToString().PadLeft(tamanhocNf, '0');
 
             #endregion
 
-            var chave = Gerador.GerarChave(nfeLocal.infNFe);
+            var modeloDocumentoFiscal = nfeLocal.infNFe.ide.mod;
+            var tipoEmissao = (int)nfeLocal.infNFe.ide.tpEmis;
+            var codigoNumerico = int.Parse(nfeLocal.infNFe.ide.cNF);
+            var estado = nfeLocal.infNFe.ide.cUF;
+            var dataEHoraEmissao = nfeLocal.infNFe.ide.dhEmi;
+            var cnpj = nfeLocal.infNFe.emit.CNPJ;
+            var numeroDocumento = nfeLocal.infNFe.ide.nNF;
+            var serie = nfeLocal.infNFe.ide.serie;
 
-            nfeLocal.infNFe.Id = Gerador.GerarId(chave);
-            nfeLocal.infNFe.ide.cDV = Convert.ToInt16(chave.Substring(chave.Length - 1, 1));
+            var dadosChave = ChaveFiscal.ObterChave(estado, dataEHoraEmissao.LocalDateTime, cnpj, modeloDocumentoFiscal, serie, numeroDocumento, tipoEmissao, codigoNumerico);
 
-            var assinatura = Assinador.ObterAssinatura(nfeLocal, nfeLocal.infNFe.Id);
+            nfeLocal.infNFe.Id = "NFe" + dadosChave.Chave;
+            nfeLocal.infNFe.ide.cDV = Convert.ToInt16(dadosChave.DigitoVerificador);
+
+            var assinatura = Assinador.ObterAssinatura(nfeLocal, nfeLocal.infNFe.Id, cfgServico);
             nfeLocal.Signature = assinatura;
             return nfeLocal;
         }

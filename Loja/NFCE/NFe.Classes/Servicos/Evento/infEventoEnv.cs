@@ -32,7 +32,9 @@
 /********************************************************************************/
 using System;
 using System.Xml.Serialization;
-using NFe.Classes.Informacoes.Identificacao.Tipos;
+using DFe.Classes.Entidades;
+using DFe.Classes.Flags;
+using DFe.Utils;
 
 namespace NFe.Classes.Servicos.Evento
 {
@@ -100,9 +102,20 @@ namespace NFe.Classes.Servicos.Evento
         public string chNFe { get; set; }
 
         /// <summary>
-        ///     HP13 - Data e hora do evento no formato AAAA-MM-DDThh:mm:ssTZD (UTC - Universal Coordinated Time)
+        ///     HP13 - Data e hora do evento
         /// </summary>
-        public string dhEvento { get; set; }
+        [XmlIgnore]
+        public DateTime dhEvento { get; set; }
+
+        /// <summary>
+        /// Proxy para dhEvento no formato AAAA-MM-DDThh:mm:ssTZD (UTC - Universal Coordinated Time)
+        /// </summary>
+        [XmlElement(ElementName = "dhEvento")]
+        public string ProxydhEvento
+        {
+            get { return dhEvento.ParaDataHoraStringUtc(); }
+            set { dhEvento = DateTime.Parse(value); }
+        }
 
         /// <summary>
         ///     HP14 - Código do evento

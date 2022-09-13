@@ -30,6 +30,10 @@
 /* http://www.zeusautomacao.com.br/                                             */
 /* Rua Comendador Francisco josé da Cunha, 111 - Itabaiana - SE - 49500-000     */
 /********************************************************************************/
+
+using DFe.Classes.Entidades;
+using NFe.Classes.Informacoes.Identificacao.Tipos;
+
 namespace NFe.Classes.Informacoes.Identificacao
 {
     public class refNF
@@ -52,7 +56,7 @@ namespace NFe.Classes.Informacoes.Identificacao
         /// <summary>
         ///     BA07 - Modelo do Documento Fiscal
         /// </summary>
-        public int mod { get; set; }
+        public refMod mod { get; set; }
 
         /// <summary>
         ///     BA08 - Série do Documento Fiscal

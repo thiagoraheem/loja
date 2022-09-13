@@ -41,6 +41,9 @@ namespace NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual
         private decimal _vBcst;
         private decimal _pIcmsst;
         private decimal _vIcmsst;
+        private decimal? _vBcfcpst;
+        private decimal? _pFcpst;
+        private decimal? _vFcpst;
 
         /// <summary>
         ///     N11 - Origem da Mercadoria
@@ -62,8 +65,8 @@ namespace NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual
         /// </summary>
         public decimal? pMVAST
         {
-            get { return _pMvast; }
-            set { _pMvast = Valor.Arredondar(value, 4); }
+            get { return _pMvast.Arredondar(4); }
+            set { _pMvast = value.Arredondar(4); }
         }
 
         /// <summary>
@@ -71,8 +74,8 @@ namespace NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual
         /// </summary>
         public decimal? pRedBCST
         {
-            get { return _pRedBcst; }
-            set { _pRedBcst = Valor.Arredondar(value, 4); }
+            get { return _pRedBcst.Arredondar(4); }
+            set { _pRedBcst = value.Arredondar(4); }
         }
 
         /// <summary>
@@ -81,7 +84,7 @@ namespace NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual
         public decimal vBCST
         {
             get { return _vBcst; }
-            set { _vBcst = Valor.Arredondar(value, 2); }
+            set { _vBcst = value.Arredondar(2); }
         }
 
         /// <summary>
@@ -90,7 +93,7 @@ namespace NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual
         public decimal pICMSST
         {
             get { return _pIcmsst; }
-            set { _pIcmsst = Valor.Arredondar(value, 4); }
+            set { _pIcmsst = value.Arredondar(4); }
         }
 
         /// <summary>
@@ -99,7 +102,52 @@ namespace NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual
         public decimal vICMSST
         {
             get { return _vIcmsst; }
-            set { _vIcmsst = Valor.Arredondar(value, 2); }
+            set { _vIcmsst = value.Arredondar(2); }
+        }
+
+        /// <summary>
+        /// N23a - Valor da Base de Cálculo do FCP retido por Substituição Tributária
+        /// Versão 4.00
+        /// </summary>
+        public decimal? vBCFCPST
+        {
+            get { return _vBcfcpst.Arredondar(2); }
+            set { _vBcfcpst = value.Arredondar(2); }
+        }
+
+        public bool vBCFCPSTSpecified
+        {
+            get { return vBCFCPST.HasValue; }
+        }
+
+        /// <summary>
+        /// N23b - Percentual do FCP retido por Substituição Tributária
+        /// Versão 4.00
+        /// </summary>
+        public decimal? pFCPST
+        {
+            get { return _pFcpst.Arredondar(4); }
+            set { _pFcpst = value.Arredondar(4); }
+        }
+
+        public bool pFCPSTSpecified
+        {
+            get { return pFCPST.HasValue; }
+        }
+
+        /// <summary>
+        /// N23d - Valor do FCP retido por Substituição Tributária
+        /// Versão 4.00
+        /// </summary>
+        public decimal? vFCPST
+        {
+            get { return _vFcpst.Arredondar(2); }
+            set { _vFcpst = value.Arredondar(2); }
+        }
+
+        public bool vFCPSTSpecified
+        {
+            get { return vFCPST.HasValue; }
         }
 
         public bool ShouldSerializepMVAST()

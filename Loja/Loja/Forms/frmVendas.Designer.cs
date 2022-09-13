@@ -50,6 +50,8 @@
 			this.colCliente = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colFlgStatusNFE = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+			this.btnGerarPDF = new DevExpress.XtraEditors.SimpleButton();
+			this.btnExcluir = new DevExpress.XtraEditors.SimpleButton();
 			this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
 			this.cmbStatusNFE = new DevExpress.XtraEditors.ComboBoxEdit();
 			this.btnImprimirResumo = new DevExpress.XtraEditors.SimpleButton();
@@ -64,7 +66,6 @@
 			this.btnRetornar = new DevExpress.XtraEditors.SimpleButton();
 			this.tbl_SaidaTableAdapter1 = new Loja.relVendasTableAdapters.tbl_SaidaTableAdapter();
 			this.tbl_SaidaItensTableAdapter1 = new Loja.relVendasTableAdapters.tbl_SaidaItensTableAdapter();
-			this.btnExcluir = new DevExpress.XtraEditors.SimpleButton();
 			((System.ComponentModel.ISupportInitialize)(this.grdItens)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.grdDados)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.relVendasBindingSource)).BeginInit();
@@ -274,6 +275,7 @@
 			// 
 			this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupControl1.Controls.Add(this.btnGerarPDF);
 			this.groupControl1.Controls.Add(this.btnExcluir);
 			this.groupControl1.Controls.Add(this.btnCancelar);
 			this.groupControl1.Controls.Add(this.cmbStatusNFE);
@@ -292,6 +294,26 @@
 			this.groupControl1.Size = new System.Drawing.Size(666, 125);
 			this.groupControl1.TabIndex = 0;
 			this.groupControl1.Text = "Opções e Filtros";
+			// 
+			// btnGerarPDF
+			// 
+			this.btnGerarPDF.Location = new System.Drawing.Point(119, 97);
+			this.btnGerarPDF.Name = "btnGerarPDF";
+			this.btnGerarPDF.Size = new System.Drawing.Size(102, 23);
+			this.btnGerarPDF.TabIndex = 17;
+			this.btnGerarPDF.Text = "Gerar PDF DANFE";
+			this.btnGerarPDF.Click += new System.EventHandler(this.btnGerarPDF_Click);
+			// 
+			// btnExcluir
+			// 
+			this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnExcluir.Enabled = false;
+			this.btnExcluir.Location = new System.Drawing.Point(424, 69);
+			this.btnExcluir.Name = "btnExcluir";
+			this.btnExcluir.Size = new System.Drawing.Size(75, 23);
+			this.btnExcluir.TabIndex = 16;
+			this.btnExcluir.Text = "E&xcluir";
+			this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
 			// 
 			// btnCancelar
 			// 
@@ -322,7 +344,7 @@
 			// 
 			this.btnImprimirResumo.Location = new System.Drawing.Point(119, 69);
 			this.btnImprimirResumo.Name = "btnImprimirResumo";
-			this.btnImprimirResumo.Size = new System.Drawing.Size(104, 23);
+			this.btnImprimirResumo.Size = new System.Drawing.Size(102, 23);
 			this.btnImprimirResumo.TabIndex = 13;
 			this.btnImprimirResumo.Text = "I&mprimir Resumo";
 			this.btnImprimirResumo.Click += new System.EventHandler(this.btnImprimirResumo_Click);
@@ -425,17 +447,6 @@
 			// 
 			this.tbl_SaidaItensTableAdapter1.ClearBeforeFill = true;
 			// 
-			// btnExcluir
-			// 
-			this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnExcluir.Enabled = false;
-			this.btnExcluir.Location = new System.Drawing.Point(424, 69);
-			this.btnExcluir.Name = "btnExcluir";
-			this.btnExcluir.Size = new System.Drawing.Size(75, 23);
-			this.btnExcluir.TabIndex = 16;
-			this.btnExcluir.Text = "E&xcluir";
-			this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
-			// 
 			// frmVendas
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -503,5 +514,6 @@
 		private DevExpress.XtraEditors.ComboBoxEdit cmbStatusNFE;
 		private DevExpress.XtraEditors.SimpleButton btnCancelar;
 		private DevExpress.XtraEditors.SimpleButton btnExcluir;
+		private DevExpress.XtraEditors.SimpleButton btnGerarPDF;
 	}
 }

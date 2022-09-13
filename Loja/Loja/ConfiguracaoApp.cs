@@ -1,59 +1,69 @@
-﻿using NFe.Classes.Informacoes.Emitente;
-using NFe.Classes.Informacoes.Identificacao.Tipos;
-using NFe.Impressao;
-using NFe.Impressao.NFCe;
-using NFe.Utils;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
+using DFe.Classes.Flags;
+using DFe.Utils;
+using Loja.Properties;
+using NFe.Classes.Informacoes.Emitente;
+using NFe.Classes.Informacoes.Identificacao.Tipos;
+using NFe.Danfe.Base;
+using NFe.Danfe.Base.NFCe;
+using NFe.Utils;
+using NFe.Utils.Email;
 
 namespace Loja
 {
 	public class ConfiguracaoApp
 	{
-
 		private ConfiguracaoServico _cfgServico;
 
 		public ConfiguracaoApp()
 		{
 			CfgServico = ConfiguracaoServico.Instancia;
-			CfgServico.tpAmb = TipoAmbiente.taHomologacao;
+			#if Debug
+			CfgServico.tpAmb = TipoAmbiente.Homologacao;
+			#else
+			CfgServico.tpAmb = TipoAmbiente.Producao;
+			#endif
 			CfgServico.tpEmis = TipoEmissao.teNormal;
-			Emitente = new emit { CNPJ = "05499801000167", CPF = "", CRT = CRT.SimplesNacional };
+			CfgServico.ProtocoloDeSeguranca = ServicePointManager.SecurityProtocol;
+			Emitente = new emit { CPF = "", CRT = CRT.SimplesNacional };
 			EnderecoEmitente = new enderEmit();
-			ConfiguracaoDanfeNfce = new ConfiguracaoDanfeNfce(NfceDetalheVendaNormal.UmaLinha, NfceDetalheVendaContigencia.UmaLinha, "", "");
+			ConfiguracaoEmail = new ConfiguracaoEmail("jasgif@gmail.com", "186186186", "Envio de NFE", Resources.MensagemHtml, "smtp.gmail.com", 587, true, true);
+			ConfiguracaoCsc = new ConfiguracaoCsc("000001", CfgServico.tpAmb == TipoAmbiente.Homologacao ? "6c15dd175e08d810" : "dbe71e1bd0bf7aba");
+			ConfiguracaoDanfeNfce = new ConfiguracaoDanfeNfce(NfceDetalheVendaNormal.UmaLinha, NfceDetalheVendaContigencia.UmaLinha);
 		}
 
 		public ConfiguracaoServico CfgServico
 		{
 			get
 			{
-				Funcoes.CopiarPropriedades(_cfgServico, ConfiguracaoServico.Instancia);
+				ConfiguracaoServico.Instancia.CopiarPropriedades(_cfgServico);
 				return _cfgServico;
 			}
 			set
 			{
 				_cfgServico = value;
-				Funcoes.CopiarPropriedades(value, ConfiguracaoServico.Instancia);
+				ConfiguracaoServico.Instancia.CopiarPropriedades(value);
 			}
 		}
 
 		public emit Emitente { get; set; }
 		public enderEmit EnderecoEmitente { get; set; }
+		public ConfiguracaoEmail ConfiguracaoEmail { get; set; }
+		public ConfiguracaoCsc ConfiguracaoCsc { get; set; }
 		public ConfiguracaoDanfeNfce ConfiguracaoDanfeNfce { get; set; }
+		public string ImpressoraPadrao { get; set; }
 
 		/// <summary>
 		///     Salva os dados de CfgServico em um arquivo XML
 		/// </summary>
 		/// <param name="arquivo">Arquivo XML onde será salvo os dados</param>
-		public void Salvar(string arquivo)
+		public void SalvarParaAqruivo(string arquivo)
 		{
-			var camposEmBranco = Funcoes.ObterPropriedadesEmBranco(CfgServico);
+			var camposEmBranco = CfgServico.ObterPropriedadesEmBranco();
 
-			var propinfo = Funcoes.ObterPropriedadeInfo(_cfgServico, c => c.DiretorioSalvarXml);
+			var propinfo = _cfgServico.ObterPropriedadeInfo(c => c.DiretorioSalvarXml);
 			camposEmBranco.Remove(propinfo.Name);
 
 			if (camposEmBranco.Count > 0)
@@ -64,9 +74,7 @@ namespace Loja
 			{
 				throw new DirectoryNotFoundException("Diretório " + dir + " não encontrado!");
 			}
-
 			FuncoesXml.ClasseParaArquivoXml(this, arquivo);
 		}
-
 	}
 }

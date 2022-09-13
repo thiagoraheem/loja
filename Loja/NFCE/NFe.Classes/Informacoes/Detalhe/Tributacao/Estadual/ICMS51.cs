@@ -43,6 +43,9 @@ namespace NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual
         private decimal? _pDif;
         private decimal? _vIcmsDif;
         private decimal? _vIcms;
+        private decimal? _vBcfcp;
+        private decimal? _pFcp;
+        private decimal? _vFcp;
 
         /// <summary>
         ///     N11 - Origem da Mercadoria
@@ -64,8 +67,8 @@ namespace NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual
         /// </summary>
         public decimal? pRedBC
         {
-            get { return _pRedBc; }
-            set { _pRedBc = Valor.Arredondar(value, 4); }
+            get { return _pRedBc.Arredondar(4); }
+            set { _pRedBc = value.Arredondar(4); }
         }
 
         /// <summary>
@@ -73,8 +76,8 @@ namespace NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual
         /// </summary>
         public decimal? vBC
         {
-            get { return _vBc; }
-            set { _vBc = Valor.Arredondar(value, 2); }
+            get { return _vBc.Arredondar(2); }
+            set { _vBc = value.Arredondar(2); }
         }
 
         /// <summary>
@@ -82,8 +85,8 @@ namespace NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual
         /// </summary>
         public decimal? pICMS
         {
-            get { return _pIcms; }
-            set { _pIcms = Valor.Arredondar(value, 4); }
+            get { return _pIcms.Arredondar(4); }
+            set { _pIcms = value.Arredondar(4); }
         }
 
         /// <summary>
@@ -91,8 +94,8 @@ namespace NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual
         /// </summary>
         public decimal? vICMSOp
         {
-            get { return _vIcmsOp; }
-            set { _vIcmsOp = Valor.Arredondar(value, 2); }
+            get { return _vIcmsOp.Arredondar(2); }
+            set { _vIcmsOp = value.Arredondar(2); }
         }
 
         /// <summary>
@@ -100,8 +103,8 @@ namespace NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual
         /// </summary>
         public decimal? pDif
         {
-            get { return _pDif; }
-            set { _pDif = Valor.Arredondar(value, 2); }
+            get { return _pDif.Arredondar(2); }
+            set { _pDif = value.Arredondar(2); }
         }
 
         /// <summary>
@@ -109,8 +112,8 @@ namespace NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual
         /// </summary>
         public decimal? vICMSDif
         {
-            get { return _vIcmsDif; }
-            set { _vIcmsDif = Valor.Arredondar(value, 2); }
+            get { return _vIcmsDif.Arredondar(2); }
+            set { _vIcmsDif = value.Arredondar(2); }
         }
 
         /// <summary>
@@ -118,8 +121,53 @@ namespace NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual
         /// </summary>
         public decimal? vICMS
         {
-            get { return _vIcms; }
-            set { _vIcms = Valor.Arredondar(value, 2); }
+            get { return _vIcms.Arredondar(2); }
+            set { _vIcms = value.Arredondar(2); }
+        }
+
+        /// <summary>
+        /// N17a - Valor da Base de Cálculo do FCP
+        /// Versão 4.00
+        /// </summary>
+        public decimal? vBCFCP
+        {
+            get { return _vBcfcp.Arredondar(2); }
+            set { _vBcfcp = value.Arredondar(2); }
+        }
+
+        public bool vBCFCPSpecified
+        {
+            get { return vBCFCP.HasValue; }
+        }
+
+        /// <summary>
+        /// N17b - Percentual do Fundo de Combate à Pobreza (FCP)
+        /// Versão 4.00
+        /// </summary>
+        public decimal? pFCP
+        {
+            get { return _pFcp.Arredondar(4); }
+            set { _pFcp = value.Arredondar(4); }
+        }
+
+        public bool pFCPSpecified
+        {
+            get { return pFCP.HasValue; }
+        }
+
+        /// <summary>
+        /// N17c - Valor do Fundo de Combate à Pobreza (FCP)
+        /// Versão 4.00
+        /// </summary>
+        public decimal? vFCP
+        {
+            get { return _vFcp.Arredondar(2); }
+            set { _vFcp = value.Arredondar(2); }
+        }
+
+        public bool vFCPSpecified
+        {
+            get { return vFCP.HasValue; }
         }
 
         public bool ShouldSerializemodBC()

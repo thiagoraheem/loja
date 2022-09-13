@@ -9,13 +9,15 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NFe.Classes</RootNamespace>
     <AssemblyName>NFe.Classes</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>89173db9</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,6 +27,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,29 +36,48 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assinatura\CanonicalizationMethod.cs" />
-    <Compile Include="Assinatura\DigestMethod.cs" />
-    <Compile Include="Assinatura\KeyInfo.cs" />
-    <Compile Include="Assinatura\Reference.cs" />
-    <Compile Include="Assinatura\Signature.cs" />
-    <Compile Include="Assinatura\SignatureMethod.cs" />
-    <Compile Include="Assinatura\SignedInfo.cs" />
-    <Compile Include="Assinatura\Transform.cs" />
-    <Compile Include="Assinatura\X509Data.cs" />
     <Compile Include="infNFeSupl.cs" />
-    <Compile Include="Informacoes\Detalhe\Produto Específico\encerrante.cs" />
+    <Compile Include="Informacoes\Detalhe\ProdEspecifico\encerrante.cs" />
+    <Compile Include="Informacoes\Detalhe\rastro.cs" />
+    <Compile Include="Informacoes\Detalhe\Tributacao\Estadual\ICMSUFDest.cs" />
+    <Compile Include="Informacoes\Detalhe\Tributacao\Extensions.cs" />
+    <Compile Include="Informacoes\Pagamento\detPag.cs" />
+    <Compile Include="Servicos\AdmCsc\admCscNFCe.cs" />
+    <Compile Include="Servicos\AdmCsc\dadosCsc.cs" />
+    <Compile Include="Servicos\AdmCsc\retAdmCscNFCe.cs" />
+    <Compile Include="Servicos\Autorizacao\enviNFe4.cs" />
+    <Compile Include="Servicos\DistribuicaoDFe\consChNFe.cs" />
+    <Compile Include="Servicos\DistribuicaoDFe\consNSU.cs" />
+    <Compile Include="Servicos\DistribuicaoDFe\distDFeInt.cs" />
+    <Compile Include="Servicos\DistribuicaoDFe\distNSU.cs" />
+    <Compile Include="Servicos\DistribuicaoDFe\loteDistDFeInt.cs" />
+    <Compile Include="Servicos\DistribuicaoDFe\retDistDFeInt.cs" />
+    <Compile Include="Servicos\DistribuicaoDFe\Schemas\detEvento.cs" />
+    <Compile Include="Servicos\DistribuicaoDFe\Schemas\evento.cs" />
+    <Compile Include="Servicos\DistribuicaoDFe\Schemas\eventoInfEvento.cs" />
+    <Compile Include="Servicos\DistribuicaoDFe\Schemas\infProt.cs" />
+    <Compile Include="Servicos\DistribuicaoDFe\Schemas\nfeProc.cs" />
+    <Compile Include="Servicos\DistribuicaoDFe\Schemas\procEventoNFe.cs" />
+    <Compile Include="Servicos\DistribuicaoDFe\Schemas\protNFe.cs" />
+    <Compile Include="Servicos\DistribuicaoDFe\Schemas\resEvento.cs" />
+    <Compile Include="Servicos\DistribuicaoDFe\Schemas\resNFe.cs" />
+    <Compile Include="Servicos\DistribuicaoDFe\Schemas\retEvento.cs" />
+    <Compile Include="Servicos\DistribuicaoDFe\Schemas\retInfEvento.cs" />
     <Compile Include="Servicos\Download\downloadNFe.cs" />
     <Compile Include="Servicos\Download\procNFe.cs" />
     <Compile Include="Servicos\Download\procNFeGrupoZip.cs" />
     <Compile Include="Servicos\Download\retDownloadNFe.cs" />
     <Compile Include="Servicos\Download\retNFe.cs" />
+    <Compile Include="Servicos\Inutilizacao\procInutNFe.cs" />
     <Compile Include="Valor.cs" />
     <Compile Include="Informacoes\Cana\cana.cs" />
     <Compile Include="Informacoes\Cana\deduc.cs" />
@@ -65,12 +87,12 @@
     <Compile Include="Informacoes\Detalhe\DeclaracaoImportacao\DI.cs" />
     <Compile Include="Informacoes\Detalhe\Exportacao\detExport.cs" />
     <Compile Include="Informacoes\Detalhe\Exportacao\exportInd.cs" />
-    <Compile Include="Informacoes\Detalhe\Produto Específico\arma.cs" />
-    <Compile Include="Informacoes\Detalhe\Produto Específico\CIDE.cs" />
-    <Compile Include="Informacoes\Detalhe\Produto Específico\comb.cs" />
-    <Compile Include="Informacoes\Detalhe\Produto Específico\med.cs" />
-    <Compile Include="Informacoes\Detalhe\Produto Específico\ProdutoEspecifico.cs" />
-    <Compile Include="Informacoes\Detalhe\Produto Específico\veicProd.cs" />
+    <Compile Include="Informacoes\Detalhe\ProdEspecifico\arma.cs" />
+    <Compile Include="Informacoes\Detalhe\ProdEspecifico\CIDE.cs" />
+    <Compile Include="Informacoes\Detalhe\ProdEspecifico\comb.cs" />
+    <Compile Include="Informacoes\Detalhe\ProdEspecifico\med.cs" />
+    <Compile Include="Informacoes\Detalhe\ProdEspecifico\ProdutoEspecifico.cs" />
+    <Compile Include="Informacoes\Detalhe\ProdEspecifico\veicProd.cs" />
     <Compile Include="Informacoes\exporta.cs" />
     <Compile Include="Servicos\ConsultaCadastro\ConsCad.cs" />
     <Compile Include="Servicos\ConsultaCadastro\ConsultaCadastroTipos.cs" />
@@ -130,9 +152,6 @@
     <Compile Include="Informacoes\Detalhe\Tributacao\Estadual\ICMSSN900.cs" />
     <Compile Include="Informacoes\Detalhe\Tributacao\Estadual\ICMSST.cs" />
     <Compile Include="Informacoes\Detalhe\Tributacao\Estadual\Tipos\ICMSBasico.cs" />
-    <Compile Include="Informacoes\Detalhe\Tributacao\Estadual\Tipos\ICMSNormal.cs" />
-    <Compile Include="Informacoes\Detalhe\Tributacao\Estadual\Tipos\ICMSNormalST.cs" />
-    <Compile Include="Informacoes\Detalhe\Tributacao\Estadual\Tipos\ICMSSTSomente.cs" />
     <Compile Include="Informacoes\Detalhe\Tributacao\Estadual\Tipos\ICMSTipos.cs" />
     <Compile Include="Informacoes\Detalhe\Tributacao\Federal\COFINS.cs" />
     <Compile Include="Informacoes\Detalhe\Tributacao\Federal\COFINSAliq.cs" />
@@ -207,10 +226,18 @@
     <Compile Include="Servicos\Tipos\ServicosTipos.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="NFe.Classes.cd" />
     <None Include="NFe.Classes.licenseheader" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DFe.Classes\DFe.Classes.csproj">
+      <Project>{9984ec15-18e1-4a87-b4db-18ac913dc4e8}</Project>
+      <Name>DFe.Classes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DFe.Utils\DFe.Utils.csproj">
+      <Project>{b4e1a7a6-5d66-4326-8a8d-39338e6fc84c}</Project>
+      <Name>DFe.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -32,8 +32,10 @@
 /********************************************************************************/
 using System;
 using System.Xml.Serialization;
-using NFe.Classes.Assinatura;
-using NFe.Classes.Informacoes.Identificacao.Tipos;
+using DFe.Classes.Assinatura;
+using DFe.Classes.Entidades;
+using DFe.Classes.Flags;
+using DFe.Utils;
 
 namespace NFe.Classes.Servicos.Evento
 {
@@ -136,15 +138,25 @@ namespace NFe.Classes.Servicos.Evento
         }
 
         /// <summary>
-        ///     HR24 - email do destinatário informado na NF-e.
+        ///     HR24 - e-mail do destinatário informado na NF-e.
         /// </summary>
         public string emailDest { get; set; }
 
         /// <summary>
-        ///     HR25 - Data e hora de registro do evento no formato AAAA-MM-DDTHH:MM:SSTZD (formato UTC, onde TZD é +HH:MM ou
-        ///     –HH:MM), se o evento for rejeitado informar a data e hora de recebimento do evento.
+        ///     HR25 - Data e hora de registro do evento. Se o evento for rejeitado informar a data e hora de recebimento do evento.
         /// </summary>
-        public string dhRegEvento { get; set; }
+        [XmlIgnore]
+        public DateTime dhRegEvento { get; set; }
+
+        /// <summary>
+        /// Proxy para dhEmi no formato AAAA-MM-DDThh:mm:ssTZD (UTC - Universal Coordinated Time)
+        /// </summary>
+        [XmlElement(ElementName = "dhRegEvento")]
+        public string ProxydhRegEvento
+        {
+            get { return dhRegEvento.ParaDataHoraStringUtc(); }
+            set { dhRegEvento = DateTime.Parse(value); }
+        }
 
         /// <summary>
         ///     HR26 - Número do Protocolo da NF-e

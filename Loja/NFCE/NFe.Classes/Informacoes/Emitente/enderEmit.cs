@@ -33,7 +33,6 @@
 
 using System;
 using System.Linq;
-using System.Xml.Serialization;
 
 namespace NFe.Classes.Informacoes.Emitente
 {
@@ -86,11 +85,14 @@ namespace NFe.Classes.Informacoes.Emitente
             get { return _cep; }
             set
             {
-                value = value.Replace("-","");
-                if (!value.All(char.IsDigit))
-                    throw new Exception(@"enderEmit\CEP deve receber somente números!");
-                if (value.Length != 8)
-                    throw new Exception(string.Format(@"enderEmit\CEP deve ter 8 números. Tamanho informado: {0}!", value.Length));
+                if (!string.IsNullOrEmpty(value))
+                {
+                    value = value.Replace("-", "");
+                    if (!value.All(char.IsDigit))
+                        throw new Exception(@"enderEmit\CEP deve receber somente números!");
+                    if (value.Length != 8)
+                        throw new Exception(string.Format(@"enderEmit\CEP deve ter 8 números. Tamanho informado: {0}!", value.Length));
+                }
                 _cep = value;
             }
         }

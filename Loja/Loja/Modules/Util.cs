@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data;
 using System.Data.OleDb;
 using System.Data.SqlClient;
-using System.Data.Odbc;
 using System.Net.Sockets;
 using System.Net;
-using System.IO;
-using System.Threading;
 using System.Windows.Forms;
+using NFe.Servicos;
 
 namespace Loja
 {
@@ -318,6 +313,51 @@ namespace Loja
 				// Discard PingExceptions and return false;
 			}
 			return pingable;
+		}
+
+		public static bool CheckForInternetConnection()
+		{
+			try
+			{
+				using (var client = new WebClient())
+				using (client.OpenRead("http://clients3.google.com/generate_204"))
+				{
+					return true;
+				}
+			}
+			catch
+			{
+				return false;
+			}
+		}
+
+		public static bool StatusSefaz(ConfiguracaoApp _configuracoes) {
+
+			try
+			{
+				#region Status do serviço
+				//Exemplo com using para chamar o método Dispose da classe.
+				//Usar dessa forma, especialmente, quando for usar certificado A3 com a senha salva.
+				// se usar cache você pode por um id no certificado e salvar mais de um certificado digital também na memoria com o zeus
+				//_configuracoes.CfgServico.Certificado.CacheId = "1";
+				using (var servicoNFe = new ServicosNFe(_configuracoes.CfgServico))
+				{
+					var retornoStatus = servicoNFe.NfeStatusServico();
+					if (retornoStatus.Retorno.cStat != 107)
+					{
+						return false;
+					}
+
+					return true;
+				}
+
+				#endregion
+			}
+			catch
+			{
+				return false;
+			}
+		
 		}
 	}
 }

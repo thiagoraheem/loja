@@ -35,12 +35,17 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using NFe.Classes.Informacoes.Detalhe.DeclaracaoImportacao;
 using NFe.Classes.Informacoes.Detalhe.Exportacao;
-using NFe.Classes.Informacoes.Detalhe.Produto_Específico;
+using NFe.Classes.Informacoes.Detalhe.ProdEspecifico;
 
 namespace NFe.Classes.Informacoes.Detalhe
 {
     public class prod
     {
+        public prod()
+        {
+            NVE = new List<string>();
+        }
+
         private string _nRecopi;
         private ProdutoEspecifico _produtoEspecifico;
         private decimal _qcom;
@@ -65,7 +70,7 @@ namespace NFe.Classes.Informacoes.Detalhe
         /// </summary>
         public string cEAN
         {
-            get { return _cEan; }
+            get { return _cEan ?? string.Empty; } //Sempre serializar o campo cEAN, mesmo que não tenha valor 
             set { _cEan = value ?? string.Empty; }
         }
 
@@ -82,8 +87,41 @@ namespace NFe.Classes.Informacoes.Detalhe
 
         /// <summary>
         ///     105a - Nomenclatura de Valor aduaneio e Estatístico
+        ///     <para>Ocorrência: 0-8</para>
         /// </summary>
-        public string NVE { get; set; }
+        [XmlElement("NVE")]
+        public List<string> NVE { get; set; }
+
+        /// <summary>
+        /// I05c - Código CEST
+        /// </summary>
+        public string CEST { get; set; }
+
+        /// <summary>
+        /// Versão 4.00
+        /// Indicador de Produção em escala relevante, conforme Cláusula 23 do Convenio ICMS 52/2017 ||||
+        /// Nota: preenchimento obrigatório para produtos com NCM
+        /// relacionado no Anexo XXVII do Convenio 52/2017
+        /// </summary>
+        public indEscala? indEscala { get; set; }
+
+        public bool indEscalaSpecified
+        {
+            get { return indEscala.HasValue; }
+        }
+
+        /// <summary>
+        /// Versão 4.00
+        /// CNPJ do Fabricante da Mercadoria, obrigatório para produto em escala NÃO relevante.
+        /// </summary>
+        public string CNPJFab { get; set; }
+
+        /// <summary>
+        /// Versão 4.00
+        /// Código de Benefício fiscal utilizado pela UF, aplicado ao item. Obs: Deve ser utilizado o mesmo código adotado na EFD e outras
+        /// declarações, nas UF que o exigem.
+        /// </summary>
+        public string cBenef { get; set; }
 
         /// <summary>
         ///     I06 - Código EX TIPI (3 posições)
@@ -106,7 +144,7 @@ namespace NFe.Classes.Informacoes.Detalhe
         public decimal qCom
         {
             get { return _qcom; }
-            set { _qcom = Valor.Arredondar(value, 4); }
+            set { _qcom = value.Arredondar(4); }
         }
 
         /// <summary>
@@ -115,7 +153,7 @@ namespace NFe.Classes.Informacoes.Detalhe
         public decimal vUnCom
         {
             get { return _vUnCom; }
-            set { _vUnCom = Valor.Arredondar(value, 10); }
+            set { _vUnCom = value.Arredondar(10); }
         }
 
         /// <summary>
@@ -124,7 +162,7 @@ namespace NFe.Classes.Informacoes.Detalhe
         public decimal vProd
         {
             get { return _vprod; }
-            set { _vprod = Valor.Arredondar(value, 2); }
+            set { _vprod = value.Arredondar(2); }
         }
 
         /// <summary>
@@ -132,7 +170,7 @@ namespace NFe.Classes.Informacoes.Detalhe
         /// </summary>
         public string cEANTrib
         {
-            get { return _cEanTrib; }
+            get { return _cEanTrib ?? string.Empty; } //Sempre serializar o campo cEANTrib, mesmo que não tenha valor 
             set { _cEanTrib = value ?? string.Empty; }
         }
 
@@ -147,7 +185,7 @@ namespace NFe.Classes.Informacoes.Detalhe
         public decimal qTrib
         {
             get { return _qtrib; }
-            set { _qtrib = Valor.Arredondar(value, 4); }
+            set { _qtrib = value.Arredondar(4); }
         }
 
         /// <summary>
@@ -156,7 +194,7 @@ namespace NFe.Classes.Informacoes.Detalhe
         public decimal vUnTrib
         {
             get { return _vUnTrib; }
-            set { _vUnTrib = Valor.Arredondar(value, 10); }
+            set { _vUnTrib = value.Arredondar(10); }
         }
 
         /// <summary>
@@ -164,8 +202,8 @@ namespace NFe.Classes.Informacoes.Detalhe
         /// </summary>
         public decimal? vFrete
         {
-            get { return _vFrete; }
-            set { _vFrete = Valor.Arredondar(value, 2); }
+            get { return _vFrete.Arredondar(2); }
+            set { _vFrete = value.Arredondar(2); }
         }
 
         /// <summary>
@@ -173,8 +211,8 @@ namespace NFe.Classes.Informacoes.Detalhe
         /// </summary>
         public decimal? vSeg
         {
-            get { return _vSeg; }
-            set { _vSeg = Valor.Arredondar(value, 2); }
+            get { return _vSeg.Arredondar(2); }
+            set { _vSeg = value.Arredondar(2); }
         }
 
         /// <summary>
@@ -182,8 +220,8 @@ namespace NFe.Classes.Informacoes.Detalhe
         /// </summary>
         public decimal? vDesc
         {
-            get { return _vDesc; }
-            set { _vDesc = Valor.Arredondar(value, 2); }
+            get { return _vDesc.Arredondar(2); }
+            set { _vDesc = value.Arredondar(2); }
         }
 
         /// <summary>
@@ -191,8 +229,8 @@ namespace NFe.Classes.Informacoes.Detalhe
         /// </summary>
         public decimal? vOutro
         {
-            get { return _vOutro; }
-            set { _vOutro = Valor.Arredondar(value, 2); }
+            get { return _vOutro.Arredondar(2); }
+            set { _vOutro = value.Arredondar(2); }
         }
 
         /// <summary>
@@ -220,7 +258,7 @@ namespace NFe.Classes.Informacoes.Detalhe
         /// <summary>
         ///     I61 - Item do Pedido de Compra
         /// </summary>
-        public int nItemPed { get; set; }
+        public int? nItemPed { get; set; }
 
         /// <summary>
         ///     I70 - Número de controle da FCI - Ficha de Conteúdo de Importação
@@ -228,15 +266,22 @@ namespace NFe.Classes.Informacoes.Detalhe
         public string nFCI { get; set; }
 
         /// <summary>
+        /// I80 - Detalhamento de produto sujeito a rastreabilidade
+        /// Versão 4.00
+        /// </summary>
+        [XmlElement("rastro")]
+        public List<rastro> rastro { get; set; }
+
+        /// <summary>
         ///     <para>129 (veicProd) - Detalhamento de Veículos novos</para>
         ///     <para>K01 (med) - Detalhamento de Medicamentos e de matérias-primas farmacêuticas</para>
         ///     <para>L01 (arma) - Detalhamento de Armamento</para>
         ///     <para>LA01 (comb) - Informações específicas para combustíveis líquidos e lubrificantes</para>
         /// </summary>
-        [XmlElement("veicProd", typeof (veicProd))]
-        [XmlElement("med", typeof (med))]
-        [XmlElement("arma", typeof (arma))]
-        [XmlElement("comb", typeof (comb))]
+        [XmlElement("veicProd", typeof(veicProd))]
+        [XmlElement("med", typeof(med))]
+        [XmlElement("arma", typeof(arma))]
+        [XmlElement("comb", typeof(comb))]
         public ProdutoEspecifico ProdutoEspecifico
         {
             get { return _produtoEspecifico; }
@@ -259,6 +304,11 @@ namespace NFe.Classes.Informacoes.Detalhe
                 ProdutoEspecifico = null; //ProdutoEspecifico e nRECOPI são mutuamente exclusivos
                 _nRecopi = value;
             }
+        }
+
+        public bool ShouldSerializenItemPed()
+        {
+            return nItemPed.HasValue;
         }
 
         public bool ShouldSerializevFrete()

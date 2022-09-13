@@ -38,6 +38,14 @@ namespace NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual
     {
         private decimal? _vBcstRet;
         private decimal? _vIcmsstRet;
+        private decimal? _vBcfcpstRet;
+        private decimal? _pST;
+        private decimal? _pFcpstRet;
+        private decimal? _vFcpstRet;
+        private decimal? _pRedBCEfet;
+        private decimal? _vBCEfet;
+        private decimal? _pICMSEfet;
+        private decimal? _vICMSEfet;
 
         /// <summary>
         ///     N11 - Origem da Mercadoria
@@ -54,17 +62,8 @@ namespace NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual
         /// </summary>
         public decimal? vBCSTRet
         {
-            get { return _vBcstRet; }
-            set { _vBcstRet = Valor.Arredondar(value, 2); }
-        }
-
-        /// <summary>
-        ///     N27 - Valor do ICMS ST retido
-        /// </summary>
-        public decimal? vICMSSTRet
-        {
-            get { return _vIcmsstRet; }
-            set { _vIcmsstRet = Valor.Arredondar(value, 2); }
+            get { return _vBcstRet.Arredondar(2); }
+            set { _vBcstRet = value.Arredondar(2); }
         }
 
         public bool ShouldSerializevBCSTRet()
@@ -72,9 +71,135 @@ namespace NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual
             return vBCSTRet.HasValue;
         }
 
+        /// <summary>
+        ///     N26a - Alíquota suportada pelo Consumidor Final
+        /// </summary>
+        public decimal? pST
+        {
+            get { return _pST.Arredondar(4); }
+            set { _pST = value.Arredondar(4); }
+        }
+
+        public bool ShouldSerializepST()
+        {
+            return pST.HasValue;
+        }
+
+        /// <summary>
+        ///     N27 - Valor do ICMS ST retido
+        /// </summary>
+        public decimal? vICMSSTRet
+        {
+            get { return _vIcmsstRet.Arredondar(2); }
+            set { _vIcmsstRet = value.Arredondar(2); }
+        }
+
         public bool ShouldSerializevICMSSTRet()
         {
             return vICMSSTRet.HasValue;
         }
+
+        /// <summary>
+        /// N27a - Valor da Base de Cálculo do FCP retido anteriormente por ST 
+        /// Versão 4.00
+        /// </summary>
+        public decimal? vBCFCPSTRet
+        {
+            get { return _vBcfcpstRet.Arredondar(2); }
+            set { _vBcfcpstRet = value.Arredondar(2); }
+        }
+
+        public bool vBCFCPSTRetSpecified
+        {
+            get { {return vBCFCPSTRet.HasValue;} }
+        }
+
+        /// <summary>
+        /// N27b - Percentual do FCP retido anteriormente por Substituição Tributária
+        /// Versão 4.00
+        /// </summary>
+        public decimal? pFCPSTRet
+        {
+            get { return _pFcpstRet.Arredondar(4); }
+            set { _pFcpstRet = value.Arredondar(4); }
+        }
+
+        public bool pFCPSTRetSpecified
+        {
+            get { return pFCPSTRet.HasValue; }
+        }
+
+
+        /// <summary>
+        /// N27d - Valor do FCP retido por Substituição Tributária
+        /// Versão 4.00
+        /// </summary>
+        public decimal? vFCPSTRet
+        {
+            get { return _vFcpstRet.Arredondar(2); }
+            set { _vFcpstRet = value.Arredondar(2); }
+        }
+
+        public bool vFCPSTRetSpecified
+        {
+            get { return vFCPSTRet.HasValue; }
+        }
+
+        /// <summary>
+        ///     N34 - Percentual de redução da base de cálculo efetiva 
+        /// </summary>
+        public decimal? pRedBCEfet
+        {
+            get { return _pRedBCEfet.Arredondar(4); }
+            set { _pRedBCEfet = value.Arredondar(4); }
+        }
+
+        public bool ShouldSerializepRedBCEfet()
+        {
+            return pRedBCEfet.HasValue;
+        }
+
+        /// <summary>
+        ///     N35 - Valor da base de cálculo efetiva 
+        /// </summary>
+        public decimal? vBCEfet
+        {
+            get { return _vBCEfet.Arredondar(2); }
+            set { _vBCEfet = value.Arredondar(2); }
+        }
+
+        public bool ShouldSerializevBCEfet()
+        {
+            return vBCEfet.HasValue;
+        }
+
+        /// <summary>
+        ///     N36 - Alíquota do ICMS efetiva 
+        /// </summary>
+        public decimal? pICMSEfet
+        {
+            get { return _pICMSEfet.Arredondar(4); }
+            set { _pICMSEfet = value.Arredondar(4); }
+        }
+
+        public bool ShouldSerializepICMSEfet()
+        {
+            return pICMSEfet.HasValue;
+        }
+
+        /// <summary>
+        ///     N37 - Valor do ICMS efetivo 
+        /// </summary>
+        public decimal? vICMSEfet
+        {
+            get { return _vICMSEfet.Arredondar(2); }
+            set { _vICMSEfet = value.Arredondar(2); }
+        }
+
+        public bool ShouldSerializevICMSEfet()
+        {
+            return vICMSEfet.HasValue;
+        }
+
     }
 }

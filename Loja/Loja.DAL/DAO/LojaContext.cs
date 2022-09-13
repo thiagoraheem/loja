@@ -220,5 +220,18 @@ namespace Loja.DAL.Models
 			}
 
 		}
+
+        public ObjectResult<VO.CodigoVenda> spc_VerificaNotasFaltantes()
+        {
+            try
+            {
+                return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VO.CodigoVenda>("spc_VerificaNotasFaltantes");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
 	}
 }

@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using System.Data.Entity;
+//using System.Data.Entity;
 using Loja.DAL.Models;
 using Loja.DAL.DAO;
 

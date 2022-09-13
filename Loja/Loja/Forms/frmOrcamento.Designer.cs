@@ -34,13 +34,13 @@
 			this.colOrDesProduto = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colQuantidade = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colValor = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.colDesconto = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colVlrFinal = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colOrcodigounico = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.colVlrOriginal = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.lblCodOrca = new DevExpress.XtraEditors.LabelControl();
 			this.txtCodOrca = new DevExpress.XtraEditors.TextEdit();
 			this.btnFechar = new DevExpress.XtraEditors.SimpleButton();
-			this.colDesconto = new DevExpress.XtraGrid.Columns.GridColumn();
 			((System.ComponentModel.ISupportInitialize)(this.gridOrcamento)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gridViewOrcamento)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.txtCodOrca.Properties)).BeginInit();
@@ -59,6 +59,7 @@
 			this.gridOrcamento.TabIndex = 2;
 			this.gridOrcamento.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewOrcamento});
+			this.gridOrcamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridOrcamento_KeyDown);
 			// 
 			// gridViewOrcamento
 			// 
@@ -78,9 +79,10 @@
 			this.gridViewOrcamento.GridControl = this.gridOrcamento;
 			this.gridViewOrcamento.GroupPanelText = "Orçamento";
 			this.gridViewOrcamento.Name = "gridViewOrcamento";
-			this.gridViewOrcamento.OptionsBehavior.Editable = false;
+			this.gridViewOrcamento.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
 			this.gridViewOrcamento.OptionsView.ShowFooter = true;
 			this.gridViewOrcamento.OptionsView.ShowGroupPanel = false;
+			this.gridViewOrcamento.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridViewOrcamento_CellValueChanged);
 			// 
 			// colOrCodProduto
 			// 
@@ -126,6 +128,15 @@
 			this.colValor.Visible = true;
 			this.colValor.VisibleIndex = 3;
 			this.colValor.Width = 127;
+			// 
+			// colDesconto
+			// 
+			this.colDesconto.Caption = "Desconto";
+			this.colDesconto.DisplayFormat.FormatString = "R$ {0:#,#.00}";
+			this.colDesconto.FieldName = "VlrDesconto";
+			this.colDesconto.Name = "colDesconto";
+			this.colDesconto.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "VlrDesconto", "R$ {0:#,#.00}")});
 			// 
 			// colVlrFinal
 			// 
@@ -185,15 +196,6 @@
 			this.btnFechar.TabIndex = 5;
 			this.btnFechar.Text = "&Fechar";
 			this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
-			// 
-			// colDesconto
-			// 
-			this.colDesconto.Caption = "Desconto";
-			this.colDesconto.DisplayFormat.FormatString = "R$ {0:#,#.00}";
-			this.colDesconto.FieldName = "VlrDesconto";
-			this.colDesconto.Name = "colDesconto";
-			this.colDesconto.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "VlrDesconto", "R$ {0:#,#.00}")});
 			// 
 			// frmOrcamento
 			// 

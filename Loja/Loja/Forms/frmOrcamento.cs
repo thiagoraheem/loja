@@ -72,7 +72,8 @@ namespace Loja.Forms
 				Cadastros.DescontoVenda(txtCodOrca.Text, 0, "P");
 				InitGridOrca();
 			}
-			else
+			//else if (!(e.KeyCode.Equals(Keys.Left) || e.KeyCode.Equals(Keys.Right) || e.KeyCode.Equals(Keys.Down) || e.KeyCode.Equals(Keys.Up)))
+			else if (e.KeyCode.Equals(Keys.Escape))
 			{
 				Close();
 			}
@@ -95,6 +96,8 @@ namespace Loja.Forms
 				var orcamento = Consultas.ObterOrcamentos(CodOrca);
 
 				gridOrcamento.DataSource = orcamento;
+
+				gridOrcamento.Focus();
 				
 				wait.Close();
 			}
@@ -103,6 +106,70 @@ namespace Loja.Forms
 				MessageBox.Show("Erro ao acessar o banco de dados: " + ex.Message);
 			}
 
+		}
+
+		int FU_PegaCodigoGrid()
+		{
+
+			int codigo = -1;
+
+			try
+			{
+				int linha = gridViewOrcamento.GetSelectedRows()[0];
+				codigo = (int)gridViewOrcamento.GetRowCellValue(linha, colOrcodigounico);
+
+			}
+			catch (Exception ex)
+			{
+				Util.MsgBox(ex.Message);
+			}
+
+			return codigo;
+		}
+
+		private void gridViewOrcamento_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+		{
+			try
+			{
+				if (e.Column == colQuantidade)
+				{
+					double quantidade;
+
+					if (e.Value != null)
+						quantidade = (double)e.Value;
+					else
+						quantidade = 0;
+
+					Cadastros.AlterarOrcamento(txtCodOrca.Text, FU_PegaCodigoGrid(), quantidade, -1.0);
+				}
+				else
+					if (e.Column == colValor)
+					{
+						Cadastros.AlterarOrcamento(txtCodOrca.Text, FU_PegaCodigoGrid(), -1.0, (double)e.Value);
+					}
+			}
+			catch (Exception ex)
+			{
+				if (ex.InnerException != null)
+				{
+					Util.MsgBox("Erro na alteração: " + ex.InnerException.Message);
+				}
+				else
+				{
+					Util.MsgBox("Erro na alteração: " + ex.Message);
+				}
+			}
+			InitGridOrca();
+		}
+
+		private void gridOrcamento_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode.Equals(Keys.Delete))
+			{
+				Cadastros.AlterarOrcamento(txtCodOrca.Text, FU_PegaCodigoGrid(), 0, -1);
+
+				InitGridOrca();
+			}
 		}
 
 	}

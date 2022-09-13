@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Loja.DAL.Models
 {
     public partial class tbl_Parametros
     {
+		[Key]
         public string EmpresaNome { get; set; }
         public string EmpresaEndereco { get; set; }
         public string EmpresaTelefone { get; set; }

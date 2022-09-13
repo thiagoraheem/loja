@@ -195,6 +195,28 @@ namespace Loja.DAL.DAO
 			}
 		}
 
+		public static double ObterValorEstoque()
+		{
+			using (var banco = new LojaContext())
+			{
+				var produtos = banco.tbl_Produtos.Where(x => x.QtdProduto > 0).AsEnumerable().Sum(o => o.VlrCusto) ?? 0;
+
+				return produtos;
+
+			}
+		}
+
+		public static double ObterValorEstoqueBruto()
+		{
+			using (var banco = new LojaContext())
+			{
+				var produtos = banco.tbl_Produtos.Where(x => x.QtdProduto > 0).AsEnumerable().Sum(o => o.VlrCusto * o.QtdProduto) ?? 0;
+
+				return produtos;
+
+			}
+		}
+
 		#endregion
 
 		#region Venda
@@ -233,6 +255,8 @@ namespace Loja.DAL.DAO
 
 		public static tbl_Saida ObterVenda(string codVenda)
 		{
+
+			if (String.IsNullOrEmpty(codVenda)) return null;
 			using (var banco = new LojaContext())
 			{
 				var dados = banco.tbl_Saida.Include("tbl_SaidaItens").FirstOrDefault(saida => saida.CodVenda == codVenda);
@@ -253,6 +277,7 @@ namespace Loja.DAL.DAO
 			{
 				var dados = from saida in banco.tbl_Saida
 							where saida.FlgStatusNFE == "C"
+							orderby saida.Data
 							select saida;
 
 				return dados.ToList();
@@ -501,6 +526,28 @@ namespace Loja.DAL.DAO
 			{
 				return banco.tbl_Cliente.FirstOrDefault(x => x.CodCliente == codCliente);
 			}
+		}
+
+        public static List<VO.CodigoVenda> ObterNotasFaltantes()
+        {
+
+            using (var contexto = new LojaContext())
+            {
+                return contexto.spc_VerificaNotasFaltantes().ToList();
+            }
+
+        }
+
+		public static tbl_Parametros ObterParametros()
+		{
+			using (var contexto = new LojaContext())
+			{
+				var param = contexto.tbl_Parametros.FirstOrDefault();
+
+				return param;
+
+			}
+		
 		}
 
 	}

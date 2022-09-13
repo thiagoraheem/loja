@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 using DevExpress.XtraSplashScreen;
 
 namespace Loja
 {
-    public partial class frmApresentacao : SplashScreen
+	public partial class frmApresentacao : SplashScreen
     {
         public frmApresentacao()
         {
@@ -28,5 +22,6 @@ namespace Loja
         public enum SplashScreenCommand
         {
         }
+
     }
 }

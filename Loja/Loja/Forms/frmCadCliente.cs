@@ -30,15 +30,13 @@ namespace Loja
 			InitializeComponent();
 
 			CarregaCliente(codCliente);
-
-
 		}
 
 		void CarregaCliente(int codCliente) { 
 		
 			cliente = Consultas.ObterCliente(codCliente);
 
-			txtNomCliente.Text = cliente.NomCliente;
+			txtNomCliente.Text = cliente.NomCliente.Trim();
 			txtNumCPF.Text = cliente.NumCPF;
 			txtNumCNPJ.Text = cliente.NumCNPJ;
 			txtNumTelefone.Text = cliente.NumTelefone;
@@ -48,14 +46,14 @@ namespace Loja
 			txtCidade.Text = cliente.Cidade;
 			txtEstado.Text = cliente.Estado;
 			txtPais.Text = cliente.Pais;
-			txtEmail.Text = cliente.Email;
+			txtEmail.Text = cliente.Email.Trim();
 			txtCEP.Text = cliente.CEP;
 
 		}
 
 		private void btnGravar_Click(object sender, EventArgs e)
 		{
-			cliente.NomCliente = txtNomCliente.Text;
+			cliente.NomCliente = txtNomCliente.Text.Trim();
 			cliente.NumCPF = txtNumCPF.Text;
 			cliente.NumCNPJ = txtNumCNPJ.Text;
 			cliente.NumTelefone = txtNumTelefone.Text;
@@ -65,7 +63,7 @@ namespace Loja
 			cliente.Cidade = txtCidade.Text;
 			cliente.Estado = txtEstado.Text;
 			cliente.Pais = txtPais.Text;
-			cliente.Email = txtEmail.Text;
+			cliente.Email = txtEmail.Text.Trim();
 			cliente.CEP = txtCEP.Text;
 
 			Cadastros.GravaCliente(cliente);

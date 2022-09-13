@@ -89,6 +89,8 @@
 			this.Detail.HeightF = 18.83335F;
 			this.Detail.Name = "Detail";
 			this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
+			this.Detail.SortFields.AddRange(new DevExpress.XtraReports.UI.GroupField[] {
+            new DevExpress.XtraReports.UI.GroupField("Data", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending)});
 			this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
 			// 
 			// xrTable2
@@ -538,7 +540,7 @@
             this.FieldCaption,
             this.PageInfo,
             this.DataField});
-			this.Version = "15.1";
+			this.Version = "15.2";
 			this.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.relResumoVendas_BeforePrint);
 			((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.efDataSource1)).EndInit();

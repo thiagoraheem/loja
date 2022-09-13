@@ -140,4 +140,15 @@ namespace NFe.Classes.Informacoes.Detalhe
         [XmlEnum("0")] UsoPermitido = 0,
         [XmlEnum("1")] UsoRestrito = 1
     }
+
+    /// <summary>
+    /// Indicador de Escala Relevante:
+    /// S -  Produzido em Escala Relevante; N – Produzido em Escala NÃO Relevante.
+    /// Versão 4.00
+    /// </summary>
+    public enum indEscala
+    {
+        [XmlEnum("S")] S,
+        [XmlEnum("N")] N
+    }
 }

@@ -39,6 +39,7 @@
 			this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
 			this.appMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
 			this.popupControlContainer2 = new DevExpress.XtraBars.PopupControlContainer(this.components);
+			this.btnParametros = new DevExpress.XtraBars.BarButtonItem();
 			this.btnModoEdicao = new DevExpress.XtraBars.BarButtonItem();
 			this.iExit = new DevExpress.XtraBars.BarButtonItem();
 			this.popupControlContainer1 = new DevExpress.XtraBars.PopupControlContainer(this.components);
@@ -75,6 +76,8 @@
 			this.btnContingencia = new DevExpress.XtraBars.BarToggleSwitchItem();
 			this.btnQtdContingencia = new DevExpress.XtraBars.BarButtonItem();
 			this.btnAbrirOrca = new DevExpress.XtraBars.BarButtonItem();
+			this.btnVerResumo = new DevExpress.XtraBars.BarButtonItem();
+			this.btnEnviarCont = new DevExpress.XtraBars.BarButtonItem();
 			this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
 			this.homeRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
 			this.fileRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -115,6 +118,8 @@
 			this.btnEstMinimo = new DevExpress.XtraNavBar.NavBarItem();
 			this.btnRelVendas = new DevExpress.XtraNavBar.NavBarItem();
 			this.btnRelEntradas = new DevExpress.XtraNavBar.NavBarItem();
+			this.btnRelEstoque = new DevExpress.XtraNavBar.NavBarItem();
+			this.btnAuditorNF = new DevExpress.XtraNavBar.NavBarItem();
 			this.grpCadastros = new DevExpress.XtraNavBar.NavBarGroup();
 			this.btnCadTipoEntrada = new DevExpress.XtraNavBar.NavBarItem();
 			this.btnCadTipoVenda = new DevExpress.XtraNavBar.NavBarItem();
@@ -181,6 +186,7 @@
 			this.navbarImageList.Images.SetKeyName(8, "NewCardHS.png");
 			this.navbarImageList.Images.SetKeyName(9, "1365051401_Business.png");
 			this.navbarImageList.Images.SetKeyName(10, "10693_16x16.png");
+			this.navbarImageList.Images.SetKeyName(11, "EditCodeHS.bmp");
 			// 
 			// ribbonControl
 			// 
@@ -218,10 +224,13 @@
             this.chkInternet,
             this.btnContingencia,
             this.btnQtdContingencia,
-            this.btnAbrirOrca});
+            this.btnAbrirOrca,
+            this.btnVerResumo,
+            this.btnParametros,
+            this.btnEnviarCont});
 			this.ribbonControl.LargeImages = this.ribbonImageCollectionLarge;
 			this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-			this.ribbonControl.MaxItemId = 2;
+			this.ribbonControl.MaxItemId = 3;
 			this.ribbonControl.Name = "ribbonControl";
 			this.ribbonControl.PageHeaderItemLinks.Add(this.iAbout);
 			this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -241,6 +250,7 @@
 			// appMenu
 			// 
 			this.appMenu.BottomPaneControlContainer = this.popupControlContainer2;
+			this.appMenu.ItemLinks.Add(this.btnParametros);
 			this.appMenu.ItemLinks.Add(this.btnModoEdicao);
 			this.appMenu.ItemLinks.Add(this.iExit);
 			this.appMenu.Name = "appMenu";
@@ -260,12 +270,19 @@
 			this.popupControlContainer2.TabIndex = 3;
 			this.popupControlContainer2.Visible = false;
 			// 
+			// btnParametros
+			// 
+			this.btnParametros.Caption = "Configurações";
+			this.btnParametros.Id = 1;
+			this.btnParametros.Name = "btnParametros";
+			this.btnParametros.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnParametros_ItemClick);
+			// 
 			// btnModoEdicao
 			// 
 			this.btnModoEdicao.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check;
 			this.btnModoEdicao.Caption = "Modo Edição";
 			this.btnModoEdicao.Id = 77;
-			this.btnModoEdicao.LargeImageIndex = 7;
+			this.btnModoEdicao.ImageOptions.LargeImageIndex = 7;
 			this.btnModoEdicao.Name = "btnModoEdicao";
 			this.btnModoEdicao.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnModoEdicao_ItemClick);
 			// 
@@ -275,8 +292,8 @@
 			this.iExit.Description = "Fechar o sistema";
 			this.iExit.Hint = "Fechar o sistema";
 			this.iExit.Id = 20;
-			this.iExit.ImageIndex = 6;
-			this.iExit.LargeImageIndex = 6;
+			this.iExit.ImageOptions.ImageIndex = 6;
+			this.iExit.ImageOptions.LargeImageIndex = 6;
 			this.iExit.Name = "iExit";
 			this.iExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.iExit_ItemClick);
 			// 
@@ -336,8 +353,8 @@
 			this.iAbout.Description = "Exibir um resumo sobre o programa";
 			this.iAbout.Hint = "Exibir um resumo sobre o programa";
 			this.iAbout.Id = 24;
-			this.iAbout.ImageIndex = 8;
-			this.iAbout.LargeImageIndex = 8;
+			this.iAbout.ImageOptions.ImageIndex = 8;
+			this.iAbout.ImageOptions.LargeImageIndex = 8;
 			this.iAbout.Name = "iAbout";
 			// 
 			// siStatus
@@ -345,7 +362,6 @@
 			this.siStatus.Caption = "Sistema para controle de loja    Versão 1.0";
 			this.siStatus.Id = 31;
 			this.siStatus.Name = "siStatus";
-			this.siStatus.TextAlignment = System.Drawing.StringAlignment.Near;
 			// 
 			// siInfo
 			// 
@@ -353,48 +369,47 @@
     "stacar orçamento";
 			this.siInfo.Id = 32;
 			this.siInfo.Name = "siInfo";
-			this.siInfo.TextAlignment = System.Drawing.StringAlignment.Near;
 			// 
 			// iBoldFontStyle
 			// 
 			this.iBoldFontStyle.Caption = "Bold";
 			this.iBoldFontStyle.Id = 53;
-			this.iBoldFontStyle.ImageIndex = 9;
+			this.iBoldFontStyle.ImageOptions.ImageIndex = 9;
 			this.iBoldFontStyle.Name = "iBoldFontStyle";
 			// 
 			// iItalicFontStyle
 			// 
 			this.iItalicFontStyle.Caption = "Italic";
 			this.iItalicFontStyle.Id = 54;
-			this.iItalicFontStyle.ImageIndex = 10;
+			this.iItalicFontStyle.ImageOptions.ImageIndex = 10;
 			this.iItalicFontStyle.Name = "iItalicFontStyle";
 			// 
 			// iUnderlinedFontStyle
 			// 
 			this.iUnderlinedFontStyle.Caption = "Underlined";
 			this.iUnderlinedFontStyle.Id = 55;
-			this.iUnderlinedFontStyle.ImageIndex = 11;
+			this.iUnderlinedFontStyle.ImageOptions.ImageIndex = 11;
 			this.iUnderlinedFontStyle.Name = "iUnderlinedFontStyle";
 			// 
 			// iLeftTextAlign
 			// 
 			this.iLeftTextAlign.Caption = "Left";
 			this.iLeftTextAlign.Id = 57;
-			this.iLeftTextAlign.ImageIndex = 12;
+			this.iLeftTextAlign.ImageOptions.ImageIndex = 12;
 			this.iLeftTextAlign.Name = "iLeftTextAlign";
 			// 
 			// iCenterTextAlign
 			// 
 			this.iCenterTextAlign.Caption = "Center";
 			this.iCenterTextAlign.Id = 58;
-			this.iCenterTextAlign.ImageIndex = 13;
+			this.iCenterTextAlign.ImageOptions.ImageIndex = 13;
 			this.iCenterTextAlign.Name = "iCenterTextAlign";
 			// 
 			// iRightTextAlign
 			// 
 			this.iRightTextAlign.Caption = "Right";
 			this.iRightTextAlign.Id = 59;
-			this.iRightTextAlign.ImageIndex = 14;
+			this.iRightTextAlign.ImageOptions.ImageIndex = 14;
 			this.iRightTextAlign.Name = "iRightTextAlign";
 			// 
 			// rgbiSkins
@@ -421,20 +436,18 @@
 			this.lblQtdProduto.Caption = "Qtd. Produtos:";
 			this.lblQtdProduto.Id = 62;
 			this.lblQtdProduto.Name = "lblQtdProduto";
-			this.lblQtdProduto.TextAlignment = System.Drawing.StringAlignment.Near;
 			// 
 			// lblQtdItens
 			// 
 			this.lblQtdItens.Caption = "Qtd. Itens:";
 			this.lblQtdItens.Id = 64;
 			this.lblQtdItens.Name = "lblQtdItens";
-			this.lblQtdItens.TextAlignment = System.Drawing.StringAlignment.Near;
 			// 
 			// btnRecarregarDados
 			// 
 			this.btnRecarregarDados.Caption = "Atualizar Dados";
 			this.btnRecarregarDados.Id = 65;
-			this.btnRecarregarDados.LargeImageIndex = 3;
+			this.btnRecarregarDados.ImageOptions.LargeImageIndex = 3;
 			this.btnRecarregarDados.Name = "btnRecarregarDados";
 			this.btnRecarregarDados.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRecarregarDados_ItemClick);
 			// 
@@ -469,7 +482,7 @@
 			this.btnImprimir.Caption = "Imprimir";
 			this.btnImprimir.Enabled = false;
 			this.btnImprimir.Id = 69;
-			this.btnImprimir.LargeImageIndex = 9;
+			this.btnImprimir.ImageOptions.LargeImageIndex = 9;
 			this.btnImprimir.Name = "btnImprimir";
 			this.btnImprimir.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnImprimir_ItemClick);
 			// 
@@ -478,8 +491,8 @@
 			this.btnFinalizarVenda.Caption = "Efetuar Venda";
 			this.btnFinalizarVenda.Enabled = false;
 			this.btnFinalizarVenda.Id = 70;
+			this.btnFinalizarVenda.ImageOptions.LargeImageIndex = 11;
 			this.btnFinalizarVenda.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F12);
-			this.btnFinalizarVenda.LargeImageIndex = 11;
 			this.btnFinalizarVenda.Name = "btnFinalizarVenda";
 			this.btnFinalizarVenda.ShortcutKeyDisplayString = "<F12>";
 			this.btnFinalizarVenda.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFinalizarVenda_ItemClick);
@@ -489,7 +502,7 @@
 			this.btnFazerBackup.Caption = "Copiar de Loja";
 			this.btnFazerBackup.Enabled = false;
 			this.btnFazerBackup.Id = 72;
-			this.btnFazerBackup.LargeImageIndex = 10;
+			this.btnFazerBackup.ImageOptions.LargeImageIndex = 10;
 			this.btnFazerBackup.Name = "btnFazerBackup";
 			this.btnFazerBackup.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
 			this.btnFazerBackup.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFazerBackup_ItemClick);
@@ -499,10 +512,10 @@
 			this.cmbCodOrca.Caption = "Orçamento:";
 			this.cmbCodOrca.Edit = this.repCodOrca;
 			this.cmbCodOrca.EditValue = "";
+			this.cmbCodOrca.EditWidth = 75;
 			this.cmbCodOrca.Id = 74;
 			this.cmbCodOrca.Name = "cmbCodOrca";
 			this.cmbCodOrca.Tag = "";
-			this.cmbCodOrca.Width = 75;
 			this.cmbCodOrca.EditValueChanged += new System.EventHandler(this.cmbCodOrca_EditValueChanged);
 			// 
 			// repCodOrca
@@ -525,7 +538,7 @@
 			this.btnExcluirOrca.Caption = "Excluir";
 			this.btnExcluirOrca.Enabled = false;
 			this.btnExcluirOrca.Id = 75;
-			this.btnExcluirOrca.LargeImageIndex = 12;
+			this.btnExcluirOrca.ImageOptions.LargeImageIndex = 12;
 			this.btnExcluirOrca.Name = "btnExcluirOrca";
 			this.btnExcluirOrca.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExcluirOrca_ItemClick);
 			// 
@@ -533,8 +546,8 @@
 			// 
 			this.btnVendaRapida.Caption = "Venda Rápida";
 			this.btnVendaRapida.Id = 78;
+			this.btnVendaRapida.ImageOptions.LargeImageIndex = 13;
 			this.btnVendaRapida.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F11);
-			this.btnVendaRapida.LargeImageIndex = 13;
 			this.btnVendaRapida.Name = "btnVendaRapida";
 			this.btnVendaRapida.ShortcutKeyDisplayString = "<F11>";
 			this.btnVendaRapida.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnVendaRapida_ItemClick);
@@ -544,7 +557,7 @@
 			this.btnStatus.Caption = "Status SEFAZ";
 			this.btnStatus.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
 			this.btnStatus.Id = 79;
-			this.btnStatus.LargeImageIndex = 14;
+			this.btnStatus.ImageOptions.LargeImageIndex = 14;
 			this.btnStatus.Name = "btnStatus";
 			this.btnStatus.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
 			this.btnStatus.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStatus_ItemClick);
@@ -596,13 +609,27 @@
 			this.btnAbrirOrca.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
 			this.btnAbrirOrca.Enabled = false;
 			this.btnAbrirOrca.Id = 1;
-			this.btnAbrirOrca.ImageIndex = 15;
-			this.btnAbrirOrca.LargeImageIndex = 15;
+			this.btnAbrirOrca.ImageOptions.ImageIndex = 15;
+			this.btnAbrirOrca.ImageOptions.LargeImageIndex = 15;
 			this.btnAbrirOrca.Name = "btnAbrirOrca";
 			this.btnAbrirOrca.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
 			this.btnAbrirOrca.ShortcutKeyDisplayString = "F9";
 			this.btnAbrirOrca.ShowItemShortcut = DevExpress.Utils.DefaultBoolean.True;
 			this.btnAbrirOrca.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAbrirOrca_ItemClick);
+			// 
+			// btnVerResumo
+			// 
+			this.btnVerResumo.Caption = "Ver Resumo";
+			this.btnVerResumo.Id = 1;
+			this.btnVerResumo.Name = "btnVerResumo";
+			this.btnVerResumo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnVerResumo_ItemClick);
+			// 
+			// btnEnviarCont
+			// 
+			this.btnEnviarCont.Caption = "Enviar Contingência";
+			this.btnEnviarCont.Id = 2;
+			this.btnEnviarCont.Name = "btnEnviarCont";
+			this.btnEnviarCont.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEnviarCont_ItemClick);
 			// 
 			// ribbonImageCollectionLarge
 			// 
@@ -646,6 +673,7 @@
 			// 
 			this.formatRibbonPageGroup.ItemLinks.Add(this.lblQtdProduto);
 			this.formatRibbonPageGroup.ItemLinks.Add(this.lblQtdItens);
+			this.formatRibbonPageGroup.ItemLinks.Add(this.btnVerResumo);
 			this.formatRibbonPageGroup.Name = "formatRibbonPageGroup";
 			this.formatRibbonPageGroup.Text = "Dados da Loja";
 			// 
@@ -667,6 +695,7 @@
 			this.ribbonPageGroup2.ItemLinks.Add(this.chkInternet);
 			this.ribbonPageGroup2.ItemLinks.Add(this.btnContingencia);
 			this.ribbonPageGroup2.ItemLinks.Add(this.btnQtdContingencia);
+			this.ribbonPageGroup2.ItemLinks.Add(this.btnEnviarCont);
 			this.ribbonPageGroup2.Name = "ribbonPageGroup2";
 			this.ribbonPageGroup2.Text = "NFC-e";
 			// 
@@ -704,7 +733,7 @@
 			this.repositoryItemGridLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
 			this.repositoryItemGridLookUpEdit1.Name = "repositoryItemGridLookUpEdit1";
-			this.repositoryItemGridLookUpEdit1.View = this.repositoryItemGridLookUpEdit1View;
+			this.repositoryItemGridLookUpEdit1.PopupView = this.repositoryItemGridLookUpEdit1View;
 			// 
 			// repositoryItemGridLookUpEdit1View
 			// 
@@ -739,7 +768,6 @@
 			this.backstageViewControl1.Items.Add(this.backstageViewTabItem1);
 			this.backstageViewControl1.Location = new System.Drawing.Point(71, 214);
 			this.backstageViewControl1.Name = "backstageViewControl1";
-			this.backstageViewControl1.SelectedTab = null;
 			this.backstageViewControl1.Size = new System.Drawing.Size(480, 150);
 			this.backstageViewControl1.TabIndex = 6;
 			// 
@@ -755,7 +783,6 @@
 			this.backstageViewTabItem1.Caption = "backstageViewTabItem1";
 			this.backstageViewTabItem1.ContentControl = this.backstageViewClientControl1;
 			this.backstageViewTabItem1.Name = "backstageViewTabItem1";
-			this.backstageViewTabItem1.Selected = false;
 			// 
 			// gridProdutos
 			// 
@@ -791,6 +818,7 @@
 			this.gridViewProduto.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
 			this.gridViewProduto.OptionsBehavior.Editable = false;
 			this.gridViewProduto.OptionsBehavior.ReadOnly = true;
+			this.gridViewProduto.OptionsFind.AlwaysVisible = true;
 			this.gridViewProduto.OptionsFind.FindNullPrompt = "Digite o texto a pesquisar";
 			this.gridViewProduto.OptionsView.EnableAppearanceEvenRow = true;
 			this.gridViewProduto.OptionsView.ShowAutoFilterRow = true;
@@ -809,6 +837,7 @@
 			this.colDesProduto.Caption = "Descrição";
 			this.colDesProduto.FieldName = "DesProduto";
 			this.colDesProduto.Name = "colDesProduto";
+			this.colDesProduto.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.BeginsWith;
 			this.colDesProduto.Visible = true;
 			this.colDesProduto.VisibleIndex = 1;
 			this.colDesProduto.Width = 388;
@@ -882,7 +911,9 @@
             this.btnEstMinimo,
             this.btnCadTipoVenda,
             this.btnCadTipoEntrada,
-            this.btnCadCliente});
+            this.btnCadCliente,
+            this.btnRelEstoque,
+            this.btnAuditorNF});
 			this.navBarControl.LargeImages = this.navbarImageListLarge;
 			this.navBarControl.Location = new System.Drawing.Point(0, 0);
 			this.navBarControl.Name = "navBarControl";
@@ -898,112 +929,128 @@
 			// 
 			this.grpOperacoes.Caption = "Operações";
 			this.grpOperacoes.Expanded = true;
+			this.grpOperacoes.ImageOptions.LargeImageIndex = 3;
 			this.grpOperacoes.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.btnVender),
             new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadastrar),
             new DevExpress.XtraNavBar.NavBarItemLink(this.btnEntrada),
             new DevExpress.XtraNavBar.NavBarItemLink(this.btnRecibo),
             new DevExpress.XtraNavBar.NavBarItemLink(this.btnReajustar)});
-			this.grpOperacoes.LargeImageIndex = 3;
 			this.grpOperacoes.Name = "grpOperacoes";
 			// 
 			// btnVender
 			// 
 			this.btnVender.Caption = "Vender";
+			this.btnVender.ImageOptions.SmallImageIndex = 0;
 			this.btnVender.Name = "btnVender";
-			this.btnVender.SmallImageIndex = 0;
 			this.btnVender.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnVender_LinkClicked);
 			// 
 			// btnCadastrar
 			// 
 			this.btnCadastrar.Caption = "Produto";
+			this.btnCadastrar.ImageOptions.SmallImageIndex = 6;
 			this.btnCadastrar.Name = "btnCadastrar";
-			this.btnCadastrar.SmallImageIndex = 6;
 			this.btnCadastrar.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnCadastrar_LinkClicked);
 			// 
 			// btnEntrada
 			// 
 			this.btnEntrada.Caption = "Entrada";
+			this.btnEntrada.ImageOptions.SmallImageIndex = 2;
 			this.btnEntrada.Name = "btnEntrada";
-			this.btnEntrada.SmallImageIndex = 2;
 			this.btnEntrada.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnEntrada_LinkClicked);
 			// 
 			// btnRecibo
 			// 
 			this.btnRecibo.Caption = "Recibo";
+			this.btnRecibo.ImageOptions.SmallImageIndex = 8;
 			this.btnRecibo.Name = "btnRecibo";
-			this.btnRecibo.SmallImageIndex = 8;
 			this.btnRecibo.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnRecibo_LinkClicked);
 			// 
 			// btnReajustar
 			// 
 			this.btnReajustar.Caption = "Reajustar $";
+			this.btnReajustar.ImageOptions.SmallImageIndex = 9;
 			this.btnReajustar.Name = "btnReajustar";
-			this.btnReajustar.SmallImageIndex = 9;
 			this.btnReajustar.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnReajustar_LinkClicked);
 			// 
 			// grpRelatorios
 			// 
 			this.grpRelatorios.Caption = "Relatórios";
+			this.grpRelatorios.ImageOptions.LargeImageIndex = 2;
 			this.grpRelatorios.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.btnEstMinimo),
             new DevExpress.XtraNavBar.NavBarItemLink(this.btnRelVendas),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnRelEntradas)});
-			this.grpRelatorios.LargeImageIndex = 2;
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnRelEntradas),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnRelEstoque),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnAuditorNF)});
 			this.grpRelatorios.Name = "grpRelatorios";
 			// 
 			// btnEstMinimo
 			// 
 			this.btnEstMinimo.Caption = "Est. Mínimo";
+			this.btnEstMinimo.ImageOptions.SmallImageIndex = 0;
 			this.btnEstMinimo.Name = "btnEstMinimo";
-			this.btnEstMinimo.SmallImageIndex = 0;
 			this.btnEstMinimo.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnEstMinimo_LinkClicked);
 			// 
 			// btnRelVendas
 			// 
 			this.btnRelVendas.Caption = "Vendas";
+			this.btnRelVendas.ImageOptions.SmallImageIndex = 4;
 			this.btnRelVendas.Name = "btnRelVendas";
-			this.btnRelVendas.SmallImageIndex = 4;
 			this.btnRelVendas.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnRelVendas_LinkClicked);
 			// 
 			// btnRelEntradas
 			// 
 			this.btnRelEntradas.Caption = "Entradas";
+			this.btnRelEntradas.ImageOptions.SmallImageIndex = 5;
 			this.btnRelEntradas.Name = "btnRelEntradas";
-			this.btnRelEntradas.SmallImageIndex = 5;
 			this.btnRelEntradas.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnRelEntradas_LinkClicked);
+			// 
+			// btnRelEstoque
+			// 
+			this.btnRelEstoque.Caption = "Estoque";
+			this.btnRelEstoque.ImageOptions.SmallImageIndex = 11;
+			this.btnRelEstoque.Name = "btnRelEstoque";
+			this.btnRelEstoque.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnRelEstoque_LinkClicked);
+			// 
+			// btnAuditorNF
+			// 
+			this.btnAuditorNF.Caption = "Auditor de NF";
+			this.btnAuditorNF.ImageOptions.SmallImageIndex = 11;
+			this.btnAuditorNF.Name = "btnAuditorNF";
+			this.btnAuditorNF.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnAuditorNF_LinkClicked);
 			// 
 			// grpCadastros
 			// 
 			this.grpCadastros.Caption = "Cadastros";
+			this.grpCadastros.ImageOptions.LargeImageIndex = 4;
 			this.grpCadastros.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadastrar),
             new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadTipoEntrada),
             new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadTipoVenda),
             new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadCliente)});
-			this.grpCadastros.LargeImageIndex = 4;
 			this.grpCadastros.Name = "grpCadastros";
 			// 
 			// btnCadTipoEntrada
 			// 
 			this.btnCadTipoEntrada.Caption = "Tipo de Entrada";
+			this.btnCadTipoEntrada.ImageOptions.SmallImageIndex = 6;
 			this.btnCadTipoEntrada.Name = "btnCadTipoEntrada";
-			this.btnCadTipoEntrada.SmallImageIndex = 6;
 			this.btnCadTipoEntrada.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnCadTipoEntrada_LinkClicked);
 			// 
 			// btnCadTipoVenda
 			// 
 			this.btnCadTipoVenda.Caption = "Tipo de Venda";
+			this.btnCadTipoVenda.ImageOptions.SmallImageIndex = 6;
 			this.btnCadTipoVenda.Name = "btnCadTipoVenda";
-			this.btnCadTipoVenda.SmallImageIndex = 6;
 			this.btnCadTipoVenda.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnCadTipoVenda_LinkClicked);
 			// 
 			// btnCadCliente
 			// 
 			this.btnCadCliente.Caption = "Clientes";
-			this.btnCadCliente.LargeImageIndex = 5;
+			this.btnCadCliente.ImageOptions.LargeImageIndex = 5;
+			this.btnCadCliente.ImageOptions.SmallImageIndex = 10;
 			this.btnCadCliente.Name = "btnCadCliente";
-			this.btnCadCliente.SmallImageIndex = 10;
 			toolTipTitleItem1.Text = "Dica";
 			toolTipItem1.LeftIndent = 6;
 			toolTipItem1.Text = "Cadastro de Clientes";
@@ -1015,8 +1062,8 @@
 			// btnOrcamentos
 			// 
 			this.btnOrcamentos.Caption = "Orçamentos";
+			this.btnOrcamentos.ImageOptions.SmallImageIndex = 7;
 			this.btnOrcamentos.Name = "btnOrcamentos";
-			this.btnOrcamentos.SmallImageIndex = 7;
 			// 
 			// splitContainerControl
 			// 
@@ -1156,8 +1203,9 @@
 			this.Name = "frmPrincipal";
 			this.Ribbon = this.ribbonControl;
 			this.StatusBar = this.ribbonStatusBar;
-			this.Text = "Sistema para controle de Loja - v1.0.6";
+			this.Text = "Sistema para controle de Loja - v1.1.0";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+			this.Load += new System.EventHandler(this.frmPrincipal_Load);
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmPrincipal_KeyDown);
 			((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.appMenu)).EndInit();
@@ -1286,6 +1334,10 @@
 		private DevExpress.XtraBars.BarButtonItem btnQtdContingencia;
 		public DevExpress.XtraBars.BarToggleSwitchItem btnContingencia;
 		private DevExpress.XtraBars.BarButtonItem btnAbrirOrca;
-
+		private DevExpress.XtraNavBar.NavBarItem btnRelEstoque;
+		private DevExpress.XtraBars.BarButtonItem btnVerResumo;
+        private DevExpress.XtraNavBar.NavBarItem btnAuditorNF;
+		private DevExpress.XtraBars.BarButtonItem btnParametros;
+		private DevExpress.XtraBars.BarButtonItem btnEnviarCont;
 	}
 }

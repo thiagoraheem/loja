@@ -45,14 +45,19 @@ namespace NFe.Classes.Informacoes.Detalhe.Tributacao
         /// </summary>
         public decimal? vTotTrib
         {
-            get { return _vTotTrib; }
-            set { _vTotTrib = Valor.Arredondar(value, 2); }
+            get { return _vTotTrib.Arredondar(2); }
+            set { _vTotTrib = value.Arredondar(2); }
         }
 
         /// <summary>
         ///     N01 - Dados do ICMS Normal e ST
         /// </summary>
         public ICMS ICMS { get; set; }
+
+        /// <summary>
+        ///     U01 - Grupo ISSQN
+        /// </summary>
+        public ISSQN ISSQN { get; set; }
 
         /// <summary>
         ///     O01 - Grupo IPI
@@ -85,9 +90,9 @@ namespace NFe.Classes.Informacoes.Detalhe.Tributacao
         public COFINSST COFINSST { get; set; }
 
         /// <summary>
-        ///     U01 - Grupo ISSQN
+        /// NA01 - Informação do ICMS Interestadua
         /// </summary>
-        public ISSQN ISSQN { get; set; }
+        public ICMSUFDest ICMSUFDest { get; set; }
 
         public bool ShouldSerializevTotTrib()
         {

@@ -12,7 +12,9 @@ using Loja.DAL.Models;
 using System.Threading;
 using System.IO;
 using System.Reflection;
-using NFe.Utils;
+using DevExpress.XtraGrid.Columns;
+using DFe.Utils;
+using NFe.Classes.Informacoes.Identificacao.Tipos;
 
 namespace Loja
 {
@@ -20,9 +22,9 @@ namespace Loja
 	{
 
 		#region Variáveis e Configurações
-		public ConfiguracaoApp _configuracoes;
 		private const string ArquivoConfiguracao = @"\configuracao.xml";
-		private readonly string _path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+		private const string TituloErro = "Erro";
+		public ConfiguracaoApp _configuracoes;
 
 		private bool _ModoEdicao = false;
 		private List<tbl_Produtos> produtos = new List<tbl_Produtos>();
@@ -41,22 +43,8 @@ namespace Loja
 		{
 			InitializeComponent();
 			InitSkinGallery();
-			InitGrid();
-			InitComboOrca();
-
-			gridProdutos.DataSource = produtos;
-			gridViewProduto.Columns[colDesProduto.AbsoluteIndex].SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
-
-			gridOrcamento.DataSource = orcamento;
 
 			CarregarConfiguracao();
-
-			t = new Thread(VerificaStatus) { IsBackground = true };
-			t.Start();
-
-			c = new Thread(VerificaContingencia) { IsBackground = true };
-			c.Start();
-
 		}
 
 		void InitSkinGallery()
@@ -72,6 +60,7 @@ namespace Loja
 				if (!gridViewProduto.ActiveFilter.IsEmpty)
 				{
 					gridViewProduto.ClearColumnsFilter();
+					AtivarPesquisa();
 				}
 				else if (cmbCodOrca.EditValue == null || !String.IsNullOrEmpty(cmbCodOrca.EditValue.ToString()))
 				{
@@ -83,15 +72,14 @@ namespace Loja
 				else
 				{
 					InitComboOrca();
+					AtivarPesquisa();
 				}
 			}
 			#endregion
 			#region Ir para pesquisa
 			else if (e.KeyCode.Equals(Keys.F2))
 			{
-				gridViewProduto.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle;
-				gridViewProduto.FocusedColumn = colDesProduto;
-				gridViewProduto.ShowEditor();
+				AtivarPesquisa();
 			}
 			#endregion
 			#region Abrir destaque orçamento
@@ -102,14 +90,49 @@ namespace Loja
 			}
 			#endregion
 			#region Vendas
-			else if (e.KeyCode.Equals(Keys.F11)){
+			else if (e.KeyCode.Equals(Keys.F11))
+			{
 				btnVendaRapida_ItemClick(sender, null);
 			}
-			else if (e.KeyCode.Equals(Keys.F12)){
+			else if (e.KeyCode.Equals(Keys.F12))
+			{
 				btnFinalizarVenda_ItemClick(sender, null);
 			}
-
 			#endregion
+			#region Enter
+			else if (e.KeyCode.Equals(Keys.Return))
+			{
+
+				if (gridViewProduto.FocusedRowHandle == DevExpress.XtraGrid.GridControl.AutoFilterRowHandle)
+				{
+					gridViewProduto.SelectRow(0);
+					SendKeys.Send("{DOWN}");
+					return;
+				}
+
+			}
+			#endregion
+		}
+
+		private void frmPrincipal_Load(object sender, EventArgs e)
+		{
+			AtivarPesquisa(colDesProduto);
+			ribbonControl.Manager.UseAltKeyForMenu = false;
+
+			InitGrid();
+			InitComboOrca();
+
+			gridProdutos.DataSource = produtos;
+			gridViewProduto.Columns[colDesProduto.AbsoluteIndex].SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
+
+			gridOrcamento.DataSource = orcamento;
+
+			c = new Thread(VerificaContingencia) { IsBackground = true };
+			c.Start();
+
+			t = new Thread(VerificaStatus) { IsBackground = true };
+			t.Start();
+
 		}
 
 		#endregion
@@ -130,9 +153,14 @@ namespace Loja
 
 						if (QtdContingencia > 0)
 						{
-							var cont = new Modules.NFCE(_configuracoes, null);
-							cont.EnviarContingencia();
-							Util.MsgBox(String.Format("Havia{0} {1} nota{2} em contingência que foram enviadas após cessarem os problemas de conexão!", QtdContingencia > 1 ? "m" : "", QtdContingencia, QtdContingencia > 1 ? "s" : ""));
+							var cont = new Modules.NFCE(_configuracoes, "");
+							var resultado = cont.EnviarContingencia();
+							if (!String.IsNullOrEmpty(resultado))
+								Util.MsgBox(resultado);
+							else
+							{
+								Util.MsgBox(String.Format("Havia{0} {1} nota{2} em contingência que foram enviadas após cessarem os problemas de conexão!", QtdContingencia > 1 ? "m" : "", QtdContingencia, QtdContingencia > 1 ? "s" : ""));
+							}
 						}
 
 					}
@@ -146,7 +174,7 @@ namespace Loja
 		private bool VerificaInternet()
 		{
 
-			var retorno = Util.PingHost("www.google.com.br");
+			var retorno = Util.CheckForInternetConnection();//Util.PingHost("www.google.com.br");
 
 			chkInternet.Checked = retorno;
 
@@ -180,11 +208,11 @@ namespace Loja
 
 		private bool VerificaSefaz()
 		{
-			var retornoS = NFe.Wsdl.Monitor.StatusServico();
+			var retorno = Util.StatusSefaz(_configuracoes);
 
-			chkStatusSefaz.Checked = retornoS.Status;
+			chkStatusSefaz.Checked = retorno;
 
-			if (!retornoS.Status)
+			if (!retorno)
 			{
 				chkStatusSefaz.ItemAppearance.Normal.BackColor = System.Drawing.Color.Red;
 				chkStatusSefaz.ItemAppearance.Normal.ForeColor = System.Drawing.Color.White;
@@ -195,6 +223,7 @@ namespace Loja
 					ModoContingencia(true);
 					contAviso++;
 				}
+
 			}
 			else
 			{
@@ -207,20 +236,22 @@ namespace Loja
 				}
 			}
 
-			return retornoS.Status;
+			return retorno;
 		}
 
 		void VerificaContingencia()
 		{
 			while (true)
 			{
-
-				QtdContingencia = Consultas.ObterQtdContingencia();
-				btnQtdContingencia.Caption = String.Format("Notas em Contingência: <b>{0}</b>", QtdContingencia.ToString() ?? "0");
-
-				Thread.Sleep(360000);
-
+				AtualizaTelaContingencia();
+				Thread.Sleep(120000);
 			}
+		}
+
+		void AtualizaTelaContingencia()
+		{
+			QtdContingencia = Consultas.ObterQtdContingencia();
+			btnQtdContingencia.Caption = String.Format("Notas em Contingência: <b>{0}</b>", QtdContingencia.ToString() ?? "0");
 		}
 
 		void ModoContingencia(bool tipo)
@@ -228,12 +259,20 @@ namespace Loja
 			if (tipo)
 			{
 				btnContingencia.Checked = true;
-				_configuracoes.CfgServico.tpEmis = NFe.Classes.Informacoes.Identificacao.Tipos.TipoEmissao.teOffLine;
+				if (_configuracoes != null)
+				{
+					_configuracoes.CfgServico.tpEmis = TipoEmissao.teOffLine;
+				}
+				UserLookAndFeel.Default.SetSkinStyle("Office 2013 White");
 			}
 			else
 			{
 				btnContingencia.Checked = false;
-				_configuracoes.CfgServico.tpEmis = NFe.Classes.Informacoes.Identificacao.Tipos.TipoEmissao.teNormal;
+				if (_configuracoes != null)
+				{
+					_configuracoes.CfgServico.tpEmis = TipoEmissao.teNormal;
+				}
+				UserLookAndFeel.Default.SetSkinStyle("Money Twins");
 			}
 		}
 
@@ -248,25 +287,13 @@ namespace Loja
 					? new ConfiguracaoApp()
 					: FuncoesXml.ArquivoXmlParaClasse<ConfiguracaoApp>(path + ArquivoConfiguracao);
 				if (_configuracoes.CfgServico.TimeOut == 0)
-					_configuracoes.CfgServico.TimeOut = 100; //mínimo
-
-				#region Carrega a logo no controle logoEmitente
-
-				/*if (_configuracoes.ConfiguracaoDanfeNfce.Logomarca != null && _configuracoes.ConfiguracaoDanfeNfce.Logomarca.Length > 0)
-					using (var stream = new MemoryStream(_configuracoes.ConfiguracaoDanfeNfce.Logomarca))
-					{
-						LogoEmitente.Source = BitmapFrame.Create(stream, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
-					}*/
-
-				#endregion
-
-
-
+					_configuracoes.CfgServico.TimeOut = 1000; //mínimo
 			}
 			catch (Exception ex)
 			{
 				if (!string.IsNullOrEmpty(ex.Message))
 					Util.MsgBox(ex.Message);
+				_configuracoes = new ConfiguracaoApp();
 			}
 		}
 
@@ -450,7 +477,8 @@ namespace Loja
 			}
 		}
 
-		void AbrirDetalheOrca() {
+		void AbrirDetalheOrca()
+		{
 
 			if (cmbCodOrca.EditValue != null && cmbCodOrca.EditValue.ToString() != "")
 			{
@@ -458,6 +486,21 @@ namespace Loja
 
 				frmOrca.ShowDialog();
 			}
+		}
+
+		void AtivarPesquisa(GridColumn coluna)
+		{
+			gridViewProduto.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle;
+			gridViewProduto.FocusedColumn = coluna;
+			gridViewProduto.ShowEditor();
+
+		}
+
+		void AtivarPesquisa()
+		{
+			gridViewProduto.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle;
+			gridViewProduto.ShowEditor();
+
 		}
 
 		#endregion
@@ -536,7 +579,7 @@ namespace Loja
 
 		private void btnQtdContingencia_ItemClick(object sender, ItemClickEventArgs e)
 		{
-			using (var f = new frmVendas())
+			using (var f = new frmVendas(_configuracoes))
 			{
 				f.SU_CarregaVendasContingencia();
 				f.ShowDialog();
@@ -545,7 +588,8 @@ namespace Loja
 
 		private void btnStatus_ItemClick(object sender, ItemClickEventArgs e)
 		{
-			Util.MsgBox(Util.ComandoACBR("NFE.StatusServico"));
+			//Util.MsgBox(Util.ComandoACBR("NFE.StatusServico"));
+			VerificaSefaz();
 		}
 
 		private void btnFazerBackup_ItemClick(object sender, ItemClickEventArgs e)
@@ -561,12 +605,21 @@ namespace Loja
 		{
 			if (btnContingencia.Checked)
 			{
-				_configuracoes.CfgServico.tpEmis = NFe.Classes.Informacoes.Identificacao.Tipos.TipoEmissao.teOffLine;
+				if (_configuracoes != null)
+				{
+					_configuracoes.CfgServico.tpEmis = TipoEmissao.teOffLine;
+				}
+				UserLookAndFeel.Default.SetSkinStyle("Office 2013 White");
 			}
 			else
 			{
-				_configuracoes.CfgServico.tpEmis = NFe.Classes.Informacoes.Identificacao.Tipos.TipoEmissao.teNormal;
+				if (_configuracoes != null)
+				{
+					_configuracoes.CfgServico.tpEmis = TipoEmissao.teNormal;
+				}
+				UserLookAndFeel.Default.SetSkinStyle("Money Twins");
 			}
+
 		}
 
 		#endregion
@@ -589,11 +642,24 @@ namespace Loja
 			}
 			else if (e.KeyCode == Keys.Return)
 			{
+				//if (gridViewProduto.FocusedRowHandle == DevExpress.XtraGrid.GridControl.AutoFilterRowHandle) 
+				//{
+
+				//	//MessageBox.Show("Teste");
+				//	gridViewProduto.SelectRow(0);
+				//	SendKeys.Send("{DOWN}");
+				//	return;
+				//}
+
 				int codproduto = FU_PegaCodigoGrid("P"); ;
 
 				frmDetalhe f = new frmDetalhe(this);
 				f.SU_CarregaProduto(codproduto);
 				f.ShowDialog();
+			}
+			else if (e.KeyCode.Equals(Keys.Escape))
+			{
+				AtivarPesquisa();
 			}
 		}
 
@@ -631,9 +697,9 @@ namespace Loja
 				}
 				else
 					if (e.Column == colValor)
-					{
-						Cadastros.AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), -1.0, (double)e.Value);
-					}
+				{
+					Cadastros.AlterarOrcamento(cmbCodOrca.EditValue.ToString(), FU_PegaCodigoGrid("O"), -1.0, (double)e.Value);
+				}
 			}
 			catch (Exception ex)
 			{
@@ -828,7 +894,7 @@ namespace Loja
 
 		private void btnRelVendas_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
 		{
-			using (frmVendas f = new frmVendas())
+			using (frmVendas f = new frmVendas(_configuracoes))
 			{
 				f.ShowDialog();
 
@@ -872,7 +938,41 @@ namespace Loja
 			AbrirDetalheOrca();
 		}
 
+		private void btnRelEstoque_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+		{
+			using (Reports.relEstoque relatorio = new Reports.relEstoque())
+			{
+
+				ReportPrintTool printTool = new ReportPrintTool(relatorio);
+
+				printTool.ShowRibbonPreviewDialog();
+				printTool.ShowRibbonPreview(UserLookAndFeel.Default);
+			}
+		}
+
+		private void btnVerResumo_ItemClick(object sender, ItemClickEventArgs e)
+		{
+			var f = new Forms.frmResumo();
+			f.ShowDialog();
+		}
+
+		private void btnAuditorNF_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+		{
+			var f = new Forms.frmAuditorNF(_configuracoes);
+			f.ShowDialog();
+		}
+
+		private void btnParametros_ItemClick(object sender, ItemClickEventArgs e)
+		{
+			var f = new Forms.frmParametros();
+			f.ShowDialog();
+		}
+
+		private void btnEnviarCont_ItemClick(object sender, ItemClickEventArgs e)
+		{
+			VerificaStatus();
+		}
 	}
-		#endregion
+	#endregion
 
 }

@@ -135,6 +135,27 @@ namespace Loja.DAL.DAO
 
 		}
 
+		public static void GravaParametros(tbl_Parametros dado){
+
+			using (var contexto = new LojaContext())
+			{
+				var param = contexto.tbl_Parametros.FirstOrDefault();
+				param.EmpresaCNPJ = dado.EmpresaCNPJ;
+				param.EmpresaEmail = dado.EmpresaCNPJ;
+				param.EmpresaEndereco = dado.EmpresaEndereco;
+				param.EmpresaInscEstadual = dado.EmpresaInscEstadual;
+				param.EmpresaLogotipo = dado.EmpresaLogotipo;
+				param.EmpresaSlogan = dado.EmpresaSlogan;
+				param.EmpresaTelefone = dado.EmpresaTelefone;
+				param.EmpresaWebSite = dado.EmpresaWebSite;
+				param.SisCodVenda = dado.SisCodVenda;
+				param.SisNumNF = dado.SisNumNF;
+				
+				contexto.SaveChanges();
+			}
+
+		}
+
 		#endregion
 
 		#region Clientes
@@ -218,6 +239,7 @@ namespace Loja.DAL.DAO
 					registro.FlgStatusNota = dado.FlgStatusNota;
 					registro.QtdItens = dado.QtdItens;
 					registro.ValorTotal = dado.ValorTotal;
+					registro.NumProtocolo = dado.NumProtocolo;
 				}
 
 				banco.SaveChanges();
@@ -268,7 +290,7 @@ namespace Loja.DAL.DAO
 			}
 		}
 
-		public static void AtualizaStatusNFE(string codVenda, string flgStatusNFE, string chave)
+		public static void AtualizaStatusNFE(string codVenda, string flgStatusNFE, string chave, string numProtocolo)
 		{
 
 			using (var banco = new LojaContext())
@@ -280,6 +302,9 @@ namespace Loja.DAL.DAO
 				if (!String.IsNullOrEmpty(chave))
 				{
 					registro.ChaveSefaz = chave;
+				}
+				if (!String.IsNullOrEmpty(numProtocolo)){
+					registro.NumProtocolo = numProtocolo;
 				}
 				
 				banco.SaveChanges();
@@ -327,6 +352,28 @@ namespace Loja.DAL.DAO
 			}
 
 		}
+
+        public static void InutilizarVenda(string codVenda)
+        {
+
+            using (var banco = new LojaContext())
+            {
+                var registro = banco.tbl_Saida.FirstOrDefault(x => x.CodVenda == codVenda);
+
+                if (registro == null)
+                {
+                    banco.tbl_Saida.Add(new tbl_Saida() { CodVenda = codVenda, FlgStatusNFE = "I", ValorTotal = 0, QtdItens = 0, Data = DateTime.Now, FlgStatusNota = "I", CodTipoVenda = 1 });
+                }
+                else
+                {
+                    throw new Exception("Número de nota não pode ser inutilizado");
+                }
+
+                banco.SaveChanges();
+
+            }
+
+        }
 
 		#endregion
 

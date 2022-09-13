@@ -26,6 +26,10 @@ namespace Loja.DAL.Models.Mapping
 				.IsFixedLength()
                 .HasMaxLength(1);
 
+			this.Property(t => t.NumProtocolo)
+				.IsFixedLength()
+				.HasMaxLength(15);
+
 			// Table & Column Mappings
 			this.ToTable("tbl_Saida");
 			this.Property(t => t.CodVenda).HasColumnName("CodVenda");
@@ -37,6 +41,8 @@ namespace Loja.DAL.Models.Mapping
 			this.Property(t => t.FlgStatusNota).HasColumnName("FlgStatusNota");
 			this.Property(t => t.CodTipoVenda).HasColumnName("CodTipoVenda");
 			this.Property(t => t.CodCliente).HasColumnName("CodCliente");
+			this.Property(t => t.NumProtocolo).HasColumnName("NumProtocolo");
+
 
 			// Relationships
 			this.HasOptional(t => t.tbl_TipoVenda)

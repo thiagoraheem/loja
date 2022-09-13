@@ -30,6 +30,8 @@
 /* http://www.zeusautomacao.com.br/                                             */
 /* Rua Comendador Francisco josé da Cunha, 111 - Itabaiana - SE - 49500-000     */
 /********************************************************************************/
+
+using DFe.Utils;
 using NFe.Classes.Servicos.Consulta;
 
 namespace NFe.Utils.Consulta
@@ -55,6 +57,16 @@ namespace NFe.Utils.Consulta
         public static string ObterXmlString(this retConsSitNFe retConsSitNFe)
         {
             return FuncoesXml.ClasseParaXmlString(retConsSitNFe);
+        }
+
+        /// <summary>
+        ///     Verifica se esta autorizado
+        /// </summary>
+        /// <param name="consSitNFe"></param>
+        /// <returns>bool</returns>
+        public static bool Autorizada(this retConsSitNFe consSitNFe)
+        {
+            return NfeSituacao.Autorizada(consSitNFe.cStat);
         }
     }
 }

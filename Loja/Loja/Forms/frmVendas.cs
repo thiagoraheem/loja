@@ -13,6 +13,7 @@ using Loja.DAL.Models;
 using Loja.DAL.DAO;
 using System.IO;
 using System.Reflection;
+using Loja.Modules;
 
 namespace Loja
 {
@@ -20,13 +21,15 @@ namespace Loja
 	{
 
 		#region Variáveis
+		private ConfiguracaoApp _configuracoes;
 		#endregion
 
 		#region Form Events
 
-		public frmVendas()
+		public frmVendas(ConfiguracaoApp config)
 		{
 			InitializeComponent();
+			_configuracoes = config;
 		}
 
 		private void frmVendas_Load(object sender, EventArgs e)
@@ -123,15 +126,17 @@ namespace Loja
 				if (MessageBox.Show("Confirma cancelar essa NFE?", "Confirmar exclusão", MessageBoxButtons.YesNo) == DialogResult.No)
 					return;
 
-				var retorno = NFe.Wsdl.Monitor.CancelarNFE(saida.ChaveSefaz.Replace("NFe", ""), "Erro na emissao da nota", Util.SemFormatacao(Properties.Settings.Default.CNPJ), saida.CodVenda);
+				//var retorno = NFe.Wsdl.Monitor.CancelarNFE(saida.ChaveSefaz.Replace("NFe", ""), "Erro na emissao da nota", Util.SemFormatacao(Properties.Settings.Default.CNPJ), saida.CodVenda);
+				var nfe = new Modules.NFCE(_configuracoes, saida);
+				var retorno = nfe.CancelarNFe(1, "Erro na emissão da nota");
 
-				if (retorno.Status == true) { 
+				if (retorno.Resultado == true) { 
 					Cadastros.CancelarVenda(codvenda);
 					Util.MsgBox("NFC-e cancelada com sucesso");
 				}
 				else
 				{
-					Util.MsgBox(retorno.Resultado);
+					Util.MsgBox(retorno.Mensagem);
 				}
 
 				SU_CarregaVendas();
@@ -149,16 +154,53 @@ namespace Loja
 			var caminho = "";
 			var codvenda = FU_PegaCodigoVenda();
 
-			caminho = String.Format("{0}\\XML\\{1}-env-lot.xml", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), codvenda);
+			var venda = Consultas.ObterVenda(codvenda);
+
+			caminho = $"{_configuracoes.CfgServico.DiretorioSalvarXml}\\{venda.ChaveSefaz.Replace("NFe", "")}-procNfe.xml";
 
 			if (File.Exists(caminho))
 			{
-				NFe.Wsdl.Monitor.ImprimirDANFE(caminho, Properties.Settings.Default.ImpressoraNFE);
+				//NFe.Wsdl.Monitor.ImprimirDANFE(caminho, Properties.Settings.Default.ImpressoraNFE);
+				var nfce = new NFCE(_configuracoes, "");
+				nfce.ImprimirDanfe(caminho);
 			}
-			else { 
+			else {
+				//var nfe = new NFCE(_configuracoes, codvenda);
+				//var xml = nfe.ObterXMLSefaz(venda.ChaveSefaz.Replace("NFe", ""));
+
 				Util.MsgBox("Erro ao tentar reimprimir DANFE, arquivo XML não encontrado");
 			}
 
+		}  
+
+		private void btnGerarPDF_Click(object sender, EventArgs e)
+		{
+			var caminho = "";
+			var codvenda = FU_PegaCodigoVenda();
+
+			var venda = Consultas.ObterVenda(codvenda);
+
+			caminho = String.Format($"{_configuracoes.CfgServico.DiretorioSalvarXml}\\{venda.ChaveSefaz.Replace("NFe", "")}-procNfe.xml");
+
+			if (File.Exists(caminho))
+			{
+				var nfce = new Modules.NFCE(_configuracoes, "");
+
+				SaveFileDialog fileDialog = new SaveFileDialog();
+
+				fileDialog.ShowDialog();
+
+				if (string.IsNullOrEmpty(fileDialog.FileName))
+					throw new ArgumentException("Não foi selecionado nem uma pasta");
+
+				//impr.Imprimir(salvarArquivoPdfEm: fileDialog.FileName.Replace(".pdf", "") + ".pdf");
+
+				nfce.ImprimirDanfe(caminho, fileDialog.FileName);
+			}
+			else
+			{
+				Util.MsgBox("Erro ao tentar reimprimir DANFE, arquivo XML não encontrado");
+			}
 		}
 
 		private void btnImprimirResumo_Click(object sender, EventArgs e)
@@ -295,7 +337,6 @@ namespace Loja
 		}
 
 		#endregion
-
 
 	}
 }

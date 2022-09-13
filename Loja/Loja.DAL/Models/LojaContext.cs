@@ -37,6 +37,8 @@ namespace Loja.DAL.Models
 		public DbSet<viw_Orcamento> viw_Orcamento { get; set; }
 		public DbSet<viw_ResumoDiario> viw_ResumoDiario { get; set; }
 
+        public DbSet<VO.CodigoVenda> CodigoVenda { get; set; }
+
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
 			modelBuilder.Configurations.Add(new sysdiagramMap());
