@@ -20,3 +20,16 @@ E:\Thiago\Documents\Personal\loja\Loja\Loja.DAL\bin\Debug\EntityFramework.SqlSer
 E:\Thiago\Documents\Personal\loja\Loja\Loja.DAL\obj\Debug\Loja.DAL.csprojResolveAssemblyReference.cache
 E:\Thiago\Documents\Personal\loja\Loja\Loja.DAL\obj\Debug\Loja.DAL.dll
 E:\Thiago\Documents\Personal\loja\Loja\Loja.DAL\obj\Debug\Loja.DAL.pdb
+C:\Projetos\Loja\GitHub\loja\Loja\Loja.DAL\bin\Debug\Loja.DAL.dll.config
+C:\Projetos\Loja\GitHub\loja\Loja\Loja.DAL\bin\Debug\Loja.DAL.dll
+C:\Projetos\Loja\GitHub\loja\Loja\Loja.DAL\bin\Debug\Loja.DAL.pdb
+C:\Projetos\Loja\GitHub\loja\Loja\Loja.DAL\bin\Debug\CodeFirstStoreFunctions.dll
+C:\Projetos\Loja\GitHub\loja\Loja\Loja.DAL\bin\Debug\EntityFramework.dll
+C:\Projetos\Loja\GitHub\loja\Loja\Loja.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Projetos\Loja\GitHub\loja\Loja\Loja.DAL\bin\Debug\EntityFramework.xml
+C:\Projetos\Loja\GitHub\loja\Loja\Loja.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Projetos\Loja\GitHub\loja\Loja\Loja.DAL\obj\Debug\Loja.DAL.csproj.AssemblyReference.cache
+C:\Projetos\Loja\GitHub\loja\Loja\Loja.DAL\obj\Debug\Loja.DAL.csproj.CoreCompileInputs.cache
+C:\Projetos\Loja\GitHub\loja\Loja\Loja.DAL\obj\Debug\Loja.DAL.csproj.CopyComplete
+C:\Projetos\Loja\GitHub\loja\Loja\Loja.DAL\obj\Debug\Loja.DAL.dll
+C:\Projetos\Loja\GitHub\loja\Loja\Loja.DAL\obj\Debug\Loja.DAL.pdb

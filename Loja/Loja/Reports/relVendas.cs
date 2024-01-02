@@ -9,7 +9,7 @@ namespace Loja.Reports
 		private int _CodProduto;
 		private int _CodTipoVenda;
 
-		private void relVendas_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+		private void relVendas_BeforePrint(object sender, System.ComponentModel.CancelEventArgs e)
 		{
 			lblTelefone.Text = "Telefone: " + Properties.Settings.Default.Telefone;
 			lblEndereco.Text = Properties.Settings.Default.Endereco;

@@ -185,7 +185,7 @@
 			this.Title.BorderColor = System.Drawing.Color.Black;
 			this.Title.Borders = DevExpress.XtraPrinting.BorderSide.None;
 			this.Title.BorderWidth = 1F;
-			this.Title.Font = new System.Drawing.Font("Times New Roman", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.Title.Font = new DevExpress.Drawing.DXFont("Times New Roman", 20F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.Title.ForeColor = System.Drawing.Color.Navy;
 			this.Title.Name = "Title";
 			// 
@@ -195,7 +195,7 @@
 			this.FieldCaption.BorderColor = System.Drawing.Color.Black;
 			this.FieldCaption.Borders = DevExpress.XtraPrinting.BorderSide.None;
 			this.FieldCaption.BorderWidth = 1F;
-			this.FieldCaption.Font = new System.Drawing.Font("Times New Roman", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.FieldCaption.Font = new DevExpress.Drawing.DXFont("Times New Roman", 11F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.FieldCaption.ForeColor = System.Drawing.Color.Navy;
 			this.FieldCaption.Name = "FieldCaption";
 			// 
@@ -205,7 +205,7 @@
 			this.PageInfo.BorderColor = System.Drawing.Color.Black;
 			this.PageInfo.Borders = DevExpress.XtraPrinting.BorderSide.None;
 			this.PageInfo.BorderWidth = 1F;
-			this.PageInfo.Font = new System.Drawing.Font("Times New Roman", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.PageInfo.Font = new DevExpress.Drawing.DXFont("Times New Roman", 9F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.PageInfo.ForeColor = System.Drawing.Color.Navy;
 			this.PageInfo.Name = "PageInfo";
 			// 
@@ -215,7 +215,7 @@
 			this.DataField.BorderColor = System.Drawing.Color.Black;
 			this.DataField.Borders = DevExpress.XtraPrinting.BorderSide.None;
 			this.DataField.BorderWidth = 1F;
-			this.DataField.Font = new System.Drawing.Font("Arial", 8F);
+			this.DataField.Font = new DevExpress.Drawing.DXFont("Arial", 8F);
 			this.DataField.ForeColor = System.Drawing.Color.Black;
 			this.DataField.Name = "DataField";
 			this.DataField.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -251,7 +251,7 @@
 			// 
 			// lblEndereco
 			// 
-			this.lblEndereco.Font = new System.Drawing.Font("Times New Roman", 11F);
+			this.lblEndereco.Font = new DevExpress.Drawing.DXFont("Times New Roman", 11F);
 			this.lblEndereco.LocationFloat = new DevExpress.Utils.PointFloat(0F, 44.45829F);
 			this.lblEndereco.Name = "lblEndereco";
 			this.lblEndereco.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -340,7 +340,7 @@
 			this.DataMember = "tbl_Saida";
 			this.DataSource = this.sqlDataSource1;
 			this.FilterString = "[Data] Between(?DatIni, ?DatFim)";
-			this.Margins = new System.Drawing.Printing.Margins(60, 61, 39, 28);
+			this.Margins = new DevExpress.Drawing.DXMargins(60, 61, 39, 28);
 			this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {
             this.DatIni,
             this.DatFim});
@@ -350,7 +350,7 @@
             this.PageInfo,
             this.DataField});
 			this.Version = "15.1";
-			this.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.relVendas_BeforePrint);
+			this.BeforePrint += new DevExpress.XtraReports.UI.BeforePrintEventHandler(this.relVendas_BeforePrint);
 			((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 

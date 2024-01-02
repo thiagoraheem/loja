@@ -14,7 +14,7 @@ namespace Loja.Reports
             InitializeComponent();
         }
 
-        private void relRecibo_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        private void relRecibo_BeforePrint(object sender, CancelEventArgs e)
         {
             lblEmpresa.Text = Properties.Settings.Default.NomeFantasia;
             lblTelefone.Text = Properties.Settings.Default.Telefone;

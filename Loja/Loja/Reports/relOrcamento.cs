@@ -13,7 +13,7 @@ namespace Loja.Reports
             InitializeComponent();
         }
 
-        private void relOrcamento_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        private void relOrcamento_BeforePrint(object sender, CancelEventArgs e)
         {
             lblEmpresa.Text = Properties.Settings.Default.NomeFantasia;
         }

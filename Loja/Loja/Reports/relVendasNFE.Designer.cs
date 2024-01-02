@@ -144,7 +144,7 @@
 			// 
 			this.xrLabel3.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_SaidaItens.DesProduto")});
-			this.xrLabel3.Font = new System.Drawing.Font("Arial", 9F);
+			this.xrLabel3.Font = new DevExpress.Drawing.DXFont("Arial", 9F);
 			this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(149.5833F, 0F);
 			this.xrLabel3.Name = "xrLabel3";
 			this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -155,7 +155,7 @@
 			// 
 			this.xrLabel2.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_SaidaItens.CodProduto")});
-			this.xrLabel2.Font = new System.Drawing.Font("Arial", 9F);
+			this.xrLabel2.Font = new DevExpress.Drawing.DXFont("Arial", 9F);
 			this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(25.62501F, 0F);
 			this.xrLabel2.Name = "xrLabel2";
 			this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -166,7 +166,7 @@
 			// 
 			this.xrLabel4.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_SaidaItens.Quantidade")});
-			this.xrLabel4.Font = new System.Drawing.Font("Arial", 9F);
+			this.xrLabel4.Font = new DevExpress.Drawing.DXFont("Arial", 9F);
 			this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(415.1206F, 0F);
 			this.xrLabel4.Name = "xrLabel4";
 			this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -179,7 +179,7 @@
 			// 
 			this.xrLabel5.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_SaidaItens.VlrUnitario", "{0:R$0.00}")});
-			this.xrLabel5.Font = new System.Drawing.Font("Arial", 9F);
+			this.xrLabel5.Font = new DevExpress.Drawing.DXFont("Arial", 9F);
 			this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(461.9081F, 0F);
 			this.xrLabel5.Name = "xrLabel5";
 			this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -192,7 +192,7 @@
 			// 
 			this.xrLabel6.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_SaidaItens.VlrCusto", "{0:R$0.00}")});
-			this.xrLabel6.Font = new System.Drawing.Font("Arial", 9F);
+			this.xrLabel6.Font = new DevExpress.Drawing.DXFont("Arial", 9F);
 			this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(561.9081F, 0F);
 			this.xrLabel6.Name = "xrLabel6";
 			this.xrLabel6.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -205,7 +205,7 @@
 			// 
 			this.xrLabel7.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_SaidaItens.VlrDesconto", "{0:R$0.00}")});
-			this.xrLabel7.Font = new System.Drawing.Font("Arial", 9F);
+			this.xrLabel7.Font = new DevExpress.Drawing.DXFont("Arial", 9F);
 			this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(661.9081F, 0F);
 			this.xrLabel7.Name = "xrLabel7";
 			this.xrLabel7.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -218,7 +218,7 @@
 			// 
 			this.xrLabel8.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_SaidaItens.VlrFinal", "{0:R$0.00}")});
-			this.xrLabel8.Font = new System.Drawing.Font("Arial", 9F);
+			this.xrLabel8.Font = new DevExpress.Drawing.DXFont("Arial", 9F);
 			this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(712.9499F, 0F);
 			this.xrLabel8.Name = "xrLabel8";
 			this.xrLabel8.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -252,7 +252,7 @@
 			this.xrTableCell8.CanGrow = false;
 			this.xrTableCell8.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_SaidaItens.CodVenda")});
-			this.xrTableCell8.Font = new System.Drawing.Font("Arial", 11F);
+			this.xrTableCell8.Font = new DevExpress.Drawing.DXFont("Arial", 11F);
 			this.xrTableCell8.Name = "xrTableCell8";
 			this.xrTableCell8.StyleName = "DataField";
 			this.xrTableCell8.StylePriority.UseFont = false;
@@ -265,7 +265,7 @@
 			this.xrTableCell10.CanGrow = false;
 			this.xrTableCell10.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_SaidaItens.Data")});
-			this.xrTableCell10.Font = new System.Drawing.Font("Arial", 11F);
+			this.xrTableCell10.Font = new DevExpress.Drawing.DXFont("Arial", 11F);
 			this.xrTableCell10.Name = "xrTableCell10";
 			this.xrTableCell10.StyleName = "DataField";
 			this.xrTableCell10.StylePriority.UseFont = false;
@@ -278,7 +278,7 @@
 			this.xrTableCell12.CanGrow = false;
 			this.xrTableCell12.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_SaidaItens.QtdItens")});
-			this.xrTableCell12.Font = new System.Drawing.Font("Arial", 11F);
+			this.xrTableCell12.Font = new DevExpress.Drawing.DXFont("Arial", 11F);
 			this.xrTableCell12.Name = "xrTableCell12";
 			this.xrTableCell12.StyleName = "DataField";
 			this.xrTableCell12.StylePriority.UseFont = false;
@@ -291,7 +291,7 @@
 			this.xrTableCell16.CanGrow = false;
 			this.xrTableCell16.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_SaidaItens.DesTipoVenda")});
-			this.xrTableCell16.Font = new System.Drawing.Font("Arial", 11F);
+			this.xrTableCell16.Font = new DevExpress.Drawing.DXFont("Arial", 11F);
 			this.xrTableCell16.Name = "xrTableCell16";
 			this.xrTableCell16.StylePriority.UseFont = false;
 			this.xrTableCell16.StylePriority.UseTextAlignment = false;
@@ -303,7 +303,7 @@
 			this.xrTableCell14.CanGrow = false;
 			this.xrTableCell14.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_SaidaItens.ValorTotal", "{0:R$0.00}")});
-			this.xrTableCell14.Font = new System.Drawing.Font("Arial", 11F);
+			this.xrTableCell14.Font = new DevExpress.Drawing.DXFont("Arial", 11F);
 			this.xrTableCell14.Name = "xrTableCell14";
 			this.xrTableCell14.StyleName = "DataField";
 			this.xrTableCell14.StylePriority.UseFont = false;
@@ -322,7 +322,7 @@
 			// 
 			this.xrTable1.AnchorVertical = DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom;
 			this.xrTable1.BorderWidth = 0F;
-			this.xrTable1.Font = new System.Drawing.Font("Arial", 9.75F);
+			this.xrTable1.Font = new DevExpress.Drawing.DXFont("Arial", 9.75F);
 			this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 0F);
 			this.xrTable1.Name = "xrTable1";
 			this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
@@ -347,7 +347,7 @@
 			this.xrTableCell7.Borders = DevExpress.XtraPrinting.BorderSide.None;
 			this.xrTableCell7.BorderWidth = 0F;
 			this.xrTableCell7.CanGrow = false;
-			this.xrTableCell7.Font = new System.Drawing.Font("Arial", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.xrTableCell7.Font = new DevExpress.Drawing.DXFont("Arial", 11F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.xrTableCell7.Name = "xrTableCell7";
 			this.xrTableCell7.StyleName = "FieldCaption";
 			this.xrTableCell7.StylePriority.UseBorders = false;
@@ -362,7 +362,7 @@
 			this.xrTableCell9.Borders = DevExpress.XtraPrinting.BorderSide.None;
 			this.xrTableCell9.BorderWidth = 0F;
 			this.xrTableCell9.CanGrow = false;
-			this.xrTableCell9.Font = new System.Drawing.Font("Arial", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.xrTableCell9.Font = new DevExpress.Drawing.DXFont("Arial", 11F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.xrTableCell9.Name = "xrTableCell9";
 			this.xrTableCell9.StyleName = "FieldCaption";
 			this.xrTableCell9.StylePriority.UseBorders = false;
@@ -376,7 +376,7 @@
 			// 
 			this.xrTableCell11.Borders = DevExpress.XtraPrinting.BorderSide.None;
 			this.xrTableCell11.CanGrow = false;
-			this.xrTableCell11.Font = new System.Drawing.Font("Arial", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.xrTableCell11.Font = new DevExpress.Drawing.DXFont("Arial", 11F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.xrTableCell11.Name = "xrTableCell11";
 			this.xrTableCell11.StyleName = "FieldCaption";
 			this.xrTableCell11.StylePriority.UseBorders = false;
@@ -389,7 +389,7 @@
 			// 
 			this.xrTableCell15.Borders = DevExpress.XtraPrinting.BorderSide.None;
 			this.xrTableCell15.CanGrow = false;
-			this.xrTableCell15.Font = new System.Drawing.Font("Arial", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.xrTableCell15.Font = new DevExpress.Drawing.DXFont("Arial", 11F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.xrTableCell15.Name = "xrTableCell15";
 			this.xrTableCell15.StylePriority.UseBorders = false;
 			this.xrTableCell15.StylePriority.UseFont = false;
@@ -402,7 +402,7 @@
 			// 
 			this.xrTableCell13.Borders = DevExpress.XtraPrinting.BorderSide.None;
 			this.xrTableCell13.CanGrow = false;
-			this.xrTableCell13.Font = new System.Drawing.Font("Arial", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.xrTableCell13.Font = new DevExpress.Drawing.DXFont("Arial", 11F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.xrTableCell13.Name = "xrTableCell13";
 			this.xrTableCell13.StyleName = "FieldCaption";
 			this.xrTableCell13.StylePriority.UseBorders = false;
@@ -515,7 +515,7 @@
 			this.Title.BorderColor = System.Drawing.Color.Black;
 			this.Title.Borders = DevExpress.XtraPrinting.BorderSide.None;
 			this.Title.BorderWidth = 1F;
-			this.Title.Font = new System.Drawing.Font("Times New Roman", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.Title.Font = new DevExpress.Drawing.DXFont("Times New Roman", 20F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.Title.ForeColor = System.Drawing.Color.Navy;
 			this.Title.Name = "Title";
 			// 
@@ -525,7 +525,7 @@
 			this.FieldCaption.BorderColor = System.Drawing.Color.Black;
 			this.FieldCaption.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
 			this.FieldCaption.BorderWidth = 1F;
-			this.FieldCaption.Font = new System.Drawing.Font("Times New Roman", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.FieldCaption.Font = new DevExpress.Drawing.DXFont("Times New Roman", 11F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.FieldCaption.ForeColor = System.Drawing.Color.Navy;
 			this.FieldCaption.Name = "FieldCaption";
 			// 
@@ -535,7 +535,7 @@
 			this.PageInfo.BorderColor = System.Drawing.Color.Black;
 			this.PageInfo.Borders = DevExpress.XtraPrinting.BorderSide.None;
 			this.PageInfo.BorderWidth = 1F;
-			this.PageInfo.Font = new System.Drawing.Font("Times New Roman", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.PageInfo.Font = new DevExpress.Drawing.DXFont("Times New Roman", 9F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.PageInfo.ForeColor = System.Drawing.Color.Navy;
 			this.PageInfo.Name = "PageInfo";
 			// 
@@ -545,7 +545,7 @@
 			this.DataField.BorderColor = System.Drawing.Color.Black;
 			this.DataField.Borders = DevExpress.XtraPrinting.BorderSide.None;
 			this.DataField.BorderWidth = 1F;
-			this.DataField.Font = new System.Drawing.Font("Arial", 8F);
+			this.DataField.Font = new DevExpress.Drawing.DXFont("Arial", 8F);
 			this.DataField.ForeColor = System.Drawing.Color.Black;
 			this.DataField.Name = "DataField";
 			this.DataField.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -678,7 +678,7 @@
 			// 
 			this.xrLabel15.AnchorVertical = DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom;
 			this.xrLabel15.CanGrow = false;
-			this.xrLabel15.Font = new System.Drawing.Font("Arial", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.xrLabel15.Font = new DevExpress.Drawing.DXFont("Arial", 11F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.xrLabel15.ForeColor = System.Drawing.Color.Navy;
 			this.xrLabel15.LocationFloat = new DevExpress.Utils.PointFloat(712.9499F, 63.45835F);
 			this.xrLabel15.Name = "xrLabel15";
@@ -694,7 +694,7 @@
 			// 
 			this.xrLabel14.AnchorVertical = DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom;
 			this.xrLabel14.CanGrow = false;
-			this.xrLabel14.Font = new System.Drawing.Font("Arial", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.xrLabel14.Font = new DevExpress.Drawing.DXFont("Arial", 11F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.xrLabel14.ForeColor = System.Drawing.Color.Navy;
 			this.xrLabel14.LocationFloat = new DevExpress.Utils.PointFloat(661.9081F, 63.45835F);
 			this.xrLabel14.Name = "xrLabel14";
@@ -710,7 +710,7 @@
 			// 
 			this.xrLabel13.AnchorVertical = DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom;
 			this.xrLabel13.CanGrow = false;
-			this.xrLabel13.Font = new System.Drawing.Font("Arial", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.xrLabel13.Font = new DevExpress.Drawing.DXFont("Arial", 11F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.xrLabel13.ForeColor = System.Drawing.Color.Navy;
 			this.xrLabel13.LocationFloat = new DevExpress.Utils.PointFloat(561.9081F, 63.45835F);
 			this.xrLabel13.Name = "xrLabel13";
@@ -726,7 +726,7 @@
 			// 
 			this.xrLabel12.AnchorVertical = DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom;
 			this.xrLabel12.CanGrow = false;
-			this.xrLabel12.Font = new System.Drawing.Font("Arial", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.xrLabel12.Font = new DevExpress.Drawing.DXFont("Arial", 11F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.xrLabel12.ForeColor = System.Drawing.Color.Navy;
 			this.xrLabel12.LocationFloat = new DevExpress.Utils.PointFloat(461.9081F, 63.45835F);
 			this.xrLabel12.Name = "xrLabel12";
@@ -742,7 +742,7 @@
 			// 
 			this.xrLabel11.AnchorVertical = DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom;
 			this.xrLabel11.CanGrow = false;
-			this.xrLabel11.Font = new System.Drawing.Font("Arial", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.xrLabel11.Font = new DevExpress.Drawing.DXFont("Arial", 11F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.xrLabel11.ForeColor = System.Drawing.Color.Navy;
 			this.xrLabel11.LocationFloat = new DevExpress.Utils.PointFloat(415.1206F, 63.45835F);
 			this.xrLabel11.Name = "xrLabel11";
@@ -758,7 +758,7 @@
 			// 
 			this.xrLabel10.AnchorVertical = DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom;
 			this.xrLabel10.CanGrow = false;
-			this.xrLabel10.Font = new System.Drawing.Font("Arial", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.xrLabel10.Font = new DevExpress.Drawing.DXFont("Arial", 11F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.xrLabel10.ForeColor = System.Drawing.Color.Navy;
 			this.xrLabel10.LocationFloat = new DevExpress.Utils.PointFloat(149.5833F, 63.45835F);
 			this.xrLabel10.Name = "xrLabel10";
@@ -772,7 +772,7 @@
 			// 
 			this.xrLabel9.AnchorVertical = DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom;
 			this.xrLabel9.CanGrow = false;
-			this.xrLabel9.Font = new System.Drawing.Font("Arial", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.xrLabel9.Font = new DevExpress.Drawing.DXFont("Arial", 11F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.xrLabel9.ForeColor = System.Drawing.Color.Navy;
 			this.xrLabel9.LocationFloat = new DevExpress.Utils.PointFloat(25.62501F, 63.45835F);
 			this.xrLabel9.Name = "xrLabel9";
@@ -794,7 +794,7 @@
 			// 
 			this.xrLabel17.AnchorVertical = DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom;
 			this.xrLabel17.CanGrow = false;
-			this.xrLabel17.Font = new System.Drawing.Font("Arial", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.xrLabel17.Font = new DevExpress.Drawing.DXFont("Arial", 11F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.xrLabel17.ForeColor = System.Drawing.Color.Navy;
 			this.xrLabel17.LocationFloat = new DevExpress.Utils.PointFloat(517.8066F, 5.541674F);
 			this.xrLabel17.Name = "xrLabel17";
@@ -808,7 +808,7 @@
 			// 
 			this.xrLabel16.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_Saida.ValorTotal")});
-			this.xrLabel16.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+			this.xrLabel16.Font = new DevExpress.Drawing.DXFont("Arial", 12F, DevExpress.Drawing.DXFontStyle.Bold);
 			this.xrLabel16.LocationFloat = new DevExpress.Utils.PointFloat(665.2707F, 5.541674F);
 			this.xrLabel16.Name = "xrLabel16";
 			this.xrLabel16.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -855,7 +855,7 @@
 			this.DataMember = "tbl_SaidaItens";
 			this.DataSource = this.sqlDataSource1;
 			this.Landscape = true;
-			this.Margins = new System.Drawing.Printing.Margins(82, 100, 52, 17);
+			this.Margins = new DevExpress.Drawing.DXMargins(82, 100, 52, 17);
 			this.PageHeight = 850;
 			this.PageWidth = 1100;
 			this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
@@ -864,7 +864,7 @@
             this.PageInfo,
             this.DataField});
 			this.Version = "15.1";
-			this.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.relVendasNFE_BeforePrint);
+			this.BeforePrint += new DevExpress.XtraReports.UI.BeforePrintEventHandler(this.relVendasNFE_BeforePrint);
 			((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this)).EndInit();

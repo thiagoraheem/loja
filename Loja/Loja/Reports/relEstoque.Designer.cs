@@ -332,7 +332,7 @@
 			// 
 			// lblEndereco
 			// 
-			this.lblEndereco.Font = new System.Drawing.Font("Times New Roman", 11F);
+			this.lblEndereco.Font = new DevExpress.Drawing.DXFont("Times New Roman", 11F);
 			this.lblEndereco.LocationFloat = new DevExpress.Utils.PointFloat(0F, 44.45829F);
 			this.lblEndereco.Name = "lblEndereco";
 			this.lblEndereco.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -435,7 +435,7 @@
 			this.Title.BorderColor = System.Drawing.Color.Black;
 			this.Title.Borders = DevExpress.XtraPrinting.BorderSide.None;
 			this.Title.BorderWidth = 1F;
-			this.Title.Font = new System.Drawing.Font("Times New Roman", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.Title.Font = new DevExpress.Drawing.DXFont("Times New Roman", 20F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.Title.ForeColor = System.Drawing.Color.Navy;
 			this.Title.Name = "Title";
 			// 
@@ -445,7 +445,7 @@
 			this.FieldCaption.BorderColor = System.Drawing.Color.Black;
 			this.FieldCaption.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
 			this.FieldCaption.BorderWidth = 1F;
-			this.FieldCaption.Font = new System.Drawing.Font("Times New Roman", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.FieldCaption.Font = new DevExpress.Drawing.DXFont("Times New Roman", 11F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.FieldCaption.ForeColor = System.Drawing.Color.Navy;
 			this.FieldCaption.Name = "FieldCaption";
 			// 
@@ -455,7 +455,7 @@
 			this.PageInfo.BorderColor = System.Drawing.Color.Black;
 			this.PageInfo.Borders = DevExpress.XtraPrinting.BorderSide.None;
 			this.PageInfo.BorderWidth = 1F;
-			this.PageInfo.Font = new System.Drawing.Font("Times New Roman", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.PageInfo.Font = new DevExpress.Drawing.DXFont("Times New Roman", 9F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.PageInfo.ForeColor = System.Drawing.Color.Navy;
 			this.PageInfo.Name = "PageInfo";
 			// 
@@ -465,7 +465,7 @@
 			this.DataField.BorderColor = System.Drawing.Color.Black;
 			this.DataField.Borders = DevExpress.XtraPrinting.BorderSide.None;
 			this.DataField.BorderWidth = 1F;
-			this.DataField.Font = new System.Drawing.Font("Arial", 8F);
+			this.DataField.Font = new DevExpress.Drawing.DXFont("Arial", 8F);
 			this.DataField.ForeColor = System.Drawing.Color.Black;
 			this.DataField.Name = "DataField";
 			this.DataField.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -504,7 +504,7 @@
 			// 
 			// xrLabel6
 			// 
-			this.xrLabel6.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
+			this.xrLabel6.Font = new DevExpress.Drawing.DXFont("Times New Roman", 9.75F, DevExpress.Drawing.DXFontStyle.Bold);
 			this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(177.1483F, 10.00001F);
 			this.xrLabel6.Name = "xrLabel6";
 			this.xrLabel6.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -529,7 +529,7 @@
 			// 
 			// xrLabel4
 			// 
-			this.xrLabel4.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
+			this.xrLabel4.Font = new DevExpress.Drawing.DXFont("Times New Roman", 9.75F, DevExpress.Drawing.DXFontStyle.Bold);
 			this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(373.7083F, 10.00001F);
 			this.xrLabel4.Name = "xrLabel4";
 			this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -553,7 +553,7 @@
 			// 
 			// xrLabel2
 			// 
-			this.xrLabel2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
+			this.xrLabel2.Font = new DevExpress.Drawing.DXFont("Times New Roman", 9.75F, DevExpress.Drawing.DXFontStyle.Bold);
 			this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(585.0417F, 10.00001F);
 			this.xrLabel2.Name = "xrLabel2";
 			this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -588,14 +588,14 @@
             this.sqlDataSource1});
 			this.DataMember = "tbl_Produtos";
 			this.DataSource = this.sqlDataSource1;
-			this.Margins = new System.Drawing.Printing.Margins(34, 47, 26, 100);
+			this.Margins = new DevExpress.Drawing.DXMargins(34, 47, 26, 100);
 			this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.Title,
             this.FieldCaption,
             this.PageInfo,
             this.DataField});
 			this.Version = "15.2";
-			this.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.relEstMinimo_BeforePrint);
+			this.BeforePrint += new DevExpress.XtraReports.UI.BeforePrintEventHandler(this.relEstMinimo_BeforePrint);
 			((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this)).EndInit();

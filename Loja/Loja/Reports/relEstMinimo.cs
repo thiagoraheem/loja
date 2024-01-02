@@ -13,7 +13,7 @@ namespace Loja.Reports
             InitializeComponent();
         }
 
-        private void relEstMinimo_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        private void relEstMinimo_BeforePrint(object sender, CancelEventArgs e)
         {
             lblTelefone.Text = "Telefone: " + Properties.Settings.Default.Telefone;
             lblEndereco.Text = Properties.Settings.Default.Endereco;

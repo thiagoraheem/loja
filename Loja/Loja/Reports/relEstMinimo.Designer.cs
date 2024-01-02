@@ -111,8 +111,8 @@
 			// 
 			this.xrTableCell8.Borders = DevExpress.XtraPrinting.BorderSide.Right;
 			this.xrTableCell8.CanGrow = false;
-			this.xrTableCell8.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_Produtos.CodProduto")});
+			this.xrTableCell8.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CodProduto]")});
 			this.xrTableCell8.Name = "xrTableCell8";
 			this.xrTableCell8.StyleName = "DataField";
 			this.xrTableCell8.StylePriority.UseBorders = false;
@@ -123,8 +123,8 @@
 			// 
 			this.xrTableCell10.Borders = DevExpress.XtraPrinting.BorderSide.Right;
 			this.xrTableCell10.CanGrow = false;
-			this.xrTableCell10.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_Produtos.DesProduto")});
+			this.xrTableCell10.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DesProduto]")});
 			this.xrTableCell10.Name = "xrTableCell10";
 			this.xrTableCell10.StyleName = "DataField";
 			this.xrTableCell10.StylePriority.UseBorders = false;
@@ -135,8 +135,8 @@
 			// 
 			this.xrTableCell12.Borders = DevExpress.XtraPrinting.BorderSide.Right;
 			this.xrTableCell12.CanGrow = false;
-			this.xrTableCell12.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_Produtos.DesLocal")});
+			this.xrTableCell12.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DesLocal]")});
 			this.xrTableCell12.Name = "xrTableCell12";
 			this.xrTableCell12.StyleName = "DataField";
 			this.xrTableCell12.StylePriority.UseBorders = false;
@@ -149,8 +149,8 @@
 			// 
 			this.xrTableCell14.Borders = DevExpress.XtraPrinting.BorderSide.Right;
 			this.xrTableCell14.CanGrow = false;
-			this.xrTableCell14.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_Produtos.QtdProduto")});
+			this.xrTableCell14.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[QtdProduto]")});
 			this.xrTableCell14.Name = "xrTableCell14";
 			this.xrTableCell14.StyleName = "DataField";
 			this.xrTableCell14.StylePriority.UseBorders = false;
@@ -163,8 +163,8 @@
 			// 
 			this.xrTableCell16.Borders = DevExpress.XtraPrinting.BorderSide.Right;
 			this.xrTableCell16.CanGrow = false;
-			this.xrTableCell16.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_Produtos.VlrUnitario")});
+			this.xrTableCell16.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[VlrUnitario]")});
 			this.xrTableCell16.Name = "xrTableCell16";
 			this.xrTableCell16.StyleName = "DataField";
 			this.xrTableCell16.StylePriority.UseBorders = false;
@@ -177,8 +177,8 @@
 			// 
 			this.xrTableCell18.Borders = DevExpress.XtraPrinting.BorderSide.Right;
 			this.xrTableCell18.CanGrow = false;
-			this.xrTableCell18.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_Produtos.EstMinimo")});
+			this.xrTableCell18.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[EstMinimo]")});
 			this.xrTableCell18.Name = "xrTableCell18";
 			this.xrTableCell18.StyleName = "DataField";
 			this.xrTableCell18.StylePriority.UseBorders = false;
@@ -190,8 +190,8 @@
 			// xrTableCell20
 			// 
 			this.xrTableCell20.CanGrow = false;
-			this.xrTableCell20.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "tbl_Produtos.VlrCusto")});
+			this.xrTableCell20.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[VlrCusto]")});
 			this.xrTableCell20.Name = "xrTableCell20";
 			this.xrTableCell20.StyleName = "DataField";
 			this.xrTableCell20.StylePriority.UseTextAlignment = false;
@@ -322,7 +322,7 @@
 			// 
 			// lblEndereco
 			// 
-			this.lblEndereco.Font = new System.Drawing.Font("Times New Roman", 11F);
+			this.lblEndereco.Font = new DevExpress.Drawing.DXFont("Times New Roman", 11F);
 			this.lblEndereco.LocationFloat = new DevExpress.Utils.PointFloat(0F, 44.45829F);
 			this.lblEndereco.Name = "lblEndereco";
 			this.lblEndereco.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -411,13 +411,13 @@
 			// 
 			// xrPageInfo2
 			// 
-			this.xrPageInfo2.Format = "Page {0} of {1}";
 			this.xrPageInfo2.LocationFloat = new DevExpress.Utils.PointFloat(331F, 6F);
 			this.xrPageInfo2.Name = "xrPageInfo2";
 			this.xrPageInfo2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
 			this.xrPageInfo2.SizeF = new System.Drawing.SizeF(313F, 23F);
 			this.xrPageInfo2.StyleName = "PageInfo";
 			this.xrPageInfo2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+			this.xrPageInfo2.TextFormatString = "Page {0} of {1}";
 			// 
 			// Title
 			// 
@@ -425,7 +425,7 @@
 			this.Title.BorderColor = System.Drawing.Color.Black;
 			this.Title.Borders = DevExpress.XtraPrinting.BorderSide.None;
 			this.Title.BorderWidth = 1F;
-			this.Title.Font = new System.Drawing.Font("Times New Roman", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.Title.Font = new DevExpress.Drawing.DXFont("Times New Roman", 20F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.Title.ForeColor = System.Drawing.Color.Navy;
 			this.Title.Name = "Title";
 			// 
@@ -435,7 +435,7 @@
 			this.FieldCaption.BorderColor = System.Drawing.Color.Black;
 			this.FieldCaption.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
 			this.FieldCaption.BorderWidth = 1F;
-			this.FieldCaption.Font = new System.Drawing.Font("Times New Roman", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.FieldCaption.Font = new DevExpress.Drawing.DXFont("Times New Roman", 11F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.FieldCaption.ForeColor = System.Drawing.Color.Navy;
 			this.FieldCaption.Name = "FieldCaption";
 			// 
@@ -445,7 +445,7 @@
 			this.PageInfo.BorderColor = System.Drawing.Color.Black;
 			this.PageInfo.Borders = DevExpress.XtraPrinting.BorderSide.None;
 			this.PageInfo.BorderWidth = 1F;
-			this.PageInfo.Font = new System.Drawing.Font("Times New Roman", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+			this.PageInfo.Font = new DevExpress.Drawing.DXFont("Times New Roman", 9F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
 			this.PageInfo.ForeColor = System.Drawing.Color.Navy;
 			this.PageInfo.Name = "PageInfo";
 			// 
@@ -455,7 +455,7 @@
 			this.DataField.BorderColor = System.Drawing.Color.Black;
 			this.DataField.Borders = DevExpress.XtraPrinting.BorderSide.None;
 			this.DataField.BorderWidth = 1F;
-			this.DataField.Font = new System.Drawing.Font("Arial", 8F);
+			this.DataField.Font = new DevExpress.Drawing.DXFont("Arial", 8F);
 			this.DataField.ForeColor = System.Drawing.Color.Black;
 			this.DataField.Name = "DataField";
 			this.DataField.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -467,7 +467,6 @@
 			// 
 			// bottomMarginBand1
 			// 
-			this.bottomMarginBand1.HeightF = 100F;
 			this.bottomMarginBand1.Name = "bottomMarginBand1";
 			// 
 			// sqlDataSource1
@@ -492,14 +491,14 @@
             this.sqlDataSource1});
 			this.DataMember = "tbl_Produtos";
 			this.DataSource = this.sqlDataSource1;
-			this.Margins = new System.Drawing.Printing.Margins(34, 47, 26, 100);
+			this.Margins = new DevExpress.Drawing.DXMargins(34F, 47F, 26F, 100F);
 			this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.Title,
             this.FieldCaption,
             this.PageInfo,
             this.DataField});
-			this.Version = "15.1";
-			this.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.relEstMinimo_BeforePrint);
+			this.Version = "22.2";
+			this.BeforePrint += new DevExpress.XtraReports.UI.BeforePrintEventHandler(this.relEstMinimo_BeforePrint);
 			((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this)).EndInit();

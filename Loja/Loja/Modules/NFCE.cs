@@ -678,7 +678,7 @@ namespace Loja.Modules
 			var det = new det
 			{
 				nItem = i + 1,
-				prod = GetProduto(i + 1, item),
+				prod = GetProduto(i + 1, item, crt),
 				imposto = new imposto
 				{
 					vTotTrib = item.VlrImposto ?? 0,//0.17m,
@@ -709,14 +709,14 @@ namespace Loja.Modules
 			return det;
 		}
 
-		protected virtual prod GetProduto(int i, tbl_SaidaItens item)
+		protected virtual prod GetProduto(int i, tbl_SaidaItens item, CRT crt)
 		{
 			var p = new prod
 			{
 				cProd = item.CodProduto,
 				xProd = _configuracoes.CfgServico.tpAmb.Equals(TipoAmbiente.Homologacao) && i == 1 ? "NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL" : item.tbl_Produtos.DesProduto,
 				NCM = item.tbl_Produtos.NCM ?? "99999999",
-				CFOP = 5405,
+				CFOP = crt == CRT.SimplesNacional ? 5405 : 5102,
 				uCom = "UNID",
 				qCom = item.Quantidade,
 				vUnCom = item.VlrUnitario,
