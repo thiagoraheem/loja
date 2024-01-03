@@ -32,15 +32,19 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>http://34.237.216.226/loja/</InstallUrl>
     <TargetCulture>pt-BR</TargetCulture>
-    <MinimumRequiredVersion>1.0.0.1</MinimumRequiredVersion>
+    <ProductName>Loja</ProductName>
+    <PublisherName>TI Simples</PublisherName>
+    <SuiteName>Loja</SuiteName>
+    <MinimumRequiredVersion>1.0.0.3</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.htm</WebPage>
-    <ApplicationRevision>1</ApplicationRevision>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperEnabled>false</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -91,6 +95,18 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CTe.Classes, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.CTe.2023.11.20.1605\lib\net462\CTe.Classes.dll</HintPath>
+    </Reference>
+    <Reference Include="CTe.Servicos, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.CTe.2023.11.20.1605\lib\net462\CTe.Servicos.dll</HintPath>
+    </Reference>
+    <Reference Include="CTe.Utils, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.CTe.2023.11.20.1605\lib\net462\CTe.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="CTe.Wsdl, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.CTe.2023.11.20.1605\lib\net462\CTe.Wsdl.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.BonusSkins.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -182,14 +198,14 @@
     <Reference Include="DevExpress.XtraTreeList.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DFe.Classes, Version=2022.9.1.1659, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2022.9.1.1659\lib\net462\DFe.Classes.dll</HintPath>
+    <Reference Include="DFe.Classes, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.CTe.2023.11.20.1605\lib\net462\DFe.Classes.dll</HintPath>
     </Reference>
-    <Reference Include="DFe.Utils, Version=2022.9.1.1659, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2022.9.1.1659\lib\net462\DFe.Utils.dll</HintPath>
+    <Reference Include="DFe.Utils, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.CTe.2023.11.20.1605\lib\net462\DFe.Utils.dll</HintPath>
     </Reference>
-    <Reference Include="DFe.Wsdl, Version=2022.9.1.1659, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2022.9.1.1659\lib\net462\DFe.Wsdl.dll</HintPath>
+    <Reference Include="DFe.Wsdl, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.CTe.2023.11.20.1605\lib\net462\DFe.Wsdl.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
@@ -197,11 +213,23 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="MDFe.Classes, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.MDFe.2023.11.20.1605\lib\net462\MDFe.Classes.dll</HintPath>
+    </Reference>
+    <Reference Include="MDFe.Servicos, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.MDFe.2023.11.20.1605\lib\net462\MDFe.Servicos.dll</HintPath>
+    </Reference>
+    <Reference Include="MDFe.Utils, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.MDFe.2023.11.20.1605\lib\net462\MDFe.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="MDFe.Wsdl, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.MDFe.2023.11.20.1605\lib\net462\MDFe.Wsdl.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic">
       <Private>True</Private>
     </Reference>
-    <Reference Include="NFe.Classes, Version=2022.9.1.1659, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2022.9.1.1659\lib\net462\NFe.Classes.dll</HintPath>
+    <Reference Include="NFe.Classes, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2023.11.20.1605\lib\net462\NFe.Classes.dll</HintPath>
     </Reference>
     <Reference Include="NFe.Danfe.Base">
       <HintPath>..\..\..\..\Loja C#\Loja\NFCE\NFe.Danfe.Base.dll</HintPath>
@@ -209,14 +237,14 @@
     <Reference Include="NFe.Danfe.Nativo">
       <HintPath>..\..\..\..\Loja C#\Loja\NFCE\NFe.Danfe.Nativo.dll</HintPath>
     </Reference>
-    <Reference Include="NFe.Servicos, Version=2022.9.1.1659, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2022.9.1.1659\lib\net462\NFe.Servicos.dll</HintPath>
+    <Reference Include="NFe.Servicos, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2023.11.20.1605\lib\net462\NFe.Servicos.dll</HintPath>
     </Reference>
-    <Reference Include="NFe.Utils, Version=2022.9.1.1659, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2022.9.1.1659\lib\net462\NFe.Utils.dll</HintPath>
+    <Reference Include="NFe.Utils, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2023.11.20.1605\lib\net462\NFe.Utils.dll</HintPath>
     </Reference>
-    <Reference Include="NFe.Wsdl, Version=2022.9.1.1659, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2022.9.1.1659\lib\net462\NFe.Wsdl.dll</HintPath>
+    <Reference Include="NFe.Wsdl, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2023.11.20.1605\lib\net462\NFe.Wsdl.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
