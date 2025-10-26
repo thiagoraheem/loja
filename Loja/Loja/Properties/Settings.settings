@@ -38,14 +38,6 @@
     <Setting Name="ImpressoraNFE" Type="System.String" Scope="User">
       <Value Profile="(Default)">EPSON TM-T20 Receipt</Value>
     </Setting>
-    <Setting Name="LojaConnectionString" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;ConnectionString&gt;Data Source=localhost;Initial Catalog=Loja;Persist Security Info=True;User ID=locador;Password=blomaq@20&lt;/ConnectionString&gt;
-  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
-&lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=localhost;Initial Catalog=Loja;Persist Security Info=True;User ID=locador;Password=blomaq@20</Value>
-    </Setting>
     <Setting Name="ConnLOJADBF" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
@@ -61,6 +53,14 @@
   &lt;ProviderName&gt;System.Data.Odbc&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Dsn=dBASE Files</Value>
+    </Setting>
+    <Setting Name="LojaConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=srvsqlblomaq01\dev;Initial Catalog=Loja;Persist Security Info=True;User ID=locador;Password=blomaq@20&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=srvsqlblomaq01\dev;Initial Catalog=Loja;Persist Security Info=True;User ID=locador;Password=blomaq@20</Value>
     </Setting>
   </Settings>
 </SettingsFile>

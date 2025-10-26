@@ -1142,7 +1142,6 @@ namespace Loja.Forms
 				}
 
 
-
 				DanfeNativoNfce impr = new DanfeNativoNfce(arquivo,
 					_configuracoes.ConfiguracaoDanfeNfce.VersaoQrCode,
 					_configuracoes.ConfiguracaoDanfeNfce.Logomarca,

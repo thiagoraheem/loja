@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -95,161 +95,161 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CTe.Classes, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.CTe.2023.11.20.1605\lib\net462\CTe.Classes.dll</HintPath>
+    <Reference Include="CTe.Classes, Version=2025.8.12.1032, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.CTe.2025.8.12.1032\lib\net462\CTe.Classes.dll</HintPath>
     </Reference>
-    <Reference Include="CTe.Servicos, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.CTe.2023.11.20.1605\lib\net462\CTe.Servicos.dll</HintPath>
+    <Reference Include="CTe.Servicos, Version=2025.8.12.1032, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.CTe.2025.8.12.1032\lib\net462\CTe.Servicos.dll</HintPath>
     </Reference>
-    <Reference Include="CTe.Utils, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.CTe.2023.11.20.1605\lib\net462\CTe.Utils.dll</HintPath>
+    <Reference Include="CTe.Utils, Version=2025.8.12.1032, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.CTe.2025.8.12.1032\lib\net462\CTe.Utils.dll</HintPath>
     </Reference>
-    <Reference Include="CTe.Wsdl, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.CTe.2023.11.20.1605\lib\net462\CTe.Wsdl.dll</HintPath>
+    <Reference Include="CTe.Wsdl, Version=2025.8.12.1032, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.CTe.2025.8.12.1032\lib\net462\CTe.Wsdl.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.BonusSkins.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.BonusSkins.v24.1, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Charts.v23.1.Core, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Charts.v24.1.Core, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Drawing.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Drawing.v24.1, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Data.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Data.v24.1, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.DataAccess.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.DataAccess.v24.1, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Mvvm.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Mvvm.v24.1, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Office.v23.1.Core, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Office.v24.1.Core, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Pdf.v23.1.Core, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Pdf.v23.1.Drawing, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.PivotGrid.v23.1.Core, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Pdf.v24.1.Core, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v24.1.Drawing, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.PivotGrid.v24.1.Core, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.RichEdit.v23.1.Export, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.RichEdit.v24.1.Export, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Printing.v23.1.Core, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Printing.v24.1.Core, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.RichEdit.v23.1.Core, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.RichEdit.v24.1.Core, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Data.Desktop.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Data.Desktop.v24.1, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Utils.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Utils.v24.1, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Utils.v23.1.UI, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Utils.v24.1.UI, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Xpo.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.Xpo.v24.1, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraBars.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraBars.v24.1, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraCharts.v23.1.Wizard, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraCharts.v24.1.Wizard, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraCharts.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraCharts.v24.1, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraEditors.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraEditors.v24.1, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraGauges.v23.1.Core, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraGauges.v24.1.Core, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraGrid.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraGrid.v24.1, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraLayout.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraLayout.v24.1, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraNavBar.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraNavBar.v24.1, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraPrinting.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraPrinting.v24.1, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Sparkline.v23.1.Core, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Sparkline.v24.1.Core, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.CodeParser.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.CodeParser.v24.1, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraReports.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraReports.v24.1, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraReports.v23.1.Extensions, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraReports.v24.1.Extensions, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Images.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraRichEdit.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraTreeList.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Images.v24.1, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v24.1, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v24.1, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DFe.Classes, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.CTe.2023.11.20.1605\lib\net462\DFe.Classes.dll</HintPath>
+    <Reference Include="DFe.Classes, Version=2025.8.12.1032, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2025.8.12.1032\lib\net462\DFe.Classes.dll</HintPath>
     </Reference>
-    <Reference Include="DFe.Utils, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.CTe.2023.11.20.1605\lib\net462\DFe.Utils.dll</HintPath>
+    <Reference Include="DFe.Utils, Version=2025.8.12.1032, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2025.8.12.1032\lib\net462\DFe.Utils.dll</HintPath>
     </Reference>
-    <Reference Include="DFe.Wsdl, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.CTe.2023.11.20.1605\lib\net462\DFe.Wsdl.dll</HintPath>
+    <Reference Include="DFe.Wsdl, Version=2025.8.12.1032, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2025.8.12.1032\lib\net462\DFe.Wsdl.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="MDFe.Classes, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.MDFe.2023.11.20.1605\lib\net462\MDFe.Classes.dll</HintPath>
+    <Reference Include="MDFe.Classes, Version=2025.8.12.1032, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.MDFe.2025.8.12.1032\lib\net462\MDFe.Classes.dll</HintPath>
     </Reference>
-    <Reference Include="MDFe.Servicos, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.MDFe.2023.11.20.1605\lib\net462\MDFe.Servicos.dll</HintPath>
+    <Reference Include="MDFe.Servicos, Version=2025.8.12.1032, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.MDFe.2025.8.12.1032\lib\net462\MDFe.Servicos.dll</HintPath>
     </Reference>
-    <Reference Include="MDFe.Utils, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.MDFe.2023.11.20.1605\lib\net462\MDFe.Utils.dll</HintPath>
+    <Reference Include="MDFe.Utils, Version=2025.8.12.1032, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.MDFe.2025.8.12.1032\lib\net462\MDFe.Utils.dll</HintPath>
     </Reference>
-    <Reference Include="MDFe.Wsdl, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.MDFe.2023.11.20.1605\lib\net462\MDFe.Wsdl.dll</HintPath>
+    <Reference Include="MDFe.Wsdl, Version=2025.8.12.1032, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.MDFe.2025.8.12.1032\lib\net462\MDFe.Wsdl.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic">
       <Private>True</Private>
     </Reference>
-    <Reference Include="NFe.Classes, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2023.11.20.1605\lib\net462\NFe.Classes.dll</HintPath>
+    <Reference Include="NFe.Classes, Version=2025.8.12.1032, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2025.8.12.1032\lib\net462\NFe.Classes.dll</HintPath>
     </Reference>
     <Reference Include="NFe.Danfe.Base">
-      <HintPath>..\..\..\..\Loja C#\Loja\NFCE\NFe.Danfe.Base.dll</HintPath>
+      <HintPath>..\..\..\..\Zeus\DFe.NET\NFe.Danfe.Base\bin\Release\net6.0\NFe.Danfe.Base.dll</HintPath>
     </Reference>
     <Reference Include="NFe.Danfe.Nativo">
-      <HintPath>..\..\..\..\Loja C#\Loja\NFCE\NFe.Danfe.Nativo.dll</HintPath>
+      <HintPath>..\..\..\..\Zeus\DFe.NET\NFe.Danfe.Nativo\bin\Release\net462\NFe.Danfe.Nativo.dll</HintPath>
     </Reference>
-    <Reference Include="NFe.Servicos, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2023.11.20.1605\lib\net462\NFe.Servicos.dll</HintPath>
+    <Reference Include="NFe.Servicos, Version=2025.8.12.1032, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2025.8.12.1032\lib\net462\NFe.Servicos.dll</HintPath>
     </Reference>
-    <Reference Include="NFe.Utils, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2023.11.20.1605\lib\net462\NFe.Utils.dll</HintPath>
+    <Reference Include="NFe.Utils, Version=2025.8.12.1032, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2025.8.12.1032\lib\net462\NFe.Utils.dll</HintPath>
     </Reference>
-    <Reference Include="NFe.Wsdl, Version=2023.11.20.1605, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2023.11.20.1605\lib\net462\NFe.Wsdl.dll</HintPath>
+    <Reference Include="NFe.Wsdl, Version=2025.8.12.1032, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2025.8.12.1032\lib\net462\NFe.Wsdl.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="Spire.Pdf, Version=8.6.1.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
-      <HintPath>..\packages\FreeSpire.PDF.8.6.0\lib\net40\Spire.Pdf.dll</HintPath>
+    <Reference Include="Spire.Pdf, Version=10.2.0.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.PDF.10.2.0\lib\net48\Spire.Pdf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -1412,10 +1412,10 @@
     <PropertyGroup>
       <ErrorText>Este projeto faz referência a pacotes do NuGet que não estão presentes neste computador. Use a Restauração de Pacotes do NuGet para baixá-los.  Para obter mais informações, consulte http://go.microsoft.com/fwlink/?LinkID=322105. O arquivo ausente é {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
   </Target>
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
