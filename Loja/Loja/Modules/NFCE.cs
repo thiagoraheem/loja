@@ -36,11 +36,15 @@ using NFe.Utils.Tributacao.Estadual;
 using NFe.Utils.Tributacao.Federal;
 using NFe.Danfe.Nativo.NFCe;
 using System.Threading;
+using System.Security.Cryptography;
+using System.Text;
+using System.Collections.Concurrent;
 
 namespace Loja.Modules
 {
 	public class NFCE
 	{
+		private static readonly ConcurrentDictionary<string, object> LocksPorVenda = new ConcurrentDictionary<string, object>();
 
 		private string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 		private NFe.Classes.NFe _nfe;
@@ -79,6 +83,30 @@ namespace Loja.Modules
 		{
 			try
 			{
+				if (_saida == null)
+				{
+					return new Retorno(false, "Venda não localizada para emissão.");
+				}
+
+				NfceAuditLogger.Info("emissao.inicio", _saida.CodVenda, _saida.FlgStatusNFE, "Iniciando emissão de NFC-e.");
+
+				var lockVenda = ObterLockVenda(_saida.CodVenda);
+				lock (lockVenda)
+				{
+
+					if (_saida.FlgStatusNFE == "A" && !string.IsNullOrWhiteSpace(_saida.NumProtocolo))
+					{
+						NfceAuditLogger.Info("emissao.skip_autorizada", _saida.CodVenda, _saida.FlgStatusNFE, "Nota já autorizada com protocolo local.");
+						return new Retorno(true, "NFC-e já autorizada anteriormente. Nenhum reenvio foi realizado.");
+					}
+
+					var conciliacaoPendente = ConciliarAutorizacaoPelaChave();
+					if (conciliacaoPendente != null)
+					{
+						NfceAuditLogger.Info("emissao.conciliada", _saida.CodVenda, _saida.FlgStatusNFE, conciliacaoPendente.Mensagem);
+						return conciliacaoPendente;
+					}
+
 				var recibo = "";
 				var servicoNFe = new ServicosNFe(_configuracoes.CfgServico);
 				var nomArquivoXML = "";
@@ -160,7 +188,7 @@ namespace Loja.Modules
 						{
 							retornoRecibo = servicoNFe.NFeRetAutorizacao(recibo);
 							bTestar = true;
-							Thread.Sleep(200);
+							AguardarRetry(numTentativas);
 						}
 						else
 						{
@@ -173,6 +201,15 @@ namespace Loja.Modules
 
 							if (retornoLote != null && retornoLote.infProt.cStat != 100)
 							{
+								if (retornoLote.infProt.cStat == 204)
+								{
+									var conciliacaoDuplicidade = ConciliarAutorizacaoPelaChave(ExtrairChaveSemPrefixo(_nfe.infNFe.Id), "NFC-e duplicada detectada na SEFAZ e conciliada como autorizada.");
+									if (conciliacaoDuplicidade != null)
+									{
+										return conciliacaoDuplicidade;
+									}
+								}
+
 								return new Retorno(false, $"Erro ao validar a nota. Código: {retornoLote.infProt.cStat} - Mensagem: {retornoLote.infProt.xMotivo}");
 							}
 						}
@@ -211,13 +248,13 @@ namespace Loja.Modules
 
 					#endregion
 					_saida.NumProtocolo = retornoConsulta.Retorno.protNFe.infProt.nProt;
-					_saida.FlgStatusNFE = "A";
+					AtualizarStatusNfe("A", _nfe.infNFe.Id, _saida.NumProtocolo, "emissao.autorizada");
 
 				}
 				// Impressão em Contingência
 				else
 				{
-					_saida.FlgStatusNFE = "C";
+					AtualizarStatusNfe("C", _nfe.infNFe.Id, _saida.NumProtocolo, "emissao.contingencia");
 
 					_nfe.Valida();
 
@@ -229,10 +266,18 @@ namespace Loja.Modules
 
 				_saida.ChaveSefaz = _nfe.infNFe.Id;
 				Cadastros.GravaVenda(_saida);
+				NfceRetryQueue.Dequeue(_saida.CodVenda);
+				NfceAuditLogger.Info("emissao.sucesso", _saida.CodVenda, _saida.FlgStatusNFE, "Fluxo de emissão finalizado com sucesso.");
 				return new Retorno(true, "Nota Fiscal emitida com sucesso");
+				}
 			}
 			catch (Exception ex)
 			{
+				if (_saida != null)
+				{
+					NfceRetryQueue.Enqueue(_saida.CodVenda);
+					NfceAuditLogger.Error("emissao.erro", _saida.CodVenda, _saida.FlgStatusNFE, ex, "Falha durante emissão.");
+				}
 				return new Retorno(false, $"Erro ao enviar a NFe: {ex.Message}");
 			}
 		}
@@ -271,9 +316,15 @@ namespace Loja.Modules
 		public string EnviarContingencia()
 		{
 			string resultado = "";
-			var notas = Consultas.ObterVendasContingencia();
+			var notas = Consultas.ObterVendasContingencia().Select(x => x.CodVenda).ToList();
+			var filaRetry = NfceRetryQueue.Load();
+			var todos = notas.Union(filaRetry).Distinct().ToList();
 
-			notas.ForEach(x => resultado += EnviaNFCE(x.CodVenda.ToString()).Mensagem + "\n");
+			foreach (var codVenda in todos)
+			{
+				var ret = EnviaNFCE(codVenda);
+				resultado += $"[{codVenda}] {ret.Mensagem}\n";
+			}
 
 			return resultado;
 		}
@@ -292,7 +343,30 @@ namespace Loja.Modules
 					using (var servicoNFe = new ServicosNFe(_configuracoes.CfgServico))
 					{
 						_saida = Consultas.ObterVenda(notaContingencia);
-						var cnf = _saida.ChaveSefaz.Substring(38, 8);
+						if (_saida == null)
+						{
+							return new Retorno(false, $"Venda {notaContingencia} não encontrada para retransmissão.");
+						}
+
+						NfceAuditLogger.Info("contingencia.reenvio_inicio", _saida.CodVenda, _saida.FlgStatusNFE, "Iniciando retransmissão de contingência.");
+						var lockVenda = ObterLockVenda(_saida.CodVenda);
+						lock (lockVenda)
+						{
+
+						if (_saida.FlgStatusNFE == "A" && !string.IsNullOrWhiteSpace(_saida.NumProtocolo))
+						{
+							NfceRetryQueue.Dequeue(_saida.CodVenda);
+							return new Retorno(true, "NFC-e de contingência já autorizada anteriormente. Nenhum reenvio foi realizado.");
+						}
+
+						var conciliacaoPendente = ConciliarAutorizacaoPelaChave();
+						if (conciliacaoPendente != null)
+						{
+							return conciliacaoPendente;
+						}
+
+						var chaveSemPrefixo = ExtrairChaveSemPrefixo(_saida.ChaveSefaz);
+						var cnf = chaveSemPrefixo.Length >= 44 ? chaveSemPrefixo.Substring(35, 8) : null;
 
 						_nfe = GetNf(Convert.ToInt32(notaContingencia), _configuracoes.CfgServico.ModeloDocumento,
 										_configuracoes.CfgServico.VersaoNFeAutorizacao, cnf);
@@ -361,7 +435,7 @@ namespace Loja.Modules
 							{
 								retornoRecibo = servicoNFe.NFeRetAutorizacao(recibo);
 								bTestar = true;
-								Thread.Sleep(200);
+								AguardarRetry(numTentativas);
 							}
 							else
 							{
@@ -374,6 +448,15 @@ namespace Loja.Modules
 
 								if (retornoLote != null && retornoLote.infProt.cStat != 100)
 								{
+									if (retornoLote.infProt.cStat == 204)
+									{
+										var conciliacaoDuplicidade = ConciliarAutorizacaoPelaChave(ExtrairChaveSemPrefixo(_nfe.infNFe.Id), "NFC-e de contingência duplicada detectada e conciliada como autorizada.");
+										if (conciliacaoDuplicidade != null)
+										{
+											return conciliacaoDuplicidade;
+										}
+									}
+
 									return new Retorno(false, $"Erro ao validar a nota. Código: {retornoLote.infProt.cStat} - Mensagem: {retornoLote.infProt.xMotivo}");
 								}
 							}
@@ -417,20 +500,27 @@ namespace Loja.Modules
 						SalvarArquivoXml(notaContingencia + "-env-lot-c.xml", xmlEnvio);
 
 						var caminhodoarquivo = String.Format("{0}\\XML\\{1}-env-lot-c.xml", path, notaContingencia);
+						}
 
 					}
 				}
 
-				Cadastros.AtualizaStatusNFE(notaContingencia, "A", _nfe.infNFe.Id, _saida.NumProtocolo);
+				AtualizarStatusNfe("A", _nfe.infNFe.Id, _saida.NumProtocolo, "contingencia.autorizada");
+				NfceRetryQueue.Dequeue(notaContingencia);
+				NfceAuditLogger.Info("contingencia.reenvio_sucesso", notaContingencia, "A", "Retransmissão finalizada com sucesso.");
 
 				return new Retorno(true, "Nota Fiscal enviada com sucesso!");
 			}
 			catch (System.Data.Entity.Validation.DbEntityValidationException ex)
 			{
+				NfceRetryQueue.Enqueue(notaContingencia);
+				NfceAuditLogger.Error("contingencia.reenvio_erro_validacao", notaContingencia, _saida?.FlgStatusNFE, ex, "Erro de validação durante retransmissão.");
 				return new Retorno(false, ex.InnerException != null ? ex.InnerException.Message : ex.Message);
 			}
 			catch (Exception ex)
 			{
+				NfceRetryQueue.Enqueue(notaContingencia);
+				NfceAuditLogger.Error("contingencia.reenvio_erro", notaContingencia, _saida?.FlgStatusNFE, ex, "Erro na retransmissão de contingência.");
 				return new Retorno(false, ex.InnerException != null ? ex.InnerException.Message : ex.Message);
 			}
 		}
@@ -509,8 +599,6 @@ namespace Loja.Modules
 
 		protected virtual ide GetIdentificacao(int numero, ModeloDocumento modelo, VersaoServico versao, string cNF = null)
 		{
-			var cnf = new Random();
-
 			var ide = new ide
 			{
 				cUF = _configuracoes.EnderecoEmitente.UF,
@@ -522,7 +610,7 @@ namespace Loja.Modules
 				cMunFG = _configuracoes.EnderecoEmitente.cMun,
 				tpEmis = _configuracoes.CfgServico.tpEmis,
 				tpImp = TipoImpressao.tiRetrato,
-				cNF = cNF ?? cnf.Next(9999).ToString(),
+				cNF = cNF ?? GerarCodigoNumericoDeterministico(_saida != null ? _saida.CodVenda : numero.ToString()),
 				tpAmb = _configuracoes.CfgServico.tpAmb,
 				finNFe = FinalidadeNFe.fnNormal,
 				verProc = "3.000"
@@ -567,6 +655,103 @@ namespace Loja.Modules
 			#endregion
 
 			return ide;
+		}
+
+		private string GerarCodigoNumericoDeterministico(string origem)
+		{
+			if (string.IsNullOrWhiteSpace(origem))
+			{
+				origem = DateTime.UtcNow.Ticks.ToString();
+			}
+
+			using (var sha = SHA256.Create())
+			{
+				var hash = sha.ComputeHash(Encoding.UTF8.GetBytes(origem));
+				var valor = BitConverter.ToUInt32(hash, 0) % 100000000;
+				return valor.ToString("D8");
+			}
+		}
+
+		private string ExtrairChaveSemPrefixo(string chave)
+		{
+			if (string.IsNullOrWhiteSpace(chave))
+			{
+				return string.Empty;
+			}
+
+			var chaveNormalizada = chave.Trim();
+			if (chaveNormalizada.StartsWith("NFe", StringComparison.OrdinalIgnoreCase))
+			{
+				chaveNormalizada = chaveNormalizada.Substring(3);
+			}
+
+			return chaveNormalizada;
+		}
+
+		private Retorno ConciliarAutorizacaoPelaChave(string chaveConsulta = null, string mensagemSucesso = null)
+		{
+			var chave = !string.IsNullOrWhiteSpace(chaveConsulta)
+				? chaveConsulta
+				: ExtrairChaveSemPrefixo(_saida != null ? _saida.ChaveSefaz : null);
+
+			if (string.IsNullOrWhiteSpace(chave) || chave.Length != 44)
+			{
+				return null;
+			}
+
+			using (var servicoNFe = new ServicosNFe(_configuracoes.CfgServico))
+			{
+				var retornoConsulta = servicoNFe.NfeConsultaProtocolo(chave);
+				var protocolo = retornoConsulta.Retorno.protNFe;
+				var infProt = protocolo != null ? protocolo.infProt : null;
+
+				if (infProt != null && infProt.cStat == 100)
+				{
+					AtualizarStatusNfe("A", "NFe" + infProt.chNFe, infProt.nProt, "sefaz.conciliacao");
+
+					return new Retorno(true, mensagemSucesso ?? "NFC-e já constava como autorizada na SEFAZ e foi conciliada com o banco.");
+				}
+			}
+
+			return null;
+		}
+
+		private object ObterLockVenda(string codVenda)
+		{
+			var chave = string.IsNullOrWhiteSpace(codVenda) ? "_SEM_CODIGO_" : codVenda.Trim();
+			return LocksPorVenda.GetOrAdd(chave, _ => new object());
+		}
+
+		private void AtualizarStatusNfe(string novoStatus, string chave, string protocolo, string contexto)
+		{
+			if (_saida == null)
+			{
+				return;
+			}
+
+			NfceStateMachine.EnsureTransition(_saida.FlgStatusNFE, novoStatus, _saida.CodVenda);
+			Cadastros.AtualizaStatusNFE(_saida.CodVenda, novoStatus, chave, protocolo);
+			_saida.FlgStatusNFE = novoStatus;
+
+			if (!string.IsNullOrWhiteSpace(chave))
+			{
+				_saida.ChaveSefaz = chave;
+			}
+
+			if (!string.IsNullOrWhiteSpace(protocolo))
+			{
+				_saida.NumProtocolo = protocolo;
+			}
+
+			NfceAuditLogger.Info(contexto, _saida.CodVenda, novoStatus, $"Status atualizado para {novoStatus}.");
+		}
+
+		private void AguardarRetry(int tentativa)
+		{
+			var tentativaNormalizada = tentativa <= 0 ? 1 : tentativa;
+			var jitter = new Random(Guid.NewGuid().GetHashCode()).Next(100, 400);
+			var atraso = (int)Math.Min(5000, (Math.Pow(2, tentativaNormalizada) * 200) + jitter);
+			Thread.Sleep(atraso);
 		}
 
 		protected virtual emit GetEmitente()

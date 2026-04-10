@@ -261,6 +261,11 @@ namespace Loja.DAL.DAO
 			{
 				var dados = banco.tbl_Saida.Include("tbl_SaidaItens").FirstOrDefault(saida => saida.CodVenda == codVenda);
 
+				if (dados == null)
+				{
+					return null;
+				}
+
 				foreach (var item in dados.tbl_SaidaItens)
 				{
 					var produto = ObterProduto(item.codigounico);

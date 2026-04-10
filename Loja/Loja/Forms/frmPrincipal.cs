@@ -151,7 +151,8 @@ namespace Loja
 					{
 						ModoContingencia(false);
 
-						if (QtdContingencia > 0)
+						var filaRetry = Modules.NfceRetryQueue.Load();
+						if (QtdContingencia > 0 || filaRetry.Any())
 						{
 							var cont = new Modules.NFCE(_configuracoes, "");
 							var resultado = cont.EnviarContingencia();
@@ -159,7 +160,8 @@ namespace Loja
 								Util.MsgBox(resultado);
 							else
 							{
-								Util.MsgBox(String.Format("Havia{0} {1} nota{2} em contingência que foram enviadas após cessarem os problemas de conexão!", QtdContingencia > 1 ? "m" : "", QtdContingencia, QtdContingencia > 1 ? "s" : ""));
+								var qtdTotal = QtdContingencia + filaRetry.Count;
+								Util.MsgBox(String.Format("Havia{0} {1} pendência{2} fiscal{3} que foram reprocessada{4} após cessarem os problemas de conexão!", qtdTotal > 1 ? "m" : "", qtdTotal, qtdTotal > 1 ? "s" : "", qtdTotal > 1 ? "is" : "", qtdTotal > 1 ? "s" : ""));
 							}
 						}
 
