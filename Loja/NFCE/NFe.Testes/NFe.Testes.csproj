@@ -57,10 +57,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Gerais\NFeTestes.cs" />
+    <Compile Include="Gerais\NfceStateMachineTests.cs" />
     <Compile Include="Impostos\COFINSGeral__Teste.cs" />
     <Compile Include="Impostos\IPIGeral_Teste.cs" />
     <Compile Include="Impostos\PISGeral_Teste.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\..\Loja\Modules\NfceStateMachine.cs">
+      <Link>Support\NfceStateMachine.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DFe.Classes\DFe.Classes.csproj">

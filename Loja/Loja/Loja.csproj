@@ -378,6 +378,9 @@
     <Compile Include="Funcoes.cs" />
     <Compile Include="Modules\Monitor.cs" />
     <Compile Include="Modules\NFCE.cs" />
+    <Compile Include="Modules\NfceAuditLogger.cs" />
+    <Compile Include="Modules\NfceRetryQueue.cs" />
+    <Compile Include="Modules\NfceStateMachine.cs" />
     <Compile Include="Modules\Util.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -123,13 +123,19 @@ Adicionada proteção contra `null` antes de iterar itens em `Consultas.ObterVen
 
 ---
 
-## Pendências e riscos remanescentes
+## Pendências desenvolvidas nesta iteração
 
-1. **Sem lock transacional explícito por venda/nota** durante emissão/retransmissão concorrente.
-2. **Sem fila persistente de eventos fiscais** (outbox/worker) para retries com backoff controlado.
-3. **Sem trilha de auditoria estruturada por etapa** (correlation-id, payload hash, cStat por tentativa).
-4. **Persistência de XML/protocolos ainda orientada a arquivo local**, sem repositório fiscal transacional dedicado.
-5. **Sem job explícito de reconciliação periódica automática** para varrer contingências antigas e estados ambíguos.
+1. **Trava lógica por venda (lock em memória por `CodVenda`)** implementada no módulo de emissão para evitar processamento concorrente simultâneo da mesma NFC-e.
+2. **Fila persistente de retry** implementada em arquivo (`retry-queue.txt`) com reprocessamento automático quando conexão/SEFAZ normalizam.
+3. **Logs estruturados de auditoria** implementados em arquivo JSONL (`Logs/Nfce/nfce-audit-YYYYMMDD.log`) com evento, status, venda, detalhe e exceção.
+4. **Reconciliação automática periódica** reforçada no monitor da aplicação principal para processar contingências + fila de retry.
+5. **Máquina de estados explícita** implementada para validar transições de status NFC-e de forma conservadora antes de persistir no banco.
+
+## Riscos remanescentes
+
+1. Persistência de XML/protocolos ainda orientada a filesystem local (não transacional).
+2. Ausência de lock distribuído entre múltiplas instâncias da aplicação (trava atual é local ao processo).
+3. Retry com fila local não substitui um barramento transacional corporativo (outbox em banco + worker dedicado).
 
 ---
 
