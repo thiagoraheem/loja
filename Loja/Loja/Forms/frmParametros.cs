@@ -37,7 +37,6 @@ using NFe.Utils.NFe;
 using NFe.Utils.Tributacao.Estadual;
 using SaveFileDialog = Microsoft.Win32.SaveFileDialog;
 using DFe.Classes.Extensoes;
-using NFe.Danfe.Nativo.NFCe;
 using NFe.Utils.Excecoes;
 using NFeZeus = NFe.Classes.NFe;
 using NFe.Utils.Tributacao.Federal;

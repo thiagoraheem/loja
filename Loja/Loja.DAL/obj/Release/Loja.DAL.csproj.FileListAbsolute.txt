@@ -11,3 +11,16 @@ C:\Projetos\Loja\GitHub\loja\Loja\Loja.DAL\obj\Release\Loja.DAL.csproj.CoreCompi
 C:\Projetos\Loja\GitHub\loja\Loja\Loja.DAL\obj\Release\Loja.DAL.csproj.Up2Date
 C:\Projetos\Loja\GitHub\loja\Loja\Loja.DAL\obj\Release\Loja.DAL.dll
 C:\Projetos\Loja\GitHub\loja\Loja\Loja.DAL\obj\Release\Loja.DAL.pdb
+C:\Projetos\loja\Loja\Loja.DAL\bin\Release\Loja.DAL.dll.config
+C:\Projetos\loja\Loja\Loja.DAL\bin\Release\Loja.DAL.dll
+C:\Projetos\loja\Loja\Loja.DAL\bin\Release\Loja.DAL.pdb
+C:\Projetos\loja\Loja\Loja.DAL\bin\Release\CodeFirstStoreFunctions.dll
+C:\Projetos\loja\Loja\Loja.DAL\bin\Release\EntityFramework.dll
+C:\Projetos\loja\Loja\Loja.DAL\bin\Release\EntityFramework.SqlServer.dll
+C:\Projetos\loja\Loja\Loja.DAL\bin\Release\EntityFramework.xml
+C:\Projetos\loja\Loja\Loja.DAL\bin\Release\EntityFramework.SqlServer.xml
+C:\Projetos\loja\Loja\Loja.DAL\obj\Release\Loja.DAL.csproj.AssemblyReference.cache
+C:\Projetos\loja\Loja\Loja.DAL\obj\Release\Loja.DAL.csproj.CoreCompileInputs.cache
+C:\Projetos\loja\Loja\Loja.DAL\obj\Release\Loja.DAL.csproj.Up2Date
+C:\Projetos\loja\Loja\Loja.DAL\obj\Release\Loja.DAL.dll
+C:\Projetos\loja\Loja\Loja.DAL\obj\Release\Loja.DAL.pdb
