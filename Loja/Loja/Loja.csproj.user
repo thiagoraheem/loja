@@ -14,4 +14,81 @@
   <PropertyGroup>
     <EnableSecurityDebugging>false</EnableSecurityDebugging>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="Forms\frmApresentacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmAuditorNF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmCadCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmCadTipoEntrada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmCadTipoVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmDetalhe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmEntrada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmEntradas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmOrcamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmParametros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmReajuste.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmRecibo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmResumo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmVendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Reports\relEstMinimo.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Reports\relEstoque.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Reports\relOrcamento.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Reports\relRecibo.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Reports\relResumoVendas.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Reports\relVendas.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Reports\relVendasNFE.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+  </ItemGroup>
 </Project>

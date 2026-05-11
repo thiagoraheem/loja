@@ -58,7 +58,6 @@ namespace Loja.Forms
 
 		public frmParametros()
 		{
-			ServicePointManager.ServerCertificateValidationCallback = delegate { return true; }; // não precisa de cadeia de certificado digital 
 			InitializeComponent();
 			CarregarConfiguracao();
 		}
@@ -1141,12 +1140,12 @@ namespace Loja.Forms
 				}
 
 
-				DanfeNativoNfce impr = new DanfeNativoNfce(arquivo,
-					_configuracoes.ConfiguracaoDanfeNfce.VersaoQrCode,
-					_configuracoes.ConfiguracaoDanfeNfce.Logomarca,
+				var impr = new NFe.Danfe.Nativo.NFCe.DanfeNativoNfce(
+					arquivo,
+					_configuracoes.ConfiguracaoDanfeNfce,
 					_configuracoes.ConfiguracaoCsc.CIdToken,
 					_configuracoes.ConfiguracaoCsc.Csc,
-					0 /*troco*//*, "Arial Black"*/);
+					0m);
 				/*
 				SaveFileDialog fileDialog = new SaveFileDialog();
 

@@ -1319,7 +1319,6 @@
             this.radSeguranca.Name = "radSeguranca";
             this.radSeguranca.Properties.Columns = 3;
             this.radSeguranca.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(System.Net.SecurityProtocolType.Ssl3, "SSL3"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(System.Net.SecurityProtocolType.Tls, "TLS"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(System.Net.SecurityProtocolType.Tls12, "TLS1.2")});
             this.radSeguranca.Size = new System.Drawing.Size(191, 46);

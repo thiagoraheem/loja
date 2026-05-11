@@ -36,6 +36,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using DFe.Classes.Entidades;
+using DFe.Classes.Flags;
 using NFe.Classes;
 using NFe.Classes.Informacoes.Identificacao.Tipos;
 using NFe.Utils;
@@ -74,88 +76,88 @@ namespace NFe.Impressao.NFCe
         {
             var endQrCodeNfce = new List<EnderecoNfceDanfe>
             {
-                new EnderecoNfceDanfe(Estado.AC, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlQrCode, "http://www.sefaznet.ac.gov.br/nfce/qrcode"),
-                new EnderecoNfceDanfe(Estado.AC, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlConsulta, "http://www.sefaznet.ac.gov.br/nfce/"),
-                new EnderecoNfceDanfe(Estado.AC, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlQrCode, "http://hml.sefaznet.ac.gov.br/nfce/qrcode"),
-                new EnderecoNfceDanfe(Estado.AC, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlConsulta, "http://hml.sefaznet.ac.gov.br/nfce/"),
+                new EnderecoNfceDanfe(Estado.AC, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlQrCode, "http://www.sefaznet.ac.gov.br/nfce/qrcode"),
+                new EnderecoNfceDanfe(Estado.AC, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlConsulta, "http://www.sefaznet.ac.gov.br/nfce/"),
+                new EnderecoNfceDanfe(Estado.AC, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlQrCode, "http://hml.sefaznet.ac.gov.br/nfce/qrcode"),
+                new EnderecoNfceDanfe(Estado.AC, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlConsulta, "http://hml.sefaznet.ac.gov.br/nfce/"),
 
-                new EnderecoNfceDanfe(Estado.AM, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlQrCode, "http://sistemas.sefaz.am.gov.br/nfceweb/consultarNFCe.jsp"),
-                new EnderecoNfceDanfe(Estado.AM, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlConsulta, "http://sistemas.sefaz.am.gov.br/nfceweb/formConsulta.do"),
-                new EnderecoNfceDanfe(Estado.AM, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlQrCode, "http://homnfce.sefaz.am.gov.br/nfceweb/consultarNFCe.jsp"),
-                new EnderecoNfceDanfe(Estado.AM, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlConsulta, "http://homnfce.sefaz.am.gov.br/nfceweb/formConsulta.do"),
+                new EnderecoNfceDanfe(Estado.AM, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlQrCode, "http://sistemas.sefaz.am.gov.br/nfceweb/consultarNFCe.jsp"),
+                new EnderecoNfceDanfe(Estado.AM, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlConsulta, "http://sistemas.sefaz.am.gov.br/nfceweb/formConsulta.do"),
+                new EnderecoNfceDanfe(Estado.AM, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlQrCode, "http://homnfce.sefaz.am.gov.br/nfceweb/consultarNFCe.jsp"),
+                new EnderecoNfceDanfe(Estado.AM, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlConsulta, "http://homnfce.sefaz.am.gov.br/nfceweb/formConsulta.do"),
 
-                new EnderecoNfceDanfe(Estado.BA, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlQrCode, "http://nfe.sefaz.ba.gov.br/servicos/nfce/modulos/geral/NFCEC_consulta_chave_acesso.aspx"),
-                new EnderecoNfceDanfe(Estado.BA, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlConsulta, "http://nfe.sefaz.ba.gov.br/servicos/nfce/default.aspx"),
-                new EnderecoNfceDanfe(Estado.BA, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlQrCode, "http://hnfe.sefaz.ba.gov.br/servicos/nfce/modulos/geral/NFCEC_consulta_chave_acesso.aspx"),
-                new EnderecoNfceDanfe(Estado.BA, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlConsulta, "http://nfe.sefaz.ba.gov.br/servicos/nfce/default.aspx"),
+                new EnderecoNfceDanfe(Estado.BA, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlQrCode, "http://nfe.sefaz.ba.gov.br/servicos/nfce/modulos/geral/NFCEC_consulta_chave_acesso.aspx"),
+                new EnderecoNfceDanfe(Estado.BA, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlConsulta, "http://nfe.sefaz.ba.gov.br/servicos/nfce/default.aspx"),
+                new EnderecoNfceDanfe(Estado.BA, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlQrCode, "http://hnfe.sefaz.ba.gov.br/servicos/nfce/modulos/geral/NFCEC_consulta_chave_acesso.aspx"),
+                new EnderecoNfceDanfe(Estado.BA, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlConsulta, "http://nfe.sefaz.ba.gov.br/servicos/nfce/default.aspx"),
 
-                new EnderecoNfceDanfe(Estado.DF, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlQrCode, "http://dec.fazenda.df.gov.br/ConsultarNFCe.aspx"),
-                new EnderecoNfceDanfe(Estado.DF, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlConsulta, "http://dec.fazenda.df.gov.br/nfce"),
-                new EnderecoNfceDanfe(Estado.DF, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlQrCode, "http://dec.fazenda.df.gov.br/ConsultarNFCe.aspx"),
-                new EnderecoNfceDanfe(Estado.DF, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlConsulta, "http://dec.fazenda.df.gov.br/nfce"),
+                new EnderecoNfceDanfe(Estado.DF, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlQrCode, "http://dec.fazenda.df.gov.br/ConsultarNFCe.aspx"),
+                new EnderecoNfceDanfe(Estado.DF, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlConsulta, "http://dec.fazenda.df.gov.br/nfce"),
+                new EnderecoNfceDanfe(Estado.DF, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlQrCode, "http://dec.fazenda.df.gov.br/ConsultarNFCe.aspx"),
+                new EnderecoNfceDanfe(Estado.DF, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlConsulta, "http://dec.fazenda.df.gov.br/nfce"),
 
-                new EnderecoNfceDanfe(Estado.MA, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlQrCode, "http://www.nfce.sefaz.ma.gov.br/portal/consultarNFCe.jsp"),
-                new EnderecoNfceDanfe(Estado.MA, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlConsulta, "http://www.nfce.sefaz.ma.gov.br/portal/consultaNFe.do"),
-                new EnderecoNfceDanfe(Estado.MA, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlQrCode, "http://www.hom.nfce.sefaz.ma.gov.br/portal/consultarNFCe.jsp"),
-                new EnderecoNfceDanfe(Estado.MA, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlConsulta, "http://www.hom.nfce.sefaz.ma.gov.br/portal/consultaNFe.do"),
+                new EnderecoNfceDanfe(Estado.MA, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlQrCode, "http://www.nfce.sefaz.ma.gov.br/portal/consultarNFCe.jsp"),
+                new EnderecoNfceDanfe(Estado.MA, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlConsulta, "http://www.nfce.sefaz.ma.gov.br/portal/consultaNFe.do"),
+                new EnderecoNfceDanfe(Estado.MA, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlQrCode, "http://www.hom.nfce.sefaz.ma.gov.br/portal/consultarNFCe.jsp"),
+                new EnderecoNfceDanfe(Estado.MA, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlConsulta, "http://www.hom.nfce.sefaz.ma.gov.br/portal/consultaNFe.do"),
 
-                new EnderecoNfceDanfe(Estado.MT, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlQrCode, "http://www.sefaz.mt.gov.br/nfce/consultanfce"),
-                new EnderecoNfceDanfe(Estado.MT, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlConsulta, "http://www.sefaz.mt.gov.br/nfce/consultanfce"),
-                new EnderecoNfceDanfe(Estado.MT, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlQrCode, "http://homologacao.sefaz.mt.gov.br/nfce/consultanfce"),
-                new EnderecoNfceDanfe(Estado.MT, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlConsulta, "http://homologacao.sefaz.mt.gov.br/nfce/consultanfce"),
+                new EnderecoNfceDanfe(Estado.MT, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlQrCode, "http://www.sefaz.mt.gov.br/nfce/consultanfce"),
+                new EnderecoNfceDanfe(Estado.MT, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlConsulta, "http://www.sefaz.mt.gov.br/nfce/consultanfce"),
+                new EnderecoNfceDanfe(Estado.MT, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlQrCode, "http://homologacao.sefaz.mt.gov.br/nfce/consultanfce"),
+                new EnderecoNfceDanfe(Estado.MT, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlConsulta, "http://homologacao.sefaz.mt.gov.br/nfce/consultanfce"),
 
-                new EnderecoNfceDanfe(Estado.PA, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlQrCode, "https://appnfc.sefa.pa.gov.br/portal-homologacao/view/consultas/nfce/nfceForm.seam"),
-                new EnderecoNfceDanfe(Estado.PA, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlConsulta, "https://appnfc.sefa.pa.gov.br/portal/view/consultas/nfce/consultanfce.seam"),
-                new EnderecoNfceDanfe(Estado.PA, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlQrCode, "https://appnfc.sefa.pa.gov.br/portal-homologacao/view/consultas/nfce/nfceForm.seam"),
-                new EnderecoNfceDanfe(Estado.PA, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlConsulta, "https://appnfc.sefa.pa.gov.br/portal-homologacao/view/consultas/nfce/consultanfce.seam"),
+                new EnderecoNfceDanfe(Estado.PA, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlQrCode, "https://appnfc.sefa.pa.gov.br/portal-homologacao/view/consultas/nfce/nfceForm.seam"),
+                new EnderecoNfceDanfe(Estado.PA, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlConsulta, "https://appnfc.sefa.pa.gov.br/portal/view/consultas/nfce/consultanfce.seam"),
+                new EnderecoNfceDanfe(Estado.PA, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlQrCode, "https://appnfc.sefa.pa.gov.br/portal-homologacao/view/consultas/nfce/nfceForm.seam"),
+                new EnderecoNfceDanfe(Estado.PA, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlConsulta, "https://appnfc.sefa.pa.gov.br/portal-homologacao/view/consultas/nfce/consultanfce.seam"),
 
-                new EnderecoNfceDanfe(Estado.PB, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlQrCode, "https://www5.receita.pb.gov.br/atf/seg/SEGf_AcessarFuncao.jsp?cdFuncao=FIS_1410"),
-                new EnderecoNfceDanfe(Estado.PB, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlConsulta, "https://www5.receita.pb.gov.br/atf/seg/SEGf_AcessarFuncao.jsp?cdFuncao=FIS_1410"),
-                new EnderecoNfceDanfe(Estado.PB, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlQrCode, "https://www6.receita.pb.gov.br/atf/seg/SEGf_AcessarFuncao.jsp?cdFuncao=FIS_1410"),
-                new EnderecoNfceDanfe(Estado.PB, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlConsulta, "https://www6.receita.pb.gov.br/atf/seg/SEGf_AcessarFuncao.jsp?cdFuncao=FIS_1410"),
+                new EnderecoNfceDanfe(Estado.PB, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlQrCode, "https://www5.receita.pb.gov.br/atf/seg/SEGf_AcessarFuncao.jsp?cdFuncao=FIS_1410"),
+                new EnderecoNfceDanfe(Estado.PB, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlConsulta, "https://www5.receita.pb.gov.br/atf/seg/SEGf_AcessarFuncao.jsp?cdFuncao=FIS_1410"),
+                new EnderecoNfceDanfe(Estado.PB, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlQrCode, "https://www6.receita.pb.gov.br/atf/seg/SEGf_AcessarFuncao.jsp?cdFuncao=FIS_1410"),
+                new EnderecoNfceDanfe(Estado.PB, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlConsulta, "https://www6.receita.pb.gov.br/atf/seg/SEGf_AcessarFuncao.jsp?cdFuncao=FIS_1410"),
 
-                new EnderecoNfceDanfe(Estado.PI, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlQrCode, "http://webas.sefaz.pi.gov.br/nfceweb/consultarNFCe.jsf"),
-                new EnderecoNfceDanfe(Estado.PI, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlConsulta, "http://webas.sefaz.pi.gov.br/nfceweb/consultarNFCe.jsf"),
-                new EnderecoNfceDanfe(Estado.PI, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlQrCode, "http://webas.sefaz.pi.gov.br/nfceweb-homologacao/consultarNFCe.jsf"),
-                new EnderecoNfceDanfe(Estado.PI, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlConsulta, "http://webas.sefaz.pi.gov.br/nfceweb-homologacao/consultarNFCe.jsf"),
+                new EnderecoNfceDanfe(Estado.PI, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlQrCode, "http://webas.sefaz.pi.gov.br/nfceweb/consultarNFCe.jsf"),
+                new EnderecoNfceDanfe(Estado.PI, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlConsulta, "http://webas.sefaz.pi.gov.br/nfceweb/consultarNFCe.jsf"),
+                new EnderecoNfceDanfe(Estado.PI, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlQrCode, "http://webas.sefaz.pi.gov.br/nfceweb-homologacao/consultarNFCe.jsf"),
+                new EnderecoNfceDanfe(Estado.PI, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlConsulta, "http://webas.sefaz.pi.gov.br/nfceweb-homologacao/consultarNFCe.jsf"),
 
-                new EnderecoNfceDanfe(Estado.PR, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlQrCode, "www.dfeportal.fazenda.pr.gov.br/dfe-portal/rest/servico/consultaNFCe"),
-                new EnderecoNfceDanfe(Estado.PR, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlConsulta, "http://www.fazenda.pr.gov.br/"),
-                new EnderecoNfceDanfe(Estado.PR, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlQrCode, "www.dfeportal.fazenda.pr.gov.br/dfe-portal/rest/servico/consultaNFCe"),
-                new EnderecoNfceDanfe(Estado.PR, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlConsulta, "http://www.fazenda.pr.gov.br/"),
+                new EnderecoNfceDanfe(Estado.PR, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlQrCode, "www.dfeportal.fazenda.pr.gov.br/dfe-portal/rest/servico/consultaNFCe"),
+                new EnderecoNfceDanfe(Estado.PR, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlConsulta, "http://www.fazenda.pr.gov.br/"),
+                new EnderecoNfceDanfe(Estado.PR, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlQrCode, "www.dfeportal.fazenda.pr.gov.br/dfe-portal/rest/servico/consultaNFCe"),
+                new EnderecoNfceDanfe(Estado.PR, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlConsulta, "http://www.fazenda.pr.gov.br/"),
 
-                new EnderecoNfceDanfe(Estado.RJ, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlQrCode, "http://www4.fazenda.rj.gov.br/consultaNFCe/QRCode"),
-                new EnderecoNfceDanfe(Estado.RJ, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlConsulta, "http://nfce.fazenda.rj.gov.br/consulta"),
-                new EnderecoNfceDanfe(Estado.RJ, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlQrCode, "http://www4.fazenda.rj.gov.br/consultaNFCe/QRCode"),
-                new EnderecoNfceDanfe(Estado.RJ, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlConsulta, "http://nfce.fazenda.rj.gov.br/consulta"),
+                new EnderecoNfceDanfe(Estado.RJ, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlQrCode, "http://www4.fazenda.rj.gov.br/consultaNFCe/QRCode"),
+                new EnderecoNfceDanfe(Estado.RJ, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlConsulta, "http://nfce.fazenda.rj.gov.br/consulta"),
+                new EnderecoNfceDanfe(Estado.RJ, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlQrCode, "http://www4.fazenda.rj.gov.br/consultaNFCe/QRCode"),
+                new EnderecoNfceDanfe(Estado.RJ, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlConsulta, "http://nfce.fazenda.rj.gov.br/consulta"),
 
-                new EnderecoNfceDanfe(Estado.RN, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlQrCode, "http://nfce.set.rn.gov.br/consultarNFCe.aspx"),
-                new EnderecoNfceDanfe(Estado.RN, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlConsulta, "http://nfce.set.rn.gov.br/consultarNFCe.aspx"),
-                new EnderecoNfceDanfe(Estado.RN, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlConsulta, "http://nfce.set.rn.gov.br/portalDFE/NFCe/ConsultaNFCe.aspx"),
-                new EnderecoNfceDanfe(Estado.RN, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlQrCode, "http://nfce.set.rn.gov.br/consultarNFCe.aspx"),
+                new EnderecoNfceDanfe(Estado.RN, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlQrCode, "http://nfce.set.rn.gov.br/consultarNFCe.aspx"),
+                new EnderecoNfceDanfe(Estado.RN, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlConsulta, "http://nfce.set.rn.gov.br/consultarNFCe.aspx"),
+                new EnderecoNfceDanfe(Estado.RN, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlConsulta, "http://nfce.set.rn.gov.br/portalDFE/NFCe/ConsultaNFCe.aspx"),
+                new EnderecoNfceDanfe(Estado.RN, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlQrCode, "http://nfce.set.rn.gov.br/consultarNFCe.aspx"),
 
-                new EnderecoNfceDanfe(Estado.RO, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlQrCode, "http://www.nfce.sefin.ro.gov.br/consultanfce/consulta.jsp"),
-                new EnderecoNfceDanfe(Estado.RO, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlConsulta, "http://www.nfce.sefin.ro.gov.br"),
-                new EnderecoNfceDanfe(Estado.RO, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlQrCode, "http://www.nfce.sefin.ro.gov.br/consultanfce/consulta.jsp"),
-                new EnderecoNfceDanfe(Estado.RO, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlConsulta, "http://www.nfce.sefin.ro.gov.br/consultaAmbHomologacao.jsp"),
+                new EnderecoNfceDanfe(Estado.RO, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlQrCode, "http://www.nfce.sefin.ro.gov.br/consultanfce/consulta.jsp"),
+                new EnderecoNfceDanfe(Estado.RO, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlConsulta, "http://www.nfce.sefin.ro.gov.br"),
+                new EnderecoNfceDanfe(Estado.RO, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlQrCode, "http://www.nfce.sefin.ro.gov.br/consultanfce/consulta.jsp"),
+                new EnderecoNfceDanfe(Estado.RO, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlConsulta, "http://www.nfce.sefin.ro.gov.br/consultaAmbHomologacao.jsp"),
 
-                new EnderecoNfceDanfe(Estado.RS, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlQrCode, "https://www.sefaz.rs.gov.br/NFCE/NFCE-COM.aspx"),
-                new EnderecoNfceDanfe(Estado.RS, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlConsulta, "https://www.sefaz.rs.gov.br/NFE/NFE-NFC.aspx"),
-                new EnderecoNfceDanfe(Estado.RS, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlQrCode, "https://www.sefaz.rs.gov.br/NFCE/NFCE-COM.aspx"),
-                new EnderecoNfceDanfe(Estado.RS, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlConsulta, "https://www.sefaz.rs.gov.br/NFE/NFE-NFC.aspx"),
+                new EnderecoNfceDanfe(Estado.RS, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlQrCode, "https://www.sefaz.rs.gov.br/NFCE/NFCE-COM.aspx"),
+                new EnderecoNfceDanfe(Estado.RS, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlConsulta, "https://www.sefaz.rs.gov.br/NFE/NFE-NFC.aspx"),
+                new EnderecoNfceDanfe(Estado.RS, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlQrCode, "https://www.sefaz.rs.gov.br/NFCE/NFCE-COM.aspx"),
+                new EnderecoNfceDanfe(Estado.RS, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlConsulta, "https://www.sefaz.rs.gov.br/NFE/NFE-NFC.aspx"),
 
-                new EnderecoNfceDanfe(Estado.RR, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlConsulta, "https://www.sefaz.rr.gov.br/nfce/servlet/wp_consulta_nfce"),
-                new EnderecoNfceDanfe(Estado.RR, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlConsulta, "http://200.174.88.103:8080/nfce/servlet/wp_consulta_nfce"),
+                new EnderecoNfceDanfe(Estado.RR, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlConsulta, "https://www.sefaz.rr.gov.br/nfce/servlet/wp_consulta_nfce"),
+                new EnderecoNfceDanfe(Estado.RR, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlConsulta, "http://200.174.88.103:8080/nfce/servlet/wp_consulta_nfce"),
 
-                new EnderecoNfceDanfe(Estado.SE, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlQrCode, "http://www.nfce.se.gov.br/portal/consultarNFCe.jsp"),
-                new EnderecoNfceDanfe(Estado.SE, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlConsulta, "http://www.nfce.se.gov.br/portal"),
-                new EnderecoNfceDanfe(Estado.SE, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlQrCode, "http://www.hom.nfe.se.gov.br/portal/consultarNFCe.jsp"),
-                new EnderecoNfceDanfe(Estado.SE, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlConsulta, "http://www.hom.nfe.se.gov.br/portal"),
+                new EnderecoNfceDanfe(Estado.SE, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlQrCode, "http://www.nfce.se.gov.br/portal/consultarNFCe.jsp"),
+                new EnderecoNfceDanfe(Estado.SE, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlConsulta, "http://www.nfce.se.gov.br/portal"),
+                new EnderecoNfceDanfe(Estado.SE, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlQrCode, "http://www.hom.nfe.se.gov.br/portal/consultarNFCe.jsp"),
+                new EnderecoNfceDanfe(Estado.SE, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlConsulta, "http://www.hom.nfe.se.gov.br/portal"),
 
-                new EnderecoNfceDanfe(Estado.SP, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlQrCode, "https://www.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx"),
-                new EnderecoNfceDanfe(Estado.SP, TipoAmbiente.taProducao, TipoUrlDanfeNfce.UrlConsulta, "https://www.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaPublica.aspx"),
-                new EnderecoNfceDanfe(Estado.SP, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlQrCode, "https://www.homologacao.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx"),
-                new EnderecoNfceDanfe(Estado.SP, TipoAmbiente.taHomologacao, TipoUrlDanfeNfce.UrlConsulta, "https://www.homologacao.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaPublica.aspx"),
+                new EnderecoNfceDanfe(Estado.SP, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlQrCode, "https://www.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx"),
+                new EnderecoNfceDanfe(Estado.SP, TipoAmbiente.Producao, TipoUrlDanfeNfce.UrlConsulta, "https://www.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaPublica.aspx"),
+                new EnderecoNfceDanfe(Estado.SP, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlQrCode, "https://www.homologacao.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx"),
+                new EnderecoNfceDanfe(Estado.SP, TipoAmbiente.Homologacao, TipoUrlDanfeNfce.UrlConsulta, "https://www.homologacao.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaPublica.aspx"),
 
             };
 
@@ -191,7 +193,7 @@ namespace NFe.Impressao.NFCe
         public static string ObterUrlQrCode(Classes.NFe nfe, ConfiguracaoDanfeNfce configuracaoDanfeNfce)
         {
             //Passo 1: Converter o valor da Data e Hora de Emissão da NFC-e (dhEmi) para HEXA;
-            var dhEmi = ObterHexDeString(nfe.infNFe.ide.dhEmi);
+            var dhEmi = ObterHexDeString(nfe.infNFe.ide.ProxyDhEmi);
 
             //Passo 2: Converter o valor do Digest Value da NFC-e (digVal) para HEXA;
             //Ao se efetuar a assinatura digital da NFCe emitida em contingência off-line, o campo digest value constante da XMl Signature deve obrigatoriamente ser idêntico ao encontrado quando da geração do digest value para a montagem QR Code.

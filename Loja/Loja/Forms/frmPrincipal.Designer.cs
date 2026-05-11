@@ -195,54 +195,54 @@
 			this.ribbonControl.ExpandCollapseItem.Id = 0;
 			this.ribbonControl.Images = this.ribbonImageCollection;
 			this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.ribbonControl.ExpandCollapseItem,
-            this.iExit,
-            this.iAbout,
-            this.siStatus,
-            this.siInfo,
-            this.iBoldFontStyle,
-            this.iItalicFontStyle,
-            this.iUnderlinedFontStyle,
-            this.iLeftTextAlign,
-            this.iCenterTextAlign,
-            this.iRightTextAlign,
-            this.rgbiSkins,
-            this.lblQtdProduto,
-            this.lblQtdItens,
-            this.btnRecarregarDados,
-            this.txtQtdItem,
-            this.txtValorTotal,
-            this.btnImprimir,
-            this.btnFinalizarVenda,
-            this.btnFazerBackup,
-            this.cmbCodOrca,
-            this.btnExcluirOrca,
-            this.btnModoEdicao,
-            this.btnVendaRapida,
-            this.btnStatus,
-            this.chkStatusSefaz,
-            this.chkInternet,
-            this.btnContingencia,
-            this.btnQtdContingencia,
-            this.btnAbrirOrca,
-            this.btnVerResumo,
-            this.btnParametros,
-            this.btnEnviarCont});
+			this.ribbonControl.ExpandCollapseItem,
+			this.iExit,
+			this.iAbout,
+			this.siStatus,
+			this.siInfo,
+			this.iBoldFontStyle,
+			this.iItalicFontStyle,
+			this.iUnderlinedFontStyle,
+			this.iLeftTextAlign,
+			this.iCenterTextAlign,
+			this.iRightTextAlign,
+			this.rgbiSkins,
+			this.lblQtdProduto,
+			this.lblQtdItens,
+			this.btnRecarregarDados,
+			this.txtQtdItem,
+			this.txtValorTotal,
+			this.btnImprimir,
+			this.btnFinalizarVenda,
+			this.btnFazerBackup,
+			this.cmbCodOrca,
+			this.btnExcluirOrca,
+			this.btnModoEdicao,
+			this.btnVendaRapida,
+			this.btnStatus,
+			this.chkStatusSefaz,
+			this.chkInternet,
+			this.btnContingencia,
+			this.btnQtdContingencia,
+			this.btnAbrirOrca,
+			this.btnVerResumo,
+			this.btnParametros,
+			this.btnEnviarCont});
 			this.ribbonControl.LargeImages = this.ribbonImageCollectionLarge;
 			this.ribbonControl.Location = new System.Drawing.Point(0, 0);
 			this.ribbonControl.MaxItemId = 3;
 			this.ribbonControl.Name = "ribbonControl";
 			this.ribbonControl.PageHeaderItemLinks.Add(this.iAbout);
 			this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.homeRibbonPage,
-            this.helpRibbonPage});
+			this.homeRibbonPage,
+			this.helpRibbonPage});
 			this.ribbonControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemTextEdit1,
-            this.repositoryItemGridLookUpEdit1,
-            this.repositoryItemTextEdit2,
-            this.repositoryItemTextEdit3,
-            this.repCodOrca,
-            this.repositoryItemMemoEdit1});
+			this.repositoryItemTextEdit1,
+			this.repositoryItemGridLookUpEdit1,
+			this.repositoryItemTextEdit2,
+			this.repositoryItemTextEdit3,
+			this.repCodOrca,
+			this.repositoryItemMemoEdit1});
 			this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
 			this.ribbonControl.Size = new System.Drawing.Size(1039, 143);
 			this.ribbonControl.StatusBar = this.ribbonStatusBar;
@@ -366,7 +366,7 @@
 			// siInfo
 			// 
 			this.siInfo.Caption = "F1 - 8 | F2 - Descrição | F3 - 12 | F4 - 15 | F5 - 5 | F6 - 0 | F7 - 10 | F9 - De" +
-    "stacar orçamento";
+	"stacar orçamento";
 			this.siInfo.Id = 32;
 			this.siInfo.Name = "siInfo";
 			// 
@@ -522,11 +522,11 @@
 			// 
 			this.repCodOrca.AutoHeight = false;
 			this.repCodOrca.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)});
+			new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+			new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)});
 			this.repCodOrca.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Codigo", "Orçamento"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Descricao", "Itens")});
+			new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Codigo", "Orçamento"),
+			new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Descricao", "Itens")});
 			this.repCodOrca.DisplayMember = "Codigo";
 			this.repCodOrca.Name = "repCodOrca";
 			this.repCodOrca.NullText = "[Sem seleção]";
@@ -655,11 +655,11 @@
 			// homeRibbonPage
 			// 
 			this.homeRibbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.fileRibbonPageGroup,
-            this.formatRibbonPageGroup,
-            this.ribbonPageGroup1,
-            this.ribbonPageGroup2,
-            this.exitRibbonPageGroup});
+			this.fileRibbonPageGroup,
+			this.formatRibbonPageGroup,
+			this.ribbonPageGroup1,
+			this.ribbonPageGroup2,
+			this.exitRibbonPageGroup});
 			this.homeRibbonPage.Name = "homeRibbonPage";
 			this.homeRibbonPage.Text = "Principal";
 			// 
@@ -708,8 +708,8 @@
 			// helpRibbonPage
 			// 
 			this.helpRibbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.skinsRibbonPageGroup,
-            this.helpRibbonPageGroup});
+			this.skinsRibbonPageGroup,
+			this.helpRibbonPageGroup});
 			this.helpRibbonPage.Name = "helpRibbonPage";
 			this.helpRibbonPage.Text = "Ajuda";
 			// 
@@ -731,7 +731,7 @@
 			// 
 			this.repositoryItemGridLookUpEdit1.AutoHeight = false;
 			this.repositoryItemGridLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+			new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
 			this.repositoryItemGridLookUpEdit1.Name = "repositoryItemGridLookUpEdit1";
 			this.repositoryItemGridLookUpEdit1.PopupView = this.repositoryItemGridLookUpEdit1View;
 			// 
@@ -787,15 +787,15 @@
 			// gridProdutos
 			// 
 			this.gridProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			| System.Windows.Forms.AnchorStyles.Left) 
+			| System.Windows.Forms.AnchorStyles.Right)));
 			this.gridProdutos.Location = new System.Drawing.Point(0, 0);
 			this.gridProdutos.MainView = this.gridViewProduto;
 			this.gridProdutos.Name = "gridProdutos";
 			this.gridProdutos.Size = new System.Drawing.Size(908, 276);
 			this.gridProdutos.TabIndex = 0;
 			this.gridProdutos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewProduto});
+			this.gridViewProduto});
 			this.gridProdutos.DoubleClick += new System.EventHandler(this.gridProdutos_DoubleClick);
 			this.gridProdutos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridProdutos_KeyDown);
 			// 
@@ -803,14 +803,14 @@
 			// 
 			this.gridViewProduto.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
 			this.gridViewProduto.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colCodProduto,
-            this.colDesProduto,
-            this.colLocal,
-            this.colQtdProduto,
-            this.colRefAntiga,
-            this.colFornecedor,
-            this.colNCM,
-            this.colCodigounico});
+			this.colCodProduto,
+			this.colDesProduto,
+			this.colLocal,
+			this.colQtdProduto,
+			this.colRefAntiga,
+			this.colFornecedor,
+			this.colNCM,
+			this.colCodigounico});
 			this.gridViewProduto.GridControl = this.gridProdutos;
 			this.gridViewProduto.GroupPanelText = "Arraste uma coluna aqui para agrupar";
 			this.gridViewProduto.Name = "gridViewProduto";
@@ -896,24 +896,24 @@
 			this.navBarControl.ActiveGroup = this.grpOperacoes;
 			this.navBarControl.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.navBarControl.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
-            this.grpOperacoes,
-            this.grpRelatorios,
-            this.grpCadastros});
+			this.grpOperacoes,
+			this.grpRelatorios,
+			this.grpCadastros});
 			this.navBarControl.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
-            this.btnVender,
-            this.btnCadastrar,
-            this.btnEntrada,
-            this.btnRecibo,
-            this.btnRelVendas,
-            this.btnRelEntradas,
-            this.btnOrcamentos,
-            this.btnReajustar,
-            this.btnEstMinimo,
-            this.btnCadTipoVenda,
-            this.btnCadTipoEntrada,
-            this.btnCadCliente,
-            this.btnRelEstoque,
-            this.btnAuditorNF});
+			this.btnVender,
+			this.btnCadastrar,
+			this.btnEntrada,
+			this.btnRecibo,
+			this.btnRelVendas,
+			this.btnRelEntradas,
+			this.btnOrcamentos,
+			this.btnReajustar,
+			this.btnEstMinimo,
+			this.btnCadTipoVenda,
+			this.btnCadTipoEntrada,
+			this.btnCadCliente,
+			this.btnRelEstoque,
+			this.btnAuditorNF});
 			this.navBarControl.LargeImages = this.navbarImageListLarge;
 			this.navBarControl.Location = new System.Drawing.Point(0, 0);
 			this.navBarControl.Name = "navBarControl";
@@ -931,11 +931,11 @@
 			this.grpOperacoes.Expanded = true;
 			this.grpOperacoes.ImageOptions.LargeImageIndex = 3;
 			this.grpOperacoes.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnVender),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadastrar),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnEntrada),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnRecibo),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnReajustar)});
+			new DevExpress.XtraNavBar.NavBarItemLink(this.btnVender),
+			new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadastrar),
+			new DevExpress.XtraNavBar.NavBarItemLink(this.btnEntrada),
+			new DevExpress.XtraNavBar.NavBarItemLink(this.btnRecibo),
+			new DevExpress.XtraNavBar.NavBarItemLink(this.btnReajustar)});
 			this.grpOperacoes.Name = "grpOperacoes";
 			// 
 			// btnVender
@@ -978,11 +978,11 @@
 			this.grpRelatorios.Caption = "Relatórios";
 			this.grpRelatorios.ImageOptions.LargeImageIndex = 2;
 			this.grpRelatorios.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnEstMinimo),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnRelVendas),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnRelEntradas),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnRelEstoque),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnAuditorNF)});
+			new DevExpress.XtraNavBar.NavBarItemLink(this.btnEstMinimo),
+			new DevExpress.XtraNavBar.NavBarItemLink(this.btnRelVendas),
+			new DevExpress.XtraNavBar.NavBarItemLink(this.btnRelEntradas),
+			new DevExpress.XtraNavBar.NavBarItemLink(this.btnRelEstoque),
+			new DevExpress.XtraNavBar.NavBarItemLink(this.btnAuditorNF)});
 			this.grpRelatorios.Name = "grpRelatorios";
 			// 
 			// btnEstMinimo
@@ -1025,10 +1025,10 @@
 			this.grpCadastros.Caption = "Cadastros";
 			this.grpCadastros.ImageOptions.LargeImageIndex = 4;
 			this.grpCadastros.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadastrar),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadTipoEntrada),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadTipoVenda),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadCliente)});
+			new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadastrar),
+			new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadTipoEntrada),
+			new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadTipoVenda),
+			new DevExpress.XtraNavBar.NavBarItemLink(this.btnCadCliente)});
 			this.grpCadastros.Name = "grpCadastros";
 			// 
 			// btnCadTipoEntrada
@@ -1091,19 +1091,19 @@
 			this.gridOrcamento.Size = new System.Drawing.Size(908, 149);
 			this.gridOrcamento.TabIndex = 1;
 			this.gridOrcamento.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewOrcamento});
+			this.gridViewOrcamento});
 			this.gridOrcamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridOrcamento_KeyDown);
 			// 
 			// gridViewOrcamento
 			// 
 			this.gridViewOrcamento.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colOrCodProduto,
-            this.colOrDesProduto,
-            this.colQuantidade,
-            this.colValor,
-            this.colVlrFinal,
-            this.colOrcodigounico,
-            this.colVlrOriginal});
+			this.colOrCodProduto,
+			this.colOrDesProduto,
+			this.colQuantidade,
+			this.colValor,
+			this.colVlrFinal,
+			this.colOrcodigounico,
+			this.colVlrOriginal});
 			this.gridViewOrcamento.GridControl = this.gridOrcamento;
 			this.gridViewOrcamento.GroupPanelText = "Orçamento";
 			this.gridViewOrcamento.Name = "gridViewOrcamento";
@@ -1161,7 +1161,7 @@
 			this.colVlrFinal.Name = "colVlrFinal";
 			this.colVlrFinal.OptionsColumn.AllowEdit = false;
 			this.colVlrFinal.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "PF", "{0:c2}")});
+			new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "PF", "{0:c2}")});
 			this.colVlrFinal.Visible = true;
 			this.colVlrFinal.VisibleIndex = 4;
 			this.colVlrFinal.Width = 142;
@@ -1181,7 +1181,7 @@
 			this.colVlrOriginal.Name = "colVlrOriginal";
 			this.colVlrOriginal.OptionsColumn.AllowEdit = false;
 			this.colVlrOriginal.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "VlrCusto", "{0:c2}")});
+			new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "VlrCusto", "{0:c2}")});
 			this.colVlrOriginal.Visible = true;
 			this.colVlrOriginal.VisibleIndex = 5;
 			this.colVlrOriginal.Width = 142;
@@ -1198,7 +1198,6 @@
 			this.Controls.Add(this.ribbonStatusBar);
 			this.Controls.Add(this.backstageViewControl1);
 			this.Controls.Add(this.ribbonControl);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.KeyPreview = true;
 			this.Name = "frmPrincipal";
 			this.Ribbon = this.ribbonControl;
@@ -1336,7 +1335,7 @@
 		private DevExpress.XtraBars.BarButtonItem btnAbrirOrca;
 		private DevExpress.XtraNavBar.NavBarItem btnRelEstoque;
 		private DevExpress.XtraBars.BarButtonItem btnVerResumo;
-        private DevExpress.XtraNavBar.NavBarItem btnAuditorNF;
+		private DevExpress.XtraNavBar.NavBarItem btnAuditorNF;
 		private DevExpress.XtraBars.BarButtonItem btnParametros;
 		private DevExpress.XtraBars.BarButtonItem btnEnviarCont;
 	}

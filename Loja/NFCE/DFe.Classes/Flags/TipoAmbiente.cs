@@ -43,6 +43,14 @@ namespace DFe.Classes.Flags
 
         [XmlEnum("2")]
         [Description("Homologação")]
-        Homologacao = 2
+        Homologacao = 2,
+
+        [XmlEnum("1")]
+        [Description("Produção")]
+        taProducao = 1,
+
+        [XmlEnum("2")]
+        [Description("Homologação")]
+        taHomologacao = 2
     }
 }

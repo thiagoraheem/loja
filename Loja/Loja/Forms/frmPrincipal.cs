@@ -274,7 +274,10 @@ namespace Loja
 				{
 					_configuracoes.CfgServico.tpEmis = TipoEmissao.teNormal;
 				}
-				UserLookAndFeel.Default.SetSkinStyle("Money Twins");
+				string skinStyle = Properties.Settings.Default.Estilo ?? "Money Twins";
+				if (string.IsNullOrWhiteSpace(skinStyle))
+					skinStyle = "Money Twins";
+				UserLookAndFeel.Default.SetSkinStyle(skinStyle);
 			}
 		}
 
@@ -619,7 +622,10 @@ namespace Loja
 				{
 					_configuracoes.CfgServico.tpEmis = TipoEmissao.teNormal;
 				}
-				UserLookAndFeel.Default.SetSkinStyle("Money Twins");
+				string skinStyle = Properties.Settings.Default.Estilo ?? "Money Twins";
+				if (string.IsNullOrWhiteSpace(skinStyle))
+					skinStyle = "Money Twins";
+				UserLookAndFeel.Default.SetSkinStyle(skinStyle);
 			}
 
 		}
@@ -924,7 +930,10 @@ namespace Loja
 			}
 			else
 			{
-				UserLookAndFeel.Default.SetSkinStyle("Money Twins");
+				string skinStyle = Properties.Settings.Default.Estilo ?? "Money Twins";
+				if (string.IsNullOrWhiteSpace(skinStyle))
+					skinStyle = "Money Twins";
+				UserLookAndFeel.Default.SetSkinStyle(skinStyle);
 			}
 
 		}

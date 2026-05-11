@@ -77,6 +77,22 @@ namespace NFe.Utils
         /// </summary>
         public string Senha { get; set; }
 
+        /// <summary>
+        ///     Manter/Não manter os dados do certificado em Cache, enquanto a aplicação que consome a biblioteca estiver aberta
+        /// <para>Manter os dados do certificado em cache, aumentará o desempenho no consumo dos serviços, especialmente para certificados A3</para>
+        /// </summary>
+        public bool ManterDadosEmCache { get; set; }
+
+        /// <summary>
+        ///     Algoritmo de Assinatura (Padrao: http://www.w3.org/2000/09/xmldsig#rsa-sha1)
+        /// </summary>
+        public string SignatureMethodSignedXml { get; set; }
+
+        /// <summary>
+        ///     URI para DigestMethod na Classe Reference para auxiliar para a assinatura (Padrao: http://www.w3.org/2000/09/xmldsig#sha1)
+        /// </summary>
+        public string DigestMethodReference { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]

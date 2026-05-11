@@ -31,6 +31,7 @@
 /* Rua Comendador Francisco josé da Cunha, 111 - Itabaiana - SE - 49500-000     */
 /********************************************************************************/
 using System;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
 using System.Xml;
@@ -48,27 +49,37 @@ namespace DFe.Utils.Assinatura
 
             var documento = new XmlDocument { PreserveWhitespace = true };
             documento.LoadXml(FuncoesXml.ClasseParaXmlString(objetoLocal));
-            var docXml = new SignedXml(documento) { SigningKey = certificado.PrivateKey };
-            var reference = new Reference { Uri = "#" + id };
+            AsymmetricAlgorithm signingKey = certificado.GetRSAPrivateKey();
+            if (signingKey == null)
+                signingKey = certificado.GetECDsaPrivateKey();
+            if (signingKey == null)
+                throw new Exception("Certificado digital não possui chave privada.");
 
-            // adicionando EnvelopedSignatureTransform a referencia
-            var envelopedSigntature = new XmlDsigEnvelopedSignatureTransform();
-            reference.AddTransform(envelopedSigntature);
+            XmlElement xmlDigitalSignature;
+            using (signingKey)
+            {
+                var docXml = new SignedXml(documento) { SigningKey = signingKey };
+                var reference = new Reference { Uri = "#" + id };
 
-            var c14Transform = new XmlDsigC14NTransform();
-            reference.AddTransform(c14Transform);
+                // adicionando EnvelopedSignatureTransform a referencia
+                var envelopedSigntature = new XmlDsigEnvelopedSignatureTransform();
+                reference.AddTransform(envelopedSigntature);
 
-            docXml.AddReference(reference);
+                var c14Transform = new XmlDsigC14NTransform();
+                reference.AddTransform(c14Transform);
 
-            // carrega o certificado em KeyInfoX509Data para adicionar a KeyInfo
-            var keyInfo = new KeyInfo();
-            keyInfo.AddClause(new KeyInfoX509Data(certificado));
+                docXml.AddReference(reference);
 
-            docXml.KeyInfo = keyInfo;
-            docXml.ComputeSignature();
+                // carrega o certificado em KeyInfoX509Data para adicionar a KeyInfo
+                var keyInfo = new KeyInfo();
+                keyInfo.AddClause(new KeyInfoX509Data(certificado));
 
-            //// recuperando a representacao do XML assinado
-            var xmlDigitalSignature = docXml.GetXml();
+                docXml.KeyInfo = keyInfo;
+                docXml.ComputeSignature();
+
+                //// recuperando a representacao do XML assinado
+                xmlDigitalSignature = docXml.GetXml();
+            }
             var assinatura = FuncoesXml.XmlStringParaClasse<Classes.Assinatura.Signature>(xmlDigitalSignature.OuterXml);
             return assinatura;
         }

@@ -26,7 +26,7 @@ namespace Loja
 			CfgServico.tpAmb = TipoAmbiente.Producao;
 			#endif
 			CfgServico.tpEmis = TipoEmissao.teNormal;
-			CfgServico.ProtocoloDeSeguranca = ServicePointManager.SecurityProtocol;
+			CfgServico.ProtocoloDeSeguranca = SecurityProtocolType.SystemDefault;
 			Emitente = new emit { CPF = "", CRT = CRT.SimplesNacional };
 			EnderecoEmitente = new enderEmit();
 			ConfiguracaoEmail = new ConfiguracaoEmail("jasgif@gmail.com", "186186186", "Envio de NFE", Resources.MensagemHtml, "smtp.gmail.com", 587, true, true);

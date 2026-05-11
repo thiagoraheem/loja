@@ -31,6 +31,7 @@
 /* Rua Comendador Francisco josé da Cunha, 111 - Itabaiana - SE - 49500-000     */
 /********************************************************************************/
 using System;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
 using System.Xml;
@@ -77,30 +78,40 @@ namespace NFe.Utils.Assinatura
             {
                 var documento = new XmlDocument { PreserveWhitespace = true };
                 documento.LoadXml(FuncoesXml.ClasseParaXmlString(objetoLocal));
-                var docXml = new SignedXml(documento) { SigningKey = certificadoDigital.PrivateKey };
+                AsymmetricAlgorithm signingKey = certificadoDigital.GetRSAPrivateKey();
+                if (signingKey == null)
+                    signingKey = certificadoDigital.GetECDsaPrivateKey();
+                if (signingKey == null)
+                    throw new Exception("Certificado digital não possui chave privada.");
 
-                docXml.SignedInfo.SignatureMethod = signatureMethod;
+                XmlElement xmlDigitalSignature;
+                using (signingKey)
+                {
+                    var docXml = new SignedXml(documento) { SigningKey = signingKey };
 
-                var reference = new Reference { Uri = "#" + id, DigestMethod = digestMethod};
+                    docXml.SignedInfo.SignatureMethod = signatureMethod;
 
-                // adicionando EnvelopedSignatureTransform a referencia
-                var envelopedSigntature = new XmlDsigEnvelopedSignatureTransform();
-                reference.AddTransform(envelopedSigntature);
+                    var reference = new Reference { Uri = "#" + id, DigestMethod = digestMethod };
 
-                var c14Transform = new XmlDsigC14NTransform();
-                reference.AddTransform(c14Transform);
+                    // adicionando EnvelopedSignatureTransform a referencia
+                    var envelopedSigntature = new XmlDsigEnvelopedSignatureTransform();
+                    reference.AddTransform(envelopedSigntature);
 
-                docXml.AddReference(reference);
+                    var c14Transform = new XmlDsigC14NTransform();
+                    reference.AddTransform(c14Transform);
 
-                // carrega o certificado em KeyInfoX509Data para adicionar a KeyInfo
-                var keyInfo = new KeyInfo();
-                keyInfo.AddClause(new KeyInfoX509Data(certificadoDigital));
+                    docXml.AddReference(reference);
 
-                docXml.KeyInfo = keyInfo;
-                docXml.ComputeSignature();
+                    // carrega o certificado em KeyInfoX509Data para adicionar a KeyInfo
+                    var keyInfo = new KeyInfo();
+                    keyInfo.AddClause(new KeyInfoX509Data(certificadoDigital));
 
-                //// recuperando a representação do XML assinado
-                var xmlDigitalSignature = docXml.GetXml();
+                    docXml.KeyInfo = keyInfo;
+                    docXml.ComputeSignature();
+
+                    //// recuperando a representação do XML assinado
+                    xmlDigitalSignature = docXml.GetXml();
+                }
                 var assinatura = FuncoesXml.XmlStringParaClasse<Signature>(xmlDigitalSignature.OuterXml);
                 return assinatura;
             }
@@ -108,7 +119,7 @@ namespace NFe.Utils.Assinatura
             {
                 //Se não mantém os dados do certificado em cache e o certificado não foi passado por parâmetro(isto é, ele foi criado dentro deste método), 
                 //então libera o certificado, chamando o método reset.
-                if (!manterDadosEmCache & certificadoDigital == null)
+                if (!manterDadosEmCache && certificadoDigital == null)
                     certificadoDigital.Reset();
             }
 

@@ -299,12 +299,12 @@ namespace Loja.Modules
 				arquivo = nfe.ObterXmlString();
 			}
 
-			DanfeNativoNfce impr = new DanfeNativoNfce(arquivo,
-				_configuracoes.ConfiguracaoDanfeNfce.VersaoQrCode,
-				_configuracoes.ConfiguracaoDanfeNfce.Logomarca,
+			var impr = new NFe.Danfe.Nativo.NFCe.DanfeNativoNfce(
+				arquivo,
+				_configuracoes.ConfiguracaoDanfeNfce,
 				_configuracoes.ConfiguracaoCsc.CIdToken,
 				_configuracoes.ConfiguracaoCsc.Csc,
-				0 /*troco*//*, "Arial Black"*/);
+				0m);
 
 			impr.Imprimir(_configuracoes.ImpressoraPadrao, salvarArquivoPdfEm: arquivoPDF);
 			//impr.Imprimir(salvarArquivoPdfEm: arquivoXml.Replace(".xml", "") + ".pdf");

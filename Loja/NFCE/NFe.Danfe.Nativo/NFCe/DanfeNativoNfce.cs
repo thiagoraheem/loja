@@ -32,6 +32,7 @@
 /********************************************************************************/
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
@@ -773,34 +774,15 @@ namespace NFe.Danfe.Nativo.NFCe
 
         private static string ObtemDescricao(FormaPagamento? formaPagamento)
         {
-            switch (formaPagamento)
-            {
-                case FormaPagamento.fpDinheiro:
-                    return "Dinheiro";
-                case FormaPagamento.fpCheque:
-                    return "Cheque";
-                case FormaPagamento.fpCartaoCredito:
-                    return "Cartão de Crédito";
-                case FormaPagamento.fpCartaoDebito:
-                    return "Cartão de Débito";
-                case FormaPagamento.fpCreditoLoja:
-                    return "Crédito Loja";
-                case FormaPagamento.fpValeAlimentacao:
-                    return "Vale Alimentação";
-                case FormaPagamento.fpValeRefeicao:
-                    return "Vale Refeição";
-                case FormaPagamento.fpValePresente:
-                    return "Vale Presente";
-                case FormaPagamento.fpValeCombustivel:
-                    return "Vale Combustível";
-                case FormaPagamento.fpDuplicataMercantil:
-                    return "Duplicata Mercantil";
-                case FormaPagamento.fpSemPagamento:
-                    return "Sem Pagamento";
-                case FormaPagamento.fpOutro:
-                    return "Outros";
-                default: throw new ArgumentException("Forma pagamento inválida");
-            }
+            if (formaPagamento == null)
+                throw new ArgumentException("Forma pagamento inválida");
+
+            var members = typeof(FormaPagamento).GetMember(formaPagamento.Value.ToString());
+            if (members.Length == 0)
+                return formaPagamento.Value.ToString();
+
+            var attribute = members[0].GetCustomAttributes(typeof(DescriptionAttribute), false).OfType<DescriptionAttribute>().FirstOrDefault();
+            return attribute == null ? formaPagamento.Value.ToString() : attribute.Description;
         }
     }
 }

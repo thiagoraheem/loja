@@ -74,7 +74,7 @@ namespace DFe.Utils.Assinatura
                 throw new Exception(String.Format("Certificado digital {0} não encontrado!", arquivo));
             }
 
-            var certificado = new X509Certificate2(arquivo, senha, X509KeyStorageFlags.MachineKeySet);
+            var certificado = X509CertificateLoader.LoadPkcs12FromFile(arquivo, senha, X509KeyStorageFlags.MachineKeySet);
             return certificado;
         }
 
@@ -89,7 +89,7 @@ namespace DFe.Utils.Assinatura
         {
             try
             {
-                var certificado = new X509Certificate2(arrayBytes, senha, X509KeyStorageFlags.MachineKeySet);
+                var certificado = X509CertificateLoader.LoadPkcs12(arrayBytes, senha, X509KeyStorageFlags.MachineKeySet);
                 return certificado;
             }
             catch (Exception ex)
@@ -149,23 +149,28 @@ namespace DFe.Utils.Assinatura
         private static void DefinirPinParaChavePrivada(this X509Certificate2 certificado, string pin)
         {
             if (certificado == null) throw new ArgumentNullException("certificado");
-            var key = (RSACryptoServiceProvider)certificado.PrivateKey;
+            using (var rsa = certificado.GetRSAPrivateKey())
+            {
+                var key = rsa as RSACryptoServiceProvider;
+                if (key == null)
+                    throw new NotSupportedException("Certificado não suporta definição de PIN via provedor CSP.");
 
-            var providerHandle = IntPtr.Zero;
-            var pinBuffer = Encoding.ASCII.GetBytes(pin);
+                var providerHandle = IntPtr.Zero;
+                var pinBuffer = Encoding.ASCII.GetBytes(pin);
 
-            MetodosNativos.Executar(() => MetodosNativos.CryptAcquireContext(ref providerHandle,
-                key.CspKeyContainerInfo.KeyContainerName,
-                key.CspKeyContainerInfo.ProviderName,
-                key.CspKeyContainerInfo.ProviderType,
-                MetodosNativos.CryptContextFlags.Silent));
-            MetodosNativos.Executar(() => MetodosNativos.CryptSetProvParam(providerHandle,
-                MetodosNativos.CryptParameter.KeyExchangePin,
-                pinBuffer, 0));
-            MetodosNativos.Executar(() => MetodosNativos.CertSetCertificateContextProperty(
-                certificado.Handle,
-                MetodosNativos.CertificateProperty.CryptoProviderHandle,
-                0, providerHandle));
+                MetodosNativos.Executar(() => MetodosNativos.CryptAcquireContext(ref providerHandle,
+                    key.CspKeyContainerInfo.KeyContainerName,
+                    key.CspKeyContainerInfo.ProviderName,
+                    key.CspKeyContainerInfo.ProviderType,
+                    MetodosNativos.CryptContextFlags.Silent));
+                MetodosNativos.Executar(() => MetodosNativos.CryptSetProvParam(providerHandle,
+                    MetodosNativos.CryptParameter.KeyExchangePin,
+                    pinBuffer, 0));
+                MetodosNativos.Executar(() => MetodosNativos.CertSetCertificateContextProperty(
+                    certificado.Handle,
+                    MetodosNativos.CertificateProperty.CryptoProviderHandle,
+                    0, providerHandle));
+            }
         }
 
         /// <summary>
@@ -198,18 +203,28 @@ namespace DFe.Utils.Assinatura
         public static X509Certificate2 ListareObterDoRepositorio()
         {
             var store = ObterX509Store(OpenFlags.OpenExistingOnly | OpenFlags.ReadOnly);
-            var collection = store.Certificates;
-            var fcollection = collection.Find(X509FindType.FindByTimeValid, DateTime.Now, true);
-            var scollection = X509Certificate2UI.SelectFromCollection(fcollection, "Certificados válidos:", "Selecione o certificado que deseja usar",
-                X509SelectionFlag.SingleSelection);
-
-            if (scollection.Count == 0)
+            try
             {
-                throw new Exception("Nenhum certificado foi selecionado!");
-            }
+                var collection = store.Certificates;
+                var fcollection = collection.Find(X509FindType.FindByTimeValid, DateTime.Now, true);
 
-            store.Close();
-            return scollection[0];
+                var candidatos = new List<X509Certificate2>();
+                foreach (var cert in fcollection)
+                {
+                    if (cert.HasPrivateKey)
+                        candidatos.Add(cert);
+                }
+
+                if (candidatos.Count == 0)
+                    throw new Exception("Nenhum certificado válido com chave privada foi encontrado!");
+
+                candidatos.Sort((a, b) => DateTime.Compare(b.NotAfter, a.NotAfter));
+                return candidatos[0];
+            }
+            finally
+            {
+                store.Close();
+            }
         }
 
         /// <summary>
@@ -333,13 +348,15 @@ namespace DFe.Utils.Assinatura
 
             try
             {
-                RSACryptoServiceProvider service = x509Certificate2.PrivateKey as RSACryptoServiceProvider;
-
-                if (service != null)
+                using (var rsa = x509Certificate2.GetRSAPrivateKey())
                 {
-                    if (service.CspKeyContainerInfo.Removable &&
-                        service.CspKeyContainerInfo.HardwareDevice)
-                        result = true;
+                    var service = rsa as RSACryptoServiceProvider;
+                    if (service != null)
+                    {
+                        if (service.CspKeyContainerInfo.Removable &&
+                            service.CspKeyContainerInfo.HardwareDevice)
+                            result = true;
+                    }
                 }
             }
             catch

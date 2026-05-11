@@ -31,15 +31,40 @@
 /* Rua Comendador Francisco josé da Cunha, 111 - Itabaiana - SE - 49500-000     */
 /********************************************************************************/
 using System;
-using System.IO;
-using System.Security;
-using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using DFeCfg = DFe.Utils.ConfiguracaoCertificado;
+using DFeTipoCert = DFe.Utils.TipoCertificado;
 
 namespace NFe.Utils.Assinatura
 {
     public static class CertificadoDigital
     {
+        public static X509Certificate2 ObterCertificado(ConfiguracaoCertificado configuracaoCertificado)
+        {
+            if (configuracaoCertificado == null)
+                throw new ArgumentNullException("configuracaoCertificado");
+
+            var cfg = new DFeCfg
+            {
+                ManterDadosEmCache = configuracaoCertificado.ManterDadosEmCache,
+                SignatureMethodSignedXml = configuracaoCertificado.SignatureMethodSignedXml,
+                DigestMethodReference = configuracaoCertificado.DigestMethodReference
+            };
+
+            if (!string.IsNullOrEmpty(configuracaoCertificado.Arquivo))
+            {
+                cfg.TipoCertificado = DFeTipoCert.A1Arquivo;
+                cfg.Arquivo = configuracaoCertificado.Arquivo;
+                cfg.Senha = configuracaoCertificado.Senha;
+            }
+            else
+            {
+                cfg.TipoCertificado = DFeTipoCert.A1Repositorio;
+                cfg.Serial = configuracaoCertificado.Serial;
+            }
+
+            return DFe.Utils.Assinatura.CertificadoDigital.ObterCertificado(cfg);
+        }
 
         /// <summary>
         /// Exibe a lista de certificados instalados no PC e devolve o certificado selecionado
@@ -47,21 +72,7 @@ namespace NFe.Utils.Assinatura
         /// <returns></returns>
         public static X509Certificate2 ObterDoRepositorio()
         {
-            var store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
-            store.Open(OpenFlags.OpenExistingOnly | OpenFlags.MaxAllowed);
-
-            var collection = store.Certificates;
-            var fcollection = collection.Find(X509FindType.FindByTimeValid, DateTime.Now, true);
-            var scollection = X509Certificate2UI.SelectFromCollection(fcollection, "Certificados válidos:", "Selecione o certificado que deseja usar",
-                X509SelectionFlag.SingleSelection);
-
-            if (scollection.Count == 0)
-            {
-                throw new Exception("Nenhum certificado foi selecionado!");
-            }
-
-            store.Close();
-            return scollection[0];
+            return DFe.Utils.Assinatura.CertificadoDigital.ListareObterDoRepositorio();
         }
 
         /// <summary>
@@ -74,44 +85,14 @@ namespace NFe.Utils.Assinatura
         {
             if (string.IsNullOrEmpty(numeroSerial))
                 throw new Exception("O nº de série do certificado não foi informado para a função ObterDoRepositorio!");
-
-            X509Certificate2 certificado = null;
-
-            var store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
-            store.Open(OpenFlags.MaxAllowed);
-
-
-            foreach (var item in store.Certificates)
+            var cfg = new DFeCfg
             {
-                if (item.SerialNumber != null && item.SerialNumber.ToUpper().Equals(numeroSerial.ToUpper(), StringComparison.InvariantCultureIgnoreCase))
-                    certificado = item;
-            }
+                Serial = numeroSerial,
+                TipoCertificado = string.IsNullOrEmpty(senha) ? DFeTipoCert.A1Repositorio : DFeTipoCert.A3,
+                Senha = senha
+            };
 
-            if (certificado == null)
-                throw new Exception(string.Format("Certificado digital nº {0} não encontrado!", numeroSerial.ToUpper()));
-
-            store.Close();
-            if (string.IsNullOrEmpty(senha)) return certificado;
-
-            //Se a senha for passada no parâmetro
-            var senhaSegura = new SecureString();
-            var passPhrase = senha.ToCharArray();
-            foreach (var t in passPhrase)
-            {
-                senhaSegura.AppendChar(t);
-            }
-
-            var chavePrivada = certificado.PrivateKey as RSACryptoServiceProvider;
-            if (chavePrivada == null) return certificado;
-
-            var cspParameters = new CspParameters(chavePrivada.CspKeyContainerInfo.ProviderType,
-                chavePrivada.CspKeyContainerInfo.ProviderName,
-                chavePrivada.CspKeyContainerInfo.KeyContainerName,
-                null,
-                senhaSegura);
-            var rsaCsp = new RSACryptoServiceProvider(cspParameters);
-            certificado.PrivateKey = rsaCsp;
-            return certificado;
+            return DFe.Utils.Assinatura.CertificadoDigital.ObterCertificado(cfg);
         }
 
         /// <summary>
@@ -122,13 +103,14 @@ namespace NFe.Utils.Assinatura
         /// <returns></returns>
         public static X509Certificate2 ObterDeArquivo(string arquivo, string senha)
         {
-            if (!File.Exists(arquivo))
+            var cfg = new DFeCfg
             {
-                throw new Exception(string.Format("Certificado digital {0} não encontrado!", arquivo));
-            }
+                TipoCertificado = DFeTipoCert.A1Arquivo,
+                Arquivo = arquivo,
+                Senha = senha
+            };
 
-            var certificado = new X509Certificate2(arquivo, senha, X509KeyStorageFlags.MachineKeySet);
-            return certificado;
+            return DFe.Utils.Assinatura.CertificadoDigital.ObterCertificado(cfg);
         }
     }
 }

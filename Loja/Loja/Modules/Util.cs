@@ -4,6 +4,7 @@ using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Net.Sockets;
 using System.Net;
+using System.Net.Http;
 using System.Windows.Forms;
 using NFe.Servicos;
 
@@ -319,10 +320,13 @@ namespace Loja
 		{
 			try
 			{
-				using (var client = new WebClient())
-				using (client.OpenRead("http://clients3.google.com/generate_204"))
+				using (var httpClient = new HttpClient())
 				{
-					return true;
+					httpClient.Timeout = TimeSpan.FromSeconds(5);
+					using (var response = httpClient.GetAsync("http://clients3.google.com/generate_204", HttpCompletionOption.ResponseHeadersRead).GetAwaiter().GetResult())
+					{
+						return response.IsSuccessStatusCode;
+					}
 				}
 			}
 			catch
