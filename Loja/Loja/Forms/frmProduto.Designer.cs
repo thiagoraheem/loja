@@ -31,483 +31,521 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.txtDesProduto = new DevExpress.XtraEditors.MemoEdit();
-			this.txtDesLocal = new DevExpress.XtraEditors.TextEdit();
-			this.txtFornecedor = new DevExpress.XtraEditors.TextEdit();
-			this.txtCodProduto = new DevExpress.XtraEditors.TextEdit();
-			this.imgFoto = new DevExpress.XtraEditors.PictureEdit();
-			this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-			this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-			this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-			this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-			this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-			this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-			this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
-			this.cmdGravar = new DevExpress.XtraEditors.SimpleButton();
-			this.txtCodRefAntiga = new DevExpress.XtraEditors.TextEdit();
-			this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-			this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-			this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-			this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-			this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
-			this.btnImagem = new DevExpress.XtraEditors.SimpleButton();
-			this.btnRemoverImagem = new DevExpress.XtraEditors.SimpleButton();
-			this.txtQtdEstoque = new DevExpress.XtraEditors.CalcEdit();
-			this.txtQtdEstMinimo = new DevExpress.XtraEditors.CalcEdit();
-			this.txtVlrCusto = new DevExpress.XtraEditors.CalcEdit();
-			this.txtVlrPercent = new DevExpress.XtraEditors.CalcEdit();
-			this.txtVlrUnitario = new DevExpress.XtraEditors.CalcEdit();
-			this.txtUltPreco = new DevExpress.XtraEditors.CalcEdit();
-			this.btnRemover = new DevExpress.XtraEditors.SimpleButton();
-			this.diagAbrir = new System.Windows.Forms.OpenFileDialog();
-			this.txtNCM = new DevExpress.XtraEditors.TextEdit();
-			this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
-			this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
-			this.txtVlrICMSST = new DevExpress.XtraEditors.CalcEdit();
-			((System.ComponentModel.ISupportInitialize)(this.txtDesProduto.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtDesLocal.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtFornecedor.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtCodProduto.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.imgFoto.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtCodRefAntiga.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtQtdEstoque.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtQtdEstMinimo.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtVlrCusto.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtVlrPercent.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtVlrUnitario.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtUltPreco.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtNCM.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtVlrICMSST.Properties)).BeginInit();
-			this.SuspendLayout();
+			txtDesProduto = new DevExpress.XtraEditors.MemoEdit();
+			txtDesLocal = new DevExpress.XtraEditors.TextEdit();
+			txtFornecedor = new DevExpress.XtraEditors.TextEdit();
+			txtCodProduto = new DevExpress.XtraEditors.TextEdit();
+			imgFoto = new DevExpress.XtraEditors.PictureEdit();
+			labelControl6 = new DevExpress.XtraEditors.LabelControl();
+			labelControl5 = new DevExpress.XtraEditors.LabelControl();
+			labelControl4 = new DevExpress.XtraEditors.LabelControl();
+			labelControl3 = new DevExpress.XtraEditors.LabelControl();
+			labelControl2 = new DevExpress.XtraEditors.LabelControl();
+			labelControl1 = new DevExpress.XtraEditors.LabelControl();
+			btnCancelar = new DevExpress.XtraEditors.SimpleButton();
+			cmdGravar = new DevExpress.XtraEditors.SimpleButton();
+			txtCodRefAntiga = new DevExpress.XtraEditors.TextEdit();
+			labelControl7 = new DevExpress.XtraEditors.LabelControl();
+			labelControl8 = new DevExpress.XtraEditors.LabelControl();
+			labelControl9 = new DevExpress.XtraEditors.LabelControl();
+			labelControl10 = new DevExpress.XtraEditors.LabelControl();
+			labelControl11 = new DevExpress.XtraEditors.LabelControl();
+			btnImagem = new DevExpress.XtraEditors.SimpleButton();
+			btnRemoverImagem = new DevExpress.XtraEditors.SimpleButton();
+			txtQtdEstoque = new DevExpress.XtraEditors.CalcEdit();
+			txtQtdEstMinimo = new DevExpress.XtraEditors.CalcEdit();
+			txtVlrCusto = new DevExpress.XtraEditors.CalcEdit();
+			txtVlrPercent = new DevExpress.XtraEditors.CalcEdit();
+			txtVlrUnitario = new DevExpress.XtraEditors.CalcEdit();
+			txtUltPreco = new DevExpress.XtraEditors.CalcEdit();
+			btnRemover = new DevExpress.XtraEditors.SimpleButton();
+			diagAbrir = new System.Windows.Forms.OpenFileDialog();
+			txtNCM = new DevExpress.XtraEditors.TextEdit();
+			labelControl12 = new DevExpress.XtraEditors.LabelControl();
+			labelControl13 = new DevExpress.XtraEditors.LabelControl();
+			txtVlrICMSST = new DevExpress.XtraEditors.CalcEdit();
+			((System.ComponentModel.ISupportInitialize)txtDesProduto.Properties).BeginInit();
+			((System.ComponentModel.ISupportInitialize)txtDesLocal.Properties).BeginInit();
+			((System.ComponentModel.ISupportInitialize)txtFornecedor.Properties).BeginInit();
+			((System.ComponentModel.ISupportInitialize)txtCodProduto.Properties).BeginInit();
+			((System.ComponentModel.ISupportInitialize)imgFoto.Properties).BeginInit();
+			((System.ComponentModel.ISupportInitialize)txtCodRefAntiga.Properties).BeginInit();
+			((System.ComponentModel.ISupportInitialize)txtQtdEstoque.Properties).BeginInit();
+			((System.ComponentModel.ISupportInitialize)txtQtdEstMinimo.Properties).BeginInit();
+			((System.ComponentModel.ISupportInitialize)txtVlrCusto.Properties).BeginInit();
+			((System.ComponentModel.ISupportInitialize)txtVlrPercent.Properties).BeginInit();
+			((System.ComponentModel.ISupportInitialize)txtVlrUnitario.Properties).BeginInit();
+			((System.ComponentModel.ISupportInitialize)txtUltPreco.Properties).BeginInit();
+			((System.ComponentModel.ISupportInitialize)txtNCM.Properties).BeginInit();
+			((System.ComponentModel.ISupportInitialize)txtVlrICMSST.Properties).BeginInit();
+			SuspendLayout();
 			// 
 			// txtDesProduto
 			// 
-			this.txtDesProduto.EnterMoveNextControl = true;
-			this.txtDesProduto.Location = new System.Drawing.Point(89, 38);
-			this.txtDesProduto.Name = "txtDesProduto";
-			this.txtDesProduto.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtDesProduto.Properties.Appearance.Options.UseFont = true;
-			this.txtDesProduto.Properties.MaxLength = 60;
-			this.txtDesProduto.Properties.ScrollBars = System.Windows.Forms.ScrollBars.None;
-			this.txtDesProduto.Size = new System.Drawing.Size(282, 58);
-			this.txtDesProduto.TabIndex = 1;
+			txtDesProduto.EnterMoveNextControl = true;
+			txtDesProduto.Location = new System.Drawing.Point(104, 47);
+			txtDesProduto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			txtDesProduto.Name = "txtDesProduto";
+			txtDesProduto.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			txtDesProduto.Properties.Appearance.Options.UseFont = true;
+			txtDesProduto.Properties.MaxLength = 100;
+			txtDesProduto.Properties.ScrollBars = System.Windows.Forms.ScrollBars.None;
+			txtDesProduto.Size = new System.Drawing.Size(329, 71);
+			txtDesProduto.TabIndex = 1;
 			// 
 			// txtDesLocal
 			// 
-			this.txtDesLocal.EnterMoveNextControl = true;
-			this.txtDesLocal.Location = new System.Drawing.Point(271, 99);
-			this.txtDesLocal.Name = "txtDesLocal";
-			this.txtDesLocal.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtDesLocal.Properties.Appearance.Options.UseFont = true;
-			this.txtDesLocal.Properties.MaxLength = 4;
-			this.txtDesLocal.Size = new System.Drawing.Size(100, 20);
-			this.txtDesLocal.TabIndex = 3;
+			txtDesLocal.EnterMoveNextControl = true;
+			txtDesLocal.Location = new System.Drawing.Point(316, 122);
+			txtDesLocal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			txtDesLocal.Name = "txtDesLocal";
+			txtDesLocal.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			txtDesLocal.Properties.Appearance.Options.UseFont = true;
+			txtDesLocal.Properties.MaxLength = 4;
+			txtDesLocal.Size = new System.Drawing.Size(117, 24);
+			txtDesLocal.TabIndex = 3;
 			// 
 			// txtFornecedor
 			// 
-			this.txtFornecedor.EnterMoveNextControl = true;
-			this.txtFornecedor.Location = new System.Drawing.Point(89, 102);
-			this.txtFornecedor.Name = "txtFornecedor";
-			this.txtFornecedor.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtFornecedor.Properties.Appearance.Options.UseFont = true;
-			this.txtFornecedor.Properties.MaxLength = 10;
-			this.txtFornecedor.Size = new System.Drawing.Size(100, 20);
-			this.txtFornecedor.TabIndex = 2;
+			txtFornecedor.EnterMoveNextControl = true;
+			txtFornecedor.Location = new System.Drawing.Point(104, 126);
+			txtFornecedor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			txtFornecedor.Name = "txtFornecedor";
+			txtFornecedor.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			txtFornecedor.Properties.Appearance.Options.UseFont = true;
+			txtFornecedor.Properties.MaxLength = 10;
+			txtFornecedor.Size = new System.Drawing.Size(117, 24);
+			txtFornecedor.TabIndex = 2;
 			// 
 			// txtCodProduto
 			// 
-			this.txtCodProduto.EnterMoveNextControl = true;
-			this.txtCodProduto.Location = new System.Drawing.Point(89, 12);
-			this.txtCodProduto.Name = "txtCodProduto";
-			this.txtCodProduto.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtCodProduto.Properties.Appearance.Options.UseFont = true;
-			this.txtCodProduto.Properties.MaxLength = 20;
-			this.txtCodProduto.Size = new System.Drawing.Size(282, 20);
-			this.txtCodProduto.TabIndex = 0;
+			txtCodProduto.EnterMoveNextControl = true;
+			txtCodProduto.Location = new System.Drawing.Point(104, 15);
+			txtCodProduto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			txtCodProduto.Name = "txtCodProduto";
+			txtCodProduto.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			txtCodProduto.Properties.Appearance.Options.UseFont = true;
+			txtCodProduto.Properties.MaxLength = 20;
+			txtCodProduto.Size = new System.Drawing.Size(329, 24);
+			txtCodProduto.TabIndex = 0;
 			// 
 			// imgFoto
 			// 
-			this.imgFoto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.imgFoto.Location = new System.Drawing.Point(378, 10);
-			this.imgFoto.Name = "imgFoto";
-			this.imgFoto.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-			this.imgFoto.Size = new System.Drawing.Size(261, 245);
-			this.imgFoto.TabIndex = 11;
+			imgFoto.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+			imgFoto.Location = new System.Drawing.Point(441, 12);
+			imgFoto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			imgFoto.Name = "imgFoto";
+			imgFoto.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+			imgFoto.Size = new System.Drawing.Size(304, 302);
+			imgFoto.TabIndex = 11;
 			// 
 			// labelControl6
 			// 
-			this.labelControl6.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl6.Location = new System.Drawing.Point(211, 185);
-			this.labelControl6.Name = "labelControl6";
-			this.labelControl6.Size = new System.Drawing.Size(54, 13);
-			this.labelControl6.TabIndex = 22;
-			this.labelControl6.Text = "Percentual:";
+			labelControl6.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			labelControl6.Appearance.Options.UseFont = true;
+			labelControl6.Location = new System.Drawing.Point(246, 228);
+			labelControl6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			labelControl6.Name = "labelControl6";
+			labelControl6.Size = new System.Drawing.Size(72, 17);
+			labelControl6.TabIndex = 22;
+			labelControl6.Text = "Percentual:";
 			// 
 			// labelControl5
 			// 
-			this.labelControl5.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl5.Location = new System.Drawing.Point(41, 156);
-			this.labelControl5.Name = "labelControl5";
-			this.labelControl5.Size = new System.Drawing.Size(42, 13);
-			this.labelControl5.TabIndex = 19;
-			this.labelControl5.Text = "Estoque:";
+			labelControl5.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			labelControl5.Appearance.Options.UseFont = true;
+			labelControl5.Location = new System.Drawing.Point(48, 192);
+			labelControl5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			labelControl5.Name = "labelControl5";
+			labelControl5.Size = new System.Drawing.Size(56, 17);
+			labelControl5.TabIndex = 19;
+			labelControl5.Text = "Estoque:";
 			// 
 			// labelControl4
 			// 
-			this.labelControl4.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl4.Location = new System.Drawing.Point(236, 102);
-			this.labelControl4.Name = "labelControl4";
-			this.labelControl4.Size = new System.Drawing.Size(29, 13);
-			this.labelControl4.TabIndex = 17;
-			this.labelControl4.Text = "Local:";
+			labelControl4.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			labelControl4.Appearance.Options.UseFont = true;
+			labelControl4.Location = new System.Drawing.Point(275, 126);
+			labelControl4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			labelControl4.Name = "labelControl4";
+			labelControl4.Size = new System.Drawing.Size(38, 17);
+			labelControl4.TabIndex = 17;
+			labelControl4.Text = "Local:";
 			// 
 			// labelControl3
 			// 
-			this.labelControl3.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl3.Location = new System.Drawing.Point(44, 106);
-			this.labelControl3.Name = "labelControl3";
-			this.labelControl3.Size = new System.Drawing.Size(39, 13);
-			this.labelControl3.TabIndex = 16;
-			this.labelControl3.Text = "Fornec.:";
+			labelControl3.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			labelControl3.Appearance.Options.UseFont = true;
+			labelControl3.Location = new System.Drawing.Point(51, 130);
+			labelControl3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			labelControl3.Name = "labelControl3";
+			labelControl3.Size = new System.Drawing.Size(52, 17);
+			labelControl3.TabIndex = 16;
+			labelControl3.Text = "Fornec.:";
 			// 
 			// labelControl2
 			// 
-			this.labelControl2.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl2.Location = new System.Drawing.Point(32, 41);
-			this.labelControl2.Name = "labelControl2";
-			this.labelControl2.Size = new System.Drawing.Size(51, 13);
-			this.labelControl2.TabIndex = 15;
-			this.labelControl2.Text = "Descrição:";
+			labelControl2.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			labelControl2.Appearance.Options.UseFont = true;
+			labelControl2.Location = new System.Drawing.Point(37, 50);
+			labelControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			labelControl2.Name = "labelControl2";
+			labelControl2.Size = new System.Drawing.Size(67, 17);
+			labelControl2.TabIndex = 15;
+			labelControl2.Text = "Descrição:";
 			// 
 			// labelControl1
 			// 
-			this.labelControl1.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl1.Location = new System.Drawing.Point(47, 15);
-			this.labelControl1.Name = "labelControl1";
-			this.labelControl1.Size = new System.Drawing.Size(36, 13);
-			this.labelControl1.TabIndex = 14;
-			this.labelControl1.Text = "Código:";
+			labelControl1.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			labelControl1.Appearance.Options.UseFont = true;
+			labelControl1.Location = new System.Drawing.Point(55, 18);
+			labelControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			labelControl1.Name = "labelControl1";
+			labelControl1.Size = new System.Drawing.Size(48, 17);
+			labelControl1.TabIndex = 14;
+			labelControl1.Text = "Código:";
 			// 
 			// btnCancelar
 			// 
-			this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnCancelar.Location = new System.Drawing.Point(564, 268);
-			this.btnCancelar.Name = "btnCancelar";
-			this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-			this.btnCancelar.TabIndex = 13;
-			this.btnCancelar.Text = "&Cancelar";
-			this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+			btnCancelar.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+			btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			btnCancelar.Location = new System.Drawing.Point(658, 330);
+			btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			btnCancelar.Name = "btnCancelar";
+			btnCancelar.Size = new System.Drawing.Size(88, 28);
+			btnCancelar.TabIndex = 13;
+			btnCancelar.Text = "&Cancelar";
+			btnCancelar.Click += btnCancelar_Click;
 			// 
 			// cmdGravar
 			// 
-			this.cmdGravar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.cmdGravar.Location = new System.Drawing.Point(402, 268);
-			this.cmdGravar.Name = "cmdGravar";
-			this.cmdGravar.Size = new System.Drawing.Size(75, 23);
-			this.cmdGravar.TabIndex = 12;
-			this.cmdGravar.Text = "&Gravar";
-			this.cmdGravar.Click += new System.EventHandler(this.cmdGravar_Click);
+			cmdGravar.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+			cmdGravar.Location = new System.Drawing.Point(469, 330);
+			cmdGravar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			cmdGravar.Name = "cmdGravar";
+			cmdGravar.Size = new System.Drawing.Size(88, 28);
+			cmdGravar.TabIndex = 12;
+			cmdGravar.Text = "&Gravar";
+			cmdGravar.Click += cmdGravar_Click;
 			// 
 			// txtCodRefAntiga
 			// 
-			this.txtCodRefAntiga.EnterMoveNextControl = true;
-			this.txtCodRefAntiga.Location = new System.Drawing.Point(89, 128);
-			this.txtCodRefAntiga.Name = "txtCodRefAntiga";
-			this.txtCodRefAntiga.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtCodRefAntiga.Properties.Appearance.Options.UseFont = true;
-			this.txtCodRefAntiga.Properties.MaxLength = 20;
-			this.txtCodRefAntiga.Size = new System.Drawing.Size(282, 20);
-			this.txtCodRefAntiga.TabIndex = 4;
+			txtCodRefAntiga.EnterMoveNextControl = true;
+			txtCodRefAntiga.Location = new System.Drawing.Point(104, 158);
+			txtCodRefAntiga.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			txtCodRefAntiga.Name = "txtCodRefAntiga";
+			txtCodRefAntiga.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			txtCodRefAntiga.Properties.Appearance.Options.UseFont = true;
+			txtCodRefAntiga.Properties.MaxLength = 20;
+			txtCodRefAntiga.Size = new System.Drawing.Size(329, 24);
+			txtCodRefAntiga.TabIndex = 4;
 			// 
 			// labelControl7
 			// 
-			this.labelControl7.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl7.Location = new System.Drawing.Point(21, 131);
-			this.labelControl7.Name = "labelControl7";
-			this.labelControl7.Size = new System.Drawing.Size(62, 13);
-			this.labelControl7.TabIndex = 18;
-			this.labelControl7.Text = "Ref. Anterior:";
+			labelControl7.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			labelControl7.Appearance.Options.UseFont = true;
+			labelControl7.Location = new System.Drawing.Point(24, 161);
+			labelControl7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			labelControl7.Name = "labelControl7";
+			labelControl7.Size = new System.Drawing.Size(84, 17);
+			labelControl7.TabIndex = 18;
+			labelControl7.Text = "Ref. Anterior:";
 			// 
 			// labelControl8
 			// 
-			this.labelControl8.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl8.Location = new System.Drawing.Point(32, 185);
-			this.labelControl8.Name = "labelControl8";
-			this.labelControl8.Size = new System.Drawing.Size(48, 13);
-			this.labelControl8.TabIndex = 21;
-			this.labelControl8.Text = "Vlr. Custo:";
+			labelControl8.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			labelControl8.Appearance.Options.UseFont = true;
+			labelControl8.Location = new System.Drawing.Point(37, 228);
+			labelControl8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			labelControl8.Name = "labelControl8";
+			labelControl8.Size = new System.Drawing.Size(65, 17);
+			labelControl8.TabIndex = 21;
+			labelControl8.Text = "Vlr. Custo:";
 			// 
 			// labelControl9
 			// 
-			this.labelControl9.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl9.Location = new System.Drawing.Point(208, 156);
-			this.labelControl9.Name = "labelControl9";
-			this.labelControl9.Size = new System.Drawing.Size(80, 13);
-			this.labelControl9.TabIndex = 20;
-			this.labelControl9.Text = "Estoque Mínimo:";
+			labelControl9.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			labelControl9.Appearance.Options.UseFont = true;
+			labelControl9.Location = new System.Drawing.Point(243, 192);
+			labelControl9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			labelControl9.Name = "labelControl9";
+			labelControl9.Size = new System.Drawing.Size(104, 17);
+			labelControl9.TabIndex = 20;
+			labelControl9.Text = "Estoque Mínimo:";
 			// 
 			// labelControl10
 			// 
-			this.labelControl10.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl10.Location = new System.Drawing.Point(28, 211);
-			this.labelControl10.Name = "labelControl10";
-			this.labelControl10.Size = new System.Drawing.Size(52, 13);
-			this.labelControl10.TabIndex = 23;
-			this.labelControl10.Text = "Vlr. Venda:";
+			labelControl10.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			labelControl10.Appearance.Options.UseFont = true;
+			labelControl10.Location = new System.Drawing.Point(33, 260);
+			labelControl10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			labelControl10.Name = "labelControl10";
+			labelControl10.Size = new System.Drawing.Size(70, 17);
+			labelControl10.TabIndex = 23;
+			labelControl10.Text = "Vlr. Venda:";
 			// 
 			// labelControl11
 			// 
-			this.labelControl11.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl11.Location = new System.Drawing.Point(215, 211);
-			this.labelControl11.Name = "labelControl11";
-			this.labelControl11.Size = new System.Drawing.Size(50, 13);
-			this.labelControl11.TabIndex = 24;
-			this.labelControl11.Text = "Ult. Preço:";
+			labelControl11.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			labelControl11.Appearance.Options.UseFont = true;
+			labelControl11.Location = new System.Drawing.Point(251, 260);
+			labelControl11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			labelControl11.Name = "labelControl11";
+			labelControl11.Size = new System.Drawing.Size(66, 17);
+			labelControl11.TabIndex = 24;
+			labelControl11.Text = "Ult. Preço:";
 			// 
 			// btnImagem
 			// 
-			this.btnImagem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnImagem.Location = new System.Drawing.Point(294, 268);
-			this.btnImagem.Name = "btnImagem";
-			this.btnImagem.Size = new System.Drawing.Size(99, 23);
-			this.btnImagem.TabIndex = 25;
-			this.btnImagem.Text = "&Importar Imagem";
-			this.btnImagem.Click += new System.EventHandler(this.btnImagem_Click);
+			btnImagem.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+			btnImagem.Location = new System.Drawing.Point(343, 330);
+			btnImagem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			btnImagem.Name = "btnImagem";
+			btnImagem.Size = new System.Drawing.Size(115, 28);
+			btnImagem.TabIndex = 25;
+			btnImagem.Text = "&Importar Imagem";
+			btnImagem.Click += btnImagem_Click;
 			// 
 			// btnRemoverImagem
 			// 
-			this.btnRemoverImagem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnRemoverImagem.Enabled = false;
-			this.btnRemoverImagem.Location = new System.Drawing.Point(189, 268);
-			this.btnRemoverImagem.Name = "btnRemoverImagem";
-			this.btnRemoverImagem.Size = new System.Drawing.Size(99, 23);
-			this.btnRemoverImagem.TabIndex = 26;
-			this.btnRemoverImagem.Text = "&Remover Imagem";
+			btnRemoverImagem.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+			btnRemoverImagem.Enabled = false;
+			btnRemoverImagem.Location = new System.Drawing.Point(220, 330);
+			btnRemoverImagem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			btnRemoverImagem.Name = "btnRemoverImagem";
+			btnRemoverImagem.Size = new System.Drawing.Size(115, 28);
+			btnRemoverImagem.TabIndex = 26;
+			btnRemoverImagem.Text = "&Remover Imagem";
 			// 
 			// txtQtdEstoque
 			// 
-			this.txtQtdEstoque.EnterMoveNextControl = true;
-			this.txtQtdEstoque.Location = new System.Drawing.Point(89, 154);
-			this.txtQtdEstoque.Name = "txtQtdEstoque";
-			this.txtQtdEstoque.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtQtdEstoque.Properties.Appearance.Options.UseFont = true;
-			this.txtQtdEstoque.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-			this.txtQtdEstoque.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-			this.txtQtdEstoque.Size = new System.Drawing.Size(77, 20);
-			this.txtQtdEstoque.TabIndex = 5;
+			txtQtdEstoque.EnterMoveNextControl = true;
+			txtQtdEstoque.Location = new System.Drawing.Point(104, 190);
+			txtQtdEstoque.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			txtQtdEstoque.Name = "txtQtdEstoque";
+			txtQtdEstoque.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			txtQtdEstoque.Properties.Appearance.Options.UseFont = true;
+			txtQtdEstoque.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+			txtQtdEstoque.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+			txtQtdEstoque.Size = new System.Drawing.Size(90, 24);
+			txtQtdEstoque.TabIndex = 5;
 			// 
 			// txtQtdEstMinimo
 			// 
-			this.txtQtdEstMinimo.EnterMoveNextControl = true;
-			this.txtQtdEstMinimo.Location = new System.Drawing.Point(294, 153);
-			this.txtQtdEstMinimo.Name = "txtQtdEstMinimo";
-			this.txtQtdEstMinimo.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtQtdEstMinimo.Properties.Appearance.Options.UseFont = true;
-			this.txtQtdEstMinimo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-			this.txtQtdEstMinimo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-			this.txtQtdEstMinimo.Size = new System.Drawing.Size(77, 20);
-			this.txtQtdEstMinimo.TabIndex = 6;
+			txtQtdEstMinimo.EnterMoveNextControl = true;
+			txtQtdEstMinimo.Location = new System.Drawing.Point(343, 188);
+			txtQtdEstMinimo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			txtQtdEstMinimo.Name = "txtQtdEstMinimo";
+			txtQtdEstMinimo.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			txtQtdEstMinimo.Properties.Appearance.Options.UseFont = true;
+			txtQtdEstMinimo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+			txtQtdEstMinimo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+			txtQtdEstMinimo.Size = new System.Drawing.Size(90, 24);
+			txtQtdEstMinimo.TabIndex = 6;
 			// 
 			// txtVlrCusto
 			// 
-			this.txtVlrCusto.EnterMoveNextControl = true;
-			this.txtVlrCusto.Location = new System.Drawing.Point(89, 182);
-			this.txtVlrCusto.Name = "txtVlrCusto";
-			this.txtVlrCusto.Properties.Appearance.BackColor = System.Drawing.Color.White;
-			this.txtVlrCusto.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtVlrCusto.Properties.Appearance.Options.UseBackColor = true;
-			this.txtVlrCusto.Properties.Appearance.Options.UseFont = true;
-			this.txtVlrCusto.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-			this.txtVlrCusto.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-			this.txtVlrCusto.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-			this.txtVlrCusto.Properties.Mask.EditMask = "n2";
-			this.txtVlrCusto.Properties.Mask.UseMaskAsDisplayFormat = true;
-			this.txtVlrCusto.Size = new System.Drawing.Size(110, 20);
-			this.txtVlrCusto.TabIndex = 7;
+			txtVlrCusto.EnterMoveNextControl = true;
+			txtVlrCusto.Location = new System.Drawing.Point(104, 224);
+			txtVlrCusto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			txtVlrCusto.Name = "txtVlrCusto";
+			txtVlrCusto.Properties.Appearance.BackColor = System.Drawing.Color.White;
+			txtVlrCusto.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			txtVlrCusto.Properties.Appearance.Options.UseBackColor = true;
+			txtVlrCusto.Properties.Appearance.Options.UseFont = true;
+			txtVlrCusto.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+			txtVlrCusto.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+			txtVlrCusto.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+			txtVlrCusto.Properties.Mask.EditMask = "n2";
+			txtVlrCusto.Properties.Mask.UseMaskAsDisplayFormat = true;
+			txtVlrCusto.Size = new System.Drawing.Size(128, 24);
+			txtVlrCusto.TabIndex = 7;
 			// 
 			// txtVlrPercent
 			// 
-			this.txtVlrPercent.EnterMoveNextControl = true;
-			this.txtVlrPercent.Location = new System.Drawing.Point(271, 182);
-			this.txtVlrPercent.Name = "txtVlrPercent";
-			this.txtVlrPercent.Properties.Appearance.BackColor = System.Drawing.Color.White;
-			this.txtVlrPercent.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtVlrPercent.Properties.Appearance.Options.UseBackColor = true;
-			this.txtVlrPercent.Properties.Appearance.Options.UseFont = true;
-			this.txtVlrPercent.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-			this.txtVlrPercent.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-			this.txtVlrPercent.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-			this.txtVlrPercent.Properties.Mask.EditMask = "n2";
-			this.txtVlrPercent.Properties.Mask.UseMaskAsDisplayFormat = true;
-			this.txtVlrPercent.Size = new System.Drawing.Size(100, 20);
-			this.txtVlrPercent.TabIndex = 8;
-			this.txtVlrPercent.Validated += new System.EventHandler(this.txtVlrPercent_Validated);
+			txtVlrPercent.EnterMoveNextControl = true;
+			txtVlrPercent.Location = new System.Drawing.Point(316, 224);
+			txtVlrPercent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			txtVlrPercent.Name = "txtVlrPercent";
+			txtVlrPercent.Properties.Appearance.BackColor = System.Drawing.Color.White;
+			txtVlrPercent.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			txtVlrPercent.Properties.Appearance.Options.UseBackColor = true;
+			txtVlrPercent.Properties.Appearance.Options.UseFont = true;
+			txtVlrPercent.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+			txtVlrPercent.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+			txtVlrPercent.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+			txtVlrPercent.Properties.Mask.EditMask = "n2";
+			txtVlrPercent.Properties.Mask.UseMaskAsDisplayFormat = true;
+			txtVlrPercent.Size = new System.Drawing.Size(117, 24);
+			txtVlrPercent.TabIndex = 8;
+			txtVlrPercent.Validated += txtVlrPercent_Validated;
 			// 
 			// txtVlrUnitario
 			// 
-			this.txtVlrUnitario.EnterMoveNextControl = true;
-			this.txtVlrUnitario.Location = new System.Drawing.Point(89, 208);
-			this.txtVlrUnitario.Name = "txtVlrUnitario";
-			this.txtVlrUnitario.Properties.Appearance.BackColor = System.Drawing.Color.White;
-			this.txtVlrUnitario.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtVlrUnitario.Properties.Appearance.Options.UseBackColor = true;
-			this.txtVlrUnitario.Properties.Appearance.Options.UseFont = true;
-			this.txtVlrUnitario.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-			this.txtVlrUnitario.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-			this.txtVlrUnitario.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-			this.txtVlrUnitario.Properties.Mask.EditMask = "c";
-			this.txtVlrUnitario.Properties.Mask.UseMaskAsDisplayFormat = true;
-			this.txtVlrUnitario.Size = new System.Drawing.Size(110, 20);
-			this.txtVlrUnitario.TabIndex = 9;
+			txtVlrUnitario.EnterMoveNextControl = true;
+			txtVlrUnitario.Location = new System.Drawing.Point(104, 256);
+			txtVlrUnitario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			txtVlrUnitario.Name = "txtVlrUnitario";
+			txtVlrUnitario.Properties.Appearance.BackColor = System.Drawing.Color.White;
+			txtVlrUnitario.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			txtVlrUnitario.Properties.Appearance.Options.UseBackColor = true;
+			txtVlrUnitario.Properties.Appearance.Options.UseFont = true;
+			txtVlrUnitario.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+			txtVlrUnitario.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+			txtVlrUnitario.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+			txtVlrUnitario.Properties.Mask.EditMask = "c";
+			txtVlrUnitario.Properties.Mask.UseMaskAsDisplayFormat = true;
+			txtVlrUnitario.Size = new System.Drawing.Size(128, 24);
+			txtVlrUnitario.TabIndex = 9;
 			// 
 			// txtUltPreco
 			// 
-			this.txtUltPreco.EnterMoveNextControl = true;
-			this.txtUltPreco.Location = new System.Drawing.Point(271, 208);
-			this.txtUltPreco.Name = "txtUltPreco";
-			this.txtUltPreco.Properties.Appearance.BackColor = System.Drawing.Color.White;
-			this.txtUltPreco.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtUltPreco.Properties.Appearance.Options.UseBackColor = true;
-			this.txtUltPreco.Properties.Appearance.Options.UseFont = true;
-			this.txtUltPreco.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-			this.txtUltPreco.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-			this.txtUltPreco.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-			this.txtUltPreco.Properties.Mask.EditMask = "n2";
-			this.txtUltPreco.Properties.Mask.UseMaskAsDisplayFormat = true;
-			this.txtUltPreco.Size = new System.Drawing.Size(100, 20);
-			this.txtUltPreco.TabIndex = 10;
+			txtUltPreco.EnterMoveNextControl = true;
+			txtUltPreco.Location = new System.Drawing.Point(316, 256);
+			txtUltPreco.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			txtUltPreco.Name = "txtUltPreco";
+			txtUltPreco.Properties.Appearance.BackColor = System.Drawing.Color.White;
+			txtUltPreco.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			txtUltPreco.Properties.Appearance.Options.UseBackColor = true;
+			txtUltPreco.Properties.Appearance.Options.UseFont = true;
+			txtUltPreco.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+			txtUltPreco.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+			txtUltPreco.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+			txtUltPreco.Properties.Mask.EditMask = "n2";
+			txtUltPreco.Properties.Mask.UseMaskAsDisplayFormat = true;
+			txtUltPreco.Size = new System.Drawing.Size(117, 24);
+			txtUltPreco.TabIndex = 10;
 			// 
 			// btnRemover
 			// 
-			this.btnRemover.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnRemover.Enabled = false;
-			this.btnRemover.Location = new System.Drawing.Point(483, 268);
-			this.btnRemover.Name = "btnRemover";
-			this.btnRemover.Size = new System.Drawing.Size(75, 23);
-			this.btnRemover.TabIndex = 27;
-			this.btnRemover.Text = "Apagar Prod.";
-			this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
+			btnRemover.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+			btnRemover.Enabled = false;
+			btnRemover.Location = new System.Drawing.Point(564, 330);
+			btnRemover.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			btnRemover.Name = "btnRemover";
+			btnRemover.Size = new System.Drawing.Size(88, 28);
+			btnRemover.TabIndex = 27;
+			btnRemover.Text = "Apagar Prod.";
+			btnRemover.Click += btnRemover_Click;
 			// 
 			// diagAbrir
 			// 
-			this.diagAbrir.Filter = "Imagens (*.bmp, *.jpg, *.png, *.gif)|*.bmp;*.jpg;*.png;*.gif";
+			diagAbrir.Filter = "Imagens (*.bmp, *.jpg, *.png, *.gif)|*.bmp;*.jpg;*.png;*.gif";
 			// 
 			// txtNCM
 			// 
-			this.txtNCM.EnterMoveNextControl = true;
-			this.txtNCM.Location = new System.Drawing.Point(89, 234);
-			this.txtNCM.Name = "txtNCM";
-			this.txtNCM.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtNCM.Properties.Appearance.Options.UseFont = true;
-			this.txtNCM.Properties.Mask.EditMask = "\\d{8}";
-			this.txtNCM.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
-			this.txtNCM.Properties.MaxLength = 10;
-			this.txtNCM.Size = new System.Drawing.Size(100, 20);
-			this.txtNCM.TabIndex = 11;
+			txtNCM.EnterMoveNextControl = true;
+			txtNCM.Location = new System.Drawing.Point(104, 288);
+			txtNCM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			txtNCM.Name = "txtNCM";
+			txtNCM.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			txtNCM.Properties.Appearance.Options.UseFont = true;
+			txtNCM.Properties.Mask.EditMask = "\\d{8}";
+			txtNCM.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+			txtNCM.Properties.MaxLength = 10;
+			txtNCM.Size = new System.Drawing.Size(117, 24);
+			txtNCM.TabIndex = 11;
 			// 
 			// labelControl12
 			// 
-			this.labelControl12.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl12.Location = new System.Drawing.Point(53, 238);
-			this.labelControl12.Name = "labelControl12";
-			this.labelControl12.Size = new System.Drawing.Size(27, 13);
-			this.labelControl12.TabIndex = 29;
-			this.labelControl12.Text = "NCM:";
+			labelControl12.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			labelControl12.Appearance.Options.UseFont = true;
+			labelControl12.Location = new System.Drawing.Point(62, 293);
+			labelControl12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			labelControl12.Name = "labelControl12";
+			labelControl12.Size = new System.Drawing.Size(34, 17);
+			labelControl12.TabIndex = 29;
+			labelControl12.Text = "NCM:";
 			// 
 			// labelControl13
 			// 
-			this.labelControl13.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl13.Location = new System.Drawing.Point(220, 238);
-			this.labelControl13.Name = "labelControl13";
-			this.labelControl13.Size = new System.Drawing.Size(45, 13);
-			this.labelControl13.TabIndex = 31;
-			this.labelControl13.Text = "Impostos:";
+			labelControl13.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			labelControl13.Appearance.Options.UseFont = true;
+			labelControl13.Location = new System.Drawing.Point(257, 293);
+			labelControl13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			labelControl13.Name = "labelControl13";
+			labelControl13.Size = new System.Drawing.Size(60, 17);
+			labelControl13.TabIndex = 31;
+			labelControl13.Text = "Impostos:";
 			// 
 			// txtVlrICMSST
 			// 
-			this.txtVlrICMSST.EnterMoveNextControl = true;
-			this.txtVlrICMSST.Location = new System.Drawing.Point(271, 235);
-			this.txtVlrICMSST.Name = "txtVlrICMSST";
-			this.txtVlrICMSST.Properties.Appearance.BackColor = System.Drawing.Color.White;
-			this.txtVlrICMSST.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtVlrICMSST.Properties.Appearance.Options.UseBackColor = true;
-			this.txtVlrICMSST.Properties.Appearance.Options.UseFont = true;
-			this.txtVlrICMSST.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-			this.txtVlrICMSST.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-			this.txtVlrICMSST.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-			this.txtVlrICMSST.Properties.Mask.EditMask = "n2";
-			this.txtVlrICMSST.Properties.Mask.UseMaskAsDisplayFormat = true;
-			this.txtVlrICMSST.Size = new System.Drawing.Size(100, 20);
-			this.txtVlrICMSST.TabIndex = 32;
+			txtVlrICMSST.EnterMoveNextControl = true;
+			txtVlrICMSST.Location = new System.Drawing.Point(316, 289);
+			txtVlrICMSST.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			txtVlrICMSST.Name = "txtVlrICMSST";
+			txtVlrICMSST.Properties.Appearance.BackColor = System.Drawing.Color.White;
+			txtVlrICMSST.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			txtVlrICMSST.Properties.Appearance.Options.UseBackColor = true;
+			txtVlrICMSST.Properties.Appearance.Options.UseFont = true;
+			txtVlrICMSST.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+			txtVlrICMSST.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+			txtVlrICMSST.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+			txtVlrICMSST.Properties.Mask.EditMask = "n2";
+			txtVlrICMSST.Properties.Mask.UseMaskAsDisplayFormat = true;
+			txtVlrICMSST.Size = new System.Drawing.Size(117, 24);
+			txtVlrICMSST.TabIndex = 32;
 			// 
 			// frmProduto
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.CancelButton = this.btnCancelar;
-			this.ClientSize = new System.Drawing.Size(651, 303);
-			this.Controls.Add(this.txtVlrICMSST);
-			this.Controls.Add(this.labelControl13);
-			this.Controls.Add(this.txtNCM);
-			this.Controls.Add(this.labelControl12);
-			this.Controls.Add(this.btnRemover);
-			this.Controls.Add(this.btnRemoverImagem);
-			this.Controls.Add(this.btnImagem);
-			this.Controls.Add(this.labelControl10);
-			this.Controls.Add(this.labelControl11);
-			this.Controls.Add(this.labelControl9);
-			this.Controls.Add(this.labelControl8);
-			this.Controls.Add(this.txtCodRefAntiga);
-			this.Controls.Add(this.labelControl7);
-			this.Controls.Add(this.cmdGravar);
-			this.Controls.Add(this.btnCancelar);
-			this.Controls.Add(this.txtDesProduto);
-			this.Controls.Add(this.txtDesLocal);
-			this.Controls.Add(this.txtFornecedor);
-			this.Controls.Add(this.txtCodProduto);
-			this.Controls.Add(this.imgFoto);
-			this.Controls.Add(this.labelControl6);
-			this.Controls.Add(this.labelControl5);
-			this.Controls.Add(this.labelControl4);
-			this.Controls.Add(this.labelControl3);
-			this.Controls.Add(this.labelControl2);
-			this.Controls.Add(this.labelControl1);
-			this.Controls.Add(this.txtQtdEstoque);
-			this.Controls.Add(this.txtQtdEstMinimo);
-			this.Controls.Add(this.txtVlrCusto);
-			this.Controls.Add(this.txtVlrPercent);
-			this.Controls.Add(this.txtVlrUnitario);
-			this.Controls.Add(this.txtUltPreco);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			this.KeyPreview = true;
-			this.Name = "frmProduto";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Cadastro de Produto";
-			((System.ComponentModel.ISupportInitialize)(this.txtDesProduto.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtDesLocal.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtFornecedor.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtCodProduto.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.imgFoto.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtCodRefAntiga.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtQtdEstoque.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtQtdEstMinimo.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtVlrCusto.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtVlrPercent.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtVlrUnitario.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtUltPreco.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtNCM.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtVlrICMSST.Properties)).EndInit();
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			CancelButton = btnCancelar;
+			ClientSize = new System.Drawing.Size(760, 373);
+			Controls.Add(txtVlrICMSST);
+			Controls.Add(labelControl13);
+			Controls.Add(txtNCM);
+			Controls.Add(labelControl12);
+			Controls.Add(btnRemover);
+			Controls.Add(btnRemoverImagem);
+			Controls.Add(btnImagem);
+			Controls.Add(labelControl10);
+			Controls.Add(labelControl11);
+			Controls.Add(labelControl9);
+			Controls.Add(labelControl8);
+			Controls.Add(txtCodRefAntiga);
+			Controls.Add(labelControl7);
+			Controls.Add(cmdGravar);
+			Controls.Add(btnCancelar);
+			Controls.Add(txtDesProduto);
+			Controls.Add(txtDesLocal);
+			Controls.Add(txtFornecedor);
+			Controls.Add(txtCodProduto);
+			Controls.Add(imgFoto);
+			Controls.Add(labelControl6);
+			Controls.Add(labelControl5);
+			Controls.Add(labelControl4);
+			Controls.Add(labelControl3);
+			Controls.Add(labelControl2);
+			Controls.Add(labelControl1);
+			Controls.Add(txtQtdEstoque);
+			Controls.Add(txtQtdEstMinimo);
+			Controls.Add(txtVlrCusto);
+			Controls.Add(txtVlrPercent);
+			Controls.Add(txtVlrUnitario);
+			Controls.Add(txtUltPreco);
+			FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			KeyPreview = true;
+			Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			Name = "frmProduto";
+			StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			Text = "Cadastro de Produto";
+			((System.ComponentModel.ISupportInitialize)txtDesProduto.Properties).EndInit();
+			((System.ComponentModel.ISupportInitialize)txtDesLocal.Properties).EndInit();
+			((System.ComponentModel.ISupportInitialize)txtFornecedor.Properties).EndInit();
+			((System.ComponentModel.ISupportInitialize)txtCodProduto.Properties).EndInit();
+			((System.ComponentModel.ISupportInitialize)imgFoto.Properties).EndInit();
+			((System.ComponentModel.ISupportInitialize)txtCodRefAntiga.Properties).EndInit();
+			((System.ComponentModel.ISupportInitialize)txtQtdEstoque.Properties).EndInit();
+			((System.ComponentModel.ISupportInitialize)txtQtdEstMinimo.Properties).EndInit();
+			((System.ComponentModel.ISupportInitialize)txtVlrCusto.Properties).EndInit();
+			((System.ComponentModel.ISupportInitialize)txtVlrPercent.Properties).EndInit();
+			((System.ComponentModel.ISupportInitialize)txtVlrUnitario.Properties).EndInit();
+			((System.ComponentModel.ISupportInitialize)txtUltPreco.Properties).EndInit();
+			((System.ComponentModel.ISupportInitialize)txtNCM.Properties).EndInit();
+			((System.ComponentModel.ISupportInitialize)txtVlrICMSST.Properties).EndInit();
+			ResumeLayout(false);
+			PerformLayout();
 
 		}
 

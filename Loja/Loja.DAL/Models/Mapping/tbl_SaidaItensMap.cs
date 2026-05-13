@@ -28,7 +28,7 @@ namespace Loja.DAL.Models.Mapping
 
 			this.Property(t => t.DesProduto)
 				.IsRequired()
-				.HasMaxLength(60);
+				.HasMaxLength(100);
 
 			// Table & Column Mappings
 			this.ToTable("tbl_SaidaItens");

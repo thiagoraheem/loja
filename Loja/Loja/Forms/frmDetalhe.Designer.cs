@@ -20,259 +20,281 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+		#region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
-			this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-			this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-			this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-			this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-			this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-			this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-			this.imgFoto = new DevExpress.XtraEditors.PictureEdit();
-			this.txtCodProduto = new DevExpress.XtraEditors.TextEdit();
-			this.txtFornecedor = new DevExpress.XtraEditors.TextEdit();
-			this.txtDesLocal = new DevExpress.XtraEditors.TextEdit();
-			this.txtQtdEstoque = new DevExpress.XtraEditors.TextEdit();
-			this.txtDesProduto = new DevExpress.XtraEditors.MemoEdit();
-			this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-			this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-			this.txtDesconto = new DevExpress.XtraEditors.CalcEdit();
-			this.txtVlrUnitario = new DevExpress.XtraEditors.TextEdit();
-			((System.ComponentModel.ISupportInitialize)(this.imgFoto.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtCodProduto.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtFornecedor.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtDesLocal.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtQtdEstoque.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtDesProduto.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
-			this.groupControl1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.txtDesconto.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtVlrUnitario.Properties)).BeginInit();
-			this.SuspendLayout();
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
+			labelControl1 = new DevExpress.XtraEditors.LabelControl();
+			labelControl2 = new DevExpress.XtraEditors.LabelControl();
+			labelControl3 = new DevExpress.XtraEditors.LabelControl();
+			labelControl4 = new DevExpress.XtraEditors.LabelControl();
+			labelControl5 = new DevExpress.XtraEditors.LabelControl();
+			labelControl6 = new DevExpress.XtraEditors.LabelControl();
+			imgFoto = new DevExpress.XtraEditors.PictureEdit();
+			txtCodProduto = new DevExpress.XtraEditors.TextEdit();
+			txtFornecedor = new DevExpress.XtraEditors.TextEdit();
+			txtDesLocal = new DevExpress.XtraEditors.TextEdit();
+			txtQtdEstoque = new DevExpress.XtraEditors.TextEdit();
+			txtDesProduto = new DevExpress.XtraEditors.MemoEdit();
+			groupControl1 = new DevExpress.XtraEditors.GroupControl();
+			labelControl7 = new DevExpress.XtraEditors.LabelControl();
+			txtDesconto = new DevExpress.XtraEditors.CalcEdit();
+			txtVlrUnitario = new DevExpress.XtraEditors.TextEdit();
+			((System.ComponentModel.ISupportInitialize)imgFoto.Properties).BeginInit();
+			((System.ComponentModel.ISupportInitialize)txtCodProduto.Properties).BeginInit();
+			((System.ComponentModel.ISupportInitialize)txtFornecedor.Properties).BeginInit();
+			((System.ComponentModel.ISupportInitialize)txtDesLocal.Properties).BeginInit();
+			((System.ComponentModel.ISupportInitialize)txtQtdEstoque.Properties).BeginInit();
+			((System.ComponentModel.ISupportInitialize)txtDesProduto.Properties).BeginInit();
+			((System.ComponentModel.ISupportInitialize)groupControl1).BeginInit();
+			groupControl1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)txtDesconto.Properties).BeginInit();
+			((System.ComponentModel.ISupportInitialize)txtVlrUnitario.Properties).BeginInit();
+			SuspendLayout();
 			// 
 			// labelControl1
 			// 
-			this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl1.Location = new System.Drawing.Point(52, 34);
-			this.labelControl1.Name = "labelControl1";
-			this.labelControl1.Size = new System.Drawing.Size(74, 23);
-			this.labelControl1.TabIndex = 0;
-			this.labelControl1.Text = "Código:";
+			labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+			labelControl1.Appearance.Options.UseFont = true;
+			labelControl1.Location = new System.Drawing.Point(51, 42);
+			labelControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			labelControl1.Name = "labelControl1";
+			labelControl1.Size = new System.Drawing.Size(92, 29);
+			labelControl1.TabIndex = 0;
+			labelControl1.Text = "Código:";
 			// 
 			// labelControl2
 			// 
-			this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl2.Location = new System.Drawing.Point(27, 91);
-			this.labelControl2.Name = "labelControl2";
-			this.labelControl2.Size = new System.Drawing.Size(99, 23);
-			this.labelControl2.TabIndex = 1;
-			this.labelControl2.Text = "Descrição:";
+			labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+			labelControl2.Appearance.Options.UseFont = true;
+			labelControl2.Location = new System.Drawing.Point(18, 112);
+			labelControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			labelControl2.Name = "labelControl2";
+			labelControl2.Size = new System.Drawing.Size(125, 29);
+			labelControl2.TabIndex = 1;
+			labelControl2.Text = "Descrição:";
 			// 
 			// labelControl3
 			// 
-			this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl3.Location = new System.Drawing.Point(49, 179);
-			this.labelControl3.Name = "labelControl3";
-			this.labelControl3.Size = new System.Drawing.Size(77, 23);
-			this.labelControl3.TabIndex = 2;
-			this.labelControl3.Text = "Fornec.:";
+			labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+			labelControl3.Appearance.Options.UseFont = true;
+			labelControl3.Location = new System.Drawing.Point(45, 264);
+			labelControl3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			labelControl3.Name = "labelControl3";
+			labelControl3.Size = new System.Drawing.Size(98, 29);
+			labelControl3.TabIndex = 2;
+			labelControl3.Text = "Fornec.:";
 			// 
 			// labelControl4
 			// 
-			this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl4.Location = new System.Drawing.Point(311, 180);
-			this.labelControl4.Name = "labelControl4";
-			this.labelControl4.Size = new System.Drawing.Size(57, 23);
-			this.labelControl4.TabIndex = 3;
-			this.labelControl4.Text = "Local:";
+			labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+			labelControl4.Appearance.Options.UseFont = true;
+			labelControl4.Location = new System.Drawing.Point(358, 264);
+			labelControl4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			labelControl4.Name = "labelControl4";
+			labelControl4.Size = new System.Drawing.Size(72, 29);
+			labelControl4.TabIndex = 3;
+			labelControl4.Text = "Local:";
 			// 
 			// labelControl5
 			// 
-			this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl5.Location = new System.Drawing.Point(42, 245);
-			this.labelControl5.Name = "labelControl5";
-			this.labelControl5.Size = new System.Drawing.Size(84, 23);
-			this.labelControl5.TabIndex = 4;
-			this.labelControl5.Text = "Estoque:";
+			labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+			labelControl5.Appearance.Options.UseFont = true;
+			labelControl5.Location = new System.Drawing.Point(38, 330);
+			labelControl5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			labelControl5.Name = "labelControl5";
+			labelControl5.Size = new System.Drawing.Size(105, 29);
+			labelControl5.TabIndex = 4;
+			labelControl5.Text = "Estoque:";
 			// 
 			// labelControl6
 			// 
-			this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl6.Location = new System.Drawing.Point(224, 245);
-			this.labelControl6.Name = "labelControl6";
-			this.labelControl6.Size = new System.Drawing.Size(60, 23);
-			this.labelControl6.TabIndex = 5;
-			this.labelControl6.Text = "Preço:";
+			labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+			labelControl6.Appearance.Options.UseFont = true;
+			labelControl6.Location = new System.Drawing.Point(254, 330);
+			labelControl6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			labelControl6.Name = "labelControl6";
+			labelControl6.Size = new System.Drawing.Size(77, 29);
+			labelControl6.TabIndex = 5;
+			labelControl6.Text = "Preço:";
 			// 
 			// imgFoto
 			// 
-			this.imgFoto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.imgFoto.Location = new System.Drawing.Point(480, 29);
-			this.imgFoto.Name = "imgFoto";
-			this.imgFoto.Properties.AllowScrollViaMouseDrag = true;
-			this.imgFoto.Properties.AllowZoomOnMouseWheel = DevExpress.Utils.DefaultBoolean.True;
-			this.imgFoto.Properties.ReadOnly = true;
-			this.imgFoto.Properties.ShowScrollBars = true;
-			this.imgFoto.Properties.ShowZoomSubMenu = DevExpress.Utils.DefaultBoolean.True;
-			this.imgFoto.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-			this.imgFoto.Properties.ZoomingOperationMode = DevExpress.XtraEditors.Repository.ZoomingOperationMode.MouseWheel;
-			this.imgFoto.Size = new System.Drawing.Size(327, 327);
-			this.imgFoto.TabIndex = 6;
+			imgFoto.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+			imgFoto.Location = new System.Drawing.Point(560, 36);
+			imgFoto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			imgFoto.Name = "imgFoto";
+			imgFoto.Properties.AllowScrollViaMouseDrag = true;
+			imgFoto.Properties.AllowZoom = DevExpress.Utils.DefaultBoolean.True;
+			imgFoto.Properties.ReadOnly = true;
+			imgFoto.Properties.ShowScrollBars = true;
+			imgFoto.Properties.ShowZoomSubMenu = DevExpress.Utils.DefaultBoolean.True;
+			imgFoto.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+			imgFoto.Properties.ZoomingOperationMode = DevExpress.XtraEditors.Repository.ZoomingOperationMode.MouseWheel;
+			imgFoto.Size = new System.Drawing.Size(382, 461);
+			imgFoto.TabIndex = 6;
 			// 
 			// txtCodProduto
 			// 
-			this.txtCodProduto.Location = new System.Drawing.Point(132, 31);
-			this.txtCodProduto.Name = "txtCodProduto";
-			this.txtCodProduto.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtCodProduto.Properties.Appearance.Options.UseFont = true;
-			this.txtCodProduto.Properties.ReadOnly = true;
-			this.txtCodProduto.Size = new System.Drawing.Size(342, 30);
-			this.txtCodProduto.TabIndex = 7;
+			txtCodProduto.Location = new System.Drawing.Point(154, 38);
+			txtCodProduto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			txtCodProduto.Name = "txtCodProduto";
+			txtCodProduto.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+			txtCodProduto.Properties.Appearance.Options.UseFont = true;
+			txtCodProduto.Properties.ReadOnly = true;
+			txtCodProduto.Size = new System.Drawing.Size(399, 36);
+			txtCodProduto.TabIndex = 7;
 			// 
 			// txtFornecedor
 			// 
-			this.txtFornecedor.Location = new System.Drawing.Point(132, 177);
-			this.txtFornecedor.Name = "txtFornecedor";
-			this.txtFornecedor.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtFornecedor.Properties.Appearance.Options.UseFont = true;
-			this.txtFornecedor.Properties.ReadOnly = true;
-			this.txtFornecedor.Size = new System.Drawing.Size(100, 30);
-			this.txtFornecedor.TabIndex = 9;
+			txtFornecedor.Location = new System.Drawing.Point(154, 260);
+			txtFornecedor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			txtFornecedor.Name = "txtFornecedor";
+			txtFornecedor.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+			txtFornecedor.Properties.Appearance.Options.UseFont = true;
+			txtFornecedor.Properties.ReadOnly = true;
+			txtFornecedor.Size = new System.Drawing.Size(117, 36);
+			txtFornecedor.TabIndex = 9;
 			// 
 			// txtDesLocal
 			// 
-			this.txtDesLocal.Location = new System.Drawing.Point(374, 176);
-			this.txtDesLocal.Name = "txtDesLocal";
-			this.txtDesLocal.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtDesLocal.Properties.Appearance.Options.UseFont = true;
-			this.txtDesLocal.Properties.ReadOnly = true;
-			this.txtDesLocal.Size = new System.Drawing.Size(100, 30);
-			this.txtDesLocal.TabIndex = 10;
+			txtDesLocal.Location = new System.Drawing.Point(436, 260);
+			txtDesLocal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			txtDesLocal.Name = "txtDesLocal";
+			txtDesLocal.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+			txtDesLocal.Properties.Appearance.Options.UseFont = true;
+			txtDesLocal.Properties.ReadOnly = true;
+			txtDesLocal.Size = new System.Drawing.Size(117, 36);
+			txtDesLocal.TabIndex = 10;
 			// 
 			// txtQtdEstoque
 			// 
-			this.txtQtdEstoque.Location = new System.Drawing.Point(132, 239);
-			this.txtQtdEstoque.Name = "txtQtdEstoque";
-			this.txtQtdEstoque.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtQtdEstoque.Properties.Appearance.Options.UseFont = true;
-			this.txtQtdEstoque.Properties.ReadOnly = true;
-			this.txtQtdEstoque.Size = new System.Drawing.Size(77, 30);
-			this.txtQtdEstoque.TabIndex = 11;
+			txtQtdEstoque.Location = new System.Drawing.Point(154, 326);
+			txtQtdEstoque.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			txtQtdEstoque.Name = "txtQtdEstoque";
+			txtQtdEstoque.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+			txtQtdEstoque.Properties.Appearance.Options.UseFont = true;
+			txtQtdEstoque.Properties.ReadOnly = true;
+			txtQtdEstoque.Size = new System.Drawing.Size(90, 36);
+			txtQtdEstoque.TabIndex = 11;
 			// 
 			// txtDesProduto
 			// 
-			this.txtDesProduto.Location = new System.Drawing.Point(132, 90);
-			this.txtDesProduto.Name = "txtDesProduto";
-			this.txtDesProduto.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtDesProduto.Properties.Appearance.Options.UseFont = true;
-			this.txtDesProduto.Properties.ReadOnly = true;
-			this.txtDesProduto.Properties.ScrollBars = System.Windows.Forms.ScrollBars.None;
-			this.txtDesProduto.Size = new System.Drawing.Size(342, 58);
-			this.txtDesProduto.TabIndex = 13;
+			txtDesProduto.Location = new System.Drawing.Point(154, 111);
+			txtDesProduto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			txtDesProduto.Name = "txtDesProduto";
+			txtDesProduto.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+			txtDesProduto.Properties.Appearance.Options.UseFont = true;
+			txtDesProduto.Properties.ReadOnly = true;
+			txtDesProduto.Properties.ScrollBars = System.Windows.Forms.ScrollBars.None;
+			txtDesProduto.Size = new System.Drawing.Size(399, 136);
+			txtDesProduto.TabIndex = 13;
 			// 
 			// groupControl1
 			// 
-			this.groupControl1.Controls.Add(this.labelControl7);
-			this.groupControl1.Controls.Add(this.labelControl1);
-			this.groupControl1.Controls.Add(this.txtDesProduto);
-			this.groupControl1.Controls.Add(this.labelControl2);
-			this.groupControl1.Controls.Add(this.labelControl3);
-			this.groupControl1.Controls.Add(this.txtQtdEstoque);
-			this.groupControl1.Controls.Add(this.labelControl4);
-			this.groupControl1.Controls.Add(this.txtDesLocal);
-			this.groupControl1.Controls.Add(this.labelControl5);
-			this.groupControl1.Controls.Add(this.txtFornecedor);
-			this.groupControl1.Controls.Add(this.labelControl6);
-			this.groupControl1.Controls.Add(this.txtCodProduto);
-			this.groupControl1.Controls.Add(this.imgFoto);
-			this.groupControl1.Controls.Add(this.txtDesconto);
-			this.groupControl1.Controls.Add(this.txtVlrUnitario);
-			this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.groupControl1.Location = new System.Drawing.Point(0, 0);
-			this.groupControl1.Name = "groupControl1";
-			this.groupControl1.Size = new System.Drawing.Size(819, 368);
-			this.groupControl1.TabIndex = 14;
-			this.groupControl1.Text = "DETALHES DO PRODUTO";
+			groupControl1.Controls.Add(labelControl7);
+			groupControl1.Controls.Add(labelControl1);
+			groupControl1.Controls.Add(txtDesProduto);
+			groupControl1.Controls.Add(labelControl2);
+			groupControl1.Controls.Add(labelControl3);
+			groupControl1.Controls.Add(txtQtdEstoque);
+			groupControl1.Controls.Add(labelControl4);
+			groupControl1.Controls.Add(txtDesLocal);
+			groupControl1.Controls.Add(labelControl5);
+			groupControl1.Controls.Add(txtFornecedor);
+			groupControl1.Controls.Add(labelControl6);
+			groupControl1.Controls.Add(txtCodProduto);
+			groupControl1.Controls.Add(imgFoto);
+			groupControl1.Controls.Add(txtDesconto);
+			groupControl1.Controls.Add(txtVlrUnitario);
+			groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+			groupControl1.Location = new System.Drawing.Point(0, 0);
+			groupControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			groupControl1.Name = "groupControl1";
+			groupControl1.Size = new System.Drawing.Size(955, 512);
+			groupControl1.TabIndex = 14;
+			groupControl1.Text = "DETALHES DO PRODUTO";
 			// 
 			// labelControl7
 			// 
-			this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl7.Location = new System.Drawing.Point(85, 298);
-			this.labelControl7.Name = "labelControl7";
-			this.labelControl7.Size = new System.Drawing.Size(199, 23);
-			this.labelControl7.TabIndex = 14;
-			this.labelControl7.Text = "Preço com desconto:";
+			labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+			labelControl7.Appearance.Options.UseFont = true;
+			labelControl7.Location = new System.Drawing.Point(80, 396);
+			labelControl7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			labelControl7.Name = "labelControl7";
+			labelControl7.Size = new System.Drawing.Size(251, 29);
+			labelControl7.TabIndex = 14;
+			labelControl7.Text = "Preço com desconto:";
 			// 
 			// txtDesconto
 			// 
-			this.txtDesconto.Location = new System.Drawing.Point(290, 289);
-			this.txtDesconto.Name = "txtDesconto";
-			this.txtDesconto.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-			this.txtDesconto.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtDesconto.Properties.Appearance.Options.UseBackColor = true;
-			this.txtDesconto.Properties.Appearance.Options.UseFont = true;
-			this.txtDesconto.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-			this.txtDesconto.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-			this.txtDesconto.Properties.Mask.EditMask = "c2";
-			this.txtDesconto.Properties.Mask.UseMaskAsDisplayFormat = true;
-			this.txtDesconto.Properties.ReadOnly = true;
-			this.txtDesconto.Size = new System.Drawing.Size(184, 36);
-			this.txtDesconto.TabIndex = 15;
+			txtDesconto.Location = new System.Drawing.Point(338, 387);
+			txtDesconto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			txtDesconto.Name = "txtDesconto";
+			txtDesconto.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(255, 224, 192);
+			txtDesconto.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+			txtDesconto.Properties.Appearance.Options.UseBackColor = true;
+			txtDesconto.Properties.Appearance.Options.UseFont = true;
+			txtDesconto.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+			txtDesconto.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+			txtDesconto.Properties.Mask.EditMask = "c2";
+			txtDesconto.Properties.Mask.UseMaskAsDisplayFormat = true;
+			txtDesconto.Properties.ReadOnly = true;
+			txtDesconto.Size = new System.Drawing.Size(215, 42);
+			txtDesconto.TabIndex = 15;
 			// 
 			// txtVlrUnitario
 			// 
-			this.txtVlrUnitario.Location = new System.Drawing.Point(290, 236);
-			this.txtVlrUnitario.Name = "txtVlrUnitario";
-			this.txtVlrUnitario.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-			this.txtVlrUnitario.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtVlrUnitario.Properties.Appearance.Options.UseBackColor = true;
-			this.txtVlrUnitario.Properties.Appearance.Options.UseFont = true;
-			this.txtVlrUnitario.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-			this.txtVlrUnitario.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-			this.txtVlrUnitario.Properties.Mask.EditMask = "C2";
-			this.txtVlrUnitario.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-			this.txtVlrUnitario.Properties.Mask.UseMaskAsDisplayFormat = true;
-			this.txtVlrUnitario.Properties.ReadOnly = true;
-			this.txtVlrUnitario.Size = new System.Drawing.Size(184, 36);
-			this.txtVlrUnitario.TabIndex = 12;
+			txtVlrUnitario.Location = new System.Drawing.Point(338, 323);
+			txtVlrUnitario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			txtVlrUnitario.Name = "txtVlrUnitario";
+			txtVlrUnitario.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(255, 224, 192);
+			txtVlrUnitario.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+			txtVlrUnitario.Properties.Appearance.Options.UseBackColor = true;
+			txtVlrUnitario.Properties.Appearance.Options.UseFont = true;
+			txtVlrUnitario.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+			txtVlrUnitario.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+			txtVlrUnitario.Properties.Mask.EditMask = "C2";
+			txtVlrUnitario.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+			txtVlrUnitario.Properties.Mask.UseMaskAsDisplayFormat = true;
+			txtVlrUnitario.Properties.ReadOnly = true;
+			txtVlrUnitario.Size = new System.Drawing.Size(215, 42);
+			txtVlrUnitario.TabIndex = 12;
 			// 
 			// frmDetalhe
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(819, 368);
-			this.Controls.Add(this.groupControl1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-			this.KeyPreview = true;
-			this.Name = "frmDetalhe";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmDetalhe_KeyDown);
-			((System.ComponentModel.ISupportInitialize)(this.imgFoto.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtCodProduto.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtFornecedor.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtDesLocal.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtQtdEstoque.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtDesProduto.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
-			this.groupControl1.ResumeLayout(false);
-			this.groupControl1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.txtDesconto.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.txtVlrUnitario.Properties)).EndInit();
-			this.ResumeLayout(false);
+			AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			ClientSize = new System.Drawing.Size(955, 512);
+			Controls.Add(groupControl1);
+			FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+			KeyPreview = true;
+			Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			Name = "frmDetalhe";
+			StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			KeyDown += frmDetalhe_KeyDown;
+			((System.ComponentModel.ISupportInitialize)imgFoto.Properties).EndInit();
+			((System.ComponentModel.ISupportInitialize)txtCodProduto.Properties).EndInit();
+			((System.ComponentModel.ISupportInitialize)txtFornecedor.Properties).EndInit();
+			((System.ComponentModel.ISupportInitialize)txtDesLocal.Properties).EndInit();
+			((System.ComponentModel.ISupportInitialize)txtQtdEstoque.Properties).EndInit();
+			((System.ComponentModel.ISupportInitialize)txtDesProduto.Properties).EndInit();
+			((System.ComponentModel.ISupportInitialize)groupControl1).EndInit();
+			groupControl1.ResumeLayout(false);
+			groupControl1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)txtDesconto.Properties).EndInit();
+			((System.ComponentModel.ISupportInitialize)txtVlrUnitario.Properties).EndInit();
+			ResumeLayout(false);
 
-        }
+		}
 
-        #endregion
+		#endregion
 
-        private DevExpress.XtraEditors.LabelControl labelControl1;
+		private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl4;

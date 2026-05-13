@@ -20,7 +20,7 @@ namespace Loja.DAL.Models.Mapping
 				.HasMaxLength(20);
 
 			this.Property(t => t.DescProduto)
-				.HasMaxLength(60);
+				.HasMaxLength(100);
 
 			this.Property(t => t.DesLocal)
 				.HasMaxLength(4);

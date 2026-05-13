@@ -911,7 +911,7 @@ namespace Loja.Modules
 			var p = new prod
 			{
 				cProd = item.CodProduto,
-				xProd = _configuracoes.CfgServico.tpAmb.Equals(TipoAmbiente.Homologacao) && i == 1 ? "NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL" : item.tbl_Produtos.DesProduto,
+				xProd = _configuracoes.CfgServico.tpAmb.Equals(TipoAmbiente.Homologacao) && i == 1 ? "NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL" : item.tbl_Produtos.DesProduto.Trim(),
 				NCM = item.tbl_Produtos.NCM ?? "99999999",
 				CFOP = crt == CRT.SimplesNacional ? 5405 : 5102,
 				uCom = "UNID",
