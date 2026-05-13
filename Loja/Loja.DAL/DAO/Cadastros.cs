@@ -285,6 +285,10 @@ namespace Loja.DAL.DAO
 		{
 			using (var banco = new LojaContext())
 			{
+				var registro = banco.tbl_Saida.FirstOrDefault(x => x.CodVenda == codVenda);
+				if (registro != null && registro.FlgStatusNFE == "A" && !string.IsNullOrWhiteSpace(registro.NumProtocolo))
+					throw new Exception("Não é permitido estornar uma venda com NFC-e autorizada.");
+
 				banco.spc_EstornaVenda(codVenda, desMotivo, flgVoltaNumero);
 
 			}
@@ -296,6 +300,24 @@ namespace Loja.DAL.DAO
 			using (var banco = new LojaContext())
 			{
 				var registro = banco.tbl_Saida.FirstOrDefault(x => x.CodVenda == codVenda);
+				if (registro == null)
+				{
+					registro = new tbl_Saida
+					{
+						CodVenda = codVenda,
+						FlgStatusNFE = flgStatusNFE,
+						ChaveSefaz = chave,
+						NumProtocolo = numProtocolo,
+						Data = DateTime.Now,
+						ValorTotal = 0,
+						QtdItens = 0,
+						FlgStatusNota = flgStatusNFE,
+						CodTipoVenda = 1
+					};
+					banco.tbl_Saida.Add(registro);
+					banco.SaveChanges();
+					return;
+				}
 
 				registro.FlgStatusNFE = flgStatusNFE;
 
@@ -311,6 +333,45 @@ namespace Loja.DAL.DAO
 
 			}
 
+		}
+
+		public static void GarantirSaidaAutorizada(string codVenda, DateTime data, decimal valorTotal, int qtdItens, string chave, string numProtocolo)
+		{
+			using (var banco = new LojaContext())
+			{
+				var registro = banco.tbl_Saida.FirstOrDefault(x => x.CodVenda == codVenda);
+
+				if (registro == null)
+				{
+					registro = new tbl_Saida
+					{
+						CodVenda = codVenda,
+						Data = data,
+						ValorTotal = valorTotal,
+						QtdItens = qtdItens,
+						FlgStatusNFE = "A",
+						ChaveSefaz = chave,
+						NumProtocolo = numProtocolo,
+						FlgStatusNota = "A",
+						CodTipoVenda = 1
+					};
+					banco.tbl_Saida.Add(registro);
+					banco.SaveChanges();
+					return;
+				}
+
+				registro.Data = data;
+				registro.ValorTotal = valorTotal;
+				registro.QtdItens = qtdItens;
+				registro.FlgStatusNFE = "A";
+
+				if (!string.IsNullOrWhiteSpace(chave))
+					registro.ChaveSefaz = chave;
+				if (!string.IsNullOrWhiteSpace(numProtocolo))
+					registro.NumProtocolo = numProtocolo;
+
+				banco.SaveChanges();
+			}
 		}
 
 		public static void CancelarVenda(string codVenda)
@@ -341,6 +402,9 @@ namespace Loja.DAL.DAO
 			using (var banco = new LojaContext())
 			{
 				var registro = banco.tbl_Saida.FirstOrDefault(x => x.CodVenda == codVenda);
+				if (registro != null && registro.FlgStatusNFE == "A" && !string.IsNullOrWhiteSpace(registro.NumProtocolo))
+					throw new Exception("Não é permitido excluir uma venda com NFC-e autorizada.");
+
 				var itens = banco.tbl_SaidaItens.Where(x => x.CodVenda == codVenda).ToList();
 
 

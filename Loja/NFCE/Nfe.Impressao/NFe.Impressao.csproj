@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="FastReport.Net.Demo" Version="2026.2.1" />
-    <PackageReference Include="Zeus.Net.NFe.NFCe" Version="2025.8.12.1032" />
+    <PackageReference Include="Zeus.Net.NFe.NFCe" Version="2026.5.5.1505" />
   </ItemGroup>
 
   <ItemGroup>

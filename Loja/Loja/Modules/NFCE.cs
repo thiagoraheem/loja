@@ -228,27 +228,38 @@ namespace Loja.Modules
 					if (chave.Length != 44) return new Retorno(false, "Chave deve conter 44 caracteres!");
 
 					var retornoConsulta = servicoNFe.NfeConsultaProtocolo(chave);
+					var infProt = retornoConsulta?.Retorno?.protNFe?.infProt;
+					if (infProt == null)
+						return new Retorno(false, "Consulta de protocolo não retornou infProt.");
+					if (infProt.cStat != 100)
+						return new Retorno(false, $"Consulta de protocolo retornou {infProt.cStat} - {infProt.xMotivo}");
 
-					var nfeproc = new nfeProc
+					_saida.NumProtocolo = infProt.nProt;
+					AtualizarStatusNfe("A", _nfe.infNFe.Id, _saida.NumProtocolo, "emissao.autorizada");
+					_saida.ChaveSefaz = _nfe.infNFe.Id;
+					Cadastros.GravaVenda(_saida);
+					NfceRetryQueue.Dequeue(_saida.CodVenda);
+
+					#endregion
+					try
 					{
-						NFe = _nfe,
-						protNFe = retornoConsulta.Retorno.protNFe,
-						versao = retornoConsulta.Retorno.versao
-					};
-					if (nfeproc.protNFe != null)
-					{
-						var novoArquivo = Path.GetDirectoryName(nomArquivoXML) + @"\" + nfeproc.protNFe.infProt.chNFe +
-										  "-procNfe.xml";
+						var nfeproc = new nfeProc
+						{
+							NFe = _nfe,
+							protNFe = retornoConsulta.Retorno.protNFe,
+							versao = retornoConsulta.Retorno.versao
+						};
+						var novoArquivo = Path.GetDirectoryName(nomArquivoXML) + @"\" + infProt.chNFe + "-procNfe.xml";
 						FuncoesXml.ClasseParaArquivoXml(nfeproc, novoArquivo);
 
 						var arquivoPDF = gerarPDF ? nomArquivoXML.Replace("xml", "pdf") : "";
-
 						ImprimirDanfe(novoArquivo, arquivoPDF);
 					}
-
-					#endregion
-					_saida.NumProtocolo = retornoConsulta.Retorno.protNFe.infProt.nProt;
-					AtualizarStatusNfe("A", _nfe.infNFe.Id, _saida.NumProtocolo, "emissao.autorizada");
+					catch (Exception ex)
+					{
+						NfceAuditLogger.Error("emissao.posprocessamento_erro", _saida.CodVenda, _saida.FlgStatusNFE, ex, "NFC-e autorizada, mas houve falha em pós-processamento (proc/impressão).");
+						return new Retorno(true, $"NFC-e autorizada (protocolo {infProt.nProt}), mas houve erro ao finalizar pós-processamento: {ex.Message}");
+					}
 
 				}
 				// Impressão em Contingência
@@ -264,9 +275,6 @@ namespace Loja.Modules
 					ImprimirDanfe(nomArquivoXML);
 				}
 
-				_saida.ChaveSefaz = _nfe.infNFe.Id;
-				Cadastros.GravaVenda(_saida);
-				NfceRetryQueue.Dequeue(_saida.CodVenda);
 				NfceAuditLogger.Info("emissao.sucesso", _saida.CodVenda, _saida.FlgStatusNFE, "Fluxo de emissão finalizado com sucesso.");
 				return new Retorno(true, "Nota Fiscal emitida com sucesso");
 				}
@@ -277,6 +285,10 @@ namespace Loja.Modules
 				{
 					NfceRetryQueue.Enqueue(_saida.CodVenda);
 					NfceAuditLogger.Error("emissao.erro", _saida.CodVenda, _saida.FlgStatusNFE, ex, "Falha durante emissão.");
+				}
+				if (_saida != null && _saida.FlgStatusNFE == "A" && !string.IsNullOrWhiteSpace(_saida.NumProtocolo))
+				{
+					return new Retorno(true, $"NFC-e consta como autorizada localmente (protocolo {_saida.NumProtocolo}), mas houve erro após autorização: {ex.Message}");
 				}
 				return new Retorno(false, $"Erro ao enviar a NFe: {ex.Message}");
 			}

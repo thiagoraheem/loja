@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -164,6 +164,10 @@ namespace Loja
 								Util.MsgBox(String.Format("Havia{0} {1} pendência{2} fiscal{3} que foram reprocessada{4} após cessarem os problemas de conexão!", qtdTotal > 1 ? "m" : "", qtdTotal, qtdTotal > 1 ? "s" : "", qtdTotal > 1 ? "is" : "", qtdTotal > 1 ? "s" : ""));
 							}
 						}
+
+						var reconciliacao = Modules.NfceSaidaAuditor.ReconciliarProcXmls(_configuracoes);
+						if (!String.IsNullOrEmpty(reconciliacao))
+							Util.MsgBox(reconciliacao);
 
 					}
 				}

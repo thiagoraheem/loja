@@ -133,16 +133,8 @@ namespace Loja
 
 					if (!enviar.Resultado)
 					{
-						Util.MsgBox($"Nota fiscal não enviada, venda não realizada.\nRetorno do serviço: {enviar.Mensagem}");
-
-						Cadastros.EstornaVenda(codVenda, "Não enviada SEFAZ", true);
-
-						if (bApagar && codCliente != null)
-						{
-							Cadastros.ExcluiCliente(codCliente.Value);
-						}
-
-						this.DialogResult = System.Windows.Forms.DialogResult.No;
+						Util.MsgBox($"Nota fiscal não enviada.\nA venda foi gravada e ficará pendente para reprocessamento.\nRetorno do serviço: {enviar.Mensagem}");
+						this.DialogResult = System.Windows.Forms.DialogResult.Yes;
 						this.Close();
 						return;
 

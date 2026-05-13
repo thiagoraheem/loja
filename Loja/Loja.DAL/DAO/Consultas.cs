@@ -533,15 +533,15 @@ namespace Loja.DAL.DAO
 			}
 		}
 
-        public static List<VO.CodigoVenda> ObterNotasFaltantes()
-        {
+		public static List<VO.CodigoVenda> ObterNotasFaltantes()
+		{
 
-            using (var contexto = new LojaContext())
-            {
-                return contexto.spc_VerificaNotasFaltantes().ToList();
-            }
+			using (var contexto = new LojaContext())
+			{
+				return contexto.spc_VerificaNotasFaltantes().ToList();
+			}
 
-        }
+		}
 
 		public static tbl_Parametros ObterParametros()
 		{

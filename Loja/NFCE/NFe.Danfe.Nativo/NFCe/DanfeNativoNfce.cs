@@ -1,4 +1,4 @@
-﻿/********************************************************************************/
+/********************************************************************************/
 /* Projeto: Biblioteca ZeusNFe                                                  */
 /* Biblioteca C# para emissão de Nota Fiscal Eletrônica - NFe e Nota Fiscal de  */
 /* Consumidor Eletrônica - NFC-e (http://www.nfe.fazenda.gov.br)                */
@@ -481,7 +481,7 @@ namespace NFe.Danfe.Nativo.NFCe
 
             _y += 5;
 
-            decimal tributosIncidentes = _nfe.infNFe.total.ICMSTot.vTotTrib;
+            decimal tributosIncidentes = _nfe.infNFe.total.ICMSTot.vTotTrib ?? 0m;
 
 
             if (tributosIncidentes != 0)
