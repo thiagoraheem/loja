@@ -60,6 +60,11 @@ Um gatilho frequente era incompatibilidade de versões do pacote `Zeus.Net.NFe.N
 - Auditoria automática por PROC XML:
   - A rotina [NfceSaidaAuditor.ReconciliarProcXmls](file:///c:/Projetos/loja/Loja/Loja/Modules/NfceSaidaAuditor.cs) varre `*-procNfe.xml` no diretório de XML e garante `tbl_Saida` para cada NFC-e autorizada encontrada.
   - Ela é executada periodicamente pelo monitor na tela principal: [frmPrincipal.VerificaStatus](file:///c:/Projetos/loja/Loja/Loja/Forms/frmPrincipal.cs#L142-L174).
+  - Os arquivos `*-procNfe.xml` processados são arquivados automaticamente em `_procNfe_processado\\YYYYMMDD` dentro do diretório de XML, eliminando a necessidade de exclusão manual.
+  - Notificações foram tornadas não intrusivas:
+    - Não exibe mensagem quando apenas reconciliou/arquivou com sucesso.
+    - Exibe aviso apenas em falhas reais de leitura/reconciliação.
+    - Aplica limitação por dia e intervalo mínimo entre avisos (estado em `Logs\\Nfce\\procxml-audit-state.txt`).
 
 ## Testes
 
