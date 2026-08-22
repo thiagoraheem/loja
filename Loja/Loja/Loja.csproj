@@ -19,10 +19,10 @@
 	<PackageReference Include="DevExpress.Win.Design" Version="24.1.*-*" />
 	<PackageReference Include="EntityFramework" Version="6.5.2" />
 	<PackageReference Include="FreeSpire.PDF" Version="12.4.0" />
-	<PackageReference Include="System.Configuration.ConfigurationManager" Version="10.0.7" />
-	<PackageReference Include="Zeus.Net.CTe" Version="2026.5.5.1505" />
-	<PackageReference Include="Zeus.Net.MDFe" Version="2026.5.5.1505" />
-	<PackageReference Include="Zeus.Net.NFe.NFCe" Version="2026.5.5.1505" />
+	<PackageReference Include="System.Configuration.ConfigurationManager" Version="10.0.11" />
+	<PackageReference Include="Zeus.Net.CTe" Version="2026.8.18.2047" />
+	<PackageReference Include="Zeus.Net.MDFe" Version="2026.8.18.2047" />
+	<PackageReference Include="Zeus.Net.NFe.NFCe" Version="2026.8.18.2047" />
   </ItemGroup>
 
   <ItemGroup>

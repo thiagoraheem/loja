@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Drawing.Common" Version="10.0.0" />
-    <PackageReference Include="Zeus.Net.NFe.NFCe" Version="2026.5.5.1505" />
+    <PackageReference Include="System.Drawing.Common" Version="10.0.11" />
+    <PackageReference Include="Zeus.Net.NFe.NFCe" Version="2026.8.18.2047" />
   </ItemGroup>
 </Project>
