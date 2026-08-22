@@ -127,6 +127,8 @@ namespace Loja
 
 			gridOrcamento.DataSource = orcamento;
 
+			BeginInvoke(new System.Windows.Forms.MethodInvoker(AtualizarIndicadorAuditoriaNfce));
+
 			c = new Thread(VerificaContingencia) { IsBackground = true };
 			c.Start();
 
@@ -157,24 +159,133 @@ namespace Loja
 							var cont = new Modules.NFCE(_configuracoes, "");
 							var resultado = cont.EnviarContingencia();
 							if (!String.IsNullOrEmpty(resultado))
-								Util.MsgBox(resultado);
+								NotificarCondicional(Modules.NfceNotificador.ChaveContingencia, resultado);
 							else
 							{
 								var qtdTotal = QtdContingencia + filaRetry.Count;
-								Util.MsgBox(String.Format("Havia{0} {1} pendência{2} fiscal{3} que foram reprocessada{4} após cessarem os problemas de conexão!", qtdTotal > 1 ? "m" : "", qtdTotal, qtdTotal > 1 ? "s" : "", qtdTotal > 1 ? "is" : "", qtdTotal > 1 ? "s" : ""));
+								var msg = String.Format("Havia{0} {1} pendência{2} fiscal{3} que foram reprocessada{4} após cessarem os problemas de conexão!", qtdTotal > 1 ? "m" : "", qtdTotal, qtdTotal > 1 ? "s" : "", qtdTotal > 1 ? "is" : "", qtdTotal > 1 ? "s" : "");
+								NotificarCondicional(Modules.NfceNotificador.ChaveContingencia, msg);
 							}
 						}
 
 						var reconciliacao = Modules.NfceSaidaAuditor.ReconciliarProcXmls(_configuracoes);
 						if (!String.IsNullOrEmpty(reconciliacao))
-							Util.MsgBox(reconciliacao);
+							NotificarCondicional(Modules.NfceNotificador.ChaveAuditoriaProcXml, reconciliacao);
 
+						AtualizarIndicadorAuditoriaNfce();
 					}
 				}
 				Thread.Sleep(360000);
 
 			}
 
+		}
+
+		private void NotificarCondicional(string chave, string mensagem)
+		{
+			try
+			{
+				Modules.NfceNotificador.RegistrarOcorrencia(chave, mensagem);
+			}
+			catch { }
+
+			AtualizarIndicadorAuditoriaNfce();
+
+			var deveMostrar = false;
+			try { deveMostrar = Modules.NfceNotificador.DeveMostrarMessageBox(chave); }
+			catch { deveMostrar = true; }
+
+			if (deveMostrar)
+			{
+				try { Modules.NfceNotificador.ConfirmarAvisoExibido(chave); }
+				catch { }
+
+				try
+				{
+					if (chkStatusSefaz != null && IsHandleCreated)
+					{
+						var inv = new System.Windows.Forms.MethodInvoker(() => Util.MsgBox(mensagem));
+						BeginInvoke(inv);
+					}
+					else
+					{
+						Util.MsgBox(mensagem);
+					}
+				}
+				catch
+				{
+					Util.MsgBox(mensagem);
+				}
+			}
+		}
+
+		private void AtualizarIndicadorAuditoriaNfce()
+		{
+			try
+			{
+				if (btnAuditoriaNfce == null) return;
+
+				var total = 0;
+				try { total = Modules.NfceNotificador.ObterPendentesTotal(); }
+				catch { total = 0; }
+
+				var caption = total == 0
+					? "Auditoria NFC-e: OK"
+					: String.Format("Auditoria NFC-e: <b>{0}</b>", total);
+
+				var action = new System.Windows.Forms.MethodInvoker(() =>
+				{
+					try
+					{
+						btnAuditoriaNfce.Caption = caption;
+						if (total == 0)
+						{
+							btnAuditoriaNfce.ItemAppearance.Normal.Options.UseBackColor = false;
+							btnAuditoriaNfce.ItemAppearance.Normal.Options.UseForeColor = false;
+						}
+						else
+						{
+							btnAuditoriaNfce.ItemAppearance.Normal.BackColor = System.Drawing.Color.DarkOrange;
+							btnAuditoriaNfce.ItemAppearance.Normal.ForeColor = System.Drawing.Color.White;
+							btnAuditoriaNfce.ItemAppearance.Normal.Options.UseBackColor = true;
+							btnAuditoriaNfce.ItemAppearance.Normal.Options.UseForeColor = true;
+						}
+					}
+					catch { }
+				});
+
+				try
+				{
+					if (IsHandleCreated)
+						BeginInvoke(action);
+					else
+						action();
+				}
+				catch
+				{
+					// não quebrar se UI estiver indisponível
+				}
+			}
+			catch
+			{
+				// ignora falha de atualização do indicador
+			}
+		}
+
+		private void btnAuditoriaNfce_ItemClick(object sender, ItemClickEventArgs e)
+		{
+			try
+			{
+				using (var f = new Forms.frmHistoricoNfceAuditoria())
+				{
+					f.ShowDialog(this);
+				}
+				AtualizarIndicadorAuditoriaNfce();
+			}
+			catch (Exception ex)
+			{
+				Util.MsgBox("Erro ao abrir histórico de auditoria: " + ex.Message);
+			}
 		}
 
 		private bool VerificaInternet()

@@ -1,4 +1,4 @@
-﻿namespace Loja
+namespace Loja
 {
 	partial class frmPrincipal
 	{
@@ -78,6 +78,7 @@
 			this.btnAbrirOrca = new DevExpress.XtraBars.BarButtonItem();
 			this.btnVerResumo = new DevExpress.XtraBars.BarButtonItem();
 			this.btnEnviarCont = new DevExpress.XtraBars.BarButtonItem();
+			this.btnAuditoriaNfce = new DevExpress.XtraBars.BarButtonItem();
 			this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
 			this.homeRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
 			this.fileRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -227,7 +228,8 @@
 			this.btnAbrirOrca,
 			this.btnVerResumo,
 			this.btnParametros,
-			this.btnEnviarCont});
+			this.btnEnviarCont,
+			this.btnAuditoriaNfce});
 			this.ribbonControl.LargeImages = this.ribbonImageCollectionLarge;
 			this.ribbonControl.Location = new System.Drawing.Point(0, 0);
 			this.ribbonControl.MaxItemId = 3;
@@ -631,6 +633,17 @@
 			this.btnEnviarCont.Name = "btnEnviarCont";
 			this.btnEnviarCont.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEnviarCont_ItemClick);
 			// 
+			// btnAuditoriaNfce
+			// 
+			this.btnAuditoriaNfce.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+			this.btnAuditoriaNfce.Caption = "Auditoria NFC-e: 0";
+			this.btnAuditoriaNfce.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+			this.btnAuditoriaNfce.CloseSubMenuOnClick = false;
+			this.btnAuditoriaNfce.Id = 91;
+			this.btnAuditoriaNfce.Name = "btnAuditoriaNfce";
+			this.btnAuditoriaNfce.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+			this.btnAuditoriaNfce.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAuditoriaNfce_ItemClick);
+			// 
 			// ribbonImageCollectionLarge
 			// 
 			this.ribbonImageCollectionLarge.ImageSize = new System.Drawing.Size(32, 32);
@@ -696,6 +709,7 @@
 			this.ribbonPageGroup2.ItemLinks.Add(this.btnContingencia);
 			this.ribbonPageGroup2.ItemLinks.Add(this.btnQtdContingencia);
 			this.ribbonPageGroup2.ItemLinks.Add(this.btnEnviarCont);
+			this.ribbonPageGroup2.ItemLinks.Add(this.btnAuditoriaNfce);
 			this.ribbonPageGroup2.Name = "ribbonPageGroup2";
 			this.ribbonPageGroup2.Text = "NFC-e";
 			// 
@@ -1338,5 +1352,6 @@
 		private DevExpress.XtraNavBar.NavBarItem btnAuditorNF;
 		private DevExpress.XtraBars.BarButtonItem btnParametros;
 		private DevExpress.XtraBars.BarButtonItem btnEnviarCont;
+		private DevExpress.XtraBars.BarButtonItem btnAuditoriaNfce;
 	}
 }
