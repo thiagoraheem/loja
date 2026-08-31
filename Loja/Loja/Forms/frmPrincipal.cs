@@ -128,6 +128,7 @@ namespace Loja
 			gridOrcamento.DataSource = orcamento;
 
 			BeginInvoke(new System.Windows.Forms.MethodInvoker(AtualizarIndicadorAuditoriaNfce));
+			BeginInvoke(new System.Windows.Forms.MethodInvoker(ExecutarLimpezaXmlComunicacaoStartup));
 
 			c = new Thread(VerificaContingencia) { IsBackground = true };
 			c.Start();
@@ -171,6 +172,8 @@ namespace Loja
 						var reconciliacao = Modules.NfceSaidaAuditor.ReconciliarProcXmls(_configuracoes);
 						if (!String.IsNullOrEmpty(reconciliacao))
 							NotificarCondicional(Modules.NfceNotificador.ChaveAuditoriaProcXml, reconciliacao);
+
+						ExecutarLimpezaXmlComunicacaoPeriodica();
 
 						AtualizarIndicadorAuditoriaNfce();
 					}
@@ -286,6 +289,32 @@ namespace Loja
 			{
 				Util.MsgBox("Erro ao abrir histórico de auditoria: " + ex.Message);
 			}
+		}
+
+		private void ExecutarLimpezaXmlComunicacaoStartup()
+		{
+			try
+			{
+				var dir = _configuracoes?.CfgServico?.DiretorioSalvarXml;
+				if (!string.IsNullOrWhiteSpace(dir))
+				{
+					Modules.NfceXmlCleanup.ExecutarRotina(dir, Modules.NfceXmlCleanup.DiasManterComunicacao, ignorarThrottle: true);
+				}
+			}
+			catch { }
+		}
+
+		private void ExecutarLimpezaXmlComunicacaoPeriodica()
+		{
+			try
+			{
+				var dir = _configuracoes?.CfgServico?.DiretorioSalvarXml;
+				if (!string.IsNullOrWhiteSpace(dir))
+				{
+					Modules.NfceXmlCleanup.ExecutarRotina(dir, Modules.NfceXmlCleanup.DiasManterComunicacao, ignorarThrottle: false);
+				}
+			}
+			catch { }
 		}
 
 		private bool VerificaInternet()
