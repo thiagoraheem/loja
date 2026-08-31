@@ -151,23 +151,18 @@ namespace Loja
 		private void btnReimprimir_Click(object sender, EventArgs e)
 		{
 
-			var caminho = "";
 			var codvenda = FU_PegaCodigoVenda();
 
 			var venda = Consultas.ObterVenda(codvenda);
 
-			caminho = $"{_configuracoes.CfgServico.DiretorioSalvarXml}\\{venda.ChaveSefaz.Replace("NFe", "")}-procNfe.xml";
-
-			if (File.Exists(caminho))
+			var caminho = Modules.NfceXmlLocator.LocalizarProcNfeComReenvio(_configuracoes.CfgServico.DiretorioSalvarXml, venda?.ChaveSefaz, codvenda);
+			
+			if (!String.IsNullOrEmpty(caminho) && File.Exists(caminho))
 			{
-				//NFe.Wsdl.Monitor.ImprimirDANFE(caminho, Properties.Settings.Default.ImpressoraNFE);
 				var nfce = new NFCE(_configuracoes, "");
 				nfce.ImprimirDanfe(caminho);
 			}
 			else {
-				//var nfe = new NFCE(_configuracoes, codvenda);
-				//var xml = nfe.ObterXMLSefaz(venda.ChaveSefaz.Replace("NFe", ""));
-
 				Util.MsgBox("Erro ao tentar reimprimir DANFE, arquivo XML não encontrado");
 			}
 
@@ -180,9 +175,9 @@ namespace Loja
 
 			var venda = Consultas.ObterVenda(codvenda);
 
-			caminho = String.Format($"{_configuracoes.CfgServico.DiretorioSalvarXml}\\{venda.ChaveSefaz.Replace("NFe", "")}-procNfe.xml");
+			caminho = Modules.NfceXmlLocator.LocalizarProcNfeComReenvio(_configuracoes.CfgServico.DiretorioSalvarXml, venda?.ChaveSefaz, codvenda);
 
-			if (File.Exists(caminho))
+			if (!String.IsNullOrEmpty(caminho) && File.Exists(caminho))
 			{
 				var nfce = new Modules.NFCE(_configuracoes, "");
 
@@ -192,8 +187,6 @@ namespace Loja
 
 				if (string.IsNullOrEmpty(fileDialog.FileName))
 					throw new ArgumentException("Não foi selecionado nem uma pasta");
-
-				//impr.Imprimir(salvarArquivoPdfEm: fileDialog.FileName.Replace(".pdf", "") + ".pdf");
 
 				nfce.ImprimirDanfe(caminho, fileDialog.FileName);
 			}

@@ -43,6 +43,9 @@
     <Compile Update="Forms\frmEntradas.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\frmHistoricoNfceAuditoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\frmOrcamento.cs">
       <SubType>Form</SubType>
     </Compile>

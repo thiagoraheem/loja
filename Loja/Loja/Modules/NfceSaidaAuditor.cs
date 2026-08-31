@@ -51,7 +51,7 @@ namespace Loja.Modules
 
 					if (SaidaJaEstaCorreta(codVenda, chave, protocolo))
 					{
-						if (ArquivarProcXml(dir, arquivo, codVenda))
+						if (!string.IsNullOrWhiteSpace(NfceXmlLocator.ArquivarProcNfe(dir, arquivo, codVenda)))
 							arquivadas++;
 						continue;
 					}
@@ -59,7 +59,7 @@ namespace Loja.Modules
 					Cadastros.GarantirSaidaAutorizada(codVenda, data, valorTotal, qtdItens, chave, protocolo);
 					reconciliadas++;
 
-					if (ArquivarProcXml(dir, arquivo, codVenda))
+					if (!string.IsNullOrWhiteSpace(NfceXmlLocator.ArquivarProcNfe(dir, arquivo, codVenda)))
 						arquivadas++;
 				}
 				catch (Exception ex)
@@ -67,7 +67,7 @@ namespace Loja.Modules
 					var chave = ExtrairChaveDoNomeArquivo(arquivo);
 					if (!string.IsNullOrWhiteSpace(chave) && SaidaAutorizadaExistePorChave(chave))
 					{
-						if (ArquivarProcXml(dir, arquivo, chave))
+						if (!string.IsNullOrWhiteSpace(NfceXmlLocator.ArquivarProcNfe(dir, arquivo, chave)))
 							arquivadas++;
 						continue;
 					}
@@ -86,7 +86,7 @@ namespace Loja.Modules
 									if (!string.IsNullOrWhiteSpace(codVenda))
 									{
 										Cadastros.GarantirSaidaAutorizada(codVenda, DateTime.Now, 0m, 0, "NFe" + chave, infProt.nProt);
-										if (ArquivarProcXml(dir, arquivo, codVenda))
+										if (!string.IsNullOrWhiteSpace(NfceXmlLocator.ArquivarProcNfe(dir, arquivo, codVenda)))
 											arquivadas++;
 										NfceAuditLogger.Info("auditoria.sefaz_conciliada", codVenda, "A", "Conciliada por consulta SEFAZ após falha de leitura do PROC XML.");
 										continue;
@@ -154,32 +154,6 @@ namespace Loja.Modules
 				}
 
 				return true;
-			}
-		}
-
-		private static bool ArquivarProcXml(string dirXml, string arquivo, string codVenda)
-		{
-			try
-			{
-				var data = File.GetLastWriteTime(arquivo);
-				var subdir = Path.Combine(dirXml, "_procNfe_processado", $"{data:yyyyMMdd}");
-				Directory.CreateDirectory(subdir);
-
-				var nome = Path.GetFileName(arquivo);
-				var destino = Path.Combine(subdir, nome);
-				if (File.Exists(destino))
-				{
-					var baseNome = Path.GetFileNameWithoutExtension(nome);
-					var ext = Path.GetExtension(nome);
-					destino = Path.Combine(subdir, $"{baseNome}-{codVenda}-{Guid.NewGuid():N}{ext}");
-				}
-
-				File.Move(arquivo, destino);
-				return true;
-			}
-			catch
-			{
-				return false;
 			}
 		}
 
